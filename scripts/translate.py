@@ -118,6 +118,60 @@ def sync_language(lang: str, ol_mount: Path, *, dry_run: bool = False) -> None:
         po_src.write_bytes(updated)
 
 
+def get_stats(lang: str) -> dict:
+    """Return translation coverage stats for one language. No Docker or API key needed."""
+    try:
+        from babel.messages.pofile import read_po
+    except ImportError:
+        raise RuntimeError("babel is required: pip install babel")
+
+    po_path = LOCALE_DIR / lang / "messages.po"
+    with open(po_path, "rb") as f:
+        catalog = read_po(f)
+
+    total = fuzzy = translated = 0
+    for msg in catalog:
+        if not msg.id:
+            continue
+        total += 1
+        if msg.fuzzy:
+            fuzzy += 1
+        elif isinstance(msg.string, str) and msg.string:
+            translated += 1
+        elif isinstance(msg.string, (list, tuple)) and any(msg.string):
+            translated += 1
+
+    untranslated = total - translated - fuzzy
+    pct = round(100 * translated / total) if total else 0
+    return {
+        "lang": lang,
+        "total": total,
+        "translated": translated,
+        "untranslated": untranslated,
+        "fuzzy": fuzzy,
+        "pct": pct,
+    }
+
+
+def print_status(languages: list[str]) -> None:
+    """Print a coverage table for the given languages. Sorts by untranslated desc."""
+    rows = [get_stats(lang) for lang in languages]
+    rows.sort(key=lambda r: r["untranslated"], reverse=True)
+
+    header = f"{'lang':<6}  {'translated':>10}  {'untranslated':>12}  {'fuzzy':>5}  {'total':>6}  {'%':>3}"
+    print(header)
+    print("-" * len(header))
+    for r in rows:
+        flag = " !" if r["untranslated"] > 0 else ""
+        print(
+            f"{r['lang']:<6}  {r['translated']:>10}  {r['untranslated']:>12}  "
+            f"{r['fuzzy']:>5}  {r['total']:>6}  {r['pct']:>2}%{flag}"
+        )
+    needs_work = sum(1 for r in rows if r["untranslated"] > 0)
+    total_missing = sum(r["untranslated"] for r in rows)
+    print(f"\n{needs_work}/{len(rows)} languages have untranslated strings ({total_missing} total)")
+
+
 def get_untranslated(lang: str) -> list[dict]:
     """Return list of untranslated non-fuzzy entries using babel."""
     try:
@@ -467,6 +521,11 @@ def main() -> None:
     parser.add_argument("--lang", nargs="+", metavar="LANG", help="Languages to process")
     parser.add_argument("--all", action="store_true", help="Process all languages in locale/")
     parser.add_argument(
+        "--status",
+        action="store_true",
+        help="Show translation coverage per language and exit (no Docker or API key needed)",
+    )
+    parser.add_argument(
         "--batch-pr",
         action="store_true",
         help="Open one PR for all languages (default: per-language)",
@@ -493,6 +552,12 @@ def main() -> None:
         help="Path to openlibrary worktree (overrides OL_MOUNT_DIR env var)",
     )
     args = parser.parse_args()
+
+    # --status: read-only, no Docker or API key needed
+    if args.status:
+        languages = KNOWN_LANGS if (args.all or not args.lang) else args.lang
+        print_status(languages)
+        return
 
     if not args.lang and not args.all:
         parser.error("Specify --lang LANG [LANG ...] or --all")
