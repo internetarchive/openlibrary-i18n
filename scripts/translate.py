@@ -7,11 +7,13 @@ specified languages, fills untranslated strings using an AI translation API,
 validates the result, and compiles .po → .mo.
 
 Usage:
+  python scripts/translate.py --update               # auto: fetch stats, dispatch subagents
   python scripts/translate.py --lang de es fr       # translate specific languages
   python scripts/translate.py --all                  # all languages in locale/
   python scripts/translate.py --lang de --batch-pr   # one PR for all specified langs
   python scripts/translate.py --lang de --no-translate  # sync + validate only
   python scripts/translate.py --lang de --dry-run    # print actions, no side effects
+  python scripts/translate.py --status               # show coverage per language (read-only)
 
 Environment variables:
   ANTHROPIC_API_KEY    required unless --no-translate
@@ -512,6 +514,65 @@ def process_language(
     print(f"  committed: {sha}")
 
 
+def _claude_bin() -> str:
+    result = subprocess.run(['which', 'claude'], capture_output=True, text=True)
+    return result.stdout.strip() or os.path.expanduser('~/.local/bin/claude')
+
+
+def _run_claude(prompt: str, *, dry_run: bool = False) -> None:
+    cmd = [_claude_bin(), '--dangerously-skip-permissions', '-p', prompt]
+    print(f"→ claude -p <{len(prompt)}-char prompt>")
+    if not dry_run:
+        subprocess.run(cmd, timeout=600, check=True)
+
+
+def _run_update(*, model: str, dry_run: bool = False) -> None:
+    """
+    Auto dispatch: group languages by untranslated count, spin up subagents.
+
+    Languages with untranslated ≤ BATCH_SIZE → one Claude call, one batch PR.
+    Languages with untranslated > BATCH_SIZE → one Claude call each, one PR each.
+    Languages with untranslated == 0 → skipped.
+    """
+    stats = [get_stats(lang) for lang in KNOWN_LANGS]
+    needs_work = [s for s in stats if s['untranslated'] > 0]
+
+    if not needs_work:
+        print("All languages fully translated — nothing to do.")
+        return
+
+    batch_langs = [s['lang'] for s in needs_work if s['untranslated'] <= BATCH_SIZE]
+    individual_langs = [s['lang'] for s in needs_work if s['untranslated'] > BATCH_SIZE]
+
+    print(f"Batch PR ({len(batch_langs)} langs): {batch_langs}")
+    print(f"Individual PRs ({len(individual_langs)} langs): {individual_langs}")
+
+    i18n_workflow = (
+        Path(__file__).parent.parent.parent / 'pm' / 'workflows' / 'i18n-translation-update.md'
+    )
+
+    if batch_langs:
+        lang_list = ' '.join(batch_langs)
+        prompt = (
+            f"You are Slater, the Open Library translator.\n\n"
+            f"Run the i18n translation workflow for these languages as a single batch PR: {lang_list}\n\n"
+            f"Use: python {Path(__file__)} --lang {lang_list} --batch-pr --model {model}\n\n"
+            f"Follow {i18n_workflow} for worktree setup, validation, and PR conventions.\n"
+            f"Open one PR covering all languages. No gate required — open the PR when ready."
+        )
+        _run_claude(prompt, dry_run=dry_run)
+
+    for lang in individual_langs:
+        prompt = (
+            f"You are Slater, the Open Library translator.\n\n"
+            f"Run the i18n translation workflow for language: {lang}\n\n"
+            f"Use: python {Path(__file__)} --lang {lang} --model {model}\n\n"
+            f"Follow {i18n_workflow} for worktree setup, validation, and PR conventions.\n"
+            f"Open a per-language PR. No gate required — open the PR when ready."
+        )
+        _run_claude(prompt, dry_run=dry_run)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Open Library i18n translation pipeline",
@@ -520,6 +581,15 @@ def main() -> None:
     )
     parser.add_argument("--lang", nargs="+", metavar="LANG", help="Languages to process")
     parser.add_argument("--all", action="store_true", help="Process all languages in locale/")
+    parser.add_argument(
+        "--update",
+        action="store_true",
+        help=(
+            "Auto mode: fetch per-language stats, group by threshold, dispatch subagents. "
+            "Languages with ≤75 untranslated strings → one batch PR. "
+            "Languages with >75 → one PR each. No --lang or --all needed."
+        ),
+    )
     parser.add_argument(
         "--status",
         action="store_true",
@@ -557,6 +627,11 @@ def main() -> None:
     if args.status:
         languages = KNOWN_LANGS if (args.all or not args.lang) else args.lang
         print_status(languages)
+        return
+
+    # --update: auto mode — fetch stats, group by threshold, dispatch subagents
+    if args.update:
+        _run_update(model=args.model, dry_run=args.dry_run)
         return
 
     if not args.lang and not args.all:
