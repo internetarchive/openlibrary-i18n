@@ -1,0 +1,86 @@
+name: Validate translations
+
+on:
+  pull_request:
+    paths:
+      - "locale/**"
+      - "messages.pot"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install babel pytest
+
+      - name: Detect changed languages
+        id: changed-langs
+        run: |
+          git fetch origin ${{ github.base_ref }} --depth=1
+          LANGS=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep '^locale/' \
+            | cut -d/ -f2 \
+            | sort -u \
+            | tr '\n' ' ')
+          echo "langs=$LANGS" >> "$GITHUB_OUTPUT"
+          echo "Changed languages: $LANGS"
+
+      - name: Run test_po_files (HTML structure)
+        run: |
+          LANGS="${{ steps.changed-langs.outputs.langs }}"
+          if [ -z "$LANGS" ]; then
+            echo "No locale changes detected — running full suite"
+            python -m pytest tests/test_po_files.py -q
+          else
+            # Build -k expression: "de or es or fr"
+            K_EXPR=$(echo "$LANGS" | tr ' ' '\n' | grep -v '^$' | paste -sd ' or ')
+            echo "Testing languages: $K_EXPR"
+            python -m pytest tests/test_po_files.py -k "$K_EXPR" -q
+          fi
+
+      - name: Validate format strings
+        run: |
+          LANGS="${{ steps.changed-langs.outputs.langs }}"
+          python - <<'EOF'
+          import sys
+          from pathlib import Path
+          from babel.messages.pofile import read_po
+          sys.path.insert(0, str(Path('tests')))
+          from validators import validate
+
+          changed = "${{ steps.changed-langs.outputs.langs }}".split()
+          locale_dir = Path("locale")
+          langs = changed if changed else sorted(p.name for p in locale_dir.iterdir() if p.is_dir())
+
+          errors_found = False
+          for lang in langs:
+              po_path = locale_dir / lang / "messages.po"
+              with open(po_path, "rb") as f:
+                  catalog = read_po(f)
+              lang_errors = []
+              for msg in catalog:
+                  if not msg.id:
+                      continue
+                  errs = validate(msg, catalog)
+                  if errs:
+                      lang_errors.append((msg.id, errs))
+              if lang_errors:
+                  print(f"\n{lang}: {len(lang_errors)} error(s)")
+                  for msgid, errs in lang_errors[:10]:
+                      print(f"  msgid: {msgid!r}")
+                      for e in errs:
+                          print(e)
+                  errors_found = True
+              else:
+                  print(f"{lang}: OK")
+
+          if errors_found:
+              sys.exit(1)
+          EOF
