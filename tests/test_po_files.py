@@ -87,7 +87,7 @@ def gen_html_entries():
         yield pytest.param(locale, msgid, msgstr, id=f"{locale}-{msgid}")
 
 
-@pytest.mark.parametrize(("locale", "msgid", "msgstr"), gen_html_entries())
+@pytest.mark.parametrize(("locale", "msgid", "msgstr"), list(gen_html_entries()))
 def test_html_format(locale: str, msgid: str, msgstr: str):
     """Verify HTML structure (tags + attribute keys) is preserved in translation."""
     # Use XML entity declaration to handle &nbsp; since ET only parses XML.
