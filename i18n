@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """
-Open Library i18n toolbox.
+Open Library i18n toolbox — ./i18n <command>
 
-Subcommands (all operate on locale/<lang>/messages.po):
-  sync <lang>                 update .po from messages.pot via pybabel
-  status [lang ...]           translation coverage per language
-  untranslated <lang>         JSON list of untranslated strings (stdout)
-  apply <lang> <json_file>    write {msgid: msgstr} translations into .po
-  fix <lang>                  fix HTML attrs and format-string errors
-  validate <lang>             check format strings; exits non-zero on error
-  test <lang>                 run pytest tests/test_po_files.py -k <lang>
-  compile <lang>              compile .po -> .mo via pybabel
-  download-pot                fetch messages.pot from openlibrary master
-  plan                        show PR grouping plan (JSON); no side effects
-
-All subcommands that touch files accept --dry-run.
+  pull [--sync]          Download messages.pot from openlibrary master.
+                         --sync also updates all language .po files.
+  sync [<lang>]          Update .po file(s) from messages.pot via pybabel.
+                         Omit <lang> to sync all known languages.
+  incomplete             JSON list of languages with untranslated strings,
+                         sorted by count descending.
+  batch                  JSON batches to process; one batch = one PR.
+                         Langs with <= BATCH_SIZE strings share a batch;
+                         langs with more each get their own.
+  untranslated <lang>    JSON list of untranslated strings.
+    [--limit N]
+  apply <lang> <json>    Apply {msgid: msgstr} translations file to .po.
+  fix <lang>             Fix HTML attrs and format-string errors in .po.
+  validate <lang>        Validate format strings; exits non-zero on error.
+  test <lang>            Run pytest tests/test_po_files.py -k <lang>.
+  compile <lang>         Compile .po -> .mo via pybabel.
 """
 from __future__ import annotations
 
@@ -46,7 +49,7 @@ def known_langs() -> list[str]:
 
 
 # ---------------------------------------------------------------------------
-# Catalog-level logic (pure functions — no filesystem, testable)
+# Catalog-level pure functions (no filesystem — fully testable)
 # ---------------------------------------------------------------------------
 
 def _stats_from_catalog(catalog, lang: str) -> dict:
@@ -194,8 +197,36 @@ def _fix_format_errors(catalog) -> int:
     return cleared
 
 
+def _batches_from_counts(counts: list[dict], batch_size: int = BATCH_SIZE) -> list[list[str]]:
+    """
+    Pure function: given counts (list of {lang, untranslated}), return batches.
+
+    Each batch is a list of language codes that maps to one PR:
+    - Langs with 0 < untranslated <= batch_size are grouped into one shared batch.
+    - Langs with untranslated > batch_size each get their own single-lang batch.
+    - Langs with untranslated == 0 are excluded.
+    """
+    shared: list[str] = []
+    solo: list[str] = []
+    for c in counts:
+        n = c["untranslated"]
+        if n <= 0:
+            continue
+        if n <= batch_size:
+            shared.append(c["lang"])
+        else:
+            solo.append(c["lang"])
+
+    batches: list[list[str]] = []
+    if shared:
+        batches.append(shared)
+    for lang in solo:
+        batches.append([lang])
+    return batches
+
+
 # ---------------------------------------------------------------------------
-# File-level functions (lang name -> locale/<lang>/messages.po)
+# File-level functions
 # ---------------------------------------------------------------------------
 
 def _read_po(lang: str):
@@ -210,7 +241,7 @@ def _write_po(lang: str, catalog) -> None:
         write_po(f, catalog, width=10000, omit_header=False)
 
 
-def get_stats(lang: str) -> dict:
+def get_counts(lang: str) -> dict:
     return _stats_from_catalog(_read_po(lang), lang)
 
 
@@ -249,85 +280,61 @@ def validate(lang: str) -> list[tuple]:
     return errors
 
 
-def _jobs_from_stats(stats: list[dict], batch_size: int = BATCH_SIZE) -> list[dict]:
-    """
-    Pure function: given a list of stats dicts, return a list of translation jobs.
-
-    A job is {"langs": [lang, ...]}.  Each job maps to one PR.
-    - Langs with 0 < untranslated <= batch_size are grouped into a single batch job.
-    - Langs with untranslated > batch_size each get their own job.
-    - Langs with untranslated == 0 are excluded.
-
-    Within a job, Slater loops over each lang and, within each lang, over
-    batches of batch_size strings — committing after each verified batch.
-    """
-    batch: list[str] = []
-    individual: list[str] = []
-    for s in stats:
-        n = s["untranslated"]
-        if n <= 0:
-            continue
-        if n <= batch_size:
-            batch.append(s["lang"])
-        else:
-            individual.append(s["lang"])
-
-    jobs: list[dict] = []
-    if batch:
-        jobs.append({"langs": batch})
-    for lang in individual:
-        jobs.append({"langs": [lang]})
-    return jobs
+def get_incomplete() -> list[dict]:
+    """Return langs with untranslated > 0, sorted by count descending."""
+    counts = [get_counts(lang) for lang in known_langs()]
+    return sorted(
+        [{"lang": c["lang"], "untranslated": c["untranslated"]} for c in counts if c["untranslated"] > 0],
+        key=lambda c: c["untranslated"],
+        reverse=True,
+    )
 
 
-def translation_jobs(langs: list[str] | None = None, batch_size: int = BATCH_SIZE) -> list[dict]:
-    """File-level wrapper: read real stats, return job list."""
-    stats = [get_stats(lang) for lang in (langs or known_langs())]
-    return _jobs_from_stats(stats, batch_size)
+def get_batches(batch_size: int = BATCH_SIZE) -> list[list[str]]:
+    counts = [get_counts(lang) for lang in known_langs()]
+    return _batches_from_counts(counts, batch_size)
 
 
 # ---------------------------------------------------------------------------
 # Subprocess commands
 # ---------------------------------------------------------------------------
 
-def download_pot(*, dry_run: bool = False) -> None:
+def pull(*, sync_all: bool = False) -> None:
     print("→ download messages.pot")
-    if dry_run:
-        return
     with urllib.request.urlopen(OL_MESSAGES_POT_URL) as resp:
         MESSAGES_POT.write_bytes(resp.read())
+    if sync_all:
+        for lang in known_langs():
+            sync(lang)
 
 
-def sync(lang: str, *, dry_run: bool = False) -> None:
+def sync(lang: str) -> None:
     print(f"→ pybabel update {lang}")
-    if dry_run:
-        return
+    # Use --output-file (not --output-dir) — our layout is locale/{lang}/messages.po,
+    # not locale/{lang}/LC_MESSAGES/messages.po.
     subprocess.run(
         [sys.executable, "-m", "babel.messages.frontend", "update",
          "--input-file", str(MESSAGES_POT),
-         "--output-dir", str(LOCALE_DIR),
+         "--output-file", str(LOCALE_DIR / lang / "messages.po"),
          "--locale", lang,
          "--no-fuzzy-matching"],
         check=True, cwd=REPO_ROOT,
     )
 
 
-def compile_po(lang: str, *, dry_run: bool = False) -> None:
+def compile_po(lang: str) -> None:
     print(f"→ pybabel compile {lang}")
-    if dry_run:
-        return
     subprocess.run(
         [sys.executable, "-m", "babel.messages.frontend", "compile",
-         "--directory", str(LOCALE_DIR),
+         "--input-file", str(LOCALE_DIR / lang / "messages.po"),
+         "--output-file", str(LOCALE_DIR / lang / "messages.mo"),
          "--locale", lang],
         check=True, cwd=REPO_ROOT,
     )
 
 
-def run_tests(lang: str, *, dry_run: bool = False) -> None:
+def run_tests(lang: str) -> None:
     print(f"→ pytest tests/test_po_files.py -k {lang}")
-    if dry_run:
-        return
     subprocess.run(
         [sys.executable, "-m", "pytest", "tests/test_po_files.py", "-k", lang, "-q"],
         check=True, cwd=REPO_ROOT,
@@ -338,11 +345,6 @@ def run_tests(lang: str, *, dry_run: bool = False) -> None:
 # CLI
 # ---------------------------------------------------------------------------
 
-def _dry(p: argparse.ArgumentParser) -> argparse.ArgumentParser:
-    p.add_argument("--dry-run", action="store_true")
-    return p
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Open Library i18n toolbox",
@@ -351,15 +353,17 @@ def main() -> None:
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    _dry(sub.add_parser("download-pot", help="Fetch messages.pot from openlibrary master"))
+    p = sub.add_parser("pull", help="Download messages.pot from openlibrary master")
+    p.add_argument("--sync", action="store_true", help="Also sync all language .po files")
 
-    p = _dry(sub.add_parser("sync", help="Update .po from messages.pot"))
-    p.add_argument("lang")
+    p = sub.add_parser("sync", help="Update .po file(s) from messages.pot")
+    p.add_argument("lang", nargs="?", default=None, help="Language code; omit to sync all")
 
-    p = sub.add_parser("status", help="Translation coverage per language")
-    p.add_argument("lang", nargs="*")
+    sub.add_parser("incomplete", help="JSON list of languages with untranslated strings")
 
-    p = sub.add_parser("untranslated", help="Print JSON list of untranslated strings")
+    sub.add_parser("batch", help="JSON batches to process (one batch = one PR)")
+
+    p = sub.add_parser("untranslated", help="JSON list of untranslated strings for a language")
     p.add_argument("lang")
     p.add_argument("--limit", type=int, default=None)
 
@@ -367,42 +371,34 @@ def main() -> None:
     p.add_argument("lang")
     p.add_argument("json_file")
 
-    p = _dry(sub.add_parser("fix", help="Fix HTML attrs and format-string errors"))
+    p = sub.add_parser("fix", help="Fix HTML attrs and format-string errors")
     p.add_argument("lang")
 
-    p = _dry(sub.add_parser("validate", help="Validate format strings"))
+    p = sub.add_parser("validate", help="Validate format strings (exits non-zero on error)")
     p.add_argument("lang")
 
-    p = _dry(sub.add_parser("test", help="Run pytest for a language"))
+    p = sub.add_parser("test", help="Run pytest for a language")
     p.add_argument("lang")
 
-    p = _dry(sub.add_parser("compile", help="Compile .po -> .mo"))
+    p = sub.add_parser("compile", help="Compile .po -> .mo")
     p.add_argument("lang")
-
-    p = sub.add_parser("plan", help="Show PR grouping plan as JSON (no side effects)")
-    p.add_argument("lang", nargs="*")
 
     args = parser.parse_args()
 
-    if args.cmd == "download-pot":
-        download_pot(dry_run=args.dry_run)
+    if args.cmd == "pull":
+        pull(sync_all=args.sync)
 
     elif args.cmd == "sync":
-        sync(args.lang, dry_run=args.dry_run)
+        langs = [args.lang] if args.lang else known_langs()
+        for lang in langs:
+            sync(lang)
 
-    elif args.cmd == "status":
-        langs = args.lang or known_langs()
-        rows = sorted([get_stats(la) for la in langs],
-                      key=lambda r: r["untranslated"], reverse=True)
-        hdr = f"{'lang':<6}  {'translated':>10}  {'untranslated':>12}  {'fuzzy':>5}  {'total':>6}  {'%':>3}"
-        print(hdr)
-        print("-" * len(hdr))
-        for r in rows:
-            flag = " !" if r["untranslated"] > 0 else ""
-            print(f"{r['lang']:<6}  {r['translated']:>10}  {r['untranslated']:>12}  "
-                  f"{r['fuzzy']:>5}  {r['total']:>6}  {r['pct']:>2}%{flag}")
-        needs = sum(1 for r in rows if r["untranslated"] > 0)
-        print(f"\n{needs}/{len(rows)} languages have untranslated strings")
+    elif args.cmd == "incomplete":
+        print(json.dumps(get_incomplete(), ensure_ascii=False, indent=2))
+
+    elif args.cmd == "batch":
+        batches = get_batches()
+        print(json.dumps({"batches": batches}, ensure_ascii=False, indent=2))
 
     elif args.cmd == "untranslated":
         print(json.dumps(get_untranslated(args.lang, args.limit),
@@ -414,16 +410,10 @@ def main() -> None:
         print(f"Applied: {count}")
 
     elif args.cmd == "fix":
-        if args.dry_run:
-            print(f"[dry-run] would fix {args.lang}")
-            return
         html, fmt = fix(args.lang)
-        print(f"{args.lang}: {html} HTML attr entries fixed, {fmt} format errors cleared")
+        print(f"{args.lang}: {html} HTML attr fixed, {fmt} format errors cleared")
 
     elif args.cmd == "validate":
-        if args.dry_run:
-            print(f"[dry-run] would validate {args.lang}")
-            return
         errors = validate(args.lang)
         if errors:
             for msgid, errs in errors[:10]:
@@ -434,19 +424,10 @@ def main() -> None:
         print(f"{args.lang}: OK")
 
     elif args.cmd == "test":
-        run_tests(args.lang, dry_run=args.dry_run)
+        run_tests(args.lang)
 
     elif args.cmd == "compile":
-        compile_po(args.lang, dry_run=args.dry_run)
-
-    elif args.cmd == "plan":
-        langs = args.lang or None
-        jobs = translation_jobs(langs)
-        print(f"{len(jobs)} PR(s) to open:")
-        for i, job in enumerate(jobs, 1):
-            print(f"  PR {i}: langs={job['langs']}")
-        print()
-        print(json.dumps(jobs, ensure_ascii=False, indent=2))
+        compile_po(args.lang)
 
 
 if __name__ == "__main__":

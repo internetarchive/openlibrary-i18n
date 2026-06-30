@@ -1,10 +1,11 @@
-"""Tests for translate.py toolbox.
+"""Tests for the i18n toolbox.
 
 Unit tests use in-memory catalogs (no filesystem, no network).
-Integration tests use the real locale/ directory and verify the plan is sane.
+Integration tests use the real locale/ directory and run CLI subcommands.
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 import subprocess
 import sys
@@ -14,21 +15,25 @@ from pathlib import Path
 import pytest
 from babel.messages.pofile import read_po
 
-# Repo root on sys.path so `import translate` works
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from translate import (
-    BATCH_SIZE,
-    LOCALE_DIR,
-    _apply_to_catalog,
-    _fix_format_errors,
-    _fix_html_attrs,
-    _jobs_from_stats,
-    _stats_from_catalog,
-    _untranslated_from_catalog,
-    known_langs,
-    translation_jobs,
-    validate,
-)
+# Load i18n (no .py extension) as a module — must supply loader explicitly.
+from importlib.machinery import SourceFileLoader
+_ROOT = Path(__file__).parent.parent
+_loader = SourceFileLoader("i18n", str(_ROOT / "i18n"))
+_spec = importlib.util.spec_from_file_location("i18n", _ROOT / "i18n", loader=_loader)
+_mod = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_mod)
+
+BATCH_SIZE = _mod.BATCH_SIZE
+LOCALE_DIR = _mod.LOCALE_DIR
+_apply_to_catalog = _mod._apply_to_catalog
+_fix_format_errors = _mod._fix_format_errors
+_fix_html_attrs = _mod._fix_html_attrs
+_batches_from_counts = _mod._batches_from_counts
+_stats_from_catalog = _mod._stats_from_catalog
+_untranslated_from_catalog = _mod._untranslated_from_catalog
+known_langs = _mod.known_langs
+get_batches = _mod.get_batches
+validate = _mod.validate
 
 
 # ---------------------------------------------------------------------------
@@ -43,8 +48,14 @@ HEADER = b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n\n
 
 
 def _po(*entries: str) -> bytes:
-    """Build minimal .po bytes from a list of entry strings."""
     return HEADER + b"\n".join(e.encode() for e in entries) + b"\n"
+
+
+def _cli(*args) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        [sys.executable, str(_ROOT / "i18n"), *args],
+        capture_output=True, text=True, cwd=_ROOT,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -125,7 +136,7 @@ class TestUntranslated:
         assert entries[0]["id"] == "One item"
         assert entries[0]["id_plural"] == "%(n)d items"
 
-    def test_limit_zero_returns_all(self):
+    def test_limit_none_returns_all(self):
         po = _po(
             'msgid "A"\nmsgstr ""',
             'msgid "B"\nmsgstr ""',
@@ -160,12 +171,10 @@ class TestApply:
         assert count == 1
         assert cat[("One item", "%(n)d items")].string == ("Ein Eintrag", "%(n)d Einträge")
 
-    def test_does_not_overwrite_existing_translation(self):
+    def test_overwrites_existing(self):
         po = _po('msgid "Hello"\nmsgstr "Existing"')
         cat = _catalog(po)
         _apply_to_catalog(cat, {"Hello": "New"})
-        # apply unconditionally overwrites — caller is responsible for only
-        # passing untranslated strings. verify it does overwrite.
         assert cat["Hello"].string == "New"
 
 
@@ -213,9 +222,7 @@ class TestFixHtmlAttrs:
 
 class TestFixFormatErrors:
     def test_clears_named_placeholder_mismatch(self):
-        po = _po(
-            'msgid "Hello %(name)s"\nmsgstr "Hallo %(wrong)s"',
-        )
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(wrong)s"')
         cat = _catalog(po)
         assert _fix_format_errors(cat) == 1
         assert cat["Hello %(name)s"].string == ""
@@ -238,124 +245,121 @@ class TestFixFormatErrors:
 
 
 # ---------------------------------------------------------------------------
-# _jobs_from_stats (pure — the key orchestration function)
+# _batches_from_counts (pure — the key orchestration function)
 # ---------------------------------------------------------------------------
 
-class TestJobsFromStats:
-    def _stats(self, items: list[tuple[str, int]]) -> list[dict]:
+class TestBatchesFromCounts:
+    def _counts(self, items: list[tuple[str, int]]) -> list[dict]:
         return [{"lang": lang, "untranslated": n} for lang, n in items]
 
-    def test_batch_langs_grouped_into_one_job(self):
-        stats = self._stats([("de", 30), ("fr", 50), ("es", 75)])
-        jobs = _jobs_from_stats(stats, batch_size=75)
-        assert len(jobs) == 1
-        assert set(jobs[0]["langs"]) == {"de", "fr", "es"}
+    def test_small_langs_grouped_into_one_batch(self):
+        counts = self._counts([("de", 30), ("fr", 50), ("es", 75)])
+        batches = _batches_from_counts(counts, batch_size=75)
+        assert len(batches) == 1
+        assert set(batches[0]) == {"de", "fr", "es"}
 
-    def test_individual_langs_each_get_own_job(self):
-        stats = self._stats([("de", 100), ("fr", 200)])
-        jobs = _jobs_from_stats(stats, batch_size=75)
-        assert len(jobs) == 2
-        assert {"de"} in [set(j["langs"]) for j in jobs]
-        assert {"fr"} in [set(j["langs"]) for j in jobs]
+    def test_large_langs_each_get_own_batch(self):
+        counts = self._counts([("de", 100), ("fr", 200)])
+        batches = _batches_from_counts(counts, batch_size=75)
+        assert len(batches) == 2
+        assert {"de"} in [set(b) for b in batches]
+        assert {"fr"} in [set(b) for b in batches]
 
-    def test_mixed_batch_and_individual(self):
-        stats = self._stats([("de", 30), ("fr", 200), ("es", 75), ("ja", 300)])
-        jobs = _jobs_from_stats(stats, batch_size=75)
-        # one batch job + two individual jobs
-        assert len(jobs) == 3
-        batch_job = next(j for j in jobs if len(j["langs"]) > 1)
-        assert set(batch_job["langs"]) == {"de", "es"}
-        langs_with_own_job = [j["langs"][0] for j in jobs if len(j["langs"]) == 1]
-        assert set(langs_with_own_job) == {"fr", "ja"}
+    def test_mixed_small_and_large(self):
+        counts = self._counts([("de", 30), ("fr", 200), ("es", 75), ("ja", 300)])
+        batches = _batches_from_counts(counts, batch_size=75)
+        assert len(batches) == 3
+        shared = next(b for b in batches if len(b) > 1)
+        assert set(shared) == {"de", "es"}
+        solos = [b[0] for b in batches if len(b) == 1]
+        assert set(solos) == {"fr", "ja"}
 
     def test_zero_untranslated_excluded(self):
-        stats = self._stats([("de", 0), ("fr", 0)])
-        assert _jobs_from_stats(stats) == []
+        counts = self._counts([("de", 0), ("fr", 0)])
+        assert _batches_from_counts(counts) == []
 
-    def test_empty_stats(self):
-        assert _jobs_from_stats([]) == []
+    def test_empty_counts(self):
+        assert _batches_from_counts([]) == []
 
-    def test_exactly_at_batch_size_goes_to_batch(self):
-        stats = self._stats([("de", BATCH_SIZE)])
-        jobs = _jobs_from_stats(stats)
-        assert len(jobs) == 1
-        assert jobs[0]["langs"] == ["de"]
+    def test_exactly_at_batch_size_goes_to_shared(self):
+        counts = self._counts([("de", BATCH_SIZE)])
+        batches = _batches_from_counts(counts)
+        assert len(batches) == 1
+        assert batches[0] == ["de"]
 
-    def test_one_over_batch_size_gets_own_job(self):
-        stats = self._stats([("de", BATCH_SIZE + 1)])
-        jobs = _jobs_from_stats(stats)
-        assert len(jobs) == 1
-        assert jobs[0]["langs"] == ["de"]
+    def test_one_over_batch_size_gets_own_batch(self):
+        counts = self._counts([("de", BATCH_SIZE + 1)])
+        batches = _batches_from_counts(counts)
+        assert len(batches) == 1
+        assert batches[0] == ["de"]
 
-    def test_no_lang_appears_in_multiple_jobs(self):
-        stats = self._stats([("de", 30), ("fr", 200), ("es", 50), ("ja", 0)])
-        jobs = _jobs_from_stats(stats)
-        all_langs = [lang for job in jobs for lang in job["langs"]]
+    def test_no_lang_in_multiple_batches(self):
+        counts = self._counts([("de", 30), ("fr", 200), ("es", 50), ("ja", 0)])
+        batches = _batches_from_counts(counts)
+        all_langs = [lang for batch in batches for lang in batch]
         assert len(all_langs) == len(set(all_langs))
 
     def test_custom_batch_size(self):
-        stats = self._stats([("de", 10), ("fr", 20)])
-        jobs = _jobs_from_stats(stats, batch_size=15)
-        # de (10) → batch, fr (20) → individual
-        assert len(jobs) == 2
+        counts = self._counts([("de", 10), ("fr", 20)])
+        batches = _batches_from_counts(counts, batch_size=15)
+        assert len(batches) == 2
 
 
 # ---------------------------------------------------------------------------
-# Integration: plan against real locale/ directory
+# Integration: CLI against real locale/
 # ---------------------------------------------------------------------------
 
-class TestPlanIntegration:
-    def test_all_known_langs_covered(self):
-        """Every known language appears in exactly one job or is skipped."""
-        jobs = translation_jobs()
-        langs_in_jobs = {lang for job in jobs for lang in job["langs"]}
-        all_langs = set(known_langs())
-        # langs with work are in jobs; langs without work are absent — union must be subset
-        assert langs_in_jobs <= all_langs
+class TestCLI:
+    def test_incomplete_returns_valid_json(self):
+        r = _cli("incomplete")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        assert isinstance(data, list)
+        for item in data:
+            assert "lang" in item and "untranslated" in item
+            assert item["untranslated"] > 0
 
-    def test_no_lang_in_multiple_jobs(self):
-        jobs = translation_jobs()
-        all_langs = [lang for job in jobs for lang in job["langs"]]
+    def test_incomplete_sorted_descending(self):
+        r = _cli("incomplete")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        counts = [item["untranslated"] for item in data]
+        assert counts == sorted(counts, reverse=True)
+
+    def test_batch_returns_valid_json(self):
+        r = _cli("batch")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        assert "batches" in data
+        assert isinstance(data["batches"], list)
+        for batch in data["batches"]:
+            assert isinstance(batch, list)
+            assert len(batch) >= 1
+
+    def test_batch_no_lang_in_multiple_batches(self):
+        r = _cli("batch")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        all_langs = [lang for batch in data["batches"] for lang in batch]
         assert len(all_langs) == len(set(all_langs))
 
-    def test_each_job_has_at_least_one_lang(self):
-        for job in translation_jobs():
-            assert len(job["langs"]) >= 1
+    def test_batch_langs_are_subset_of_known(self):
+        r = _cli("batch")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        all_langs = {lang for batch in data["batches"] for lang in batch}
+        assert all_langs <= set(known_langs())
 
-    def test_plan_cli_outputs_valid_json(self):
-        """translate plan must emit valid JSON on stdout."""
-        result = subprocess.run(
-            [sys.executable, "translate.py", "plan"],
-            capture_output=True, text=True, cwd=Path(__file__).parent.parent,
-        )
-        assert result.returncode == 0, result.stderr
-        # last block of output should be valid JSON
-        output = result.stdout.strip()
-        json_part = output[output.rfind("\n["):]  # find the JSON array
-        parsed = json.loads(json_part)
-        assert isinstance(parsed, list)
-        for job in parsed:
-            assert "langs" in job
-            assert isinstance(job["langs"], list)
-
-    def test_untranslated_cli_dry_run(self):
-        """translate untranslated <lang> --limit 1 returns valid JSON."""
+    def test_untranslated_returns_valid_json(self):
         lang = known_langs()[0]
-        result = subprocess.run(
-            [sys.executable, "translate.py", "untranslated", lang, "--limit", "1"],
-            capture_output=True, text=True, cwd=Path(__file__).parent.parent,
-        )
-        assert result.returncode == 0, result.stderr
-        parsed = json.loads(result.stdout)
-        assert isinstance(parsed, list)
-        if parsed:
-            assert "id" in parsed[0]
+        r = _cli("untranslated", lang, "--limit", "1")
+        assert r.returncode == 0, r.stderr
+        data = json.loads(r.stdout)
+        assert isinstance(data, list)
+        if data:
+            assert "id" in data[0]
 
-    def test_status_cli_runs(self):
-        """translate status must run without error."""
-        result = subprocess.run(
-            [sys.executable, "translate.py", "status"],
-            capture_output=True, text=True, cwd=Path(__file__).parent.parent,
-        )
-        assert result.returncode == 0, result.stderr
-        assert "lang" in result.stdout
+    def test_validate_runs(self):
+        lang = known_langs()[0]
+        r = _cli("validate", lang)
+        assert r.returncode == 0, r.stderr
