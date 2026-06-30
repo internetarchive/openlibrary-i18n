@@ -162,27 +162,45 @@ Repeat the whole loop until done for this language, then move to the next langua
 git push origin "$BRANCH"
 ```
 
-Post a PR comment summarising what happened. Include one section per language:
+Post a PR comment that is a **persistent audit trail** of this run. Write it for a reviewer who will read it weeks later without access to the session. Cover every section:
 
 ```bash
 gh pr comment "$PR_NUMBER" --body "$(cat <<'EOF'
-## Translation summary
+## Run audit — <lang(s)> — <date>
 
-**Assamese (as):** 92 strings translated. 1 entry skipped (\\x08 control char). 10 format errors cleared by fix — these are back in the untranslated pool; a follow-up run is needed.
+### Stats
+| Lang | Translated | Skipped | Cleared by fix | validate | test |
+|------|-----------|---------|---------------|----------|------|
+| as   | 92        | 1       | 10            | OK       | 858 passed |
 
-**validate:** OK — 0 errors
-**test:** 858 passed
+### Issues encountered
+- **`./i18n` not on `main`** — toolbox only exists on `i18n/pipeline-scripts` (PR #1 not merged). Recovered by `git show i18n/pipeline-scripts:i18n ...`. In production Actions this will fail; PR #1 must merge before translate jobs can run.
+- **`\x08` in msgid** — 1 entry skipped (backspace control char in source `.pot`). Source bug, not a translation issue.
+- **10 format errors cleared** — pre-existing bad entries in `as/messages.po` (broken before this run). Now back in untranslated pool; a follow-up run is needed to fill them.
 
-Nothing further to note.
+### Commands that failed
+- `git checkout -b "$BRANCH" origin/main` — initially failed because untracked files (`i18n`, `tests/validators.py`) blocked the checkout; resolved by removing them first.
+
+### Improvisations / deviations from instructions
+- Recovered `./i18n` and `tests/validators.py` from `i18n/pipeline-scripts` branch — instructions do not cover this case and this workaround will not be available in Actions.
+
+### Suggested workflow improvements
+- Instructions should note that PR #1 must be merged before translate jobs work in Actions.
+- Step 1 should verify `./i18n` exists before proceeding, with a clear error if not.
 EOF
 )"
 ```
 
-Post a PR comment for **every notable event** during the run, including:
-- Strings skipped and why (control chars, format strings too complex)
-- Entries cleared by `fix` (means a follow-up translate run is needed for those)
-- Any validation or test failures encountered and how they were resolved
-- Anything unusual about the environment or tooling
+**What belongs in this comment** (write everything, omit nothing):
+- Every command that failed, the exact error, and how it was resolved
+- Every improvisation or step taken that was not in the instructions
+- Every entry skipped and why
+- Every entry cleared by `fix` (reviewer needs to know a follow-up run is needed)
+- Validation or test failures and how they were resolved
+- Anything about the environment that was unexpected
+- Concrete suggestions for improving the instructions or tooling based on what you observed
+
+This comment is the only persistent record of what happened. If you improvised something, write it down — the goal is that a reviewer can tell exactly what the agent did and whether to trust the output.
 
 Then mark the PR ready:
 
