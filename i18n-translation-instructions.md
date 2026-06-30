@@ -143,10 +143,41 @@ If it fails: fix the failing entry, re-run.
 ./i18n compile {lang}
 ```
 
-**8. Check for issues worth filing.** If you spotted a recurring bug or tooling gap, check first:
+**8. File issues for bugs and ideas.** After each language, check if anything you observed warrants an issue. Search first to avoid duplicates.
+
 ```bash
-gh issue list --search "keyword" --json number,title
-gh issue create --title "..." --body "..."   # only if no match exists
+gh issue list --repo internetarchive/openlibrary-i18n --search "keyword" --json number,title --jq '.[] | "#\(.number) \(.title)"'
+gh issue create --repo internetarchive/openlibrary-i18n --title "..." --body "..."
+```
+
+File an issue when you encounter:
+- A source `.pot` bug (e.g. `\x08` control characters, malformed format strings)
+- A tooling gap (e.g. `./i18n fix` didn't catch a class of error it should have)
+- A recurring pattern across languages that suggests a systemic problem
+- An improvement idea for these instructions or the pipeline
+
+Do **not** file an issue for:
+- Normal translation work (skipped entries, cleared format errors) — those go in the PR comment only
+- One-off environment issues that are already resolved
+
+**File immediately on hard blockers.** If the run cannot continue (toolbox missing, babel not installed, validate fails after 3 attempts), file an issue before stopping — don't just exit:
+
+```bash
+gh issue create --repo internetarchive/openlibrary-i18n \
+  --title "i18n pipeline: <short description>" \
+  --body "## What happened
+<describe the blocker exactly>
+
+## Command that failed
+\`\`\`
+<exact command and error>
+\`\`\`
+
+## Impact
+Batch <langs> could not complete. PR was not opened (or was left as draft).
+
+## Suggested fix
+<what you think should change>"
 ```
 
 **9. Commit:**
