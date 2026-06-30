@@ -27,6 +27,8 @@ BATCH_SIZE = _mod.BATCH_SIZE
 LOCALE_DIR = _mod.LOCALE_DIR
 _apply_to_catalog = _mod._apply_to_catalog
 _fix_format_errors = _mod._fix_format_errors
+_fix_format_type_mismatch = _mod._fix_format_type_mismatch
+_fix_header_fuzzy = _mod._fix_header_fuzzy
 _fix_html_attrs = _mod._fix_html_attrs
 _batches_from_counts = _mod._batches_from_counts
 _stats_from_catalog = _mod._stats_from_catalog
@@ -224,24 +226,124 @@ class TestFixFormatErrors:
     def test_clears_named_placeholder_mismatch(self):
         po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(wrong)s"')
         cat = _catalog(po)
-        assert _fix_format_errors(cat) == 1
+        cleared = _fix_format_errors(cat)
+        assert len(cleared) == 1
         assert cat["Hello %(name)s"].string == ""
 
     def test_clears_extra_placeholder_in_msgstr(self):
         po = _po('msgid "Hello"\nmsgstr "Hallo %(name)s"')
-        assert _fix_format_errors(_catalog(po)) == 1
+        assert len(_fix_format_errors(_catalog(po))) == 1
 
     def test_no_change_when_placeholders_match(self):
         po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(name)s"')
-        assert _fix_format_errors(_catalog(po)) == 0
+        assert _fix_format_errors(_catalog(po)) == []
 
     def test_clears_positional_count_mismatch(self):
         po = _po('msgid "Page %s of %s"\nmsgstr "Seite %s"')
-        assert _fix_format_errors(_catalog(po)) == 1
+        assert len(_fix_format_errors(_catalog(po))) == 1
 
     def test_no_change_when_no_placeholders(self):
         po = _po('msgid "Hello"\nmsgstr "Hallo"')
-        assert _fix_format_errors(_catalog(po)) == 0
+        assert _fix_format_errors(_catalog(po)) == []
+
+    def test_returns_cleared_msgids(self):
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(wrong)s"')
+        cat = _catalog(po)
+        cleared = _fix_format_errors(cat)
+        assert isinstance(cleared, list)
+        assert "Hello %(name)s" in cleared
+
+    def test_returns_empty_list_when_no_errors(self):
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(name)s"')
+        assert _fix_format_errors(_catalog(po)) == []
+
+
+# ---------------------------------------------------------------------------
+# _fix_format_type_mismatch
+# ---------------------------------------------------------------------------
+
+class TestFixFormatTypeMismatch:
+    def test_fixes_d_to_s_in_plural_form(self):
+        po = _po(
+            'msgid "One item"\n'
+            'msgid_plural "%(n)s items"\n'
+            'msgstr[0] "Un élément"\n'
+            'msgstr[1] "%(n)d éléments"',
+        )
+        cat = _catalog(po)
+        fixed = _fix_format_type_mismatch(cat)
+        assert len(fixed) == 1
+        msgstr = cat[("One item", "%(n)s items")].string
+        assert "%(n)d" not in (msgstr[1] or "")
+        assert "%(n)s" in (msgstr[1] or "")
+
+    def test_no_change_when_types_match(self):
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(name)s"')
+        assert _fix_format_type_mismatch(_catalog(po)) == []
+
+    def test_no_change_when_no_named_placeholders(self):
+        po = _po('msgid "Page %s of %s"\nmsgstr "Seite %s von %s"')
+        assert _fix_format_type_mismatch(_catalog(po)) == []
+
+    def test_fixes_invalid_format_specifier_in_msgstr(self):
+        # %(count)개 is not a valid Python format spec — %(count)s is in msgid
+        po = _po('msgid "%(count)s commits"\nmsgstr "%(count)개 커밋"')
+        cat = _catalog(po)
+        # _fix_format_errors should clear this (%(count) not matchable) not type-fix
+        # so _fix_format_type_mismatch doesn't apply here — counts stay as-is
+        # (this case is caught by _fix_format_errors name mismatch, not type mismatch)
+        result = _fix_format_type_mismatch(cat)
+        assert result == []  # type mismatch only fixes valid→valid type change
+
+
+# ---------------------------------------------------------------------------
+# _fix_header_fuzzy
+# ---------------------------------------------------------------------------
+
+class TestFixHeaderFuzzy:
+    def test_strips_fuzzy_from_catalog_header(self):
+        from babel.messages.pofile import read_po
+        po = b'#, fuzzy\nmsgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n\n'
+        cat = read_po(BytesIO(po))
+        assert cat.fuzzy
+        count = _fix_header_fuzzy(cat)
+        assert count == 1
+        assert not cat.fuzzy
+
+    def test_no_change_when_header_not_fuzzy(self):
+        cat = _catalog(HEADER)
+        assert _fix_header_fuzzy(cat) == 0
+
+    def test_does_not_touch_content_entry_fuzzy_flags(self):
+        po = _po('#, fuzzy\nmsgid "Hello"\nmsgstr "Hallo"')
+        cat = _catalog(po)
+        _fix_header_fuzzy(cat)
+        assert cat["Hello"].fuzzy  # content entry untouched
+
+
+# ---------------------------------------------------------------------------
+# _fix_validator_failures — catch-all: clear entries still failing after other fixes
+# ---------------------------------------------------------------------------
+
+class TestFixValidatorFailures:
+    def test_clears_entry_that_fails_babel_check(self):
+        # %(n)s in msgid_plural but msgstr[1] uses %(n)d — babel catches type mismatch
+        po = _po(
+            'msgid "One item"\n'
+            'msgid_plural "%(n)s items"\n'
+            'msgstr[0] "Ein Element"\n'
+            'msgstr[1] "%(n)d Elemente"',
+        )
+        cat = _catalog(po)
+        cleared = _mod._fix_validator_failures(cat)
+        assert len(cleared) == 1
+        # msgstr should be cleared
+        msg = cat[("One item", "%(n)s items")]
+        assert not any(msg.string)
+
+    def test_no_change_for_valid_entries(self):
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(name)s"')
+        assert _mod._fix_validator_failures(_catalog(po)) == []
 
 
 # ---------------------------------------------------------------------------

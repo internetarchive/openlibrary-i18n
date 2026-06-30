@@ -21,23 +21,32 @@ Running in GitHub Actions:
 
 ## Step 1: Pre-flight
 
-Check open i18n PR count. If ≥ 5, open a GitHub issue explaining the backlog and stop.
+Verify the environment and check open i18n PR count.
 
 ```bash
+# Verify babel is installed
+python3 -c "import babel" || { echo "ERROR: babel not installed — run: pip install babel pytest"; exit 1; }
+
+# Count open i18n PRs
 OPEN=$(gh pr list --state open --json headRefName \
   --jq '[.[] | select(.headRefName | startswith("i18n/"))] | length')
 echo "Open i18n PRs: $OPEN"
 ```
 
-## Step 2: Create a branch
+If `import babel` fails, stop. If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
+
+## Step 2: Create a branch from fresh main
+
+Always branch from `origin/main` — never from whatever is currently checked out.
 
 Single language: `i18n/ai-{lang}-YYYYMMDD`
 Multiple languages: `i18n/ai-batch-YYYYMMDD`
 
 ```bash
 DATE=$(date +%Y%m%d)
-BRANCH="i18n/ai-batch-${DATE}"
-git checkout -b "$BRANCH"
+BRANCH="i18n/ai-ro-${DATE}"   # or ai-batch-${DATE} for multiple languages
+git fetch origin
+git checkout -b "$BRANCH" origin/main
 ```
 
 ## Step 3: Open a draft PR immediately
@@ -131,7 +140,9 @@ git add locale/{lang}/messages.po locale/{lang}/messages.mo
 git commit -m "i18n({lang}): batch {N} — AI translations (claude-sonnet-4-6)"
 ```
 
-Repeat until `untranslated` returns `[]`, then move to the next language in your batch.
+**Re-loop if `fix` cleared entries.** After `fix`, re-run `untranslated` — if `fix` cleared N entries they become untranslated again and need another translate→apply→fix→validate→test cycle. Repeat until both `untranslated` returns `[]` AND `validate` exits 0.
+
+Repeat the whole loop until done for this language, then move to the next language in your batch.
 
 ## Step 5: After all languages
 

@@ -155,13 +155,14 @@ def _fix_html_attrs(catalog) -> int:
     return fixed
 
 
-def _fix_format_errors(catalog) -> int:
-    """Clear msgstr for entries with placeholder mismatches. Returns count cleared."""
+def _fix_format_errors(catalog) -> list[str]:
+    """Clear msgstr for entries with placeholder mismatches. Returns list of cleared msgids."""
     def named(s: str) -> set:
-        return set(re.findall(r'%\((\w+)\)[sdfr]', s))
+        # Include all Python %-format type letters (s, d, f, r, i, u, o, x, e, g, ...)
+        return set(re.findall(r'%\((\w+)\)[sdifruoxXeEgGc]', s))
 
     def positional(s: str) -> list:
-        return re.findall(r'(?<!%)%[sdfr]', s)
+        return re.findall(r'(?<!%)%[sdifruoxXeEgGc]', s)
 
     def mismatch(msgid, msgstr) -> bool:
         if not msgstr:
@@ -186,15 +187,91 @@ def _fix_format_errors(catalog) -> int:
             return (len(msgstr) >= 2 and bool(msgstr[0]) and not msgstr[1]) or not any(msgstr)
         return False
 
-    cleared = 0
+    cleared = []
     for msg in catalog:
         if not msg.id or not msg.string:
             continue
         if mismatch(msg.id, msg.string) or bad_plural(msg.id, msg.string):
+            msgid_str = msg.id[0] if isinstance(msg.id, tuple) else msg.id
             msg.string = '' if not isinstance(msg.id, tuple) else ('', '')
             msg.flags.discard('fuzzy')
-            cleared += 1
+            cleared.append(msgid_str)
     return cleared
+
+
+def _fix_format_type_mismatch(catalog) -> list[str]:
+    """
+    Fix named-placeholder type mismatches where names match but type letters differ.
+    E.g. msgid has %(n)s but msgstr has %(n)d → replace %(n)d with %(n)s in msgstr.
+    Only fixes valid→valid type changes (both must be recognized format specifiers).
+    Returns list of fixed msgids.
+    """
+    _TYPED = re.compile(r'%\((\w+)\)([sdifruoxXeEgGc])')
+    _ALL_TYPES = 'sdifruoxXeEgGc'
+
+    def type_map(s: str) -> dict[str, str]:
+        return dict(_TYPED.findall(s))
+
+    def apply_types(target: str, id_types: dict) -> str:
+        result = target
+        for name, id_type in id_types.items():
+            for ms_type in _ALL_TYPES:
+                if ms_type != id_type:
+                    result = result.replace(f'%({name}){ms_type}', f'%({name}){id_type}')
+        return result
+
+    fixed = []
+    for msg in catalog:
+        if not msg.id or not msg.string:
+            continue
+        # For plural entries, gather types from BOTH singular and plural msgid forms.
+        if isinstance(msg.id, tuple):
+            id_types = {**type_map(msg.id[0]), **type_map(msg.id[1])}
+        else:
+            id_types = type_map(msg.id)
+        if not id_types:
+            continue
+        msgid_s = msg.id[0] if isinstance(msg.id, tuple) else msg.id
+        if isinstance(msg.string, str):
+            new = apply_types(msg.string, id_types)
+            if new != msg.string:
+                msg.string = new
+                fixed.append(msgid_s)
+        elif isinstance(msg.string, tuple):
+            forms = tuple(apply_types(f, id_types) if f else f for f in msg.string)
+            if forms != msg.string:
+                msg.string = forms
+                fixed.append(msgid_s)
+    return fixed
+
+
+def _fix_validator_failures(catalog) -> list[str]:
+    """
+    Catch-all: clear any msgstr that still fails full validation after other fixes.
+    Uses the same validator as `./i18n validate` so fix→validate is always consistent.
+    Returns list of cleared msgids.
+    """
+    _v = _get_validate_fn()
+    cleared = []
+    for msg in catalog:
+        if not msg.id or not msg.string:
+            continue
+        if msg.fuzzy:
+            continue
+        if _v(msg, catalog):
+            msgid_s = msg.id[0] if isinstance(msg.id, tuple) else msg.id
+            msg.string = '' if not isinstance(msg.id, tuple) else ('', '')
+            msg.flags.discard('fuzzy')
+            cleared.append(msgid_s)
+    return cleared
+
+
+def _fix_header_fuzzy(catalog) -> int:
+    """Remove fuzzy flag from the catalog header (empty msgid). Returns 1 if fixed."""
+    if catalog.fuzzy:
+        catalog.fuzzy = False
+        return 1
+    return 0
 
 
 def _batches_from_counts(counts: list[dict], batch_size: int = BATCH_SIZE) -> list[list[str]]:
@@ -257,12 +334,21 @@ def apply_translations(lang: str, translations: dict) -> int:
 
 
 def fix(lang: str) -> tuple[int, int]:
-    """Returns (html_fixed, format_cleared)."""
+    """Fix HTML attrs, format-string errors, type mismatches, and header fuzzy flag.
+    Returns (html_fixed, format_cleared_count)."""
     catalog = _read_po(lang)
+    _fix_header_fuzzy(catalog)
     html = _fix_html_attrs(catalog)
-    fmt = _fix_format_errors(catalog)
+    type_fixed = _fix_format_type_mismatch(catalog)
+    cleared_ids = _fix_format_errors(catalog)
+    validator_cleared = _fix_validator_failures(catalog)
     _write_po(lang, catalog)
-    return html, fmt
+    # Print details for any cleared or type-fixed entries so runs are auditable.
+    for msgid in type_fixed:
+        print(f"  type-fixed: {msgid!r}")
+    for msgid in cleared_ids + validator_cleared:
+        print(f"  cleared: {msgid!r}")
+    return html, len(cleared_ids) + len(validator_cleared)
 
 
 _validators_validate = None
@@ -337,6 +423,15 @@ def sync(lang: str) -> None:
         check=True, cwd=REPO_ROOT,
         stderr=subprocess.DEVNULL,
     )
+    # pybabel carries over an existing fuzzy flag on the header; strip it so
+    # compile doesn't refuse with "catalog is marked as fuzzy, skipping".
+    from babel.messages.pofile import read_po, write_po
+    po_path = LOCALE_DIR / lang / "messages.po"
+    with open(po_path, "rb") as f:
+        catalog = read_po(f)
+    if _fix_header_fuzzy(catalog):
+        with open(po_path, "wb") as f:
+            write_po(f, catalog, width=10000, omit_header=False)
 
 
 def compile_po(lang: str) -> None:
