@@ -196,12 +196,14 @@ EOF
 
 **What belongs in this comment** (write everything, omit nothing):
 - Every command that failed, the exact error, and how it was resolved
-- Every improvisation or step taken that was not in the instructions
+- Every improvisation or deviation from these instructions — if you did something not described here, document it, even if it seemed minor
 - Every entry skipped and why
 - Every entry cleared by `fix` (reviewer needs to know a follow-up run is needed)
 - Validation or test failures and how they were resolved
-- Anything about the environment that was unexpected
-- Concrete suggestions for improving the instructions or tooling based on what you observed
+- Anything about the environment that was unexpected or missing
+- Concrete suggestions for improving these instructions based on what you observed
+
+**When to post immediately (don't wait for Step 5):** If you had to improvise at any point during the run — a command failed, a file was missing, you recovered something from another branch, you deviated from the instructions in any way — post a comment on the draft PR immediately, before continuing. Do not batch these into the final summary. The PR must be the live audit trail, not a retrospective reconstruction.
 
 This comment is the only persistent record of what happened. If you improvised something, write it down — the goal is that a reviewer can tell exactly what the agent did and whether to trust the output.
 
