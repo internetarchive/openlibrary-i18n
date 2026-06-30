@@ -21,11 +21,23 @@ Running in GitHub Actions:
 
 ## Step 1: Pre-flight
 
-Verify the environment and check open i18n PR count.
+Verify the environment, check for untranslated work, and check open PR count.
 
 ```bash
 # Verify babel is installed
 python3 -c "import babel" || { echo "ERROR: babel not installed — run: pip install babel pytest"; exit 1; }
+
+# Check if any language in the batch has untranslated strings
+HAS_WORK=0
+for LANG in <your batch languages>; do
+  COUNT=$(./i18n untranslated "$LANG" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))")
+  if [ "$COUNT" -gt 0 ]; then HAS_WORK=1; fi
+done
+
+if [ "$HAS_WORK" -eq 0 ]; then
+  echo "Nothing to translate — all languages in batch are complete. Exiting without opening a PR."
+  exit 0
+fi
 
 # Count open i18n PRs
 OPEN=$(gh pr list --state open --json headRefName \
@@ -33,7 +45,7 @@ OPEN=$(gh pr list --state open --json headRefName \
 echo "Open i18n PRs: $OPEN"
 ```
 
-If `import babel` fails, stop. If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
+If `import babel` fails, stop. If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
 
 ## Step 2: Create a branch from fresh main
 
@@ -148,6 +160,33 @@ Repeat the whole loop until done for this language, then move to the next langua
 
 ```bash
 git push origin "$BRANCH"
+```
+
+Post a PR comment summarising what happened. Include one section per language:
+
+```bash
+gh pr comment "$PR_NUMBER" --body "$(cat <<'EOF'
+## Translation summary
+
+**Assamese (as):** 92 strings translated. 1 entry skipped (\\x08 control char). 10 format errors cleared by fix — these are back in the untranslated pool; a follow-up run is needed.
+
+**validate:** OK — 0 errors
+**test:** 858 passed
+
+Nothing further to note.
+EOF
+)"
+```
+
+Post a PR comment for **every notable event** during the run, including:
+- Strings skipped and why (control chars, format strings too complex)
+- Entries cleared by `fix` (means a follow-up translate run is needed for those)
+- Any validation or test failures encountered and how they were resolved
+- Anything unusual about the environment or tooling
+
+Then mark the PR ready:
+
+```bash
 gh pr ready "$PR_NUMBER"
 ```
 
