@@ -246,6 +246,48 @@ def compile_po(lang: str, *, dry_run: bool = False) -> None:
     )
 
 
+def fix_html_attrs(lang: str, *, dry_run: bool = False) -> None:
+    """Run fix_html_attrs.py for this language."""
+    print(f"→ fix_html_attrs {lang}")
+    if dry_run:
+        return
+    subprocess.run(
+        [sys.executable, str(Path(__file__).parent / "fix_html_attrs.py"), lang],
+        check=True, cwd=REPO_ROOT,
+    )
+
+
+def fix_format_errors(lang: str, *, dry_run: bool = False) -> None:
+    """Run fix_format_errors.py for this language."""
+    print(f"→ fix_format_errors {lang}")
+    if dry_run:
+        return
+    subprocess.run(
+        [sys.executable, str(Path(__file__).parent / "fix_format_errors.py"), lang],
+        check=True, cwd=REPO_ROOT,
+    )
+
+
+def create_branch(branch: str, *, dry_run: bool = False) -> None:
+    """Fetch origin/main and create + checkout a new branch from it."""
+    print(f"→ git checkout -b {branch} origin/main")
+    if dry_run:
+        return
+    subprocess.run(["git", "fetch", "origin", "main"], check=True, cwd=REPO_ROOT)
+    subprocess.run(
+        ["git", "checkout", "-b", branch, "origin/main"],
+        check=True, cwd=REPO_ROOT,
+    )
+
+
+def push_branch(branch: str, *, dry_run: bool = False) -> None:
+    """Push branch to origin."""
+    print(f"→ git push origin {branch}")
+    if dry_run:
+        return
+    subprocess.run(["git", "push", "origin", branch], check=True, cwd=REPO_ROOT)
+
+
 def commit_lang(lang: str, model: str, *, dry_run: bool = False) -> str:
     """git add + commit the updated .po for this language. Returns commit sha."""
     po_path = f"locale/{lang}/messages.po"
@@ -405,43 +447,50 @@ def process_language(
                 else:
                     print(f"    [dry-run] would translate {len(batch)} strings")
 
-    # Stage 3: validate format strings
+    # Stage 3: fix common AI translation errors before validating
+    fix_html_attrs(lang, dry_run=dry_run)
+    fix_format_errors(lang, dry_run=dry_run)
+
+    # Stage 4: validate format strings
     validate(lang, dry_run=dry_run)
 
-    # Stage 4: HTML structure tests (non-fatal — pre-existing failures are known)
+    # Stage 5: HTML structure tests (non-fatal — pre-existing failures are known)
     try:
         run_tests(lang, dry_run=dry_run)
     except subprocess.CalledProcessError:
         print(f"  ⚠ test_po_files failed for {lang} — review before merging")
 
-    # Stage 5: compile .po → .mo
+    # Stage 6: compile .po → .mo
     compile_po(lang, dry_run=dry_run)
 
-    # Stage 6: commit
+    # Stage 7: commit
     sha = commit_lang(lang, model, dry_run=dry_run)
     print(f"  committed: {sha}")
 
 
-def _claude_bin() -> str:
-    result = subprocess.run(["which", "claude"], capture_output=True, text=True)
-    return result.stdout.strip() or os.path.expanduser("~/.local/bin/claude")
-
-
-def _run_claude(prompt: str, *, dry_run: bool = False) -> None:
-    cmd = [_claude_bin(), "--dangerously-skip-permissions", "-p", prompt]
-    print(f"→ claude -p <{len(prompt)}-char prompt>")
-    if not dry_run:
-        subprocess.run(cmd, timeout=600, check=True)
+def _make_client(model: str):
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        sys.exit("ANTHROPIC_API_KEY is not set.")
+    try:
+        import anthropic
+        return anthropic.Anthropic(api_key=api_key)
+    except ImportError:
+        sys.exit("anthropic package is required: pip install anthropic")
 
 
 def _run_update(*, model: str, dry_run: bool = False) -> None:
     """
-    Auto dispatch: fetch stats, group by BATCH_SIZE, spin up subagents.
+    Auto mode: download pot, read stats, group languages, run pipeline per PR group.
 
-    ≤ BATCH_SIZE untranslated → one Claude call, one batch PR covering all such langs.
-    > BATCH_SIZE untranslated → one Claude call per language, one PR each.
-    0 untranslated → skipped.
+    Languages with ≤ BATCH_SIZE untranslated → one batch PR covering all of them.
+    Languages with > BATCH_SIZE untranslated → one PR per language.
+    Both cases use the same double for-loop: outer=languages, inner=75-string batches.
     """
+    from datetime import datetime
+
+    download_pot(MESSAGES_POT, dry_run=dry_run)
+
     stats = [get_stats(lang) for lang in KNOWN_LANGS]
     needs_work = [s for s in stats if s["untranslated"] > 0]
 
@@ -452,29 +501,31 @@ def _run_update(*, model: str, dry_run: bool = False) -> None:
     batch_langs = [s["lang"] for s in needs_work if s["untranslated"] <= BATCH_SIZE]
     individual_langs = [s["lang"] for s in needs_work if s["untranslated"] > BATCH_SIZE]
 
-    print(f"Batch PR ({len(batch_langs)} langs): {batch_langs}")
-    print(f"Individual PRs ({len(individual_langs)} langs): {individual_langs}")
+    print(f"Batch PR ({len(batch_langs)} langs ≤{BATCH_SIZE}): {batch_langs}")
+    print(f"Individual PRs ({len(individual_langs)} langs >{BATCH_SIZE}): {individual_langs}")
 
-    script = Path(__file__)
+    if dry_run:
+        return
+
+    client = _make_client(model)
+    date = datetime.now().strftime("%Y%m%d")
 
     if batch_langs:
-        lang_list = " ".join(batch_langs)
-        _run_claude(
-            f"Run the i18n translation pipeline for these languages as a single batch PR.\n\n"
-            f"Command: python {script} --lang {lang_list} --batch-pr --model {model}\n\n"
-            f"The script is self-contained — no Docker or openlibrary checkout needed.\n"
-            f"Open one PR when done. No approval gate required.",
-            dry_run=dry_run,
-        )
+        branch = f"i18n/ai-batch-{date}"
+        create_branch(branch, dry_run=dry_run)
+        for lang in batch_langs:
+            process_language(lang, client=client, model=model, no_translate=False, dry_run=dry_run)
+        push_branch(branch, dry_run=dry_run)
+        url = open_pr(branch, batch_langs, mode="batch", dry_run=dry_run)
+        print(f"\nBatch PR: {url}")
 
     for lang in individual_langs:
-        _run_claude(
-            f"Run the i18n translation pipeline for language: {lang}\n\n"
-            f"Command: python {script} --lang {lang} --model {model}\n\n"
-            f"The script is self-contained — no Docker or openlibrary checkout needed.\n"
-            f"Open a per-language PR when done. No approval gate required.",
-            dry_run=dry_run,
-        )
+        branch = f"i18n/ai-{lang}-{date}"
+        create_branch(branch, dry_run=dry_run)
+        process_language(lang, client=client, model=model, no_translate=False, dry_run=dry_run)
+        push_branch(branch, dry_run=dry_run)
+        url = open_pr(branch, [lang], mode="per-language", dry_run=dry_run)
+        print(f"\n{lang} PR: {url}")
 
 
 # ---------------------------------------------------------------------------
@@ -542,38 +593,31 @@ def main() -> None:
     if invalid:
         parser.error(f"Unknown languages: {invalid}. Known: {KNOWN_LANGS}")
 
+    from datetime import datetime
+    date = datetime.now().strftime("%Y%m%d")
+
+    client = None
     if not args.no_translate and not args.dry_run:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        if not api_key:
-            sys.exit("ANTHROPIC_API_KEY is not set. Use --no-translate to skip AI translation.")
-        try:
-            import anthropic
-            client = anthropic.Anthropic(api_key=api_key)
-        except ImportError:
-            sys.exit("anthropic package is required: pip install anthropic")
-    else:
-        client = None
+        client = _make_client(args.model)
 
     download_pot(MESSAGES_POT, dry_run=args.dry_run)
 
-    processed = []
-    for lang in languages:
-        process_language(
-            lang,
-            client=client,
-            model=args.model,
-            no_translate=args.no_translate,
-            dry_run=args.dry_run,
-        )
-        processed.append(lang)
-
     if args.batch_pr:
-        branch = "i18n/ai-translation-batch"
-        url = open_pr(branch, processed, mode="batch", dry_run=args.dry_run)
+        branch = f"i18n/ai-batch-{date}"
+        create_branch(branch, dry_run=args.dry_run)
+        for lang in languages:
+            process_language(lang, client=client, model=args.model,
+                             no_translate=args.no_translate, dry_run=args.dry_run)
+        push_branch(branch, dry_run=args.dry_run)
+        url = open_pr(branch, languages, mode="batch", dry_run=args.dry_run)
         print(f"\nPR opened: {url}")
     else:
-        for lang in processed:
-            branch = f"i18n/{lang}"
+        for lang in languages:
+            branch = f"i18n/ai-{lang}-{date}"
+            create_branch(branch, dry_run=args.dry_run)
+            process_language(lang, client=client, model=args.model,
+                             no_translate=args.no_translate, dry_run=args.dry_run)
+            push_branch(branch, dry_run=args.dry_run)
             url = open_pr(branch, [lang], mode="per-language", dry_run=args.dry_run)
             print(f"\nPR opened ({lang}): {url}")
 
