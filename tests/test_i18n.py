@@ -363,3 +363,27 @@ class TestCLI:
         lang = known_langs()[0]
         r = _cli("validate", lang)
         assert r.returncode == 0, r.stderr
+
+    def test_sync_suppresses_pybabel_stderr(self):
+        """sync must suppress pybabel's 'updating catalog...' noise on stderr."""
+        lang = known_langs()[0]
+        r = _cli("sync", lang)
+        assert r.returncode == 0, r.stderr
+        # pybabel writes "updating catalog..." to stderr; we suppress it with DEVNULL
+        assert "updating catalog" not in r.stderr
+
+
+# ---------------------------------------------------------------------------
+# validate() — sys.path must not be mutated
+# ---------------------------------------------------------------------------
+
+class TestValidateSysPath:
+    def test_does_not_mutate_sys_path(self):
+        """validate() must not permanently insert TESTS_DIR into sys.path."""
+        path_before = list(sys.path)
+        lang = known_langs()[0]
+        validate(lang)
+        assert sys.path == path_before, (
+            "validate() permanently modified sys.path via sys.path.insert(); "
+            "use importlib instead"
+        )

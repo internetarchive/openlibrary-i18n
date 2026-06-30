@@ -265,10 +265,26 @@ def fix(lang: str) -> tuple[int, int]:
     return html, fmt
 
 
+_validators_validate = None
+
+
+def _get_validate_fn():
+    global _validators_validate
+    if _validators_validate is None:
+        import importlib.util
+        from importlib.machinery import SourceFileLoader
+        path = TESTS_DIR / "validators.py"
+        loader = SourceFileLoader("i18n_validators", str(path))
+        spec = importlib.util.spec_from_file_location("i18n_validators", path, loader=loader)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        _validators_validate = mod.validate
+    return _validators_validate
+
+
 def validate(lang: str) -> list[tuple]:
     """Returns list of (msgid, errors). Empty list means valid."""
-    sys.path.insert(0, str(TESTS_DIR))
-    from validators import validate as _v
+    _v = _get_validate_fn()
     catalog = _read_po(lang)
     errors = []
     for msg in catalog:
@@ -300,9 +316,9 @@ def get_batches(batch_size: int = BATCH_SIZE) -> list[list[str]]:
 # ---------------------------------------------------------------------------
 
 def pull(*, sync_all: bool = False) -> None:
-    print("→ download messages.pot")
     with urllib.request.urlopen(OL_MESSAGES_POT_URL) as resp:
         MESSAGES_POT.write_bytes(resp.read())
+    print("→ download messages.pot")
     if sync_all:
         for lang in known_langs():
             sync(lang)
@@ -319,6 +335,7 @@ def sync(lang: str) -> None:
          "--locale", lang,
          "--no-fuzzy-matching"],
         check=True, cwd=REPO_ROOT,
+        stderr=subprocess.DEVNULL,
     )
 
 
