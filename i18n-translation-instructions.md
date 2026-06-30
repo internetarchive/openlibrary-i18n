@@ -24,6 +24,9 @@ Running in GitHub Actions:
 Verify the environment, check for untranslated work, and check open PR count.
 
 ```bash
+# Verify ./i18n toolbox exists (requires PR #1 to be merged into main)
+test -x ./i18n || { echo "ERROR: ./i18n not found — the pipeline toolbox must be on main before translate jobs can run"; exit 1; }
+
 # Verify babel is installed
 python3 -c "import babel" || { echo "ERROR: babel not installed — run: pip install babel pytest"; exit 1; }
 
