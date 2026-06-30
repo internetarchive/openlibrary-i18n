@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.18.0\n"
 
 #: account.html account/notifications.html account/privacy.html lib/nav_head.html type/user/view.html
 msgid "Settings"
@@ -319,12 +319,25 @@ msgid "Preview"
 msgstr "Передперегляд"
 
 #: history.html
+#, python-format
+msgid "Compare revisions %(a)s and %(b)s"
+msgstr ""
+
+#: history.html
 msgid "History of edits to"
 msgstr "Історія редагувань для"
 
 #: history.html
-msgid "Revision"
-msgstr "Редагування"
+msgid "Revision comparison"
+msgstr ""
+
+#: history.html
+msgid "Clear comparison"
+msgstr ""
+
+#: history.html
+msgid "Rev"
+msgstr ""
 
 #: RecentChanges.html RecentChangesAdmin.html RecentChangesUsers.html admin/ip/view.html admin/people/edits.html history.html recentchanges/render.html recentchanges/updated_records.html
 msgid "When"
@@ -342,13 +355,19 @@ msgstr "Коментар"
 msgid "Diff"
 msgstr "Різниця"
 
+#. Column header labeling the "A" side (the earlier/left revision) of a
+#. revision comparison on a page's edit-history table. Keep extremely short; a
+#. single letter is ideal. Pairs with "B".
 #: history.html
-msgid "Compare"
-msgstr "Порівняти"
+msgid "A"
+msgstr ""
 
+#. Column header labeling the "B" side (the later/right revision) of a revision
+#. comparison on a page's edit-history table. Keep extremely short; a single
+#. letter is ideal. Pairs with "A".
 #: history.html
-msgid "See Diff"
-msgstr "Поглянути на різницю"
+msgid "B"
+msgstr ""
 
 #: history.html lib/history.html
 #, python-format
@@ -356,13 +375,21 @@ msgid "View revision %s"
 msgstr "Переглянути редагування %s"
 
 #: history.html
-msgid "Compare this version..."
-msgstr "Порівняти цю версію..."
+msgid "Changes"
+msgstr ""
 
 #: history.html
-#, fuzzy
-msgid "...to this version"
-msgstr "Відкотити до цієї зміни"
+msgid "Compare this revision with the current version"
+msgstr ""
+
+#: history.html
+msgid "vs current"
+msgstr ""
+
+#: history.html
+#, python-format
+msgid "Pick revision %s as A or B for comparison"
+msgstr ""
 
 #: import_preview.html
 #, fuzzy
@@ -911,8 +938,11 @@ msgstr "Хтось позначив як \"%(shelf)s\" %(k_hours_ago)s"
 
 #: trending.html
 #, python-format
-msgid "Logged %(count)i times %(time_unit)s"
-msgstr "Додано Logged %(count)i разів %(time_unit)s"
+msgid "Logged %(count)i time %(time_unit)s"
+msgid_plural "Logged %(count)i times %(time_unit)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: verify_human.html
 #, fuzzy
@@ -1677,7 +1707,7 @@ msgstr "Книги, які були прочитані %(username)s"
 #: account/reading_log.html
 #, python-format
 msgid "%(username)s has read %(total)d books. Join %(username)s on OpenLibrary.org and tell the world about the books that you care about."
-msgstr "%(total)d книг були прочитані %(username)s. Приєднайтеся до %(username)s на OpenLibrary.org і розкажіть світові про книги, які вас хвилюють."
+msgstr ""
 
 #: account/reading_log.html
 #, fuzzy, python-format
@@ -4582,7 +4612,7 @@ msgstr "Про проєкт"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "Open Library — це відкритий бібліотечний каталог, який може редагувати кожен, створюючи вебсторінку для кожної книги, яка була опублікована."
 
-#: AffiliateLinks.html home/about.html search/work_search_facets.html
+#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html
 msgid "More"
 msgstr "Більше"
 
@@ -6325,14 +6355,18 @@ msgid "Clear search"
 msgstr "Пошук серед видавців"
 
 #: search/search_modal_i18n.html
-#, fuzzy
-msgid "See all results"
-msgstr "Побачити всі роботи"
+msgid "See results"
+msgstr ""
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s result"
-msgstr "Переглянути всі %s результат"
+msgid "See %s result"
+msgstr ""
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See %s results"
+msgstr ""
 
 #: search/search_modal_i18n.html
 #, python-format
@@ -7587,12 +7621,12 @@ msgstr "Немає доступних видань"
 msgid "Add another edition?"
 msgstr "Додати інше видання?"
 
-#: AffiliateLinks.html
+#: AffiliateLinks.html.jinja
 #, python-format
 msgid "Look for this edition for sale at %(store)s"
 msgstr "Шукайте це видання у продажі на %(store)s"
 
-#: AffiliateLinks.html
+#: AffiliateLinks.html.jinja
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "Коли ви купуєте книги за цими посиланнями, Internet Archive може отримати <a class=\"nostyle\" href=\"/help/faq/about#selling\">невелику комісію</a>."
 
@@ -8035,16 +8069,6 @@ msgstr "залишаєте відгук у 5 зірок для"
 msgid "Clear my rating"
 msgstr "Очистити мій рейтинг"
 
-#: StarRatingsByline.html StarRatingsComponent.html
-#, fuzzy
-msgid "rating"
-msgstr "Рейтинг"
-
-#: StarRatingsByline.html StarRatingsComponent.html
-#, fuzzy
-msgid "ratings"
-msgstr "Рейтинг"
-
 #. Shows the count of readers who added this book to their "Want to read"
 #. shelf, displayed on search result pages. %(want_to_read_count)s is a
 #. formatted integer (may include commas as thousands separators). Example:
@@ -8056,8 +8080,11 @@ msgstr "%(want_to_read_count)s Хочу прочитати"
 
 #: StarRatingsComponent.html
 #, python-format
-msgid "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
-msgstr "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
+msgid "%(average)s (%(count)s rating)"
+msgid_plural "%(average)s (%(count)s ratings)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #. Short label displayed next to the count of readers who want to read this
 #. book, shown in the stats bar on a book page. Example: "2,389 Want to read".
@@ -8271,6 +8298,10 @@ msgstr "Хорватська"
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Italian"
 msgstr "Італійська"
+
+#: openlibrary/plugins/openlibrary/code.py
+msgid "Korean"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Portuguese"
@@ -9098,4 +9129,37 @@ msgstr "Електронні книги класики"
 
 #~ msgid "Passwords didn't match."
 #~ msgstr ""
+
+#~ msgid "Revision"
+#~ msgstr "Редагування"
+
+#~ msgid "Compare"
+#~ msgstr "Порівняти"
+
+#~ msgid "See Diff"
+#~ msgstr "Поглянути на різницю"
+
+#~ msgid "Compare this version..."
+#~ msgstr "Порівняти цю версію..."
+
+#~ msgid "...to this version"
+#~ msgstr "Відкотити до цієї зміни"
+
+#~ msgid "Logged %(count)i times %(time_unit)s"
+#~ msgstr "Додано Logged %(count)i разів %(time_unit)s"
+
+#~ msgid "See all results"
+#~ msgstr "Побачити всі роботи"
+
+#~ msgid "See all %s result"
+#~ msgstr "Переглянути всі %s результат"
+
+#~ msgid "rating"
+#~ msgstr "Рейтинг"
+
+#~ msgid "ratings"
+#~ msgstr "Рейтинг"
+
+#~ msgid "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
+#~ msgstr "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
 

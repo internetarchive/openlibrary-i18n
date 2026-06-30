@@ -4,7 +4,6 @@
 # project.
 # Clonewayx <EMAIL@ADDRESS>, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
@@ -18,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.18.0\n"
 
 #: account.html account/notifications.html account/privacy.html lib/nav_head.html type/user/view.html
 msgid "Settings"
@@ -318,12 +317,25 @@ msgid "Preview"
 msgstr "Zobrazit"
 
 #: history.html
+#, python-format
+msgid "Compare revisions %(a)s and %(b)s"
+msgstr ""
+
+#: history.html
 msgid "History of edits to"
 msgstr "Historie úprav záznamu"
 
 #: history.html
-msgid "Revision"
-msgstr "Revize"
+msgid "Revision comparison"
+msgstr ""
+
+#: history.html
+msgid "Clear comparison"
+msgstr ""
+
+#: history.html
+msgid "Rev"
+msgstr ""
 
 #: RecentChanges.html RecentChangesAdmin.html RecentChangesUsers.html admin/ip/view.html admin/people/edits.html history.html recentchanges/render.html recentchanges/updated_records.html
 msgid "When"
@@ -342,14 +354,19 @@ msgstr "Komentář"
 msgid "Diff"
 msgstr "rozdíl"
 
+#. Column header labeling the "A" side (the earlier/left revision) of a
+#. revision comparison on a page's edit-history table. Keep extremely short; a
+#. single letter is ideal. Pairs with "B".
 #: history.html
-msgid "Compare"
-msgstr "Porovnat"
+msgid "A"
+msgstr ""
 
+#. Column header labeling the "B" side (the later/right revision) of a revision
+#. comparison on a page's edit-history table. Keep extremely short; a single
+#. letter is ideal. Pairs with "A".
 #: history.html
-#, fuzzy
-msgid "See Diff"
-msgstr "rozdíl"
+msgid "B"
+msgstr ""
 
 #: history.html lib/history.html
 #, python-format
@@ -357,13 +374,21 @@ msgid "View revision %s"
 msgstr "Zobrazit revize  %s"
 
 #: history.html
-msgid "Compare this version..."
-msgstr "Porovnat tuto verzi..."
+msgid "Changes"
+msgstr ""
 
 #: history.html
-#, fuzzy
-msgid "...to this version"
-msgstr "Toto vydání"
+msgid "Compare this revision with the current version"
+msgstr ""
+
+#: history.html
+msgid "vs current"
+msgstr ""
+
+#: history.html
+#, python-format
+msgid "Pick revision %s as A or B for comparison"
+msgstr ""
 
 #: import_preview.html
 msgid "Import Preview"
@@ -913,8 +938,11 @@ msgstr "Někdo označil jako %(shelf)s %(k_hours_ago)s"
 
 #: trending.html
 #, python-format
-msgid "Logged %(count)i times %(time_unit)s"
-msgstr "Zaznamenáno %(count)i krát %(time_unit)s"
+msgid "Logged %(count)i time %(time_unit)s"
+msgid_plural "Logged %(count)i times %(time_unit)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: verify_human.html
 #, fuzzy
@@ -4580,7 +4608,7 @@ msgstr "O knize"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "Open Library je otevřený, editovatelný knihovní katalog, který se buduje směrem k webové stránce pro každou kdy vydanou knihu."
 
-#: AffiliateLinks.html home/about.html search/work_search_facets.html
+#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html
 msgid "More"
 msgstr "Další"
 
@@ -6368,14 +6396,18 @@ msgid "Clear search"
 msgstr "Autoři"
 
 #: search/search_modal_i18n.html
-#, fuzzy
-msgid "See all results"
-msgstr "Výsledky hledání"
+msgid "See results"
+msgstr ""
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s result"
-msgstr "Zobrazit všech %s výsledek"
+msgid "See %s result"
+msgstr ""
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See %s results"
+msgstr ""
 
 #: search/search_modal_i18n.html
 #, python-format
@@ -7676,12 +7708,12 @@ msgstr "Poprvé vydáno"
 msgid "Add another edition?"
 msgstr "Přidat další vydání"
 
-#: AffiliateLinks.html
+#: AffiliateLinks.html.jinja
 #, python-format
 msgid "Look for this edition for sale at %(store)s"
 msgstr "Hledat toto vydání k prodeji na %(store)s"
 
-#: AffiliateLinks.html
+#: AffiliateLinks.html.jinja
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "Při nákupu knih přes tyto odkazy může Internet Archive získat <a class=\"nostyle\" href=\"/help/faq/about#selling\">malou provizi</a>."
 
@@ -8132,16 +8164,6 @@ msgstr "zanechání hodnocení 5 hvězdičkami pro"
 msgid "Clear my rating"
 msgstr "Smazat moje hodnocení"
 
-#: StarRatingsByline.html StarRatingsComponent.html
-#, fuzzy
-msgid "rating"
-msgstr "Řadit dle"
-
-#: StarRatingsByline.html StarRatingsComponent.html
-#, fuzzy
-msgid "ratings"
-msgstr "Nastavení"
-
 #. Shows the count of readers who added this book to their "Want to read"
 #. shelf, displayed on search result pages. %(want_to_read_count)s is a
 #. formatted integer (may include commas as thousands separators). Example:
@@ -8153,8 +8175,11 @@ msgstr "%(want_to_read_count)s Chci přečíst"
 
 #: StarRatingsComponent.html
 #, python-format
-msgid "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
-msgstr "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
+msgid "%(average)s (%(count)s rating)"
+msgid_plural "%(average)s (%(count)s ratings)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #. Short label displayed next to the count of readers who want to read this
 #. book, shown in the stats bar on a book page. Example: "2,389 Want to read".
@@ -8373,6 +8398,10 @@ msgstr "Místo"
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Italian"
 msgstr "Italsky"
+
+#: openlibrary/plugins/openlibrary/code.py
+msgid "Korean"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Portuguese"
@@ -9185,4 +9214,37 @@ msgstr "Zobrazit jen eKnihy"
 
 #~ msgid "By saving a change to this wiki, you agree that your contribution is given freely to the world under <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" title=\"This link to Creative Commons will open in a new window\">CC0</a>. Yippee!"
 #~ msgstr ""
+
+#~ msgid "Revision"
+#~ msgstr "Revize"
+
+#~ msgid "Compare"
+#~ msgstr "Porovnat"
+
+#~ msgid "See Diff"
+#~ msgstr "rozdíl"
+
+#~ msgid "Compare this version..."
+#~ msgstr "Porovnat tuto verzi..."
+
+#~ msgid "...to this version"
+#~ msgstr "Toto vydání"
+
+#~ msgid "Logged %(count)i times %(time_unit)s"
+#~ msgstr "Zaznamenáno %(count)i krát %(time_unit)s"
+
+#~ msgid "See all results"
+#~ msgstr "Výsledky hledání"
+
+#~ msgid "See all %s result"
+#~ msgstr "Zobrazit všech %s výsledek"
+
+#~ msgid "rating"
+#~ msgstr "Řadit dle"
+
+#~ msgid "ratings"
+#~ msgstr "Nastavení"
+
+#~ msgid "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
+#~ msgstr "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
 
