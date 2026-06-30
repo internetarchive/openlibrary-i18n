@@ -1,0 +1,92 @@
+name: Translate
+
+on:
+  repository_dispatch:
+    types: [openlibrary-pot-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      batches: ${{ steps.get-batches.outputs.batches }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install babel pytest
+
+      - name: Pull and sync all languages
+        run: ./i18n pull --sync
+
+      - name: Show incomplete languages
+        run: ./i18n incomplete
+
+      - name: Compute batches
+        id: get-batches
+        run: |
+          BATCHES=$(./i18n batch | python3 -c "import json,sys; print(json.dumps(json.load(sys.stdin)['batches']))")
+          echo "batches=$BATCHES" >> $GITHUB_OUTPUT
+          echo "Batches: $BATCHES"
+
+      - name: Upload synced locale files
+        uses: actions/upload-artifact@v4
+        with:
+          name: synced-locale
+          path: |
+            locale/
+            messages.pot
+
+  translate:
+    needs: plan
+    if: needs.plan.outputs.batches != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        batch: ${{ fromJSON(needs.plan.outputs.batches) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install babel pytest
+
+      - name: Download synced locale files
+        uses: actions/download-artifact@v4
+        with:
+          name: synced-locale
+
+      - name: Translate batch
+        uses: anthropics/claude-code-action@v1
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.OL_CLAUDE_CODE_TOKEN }}
+          GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
+        with:
+          prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
+          claude_args: "--max-turns 50"
+
+      - name: Auto-merge completed PR
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr list \
+            --state open \
+            --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("i18n/ai-")) | .number' \
+          | while IFS= read -r pr; do
+              gh pr merge "$pr" --auto --squash --delete-branch \
+              || gh pr merge "$pr" --squash --delete-branch \
+              || echo "WARNING: could not merge PR #$pr"
+            done
