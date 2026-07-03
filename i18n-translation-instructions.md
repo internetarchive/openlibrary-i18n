@@ -88,6 +88,8 @@ git commit --allow-empty -m "i18n({langs}): start translation work"
 git push -u origin "$BRANCH"
 ```
 
+This is expected, documented procedure now, not an improvisation — don't post a "deviation note" PR comment for it.
+
 ```bash
 gh pr create \
   --draft \
