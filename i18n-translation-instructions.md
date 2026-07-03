@@ -44,7 +44,26 @@ echo "Open i18n PRs: $OPEN"
 
 If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
 
-## Step 2: Create a branch from fresh main
+## Step 2: Resume existing work, or create a fresh branch
+
+A previous run may have run out of turns, hit an error, or otherwise stopped mid-batch. **Check for existing in-progress work before starting fresh** — resuming avoids duplicate branches, wasted turns, and orphaned draft PRs.
+
+```bash
+# Look for an existing open PR whose branch covers this batch's language(s)
+gh pr list --state open --json number,headRefName,title \
+  --jq '.[] | select(.headRefName | startswith("i18n/ai-"))'
+```
+
+**If a matching open PR/branch already exists for one or more languages in your batch:**
+```bash
+git fetch origin
+git checkout <existing-branch-name>
+git pull origin <existing-branch-name>
+PR_NUMBER=<the existing PR number>
+```
+Skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n untranslated` naturally reflects only what's still remaining, since prior progress was already pushed (see Step 4's commit substep).
+
+**If no matching PR exists, create fresh:**
 
 Always branch from `origin/main` — never from whatever is currently checked out.
 
@@ -61,6 +80,13 @@ git checkout -b "$BRANCH" origin/main
 ## Step 3: Open a draft PR immediately
 
 Open before translating anything. Record the PR number.
+
+`gh pr create` fails with "No commits between main and $BRANCH" if the branch has zero diff from `origin/main` yet — which it always will at this point, since you branched fresh and haven't translated anything. Make an empty commit first so the PR can open immediately, exactly as required:
+
+```bash
+git commit --allow-empty -m "i18n({langs}): start translation work"
+git push -u origin "$BRANCH"
+```
 
 ```bash
 gh pr create \
@@ -174,17 +200,21 @@ Batch <langs> could not complete. PR was not opened (or was left as draft).
 <what you think should change>"
 ```
 
-**9. Commit:**
+**9. Commit and push immediately:**
 ```bash
 git add locale/{lang}/messages.po locale/{lang}/messages.mo
 git commit -m "i18n({lang}): batch {N} — AI translations (claude-sonnet-4-6)"
+git push origin "$BRANCH"
 ```
+Push right after every commit, not just at the end of the run. This step is only reached after `validate` and `test` have both exited 0, so it's always pushing already-verified work. If the run gets cut off later (turn limit, error), everything up to this point survives on the remote branch — Step 2's resume check picks it up next time instead of losing it.
 
 **Re-loop if `fix` cleared entries.** After `fix`, re-run `untranslated` — if `fix` cleared N entries they become untranslated again and need another translate→apply→fix→validate→test cycle. Repeat until both `untranslated` returns `[]` AND `validate` exits 0.
 
 Repeat the whole loop until done for this language, then move to the next language in your batch.
 
 ## Step 5: After all languages
+
+Everything should already be pushed (Step 4 pushes after every commit). Run this only as a final safety net in case anything was missed:
 
 ```bash
 git push origin "$BRANCH"
