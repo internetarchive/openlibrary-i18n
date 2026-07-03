@@ -21,15 +21,9 @@ Running in GitHub Actions:
 
 ## Step 1: Pre-flight
 
-Verify the environment, check for untranslated work, and check open PR count.
+Check for untranslated work and open PR count. (`./i18n` and `babel` are guaranteed present — the workflow installs dependencies and checks out the toolbox before this step runs; don't re-verify them.)
 
 ```bash
-# Verify ./i18n toolbox exists (requires PR #1 to be merged into main)
-test -x ./i18n || { echo "ERROR: ./i18n not found — the pipeline toolbox must be on main before translate jobs can run"; exit 1; }
-
-# Verify babel is installed
-python3 -c "import babel" || { echo "ERROR: babel not installed — run: pip install babel pytest"; exit 1; }
-
 # Check if any language in the batch has untranslated strings
 HAS_WORK=0
 for LANG in <your batch languages>; do
@@ -48,7 +42,7 @@ OPEN=$(gh pr list --state open --json headRefName \
 echo "Open i18n PRs: $OPEN"
 ```
 
-If `import babel` fails, stop. If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
+If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
 
 ## Step 2: Create a branch from fresh main
 
