@@ -80,12 +80,12 @@ jobs:
       - name: Translate batch
         uses: anthropics/claude-code-action@v1
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.OL_CLAUDE_CODE_TOKEN }}
           GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
         with:
           prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
           claude_args: "--max-turns 50"
           show_full_output: true
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Auto-merge completed PR
         if: success()
