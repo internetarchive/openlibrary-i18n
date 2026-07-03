@@ -4,6 +4,11 @@ on:
   repository_dispatch:
     types: [openlibrary-pot-updated]
   workflow_dispatch:
+    inputs:
+      language:
+        description: "Debug: run for a single language only"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -34,7 +39,11 @@ jobs:
       - name: Compute batches
         id: get-batches
         run: |
-          BATCHES=$(./i18n batch | python3 -c "import json,sys; print(json.dumps(json.load(sys.stdin)['batches']))")
+          if [ -n "${{ inputs.language }}" ]; then
+            BATCHES='[["${{ inputs.language }}"]]'
+          else
+            BATCHES=$(./i18n batch | python3 -c "import json,sys; print(json.dumps(json.load(sys.stdin)['batches']))")
+          fi
           echo "batches=$BATCHES" >> $GITHUB_OUTPUT
           echo "Batches: $BATCHES"
 
@@ -76,6 +85,7 @@ jobs:
         with:
           prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
           claude_args: "--max-turns 50"
+          show_full_output: true
 
       - name: Auto-merge completed PR
         if: success()
