@@ -447,7 +447,7 @@ msgstr "Anulează"
 msgid "Continue without waiting"
 msgstr "Continuă fără să aștepți"
 
-#: lib/nav_head.html library_explorer.html
+#: lib/browse_popover.html lib/nav_head.html library_explorer.html
 msgid "Library Explorer"
 msgstr "Explorator de bibliotecă"
 
@@ -698,7 +698,7 @@ msgstr "PR"
 msgid "Title"
 msgstr "Titlu"
 
-#: books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py search/advancedsearch.html search/search_modal_i18n.html search/work_search_selected_facets.html status.html
+#: SearchAuthorSuggestion.html books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py search/advancedsearch.html search/search_modal_i18n.html search/work_search_selected_facets.html status.html
 msgid "Author"
 msgstr "Autor"
 
@@ -1013,6 +1013,14 @@ msgstr "Limbi"
 msgid "Filter by language"
 msgstr "Filtrați după limbă"
 
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#, python-format
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s rezultat"
+msgstr[1] "%(count)s rezultate"
+msgstr[2] ""
+
 #: work_search.html
 msgid "The search engine returned an error."
 msgstr "Motorul de căutare a returnat o eroare."
@@ -1038,13 +1046,13 @@ msgstr "Adaugă o carte nouă?"
 msgid "Checking Search Inside matches"
 msgstr "Se verifică potrivirile Search Inside"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
-#, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s rezultat"
-msgstr[1] "%(count)s rezultate"
-msgstr[2] ""
+#: SearchNavigation.html authors/index.html lib/nav_foot.html merge/authors.html publishers/view.html work_search.html
+msgid "Authors"
+msgstr "Autori"
+
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html openlibrary/plugins/upstream/mybooks.py work_search.html
+msgid "Books"
+msgstr "Cărți"
 
 #: work_search.html
 #, python-format
@@ -1186,6 +1194,10 @@ msgstr "Ne pare rău, această funcționalitate nu a fost încă implementată."
 #: account/follows.html
 msgid "There is nothing to see here yet."
 msgstr "Nu există nimic de văzut aici încă."
+
+#: account/ia_thirdparty_logins.html
+msgid "Sign in with a third-party account"
+msgstr "Conectați-vă cu un cont terț"
 
 #: account/import.html
 msgid "Import from Goodreads"
@@ -1802,7 +1814,7 @@ msgstr "Jurnal de citire"
 msgid "My lists"
 msgstr "Listele mele"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Liste"
 
@@ -2896,10 +2908,6 @@ msgstr "Linkuri de verificare"
 msgid "None found"
 msgstr "Niciuna găsită"
 
-#: SearchNavigation.html authors/index.html lib/nav_foot.html merge/authors.html publishers/view.html
-msgid "Authors"
-msgstr "Autori"
-
 #: authors/index.html
 msgid "Search for an Author"
 msgstr "Caută un autor"
@@ -3532,10 +3540,6 @@ msgstr "Dată de publicare necunoscută, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "în %(languagelist)s"
-
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html openlibrary/plugins/upstream/mybooks.py
-msgid "Books"
-msgstr "Cărți"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4636,6 +4640,50 @@ msgstr "%s nu a fost găsit"
 msgid "%s does not exist."
 msgstr "%s nu există."
 
+#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html
+msgid "Collections"
+msgstr "Colecții"
+
+#: lib/browse_popover.html lib/nav_head.html
+msgid "K-12 Student Library"
+msgstr "Biblioteca școlară"
+
+#: lib/browse_popover.html lib/nav_head.html
+msgid "Book Talks"
+msgstr "Discuții despre cărți"
+
+#: lib/browse_popover.html lib/nav_head.html
+msgid "Random Book"
+msgstr "Carte aleatoare"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "Navigați"
+
+#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Subiecte"
+
+#: lib/browse_popover.html
+msgid "Browse books by topic"
+msgstr "Navigați cărțile după subiect"
+
+#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
+msgid "Trending"
+msgstr "În tendințe"
+
+#: lib/browse_popover.html
+msgid "Most popular right now"
+msgstr "Cele mai populare acum"
+
+#: lib/browse_popover.html
+msgid "Browse the virtual shelves"
+msgstr "Navigați rafturile virtuale"
+
+#: lib/browse_popover.html
+msgid "Reader-curated collections"
+msgstr "Colecții alese de cititori"
+
 #: lib/edit_head.html lib/view_head.html
 msgid "This doc was last edited by"
 msgstr "Acest document a fost editat ultima dată de"
@@ -4828,17 +4876,9 @@ msgstr "Descoperă autori"
 msgid "Explore subjects"
 msgstr "Descoperă subiecte"
 
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Subiecte"
-
 #: lib/nav_foot.html
 msgid "Explore collections"
 msgstr "Descoperă colecții"
-
-#: lib/nav_foot.html lib/nav_head.html
-msgid "Collections"
-msgstr "Colecții"
 
 #: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
 msgid "Advanced Search"
@@ -4976,22 +5016,6 @@ msgstr "Deconectare"
 msgid "Pending Merge Requests"
 msgstr "Cereri de fuziune în așteptare"
 
-#: lib/nav_head.html search/sort_options.html
-msgid "Trending"
-msgstr "În tendințe"
-
-#: lib/nav_head.html
-msgid "K-12 Student Library"
-msgstr "Biblioteca școlară"
-
-#: lib/nav_head.html
-msgid "Book Talks"
-msgstr "Discuții despre cărți"
-
-#: lib/nav_head.html
-msgid "Random Book"
-msgstr "Carte aleatoare"
-
 #: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "Modificări recente ale comunității"
@@ -5007,10 +5031,6 @@ msgstr "Portalul bibliotecarilor"
 #: lib/nav_head.html
 msgid "My Open Library"
 msgstr "Biblioteca mea deschisă"
-
-#: databarWork.html lib/nav_head.html
-msgid "Browse"
-msgstr "Navigați"
 
 #: lib/nav_head.html
 msgid "Contribute"
@@ -5781,10 +5801,6 @@ msgstr "Vedeți mai multe cărți ale acestui autor și aflați mai multe despre
 #: publishers/view.html
 msgid "published most by this publisher"
 msgstr "publicat cel mai mult de acest editor"
-
-#: publishers/view.html
-msgid "Get more information about this publisher"
-msgstr "Obțineți mai multe informații despre acest editor"
 
 #: reading_goals/reading_goal_form.html
 msgid "How many books would you like to read this year?"
@@ -6687,11 +6703,6 @@ msgid "Show other books from %(publisher)s"
 msgstr "Afișați alte cărți de la %(publisher)s"
 
 #: type/edition/view.html type/work/view.html
-#, python-format
-msgid "Search for other books from %(publisher)s"
-msgstr "Căutați alte cărți de la %(publisher)s"
-
-#: type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "Pagini"
 
@@ -7336,6 +7347,10 @@ msgstr "Doar previzualizare"
 
 #: BookPreview.html
 msgid "Preview Book"
+msgstr "Previzualizare carte"
+
+#: BookPreview.html
+msgid "Book preview"
 msgstr "Previzualizare carte"
 
 #: DisplayCode.html
@@ -8701,4 +8716,10 @@ msgstr "Cărți electronice clasice"
 
 #~ msgid "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
 #~ msgstr "%(ratings_avg)s (%(ratings_count)s %(ratings_label)s)"
+
+#~ msgid "Get more information about this publisher"
+#~ msgstr "Obțineți mai multe informații despre acest editor"
+
+#~ msgid "Search for other books from %(publisher)s"
+#~ msgstr "Căutați alte cărți de la %(publisher)s"
 
