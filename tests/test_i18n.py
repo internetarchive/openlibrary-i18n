@@ -23,7 +23,6 @@ _spec = importlib.util.spec_from_file_location("i18n", _ROOT / "i18n", loader=_l
 _mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)
 
-BATCH_SIZE = _mod.BATCH_SIZE
 LOCALE_DIR = _mod.LOCALE_DIR
 _apply_to_catalog = _mod._apply_to_catalog
 _fix_format_errors = _mod._fix_format_errors
@@ -354,27 +353,16 @@ class TestBatchesFromCounts:
     def _counts(self, items: list[tuple[str, int]]) -> list[dict]:
         return [{"lang": lang, "untranslated": n} for lang, n in items]
 
-    def test_small_langs_grouped_into_one_batch(self):
+    def test_every_language_gets_its_own_batch(self):
         counts = self._counts([("de", 30), ("fr", 50), ("es", 75)])
-        batches = _batches_from_counts(counts, batch_size=75)
-        assert len(batches) == 1
-        assert set(batches[0]) == {"de", "fr", "es"}
-
-    def test_large_langs_each_get_own_batch(self):
-        counts = self._counts([("de", 100), ("fr", 200)])
-        batches = _batches_from_counts(counts, batch_size=75)
-        assert len(batches) == 2
-        assert {"de"} in [set(b) for b in batches]
-        assert {"fr"} in [set(b) for b in batches]
-
-    def test_mixed_small_and_large(self):
-        counts = self._counts([("de", 30), ("fr", 200), ("es", 75), ("ja", 300)])
-        batches = _batches_from_counts(counts, batch_size=75)
+        batches = _batches_from_counts(counts)
         assert len(batches) == 3
-        shared = next(b for b in batches if len(b) > 1)
-        assert set(shared) == {"de", "es"}
-        solos = [b[0] for b in batches if len(b) == 1]
-        assert set(solos) == {"fr", "ja"}
+        assert sorted(batches) == [["de"], ["es"], ["fr"]]
+
+    def test_large_and_small_langs_all_get_own_batch(self):
+        counts = self._counts([("de", 30), ("fr", 200), ("es", 75), ("ja", 300)])
+        batches = _batches_from_counts(counts)
+        assert sorted(batches) == [["de"], ["es"], ["fr"], ["ja"]]
 
     def test_zero_untranslated_excluded(self):
         counts = self._counts([("de", 0), ("fr", 0)])
@@ -383,28 +371,11 @@ class TestBatchesFromCounts:
     def test_empty_counts(self):
         assert _batches_from_counts([]) == []
 
-    def test_exactly_at_batch_size_goes_to_shared(self):
-        counts = self._counts([("de", BATCH_SIZE)])
-        batches = _batches_from_counts(counts)
-        assert len(batches) == 1
-        assert batches[0] == ["de"]
-
-    def test_one_over_batch_size_gets_own_batch(self):
-        counts = self._counts([("de", BATCH_SIZE + 1)])
-        batches = _batches_from_counts(counts)
-        assert len(batches) == 1
-        assert batches[0] == ["de"]
-
     def test_no_lang_in_multiple_batches(self):
         counts = self._counts([("de", 30), ("fr", 200), ("es", 50), ("ja", 0)])
         batches = _batches_from_counts(counts)
         all_langs = [lang for batch in batches for lang in batch]
         assert len(all_langs) == len(set(all_langs))
-
-    def test_custom_batch_size(self):
-        counts = self._counts([("de", 10), ("fr", 20)])
-        batches = _batches_from_counts(counts, batch_size=15)
-        assert len(batches) == 2
 
 
 # ---------------------------------------------------------------------------
