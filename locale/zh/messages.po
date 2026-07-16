@@ -3344,8 +3344,8 @@ msgid "Read at Wikisource"
 msgstr "在Wikisource上阅读"
 
 #: books/RelatedWorksCarousel.html
-msgid "You might also like"
-msgstr "您可能还喜欢"
+msgid "Available books like this one"
+msgstr "与此书类似的可用图书"
 
 #: books/RelatedWorksCarousel.html
 msgid "More by this author"
@@ -3885,6 +3885,25 @@ msgstr "-- 转移到新的作品"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "此版本"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "未通过的检查 ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "通过的检查 ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} 分"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "此记录最近被编辑过，此记分卡已过时，应该会在一分钟左右更新。"
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7730,6 +7749,11 @@ msgid "Templates in the website are disabled now. Editing them will not have any
 msgstr "网站中的模板现已禁用。编辑它们对线上网站没有任何影响。"
 
 #: EditionNavBar.html
+#, python-format
+msgid "This book is currently unavailable on Open Library, check out %(link_start)savailable alternatives%(link_end)s."
+msgstr "此书目前在 Open Library 上不可用，请查看%(link_start)s可用的替代方案%(link_end)s。"
+
+#: EditionNavBar.html
 #, fuzzy
 msgid "Go to previous section"
 msgstr "查看之前的版本"
@@ -8311,6 +8335,316 @@ msgstr "记录此细节"
 msgid "Unknown"
 msgstr "未知作者"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "可在线完整访问（阅读/借阅）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "可借阅和可在线阅读的图书，读者、研究人员和所有用户都可以访问。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "可通过站内搜索查看片段"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "支持站内搜索的图书可让用户快速找到书中的相关内容。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "开放获取（可完整分析）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "完全公开的图书可不受限制地在线阅读或下载，为用户提供极佳的访问途径。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "有购买选项"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "ISBN、Amazon ASIN 标识符或 BWB 标识符可让用户从零售商处购买该书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "有图书馆选项（ISBN 或 OCLC）"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "ISBN 或 OCLC 编号可让用户通过图书馆目录找到该书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "有同人小说链接（Archive of Our Own）"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "指向 Archive of Our Own 的链接可帮助读者发现相关的同人创作作品。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "有维基百科链接"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "维基百科链接可为该作品提供额外的背景和百科信息。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "有首句"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "首句可让用户立即感受到该作品的写作风格。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "有标题字段"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "标题对于发现该书至关重要，可帮助用户在搜索结果和目录中识别该书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "有作者信息"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "作者信息对于发现该书至关重要，可帮助用户找到同一作者的其他作品。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "有类型/分类标签"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "类型标签可帮助用户按类型或分类搜索，从而发现相关图书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "有系列信息"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "系列信息可帮助用户按系列搜索，发现相关图书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "有目录"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "目录条目已被索引且可搜索，从而提高了可发现性。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "有 DDC 或 LCC 分类"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "杜威十进制分类法或美国国会图书馆分类法有助于图书的组织和上架浏览。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "有语言信息"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "语言信息可帮助用户按其偏好的语言筛选和查找图书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "有 ISBN"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "ISBN 支持通过条形码扫描器进行搜索，并有助于识别图书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "有 Lexile 测度"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Lexile 测度可帮助教育工作者和家长找到适合阅读水平的图书。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "有星级评分（排名信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "星级评分有助于搜索排名，使评分较高的图书排名更靠前。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "出现在阅读日志中（排名信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "出现在阅读日志中是一种人气信号，有助于搜索排名。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "出现在清单中（排名信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "出现在用户清单中是一种人气信号，有助于搜索排名。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "有贡献者姓名"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "贡献者姓名（编辑、插画师、译者）支持按贡献者进行搜索。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "有描述"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "描述可帮助用户在访问该书之前了解其内容。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "有封面图片"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "封面图片可帮助用户直观地识别该书，并使其在搜索结果中更具吸引力。"
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "目录可帮助用户评估该书的结构和范围。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "类型标签可帮助用户快速判断该书是否符合自己的兴趣。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "有星级评分（人气信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "来自其他读者的星级评分可帮助用户评估该书的质量和口碑。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "有详细描述（50 个字符以上）"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "详细的描述（50 个字符以上）提供了更多背景信息，帮助用户评估相关性。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "有阅读日志活动（人气信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "其他用户的阅读日志活动表明该书正被积极阅读。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "出现在清单中（人气信号）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "出现在精选清单中有助于用户判断相关性和社区兴趣。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "有页数"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "页数可帮助用户估算该书的篇幅和所需的阅读时间。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "系列信息可帮助用户了解该书在更广泛叙事中的位置。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "有作者照片"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "作者照片可帮助用户直观地认出作者。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "有首次出版年份"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "首次出版年份可帮助用户了解该作品最初问世的时间。"
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publication year"
+msgstr "出版年份"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "出版年份可帮助用户了解内容的背景和时效性。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "有作者简介"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "作者简介可帮助用户了解作者的背景和专业知识。"
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publisher"
+msgstr "出版商"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "出版商信息可帮助用户评估该书的可信度和来源。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "有作者链接"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr "作者网站或个人资料的链接可提供有关作者的更多背景信息。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr "版本记分卡"
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr "访问"
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr "发现"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr "此版本在搜索和推荐中能被准确呈现的程度如何？"
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr "评估"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr "用户在访问此版本之前能多好地判断它是否符合自己的需求？"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -8463,11 +8797,6 @@ msgstr "有作品（孤立版本）"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
-msgid "Has publication year"
-msgstr "出版年份"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
 msgid "Has cover"
 msgstr "发现"
 
@@ -8475,11 +8804,6 @@ msgstr "发现"
 #, fuzzy
 msgid "Has language"
 msgstr "语言"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
-msgid "Has publisher"
-msgstr "出版商"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
@@ -8710,8 +9034,8 @@ msgstr "设置一个密码"
 
 #: openlibrary/plugins/upstream/mybooks.py
 #, python-format
-msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
-msgstr "继续 <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+msgid "Continue %(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
+msgstr "继续%(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
@@ -9220,4 +9544,10 @@ msgstr "经典电子书"
 #~ msgid_plural "There are %(n)s people waiting for this book."
 #~ msgstr[0] "有一个人正在等待这本书籍。"
 #~ msgstr[1] "有%(n)s个人正在等待这本书籍。"
+
+#~ msgid "You might also like"
+#~ msgstr "您可能还喜欢"
+
+#~ msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+#~ msgstr "继续 <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
 
