@@ -3229,8 +3229,8 @@ msgid "Read at Wikisource"
 msgstr "Wikisource'ta Oku"
 
 #: books/RelatedWorksCarousel.html
-msgid "You might also like"
-msgstr "Bunları da beğenebilirsiniz"
+msgid "Available books like this one"
+msgstr "Bunun gibi mevcut kitaplar"
 
 #: books/RelatedWorksCarousel.html
 msgid "More by this author"
@@ -3754,6 +3754,25 @@ msgstr "-- Yeni bir esere taşı"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "Bu Baskı"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "Başarısız Kontroller ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "Başarılı Kontroller ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} puan"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "Bu kayıt yakın zamanda düzenlendi ve bu puan kartı güncel değil. Bir dakika içinde güncellenmesi beklenmektedir."
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7494,6 +7513,11 @@ msgid "Templates in the website are disabled now. Editing them will not have any
 msgstr "Web sitesindeki şablonlar şu anda devre dışıdır. Bunları düzenlemek herhangi bir etkiye sahip olmayacaktır."
 
 #: EditionNavBar.html
+#, python-format
+msgid "This book is currently unavailable on Open Library, check out %(link_start)savailable alternatives%(link_end)s."
+msgstr "Bu kitap şu anda Open Library'de mevcut değil, %(link_start)smevcut alternatiflere%(link_end)s göz atın."
+
+#: EditionNavBar.html
 msgid "Go to previous section"
 msgstr "Önceki bölüme git"
 
@@ -8061,6 +8085,316 @@ msgstr "Kaydının detayları"
 msgid "Unknown"
 msgstr "Şimdi"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "Çevrimiçi olarak tam erişilebilir (okunabilir / ödünç alınabilir)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "Ödünç alınabilir ve okunabilir kitaplara okuyucular, araştırmacılar ve tüm kullanıcılar tarafından erişilebilir."
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "İçeride ara özelliğiyle alıntılar görüntülenebilir"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "İçeride aramaya izin veren kitaplar, kullanıcıların kitap içindeki ilgili içeriği hızlıca bulmasını sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "Açık erişim (tamamen incelenebilir)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "Tamamen herkese açık kitaplar çevrimiçi olarak okunabilir veya herhangi bir kısıtlama olmadan indirilebilir, bu da kullanıcılara mükemmel erişim sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "Satın alma seçenekleri var"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "Bir ISBN, Amazon ASIN tanımlayıcısı veya BWB tanımlayıcısı, kullanıcıların kitabı perakendecilerden satın almasını sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "Kütüphane seçenekleri var (ISBN veya OCLC)"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "ISBN veya OCLC numaraları, kullanıcıların kitabı kütüphane kataloglarında bulmasını sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "Hayran kurgusu bağlantısı var (Archive of Our Own)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "Archive of Our Own'a bağlantı, okuyucuların ilgili hayranlar tarafından oluşturulan eserleri keşfetmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "Wikipedia bağlantısı var"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "Bir Wikipedia bağlantısı, eser hakkında ek bağlam ve ansiklopedik bilgi sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "İlk cümle var"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "İlk cümle, kullanıcılara yazım stili hakkında anında bir fikir verir."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "Başlık alanı var"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "Bir başlık, keşif için gereklidir ve kullanıcıların kitabı arama sonuçlarında ve kataloglarda tanımlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "Yazar bilgisi var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "Yazar bilgisi keşif için çok önemlidir ve kullanıcıların aynı yazarın diğer eserlerini bulmasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "Tür/kategori etiketleri var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "Tür etiketleri, kullanıcıların türe veya kategoriye göre arama yaparak ilgili kitapları keşfetmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "Seri bilgisi var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "Seri bilgisi, kullanıcıların seriye göre arama yapmasına ve ilgili kitapları keşfetmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "İçindekiler tablosu var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "İçindekiler tablosu girdileri dizine eklenir ve aranabilir, bu da keşfedilebilirliği artırır."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "DDC veya LCC sınıflandırması var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "Dewey Decimal veya Library of Congress sınıflandırmaları, düzenleme ve raf gezinme konusunda yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "Dil bilgisi var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "Dil bilgisi, kullanıcıların tercih ettikleri dilde kitapları filtrelemesine ve bulmasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "ISBN var"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "ISBN'ler barkod tarayıcıyla arama yapılmasına olanak tanır ve tanımlamaya yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "Lexile ölçümü var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Lexile ölçümleri, eğitimcilerin ve ebeveynlerin uygun okuma seviyesindeki kitapları bulmasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "Yıldız değerlendirmeleri var (sıralama sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "Yıldız değerlendirmeleri arama sıralamasına katkıda bulunur, böylece daha iyi değerlendirilen kitaplar daha üstte görünür."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "Okuma günlüklerinde görünür (sıralama sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "Okuma günlüklerinde bulunmak, arama sıralamasına yardımcı olan bir popülerlik sinyalidir."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "Listelerde görünür (sıralama sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "Kullanıcı listelerinde bulunmak, arama sıralamasına yardımcı olan bir popülerlik sinyalidir."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "Katkıda bulunan isimleri var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "Katkıda bulunan isimleri (editörler, illüstratörler, çevirmenler), katkıda bulunana göre arama yapılmasını sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "Açıklaması var"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "Bir açıklama, kullanıcıların kitaba erişmeden önce ne hakkında olduğunu anlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "Kapak resmi var"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "Bir kapak resmi, kullanıcıların kitabı görsel olarak tanımasına yardımcı olur ve arama sonuçlarında daha çekici hale getirir."
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "Bir içindekiler tablosu, kullanıcıların kitabın yapısını ve kapsamını değerlendirmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "Tür etiketleri, kullanıcıların bir kitabın ilgi alanlarına uyup uymadığını hızlıca değerlendirmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "Yıldız değerlendirmeleri var (popülerlik sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "Diğer okuyuculardan gelen yıldız değerlendirmeleri, kullanıcıların kitabın kalitesini ve nasıl karşılandığını değerlendirmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "Zengin bir açıklaması var (50+ karakter)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "Ayrıntılı bir açıklama (50+ karakter), kullanıcıların uygunluğu değerlendirmesine yardımcı olacak daha fazla bağlam sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "Okuma günlüğü etkinliği var (popülerlik sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "Diğer kullanıcıların okuma günlüğü etkinliği, kitabın aktif olarak okunduğunu gösterir."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "Listelerde görünür (popülerlik sinyali)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "Küratörlü listelerde bulunmak, kullanıcıların uygunluğu ve topluluk ilgisini değerlendirmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "Sayfa sayısı var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "Sayfa sayısı, kullanıcıların kitabın uzunluğunu ve okuma süresini tahmin etmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "Seri bilgisi, kullanıcıların kitabın daha geniş bir anlatı içindeki yerini anlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "Yazar fotoğrafı var"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "Bir yazar fotoğrafı, kullanıcıların yazarı görsel olarak tanımasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "İlk yayın yılı var"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "İlk yayın yılı, kullanıcıların eserin ilk olarak ne zaman ortaya çıktığını anlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publication year"
+msgstr "Yayınlanma Yılı"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "Yayın yılı, kullanıcıların içeriğin bağlamını ve güncelliğini anlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "Yazar biyografisi var"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "Bir yazar biyografisi, kullanıcıların yazarın geçmişini ve uzmanlığını anlamasına yardımcı olur."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publisher"
+msgstr "Yayıncı"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "Yayıncı bilgisi, kullanıcıların kitabın güvenilirliğini ve kaynağını değerlendirmesine yardımcı olur."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "Yazar bağlantıları var"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr "Yazarın web sitelerine veya profillerine bağlantılar, yazar hakkında ek bağlam sağlar."
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr "Baskı Puan Kartı"
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr "Erişim"
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr "Keşif"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr "Bu baskı, aramalarda ve önerilerde ne kadar doğru bir şekilde öne çıkarılabiliyor?"
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr "Değerlendirme"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr "Bir kullanıcı, bu baskıya erişmeden önce ihtiyaçlarıyla ne kadar iyi ilgili olduğunu belirleyebilir?"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -8205,11 +8539,6 @@ msgid "Has work (orphaned)"
 msgstr "Esere sahip (sahipsiz)"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
-msgid "Has publication year"
-msgstr "Yayınlanma Yılı"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has cover"
 msgstr "Kapak var"
 
@@ -8217,11 +8546,6 @@ msgstr "Kapak var"
 #, fuzzy
 msgid "Has language"
 msgstr "Dil"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
-msgid "Has publisher"
-msgstr "Yayıncı"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
@@ -8440,8 +8764,8 @@ msgstr "Bir şifre seç"
 
 #: openlibrary/plugins/upstream/mybooks.py
 #, python-format
-msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
-msgstr "<a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a> devam et"
+msgid "Continue %(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
+msgstr "Devam et %(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
@@ -9103,4 +9427,10 @@ msgstr "Klasik e-kitaplar"
 #~ msgid_plural "There are %(n)s people waiting for this book."
 #~ msgstr[0] "Bu kitabı bekleyen bir kişi var."
 #~ msgstr[1] "Bu kitabı bekleyen %(n)s kişi var."
+
+#~ msgid "You might also like"
+#~ msgstr "Bunları da beğenebilirsiniz"
+
+#~ msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+#~ msgstr "<a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a> devam et"
 
