@@ -1318,10 +1318,6 @@ msgid_plural "%(count)d Current Loans"
 msgstr[0] "%(count)d préstamo actual"
 msgstr[1] "%(count)d préstamos actuales"
 
-#: account/loans.html admin/loans_table.html
-msgid "Loan Expires"
-msgstr "Vencimiento de préstamo"
-
 #: account/loans.html
 msgid "Loan actions"
 msgstr "Acciones de préstamo"
@@ -1333,11 +1329,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Hay %(count)d persona esperando este libro."
 msgstr[1] "Hay %(count)d personas esperando por este libro."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Not yet downloaded."
 msgstr "Aún no se ha descargado."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Download Now"
 msgstr "Descargar ahora"
 
@@ -2377,6 +2373,10 @@ msgid_plural "%d Current Loans"
 msgstr[0] "%d préstamo actual"
 msgstr[1] "%d préstamos actuales"
 
+#: admin/loans_table.html
+msgid "Loan Expires"
+msgstr "Vencimiento de préstamo"
+
 #: RecentChanges.html RecentChangesUsers.html admin/ip/view.html admin/loans_table.html admin/people/edits.html recentchanges/render.html recentchanges/updated_records.html
 msgid "What"
 msgstr "Qué"
@@ -2391,7 +2391,7 @@ msgstr "Esperando desde %(date)s"
 msgid "#%(num_position)d among %(num_waitlist)d people waiting for this book"
 msgstr "#%(num_position)d entre %(num_waitlist)d personas en lista de espera para este libro"
 
-#: ManageLoansButtons.html admin/loans_table.html
+#: admin/loans_table.html
 #, python-format
 msgid "Borrowed %(date)s"
 msgstr "Prestado %(date)s"
@@ -3686,6 +3686,25 @@ msgstr "-- Mover a una nueva obra"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "Esta edición"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "Comprobaciones fallidas ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "Comprobaciones superadas ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} puntos"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "Este registro se ha editado recientemente y esta tarjeta de puntuación está desactualizada. Debería actualizarse en un minuto o así."
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7490,13 +7509,6 @@ msgstr "Prestado"
 msgid "Locate"
 msgstr "Buscar"
 
-#: ManageLoansButtons.html
-#, python-format
-msgid "There is one person waiting for this book."
-msgid_plural "There are %(n)s people waiting for this book."
-msgstr[0] "Hay una persona esperando este libro."
-msgstr[1] "Hay %(n)s personas esperando este libro."
-
 #: ManageWaitlistButton.html
 #, python-format
 msgid "Waiting for %d day"
@@ -7939,6 +7951,314 @@ msgstr "[Registro eliminado]"
 msgid "Unknown"
 msgstr "Desconocido"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "Se puede acceder por completo en línea (leer / tomar prestado)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "Los libros que se pueden prestar y leer pueden ser consultados por lectores, investigadores y todos los usuarios por igual."
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "Se pueden ver fragmentos mediante la búsqueda interna"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "Los libros que permiten la búsqueda interna permiten a los usuarios encontrar rápidamente contenido relevante dentro del libro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "Acceso abierto (se puede analizar por completo)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "Los libros totalmente públicos se pueden leer en línea o descargar sin ninguna restricción, lo que proporciona un excelente acceso para los usuarios."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "Tiene opciones de compra"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "Un ISBN, un identificador ASIN de Amazon o un identificador BWB permite a los usuarios comprar el libro en tiendas minoristas."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "Tiene opciones de biblioteca (ISBN u OCLC)"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "Los números ISBN u OCLC permiten a los usuarios encontrar el libro a través de los catálogos de bibliotecas."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "Tiene enlace a ficción de fans (Archive of Our Own)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "Un enlace a Archive of Our Own ayuda a los lectores a descubrir obras relacionadas creadas por fans."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "Tiene enlace a Wikipedia"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "Un enlace a Wikipedia proporciona contexto adicional e información enciclopédica sobre la obra."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "Tiene primera frase"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "La primera frase ofrece a los usuarios una idea inmediata del estilo de escritura."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "Tiene campo de título"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "Un título es esencial para el descubrimiento y ayuda a los usuarios a identificar el libro en los resultados de búsqueda y catálogos."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "Tiene información del autor"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "La información del autor es crucial para el descubrimiento y ayuda a los usuarios a encontrar otras obras del mismo autor."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "Tiene etiquetas de género/categoría"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "Las etiquetas de género ayudan a los usuarios a buscar por género o categoría para descubrir libros relevantes."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "Tiene información de la serie"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "La información de la serie ayuda a los usuarios a buscar por serie y descubrir libros relacionados."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "Tiene índice de contenidos"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "Las entradas del índice de contenidos están indexadas y son buscables, lo que mejora la capacidad de descubrimiento."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "Tiene clasificación DDC o LCC"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "Las clasificaciones Decimal Dewey o de la Biblioteca del Congreso ayudan con la organización y la exploración en estanterías."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "Tiene información del idioma"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "La información del idioma ayuda a los usuarios a filtrar y encontrar libros en su idioma preferido."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "Tiene ISBN"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "Los ISBN permiten la búsqueda mediante escáner de código de barras y ayudan con la identificación."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "Tiene medida Lexile"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Las medidas Lexile ayudan a educadores y padres a encontrar libros con el nivel de lectura adecuado."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "Tiene valoraciones por estrellas (señal de clasificación)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "Las valoraciones por estrellas contribuyen a la clasificación de búsqueda, de modo que los libros mejor valorados aparecen más arriba."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "Aparece en registros de lectura (señal de clasificación)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "La presencia en registros de lectura es una señal de popularidad que ayuda con la clasificación de búsqueda."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "Aparece en listas (señal de clasificación)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "La presencia en listas de usuarios es una señal de popularidad que ayuda con la clasificación de búsqueda."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "Tiene nombres de colaboradores"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "Los nombres de los colaboradores (editores, ilustradores, traductores) permiten buscar por colaborador."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "Tiene una descripción"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "Una descripción ayuda a los usuarios a entender de qué trata el libro antes de acceder a él."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "Tiene imagen de portada"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "Una imagen de portada ayuda a los usuarios a identificar visualmente el libro y lo hace más atractivo en los resultados de búsqueda."
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "Un índice de contenidos ayuda a los usuarios a evaluar la estructura y el alcance del libro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "Las etiquetas de género ayudan a los usuarios a evaluar rápidamente si un libro coincide con sus intereses."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "Tiene valoraciones por estrellas (señal de popularidad)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "Las valoraciones por estrellas de otros lectores ayudan a los usuarios a evaluar la calidad y la acogida del libro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "Tiene una descripción detallada (más de 50 caracteres)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "Una descripción detallada (más de 50 caracteres) proporciona más contexto para ayudar a los usuarios a evaluar la relevancia."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "Tiene actividad de registro de lectura (señal de popularidad)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "La actividad de registro de lectura de otros usuarios indica que el libro se está leyendo activamente."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "Aparece en listas (señal de popularidad)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "La presencia en listas seleccionadas ayuda a los usuarios a evaluar la relevancia y el interés de la comunidad."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "Tiene número de páginas"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "El número de páginas ayuda a los usuarios a estimar la longitud y el tiempo necesario para el libro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "La información de la serie ayuda a los usuarios a entender el lugar del libro dentro de una narrativa más amplia."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "Tiene foto del autor"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "Una foto del autor ayuda a los usuarios a reconocer visualmente al autor."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "Tiene año de primera publicación"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "El año de primera publicación ayuda a los usuarios a entender cuándo apareció originalmente la obra."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publication year"
+msgstr "Tiene año de publicación"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "El año de publicación ayuda a los usuarios a entender el contexto y la vigencia del contenido."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "Tiene biografía del autor"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "Una biografía del autor ayuda a los usuarios a entender la trayectoria y la experiencia del autor."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publisher"
+msgstr "Tiene editorial"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "La información de la editorial ayuda a los usuarios a evaluar la credibilidad y el origen del libro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "Tiene enlaces del autor"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr "Los enlaces a sitios web o perfiles del autor proporcionan contexto adicional sobre el autor."
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr "Tarjeta de puntuación de la edición"
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr "Acceso"
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr "Descubrimiento"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr "¿Qué tan bien se puede mostrar con precisión esta edición en búsquedas y recomendaciones?"
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr "Evaluación"
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr "¿Qué tan bien puede un usuario determinar si esta edición es relevante para sus necesidades antes de acceder a ella?"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Resultados de la búsqueda"
@@ -8077,20 +8397,12 @@ msgid "Has work (orphaned)"
 msgstr "Tiene obra (huérfana)"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publication year"
-msgstr "Tiene año de publicación"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has cover"
 msgstr "Tiene portada"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has language"
 msgstr "Tiene idioma"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publisher"
-msgstr "Tiene editorial"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 2 editions"
@@ -9412,4 +9724,9 @@ msgstr "Libros electrónicos clásicos"
 
 #~ msgid "Search for other books from %(publisher)s"
 #~ msgstr "Buscar otros libros de %(publisher)s"
+
+#~ msgid "There is one person waiting for this book."
+#~ msgid_plural "There are %(n)s people waiting for this book."
+#~ msgstr[0] "Hay una persona esperando este libro."
+#~ msgstr[1] "Hay %(n)s personas esperando este libro."
 
