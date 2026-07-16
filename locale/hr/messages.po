@@ -1304,10 +1304,6 @@ msgstr[0] "%(count)d trenutačna posudba"
 msgstr[1] "%(count)d trenutačne posudbe"
 msgstr[2] "%(count)d trenutačnih posudbi"
 
-#: account/loans.html admin/loans_table.html
-msgid "Loan Expires"
-msgstr "Posudba isteče"
-
 #: account/loans.html
 msgid "Loan actions"
 msgstr "Radnje posuđivanja"
@@ -1320,11 +1316,11 @@ msgstr[0] "%(count)d osoba čeka na ovu knjigu."
 msgstr[1] "%(count)d osobe čekaju na ovu knjigu."
 msgstr[2] "%(count)d osoba čekaju na ovu knjigu."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Not yet downloaded."
 msgstr "Još nije preuzeto."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Download Now"
 msgstr "Preuzmi sada"
 
@@ -2365,6 +2361,10 @@ msgstr[0] "%d aktualna posudba"
 msgstr[1] "%d aktualne posudbe"
 msgstr[2] "%d aktualnih posudbi"
 
+#: admin/loans_table.html
+msgid "Loan Expires"
+msgstr "Posudba isteče"
+
 #: RecentChanges.html RecentChangesUsers.html admin/ip/view.html admin/loans_table.html admin/people/edits.html recentchanges/render.html recentchanges/updated_records.html
 msgid "What"
 msgstr "Što"
@@ -2379,7 +2379,7 @@ msgstr "Čekam od %(date)s"
 msgid "#%(num_position)d among %(num_waitlist)d people waiting for this book"
 msgstr "%(num_position)d. na redu od %(num_waitlist)d ljudi koji čekaju na ovu knjigu"
 
-#: ManageLoansButtons.html admin/loans_table.html
+#: admin/loans_table.html
 #, python-format
 msgid "Borrowed %(date)s"
 msgstr "Posuđeno %(date)s"
@@ -3659,6 +3659,25 @@ msgstr "– Premjesti u novo djelo"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "Ovo izdanje"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "Neuspjele provjere ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "Uspješne provjere ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} bodova"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "Ovaj zapis je nedavno uređen pa je ovaj rezultat zastario. Trebao bi se ažurirati za otprilike minutu."
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7464,14 +7483,6 @@ msgstr "Posuđeno"
 msgid "Locate"
 msgstr "Lociraj"
 
-#: ManageLoansButtons.html
-#, python-format
-msgid "There is one person waiting for this book."
-msgid_plural "There are %(n)s people waiting for this book."
-msgstr[0] "Jedna osoba čeka na ovu knjigu."
-msgstr[1] "%(n)s osobe čekaju na ovu knjigu."
-msgstr[2] "%(n)s osoba čekaju na ovu knjigu."
-
 #: ManageWaitlistButton.html
 #, python-format
 msgid "Waiting for %d day"
@@ -7911,6 +7922,314 @@ msgstr "[Zapis izbrisan]"
 msgid "Unknown"
 msgstr "Nepoznato"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "Dostupno u cijelosti online (čitanje / posudba)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "Knjige koje se mogu posuditi i čitati dostupne su čitateljima, istraživačima i svim korisnicima podjednako."
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "Mogu se pregledati isječci putem pretraživanja unutar knjige"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "Knjige koje omogućuju pretraživanje unutar sadržaja omogućuju korisnicima da brzo pronađu relevantan sadržaj u knjizi."
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "Otvoreni pristup (moguća potpuna analiza)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "Potpuno javne knjige mogu se čitati online ili preuzeti bez ikakvih ograničenja, što korisnicima pruža izvrstan pristup."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "Ima mogućnosti kupnje"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "ISBN, Amazon ASIN identifikator ili BWB identifikator omogućuju korisnicima kupnju knjige kod prodavača."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "Ima mogućnosti knjižnice (ISBN ili OCLC)"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "ISBN ili OCLC brojevi omogućuju korisnicima da pronađu knjigu putem knjižničnih kataloga."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "Ima poveznicu na fan fiction (Archive of Our Own)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "Poveznica na Archive of Our Own pomaže čitateljima otkriti povezana djela koja su stvorili obožavatelji."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "Ima poveznicu na Wikipediju"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "Poveznica na Wikipediju pruža dodatni kontekst i enciklopedijske informacije o djelu."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "Ima prvu rečenicu"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "Prva rečenica daje korisnicima trenutni dojam o stilu pisanja."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "Ima polje naslova"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "Naslov je ključan za otkrivanje i pomaže korisnicima prepoznati knjigu u rezultatima pretraživanja i katalozima."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "Ima informacije o autoru"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "Informacije o autoru ključne su za otkrivanje i pomažu korisnicima pronaći druga djela istog autora."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "Ima oznake žanra/kategorije"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "Oznake žanra pomažu korisnicima pretraživati po žanru ili kategoriji kako bi otkrili relevantne knjige."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "Ima informacije o seriji"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "Informacije o seriji pomažu korisnicima pretraživati po serijama i otkrivati povezane knjige."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "Ima sadržaj"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "Stavke sadržaja su indeksirane i pretražive, što poboljšava mogućnost otkrivanja."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "Ima DDC ili LCC klasifikaciju"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "Deweyeva decimalna klasifikacija ili klasifikacija Kongresne knjižnice pomažu pri organizaciji i pregledavanju polica."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "Ima informacije o jeziku"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "Informacije o jeziku pomažu korisnicima filtrirati i pronaći knjige na željenom jeziku."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "Ima ISBN"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "ISBN-ovi omogućuju pretraživanje pomoću čitača crtičnog koda i pomažu pri identifikaciji."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "Ima Lexile mjeru"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Lexile mjere pomažu edukatorima i roditeljima pronaći knjige prikladne razine čitanja."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "Ima ocjene zvjezdicama (signal za rangiranje)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "Ocjene zvjezdicama doprinose rangiranju u pretraživanju, tako da se bolje ocijenjene knjige prikazuju više."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "Pojavljuje se u dnevnicima čitanja (signal za rangiranje)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "Prisutnost u dnevnicima čitanja signal je popularnosti koji pomaže pri rangiranju u pretraživanju."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "Pojavljuje se na popisima (signal za rangiranje)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "Prisutnost na korisničkim popisima signal je popularnosti koji pomaže pri rangiranju u pretraživanju."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "Ima imena suradnika"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "Imena suradnika (urednika, ilustratora, prevoditelja) omogućuju pretraživanje po suradniku."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "Ima opis"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "Opis pomaže korisnicima razumjeti o čemu se knjiga radi prije nego što joj pristupe."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "Ima sliku naslovnice"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "Slika naslovnice pomaže korisnicima vizualno prepoznati knjigu i čini je privlačnijom u rezultatima pretraživanja."
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "Sadržaj pomaže korisnicima procijeniti strukturu i opseg knjige."
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "Oznake žanra pomažu korisnicima brzo procijeniti odgovara li knjiga njihovim interesima."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "Ima ocjene zvjezdicama (signal popularnosti)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "Ocjene zvjezdicama drugih čitatelja pomažu korisnicima procijeniti kvalitetu i prijem knjige."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "Ima detaljan opis (50+ znakova)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "Detaljan opis (50+ znakova) pruža više konteksta koji korisnicima pomaže procijeniti relevantnost."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "Ima aktivnost u dnevniku čitanja (signal popularnosti)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "Aktivnost u dnevniku čitanja drugih korisnika signalizira da se knjiga aktivno čita."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "Pojavljuje se na popisima (signal popularnosti)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "Prisutnost na odabranim popisima pomaže korisnicima procijeniti relevantnost i interes zajednice."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "Ima broj stranica"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "Broj stranica pomaže korisnicima procijeniti duljinu knjige i potrebno vrijeme za čitanje."
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "Informacije o seriji pomažu korisnicima razumjeti mjesto knjige u širem narativu."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "Ima fotografiju autora"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "Fotografija autora pomaže korisnicima vizualno prepoznati autora."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "Ima godinu prvog izdanja"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "Godina prvog izdanja pomaže korisnicima razumjeti kada se djelo izvorno pojavilo."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publication year"
+msgstr "Sadrži godinu izdanja"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "Godina izdanja pomaže korisnicima razumjeti kontekst i aktualnost sadržaja."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "Ima biografiju autora"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "Biografija autora pomaže korisnicima razumjeti autorovu pozadinu i stručnost."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publisher"
+msgstr "Sadrži izdavača"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "Informacije o izdavaču pomažu korisnicima procijeniti vjerodostojnost i izvor knjige."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "Ima poveznice na autora"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr "Poveznice na autorove web-stranice ili profile pružaju dodatni kontekst o autoru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr "Rezultat izdanja"
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr "Pristup"
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Rezultati pretrage"
@@ -8048,20 +8367,12 @@ msgid "Has work (orphaned)"
 msgstr "Sadrži djelo (bez nositelja prava)"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publication year"
-msgstr "Sadrži godinu izdanja"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has cover"
 msgstr "Sadrži naslovnicu"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has language"
 msgstr "Sadrži jezik"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publisher"
-msgstr "Sadrži izdavača"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 2 editions"
@@ -8772,4 +9083,10 @@ msgstr "Klasične e-knjige"
 
 #~ msgid "Search for other books from %(publisher)s"
 #~ msgstr "Traži druge knjige od %(publisher)s"
+
+#~ msgid "There is one person waiting for this book."
+#~ msgid_plural "There are %(n)s people waiting for this book."
+#~ msgstr[0] "Jedna osoba čeka na ovu knjigu."
+#~ msgstr[1] "%(n)s osobe čekaju na ovu knjigu."
+#~ msgstr[2] "%(n)s osoba čekaju na ovu knjigu."
 
