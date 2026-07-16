@@ -1323,10 +1323,6 @@ msgid_plural "%(count)d Current Loans"
 msgstr[0] "%(count)d prèstidu atuale"
 msgstr[1] "%(count)d prèstidos atuales"
 
-#: account/loans.html admin/loans_table.html
-msgid "Loan Expires"
-msgstr "Iscadèntzia de su prèstidu"
-
 #: account/loans.html
 msgid "Loan actions"
 msgstr "Atziones de prèstidu"
@@ -1338,11 +1334,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "B'at %(count)d persone isetende pro custu libru."
 msgstr[1] "Bi sunt %(count)d persones isetende pro custu libru."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Not yet downloaded."
 msgstr "Galu no iscarrigadu."
 
-#: ManageLoansButtons.html account/loans.html
+#: account/loans.html
 msgid "Download Now"
 msgstr "Iscàrriga como"
 
@@ -2382,6 +2378,10 @@ msgid_plural "%d Current Loans"
 msgstr[0] "%d prèstidu atuale"
 msgstr[1] "%d prèstidos atuales"
 
+#: admin/loans_table.html
+msgid "Loan Expires"
+msgstr "Iscadèntzia de su prèstidu"
+
 #: RecentChanges.html RecentChangesUsers.html admin/ip/view.html admin/loans_table.html admin/people/edits.html recentchanges/render.html recentchanges/updated_records.html
 msgid "What"
 msgstr "Ite"
@@ -2396,7 +2396,7 @@ msgstr "Isetende dae su %(date)s"
 msgid "#%(num_position)d among %(num_waitlist)d people waiting for this book"
 msgstr "#%(num_position)d intre %(num_waitlist)d persones isetende pro custu libru"
 
-#: ManageLoansButtons.html admin/loans_table.html
+#: admin/loans_table.html
 #, python-format
 msgid "Borrowed %(date)s"
 msgstr "Pigadu in prèstidu su %(date)s"
@@ -3170,8 +3170,8 @@ msgid "Read at Wikisource"
 msgstr "Leghe in Wikisource"
 
 #: books/RelatedWorksCarousel.html
-msgid "You might also like"
-msgstr "Ti diat pòdere agradare fintzas"
+msgid "Available books like this one"
+msgstr "Libros disponìbiles simigiantes a custu"
 
 #: books/RelatedWorksCarousel.html
 msgid "More by this author"
@@ -3695,6 +3695,25 @@ msgstr "-- Tràmuda cara a un'òpera noa"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "Custa editzione"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "Controllos fallidos ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "Controllos superados ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} puntos"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "Custu registru est istadu modificadu de reghente e custa iscorecard est betza. Diat dèvere atualizare in unu minutu o gasi."
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7396,6 +7415,11 @@ msgid "Templates in the website are disabled now. Editing them will not have any
 msgstr "Sos modellos in su situ como sunt disativados. Sa modìfica issoro no at a tènnere perunu efetu in su situ web in lìnia."
 
 #: EditionNavBar.html
+#, python-format
+msgid "This book is currently unavailable on Open Library, check out %(link_start)savailable alternatives%(link_end)s."
+msgstr "Custu libru non est disponìbile in Open Library in custu momentu, pòmpia·ti %(link_start)ssas alternativas disponìbiles%(link_end)s."
+
+#: EditionNavBar.html
 #, fuzzy
 msgid "Go to previous section"
 msgstr "Bae a sa setzione imbeniente"
@@ -7521,13 +7545,6 @@ msgstr "Pigadu in prèstidu"
 #: LocateButton.html
 msgid "Locate"
 msgstr "Atzapa"
-
-#: ManageLoansButtons.html
-#, python-format
-msgid "There is one person waiting for this book."
-msgid_plural "There are %(n)s people waiting for this book."
-msgstr[0] "B'at una persone isetende pro custu libru."
-msgstr[1] "Bi sunt %(n)s persones isetende pro custu libru."
 
 #: ManageWaitlistButton.html
 #, python-format
@@ -7971,6 +7988,316 @@ msgstr "ID de registru"
 msgid "Unknown"
 msgstr "Nùmene disconnotu"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "Si podet acuntzire de totu online (léghere / imprestare)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "Sos libros imprestàbiles e leghìbiles podent èssere acuntzidos dae letores, chircadores e totu sos utentes."
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "Si podent bìdere fragmentos cun sa chirca a intro"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "Sos libros chi permitint sa chirca a intro permitint a sos utentes de agatare in presse cuntenutos importantes a intro de su libru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "Atzessu abertu (si podet analizare de totu)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "Sos libros de totu pùblicos podent èssere leghidos online o iscarrigados sena perunu limitatzione, dende un'atzessu eletzente a sos utentes."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "Tenet optziones de compra"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "Un'ISBN, un'identificadore Amazon ASIN, o un'identificadore BWB permitint a sos utentes de comporare su libru dae sos bendidores."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "Tenet optziones de biblioteca (ISBN o OCLC)"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "Sos nùmeros ISBN o OCLC permitint a sos utentes de agatare su libru in sos catàlogos de sas bibliotecas."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "Tenet un'ligàmene a fan fiction (Archive of Our Own)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "Un'ligàmene a Archive of Our Own agiuat sos letores a iscoberrere òperas creadas dae fans relatas."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "Tenet un'ligàmene a Wikipedia"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "Un'ligàmene a Wikipedia dat unu cuntestu additzionale e informatziones entziclopèdicas subra s'òpera."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "Tenet sa prima fràsia"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "Sa prima fràsia dat a sos utentes unu gustu imediatu de s'istile de iscritura."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "Tenet su campu tìtulu"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "Unu tìtulu est essentziale pro sa iscoberta e agiuat sos utentes a identificare su libru in sos resultados de chirca e in sos catàlogos."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "Tenet informatziones subra s'autore"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "Sas informatziones subra s'autore sunt cruciales pro sa iscoberta e agiuant sos utentes a agatare àteras òperas de su matessi autore."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "Tenet etichetas de gènere/categoria"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "Sas etichetas de gènere agiuant sos utentes a chircare pro gènere o categoria pro iscoberrere libros importantes."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "Tenet informatziones subra sa serie"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "Sas informatziones subra sa serie agiuant sos utentes a chircare pro serie e a iscoberrere libros relatos."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "Tenet s'ìndighe"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "Sas bortzes de s'ìndighe sunt indicizadas e chircàbiles, milliorende sa possibilidade de iscoberta."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "Tenet classificatzione DDC o LCC"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "Sas classificatziones Dewey Decimal o Library of Congress agiuant cun s'organizatzione e sa navigatzione in sos ripianos."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "Tenet informatziones subra sa limba"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "Sas informatziones subra sa limba agiuant sos utentes a filtrare e agatare libros in sa limba preferida issoro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "Tenet ISBN"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "Sos ISBN permitint sa chirca cun iscanner de còdighe a barras e agiuant cun s'identificatzione."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "Tenet mesura Lexile"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Sas mesuras Lexile agiuant a educadores e genitores a agatare libros a su livellu de leghidura giustu."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "Tenet valutatziones a isteddos (sinnale de classificatzione)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "Sas valutatziones a isteddos cuntribuint a sa classificatzione de chirca gasi chi sos libros mègius valutados aparent prus in artu."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "Aparet in sos registros de leghidura (sinnale de classificatzione)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "Sa presèntzia in sos registros de leghidura est unu sinnale de popularidade chi agiuat cun sa classificatzione de chirca."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "Aparet in sas listas (sinnale de classificatzione)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "Sa presèntzia in sas listas de sos utentes est unu sinnale de popularidade chi agiuat cun sa classificatzione de chirca."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "Tenet nòmines de contribuidores"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "Sos nòmines de contribuidores (editores, illustradores, traduidores) permitint sa chirca pro contribuidore."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "Tenet una descritzione"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "Una descritzione agiuat sos utentes a cumprèndere de ite tratat su libru in antis de lu acuntzire."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "Tenet immàgine de cobertura"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "Un'immàgine de cobertura agiuat sos utentes a identificare visivamente su libru e lu rendet prus atraente in sos resultados de chirca."
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "S'ìndighe agiuat sos utentes a valutare sa istrutura e s'ispàtziu de su libru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "Sas etichetas de gènere agiuant sos utentes a valutare in presse si unu libru currispondet a sos interessos issoro."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "Tenet valutatziones a isteddos (sinnale de popularidade)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "Sas valutatziones a isteddos de àteros letores agiuant sos utentes a valutare sa calidade e s'atzoglimentu de su libru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "Tenet una descritzione rica (prus de 50 caràteres)"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "Una descritzione detalliada (prus de 50 caràteres) dat prus cuntestu pro agiuare sos utentes a valutare sa pertinèntzia."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "Tenet atividade in su registru de leghidura (sinnale de popularidade)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "S'atividade de registru de leghidura de àteros utentes sinnalat chi su libru est essende leghidu ativamente."
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "Aparet in sas listas (sinnale de popularidade)"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "Sa presèntzia in sas listas curadas agiuat sos utentes a valutare sa pertinèntzia e s'interessu de sa comunidade."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "Tenet nùmeru de pàginas"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "Su nùmeru de pàginas agiuat sos utentes a istimare sa longària e su tempus netzessàriu pro su libru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "Sas informatziones subra sa serie agiuant sos utentes a cumprèndere su logu de su libru in una narratzione prus manna."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "Tenet fotografia de s'autore"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "Una fotografia de s'autore agiuat sos utentes a reconnòschere visivamente s'autore."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "Tenet s'annu de prima publicatzione"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "S'annu de prima publicatzione agiuat sos utentes a cumprèndere cando s'òpera est aparta pro sa prima borta."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publication year"
+msgstr "Annu de publicatzione"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "S'annu de publicatzione agiuat sos utentes a cumprèndere su cuntestu e s'atualidade de su cuntenutu."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "Tenet biografia de s'autore"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "Una biografia de s'autore agiuat sos utentes a cumprèndere sa formatzione e s'esperièntzia de s'autore."
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+#, fuzzy
+msgid "Has publisher"
+msgstr "Editore"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "Sas informatziones subra s'editore agiuant sos utentes a valutare sa credibilidade e sa fonte de su libru."
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "Tenet ligàmenes a s'autore"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr "Sos ligàmenes a sitos web o profilos de s'autore dant unu cuntestu additzionale subra s'autore."
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -8123,11 +8450,6 @@ msgstr "At traballu (orfanu)"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
-msgid "Has publication year"
-msgstr "Annu de publicatzione"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
 msgid "Has cover"
 msgstr "Iscoberi"
 
@@ -8135,11 +8457,6 @@ msgstr "Iscoberi"
 #, fuzzy
 msgid "Has language"
 msgstr "Limba"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-#, fuzzy
-msgid "Has publisher"
-msgstr "Editore"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
@@ -8361,8 +8678,8 @@ msgstr "Issèbera una crae de intrada"
 
 #: openlibrary/plugins/upstream/mybooks.py
 #, python-format
-msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
-msgstr "Continua <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+msgid "Continue %(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
+msgstr ""
 
 #: openlibrary/plugins/worksearch/code.py
 #, fuzzy
@@ -9390,4 +9707,15 @@ msgstr "Libru eletrònicu clàssicu"
 
 #~ msgid "Search for other books from %(publisher)s"
 #~ msgstr "Chirca àteros libros de %(publisher)s"
+
+#~ msgid "You might also like"
+#~ msgstr "Ti diat pòdere agradare fintzas"
+
+#~ msgid "There is one person waiting for this book."
+#~ msgid_plural "There are %(n)s people waiting for this book."
+#~ msgstr[0] "B'at una persone isetende pro custu libru."
+#~ msgstr[1] "Bi sunt %(n)s persones isetende pro custu libru."
+
+#~ msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+#~ msgstr "Continua <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
 
