@@ -3132,8 +3132,8 @@ msgid "Read at Wikisource"
 msgstr "Wikisourceで読む"
 
 #: books/RelatedWorksCarousel.html
-msgid "You might also like"
-msgstr "こちらもおすすめ"
+msgid "Available books like this one"
+msgstr "この本に似た利用可能な書籍"
 
 #: books/RelatedWorksCarousel.html
 msgid "More by this author"
@@ -3646,6 +3646,25 @@ msgstr "-- 新しい作品に移動"
 #: books/edit/edition.html
 msgid "This Edition"
 msgstr "この版"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Failing Checks ({count})"
+msgstr "不合格のチェック ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "Passing Checks ({count})"
+msgstr "合格したチェック ({count})"
+
+#: books/edit/edition.html
+#, python-brace-format
+msgid "{score} points"
+msgstr "{score} ポイント"
+
+#: books/edit/edition.html
+msgid "This record was recently edited and this scorecard is outdated. It should update in a minute or so."
+msgstr "このレコードは最近編集されたため、このスコアカードは古くなっています。1分程度で更新されるはずです。"
 
 #: books/edit/edition.html
 msgid "Enter the title of this specific edition."
@@ -7304,6 +7323,11 @@ msgid "Templates in the website are disabled now. Editing them will not have any
 msgstr "ウェブサイトのテンプレートは現在無効です。編集してもライブサイトには影響しません。"
 
 #: EditionNavBar.html
+#, python-format
+msgid "This book is currently unavailable on Open Library, check out %(link_start)savailable alternatives%(link_end)s."
+msgstr "この本は現在Open Libraryでは利用できません。%(link_start)s利用可能な代替版%(link_end)sをご確認ください。"
+
+#: EditionNavBar.html
 msgid "Go to previous section"
 msgstr "前のセクションへ"
 
@@ -7856,6 +7880,314 @@ msgstr "[レコード削除済み]"
 msgid "Unknown"
 msgstr "不明"
 
+#: openlibrary/edition_scorecard.py
+msgid "Can be accessed in full online (read / borrowed)"
+msgstr "オンラインで全文にアクセス可能（閲覧・貸出）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Borrowable and readable books can be accessed by readers, researchers, and all patrons alike."
+msgstr "貸出・閲覧可能な本は、読者、研究者、すべての利用者が利用できます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Can view snippets via search inside"
+msgstr "内部検索でスニペットを閲覧可能"
+
+#: openlibrary/edition_scorecard.py
+msgid "Books that allow search inside enable patrons to quickly find relevant content within the book."
+msgstr "内部検索が可能な本は、利用者が本の中から関連するコンテンツを素早く見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Open access (can analyze in full)"
+msgstr "オープンアクセス（全文を分析可能）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Fully public books can be read online or downloaded without any restrictions, providing excellent access for patrons."
+msgstr "完全に公開されている本は、制限なくオンラインで閲覧またはダウンロードでき、利用者に優れたアクセスを提供します。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has purchase options"
+msgstr "購入オプションあり"
+
+#: openlibrary/edition_scorecard.py
+msgid "An ISBN, Amazon ASIN identifier, or BWB identifier enables patrons to purchase the book from retailers."
+msgstr "ISBN、Amazon ASIN識別子、またはBWB識別子により、利用者は小売店から本を購入できます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has library options (ISBN or OCLC)"
+msgstr "図書館オプションあり（ISBNまたはOCLC）"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBN or OCLC numbers enable patrons to find the book through library catalogs."
+msgstr "ISBNまたはOCLC番号により、利用者は図書館目録から本を見つけることができます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has fan fiction link (Archive of Our Own)"
+msgstr "ファンフィクションのリンクあり（Archive of Our Own）"
+
+#: openlibrary/edition_scorecard.py
+msgid "A link to Archive of Our Own helps readers discover related fan-created works."
+msgstr "Archive of Our Ownへのリンクは、読者が関連するファン制作作品を見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Wikipedia link"
+msgstr "Wikipediaリンクあり"
+
+#: openlibrary/edition_scorecard.py
+msgid "A Wikipedia link provides additional context and encyclopedic information about the work."
+msgstr "Wikipediaリンクは、作品に関する追加の背景情報や百科事典的な情報を提供します。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first sentence"
+msgstr "冒頭の一文あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first sentence gives patrons an immediate taste of the writing style."
+msgstr "冒頭の一文は、利用者に文体をすぐに感じ取ってもらうのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has title field"
+msgstr "タイトル項目あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "A title is essential for discovery and helps patrons identify the book in search results and catalogs."
+msgstr "タイトルは発見に不可欠であり、利用者が検索結果や目録で本を識別するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author information"
+msgstr "著者情報あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Author information is crucial for discovery and helps patrons find other works by the same author."
+msgstr "著者情報は発見にとって重要であり、利用者が同じ著者の他の作品を見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has genre/category tags"
+msgstr "ジャンル／カテゴリタグあり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons search by genre or category to discover relevant books."
+msgstr "ジャンルタグは、利用者がジャンルやカテゴリで検索して関連する本を見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has series information"
+msgstr "シリーズ情報あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons search by series and discover related books."
+msgstr "シリーズ情報は、利用者がシリーズで検索して関連する本を見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has table of contents"
+msgstr "目次あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Table of contents entries are indexed and searchable, improving discoverability."
+msgstr "目次の項目はインデックス化され検索可能なため、発見しやすさが向上します。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has DDC or LCC classification"
+msgstr "DDCまたはLCC分類あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Dewey Decimal or Library of Congress classifications help with organization and shelf browsing."
+msgstr "デューイ十進分類法や米国議会図書館分類法は、整理や書架での閲覧に役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has language information"
+msgstr "言語情報あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Language information helps patrons filter and find books in their preferred language."
+msgstr "言語情報は、利用者が希望する言語で本を絞り込んで見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has ISBN"
+msgstr "ISBNあり"
+
+#: openlibrary/edition_scorecard.py
+msgid "ISBNs allow searching by barcode scanner and help with identification."
+msgstr "ISBNはバーコードスキャナーでの検索を可能にし、識別に役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has Lexile measure"
+msgstr "Lexile指数あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Lexile measures help educators and parents find books at the appropriate reading level."
+msgstr "Lexile指数は、教育者や保護者が適切な読解レベルの本を見つけるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (ranking signal)"
+msgstr "星評価あり（ランキングシグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings contribute to search ranking so better-rated books surface higher."
+msgstr "星評価は検索ランキングに影響し、評価の高い本がより上位に表示されるようになります。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on reading logs (ranking signal)"
+msgstr "読書記録に登場（ランキングシグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on reading logs is a popularity signal that helps with search ranking."
+msgstr "読書記録に登場することは人気のシグナルであり、検索ランキングに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (ranking signal)"
+msgstr "リストに登場（ランキングシグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on user lists is a popularity signal that helps with search ranking."
+msgstr "ユーザーリストに登場することは人気のシグナルであり、検索ランキングに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has contributor names"
+msgstr "貢献者名あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Contributor names (editors, illustrators, translators) enable searching by contributor."
+msgstr "貢献者名（編集者、イラストレーター、翻訳者）により、貢献者で検索できるようになります。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a description"
+msgstr "説明あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "A description helps patrons understand what the book is about before accessing it."
+msgstr "説明は、利用者が本にアクセスする前にその内容を理解するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has cover image"
+msgstr "表紙画像あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "A cover image helps patrons visually identify the book and makes it more appealing in search results."
+msgstr "表紙画像は、利用者が本を視覚的に識別するのに役立ち、検索結果でより魅力的に見せます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "A table of contents helps patrons evaluate the structure and scope of the book."
+msgstr "目次は、利用者が本の構成や範囲を評価するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Genre tags help patrons quickly assess whether a book matches their interests."
+msgstr "ジャンルタグは、利用者が本が自分の興味に合っているかどうかを素早く判断するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has star ratings (popularity signal)"
+msgstr "星評価あり（人気シグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Star ratings from other readers help patrons gauge the quality and reception of the book."
+msgstr "他の読者による星評価は、利用者が本の品質や評判を把握するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has a rich description (50+ characters)"
+msgstr "充実した説明あり（50文字以上）"
+
+#: openlibrary/edition_scorecard.py
+msgid "A detailed description (50+ characters) provides more context to help patrons evaluate relevance."
+msgstr "詳細な説明（50文字以上）は、利用者が関連性を評価するためのより多くの背景情報を提供します。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has reading log activity (popularity signal)"
+msgstr "読書記録の活動あり（人気シグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Reading log activity from other patrons signals the book is being actively read."
+msgstr "他の利用者による読書記録の活動は、その本が積極的に読まれていることを示します。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Appears on lists (popularity signal)"
+msgstr "リストに登場（人気シグナル）"
+
+#: openlibrary/edition_scorecard.py
+msgid "Presence on curated lists helps patrons gauge relevance and community interest."
+msgstr "厳選されたリストに登場することは、利用者が関連性やコミュニティの関心を把握するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has page count"
+msgstr "ページ数あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Page count helps patrons estimate the length and time commitment of the book."
+msgstr "ページ数は、利用者が本の長さや読むのにかかる時間を見積もるのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Series information helps patrons understand the book's place in a broader narrative."
+msgstr "シリーズ情報は、利用者がより大きな物語の中でのこの本の位置づけを理解するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author photo"
+msgstr "著者の写真あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author photo helps patrons visually recognize the author."
+msgstr "著者の写真は、利用者が著者を視覚的に認識するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has first publication year"
+msgstr "初版発行年あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "The first publication year helps patrons understand when the work originally appeared."
+msgstr "初版発行年は、利用者がその作品が最初に発表された時期を理解するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publication year"
+msgstr "出版年あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publication year helps patrons understand the context and currency of the content."
+msgstr "発行年は、利用者がコンテンツの背景や新しさを理解するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author biography"
+msgstr "著者略歴あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "An author biography helps patrons understand the author's background and expertise."
+msgstr "著者略歴は、利用者が著者の経歴や専門性を理解するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py openlibrary/plugins/openlibrary/librarian_dashboard.py
+msgid "Has publisher"
+msgstr "出版社あり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Publisher information helps patrons evaluate the credibility and source of the book."
+msgstr "出版社情報は、利用者が本の信頼性や出所を評価するのに役立ちます。"
+
+#: openlibrary/edition_scorecard.py
+msgid "Has author links"
+msgstr "著者リンクあり"
+
+#: openlibrary/edition_scorecard.py
+msgid "Links to author websites or profiles provide additional context about the author."
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Edition Scorecard"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Access"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Discovery"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can this edition be accurately surfaced in searches and recommendations?"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "Evaluation"
+msgstr ""
+
+#: openlibrary/edition_scorecard.py
+msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "検索結果"
@@ -7995,20 +8327,12 @@ msgid "Has work (orphaned)"
 msgstr "作品あり（孤立）"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publication year"
-msgstr "出版年あり"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has cover"
 msgstr "表紙あり"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has language"
 msgstr "言語あり"
-
-#: openlibrary/plugins/openlibrary/librarian_dashboard.py
-msgid "Has publisher"
-msgstr "出版社あり"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
@@ -8226,8 +8550,8 @@ msgstr "パスワードを選択"
 
 #: openlibrary/plugins/upstream/mybooks.py
 #, python-format
-msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
-msgstr "<a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>を続ける"
+msgid "Continue %(link_start)s%(action)s%(link_mid)s%(name)s%(link_end)s"
+msgstr ""
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
@@ -8918,4 +9242,10 @@ msgstr "クラシック電子書籍"
 #~ msgid "There is one person waiting for this book."
 #~ msgid_plural "There are %(n)s people waiting for this book."
 #~ msgstr[0] "この本を待っている人が1人います。"
+
+#~ msgid "You might also like"
+#~ msgstr "こちらもおすすめ"
+
+#~ msgid "Continue <a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>"
+#~ msgstr "<a href=\"%(url)s\" class=\"pending-action-link\" data-action=\"%(raw_action)s\"><strong>%(action)s</strong> <em>%(name)s</em></a>を続ける"
 
