@@ -1039,11 +1039,11 @@ msgstr "这只对超级图书馆员可见。"
 msgid "Solr Editions"
 msgstr "大多数的版本"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "仅可阅读"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "按可用性筛选"
 
@@ -1063,12 +1063,19 @@ msgstr "语言"
 msgid "Filter by language"
 msgstr "按语言筛选"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s 次点击"
-msgstr[1] "%(count)s 次点击"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "第 %(start)s - %(end)s 项，共 %(total)s 个结果"
+msgstr[1] "第 %(start)s - %(end)s 项，共 %(total)s 个结果"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "第 %(start)s - %(end)s 项，共超过 %(total)s 个结果"
+msgstr[1] "第 %(start)s - %(end)s 项，共超过 %(total)s 个结果"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1745,15 +1752,12 @@ msgstr "%(username)s关注的人添加的书籍"
 msgid "Search your reading log"
 msgstr "导出您的阅读日志"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— 仅显示<a href=\"%(url)s\">电子书</a>？"
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "目前只显示电子书。您是否希望查看此作者的<a href=\"%(url)s\">所有作品</a> de este autor?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s 次点击"
+msgstr[1] "%(count)s 次点击"
 
 #: account/reading_log.html
 #, fuzzy
@@ -6393,19 +6397,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "在%(seconds)s秒内"
 msgstr[1] "在%(seconds)s秒内"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-#, fuzzy
-msgid "Details"
-msgstr "作品详情"
+#: search/layout_options.html
+msgid "View as"
+msgstr "查看方式"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "列表"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "网格"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "查看 MARC"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6595,8 +6597,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "作品标题（测试版：仅限馆员）"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "排序为"
+msgid "Sort by"
+msgstr "排序方式"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "对结果排序"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6713,6 +6719,11 @@ msgstr "开放图书馆是一个开放的、可编辑的图书馆目录，为有
 #, fuzzy
 msgid "Debug Stats"
 msgstr "统计"
+
+#: EditionNavBar.html site/stats.html
+#, fuzzy
+msgid "Details"
+msgstr "作品详情"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6912,11 +6923,6 @@ msgstr "要添加另外一个吗？"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "搜索%(author)s的书籍"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "目前只显示电子书。您是否希望查看此作者的<a href=\"%(url)s\">所有作品</a> de este autor?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9571,4 +9577,19 @@ msgstr "经典电子书"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "使用 %(variant)s 可获得带边框的容器。选中时，它会填充为纯主蓝色背景和白色文字——与选中的 %(chip)s 效果相同。"
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— 仅显示<a href=\"%(url)s\">电子书</a>？"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "目前只显示电子书。您是否希望查看此作者的<a href=\"%(url)s\">所有作品</a> de este autor?"
+
+#~ msgid "View as: "
+#~ msgstr "查看 MARC"
+
+#~ msgid "Sorting by"
+#~ msgstr "排序为"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "目前只显示电子书。您是否希望查看此作者的<a href=\"%(url)s\">所有作品</a> de este autor?"
 
