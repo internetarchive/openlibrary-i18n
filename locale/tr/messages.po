@@ -1012,12 +1012,12 @@ msgstr "Bu sadece süper kütüphaneciler tarafından görülebilir."
 msgid "Solr Editions"
 msgstr "Solr basımı"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Önizleme"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "E-kitap bulunabilirliği için sonuçları filtrele"
@@ -1040,12 +1040,19 @@ msgstr "Diller"
 msgid "Filter by language"
 msgstr "Dil"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s sonuç"
-msgstr[1] "%(count)s sonuç"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(total)s sonuçtan %(start)s - %(end)s"
+msgstr[1] "%(total)s sonuçtan %(start)s - %(end)s"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(total)s'den fazla sonuçtan %(start)s - %(end)s"
+msgstr[1] "%(total)s'den fazla sonuçtan %(start)s - %(end)s"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1698,15 +1705,12 @@ msgstr "%(username)s'in takip ettiği kişilerin eklediği kitaplar"
 msgid "Search your reading log"
 msgstr "Okuma günlüğünüzde arayın"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Yalnızca <a href=\"%(url)s\">e-kitaplar</a> gösterilsin mi?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— Bu raftaki <a href=\"%(url)s\">her şey</a> gösterilsin mi?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s sonuç"
+msgstr[1] "%(count)s sonuç"
 
 #: account/reading_log.html
 #, fuzzy
@@ -6183,18 +6187,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s saniyede"
 msgstr[1] "%(seconds)s saniyede"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Ayrıntılar"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Farklı görüntüle"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Liste"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Izgara"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Görüntüle"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6386,8 +6389,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Eser Başlığı (beta: Yalnızca Kütüphaneci)"
 
 #: search/sort_options.html
-msgid "Sorting by"
+msgid "Sort by"
 msgstr "Sıralama ölçütü"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Sonuçları sırala"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6502,6 +6509,10 @@ msgstr "Open Library, yayımlanmış her kitap için bir web sayfası oluşturma
 #, fuzzy
 msgid "Debug Stats"
 msgstr "İstatistikler"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Ayrıntılar"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6701,11 +6712,6 @@ msgstr "Bir tane daha ekleyin mi?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s kitaplarını ara"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— Bu yazarın <a href=\"%(url)s\">her şeyini</a> göster?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9453,4 +9459,19 @@ msgstr "Klasik e-kitaplar"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Kenarlıklı bir kapsayıcı için %(variant)s kullanın. İşaretlendiğinde seçili %(chip)s gibi düz birincil mavi arka plan ve beyaz metinle dolar."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Yalnızca <a href=\"%(url)s\">e-kitaplar</a> gösterilsin mi?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— Bu raftaki <a href=\"%(url)s\">her şey</a> gösterilsin mi?"
+
+#~ msgid "View as: "
+#~ msgstr "Görüntüle"
+
+#~ msgid "Sorting by"
+#~ msgstr "Sıralama ölçütü"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— Bu yazarın <a href=\"%(url)s\">her şeyini</a> göster?"
 
