@@ -976,11 +976,11 @@ msgstr "super librarians에게만 표시됩니다."
 msgid "Solr Editions"
 msgstr "Solr 에디션"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "읽기 가능만"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "이용 가능 여부로 필터링"
 
@@ -1000,11 +1000,17 @@ msgstr "언어"
 msgid "Filter by language"
 msgstr "언어로 필터링"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s 건"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "전체 %(total)s개 결과 중 %(start)s - %(end)s"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "전체 %(total)s개 이상의 결과 중 %(start)s - %(end)s"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1644,15 +1650,11 @@ msgstr "%(username)s이(가) 팔로우하는 사람들이 추가한 책"
 msgid "Search your reading log"
 msgstr "독서 기록 검색"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "-<a href=\"%(url)s\">전자책만</a> 표시합니까?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "-책장의 <a href=\"%(url)s\">모든 책</a>을 표시합니까?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s 건"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -5997,17 +5999,17 @@ msgid "in %(seconds)s second"
 msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s초 만에"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "세부 정보"
+#: search/layout_options.html
+msgid "View as"
+msgstr "보기 형식"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "목록"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "그리드"
-
-#: search/layout_options.html
-msgid "View as: "
-msgstr "보기 방식: "
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6189,8 +6191,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "작품 제목 (베타: 사서 전용)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "정렬 기준:"
+msgid "Sort by"
+msgstr "정렬 기준"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "결과 정렬"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6301,6 +6307,10 @@ msgstr "Open Library는 출판된 모든 책에 대한 웹 페이지를 목표�
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "디버그 통계"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "세부 정보"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6499,11 +6509,6 @@ msgstr "추가하시겠어요?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s의 책 검색"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— 이 저자의 <a href=\"%(url)s\">모든 작품</a> 보기"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -8893,4 +8898,19 @@ msgstr "클래식 전자책"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "테두리가 있는 컨테이너에는 %(variant)s를 사용하세요. 선택되면 단색 기본 파란색 배경과 흰색 텍스트로 채워지며, 선택된 %(chip)s와 동일한 스타일이 적용됩니다."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "-<a href=\"%(url)s\">전자책만</a> 표시합니까?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "-책장의 <a href=\"%(url)s\">모든 책</a>을 표시합니까?"
+
+#~ msgid "View as: "
+#~ msgstr "보기 방식: "
+
+#~ msgid "Sorting by"
+#~ msgstr "정렬 기준:"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— 이 저자의 <a href=\"%(url)s\">모든 작품</a> 보기"
 
