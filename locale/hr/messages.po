@@ -982,11 +982,11 @@ msgstr "Ovo vide samo glavni knjižničari."
 msgid "Solr Editions"
 msgstr "Solr Editions"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Samo za čitanje"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtriraj po dostupnosti"
 
@@ -1006,13 +1006,21 @@ msgstr "Jezici"
 msgid "Filter by language"
 msgstr "Filtriraj po jeziku"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s rezultat"
-msgstr[1] "%(count)s rezultata"
-msgstr[2] "%(count)s rezultata"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s od %(total)s rezultata"
+msgstr[1] "%(start)s - %(end)s od %(total)s rezultata"
+msgstr[2] "%(start)s - %(end)s od %(total)s rezultata"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s od preko %(total)s rezultata"
+msgstr[1] "%(start)s - %(end)s od preko %(total)s rezultata"
+msgstr[2] "%(start)s - %(end)s od preko %(total)s rezultata"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1664,15 +1672,13 @@ msgstr "Knjige koje su dodali ljudi %(username)s slijedi"
 msgid "Search your reading log"
 msgstr "Pretraži tvoj dnevnik čitanja"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "– Prikazati <a href=\"%(url)s\">samo e-knjige</a>?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "– Prikazati <a href=\"%(url)s\">sve</a> u ovoj polici?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s rezultat"
+msgstr[1] "%(count)s rezultata"
+msgstr[2] "%(count)s rezultata"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6066,17 +6072,17 @@ msgstr[0] "u roku od %(seconds)s sekunde"
 msgstr[1] "u roku od %(seconds)s sekunde"
 msgstr[2] "u roku od %(seconds)s sekundi"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Detalji"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Prikaži kao"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Popis"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Pločice"
-
-#: search/layout_options.html
-msgid "View as: "
-msgstr "Pogledaj kao: "
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6258,8 +6264,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Naslov djela (beta: samo knjižničar)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Razvrstavanje"
+msgid "Sort by"
+msgstr "Razvrstaj po"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Razvrstaj rezultate"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6370,6 +6380,10 @@ msgstr "Open Library je otvoren i urediv knjižnični katalog, smišljen za izra
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Statistika otklanjanja grešaka"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Detalji"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6570,11 +6584,6 @@ msgstr "Dodati jednu drugu?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Traži knjige od %(author)s"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "– Prikazati <a href=\"%(url)s\">sve</a> od ovog autora?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9121,4 +9130,19 @@ msgstr "Klasične e-knjige"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Koristi %(variant)s za spremnik s obrubom. Kad je označen, ispunjava se punom primarno plavom pozadinom i bijelim tekstom — isti tretman kao odabrani %(chip)s."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "– Prikazati <a href=\"%(url)s\">samo e-knjige</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "– Prikazati <a href=\"%(url)s\">sve</a> u ovoj polici?"
+
+#~ msgid "View as: "
+#~ msgstr "Pogledaj kao: "
+
+#~ msgid "Sorting by"
+#~ msgstr "Razvrstavanje"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "– Prikazati <a href=\"%(url)s\">sve</a> od ovog autora?"
 
