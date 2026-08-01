@@ -978,12 +978,12 @@ msgstr "これはスーパーライブラリアンにのみ表示されます。
 msgid "Solr Editions"
 msgstr ""
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "プレビューのみ"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "電子書籍の利用可否で結果をフィルター"
@@ -1006,11 +1006,17 @@ msgstr "言語"
 msgid "Filter by language"
 msgstr "言語"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s件のヒット"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(total)s件中 %(start)s - %(end)s件"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(total)s件以上中 %(start)s - %(end)s件"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1652,15 +1658,11 @@ msgstr "%(username)sがフォローしている人が追加した本"
 msgid "Search your reading log"
 msgstr "読書記録を検索"
 
-#: account/reading_log.html type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr ""
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr ""
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#, python-format
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s件のヒット"
 
 #: account/reading_log.html
 #, fuzzy
@@ -6024,17 +6026,17 @@ msgid "in %(seconds)s second"
 msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s秒で"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "詳細"
+#: search/layout_options.html
+msgid "View as"
+msgstr "表示形式"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "リスト"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "グリッド"
-
-#: search/layout_options.html
-msgid "View as: "
-msgstr "表示形式："
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6228,8 +6230,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "作品タイトル（ベータ：司書専用）"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "並び替え："
+msgid "Sort by"
+msgstr "並び替え基準"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "結果を並び替え"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6340,6 +6346,10 @@ msgstr "Open Libraryは、これまでに出版されたすべての本のウェ
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "デバッグ統計"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "詳細"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6538,11 +6548,6 @@ msgstr "もう一つ追加しますか？"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)sの本を検索"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr ""
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9267,4 +9272,19 @@ msgstr "クラシック電子書籍"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "ボーダー付きコンテナには %(variant)s を使用します。チェック時は、選択された %(chip)s と同様に、ソリッドなプライマリブルーの背景と白いテキストで塗りつぶされます。"
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr ""
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr ""
+
+#~ msgid "View as: "
+#~ msgstr "表示形式："
+
+#~ msgid "Sorting by"
+#~ msgstr "並び替え："
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr ""
 
