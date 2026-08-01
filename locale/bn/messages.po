@@ -1019,11 +1019,11 @@ msgstr "यह केवल सुपर लाइब्रेरियन क�
 msgid "Solr Editions"
 msgstr "सोलर एडिशन"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "শুধুমাত্র পাঠযোগ্য"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "প্রাপ্যতা অনুযায়ী ফিল্টার করুন"
 
@@ -1043,12 +1043,19 @@ msgstr "भाषाएँ"
 msgid "Filter by language"
 msgstr "ভাষা অনুযায়ী ফিল্টার করুন"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s हिट"
-msgstr[1] "%(count)s हिट"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s, মোট %(total)s টি ফলাফলের"
+msgstr[1] "%(start)s - %(end)s, মোট %(total)s টি ফলাফলের"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s, %(total)s টির বেশি ফলাফলের"
+msgstr[1] "%(start)s - %(end)s, %(total)s টির বেশি ফলাফলের"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1711,15 +1718,12 @@ msgstr "%(username)s যাদের অনুসরণ করেন তাদ�
 msgid "Search your reading log"
 msgstr "अपना रीडिंग लॉग खोजें"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— শুধুমাত্র <a href=\"%(url)s\">ই-বই</a> দেখবেন?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— এই শেলফে <a href=\"%(url)s\">সব কিছু</a> দেখাবো?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s हिट"
+msgstr[1] "%(count)s हिट"
 
 #: account/reading_log.html
 #, fuzzy
@@ -6298,18 +6302,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s सेकंड में"
 msgstr[1] "%(seconds)s सेकंड में"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "विवरण"
+#: search/layout_options.html
+msgid "View as"
+msgstr "হিসেবে দেখুন"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "তালিকা"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "গ্রিড"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "सभी देखें"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6498,8 +6501,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "কাজের শিরোনাম (বেটা: শুধুমাত্র লাইব্রেরিয়ান)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "इसके आधार पर छांटा जा रहा है"
+msgid "Sort by"
+msgstr "সাজান"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "ফলাফল সাজান"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6612,6 +6619,10 @@ msgstr "ओपन लाइब्रेरी एक खुली, संपा�
 #, fuzzy
 msgid "Debug Stats"
 msgstr "स्थिति"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "विवरण"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6812,11 +6823,6 @@ msgstr "एक और जोड़ें?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s-এর বই খুঁজুন"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "केवल ई - बुक्स दिखाई जा रही हैं। क्या आप इस लेखक द्वारा <a href=\"%(url)s\">सब कुछ</a> देखना चाहेंगे?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9601,4 +9607,19 @@ msgstr "क्लासिक ई - बुक्स"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "একটি বর্ডারযুক্ত কন্টেইনারের জন্য %(variant)s ব্যবহার করুন। চেক করা হলে, এটি একটি সলিড প্রাইমারি-ব্লু ব্যাকগ্রাউন্ড এবং সাদা টেক্সট দিয়ে পূর্ণ হয় — একটি নির্বাচিত %(chip)s-এর মতোই।"
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— শুধুমাত্র <a href=\"%(url)s\">ই-বই</a> দেখবেন?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— এই শেলফে <a href=\"%(url)s\">সব কিছু</a> দেখাবো?"
+
+#~ msgid "View as: "
+#~ msgstr "सभी देखें"
+
+#~ msgid "Sorting by"
+#~ msgstr "इसके आधार पर छांटा जा रहा है"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "केवल ई - बुक्स दिखाई जा रही हैं। क्या आप इस लेखक द्वारा <a href=\"%(url)s\">सब कुछ</a> देखना चाहेंगे?"
 
