@@ -1042,12 +1042,12 @@ msgstr "ఇది కేవలం సూపర్ లైబ్రేరియన
 msgid "Solr Editions"
 msgstr "Solr ఎడిషన్లు"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "అడ్మిన్ మాత్రమే"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "అందుబాటులో ఉంది"
@@ -1071,12 +1071,19 @@ msgstr "భాష"
 msgid "Filter by language"
 msgstr "భాష"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
-#, fuzzy, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s పుస్తకం"
-msgstr[1] "%(count)s పుస్తకాలు"
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s, మొత్తం %(total)s ఫలితంలో"
+msgstr[1] "%(start)s - %(end)s, మొత్తం %(total)s ఫలితాలలో"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s, %(total)s కంటే ఎక్కువ ఫలితంలో"
+msgstr[1] "%(start)s - %(end)s, %(total)s కంటే ఎక్కువ ఫలితాలలో"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1765,15 +1772,12 @@ msgstr "%(username)s అనుసరించే వ్యక్తులు చ
 msgid "Search your reading log"
 msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "రచయిత యొక్క అన్ని రచనలు చూపబడుతున్నాయి. మీరు <a href=\"%(url)s\">కేవలం ఈబుక్స్ మాత్రమే</a> చూడాలనుకుంటున్నారా?"
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "కేవలం ఈబుక్స్ మాత్రమే చూపబడుతున్నాయి. మీరు ఈ రచయిత యొక్క <a href=\"%(url)s\">అన్నీ</a> చూడాలనుకుంటున్నారా?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s పుస్తకం"
+msgstr[1] "%(count)s పుస్తకాలు"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6437,18 +6441,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s సెకనులో"
 msgstr[1] "%(seconds)s సెకన్లలో"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "వివరాలు"
+#: search/layout_options.html
+msgid "View as"
+msgstr "ఇలా చూడండి"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "జాబితా"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "గ్రిడ్"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "MARC చూడండి"
 
 #: search/lists.html
 #, fuzzy
@@ -6653,8 +6656,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "రచన శీర్షిక (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "వరుస క్రమం"
+msgid "Sort by"
+msgstr "దీని ప్రకారం క్రమబద్ధీకరించండి"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "ఫలితాలను క్రమబద్ధీకరించండి"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6781,6 +6788,10 @@ msgstr "ఓపెన్ లైబ్రరీ ఒక తెరచిన, సవ�
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "డీబగ్ గణాంకాలు"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "వివరాలు"
 
 #: stats/readinglog.html
 #, fuzzy
@@ -6985,11 +6996,6 @@ msgstr "ఇంకొకటి జోడించాలా?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s పుస్తకాలు శోధించండి"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "కేవలం ఈబుక్స్ మాత్రమే చూపబడుతున్నాయి. మీరు ఈ రచయిత యొక్క <a href=\"%(url)s\">అన్నీ</a> చూడాలనుకుంటున్నారా?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 #, fuzzy
@@ -9624,4 +9630,19 @@ msgstr "క్లాసిక్ పుస్తకాలు"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "బోర్డర్ ఉన్న కంటైనర్ కోసం %(variant)s ఉపయోగించండి. చెక్ చేసినప్పుడు, ఇది ప్రాథమిక నీలం నేపథ్యం మరియు తెల్లని టెక్స్ట్‌తో నింపబడుతుంది — ఎంచుకున్న %(chip)s వలెనే."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "రచయిత యొక్క అన్ని రచనలు చూపబడుతున్నాయి. మీరు <a href=\"%(url)s\">కేవలం ఈబుక్స్ మాత్రమే</a> చూడాలనుకుంటున్నారా?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "కేవలం ఈబుక్స్ మాత్రమే చూపబడుతున్నాయి. మీరు ఈ రచయిత యొక్క <a href=\"%(url)s\">అన్నీ</a> చూడాలనుకుంటున్నారా?"
+
+#~ msgid "View as: "
+#~ msgstr "MARC చూడండి"
+
+#~ msgid "Sorting by"
+#~ msgstr "వరుస క్రమం"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "కేవలం ఈబుక్స్ మాత్రమే చూపబడుతున్నాయి. మీరు ఈ రచయిత యొక్క <a href=\"%(url)s\">అన్నీ</a> చూడాలనుకుంటున్నారా?"
 
