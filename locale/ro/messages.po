@@ -989,11 +989,11 @@ msgstr "Aceasta este vizibilă doar pentru super-bibliotecari."
 msgid "Solr Editions"
 msgstr "Ediții Solr"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Doar lizibil"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrați după disponibilitate"
 
@@ -1013,13 +1013,21 @@ msgstr "Limbi"
 msgid "Filter by language"
 msgstr "Filtrați după limbă"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s rezultat"
-msgstr[1] "%(count)s rezultate"
-msgstr[2] ""
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s din %(total)s rezultat"
+msgstr[1] "%(start)s - %(end)s din %(total)s rezultate"
+msgstr[2] "%(start)s - %(end)s din %(total)s de rezultate"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s din peste %(total)s rezultat"
+msgstr[1] "%(start)s - %(end)s din peste %(total)s rezultate"
+msgstr[2] "%(start)s - %(end)s din peste %(total)s de rezultate"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1671,15 +1679,13 @@ msgstr "Cărți adăugate de persoanele urmărite de %(username)s"
 msgid "Search your reading log"
 msgstr "Caută în jurnalul de lectură"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Afișează <a href=\"%(url)s\">numai e-books</a>?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— Afișează <a href=\"%(url)s\">tot</a> din acest raft?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s rezultat"
+msgstr[1] "%(count)s rezultate"
+msgstr[2] ""
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6087,18 +6093,17 @@ msgstr[0] "în %(seconds)s secundă"
 msgstr[1] "în %(seconds)s secunde"
 msgstr[2] ""
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Detalii"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Vizualizează ca"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Listă"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Grilă"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Vizualizează"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6281,8 +6286,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Titlul operei (beta: doar bibliotecar)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Sortare după"
+msgid "Sort by"
+msgstr "Sortează după"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Sortează rezultatele"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6395,6 +6404,10 @@ msgstr "Open Library este un catalog de bibliotecă deschis și editabil, care �
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Statistici de depanare"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Detalii"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6595,11 +6608,6 @@ msgstr "Adăugați altul?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Căutați cărțile lui %(author)s"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— Afișați <a href=\"%(url)s\">tot</a> de la acest autor?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9084,4 +9092,19 @@ msgstr "Cărți electronice clasice"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Folosiți %(variant)s pentru un container cu bordură. Când este bifat, se umple cu un fundal albastru primar solid și text alb — același tratament ca un %(chip)s selectat."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Afișează <a href=\"%(url)s\">numai e-books</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— Afișează <a href=\"%(url)s\">tot</a> din acest raft?"
+
+#~ msgid "View as: "
+#~ msgstr "Vizualizează"
+
+#~ msgid "Sorting by"
+#~ msgstr "Sortare după"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— Afișați <a href=\"%(url)s\">tot</a> de la acest autor?"
 
