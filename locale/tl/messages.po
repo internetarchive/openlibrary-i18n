@@ -994,11 +994,11 @@ msgstr "Ito ay nakikita lamang ng mga super librarian."
 msgid "Solr Editions"
 msgstr "Mga Edision ng Solr"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Mababasa Lamang"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "I-filter ayon sa availability"
 
@@ -1018,12 +1018,19 @@ msgstr "Wika"
 msgid "Filter by language"
 msgstr "I-filter ayon sa wika"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s tama"
-msgstr[1] "%(count)s mga tama"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s ng %(total)s resulta"
+msgstr[1] "%(start)s - %(end)s ng %(total)s (na) resulta"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s ng mahigit %(total)s resulta"
+msgstr[1] "%(start)s - %(end)s ng mahigit %(total)s (na) resulta"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1671,15 +1678,12 @@ msgstr "Mga librong idinadagdag ng mga taong sinusuportahan ni %(username)s"
 msgid "Search your reading log"
 msgstr "Maghanap sa iyong reading log"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Ipakita <a href=\"%(url)s\">lamang ang mga ebooks</a>?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— Ipakita <a href=\"%(url)s\">ang lahat</a> sa shelf na ito?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s tama"
+msgstr[1] "%(count)s mga tama"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6071,17 +6075,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "sa %(seconds)s segundo"
 msgstr[1] "sa %(seconds)s mga segundo"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Detalye"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Tingnan bilang"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Listahan"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Grid"
-
-#: search/layout_options.html
-msgid "View as: "
-msgstr "Tingnan bilang: "
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6263,8 +6267,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Pamagat ng Trabaho (beta: Para lamang sa Librarian)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Naka-uri ayon sa"
+msgid "Sort by"
+msgstr "Ayusin ayon sa"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Ayusin ang mga resulta"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6377,6 +6385,10 @@ msgstr "Ang Open Library ay isang bukas, na-edit na katalogo ng aklatan, bumubuo
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Stats ng Debug"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Detalye"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6576,11 +6588,6 @@ msgstr "Magdagdag ng isa pa?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Maghanap ng mga libro ni %(author)s"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— Ipakita ang <a href=\"%(url)s\">lahat</a> ng gawa ng may-akdang ito?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9217,4 +9224,19 @@ msgstr "Klasikal na eBooks"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Gamitin ang %(variant)s para sa isang lalagyan na may border. Kapag naka-check, napupuno ito ng solidong primary-blue na background at puting teksto — kagaya ng pakikitungo sa isang napiling %(chip)s."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Ipakita <a href=\"%(url)s\">lamang ang mga ebooks</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— Ipakita <a href=\"%(url)s\">ang lahat</a> sa shelf na ito?"
+
+#~ msgid "View as: "
+#~ msgstr "Tingnan bilang: "
+
+#~ msgid "Sorting by"
+#~ msgstr "Naka-uri ayon sa"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— Ipakita ang <a href=\"%(url)s\">lahat</a> ng gawa ng may-akdang ito?"
 

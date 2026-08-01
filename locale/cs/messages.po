@@ -1033,11 +1033,11 @@ msgstr "Toto je viditelné pouze pro super knihovníky."
 msgid "Solr Editions"
 msgstr "Njvíc vydání"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Pouze ke čtení"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrovat podle dostupnosti"
 
@@ -1060,13 +1060,21 @@ msgstr "Jazyk"
 msgid "Filter by language"
 msgstr "Jazyk"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s shoda"
-msgstr[1] "%(count)s shody"
-msgstr[2] "%(count)s shod"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s z %(total)s výsledku"
+msgstr[1] "%(start)s - %(end)s z %(total)s výsledků"
+msgstr[2] "%(start)s - %(end)s z %(total)s výsledků"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s z více než %(total)s výsledku"
+msgstr[1] "%(start)s - %(end)s z více než %(total)s výsledků"
+msgstr[2] "%(start)s - %(end)s z více než %(total)s výsledků"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1757,15 +1765,13 @@ msgstr "Knihy přidané lidmi, které sleduje %(username)s"
 msgid "Search your reading log"
 msgstr "Zobrazit nebo upravit váš záznam četby"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Zobrazit <a href=\"%(url)s\">pouze e-knihy</a>?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— Zobrazit <a href=\"%(url)s\">vše</a> na tomto regálu?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s shoda"
+msgstr[1] "%(count)s shody"
+msgstr[2] "%(count)s shod"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6391,18 +6397,17 @@ msgstr[0] "za %(seconds)s sekundu"
 msgstr[1] "za %(seconds)s sekundy"
 msgstr[2] "za %(seconds)s sekund"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Podrobnosti"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Zobrazit jako"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Seznam"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Mřížka"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Zobrazit"
 
 #: search/lists.html
 #, fuzzy
@@ -6603,8 +6608,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Název díla (beta: pouze knihovníci)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Řadit dle"
+msgid "Sort by"
+msgstr "Řadit podle"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Řadit výsledky"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6730,6 +6739,10 @@ msgstr "Open Library je otevřený a editovatelný katalog knihovny, jehož cíl
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Statistiky ladění"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Podrobnosti"
 
 #: stats/readinglog.html
 #, fuzzy
@@ -6936,11 +6949,6 @@ msgstr "Přidat dalšího autora?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Hledat knihy %(author)s"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— Zobrazit <a href=\"%(url)s\">vše</a> od tohoto autora?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 #, fuzzy
@@ -9630,4 +9638,19 @@ msgstr "Zobrazit jen eKnihy"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Použijte %(variant)s pro kontejner s ohraničením. Při zaškrtnutí se vyplní plným modrým pozadím a bílým textem — stejné zacházení jako u vybraného %(chip)s."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Zobrazit <a href=\"%(url)s\">pouze e-knihy</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— Zobrazit <a href=\"%(url)s\">vše</a> na tomto regálu?"
+
+#~ msgid "View as: "
+#~ msgstr "Zobrazit"
+
+#~ msgid "Sorting by"
+#~ msgstr "Řadit dle"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— Zobrazit <a href=\"%(url)s\">vše</a> od tohoto autora?"
 

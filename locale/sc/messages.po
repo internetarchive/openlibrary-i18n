@@ -999,11 +999,11 @@ msgstr "Visìbile petzi pro sos superbibliotecàrios."
 msgid "Solr Editions"
 msgstr "Editziones Solr"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Petzi lèggibile"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtra pro disponibilidade"
 
@@ -1023,12 +1023,19 @@ msgstr "Limbas"
 msgid "Filter by language"
 msgstr "Filtra pro limba"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s resurtadu"
-msgstr[1] "%(count)s resurtados"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s de %(total)s resurtadu"
+msgstr[1] "%(start)s - %(end)s de %(total)s resurtados"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s de prus de %(total)s resurtadu"
+msgstr[1] "%(start)s - %(end)s de prus de %(total)s resurtados"
 
 #: work_search.html
 #, fuzzy
@@ -1678,15 +1685,12 @@ msgstr "Libros annantos dae gente chi %(username)s sighit"
 msgid "Search your reading log"
 msgstr "Chirca in su registru de letura tuo"
 
-#: account/reading_log.html type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr ""
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "Ammustrende petzi sos libros eletrònicos. Boles bìdere <a href=\"%(url)s\">totu</a> de custu autore?"
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#, python-format
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s resurtadu"
+msgstr[1] "%(count)s resurtados"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6106,18 +6110,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "in %(seconds)s segundu"
 msgstr[1] "in %(seconds)s segundos"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Detàllios"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Pòmpia comente"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Lista"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Grella"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Ammustra MARC"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6304,8 +6307,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Tìtulu de s'òpera (beta: bibliotecàrios ebbia)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Ordinamentu pro"
+msgid "Sort by"
+msgstr "Òrdina pro"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Òrdina is resurtados"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6418,6 +6425,10 @@ msgstr "Open Library est unu catàlogu de biblioteca abertu, editàbile, chi s'i
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Istatìsticas de depuratzione de còdighe"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Detàllios"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6617,11 +6628,6 @@ msgstr "Nde boles annànghere un'àtera?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Chirca libros de %(author)s"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "Ammustrende petzi sos libros eletrònicos. Boles bìdere <a href=\"%(url)s\">totu</a> de custu autore?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9739,4 +9745,19 @@ msgstr "Libru eletrònicu clàssicu"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Usa %(variant)s pro unu contenidore cun bordu. Candu est marcadu, si prenat de unu fundu de colore blu primàriu solidu e testu biancu — su matessi tratamentu de unu %(chip)s seletzionadu."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr ""
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "Ammustrende petzi sos libros eletrònicos. Boles bìdere <a href=\"%(url)s\">totu</a> de custu autore?"
+
+#~ msgid "View as: "
+#~ msgstr "Ammustra MARC"
+
+#~ msgid "Sorting by"
+#~ msgstr "Ordinamentu pro"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "Ammustrende petzi sos libros eletrònicos. Boles bìdere <a href=\"%(url)s\">totu</a> de custu autore?"
 

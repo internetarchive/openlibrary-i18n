@@ -1028,12 +1028,12 @@ msgstr "Це можуть бачити лише супербібліотекар
 msgid "Solr Editions"
 msgstr "Solr видання"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Лише для адмінів"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "Фільтрувати результати за наявністю електронної книги"
@@ -1056,13 +1056,21 @@ msgstr "Мови"
 msgid "Filter by language"
 msgstr "Мова"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s співпадіння"
-msgstr[1] "%(count)s співпадіння"
-msgstr[2] "%(count)s співпадінь"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s з %(total)s результату"
+msgstr[1] "%(start)s - %(end)s з %(total)s результатів"
+msgstr[2] "%(start)s - %(end)s з %(total)s результатів"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s з понад %(total)s результату"
+msgstr[1] "%(start)s - %(end)s з понад %(total)s результатів"
+msgstr[2] "%(start)s - %(end)s з понад %(total)s результатів"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1731,15 +1739,13 @@ msgstr "Книги, додані людьми, на яких підписани�
 msgid "Search your reading log"
 msgstr "Шукати у вашому читацькому журналі"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Показати <a href=\"%(url)s\">лише електронні книги</a>?"
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "Показуємо лише книги, доступні для читання онлайн. Хочете бачити <a href=\"%(url)s\">усі книги</a> цього автора?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s співпадіння"
+msgstr[1] "%(count)s співпадіння"
+msgstr[2] "%(count)s співпадінь"
 
 #: account/reading_log.html
 #, fuzzy
@@ -6351,18 +6357,17 @@ msgstr[0] "за %(seconds)s"
 msgstr[1] "за %(seconds)s"
 msgstr[2] "за %(seconds)s"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "Деталі"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Переглянути як"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Список"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Сітка"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Переглянути усе"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6562,8 +6567,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Назва твору (бета: лише для бібліотекарів)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Сортовано за"
+msgid "Sort by"
+msgstr "Сортувати за"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Сортувати результати"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6678,6 +6687,10 @@ msgstr "Open Library — це відкритий бібліотечний кат
 #, fuzzy
 msgid "Debug Stats"
 msgstr "Статистика"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "Деталі"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6879,11 +6892,6 @@ msgstr "Додати ще один?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Пошук книг %(author)s"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "Показуємо лише книги, доступні для читання онлайн. Хочете бачити <a href=\"%(url)s\">усі книги</a> цього автора?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9543,4 +9551,19 @@ msgstr "Електронні книги класики"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Використовуйте %(variant)s для контейнера з рамкою. Коли активовано, він заповнюється синім фоном і білим текстом — так само, як вибраний %(chip)s."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Показати <a href=\"%(url)s\">лише електронні книги</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "Показуємо лише книги, доступні для читання онлайн. Хочете бачити <a href=\"%(url)s\">усі книги</a> цього автора?"
+
+#~ msgid "View as: "
+#~ msgstr "Переглянути усе"
+
+#~ msgid "Sorting by"
+#~ msgstr "Сортовано за"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "Показуємо лише книги, доступні для читання онлайн. Хочете бачити <a href=\"%(url)s\">усі книги</a> цього автора?"
 

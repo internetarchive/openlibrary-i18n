@@ -1047,12 +1047,12 @@ msgstr "To jest widoczne tylko dla super bibliotekarzy."
 msgid "Solr Editions"
 msgstr "Większość wydań"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Tylko administratorzy"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtruj według dostępności"
 
@@ -1074,13 +1074,21 @@ msgstr "Język"
 msgid "Filter by language"
 msgstr "Filtruj według języka"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s wynik"
-msgstr[1] "%(count)s wyniki"
-msgstr[2] ""
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s z %(total)s wyniku"
+msgstr[1] "%(start)s - %(end)s z %(total)s wyników"
+msgstr[2] "%(start)s - %(end)s z %(total)s wyników"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s z ponad %(total)s wyniku"
+msgstr[1] "%(start)s - %(end)s z ponad %(total)s wyników"
+msgstr[2] "%(start)s - %(end)s z ponad %(total)s wyników"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1768,15 +1776,13 @@ msgstr "Książki dodane przez osoby obserwowane przez %(username)s"
 msgid "Search your reading log"
 msgstr "Wyświetl lub edytuj Dziennik Lektur"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— Pokaż <a href=\"%(url)s\">tylko e-booki</a>?"
-
-#: account/reading_log.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr ""
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s wynik"
+msgstr[1] "%(count)s wyniki"
+msgstr[2] ""
 
 #: account/reading_log.html
 #, fuzzy
@@ -6460,19 +6466,17 @@ msgstr[0] "w %(seconds)s sekundzie"
 msgstr[1] "w %(seconds)s sekundy"
 msgstr[2] ""
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-#, fuzzy
-msgid "Details"
-msgstr "E-mail"
+#: search/layout_options.html
+msgid "View as"
+msgstr "Wyświetl jako"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "Lista"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "Siatka"
-
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr "Wyświetl"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6676,8 +6680,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "Tytuł dzieła (beta: tylko dla bibliotekarzy)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "Sortuj"
+msgid "Sort by"
+msgstr "Sortuj według"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "Sortuj wyniki"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6795,6 +6803,11 @@ msgstr "Open Library to otwarty, edytowalny katalog biblioteczny, dążący do s
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "Statystyki debugowania"
+
+#: EditionNavBar.html site/stats.html
+#, fuzzy
+msgid "Details"
+msgstr "E-mail"
 
 #: stats/readinglog.html
 #, fuzzy
@@ -7002,11 +7015,6 @@ msgstr "Dodać kolejną?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Szukaj książek %(author)s"
-
-#: type/author/view.html
-#, fuzzy, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "Wczytywanie tylko e-booków. Czy chesz zobaczyć <a href=\"%(url)s\">wszystkie</a> prace tego autora?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9748,4 +9756,19 @@ msgstr "Kasyczne e-booki"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "Użyj %(variant)s dla kontenera z obramowaniem. Po zaznaczeniu wypełnia się jednolitym niebieskim tłem i białym tekstem — takie samo traktowanie jak wybrany %(chip)s."
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— Pokaż <a href=\"%(url)s\">tylko e-booki</a>?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr ""
+
+#~ msgid "View as: "
+#~ msgstr "Wyświetl"
+
+#~ msgid "Sorting by"
+#~ msgstr "Sortuj"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "Wczytywanie tylko e-booków. Czy chesz zobaczyć <a href=\"%(url)s\">wszystkie</a> prace tego autora?"
 

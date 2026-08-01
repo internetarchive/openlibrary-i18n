@@ -987,11 +987,11 @@ msgstr "এইটো কেৱল চুপাৰ লাইব্ৰেৰিয
 msgid "Solr Editions"
 msgstr "Solr সংস্কৰণসমূহ"
 
-#: design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html work_search.html
+#: account/reading_log.html design/toggle.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "কেৱল পঢ়িব পৰা"
 
-#: work_search.html
+#: account/reading_log.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "উপলব্ধতা অনুসাৰে ফিল্টাৰ কৰক"
 
@@ -1011,12 +1011,19 @@ msgstr "ভাষাসমূহ"
 msgid "Filter by language"
 msgstr "ভাষা অনুসাৰে ফিল্টাৰ কৰক"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html work_search.html
+#: work_search.html
 #, python-format
-msgid "%(count)s hit"
-msgid_plural "%(count)s hits"
-msgstr[0] "%(count)s টা ফলাফল"
-msgstr[1] "%(count)s টা ফলাফল"
+msgid "%(start)s - %(end)s of %(total)s result"
+msgid_plural "%(start)s - %(end)s of %(total)s results"
+msgstr[0] "%(start)s - %(end)s, মুঠ %(total)s টা ফলাফলৰ"
+msgstr[1] "%(start)s - %(end)s, মুঠ %(total)s টা ফলাফলৰ"
+
+#: work_search.html
+#, python-format
+msgid "%(start)s - %(end)s of over %(total)s result"
+msgid_plural "%(start)s - %(end)s of over %(total)s results"
+msgstr[0] "%(start)s - %(end)s, %(total)s টাতকৈ অধিক ফলাফলৰ"
+msgstr[1] "%(start)s - %(end)s, %(total)s টাতকৈ অধিক ফলাফলৰ"
 
 #: work_search.html
 msgid "The search engine returned an error."
@@ -1661,15 +1668,12 @@ msgstr "%(username)s এ অনুসৰণ কৰা ব্যক্তিস�
 msgid "Search your reading log"
 msgstr "আপোনাৰ পঠন লগ বিচাৰক"
 
-#: account/reading_log.html type/author/view.html
+#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
 #, python-format
-msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
-msgstr "— কেৱল <a href=\"%(url)s\">ই-বুক</a> দেখুৱাবনে?"
-
-#: account/reading_log.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
-msgstr "— এই শ্বেলফৰ <a href=\"%(url)s\">সকলো কিতাপ</a> দেখুৱাবনে?"
+msgid "%(count)s hit"
+msgid_plural "%(count)s hits"
+msgstr[0] "%(count)s টা ফলাফল"
+msgstr[1] "%(count)s টা ফলাফল"
 
 #: account/reading_log.html
 msgid "No results found in this shelf"
@@ -6036,20 +6040,17 @@ msgid_plural "in %(seconds)s seconds"
 msgstr[0] "%(seconds)s ছেকেণ্ডত"
 msgstr[1] "%(seconds)s ছেকেণ্ডত"
 
-#: EditionNavBar.html search/layout_options.html site/stats.html
-msgid "Details"
-msgstr "বিৱৰণ"
+#: search/layout_options.html
+msgid "View as"
+msgstr "হিচাপে চাওক"
+
+#: search/layout_options.html
+msgid "List"
+msgstr "তালিকা"
 
 #: search/layout_options.html
 msgid "Grid"
 msgstr "গ্ৰিড"
-
-# There's a different translation for the term privacy, however here I've
-# transliterated
-#: search/layout_options.html
-#, fuzzy
-msgid "View as: "
-msgstr " চাওক"
 
 #: search/lists.html
 msgid "Search results for Lists"
@@ -6231,8 +6232,12 @@ msgid "Work Title (beta: Librarian only)"
 msgstr "ৰচনাৰ শিৰোনাম (বিটা: কেৱল গ্ৰন্থাগাৰিকৰ বাবে)"
 
 #: search/sort_options.html
-msgid "Sorting by"
-msgstr "ক্ৰমবিন্যাস"
+msgid "Sort by"
+msgstr "ক্ৰমবিন্যাস কৰক"
+
+#: search/sort_options.html
+msgid "Sort results"
+msgstr "ফলাফল ক্ৰমবিন্যাস কৰক"
 
 #: search/sort_options.html
 msgid "Shuffle"
@@ -6343,6 +6348,10 @@ msgstr "Open Library হৈছে এটা মুক্ত, সম্পাদ�
 #: site/stats.html
 msgid "Debug Stats"
 msgstr "ডিবাগ পৰিসংখ্যা"
+
+#: EditionNavBar.html site/stats.html
+msgid "Details"
+msgstr "বিৱৰণ"
 
 #: stats/readinglog.html
 msgid "Reading Log Stats"
@@ -6542,11 +6551,6 @@ msgstr "আন এটা যোগ কৰিবনে?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s-ৰ কিতাপ সন্ধান কৰক"
-
-#: type/author/view.html
-#, python-format
-msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
-msgstr "— এই লেখকৰ <a href=\"%(url)s\">সকলো</a> দেখুৱাওক?"
 
 #: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -9037,4 +9041,21 @@ msgstr "ক্লাচিক ইবুক"
 
 #~ msgid "Use %(variant)s for a bordered container. When checked, it fills with a solid primary-blue background and white text — the same treatment as a selected %(chip)s."
 #~ msgstr "সীমাযুক্ত কন্টেইনাৰৰ বাবে %(variant)s ব্যৱহাৰ কৰক। চেক কৰা হ’লে, ই এটা গাঢ় প্ৰাথমিক-নীলা পটভূমি আৰু বগা পাঠেৰে ভৰি পৰে — নিৰ্বাচিত %(chip)sৰ দৰে একে।"
+
+#~ msgid "— Show <a href=\"%(url)s\">only ebooks</a>?"
+#~ msgstr "— কেৱল <a href=\"%(url)s\">ই-বুক</a> দেখুৱাবনে?"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> in this shelf?"
+#~ msgstr "— এই শ্বেলফৰ <a href=\"%(url)s\">সকলো কিতাপ</a> দেখুৱাবনে?"
+
+# There's a different translation for the term privacy, however here I've
+# transliterated
+#~ msgid "View as: "
+#~ msgstr " চাওক"
+
+#~ msgid "Sorting by"
+#~ msgstr "ক্ৰমবিন্যাস"
+
+#~ msgid "— Show <a href=\"%(url)s\">everything</a> by this author?"
+#~ msgstr "— এই লেখকৰ <a href=\"%(url)s\">সকলো</a> দেখুৱাওক?"
 
