@@ -1243,24 +1243,20 @@ msgstr "संशोधन"
 msgid "No ISBN"
 msgstr "ISBN"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "आपके उधार इतिहास में कोई ऋण नहीं मिला।"
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "उधार लेने के लिए <a href=\"/search\">पुस्तक खोजें</a>।"
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "सक्रिय ऋण (%(count)d)"
+msgstr[1] "सक्रिय ऋण (%(count)d)"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "आपने इस समय कोई किताब नहीं देखी है।"
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d वर्तमान ऋण"
-msgstr[1] "%(count)d वर्तमान ऋण"
+msgid "Book"
+msgstr "पुस्तक"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1273,11 +1269,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "इस पुस्तक की प्रतीक्षा में %(count)d व्यक्ति है।"
 msgstr[1] "इस पुस्तक की प्रतीक्षा में %(count)d व्यक्ति हैं।"
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "अभी तक डाउनलोड नहीं किया गया है।"
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "डाक डाउनलोड करें"
 
@@ -1350,6 +1346,18 @@ msgid "Leave the waiting list?"
 msgstr "वेटिंग लिस्ट छोड़ दें?"
 
 #: account/loans.html
+msgid "Loan History"
+msgstr "लोन का इतिहास"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "आपके उधार इतिहास में कोई ऋण नहीं मिला।"
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "उधार लेने के लिए <a href=\"/search\">पुस्तक खोजें</a>।"
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "उधार लेने के लिए पुस्तक खोज रहे हैं? हमारे स्टाफ की पसंद देखें, या किसी विशेष विषय पर पुस्तक खोजें:"
 
@@ -1365,9 +1373,9 @@ msgstr "या, हमारे <a href=\"/collections\">विशेष सं�
 msgid "No books are on this shelf"
 msgstr "इस शेल्फ पर कोई किताबें नहीं हैं"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "मेरी पुस्तकें"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "ऋण और इतिहास"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1399,10 +1407,6 @@ msgstr "स्थिति"
 #: account/mybooks.html account/sidebar.html account/topmenu.html
 msgid "My Reading Stats"
 msgstr "मेरे पढ़ने के आँकड़े"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Loan History"
-msgstr "लोन का इतिहास"
 
 #: account/mybooks.html account/sidebar.html
 msgid "My Notes"
@@ -2804,7 +2808,7 @@ msgstr "ड्राई रन"
 msgid "Anonymize Account"
 msgstr "अकाउंट को अनाम करें"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "ऋण"
 
@@ -3319,6 +3323,29 @@ msgstr "नाम गायब है"
 #, python-format
 msgid " by %(name)s"
 msgstr " %(name)s द्वारा"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "1 व्यक्ति प्रतीक्षा में है"
+msgstr[1] "%(count)d लोग प्रतीक्षा में हैं"
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "ADE के माध्यम से वापस करें"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "ऋण की समय-सीमा समाप्त"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Really return this book?"
+msgstr "क्या आप वाकई यह किताब लौटा रहे हैं?"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Return book"
+msgstr "रिटर्न बुक"
 
 #: books/daisy.html
 msgid "Back"
@@ -7578,14 +7605,6 @@ msgstr "मार्क देखें"
 msgid "Related..."
 msgstr "संबंधित..."
 
-#: ReturnForm.html
-msgid "Really return this book?"
-msgstr "क्या आप वाकई यह किताब लौटा रहे हैं?"
-
-#: ReturnForm.html
-msgid "Return book"
-msgstr "रिटर्न बुक"
-
 #: SearchResultsWork.html
 #, fuzzy
 msgid "added to"
@@ -9508,4 +9527,12 @@ msgstr "क्लासिक ई - बुक्स"
 
 #~ msgid "right chevron"
 #~ msgstr "दायाँ चेवरॉन"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d वर्तमान ऋण"
+#~ msgstr[1] "%(count)d वर्तमान ऋण"
+
+#~ msgid "My Loans"
+#~ msgstr "मेरी पुस्तकें"
 

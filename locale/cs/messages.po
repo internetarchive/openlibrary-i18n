@@ -1250,25 +1250,21 @@ msgstr "Revize"
 msgid "No ISBN"
 msgstr "Přihlásit se"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "V historii výpůjček nebyly nalezeny žádné výpůjčky."
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "<a href=\"/search\">Vyhledejte knihu</a> k vypůjčení."
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "Aktivní výpůjčka (%(count)d)"
+msgstr[1] "Aktivní výpůjčky (%(count)d)"
+msgstr[2] ""
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "Momentálně nemáte žádné vypůjčené knihy."
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d aktivní výpůjčka"
-msgstr[1] "%(count)d aktivní výpůjčky"
-msgstr[2] "%(count)d aktivních výpůjček"
+msgid "Book"
+msgstr "Kniha"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1282,11 +1278,11 @@ msgstr[0] "Na tuto knihu čeká %(count)d osoba."
 msgstr[1] "Na tuto knihu čekají %(count)d osoby."
 msgstr[2] "Na tuto knihu čeká %(count)d osob."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "Zatím nestaženo."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "Stáhnout nyní"
 
@@ -1364,6 +1360,19 @@ msgid "Leave the waiting list?"
 msgstr "Opustit čekací listinu?"
 
 #: account/loans.html
+#, fuzzy
+msgid "Loan History"
+msgstr "Historie"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "V historii výpůjček nebyly nalezeny žádné výpůjčky."
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "<a href=\"/search\">Vyhledejte knihu</a> k vypůjčení."
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "Hledáte knihu k výpůjčce? Prohlédněte si naše tipy od zaměstnanců nebo prohledejte náš katalog."
 
@@ -1380,9 +1389,9 @@ msgstr "Nebo si prohlédněte naše <a href=\"/collections\">speciální sbírky
 msgid "No books are on this shelf"
 msgstr "Na tomto regálu nejsou žádné knihy"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "Moje výpůjčky"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "Výpůjčky a historie"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1415,11 +1424,6 @@ msgstr "Moje seznamy"
 #, fuzzy
 msgid "My Reading Stats"
 msgstr "Seznamy četby"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-#, fuzzy
-msgid "Loan History"
-msgstr "Historie"
 
 #: account/mybooks.html account/sidebar.html
 #, fuzzy
@@ -2818,7 +2822,7 @@ msgstr "Testovací spuštění"
 msgid "Anonymize Account"
 msgstr "Váš účet"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "Výpůjčky"
 
@@ -3322,6 +3326,32 @@ msgstr "chybí název"
 #, python-format
 msgid " by %(name)s"
 msgstr " od %(name)s"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "1 osoba čeká"
+msgstr[1] "%(count)d osob čeká"
+msgstr[2] ""
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "Vrátit přes ADE"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "Výpůjčka vypršela"
+
+#: ReturnForm.html books/custom_carousel_card.html
+#, fuzzy
+msgid "Really return this book?"
+msgstr "Smazat tento záznam"
+
+#: ReturnForm.html books/custom_carousel_card.html
+#, fuzzy
+msgid "Return book"
+msgstr "Náhodna kniha"
 
 #: books/daisy.html
 msgid "Back"
@@ -7693,16 +7723,6 @@ msgstr "Zobrazit"
 msgid "Related..."
 msgstr "Související..."
 
-#: ReturnForm.html
-#, fuzzy
-msgid "Really return this book?"
-msgstr "Smazat tento záznam"
-
-#: ReturnForm.html
-#, fuzzy
-msgid "Return book"
-msgstr "Náhodna kniha"
-
 #: SearchResultsWork.html
 #, fuzzy
 msgid "added to"
@@ -9708,4 +9728,13 @@ msgstr "Zobrazit jen eKnihy"
 
 #~ msgid "right chevron"
 #~ msgstr "šipka doprava"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d aktivní výpůjčka"
+#~ msgstr[1] "%(count)d aktivní výpůjčky"
+#~ msgstr[2] "%(count)d aktivních výpůjček"
+
+#~ msgid "My Loans"
+#~ msgstr "Moje výpůjčky"
 

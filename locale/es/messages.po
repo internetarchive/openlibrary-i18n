@@ -1185,24 +1185,20 @@ msgstr "Razón"
 msgid "No ISBN"
 msgstr "Sin ISBN"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "No se han encontrado préstamos en tu historial de préstamos."
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "<a href=\"/search\">Buscar un libro</a> para pedir prestado."
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "Préstamo activo (%(count)d)"
+msgstr[1] "Préstamos activos (%(count)d)"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "No tienes prestado ningún libro en este momento."
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d préstamo actual"
-msgstr[1] "%(count)d préstamos actuales"
+msgid "Book"
+msgstr "Libro"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1215,11 +1211,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Hay %(count)d persona esperando este libro."
 msgstr[1] "Hay %(count)d personas esperando por este libro."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "Aún no se ha descargado."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "Descargar ahora"
 
@@ -1292,6 +1288,18 @@ msgid "Leave the waiting list?"
 msgstr "¿Abandonar la lista de espera?"
 
 #: account/loans.html
+msgid "Loan History"
+msgstr "Historial de préstamos"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "No se han encontrado préstamos en tu historial de préstamos."
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "<a href=\"/search\">Buscar un libro</a> para pedir prestado."
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "¿Busca un libro en préstamo?  Echa un vistazo a nuestras selecciones o busca un libro sobre un tema específico:"
 
@@ -1307,9 +1315,9 @@ msgstr "O consulta nuestras <a href=\"/collections\">colecciones especiales</a>.
 msgid "No books are on this shelf"
 msgstr "No hay libros en este estante"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "Mis préstamos"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "Préstamos e historial"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1339,10 +1347,6 @@ msgstr "Mis estadísticas"
 #: account/mybooks.html account/sidebar.html account/topmenu.html
 msgid "My Reading Stats"
 msgstr "Mis estadísticas de lectura"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Loan History"
-msgstr "Historial de préstamos"
 
 #: account/mybooks.html account/sidebar.html
 msgid "My Notes"
@@ -2662,7 +2666,7 @@ msgstr "Simulacro"
 msgid "Anonymize Account"
 msgstr "Anonimizar cuenta"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "Préstamos"
 
@@ -3153,6 +3157,29 @@ msgstr "falta el nombre"
 #, python-format
 msgid " by %(name)s"
 msgstr " por %(name)s"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "1 persona esperando"
+msgstr[1] "%(count)d personas esperando"
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "Devolver mediante ADE"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "Préstamo caducado"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Really return this book?"
+msgstr "¿Devolver este libro de verdad?"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Return book"
+msgstr "Devolver libro"
 
 #: books/daisy.html
 msgid "Back"
@@ -6441,7 +6468,7 @@ msgstr "Enlaces externos"
 msgid "Format"
 msgstr "Formato"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/view.html
+#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Paginación"
 
@@ -6979,6 +7006,26 @@ msgstr "¿Ver todas las ediciones de %(count)d?"
 msgid "Edition"
 msgstr "Edición"
 
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#, fuzzy
+msgid "Go to previous page"
+msgstr "Ir a la sección anterior"
+
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#, fuzzy
+msgid "Go to next page"
+msgstr "Ir a la siguiente sección"
+
+#: OlPagination.html type/work/editions_datatable.html
+#, python-brace-format
+msgid "Go to page {page}"
+msgstr "Ir a la página {page}"
+
+#: OlPagination.html type/work/editions_datatable.html
+#, python-brace-format
+msgid "Page {page}, current page"
+msgstr "Página {page}, página actual"
+
 #: type/work/editions_datatable.html
 msgid "No editions available"
 msgstr "No hay ediciones disponibles"
@@ -7079,14 +7126,6 @@ msgid "Checking for Search Inside matches"
 msgstr "Comprobación de coincidencias en «Buscar dentro»"
 
 #: FulltextSearchSuggestion.html
-msgid "Search Inside Icon"
-msgstr "Icono Buscar Dentro"
-
-#: FulltextSearchSuggestion.html
-msgid "search inside icon"
-msgstr "icono buscar dentro"
-
-#: FulltextSearchSuggestion.html
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "Se han encontrado %(book_count)s libros con pasajes coincidentes"
@@ -7095,10 +7134,6 @@ msgstr "Se han encontrado %(book_count)s libros con pasajes coincidentes"
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "Ver todas las %(results_count)s coincidencias de «Buscar dentro»"
-
-#: FulltextSearchSuggestion.html
-msgid "right chevron"
-msgstr "Flecha derecha"
 
 #: FulltextSnippet.html FulltextSuggestionSnippet.html
 msgid "❝"
@@ -7179,26 +7214,6 @@ msgstr "por %(authors)s"
 msgid "My Book Review"
 msgstr "Mi reseña del libros"
 
-#: OlPagination.html OlPaginationArrows.html
-#, fuzzy
-msgid "Go to previous page"
-msgstr "Ir a la sección anterior"
-
-#: OlPagination.html OlPaginationArrows.html
-#, fuzzy
-msgid "Go to next page"
-msgstr "Ir a la siguiente sección"
-
-#: OlPagination.html
-#, python-brace-format
-msgid "Go to page {page}"
-msgstr "Ir a la página {page}"
-
-#: OlPagination.html
-#, python-brace-format
-msgid "Page {page}, current page"
-msgstr "Página {page}, página actual"
-
 #: PreviewSearchInside.html
 msgid "Search inside book"
 msgstr "Buscar dentro del libro"
@@ -7278,14 +7293,6 @@ msgstr "Ver MARC"
 #: RelatedSubjects.html
 msgid "Related..."
 msgstr "Relacionado..."
-
-#: ReturnForm.html
-msgid "Really return this book?"
-msgstr "¿Devolver este libro de verdad?"
-
-#: ReturnForm.html
-msgid "Return book"
-msgstr "Devolver libro"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -9850,4 +9857,21 @@ msgstr "Libros electrónicos clásicos"
 
 #~ msgid "No link to Wikipedia in your language"
 #~ msgstr "No hay enlace a Wikipedia en tu idioma"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d préstamo actual"
+#~ msgstr[1] "%(count)d préstamos actuales"
+
+#~ msgid "My Loans"
+#~ msgstr "Mis préstamos"
+
+#~ msgid "Search Inside Icon"
+#~ msgstr "Icono Buscar Dentro"
+
+#~ msgid "search inside icon"
+#~ msgstr "icono buscar dentro"
+
+#~ msgid "right chevron"
+#~ msgstr "Flecha derecha"
 

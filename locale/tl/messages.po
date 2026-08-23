@@ -1183,24 +1183,20 @@ msgstr "Dahilan"
 msgid "No ISBN"
 msgstr "Walang ISBN"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "Walang natagpuang pautang sa iyong kasaysayan ng panghihiram."
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "<a href=\"/search\">Maghanap ng libro</a> upang manghiram."
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "Aktibong Pautang (%(count)d)"
+msgstr[1] "Mga Aktibong Pautang (%(count)d)"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "Wala kang in-checkout na mga libro sa ngayon."
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d Kasalukuyang Pautang"
-msgstr[1] "%(count)d Mga Kasalukuyang Pautang"
+msgid "Book"
+msgstr "Aklat"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1213,11 +1209,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "May %(count)d taong naghihintay para sa librong ito."
 msgstr[1] "May %(count)d mga taong naghihintay para sa librong ito."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "Hindi pa na-download."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "I-download Ngayon"
 
@@ -1290,6 +1286,18 @@ msgid "Leave the waiting list?"
 msgstr "Umalis sa listahan ng naghihintay?"
 
 #: account/loans.html
+msgid "Loan History"
+msgstr "Kasaysayan ng Pautang"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "Walang natagpuang pautang sa iyong kasaysayan ng panghihiram."
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "<a href=\"/search\">Maghanap ng libro</a> upang manghiram."
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "Naghahanap ng libro upang manghiram? Suriin ang aming mga pinili ng tauhan, o maghanap para s"
 
@@ -1305,9 +1313,9 @@ msgstr "O, tingnan ang aming <a href=\"/collections\">mga espesyal na koleksyon<
 msgid "No books are on this shelf"
 msgstr "Walang mga libro sa shelf na ito"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "Aking mga Pautang"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "Mga Pautang at Kasaysayan"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1337,10 +1345,6 @@ msgstr "Aking mga Estadistika"
 #: account/mybooks.html account/sidebar.html account/topmenu.html
 msgid "My Reading Stats"
 msgstr "Aking mga Estadistika sa Pagbasa"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Loan History"
-msgstr "Kasaysayan ng Pautang"
 
 #: account/mybooks.html account/sidebar.html
 msgid "My Notes"
@@ -2650,7 +2654,7 @@ msgstr "Pagsubok na Patuyuin"
 msgid "Anonymize Account"
 msgstr "Gawing Anonimo ang Account"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "Mga Pautang"
 
@@ -3141,6 +3145,29 @@ msgstr "kulang ang pangalan"
 #, python-format
 msgid " by %(name)s"
 msgstr " ni %(name)s"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "1 taong naghihintay"
+msgstr[1] "%(count)d na taong naghihintay"
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "Ibalik sa pamamagitan ng ADE"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "Nag-expire ang Pautang"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Really return this book?"
+msgstr "Talagang ibabalik ang aklat na ito?"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Return book"
+msgstr "Ibalik ang aklat"
 
 #: books/daisy.html
 msgid "Back"
@@ -6424,7 +6451,7 @@ msgstr "Mga Panlabas na Link"
 msgid "Format"
 msgstr "Format"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/view.html
+#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Pagpapalimbag"
 
@@ -6959,6 +6986,26 @@ msgstr "Tingnan ang lahat ng %(count)d edisyon?"
 msgid "Edition"
 msgstr "Edisyon"
 
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#, fuzzy
+msgid "Go to previous page"
+msgstr "Pumunta sa nakaraang bahagi"
+
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#, fuzzy
+msgid "Go to next page"
+msgstr "Pumunta sa susunod na bahagi"
+
+#: OlPagination.html type/work/editions_datatable.html
+#, fuzzy, python-brace-format
+msgid "Go to page {page}"
+msgstr ""
+
+#: OlPagination.html type/work/editions_datatable.html
+#, python-brace-format
+msgid "Page {page}, current page"
+msgstr "Pahina {page}, kasalukuyang pahina"
+
 #: type/work/editions_datatable.html
 msgid "No editions available"
 msgstr "Walang available na edisyon"
@@ -7059,14 +7106,6 @@ msgid "Checking for Search Inside matches"
 msgstr "Sinasabing tingnan ang mga tugma sa Search Inside"
 
 #: FulltextSearchSuggestion.html
-msgid "Search Inside Icon"
-msgstr "Search Inside Icon"
-
-#: FulltextSearchSuggestion.html
-msgid "search inside icon"
-msgstr "search inside icon"
-
-#: FulltextSearchSuggestion.html
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "%(book_count)s mga aklat na natagpuan na may tugmang bahagi"
@@ -7075,10 +7114,6 @@ msgstr "%(book_count)s mga aklat na natagpuan na may tugmang bahagi"
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "Tingnan ang lahat ng %(results_count)s Search Inside Matches"
-
-#: FulltextSearchSuggestion.html
-msgid "right chevron"
-msgstr "kanang chevron"
 
 #: FulltextSnippet.html FulltextSuggestionSnippet.html
 msgid "❝"
@@ -7156,26 +7191,6 @@ msgstr "ni  %(authors)s"
 #: ObservationsModal.html
 msgid "My Book Review"
 msgstr "Aking Pagsusuri ng Aklat"
-
-#: OlPagination.html OlPaginationArrows.html
-#, fuzzy
-msgid "Go to previous page"
-msgstr "Pumunta sa nakaraang bahagi"
-
-#: OlPagination.html OlPaginationArrows.html
-#, fuzzy
-msgid "Go to next page"
-msgstr "Pumunta sa susunod na bahagi"
-
-#: OlPagination.html
-#, fuzzy, python-brace-format
-msgid "Go to page {page}"
-msgstr ""
-
-#: OlPagination.html
-#, python-brace-format
-msgid "Page {page}, current page"
-msgstr "Pahina {page}, kasalukuyang pahina"
 
 #: PreviewSearchInside.html
 msgid "Search inside book"
@@ -7256,14 +7271,6 @@ msgstr "Tingnan ang MARC"
 #: RelatedSubjects.html
 msgid "Related..."
 msgstr "Kaugnay..."
-
-#: ReturnForm.html
-msgid "Really return this book?"
-msgstr "Talagang ibabalik ang aklat na ito?"
-
-#: ReturnForm.html
-msgid "Return book"
-msgstr "Ibalik ang aklat"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -9306,4 +9313,21 @@ msgstr "Klasikal na eBooks"
 
 #~ msgid "No link to Wikipedia in your language"
 #~ msgstr "Walang link sa Wikipedia sa iyong wika"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d Kasalukuyang Pautang"
+#~ msgstr[1] "%(count)d Mga Kasalukuyang Pautang"
+
+#~ msgid "My Loans"
+#~ msgstr "Aking mga Pautang"
+
+#~ msgid "Search Inside Icon"
+#~ msgstr "Search Inside Icon"
+
+#~ msgid "search inside icon"
+#~ msgstr "search inside icon"
+
+#~ msgid "right chevron"
+#~ msgstr "kanang chevron"
 

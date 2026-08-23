@@ -1189,24 +1189,20 @@ msgstr "Resone"
 msgid "No ISBN"
 msgstr "Perunu ISBN"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "Perunu prèstidu atzapadu in sa lista de prèstidos tua."
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "<a href=\"/search\">Chirca unu libru</a> de pigare in prèstidu."
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "Prèstidu ativu (%(count)d)"
+msgstr[1] "Prèstidos ativos (%(count)d)"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "In custu momentu no as pigadu perunu libru in prèstidu."
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d prèstidu atuale"
-msgstr[1] "%(count)d prèstidos atuales"
+msgid "Book"
+msgstr "Libru"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1219,11 +1215,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "B'at %(count)d persone isetende pro custu libru."
 msgstr[1] "Bi sunt %(count)d persones isetende pro custu libru."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "Galu no iscarrigadu."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "Iscàrriga como"
 
@@ -1296,6 +1292,18 @@ msgid "Leave the waiting list?"
 msgstr "Lassare sa lista de isetu?"
 
 #: account/loans.html
+msgid "Loan History"
+msgstr "Cronologia de sos prèstidos"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "Perunu prèstidu atzapadu in sa lista de prèstidos tua."
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "<a href=\"/search\">Chirca unu libru</a> de pigare in prèstidu."
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "Ses chirchende unu libru de pigare in prèstidu?  Pòmpia·ti sos issèberos de su personale nostru, o chirca unu libru subra de un'argumentu ispetzìficu:"
 
@@ -1311,9 +1319,9 @@ msgstr "O pòmpia·ti sas <a href=\"/collections\">colletziones ispetziales</a> 
 msgid "No books are on this shelf"
 msgstr "Custu iscafale non tenet libros"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "Sos prèstidos meos"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "Prèstidos e istòria"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1343,10 +1351,6 @@ msgstr "Istatìsticas meas"
 #: account/mybooks.html account/sidebar.html account/topmenu.html
 msgid "My Reading Stats"
 msgstr "Sas istatìsticas meas de letura"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Loan History"
-msgstr "Cronologia de sos prèstidos"
 
 #: account/mybooks.html account/sidebar.html
 msgid "My Notes"
@@ -2668,7 +2672,7 @@ msgstr "Esecutzione de anteprima"
 msgid "Anonymize Account"
 msgstr "Anonimiza su contu"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "Prèstidos"
 
@@ -3161,6 +3165,29 @@ msgstr "nùmene chi mancat"
 #, python-format
 msgid " by %(name)s"
 msgstr " de %(name)s"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "1 persona in atesa"
+msgstr[1] "%(count)d persones in atesa"
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "Torra tràmite ADE"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "Prèstidu iscadidu"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Really return this book?"
+msgstr "Boles torrare a beru custu libru?"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Return book"
+msgstr "Torra su libru"
 
 #: books/daisy.html
 msgid "Back"
@@ -6466,7 +6493,7 @@ msgstr "Ligàmenes esternos"
 msgid "Format"
 msgstr "Formadu"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/view.html
+#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Impaginatzione"
 
@@ -7008,6 +7035,25 @@ msgstr "Boles pompiare totu sas %(count)d editziones?"
 msgid "Edition"
 msgstr "Editzione"
 
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+msgid "Go to previous page"
+msgstr "Anda a sa pàgina precedente"
+
+#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#, fuzzy
+msgid "Go to next page"
+msgstr "Bae a sa setzione imbeniente"
+
+#: OlPagination.html type/work/editions_datatable.html
+#, fuzzy, python-brace-format
+msgid "Go to page {page}"
+msgstr ""
+
+#: OlPagination.html type/work/editions_datatable.html
+#, python-brace-format
+msgid "Page {page}, current page"
+msgstr "Pàgina {page}, pàgina curente"
+
 #: type/work/editions_datatable.html
 msgid "No editions available"
 msgstr "Peruna editzione a disponimentu"
@@ -7109,14 +7155,6 @@ msgid "Checking for Search Inside matches"
 msgstr "Verifichende sas currispondèntzias de sa Chirca a intro"
 
 #: FulltextSearchSuggestion.html
-msgid "Search Inside Icon"
-msgstr "Icona de sa Chirca a intro"
-
-#: FulltextSearchSuggestion.html
-msgid "search inside icon"
-msgstr "icona de sa chirca a intro"
-
-#: FulltextSearchSuggestion.html
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "%(book_count)s libros atzapados cun passàgios chi currispondent"
@@ -7125,10 +7163,6 @@ msgstr "%(book_count)s libros atzapados cun passàgios chi currispondent"
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "Abbista totu sas %(results_count)s currispondèntzias de sa chirca a intro"
-
-#: FulltextSearchSuggestion.html
-msgid "right chevron"
-msgstr "fritza cara a destra"
 
 #: FulltextSnippet.html FulltextSuggestionSnippet.html
 msgid "❝"
@@ -7206,25 +7240,6 @@ msgstr ""
 #: ObservationsModal.html
 msgid "My Book Review"
 msgstr "Sa retzensione mea a su libru"
-
-#: OlPagination.html OlPaginationArrows.html
-msgid "Go to previous page"
-msgstr "Anda a sa pàgina precedente"
-
-#: OlPagination.html OlPaginationArrows.html
-#, fuzzy
-msgid "Go to next page"
-msgstr "Bae a sa setzione imbeniente"
-
-#: OlPagination.html
-#, fuzzy, python-brace-format
-msgid "Go to page {page}"
-msgstr ""
-
-#: OlPagination.html
-#, python-brace-format
-msgid "Page {page}, current page"
-msgstr "Pàgina {page}, pàgina curente"
 
 #: PreviewSearchInside.html
 msgid "Search inside book"
@@ -7306,14 +7321,6 @@ msgstr "Ammustra MARC"
 #: RelatedSubjects.html
 msgid "Related..."
 msgstr "Ligados..."
-
-#: ReturnForm.html
-msgid "Really return this book?"
-msgstr "Boles torrare a beru custu libru?"
-
-#: ReturnForm.html
-msgid "Return book"
-msgstr "Torra su libru"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -9827,4 +9834,21 @@ msgstr "Libru eletrònicu clàssicu"
 
 #~ msgid "No link to Wikipedia in your language"
 #~ msgstr "Perunu ligàmene a Wikipedia in sa limba tua"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d prèstidu atuale"
+#~ msgstr[1] "%(count)d prèstidos atuales"
+
+#~ msgid "My Loans"
+#~ msgstr "Sos prèstidos meos"
+
+#~ msgid "Search Inside Icon"
+#~ msgstr "Icona de sa Chirca a intro"
+
+#~ msgid "search inside icon"
+#~ msgstr "icona de sa chirca a intro"
+
+#~ msgid "right chevron"
+#~ msgstr "fritza cara a destra"
 

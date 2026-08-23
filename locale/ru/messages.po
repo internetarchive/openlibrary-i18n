@@ -1262,25 +1262,21 @@ msgstr "Редактирование"
 msgid "No ISBN"
 msgstr "ISBN"
 
-#: account/loan_history.html
-msgid "No loans found in your borrow history."
-msgstr "В истории заимствований не найдено займов."
-
-#: account/loan_history.html
-msgid "<a href=\"/search\">Search for a book</a> to borrow."
-msgstr "<a href=\"/search\">Найдите книгу</a> для заимствования."
+#: account/loans.html
+#, python-format
+msgid "Active Loan (%(count)d)"
+msgid_plural "Active Loans (%(count)d)"
+msgstr[0] "Активный заём (%(count)d)"
+msgstr[1] "Активные займы (%(count)d)"
+msgstr[2] ""
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
 msgstr "Вы ещё не заняли ни одной книги."
 
 #: account/loans.html
-#, python-format
-msgid "%(count)d Current Loan"
-msgid_plural "%(count)d Current Loans"
-msgstr[0] "%(count)d активный заем"
-msgstr[1] "%(count)d активных займов"
-msgstr[2] ""
+msgid "Book"
+msgstr "Книга"
 
 #: account/loans.html
 msgid "Loan actions"
@@ -1294,11 +1290,11 @@ msgstr[0] "%(count)d человек ждёт эту книгу."
 msgstr[1] "%(count)d человек ждут эту книгу."
 msgstr[2] ""
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Not yet downloaded."
 msgstr "Ещё не загружено."
 
-#: account/loans.html
+#: account/loans.html books/custom_carousel_card.html
 msgid "Download Now"
 msgstr "Загрузить сейчас"
 
@@ -1375,6 +1371,18 @@ msgid "Leave the waiting list?"
 msgstr "Покинуть список ожидания?"
 
 #: account/loans.html
+msgid "Loan History"
+msgstr "История займов"
+
+#: account/loans.html
+msgid "No loans found in your borrow history."
+msgstr "В истории заимствований не найдено займов."
+
+#: account/loans.html
+msgid "<a href=\"/search\">Search for a book</a> to borrow."
+msgstr "<a href=\"/search\">Найдите книгу</a> для заимствования."
+
+#: account/loans.html
 msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
 msgstr "Ищете книгу для заимствования? Посмотрите рекомендации сотрудников или найдите книгу по теме:"
 
@@ -1390,9 +1398,9 @@ msgstr "Или посмотрите наши <a href=\"/collections\">специ
 msgid "No books are on this shelf"
 msgstr "В этой полке нет книг"
 
-#: account/mybooks.html account/sidebar.html
-msgid "My Loans"
-msgstr "Мои займы"
+#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Loans & History"
+msgstr "Займы и история"
 
 #. Display name for the "already-read" reading log shelf used in page headings
 #. and breadcrumbs.
@@ -1423,10 +1431,6 @@ msgstr "Статистика"
 #: account/mybooks.html account/sidebar.html account/topmenu.html
 msgid "My Reading Stats"
 msgstr "Моя статистика чтения"
-
-#: account/mybooks.html account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Loan History"
-msgstr "История займов"
 
 #: account/mybooks.html account/sidebar.html
 msgid "My Notes"
@@ -2840,7 +2844,7 @@ msgstr "Пробный запуск"
 msgid "Anonymize Account"
 msgstr "Найти учётную запись"
 
-#: admin/people/view.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py type/user/view.html
+#: admin/people/view.html type/user/view.html
 msgid "Loans"
 msgstr "Займы"
 
@@ -3363,6 +3367,30 @@ msgstr "имя отсутствует"
 #, python-format
 msgid " by %(name)s"
 msgstr " от %(name)s"
+
+#: books/custom_carousel_card.html
+#, python-format
+msgid "1 person waiting"
+msgid_plural "%(count)d people waiting"
+msgstr[0] "Ожидает 1 человек"
+msgstr[1] "Ожидает %(count)d человек"
+msgstr[2] ""
+
+#: books/custom_carousel_card.html
+msgid "Return via ADE"
+msgstr "Вернуть через ADE"
+
+#: books/custom_carousel_card.html
+msgid "Loan Expired"
+msgstr "Срок займа истёк"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Really return this book?"
+msgstr "Точно вернуть эту книгу?"
+
+#: ReturnForm.html books/custom_carousel_card.html
+msgid "Return book"
+msgstr "Вернуть книгу"
 
 #: books/daisy.html
 msgid "Back"
@@ -7692,14 +7720,6 @@ msgstr "Показать MARC"
 msgid "Related..."
 msgstr "Похожие..."
 
-#: ReturnForm.html
-msgid "Really return this book?"
-msgstr "Точно вернуть эту книгу?"
-
-#: ReturnForm.html
-msgid "Return book"
-msgstr "Вернуть книгу"
-
 #: SearchResultsWork.html
 #, fuzzy
 msgid "added to"
@@ -10190,4 +10210,13 @@ msgstr "Электронные книги классики"
 
 #~ msgid "right chevron"
 #~ msgstr "шеврон вправо"
+
+#~ msgid "%(count)d Current Loan"
+#~ msgid_plural "%(count)d Current Loans"
+#~ msgstr[0] "%(count)d активный заем"
+#~ msgstr[1] "%(count)d активных займов"
+#~ msgstr[2] ""
+
+#~ msgid "My Loans"
+#~ msgstr "Мои займы"
 
