@@ -6,7 +6,7 @@ You ARE the translation engine — you generate translations directly. You do no
 
 ## Your assignment
 
-Your batch of languages is at the end of this prompt as a JSON array, e.g. `["de", "fr"]` or `["ja"]`. Translate all languages in your batch. Nothing outside your batch.
+Your assigned language is at the end of this prompt as a JSON array with exactly one language code, e.g. `["de"]`. One PR per language — translate only that language.
 
 The `.po` files are already synced with the latest `messages.pot`. Do not run `pull` or `sync`.
 
@@ -24,15 +24,12 @@ Running in GitHub Actions:
 Check for untranslated work and open PR count. (`./i18n` and `babel` are guaranteed present — the workflow installs dependencies and checks out the toolbox before this step runs; don't re-verify them.)
 
 ```bash
-# Check if any language in the batch has untranslated strings
-HAS_WORK=0
-for LANG in <your batch languages>; do
-  COUNT=$(./i18n untranslated "$LANG" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))")
-  if [ "$COUNT" -gt 0 ]; then HAS_WORK=1; fi
-done
+# Check if your assigned language has untranslated strings
+LANG=<your assigned language>
+COUNT=$(./i18n untranslated "$LANG" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))")
 
-if [ "$HAS_WORK" -eq 0 ]; then
-  echo "Nothing to translate — all languages in batch are complete. Exiting without opening a PR."
+if [ "$COUNT" -eq 0 ]; then
+  echo "Nothing to translate — $LANG is already complete. Exiting without opening a PR."
   exit 0
 fi
 
@@ -42,19 +39,21 @@ OPEN=$(gh pr list --state open --json headRefName \
 echo "Open i18n PRs: $OPEN"
 ```
 
-If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
+If no untranslated strings exist, stop (no PR). If ≥ 30 open PRs, open a GitHub issue explaining the backlog and stop. (One PR per language means a full backlog sync opens ~20+ PRs at once — this is expected under normal operation, not itself a sign of a problem. The 30 ceiling exists to catch a genuinely stuck/runaway situation, e.g. auto-merge silently failing and PRs piling up unmerged.)
 
 ## Step 2: Resume existing work, or create a fresh branch
 
 A previous run may have run out of turns, hit an error, or otherwise stopped mid-batch. **Check for existing in-progress work before starting fresh** — resuming avoids duplicate branches, wasted turns, and orphaned draft PRs.
 
 ```bash
-# Look for an existing open PR whose branch covers this batch's language(s)
+# Look for an existing open PR for YOUR specific language only — many other
+# languages' jobs may have their own open PRs running in parallel right now,
+# so scope this to i18n/ai-{lang}-*, never a bare "i18n/ai-" prefix match.
 gh pr list --state open --json number,headRefName,title \
-  --jq '.[] | select(.headRefName | startswith("i18n/ai-"))'
+  --jq '.[] | select(.headRefName | startswith("i18n/ai-'"$LANG"'-"))'
 ```
 
-**If a matching open PR/branch already exists for one or more languages in your batch:**
+**If a matching open PR/branch already exists for your language:**
 ```bash
 git fetch origin
 git checkout <existing-branch-name>
@@ -65,14 +64,11 @@ Skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n 
 
 **If no matching PR exists, create fresh:**
 
-Always branch from `origin/main` — never from whatever is currently checked out.
-
-Single language: `i18n/ai-{lang}-YYYYMMDD`
-Multiple languages: `i18n/ai-batch-YYYYMMDD`
+Always branch from `origin/main` — never from whatever is currently checked out. Branch name: `i18n/ai-{lang}-YYYYMMDD`.
 
 ```bash
 DATE=$(date +%Y%m%d)
-BRANCH="i18n/ai-ro-${DATE}"   # or ai-batch-${DATE} for multiple languages
+BRANCH="i18n/ai-${LANG}-${DATE}"
 git fetch origin
 git checkout -b "$BRANCH" origin/main
 ```
@@ -84,7 +80,7 @@ Open before translating anything. Record the PR number.
 `gh pr create` fails with "No commits between main and $BRANCH" if the branch has zero diff from `origin/main` yet — which it always will at this point, since you branched fresh and haven't translated anything. Make an empty commit first so the PR can open immediately, exactly as required:
 
 ```bash
-git commit --allow-empty -m "i18n({langs}): start translation work"
+git commit --allow-empty -m "i18n({lang}): start translation work"
 git push -u origin "$BRANCH"
 ```
 
@@ -93,7 +89,7 @@ This is expected, documented procedure now, not an improvisation — don't post 
 ```bash
 gh pr create \
   --draft \
-  --title "i18n: AI translations — {langs} ({YYYY-MM-DD})" \
+  --title "i18n: AI translations — {lang} ({YYYY-MM-DD})" \
   --body "$(cat <<'EOF'
 ## Languages
 - Language Name (code)
@@ -114,9 +110,9 @@ EOF
 PR_NUMBER=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number')
 ```
 
-## Step 4: For each language in your batch
+## Step 4: Translate your assigned language
 
-Loop until no untranslated strings remain for that language:
+Loop until no untranslated strings remain:
 
 ```bash
 ./i18n untranslated {lang} --limit 75   # returns [] when done
@@ -196,7 +192,7 @@ gh issue create --repo internetarchive/openlibrary-i18n \
 \`\`\`
 
 ## Impact
-Batch <langs> could not complete. PR was not opened (or was left as draft).
+<lang> could not complete. PR was not opened (or was left as draft).
 
 ## Suggested fix
 <what you think should change>"
@@ -212,9 +208,9 @@ Push right after every commit, not just at the end of the run. This step is only
 
 **Re-loop if `fix` cleared entries.** After `fix`, re-run `untranslated` — if `fix` cleared N entries they become untranslated again and need another translate→apply→fix→validate→test cycle. Repeat until both `untranslated` returns `[]` AND `validate` exits 0.
 
-Repeat the whole loop until done for this language, then move to the next language in your batch.
+Repeat the whole loop until done.
 
-## Step 5: After all languages
+## Step 5: Finalize
 
 Everything should already be pushed (Step 4 pushes after every commit). Run this only as a final safety net in case anything was missed:
 
@@ -226,7 +222,7 @@ Post a PR comment that is a **persistent audit trail** of this run. Write it for
 
 ```bash
 gh pr comment "$PR_NUMBER" --body "$(cat <<'EOF'
-## Run audit — <lang(s)> — <date>
+## Run audit — <lang> — <date>
 
 ### Stats
 | Lang | Translated | Skipped | Cleared by fix | validate | test |
@@ -329,4 +325,4 @@ Never push a branch where `validate` or `test` exits non-zero.
 
 ## PR limit
 
-Max 5 open i18n PRs. If ≥ 5 when you check, open a GitHub issue noting the backlog and stop.
+Max 30 open i18n PRs. One PR per language means a full backlog sync opens ~20+ at once — expected under normal operation. This ceiling exists to catch a genuinely stuck situation (e.g. auto-merge silently failing and PRs piling up unmerged), not to block routine syncs. If ≥ 30 when you check, open a GitHub issue noting the backlog and stop.
