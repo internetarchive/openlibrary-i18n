@@ -423,25 +423,25 @@ msgstr "Ang reference code na %s ay nalikha upang subaybayan ang error na ito at
 msgid "Return to the <a class=\"go-back-link\" href=\"javascript:;\">previous page</a>?"
 msgstr "Bumalik sa <a class=\"go-back-link\" href=\"javascript:;\">nakaraang pahina</a>?"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "You are being redirected to your book"
 msgstr "Ikaw ay nirere-direkta sa iyong libro"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "This book is provided by %(book_provider)s, a third-party Open Library Trusted Book Provider"
 msgstr "Ang aklat na ito ay ibinibigay ng %(book_provider)s, isang third-party na Trusted Book Provider ng Open Library"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "Sa loob ng %(time)s segundo, ikaw ay awtomatikong ididirekta sa: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Kanselahin"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "Continue without waiting"
 msgstr "Magpatuloy nang hindi nag-aantay"
 
@@ -680,7 +680,7 @@ msgstr "Tingnan ang PRs sa GitHub"
 msgid "Show changed files"
 msgstr "Ipakita ang mga nagbago na file"
 
-#: admin/inspect/store.html admin/people/index.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Pangalan"
 
@@ -5874,10 +5874,6 @@ msgid "Random"
 msgstr "Random"
 
 #: search/sort_options.html
-msgid "Name (beta: Librarian only)"
-msgstr "Pangalan (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
 msgid "Birth Date (oldest) (beta: Librarian only)"
 msgstr "Petsa ng Kapanganakan (pinakaluma) (beta: Para lamang sa Librarian)"
 
@@ -7658,8 +7654,18 @@ msgstr "Dine-deploy, sinimulan %(time)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploying, started %(time)s by %(user)s"
+msgstr "Dine-deploy, sinimulan %(time)s ni %(user)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploying, started %(time)s — %(stage)s"
 msgstr "Dine-deploy, sinimulan %(time)s — %(stage)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploying, started %(time)s — %(stage)s by %(user)s"
+msgstr "Dine-deploy, sinimulan %(time)s — %(stage)s ni %(user)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -7668,8 +7674,18 @@ msgstr "Matagumpay ang deploy %(time)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploy succeeded %(time)s by %(user)s"
+msgstr "Matagumpay ang deploy %(time)s ni %(user)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploy failed %(time)s"
 msgstr "Nabigo ang deploy %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploy failed %(time)s by %(user)s"
+msgstr "Nabigo ang deploy %(time)s ni %(user)s"
 
 #: TestingEnvironment.html.jinja
 msgid "Could not start the deploy — Jenkins did not accept the build."
@@ -7683,6 +7699,11 @@ msgstr "Hindi naka-configure ang deploy sa instance na ito — walang na-deploy.
 #, python-format
 msgid "Last deploy %(time)s"
 msgstr "Huling deploy %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Last deploy %(time)s by %(user)s"
+msgstr "Huling deploy %(time)s ni %(user)s"
 
 #: TestingEnvironment.html.jinja
 msgid "View Jenkins"
@@ -9364,4 +9385,7 @@ msgstr "Klasikal na eBooks"
 
 #~ msgid "OpenAPI"
 #~ msgstr "OpenAPI"
+
+#~ msgid "Name (beta: Librarian only)"
+#~ msgstr "Pangalan (beta: Para lamang sa Librarian)"
 

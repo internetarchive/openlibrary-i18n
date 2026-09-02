@@ -422,25 +422,25 @@ msgstr "이 오류를 추적하기 위해 참조 코드 %s가 생성되었으며
 msgid "Return to the <a class=\"go-back-link\" href=\"javascript:;\">previous page</a>?"
 msgstr "<a class=\"go-back-link\" href=\"javascript:;\">이전 페이지</a>로 돌아가시겠어요?"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "You are being redirected to your book"
 msgstr "책으로 이동 중입니다"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "This book is provided by %(book_provider)s, a third-party Open Library Trusted Book Provider"
 msgstr "이 책은 Open Library가 신뢰하는 업체인 %(book_provider)s에서 제공합니다"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "%(time)s초 후 자동으로 %(url)s으로 이동합니다"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "취소"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "Continue without waiting"
 msgstr "기다리지 않고 계속"
 
@@ -679,7 +679,7 @@ msgstr "GitHub에서 PR 보기"
 msgid "Show changed files"
 msgstr "변경된 파일 보기"
 
-#: admin/inspect/store.html admin/people/index.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "이름"
 
@@ -5811,10 +5811,6 @@ msgid "Random"
 msgstr "무작위"
 
 #: search/sort_options.html
-msgid "Name (beta: Librarian only)"
-msgstr "이름 (베타: 사서 전용)"
-
-#: search/sort_options.html
 msgid "Birth Date (oldest) (beta: Librarian only)"
 msgstr "출생일 (오래된 순, 베타: 사서 전용)"
 
@@ -7573,8 +7569,18 @@ msgstr "배포 중, %(time)s에 시작됨"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploying, started %(time)s by %(user)s"
+msgstr "배포 중, %(time)s에 시작됨 (%(user)s)"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploying, started %(time)s — %(stage)s"
 msgstr "배포 중, %(time)s에 시작됨 — %(stage)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploying, started %(time)s — %(stage)s by %(user)s"
+msgstr "배포 중, %(time)s에 시작됨 — %(stage)s (%(user)s)"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -7583,8 +7589,18 @@ msgstr "배포 성공 %(time)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploy succeeded %(time)s by %(user)s"
+msgstr "배포 성공 %(time)s (%(user)s)"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploy failed %(time)s"
 msgstr "배포 실패 %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploy failed %(time)s by %(user)s"
+msgstr "배포 실패 %(time)s (%(user)s)"
 
 #: TestingEnvironment.html.jinja
 msgid "Could not start the deploy — Jenkins did not accept the build."
@@ -7598,6 +7614,11 @@ msgstr "이 인스턴스에는 배포가 구성되어 있지 않습니다 — �
 #, python-format
 msgid "Last deploy %(time)s"
 msgstr "마지막 배포 %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Last deploy %(time)s by %(user)s"
+msgstr "마지막 배포 %(time)s (%(user)s)"
 
 #: TestingEnvironment.html.jinja
 msgid "View Jenkins"
@@ -9043,4 +9064,7 @@ msgstr "클래식 전자책"
 
 #~ msgid "OpenAPI"
 #~ msgstr "OpenAPI"
+
+#~ msgid "Name (beta: Librarian only)"
+#~ msgstr "이름 (베타: 사서 전용)"
 

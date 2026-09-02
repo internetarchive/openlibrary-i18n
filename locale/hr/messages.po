@@ -424,25 +424,25 @@ msgstr "Referentni kod %s je stvoren za praćenje ove greške i istražit ćemo 
 msgid "Return to the <a class=\"go-back-link\" href=\"javascript:;\">previous page</a>?"
 msgstr "Vratiti se na <a class=\"go-back-link\" href=\"javascript:;\">prethodnu stranicu</a>?"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "You are being redirected to your book"
 msgstr "Preusmjeravanje na tvoju knjigu"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "This book is provided by %(book_provider)s, a third-party Open Library Trusted Book Provider"
 msgstr "Ovu knjigu osigurava %(book_provider)s, neovisan i pouzdan pružatelj knjiga u Open Library"
 
-#: interstitial.html
+#: interstitial.html.jinja
 #, python-format
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "Za %(time)s s ćeš automatski biti preusmjeren/a na: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/list/edit.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Prekini"
 
-#: interstitial.html
+#: interstitial.html.jinja
 msgid "Continue without waiting"
 msgstr "Nastavi bez čekanja"
 
@@ -681,7 +681,7 @@ msgstr "Pogledaj PR-ove na GitHubu"
 msgid "Show changed files"
 msgstr "Prikaži promijenjene datoteke"
 
-#: admin/inspect/store.html admin/people/index.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ime"
 
@@ -5884,10 +5884,6 @@ msgid "Random"
 msgstr "Slučajno"
 
 #: search/sort_options.html
-msgid "Name (beta: Librarian only)"
-msgstr "Ime (beta: samo knjižničar)"
-
-#: search/sort_options.html
 msgid "Birth Date (oldest) (beta: Librarian only)"
 msgstr "Datum rođenja (najstariji) (beta: samo knjižničar)"
 
@@ -7665,8 +7661,18 @@ msgstr "Postavljanje u tijeku, pokrenuto %(time)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploying, started %(time)s by %(user)s"
+msgstr "Postavljanje u tijeku, pokrenuto %(time)s od strane %(user)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploying, started %(time)s — %(stage)s"
 msgstr "Postavljanje u tijeku, pokrenuto %(time)s — %(stage)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploying, started %(time)s — %(stage)s by %(user)s"
+msgstr "Postavljanje u tijeku, pokrenuto %(time)s — %(stage)s od strane %(user)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -7675,8 +7681,18 @@ msgstr "Postavljanje uspješno %(time)s"
 
 #: TestingEnvironment.html.jinja
 #, python-format
+msgid "Deploy succeeded %(time)s by %(user)s"
+msgstr "Postavljanje uspješno %(time)s od strane %(user)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
 msgid "Deploy failed %(time)s"
 msgstr "Postavljanje nije uspjelo %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Deploy failed %(time)s by %(user)s"
+msgstr "Postavljanje nije uspjelo %(time)s od strane %(user)s"
 
 #: TestingEnvironment.html.jinja
 msgid "Could not start the deploy — Jenkins did not accept the build."
@@ -7690,6 +7706,11 @@ msgstr "Postavljanje nije konfigurirano na ovoj instanci — ništa nije postavl
 #, python-format
 msgid "Last deploy %(time)s"
 msgstr "Posljednje postavljanje %(time)s"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Last deploy %(time)s by %(user)s"
+msgstr "Posljednje postavljanje %(time)s od strane %(user)s"
 
 #: TestingEnvironment.html.jinja
 msgid "View Jenkins"
@@ -9283,4 +9304,7 @@ msgstr "Klasične e-knjige"
 
 #~ msgid "OpenAPI"
 #~ msgstr "OpenAPI"
+
+#~ msgid "Name (beta: Librarian only)"
+#~ msgstr "Ime (beta: samo knjižničar)"
 
