@@ -464,17 +464,17 @@ msgstr "Anuluj"
 msgid "Continue without waiting"
 msgstr "Kontynuuj bez czekania"
 
-#: lib/browse_popover.html lib/nav_head.html library_explorer.html
+#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
 #, fuzzy
 msgid "Library Explorer"
 msgstr "Biblioteka Kongresu"
 
-#: RelatedSubjects.html account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
+#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
 #, fuzzy
 msgid "Loading..."
 msgstr "zapisywanie..."
 
-#: lib/header_dropdown.html lib/nav_head.html login.html
+#: lib/nav_head.html login.html
 msgid "Log In"
 msgstr "Zaloguj się"
 
@@ -1105,7 +1105,7 @@ msgstr "Należy wybrać kwalifikujący program"
 msgid "Sign Up to Open Library"
 msgstr "Załóż konto na Open Library"
 
-#: account/create.html lib/header_dropdown.html lib/nav_head.html
+#: account/create.html lib/nav_head.html
 msgid "Sign Up"
 msgstr "Załóż konto"
 
@@ -1788,7 +1788,7 @@ msgstr "Dziennik Lektur"
 msgid "My lists"
 msgstr "Moje listy"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Listy"
 
@@ -2329,7 +2329,7 @@ msgstr "Dołączył\\(a\\) %(date)s"
 msgid "Admin Center"
 msgstr "Centrum Rozwoju"
 
-#: RelatedSubjects.html SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "People"
 msgstr "Ludzie"
 
@@ -4677,41 +4677,9 @@ msgstr[0] "%s wydanie e-book"
 msgstr[1] "%s wydania e-book"
 msgstr[2] ""
 
-#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html type/page/view.html
-#, fuzzy
-msgid "Collections"
-msgstr "Akcje"
-
-#: lib/browse_popover.html lib/nav_head.html
-#, fuzzy
-msgid "K-12 Student Library"
-msgstr "Open Library"
-
-#: lib/browse_popover.html lib/nav_head.html
-#, fuzzy
-msgid "Book Talks"
-msgstr "Książki"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Random Book"
-msgstr "Losowa książka"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Przeglądaj"
-
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Tematyka"
-
 #: lib/browse_popover.html
 msgid "Browse books by topic"
 msgstr "Przeglądaj książki według tematu"
-
-#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
-#, fuzzy
-msgid "Trending"
-msgstr "Dziennik Lektur"
 
 #: lib/browse_popover.html
 msgid "Most popular right now"
@@ -4724,6 +4692,10 @@ msgstr "Przeglądaj wirtualne półki"
 #: lib/browse_popover.html
 msgid "Reader-curated collections"
 msgstr "Kolekcje tworzone przez czytelników"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "Przeglądaj"
 
 #: lib/dropper.html
 msgid "More options"
@@ -4772,24 +4744,9 @@ msgstr "Skopiuj i wklej ten kod na Twojej stronie Wikipedii."
 msgid "Get instructions at Wikipedia in a new window"
 msgstr "Odwiedź stronę tego autora w nowym oknie"
 
-#: lib/header_dropdown.html
-#, fuzzy
-msgid "My account"
-msgstr "Moje konto"
-
-#: lib/header_dropdown.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "Dołączył\\(a\\) %(date)s"
-
-#: lib/header_dropdown.html
+#: lib/header_dropdown.html lib/nav_head.html
 msgid "Menu"
 msgstr "Menu"
-
-#: lib/header_dropdown.html
-#, fuzzy
-msgid "New!"
-msgstr "Nowsze"
 
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
@@ -4882,12 +4839,21 @@ msgstr "Zobacz autorów"
 msgid "Explore subjects"
 msgstr "Zobacz książki"
 
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Tematyka"
+
 #: lib/nav_foot.html
 #, fuzzy
 msgid "Explore collections"
 msgstr "Zobacz książki"
 
-#: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
+#: lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py type/page/view.html
+#, fuzzy
+msgid "Collections"
+msgstr "Akcje"
+
+#: SearchNavigation.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
 msgid "Advanced Search"
 msgstr "Wyszukiwanie zaawansowane"
 
@@ -5014,6 +4980,30 @@ msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%
 msgstr "wersja <a href=\"https://github.com/internetarchive/openlibrary/commit/%s\">%s</a>"
 
 #: lib/nav_head.html
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Open Library Internet Archive: Jedna strona dla każdej książki"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "Search by barcode"
+msgstr "Szukaj w"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "My account"
+msgstr "Moje konto"
+
+#: lib/nav_head.html type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "Dołączył\\(a\\) %(date)s"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "My Open Library"
+msgstr "Open Library"
+
+#: lib/nav_head.html
 msgid "Loans, Reading Log, Lists, Stats"
 msgstr "Wypożyczenia, dziennik czytelniczy, listy, statystyki"
 
@@ -5022,16 +5012,25 @@ msgid "My Profile"
 msgstr "Mój profil"
 
 #: lib/nav_head.html
-msgid "Log out"
-msgstr "Wyloguj się"
-
-#: lib/nav_head.html
 msgid "Pending Merge Requests"
 msgstr "Oczekujące prośby o scalenie"
 
 #: lib/nav_head.html
+msgid "Log out"
+msgstr "Wyloguj się"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "Contribute"
+msgstr "Współtwórcy"
+
+#: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "Najnowsze zmiany wprowadzone przez społeczność"
+
+#: lib/nav_head.html
+msgid "Resources"
+msgstr "Zasoby"
 
 #: lib/nav_head.html
 msgid "Help & Support"
@@ -5040,29 +5039,6 @@ msgstr "Pomoc i wsparcie"
 #: lib/nav_head.html
 msgid "Librarians Portal"
 msgstr "Portal bibliotekarzy"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "My Open Library"
-msgstr "Open Library"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "Contribute"
-msgstr "Współtwórcy"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Zasoby"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Open Library Internet Archive: Jedna strona dla każdej książki"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "Search by barcode"
-msgstr "Szukaj w"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5858,7 +5834,7 @@ msgstr "Wspólne tematy"
 msgid "Search for books published by %(publisher)s"
 msgstr "Szukaj książek wydanych przez %(publisher)s"
 
-#: RelatedSubjects.html publishers/view.html
+#: RelatedSubjects.html.jinja publishers/view.html
 msgid "None found."
 msgstr "Nie znaleziono."
 
@@ -6337,6 +6313,11 @@ msgstr "Utworzone Listy"
 msgid "Any"
 msgstr "dowolny"
 
+#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+#, fuzzy
+msgid "Trending"
+msgstr "Dziennik Lektur"
+
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "Tytuł dzieła (beta: tylko dla bibliotekarzy)"
@@ -6678,7 +6659,7 @@ msgstr "Dodać kolejną?"
 msgid "Search %(author)s books"
 msgstr "Szukaj książek %(author)s"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
 msgstr "Miejsca"
 
@@ -7180,7 +7161,7 @@ msgstr "Dodatkowe metadane"
 msgid "Derived from seed metadata"
 msgstr "Pochodzi z metadanych źródłowych"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
 msgid "Times"
 msgstr "Okres"
 
@@ -7739,11 +7720,11 @@ msgstr "To wykres pokazujący historię publikacji dzieł na ten temat. Oś X ws
 msgid "This graph charts editions published on this subject."
 msgstr "Ten diagram przedstawia wydania publikacji na ten temat."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Something went wrong."
 msgstr "Coś poszło nie tak."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Retry"
 msgstr "Spróbuj ponownie"
 
@@ -7798,7 +7779,7 @@ msgstr "Słuchaj"
 msgid "View MARC"
 msgstr "Wyświetl"
 
-#: RelatedSubjects.html
+#: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Powiązane..."
 
@@ -8821,6 +8802,20 @@ msgstr "Liczba stron"
 #, python-format
 msgid "Are you sure you want to remove <strong>%(title)s</strong> from your list?"
 msgstr "Na pewno chcesz usunąć <strong>%(title)s</strong> z Twoich list?"
+
+#: openlibrary/plugins/openlibrary/nav.py
+#, fuzzy
+msgid "K-12 Student Library"
+msgstr "Open Library"
+
+#: openlibrary/plugins/openlibrary/nav.py
+#, fuzzy
+msgid "Book Talks"
+msgstr "Książki"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Random Book"
+msgstr "Losowa książka"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
@@ -9917,4 +9912,7 @@ msgstr "Kasyczne e-booki"
 
 #~ msgid "Name (beta: Librarian only)"
 #~ msgstr "Nazwa (beta: tylko dla bibliotekarzy)"
+
+#~ msgid "New!"
+#~ msgstr "Nowsze"
 

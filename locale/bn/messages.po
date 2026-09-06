@@ -467,16 +467,16 @@ msgstr "रद्द करें"
 msgid "Continue without waiting"
 msgstr "অপেক্ষা না করে চালিয়ে যান"
 
-#: lib/browse_popover.html lib/nav_head.html library_explorer.html
+#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
 msgid "Library Explorer"
 msgstr "लाइब्रेरी एक्सप्लोरर"
 
-#: RelatedSubjects.html account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
+#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
 #, fuzzy
 msgid "Loading..."
 msgstr "संपादन..."
 
-#: lib/header_dropdown.html lib/nav_head.html login.html
+#: lib/nav_head.html login.html
 msgid "Log In"
 msgstr "लॉग इन करें"
 
@@ -1084,7 +1084,7 @@ msgstr "একটি যোগ্যতাসম্পন্ন প্রোগ�
 msgid "Sign Up to Open Library"
 msgstr "ओपन लाइब्रेरी के लिए साइन अप करें"
 
-#: account/create.html lib/header_dropdown.html lib/nav_head.html
+#: account/create.html lib/nav_head.html
 msgid "Sign Up"
 msgstr "साइन अप"
 
@@ -1729,7 +1729,7 @@ msgstr "रीडिंग लॉग"
 msgid "My lists"
 msgstr "मेरी लिस्ट"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "सूचियाँ"
 
@@ -2267,7 +2267,7 @@ msgstr "%(date)s में शामिल हुए"
 msgid "Admin Center"
 msgstr "एडमिन सेंटर"
 
-#: RelatedSubjects.html SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "People"
 msgstr "लोग"
 
@@ -4574,38 +4574,9 @@ msgid_plural "%s ebook editions"
 msgstr[0] "%s ইবুক সংস্করণ"
 msgstr[1] "%s ইবুক সংস্করণ"
 
-#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html type/page/view.html
-msgid "Collections"
-msgstr "संग्रह"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "K-12 Student Library"
-msgstr "K -12 स्टूडेंट लाइब्रेरी"
-
-#: lib/browse_popover.html lib/nav_head.html
-#, fuzzy
-msgid "Book Talks"
-msgstr "पुस्तक विवरण"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Random Book"
-msgstr "रैंडम बुक"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "ब्राउज़"
-
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "विषय"
-
 #: lib/browse_popover.html
 msgid "Browse books by topic"
 msgstr "বিষয় অনুযায়ী বই ব্রাউজ করুন"
-
-#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
-msgid "Trending"
-msgstr "रुझान"
 
 #: lib/browse_popover.html
 msgid "Most popular right now"
@@ -4618,6 +4589,10 @@ msgstr "ভার্চুয়াল শেলফ ব্রাউজ করু
 #: lib/browse_popover.html
 msgid "Reader-curated collections"
 msgstr "পাঠক-কিউরেটেড সংকলন"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "ब्राउज़"
 
 #: lib/dropper.html
 msgid "More options"
@@ -4667,23 +4642,9 @@ msgstr "इस कोड को कॉपी करके अपने विक
 msgid "Get instructions at Wikipedia in a new window"
 msgstr "इस लेखक के पेज पर एक नई विंडो में जाएँ"
 
-#: lib/header_dropdown.html
-#, fuzzy
-msgid "My account"
-msgstr "अकाउंट ढूँढें"
-
-#: lib/header_dropdown.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "%(date)s में शामिल हुए"
-
-#: lib/header_dropdown.html
+#: lib/header_dropdown.html lib/nav_head.html
 msgid "Menu"
 msgstr "मेन्यू"
-
-#: lib/header_dropdown.html
-msgid "New!"
-msgstr "नया!"
 
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
@@ -4775,11 +4736,19 @@ msgstr "लेखकों का जायज़ा लें"
 msgid "Explore subjects"
 msgstr "विषयों का जायज़ा लें"
 
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "विषय"
+
 #: lib/nav_foot.html
 msgid "Explore collections"
 msgstr "कलेक्शन एक्सप्लोर करें"
 
-#: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
+#: lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py type/page/view.html
+msgid "Collections"
+msgstr "संग्रह"
+
+#: SearchNavigation.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
 msgid "Advanced Search"
 msgstr "विस्तृत खोज"
 
@@ -4902,6 +4871,29 @@ msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%
 msgstr "संस्करण <a href=\"https://github.com/internetarchive/openlibrary/commit/%s\">%s</a>"
 
 #: lib/nav_head.html
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "The Internet Archive's Open Library: One page for every book"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "Search by barcode"
+msgstr "किताबों के लिए खोज करें"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "My account"
+msgstr "अकाउंट ढूँढें"
+
+#: lib/nav_head.html type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "%(date)s में शामिल हुए"
+
+#: lib/nav_head.html
+msgid "My Open Library"
+msgstr "My Open Library"
+
+#: lib/nav_head.html
 msgid "Loans, Reading Log, Lists, Stats"
 msgstr "लोन, रीडिंग लॉग, सूचियाँ, आँकड़े"
 
@@ -4910,16 +4902,24 @@ msgid "My Profile"
 msgstr "मेरी प्रोफ़ाइल"
 
 #: lib/nav_head.html
-msgid "Log out"
-msgstr "लॉग आउट करें"
-
-#: lib/nav_head.html
 msgid "Pending Merge Requests"
 msgstr "मर्ज के अनुरोध लंबित हैं"
 
 #: lib/nav_head.html
+msgid "Log out"
+msgstr "लॉग आउट करें"
+
+#: lib/nav_head.html
+msgid "Contribute"
+msgstr "योगदान"
+
+#: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "हाल ही में समुदाय में किए गए बदलाव"
+
+#: lib/nav_head.html
+msgid "Resources"
+msgstr "वसीला"
 
 #: lib/nav_head.html
 msgid "Help & Support"
@@ -4928,27 +4928,6 @@ msgstr "सहायता एवं समर्थन"
 #: lib/nav_head.html
 msgid "Librarians Portal"
 msgstr "लाइब्रेरियन पोर्टल"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "My Open Library"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "योगदान"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "वसीला"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "The Internet Archive's Open Library: One page for every book"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "Search by barcode"
-msgstr "किताबों के लिए खोज करें"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5713,7 +5692,7 @@ msgstr "सामान्य विषय"
 msgid "Search for books published by %(publisher)s"
 msgstr "हमें %(publisher)s द्वारा प्रकाशित कोई भी किताब नहीं मिली।"
 
-#: RelatedSubjects.html publishers/view.html
+#: RelatedSubjects.html.jinja publishers/view.html
 msgid "None found."
 msgstr "कुछ नहीं मिला।"
 
@@ -6167,6 +6146,10 @@ msgstr "बनाई गई सूचियाँ"
 msgid "Any"
 msgstr "मई"
 
+#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+msgid "Trending"
+msgstr "रुझान"
+
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "কাজের শিরোনাম (বেটা: শুধুমাত্র লাইব্রেরিয়ান)"
@@ -6494,7 +6477,7 @@ msgstr "एक और जोड़ें?"
 msgid "Search %(author)s books"
 msgstr "%(author)s-এর বই খুঁজুন"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
 msgstr "जगहें"
 
@@ -6966,7 +6949,7 @@ msgstr "सूची मेटाडेटा"
 msgid "Derived from seed metadata"
 msgstr "बीज मेटाडेटा से व्युत्पन्न"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
 msgid "Times"
 msgstr "टाइम्स (बार)"
 
@@ -7504,11 +7487,11 @@ msgstr "यह कृतियों के संस्करणों के �
 msgid "This graph charts editions published on this subject."
 msgstr "यह ग्राफ़ इस विषय पर प्रकाशित संस्करणों को चार्ट करता है।"
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Something went wrong."
 msgstr "কিছু ভুল হয়েছে।"
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Retry"
 msgstr "পুনরায় চেষ্টা করুন"
 
@@ -7562,7 +7545,7 @@ msgstr "बात सुनो"
 msgid "View MARC"
 msgstr "मार्क देखें"
 
-#: RelatedSubjects.html
+#: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "संबंधित..."
 
@@ -8572,6 +8555,19 @@ msgstr "पृष्ठों की संख्या"
 #, fuzzy, python-format
 msgid "Are you sure you want to remove <strong>%(title)s</strong> from your list?"
 msgstr "क्या आप वाकई <strong>%(title)s</strong> को इस लिस्ट से हटाना चाहते हैं?"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "K-12 Student Library"
+msgstr "K -12 स्टूडेंट लाइब्रेरी"
+
+#: openlibrary/plugins/openlibrary/nav.py
+#, fuzzy
+msgid "Book Talks"
+msgstr "पुस्तक विवरण"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Random Book"
+msgstr "रैंडम बुक"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
@@ -9771,4 +9767,7 @@ msgstr "क्लासिक ई - बुक्स"
 
 #~ msgid "Name (beta: Librarian only)"
 #~ msgstr "নাম (বেটা: শুধুমাত্র লাইব্রেরিয়ান)"
+
+#~ msgid "New!"
+#~ msgstr "नया!"
 

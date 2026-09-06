@@ -453,16 +453,16 @@ msgstr "İptal et"
 msgid "Continue without waiting"
 msgstr "Beklemeden devam et"
 
-#: lib/browse_popover.html lib/nav_head.html library_explorer.html
+#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
 msgid "Library Explorer"
 msgstr "Kütüphane gezgini"
 
-#: RelatedSubjects.html account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
+#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
 #, fuzzy
 msgid "Loading..."
 msgstr "Bağlantılı…"
 
-#: lib/header_dropdown.html lib/nav_head.html login.html
+#: lib/nav_head.html login.html
 msgid "Log In"
 msgstr "Oturum aç"
 
@@ -1066,7 +1066,7 @@ msgstr "Uygun bir program seçilmelidir"
 msgid "Sign Up to Open Library"
 msgstr "Open Library'ye Kaydol"
 
-#: account/create.html lib/header_dropdown.html lib/nav_head.html
+#: account/create.html lib/nav_head.html
 msgid "Sign Up"
 msgstr "Kayıt Ol"
 
@@ -1710,7 +1710,7 @@ msgstr "Okuma Kaydı"
 msgid "My lists"
 msgstr "Listelerim"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Listeler"
 
@@ -2232,7 +2232,7 @@ msgstr "%(date)s tarihinde ödünç alındı"
 msgid "Admin Center"
 msgstr "Yönetim Merkezi"
 
-#: RelatedSubjects.html SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "People"
 msgstr "Kişiler"
 
@@ -4473,38 +4473,9 @@ msgid_plural "%s ebook editions"
 msgstr[0] "%s e-kitap baskısı"
 msgstr[1] "%s e-kitap baskısı"
 
-#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html type/page/view.html
-msgid "Collections"
-msgstr "Koleksiyonlar"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "K-12 Student Library"
-msgstr "K-12 Öğrenci Kütüphanesi"
-
-#: lib/browse_popover.html lib/nav_head.html
-#, fuzzy
-msgid "Book Talks"
-msgstr "Kitap Notları"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Random Book"
-msgstr "Rastgele Kitap"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Göz at"
-
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Konular"
-
 #: lib/browse_popover.html
 msgid "Browse books by topic"
 msgstr "Kitaplara konuya göre göz atın"
-
-#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
-msgid "Trending"
-msgstr "Trend"
 
 #: lib/browse_popover.html
 msgid "Most popular right now"
@@ -4517,6 +4488,10 @@ msgstr "Sanal raflara göz atın"
 #: lib/browse_popover.html
 msgid "Reader-curated collections"
 msgstr "Okuyucuların derlediği koleksiyonlar"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "Göz at"
 
 #: lib/dropper.html
 msgid "More options"
@@ -4563,23 +4538,9 @@ msgstr "Bu kodu Wikipedia sayfanıza kopyalayıp yapıştırın."
 msgid "Get instructions at Wikipedia in a new window"
 msgstr "Yeni pencerede Wikipedia'daki talimatları alın"
 
-#: lib/header_dropdown.html
-#, fuzzy
-msgid "My account"
-msgstr "Hesabı sil"
-
-#: lib/header_dropdown.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "%(date)s tarihinde katıldı"
-
-#: lib/header_dropdown.html
+#: lib/header_dropdown.html lib/nav_head.html
 msgid "Menu"
 msgstr "Menü"
-
-#: lib/header_dropdown.html
-msgid "New!"
-msgstr "Yeni!"
 
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
@@ -4671,11 +4632,19 @@ msgstr "Yazarları keşfet"
 msgid "Explore subjects"
 msgstr "Konuları keşfet"
 
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Konular"
+
 #: lib/nav_foot.html
 msgid "Explore collections"
 msgstr "Koleksiyonları keşfet"
 
-#: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
+#: lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py type/page/view.html
+msgid "Collections"
+msgstr "Koleksiyonlar"
+
+#: SearchNavigation.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
 msgid "Advanced Search"
 msgstr "Gelişmiş Arama"
 
@@ -4797,6 +4766,29 @@ msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%
 msgstr "sürüm <a href=\"https://github.com/internetarchive/openlibrary/commit/%s\">%s</a>"
 
 #: lib/nav_head.html
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Internet Archive'ın Open Library'si: Her kitap için bir sayfa"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "Search by barcode"
+msgstr "Kitap ara"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "My account"
+msgstr "Hesabı sil"
+
+#: lib/nav_head.html type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "%(date)s tarihinde katıldı"
+
+#: lib/nav_head.html
+msgid "My Open Library"
+msgstr "Benim Open Library'im"
+
+#: lib/nav_head.html
 msgid "Loans, Reading Log, Lists, Stats"
 msgstr "Ödünç Almalar, Okuma Günlüğü, Listeler, İstatistikler"
 
@@ -4805,16 +4797,24 @@ msgid "My Profile"
 msgstr "Profilim"
 
 #: lib/nav_head.html
-msgid "Log out"
-msgstr "Çıkış yap"
-
-#: lib/nav_head.html
 msgid "Pending Merge Requests"
 msgstr "Bekleyen Birleştirme İstekleri"
 
 #: lib/nav_head.html
+msgid "Log out"
+msgstr "Çıkış yap"
+
+#: lib/nav_head.html
+msgid "Contribute"
+msgstr "Katkıda Bulun"
+
+#: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "Son Topluluk Düzenlemeleri"
+
+#: lib/nav_head.html
+msgid "Resources"
+msgstr "Kaynaklar"
 
 #: lib/nav_head.html
 msgid "Help & Support"
@@ -4823,27 +4823,6 @@ msgstr "Yardım ve Destek"
 #: lib/nav_head.html
 msgid "Librarians Portal"
 msgstr "Kütüphaneciler Portalı"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "Benim Open Library'im"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "Katkıda Bulun"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Kaynaklar"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Internet Archive'ın Open Library'si: Her kitap için bir sayfa"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "Search by barcode"
-msgstr "Kitap ara"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5595,7 +5574,7 @@ msgstr "Ortak Konular"
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)s tarafından yayımlanan kitapları ara"
 
-#: RelatedSubjects.html publishers/view.html
+#: RelatedSubjects.html.jinja publishers/view.html
 msgid "None found."
 msgstr "Hiçbiri bulunamadı."
 
@@ -6048,6 +6027,10 @@ msgstr "En Yüksek Puanlı"
 msgid "Any"
 msgstr "Herhangi"
 
+#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+msgid "Trending"
+msgstr "Trend"
+
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "Eser Başlığı (beta: Yalnızca Kütüphaneci)"
@@ -6377,7 +6360,7 @@ msgstr "Bir tane daha ekleyin mi?"
 msgid "Search %(author)s books"
 msgstr "%(author)s kitaplarını ara"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
 msgstr "Yerler"
 
@@ -6846,7 +6829,7 @@ msgstr "Liste Meta Verisi"
 msgid "Derived from seed metadata"
 msgstr "Öğe meta verisinden türetildi"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
 msgid "Times"
 msgstr "Zaman"
 
@@ -7373,11 +7356,11 @@ msgstr "Bu, bu konuyla ilgili eserlerin basımlarının yayın tarihini göstere
 msgid "This graph charts editions published on this subject."
 msgstr "Bu grafik bu konuda yayınlanan baskıları gösteriyor."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Something went wrong."
 msgstr "Bir şeyler yanlış gitti."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Retry"
 msgstr "Yeniden dene"
 
@@ -7431,7 +7414,7 @@ msgstr "Dinle"
 msgid "View MARC"
 msgstr "MARC'ı Görüntüle"
 
-#: RelatedSubjects.html
+#: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Bağlantılı…"
 
@@ -8427,6 +8410,19 @@ msgstr "Sayfa sayısı var"
 #, python-format
 msgid "Are you sure you want to remove <strong>%(title)s</strong> from your list?"
 msgstr "<strong>%(title)s</strong>'i listenizden kaldırmak istediğinizden emin misiniz?"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "K-12 Student Library"
+msgstr "K-12 Öğrenci Kütüphanesi"
+
+#: openlibrary/plugins/openlibrary/nav.py
+#, fuzzy
+msgid "Book Talks"
+msgstr "Kitap Notları"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Random Book"
+msgstr "Rastgele Kitap"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
@@ -9623,4 +9619,7 @@ msgstr "Klasik e-kitaplar"
 
 #~ msgid "Name (beta: Librarian only)"
 #~ msgstr "Ad (beta: Yalnızca Kütüphaneci)"
+
+#~ msgid "New!"
+#~ msgstr "Yeni!"
 
