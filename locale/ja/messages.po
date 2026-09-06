@@ -445,15 +445,15 @@ msgstr "キャンセル"
 msgid "Continue without waiting"
 msgstr "待たずに続行"
 
-#: lib/browse_popover.html lib/nav_head.html library_explorer.html
+#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
 msgid "Library Explorer"
 msgstr "ライブラリーエクスプローラー"
 
-#: RelatedSubjects.html account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
+#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
 msgid "Loading..."
 msgstr "読み込み中..."
 
-#: lib/header_dropdown.html lib/nav_head.html login.html
+#: lib/nav_head.html login.html
 msgid "Log In"
 msgstr "ログイン"
 
@@ -1035,7 +1035,7 @@ msgstr "対象プログラムを選択する必要があります"
 msgid "Sign Up to Open Library"
 msgstr "Open Libraryに登録"
 
-#: account/create.html lib/header_dropdown.html lib/nav_head.html
+#: account/create.html lib/nav_head.html
 msgid "Sign Up"
 msgstr "登録"
 
@@ -1667,7 +1667,7 @@ msgstr "読書記録"
 msgid "My lists"
 msgstr "私のリスト"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "リスト"
 
@@ -2164,7 +2164,7 @@ msgstr "%(date)sに借りました"
 msgid "Admin Center"
 msgstr "管理センター"
 
-#: RelatedSubjects.html SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "People"
 msgstr "ユーザー"
 
@@ -4364,37 +4364,9 @@ msgid "%s ebook edition"
 msgid_plural "%s ebook editions"
 msgstr[0] "%s件の電子書籍版"
 
-#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html type/page/view.html
-msgid "Collections"
-msgstr "コレクション"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "K-12 Student Library"
-msgstr "K-12学生図書館"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Book Talks"
-msgstr "ブックトーク"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Random Book"
-msgstr "ランダムな本"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "ブラウズ"
-
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "サブジェクト"
-
 #: lib/browse_popover.html
 msgid "Browse books by topic"
 msgstr "トピック別に本を閲覧"
-
-#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
-msgid "Trending"
-msgstr "トレンド"
 
 #: lib/browse_popover.html
 msgid "Most popular right now"
@@ -4407,6 +4379,10 @@ msgstr "バーチャル本棚を閲覧"
 #: lib/browse_popover.html
 msgid "Reader-curated collections"
 msgstr "読者が厳選したコレクション"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "ブラウズ"
 
 #: lib/dropper.html
 msgid "More options"
@@ -4452,22 +4428,9 @@ msgstr "このコードをあなたのWikipediaページにコピー＆ペース
 msgid "Get instructions at Wikipedia in a new window"
 msgstr "Wikipediaで新しいウィンドウに説明を表示"
 
-#: lib/header_dropdown.html
-msgid "My account"
-msgstr "マイアカウント"
-
-#: lib/header_dropdown.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "%(date)s登録"
-
-#: lib/header_dropdown.html
+#: lib/header_dropdown.html lib/nav_head.html
 msgid "Menu"
 msgstr "メニュー"
-
-#: lib/header_dropdown.html
-msgid "New!"
-msgstr "新着！"
 
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
@@ -4558,11 +4521,19 @@ msgstr "著者を探す"
 msgid "Explore subjects"
 msgstr "サブジェクトを探す"
 
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "サブジェクト"
+
 #: lib/nav_foot.html
 msgid "Explore collections"
 msgstr "コレクションを探す"
 
-#: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
+#: lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py type/page/view.html
+msgid "Collections"
+msgstr "コレクション"
+
+#: SearchNavigation.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
 msgid "Advanced Search"
 msgstr "詳細検索"
 
@@ -4680,6 +4651,27 @@ msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%
 msgstr "バージョン <a href=\"https://github.com/internetarchive/openlibrary/commit/%s\">%s</a>"
 
 #: lib/nav_head.html
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Internet ArchiveのOpen Library：すべての本に1ページ"
+
+#: lib/nav_head.html
+msgid "Search by barcode"
+msgstr "バーコードで検索"
+
+#: lib/nav_head.html
+msgid "My account"
+msgstr "マイアカウント"
+
+#: lib/nav_head.html type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "%(date)s登録"
+
+#: lib/nav_head.html
+msgid "My Open Library"
+msgstr "マイOpen Library"
+
+#: lib/nav_head.html
 msgid "Loans, Reading Log, Lists, Stats"
 msgstr "貸出、読書ログ、リスト、統計"
 
@@ -4688,16 +4680,24 @@ msgid "My Profile"
 msgstr "マイプロフィール"
 
 #: lib/nav_head.html
-msgid "Log out"
-msgstr "ログアウト"
-
-#: lib/nav_head.html
 msgid "Pending Merge Requests"
 msgstr "保留中の統合リクエスト"
 
 #: lib/nav_head.html
+msgid "Log out"
+msgstr "ログアウト"
+
+#: lib/nav_head.html
+msgid "Contribute"
+msgstr "貢献"
+
+#: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "コミュニティの最近の編集"
+
+#: lib/nav_head.html
+msgid "Resources"
+msgstr "リソース"
 
 #: lib/nav_head.html
 msgid "Help & Support"
@@ -4706,26 +4706,6 @@ msgstr "ヘルプとサポート"
 #: lib/nav_head.html
 msgid "Librarians Portal"
 msgstr "司書ポータル"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "マイOpen Library"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "貢献"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "リソース"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Internet ArchiveのOpen Library：すべての本に1ページ"
-
-#: lib/nav_head.html
-msgid "Search by barcode"
-msgstr "バーコードで検索"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5451,7 +5431,7 @@ msgstr "共通のサブジェクト"
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)sが出版した本を検索"
 
-#: RelatedSubjects.html publishers/view.html
+#: RelatedSubjects.html.jinja publishers/view.html
 msgid "None found."
 msgstr "見つかりません。"
 
@@ -5896,6 +5876,10 @@ msgstr "評価が高い順"
 msgid "Any"
 msgstr "すべて"
 
+#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+msgid "Trending"
+msgstr "トレンド"
+
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "作品タイトル（ベータ：司書専用）"
@@ -6220,7 +6204,7 @@ msgstr "もう一つ追加しますか？"
 msgid "Search %(author)s books"
 msgstr "%(author)sの本を検索"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
 msgstr "場所"
 
@@ -6678,7 +6662,7 @@ msgstr "リストのメタデータ"
 msgid "Derived from seed metadata"
 msgstr "シードメタデータから導出"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
 msgid "Times"
 msgstr "時代"
 
@@ -7183,11 +7167,11 @@ msgstr "このグラフはこのサブジェクトに関する作品の版の出
 msgid "This graph charts editions published on this subject."
 msgstr "このグラフはこのサブジェクトで出版された版数を示しています。"
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Something went wrong."
 msgstr "問題が発生しました。"
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Retry"
 msgstr "再試行"
 
@@ -7239,7 +7223,7 @@ msgstr "聴く"
 msgid "View MARC"
 msgstr "MARCを表示"
 
-#: RelatedSubjects.html
+#: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "関連..."
 
@@ -8215,6 +8199,18 @@ msgstr "ページ数あり"
 #, python-format
 msgid "Are you sure you want to remove <strong>%(title)s</strong> from your list?"
 msgstr "<strong>%(title)s</strong>をリストから削除してよろしいですか？"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "K-12 Student Library"
+msgstr "K-12学生図書館"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Book Talks"
+msgstr "ブックトーク"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Random Book"
+msgstr "ランダムな本"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
@@ -9435,4 +9431,7 @@ msgstr "クラシック電子書籍"
 
 #~ msgid "Name (beta: Librarian only)"
 #~ msgstr "名前（ベータ：司書専用）"
+
+#~ msgid "New!"
+#~ msgstr "新着！"
 
