@@ -463,16 +463,16 @@ msgstr "Скасувати"
 msgid "Continue without waiting"
 msgstr "Продовжити без очікування"
 
-#: lib/browse_popover.html lib/nav_head.html library_explorer.html
+#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
 msgid "Library Explorer"
 msgstr "Дослідник бібліотеки"
 
-#: RelatedSubjects.html account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
+#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html
 #, fuzzy
 msgid "Loading..."
 msgstr "Редагування..."
 
-#: lib/header_dropdown.html lib/nav_head.html login.html
+#: lib/nav_head.html login.html
 msgid "Log In"
 msgstr "Увійти"
 
@@ -1089,7 +1089,7 @@ msgstr "Необхідно вибрати відповідну програму"
 msgid "Sign Up to Open Library"
 msgstr "Зареєструватися в Open Library"
 
-#: account/create.html lib/header_dropdown.html lib/nav_head.html
+#: account/create.html lib/nav_head.html
 msgid "Sign Up"
 msgstr "Зареєструватися"
 
@@ -1745,7 +1745,7 @@ msgstr "Читацький журнал"
 msgid "My lists"
 msgstr "Мої списки"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lib/browse_popover.html lib/nav_head.html lists/home.html recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Списки"
 
@@ -2284,7 +2284,7 @@ msgstr "Позичено %(date)s"
 msgid "Admin Center"
 msgstr "Панель адміна"
 
-#: RelatedSubjects.html SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html admin/menu.html admin/people/index.html admin/people/view.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "People"
 msgstr "Люди"
 
@@ -4601,38 +4601,9 @@ msgstr[0] "%s електронне видання"
 msgstr[1] "%s електронні видання"
 msgstr[2] "%s електронних видань"
 
-#: lib/browse_popover.html lib/nav_foot.html lib/nav_head.html type/page/view.html
-msgid "Collections"
-msgstr "Колекції"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "K-12 Student Library"
-msgstr "Студентська бібліотека K-12"
-
-#: lib/browse_popover.html lib/nav_head.html
-#, fuzzy
-msgid "Book Talks"
-msgstr "Деталі книги"
-
-#: lib/browse_popover.html lib/nav_head.html
-msgid "Random Book"
-msgstr "Випадкова книга"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Шукати"
-
-#: RelatedSubjects.html SearchNavigation.html SubjectTags.html lib/browse_popover.html lib/nav_foot.html lib/nav_head.html openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Теми"
-
 #: lib/browse_popover.html
 msgid "Browse books by topic"
 msgstr "Шукати книги за темою"
-
-#: lib/browse_popover.html lib/nav_head.html search/sort_options.html
-msgid "Trending"
-msgstr "Популярне"
 
 #: lib/browse_popover.html
 msgid "Most popular right now"
@@ -4645,6 +4616,10 @@ msgstr "Переглянути віртуальні полиці"
 #: lib/browse_popover.html
 msgid "Reader-curated collections"
 msgstr "Добірки, укладені читачами"
+
+#: databarWork.html lib/browse_popover.html lib/nav_head.html
+msgid "Browse"
+msgstr "Шукати"
 
 #: lib/dropper.html
 msgid "More options"
@@ -4694,23 +4669,9 @@ msgstr "Скопіюйте і вставте цей код на сторінку
 msgid "Get instructions at Wikipedia in a new window"
 msgstr "Відкрити сторінку автора в новому вікні"
 
-#: lib/header_dropdown.html
-#, fuzzy
-msgid "My account"
-msgstr "Знайти профіль"
-
-#: lib/header_dropdown.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "Приєднався %(date)s"
-
-#: lib/header_dropdown.html
+#: lib/header_dropdown.html lib/nav_head.html
 msgid "Menu"
 msgstr "Меню"
-
-#: lib/header_dropdown.html
-msgid "New!"
-msgstr "Новинки!"
 
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
@@ -4803,11 +4764,19 @@ msgstr "Дослідити авторів"
 msgid "Explore subjects"
 msgstr "Дослідити теми"
 
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Теми"
+
 #: lib/nav_foot.html
 msgid "Explore collections"
 msgstr "Дослідити колекції"
 
-#: SearchNavigation.html lib/nav_foot.html lib/nav_head.html search/advancedsearch.html
+#: lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py type/page/view.html
+msgid "Collections"
+msgstr "Колекції"
+
+#: SearchNavigation.html lib/nav_foot.html openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
 msgid "Advanced Search"
 msgstr "Розширений пошук"
 
@@ -4933,6 +4902,29 @@ msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%
 msgstr "версія <a href=\"https://github.com/internetarchive/openlibrary/commit/%s\">%s</a>"
 
 #: lib/nav_head.html
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Open Library від Internet Archive: одна сторінка для кожної книги"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "Search by barcode"
+msgstr "Шукати книги"
+
+#: lib/nav_head.html
+#, fuzzy
+msgid "My account"
+msgstr "Знайти профіль"
+
+#: lib/nav_head.html type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "Приєднався %(date)s"
+
+#: lib/nav_head.html
+msgid "My Open Library"
+msgstr "Моя Open Library"
+
+#: lib/nav_head.html
 msgid "Loans, Reading Log, Lists, Stats"
 msgstr "Позики, читацький журнал, списки, статистика"
 
@@ -4941,16 +4933,24 @@ msgid "My Profile"
 msgstr "Мій профіль"
 
 #: lib/nav_head.html
-msgid "Log out"
-msgstr "Вийти"
-
-#: lib/nav_head.html
 msgid "Pending Merge Requests"
 msgstr "Невирішені запити на об'єднання"
 
 #: lib/nav_head.html
+msgid "Log out"
+msgstr "Вийти"
+
+#: lib/nav_head.html
+msgid "Contribute"
+msgstr "Зробити внесок"
+
+#: lib/nav_head.html
 msgid "Recent Community Edits"
 msgstr "Останні зміни від спільноти"
+
+#: lib/nav_head.html
+msgid "Resources"
+msgstr "Ресурси"
 
 #: lib/nav_head.html
 msgid "Help & Support"
@@ -4959,27 +4959,6 @@ msgstr "Допомога і підтримка"
 #: lib/nav_head.html
 msgid "Librarians Portal"
 msgstr "Бібліотекарський портал"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "Моя Open Library"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "Зробити внесок"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Ресурси"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Open Library від Internet Archive: одна сторінка для кожної книги"
-
-#: lib/nav_head.html
-#, fuzzy
-msgid "Search by barcode"
-msgstr "Шукати книги"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5748,7 +5727,7 @@ msgstr "Часті теми"
 msgid "Search for books published by %(publisher)s"
 msgstr "Ми не змогли знайти книги опубліковані %(publisher)s."
 
-#: RelatedSubjects.html publishers/view.html
+#: RelatedSubjects.html.jinja publishers/view.html
 msgid "None found."
 msgstr "Не знайдено."
 
@@ -6221,6 +6200,10 @@ msgstr "Списків створено"
 msgid "Any"
 msgstr "Травень"
 
+#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+msgid "Trending"
+msgstr "Популярне"
+
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "Назва твору (бета: лише для бібліотекарів)"
@@ -6551,7 +6534,7 @@ msgstr "Додати ще один?"
 msgid "Search %(author)s books"
 msgstr "Пошук книг %(author)s"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
 msgstr "Місця"
 
@@ -7029,7 +7012,7 @@ msgstr "Метадані списку"
 msgid "Derived from seed metadata"
 msgstr "Отримано з метаданих елементів"
 
-#: RelatedSubjects.html SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
+#: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/list/view_body.html
 msgid "Times"
 msgstr "Часи"
 
@@ -7573,11 +7556,11 @@ msgstr "Це графік, щоб показати історію публіку
 msgid "This graph charts editions published on this subject."
 msgstr "Цей графік показує видання опубліковані на цю тему."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Something went wrong."
 msgstr "Щось пішло не так."
 
-#: PublishingHistory.html RelatedSubjects.html
+#: PublishingHistory.html RelatedSubjects.html.jinja
 msgid "Retry"
 msgstr "Повторити"
 
@@ -7631,7 +7614,7 @@ msgstr "Слухати"
 msgid "View MARC"
 msgstr "Показати MARC"
 
-#: RelatedSubjects.html
+#: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Пов'язане..."
 
@@ -8648,6 +8631,19 @@ msgstr "Кількість сторінок"
 #, fuzzy, python-format
 msgid "Are you sure you want to remove <strong>%(title)s</strong> from your list?"
 msgstr "Ви впевнені, що хочете видалити <strong>%(title)s</strong> з цього списку?"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "K-12 Student Library"
+msgstr "Студентська бібліотека K-12"
+
+#: openlibrary/plugins/openlibrary/nav.py
+#, fuzzy
+msgid "Book Talks"
+msgstr "Деталі книги"
+
+#: openlibrary/plugins/openlibrary/nav.py
+msgid "Random Book"
+msgstr "Випадкова книга"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
@@ -9711,4 +9707,7 @@ msgstr "Електронні книги класики"
 
 #~ msgid "Name (beta: Librarian only)"
 #~ msgstr "Назва (бета: лише для бібліотекарів)"
+
+#~ msgid "New!"
+#~ msgstr "Новинки!"
 
