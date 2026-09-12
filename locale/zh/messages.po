@@ -36,7 +36,7 @@ msgstr "查看"
 msgid "or"
 msgstr "或"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "编辑"
 
@@ -473,7 +473,7 @@ msgstr "不等待，继续"
 msgid "Library Explorer"
 msgstr "图书馆资源管理器"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 #, fuzzy
 msgid "Loading..."
 msgstr "保存中..."
@@ -568,7 +568,7 @@ msgstr "添加了新的书籍。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "非常感谢您完善了这份记录！"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "关闭"
 
@@ -901,7 +901,7 @@ msgstr "加入等候名单"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "在开放图书馆了解更多关于«%(title)s»的信息"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "了解更多"
 
@@ -1282,11 +1282,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "有 %(count)d 人在等候这本书。"
 msgstr[1] "有 %(count)d 人在等候这本书。"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "尚未下载。"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "立即下载"
 
@@ -1310,7 +1310,7 @@ msgstr "退出等候名单"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "您确定要退出<br/><strong>TITLE</strong>的等候名单吗？"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1802,11 +1802,6 @@ msgstr "我们已向%(email)s发送了一封包含链接的邮件，用于验证
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "然后，回到Open Library，找一些好书吧！"
 
-#: account/view.html
-#, fuzzy
-msgid "Yearly Reading Goal"
-msgstr "设置一个年度阅读目标"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "正在关注"
@@ -1978,7 +1973,7 @@ msgstr "在开放图书馆添加新书"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "请添加要导入的IA标识符，每行一个。"
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "提交"
 
@@ -3342,35 +3337,22 @@ msgstr "这些都不符合我想添加的书籍。"
 msgid "Continue"
 msgstr "贡献"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "缺失名字"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr "来自 %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1人等待中"
 msgstr[1] "%(count)d人等待中"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "通过ADE归还"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "借阅已过期"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "确定归还这本书吗？"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "返还图书"
 
@@ -3562,6 +3544,11 @@ msgstr "出版日期未知, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "%(languagelist)s"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr "来自 %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4391,7 +4378,7 @@ msgstr "完成"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "符合印刷障碍特殊访问资格"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "关注"
 
@@ -5011,7 +4998,7 @@ msgstr "数据质量表"
 msgid "Quality Criteria"
 msgstr "质量标准"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "查看全部"
 
@@ -5129,33 +5116,33 @@ msgstr "没有描述。"
 msgid "Recent Activity"
 msgstr "近期的活动"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Cover of book"
 msgstr "借阅书籍"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "书单所有者的头像"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "您"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "该读者尚未启用关注功能"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "OpenLibrary Logo"
 msgstr "开放图书馆logo"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr "社区评论"
@@ -5789,24 +5776,29 @@ msgstr "查看更多该作者的书籍，以及了解该作者"
 msgid "published most by this publisher"
 msgstr "该出版商出版最多的"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 #, fuzzy
 msgid "How many books would you like to read this year?"
 msgstr "您想做什么呢？"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "输入\"0\"可取消设置您的阅读目标。您的打卡记录将被保留。"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span>本书"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "编辑%(year)d年阅读目标"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+#, fuzzy
+msgid "Yearly Reading Goal"
+msgstr "设置一个年度阅读目标"
 
 #: recentchanges/header.html
 #, fuzzy
@@ -6490,6 +6482,10 @@ msgstr "标识符"
 #: type/author/edit.html
 msgid "Author Identifiers Purpose"
 msgstr "作者标识符用途"
+
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "缺失名字"
 
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
@@ -7439,7 +7435,7 @@ msgstr "加载书籍"
 msgid "Go to next section"
 msgstr "前往下一部分"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "到期的"
 
@@ -7567,31 +7563,26 @@ msgstr "出现问题。"
 msgid "Retry"
 msgstr "重试"
 
-#: RawQueryCarousel.html
-#, fuzzy
-msgid "Loading carousel"
-msgstr "登录问题"
-
-#: RawQueryCarousel.html
-msgid "Failed to fetch carousel."
-msgstr "获取轮播图失败。"
-
-#: RawQueryCarousel.html
-msgid "Retry?"
-msgstr "重试？"
-
-#: RawQueryCarousel.html
-msgid "No books match the current filters."
-msgstr "没有书籍符合当前筛选条件。"
-
-#: RawQueryCarousel.html
-msgid "Retry without filters?"
-msgstr "不使用筛选条件重试？"
-
-#: RawQueryCarousel.html
+#: RawQueryCarousel.html.jinja
 #, fuzzy
 msgid "Search collection"
 msgstr "探索收藏"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Failed to fetch carousel."
+msgstr "获取轮播图失败。"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry?"
+msgstr "重试？"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "No books match the current filters."
+msgstr "没有书籍符合当前筛选条件。"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry without filters?"
+msgstr "不使用筛选条件重试？"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7620,6 +7611,10 @@ msgstr "查看 MARC"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "相关的..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "确定归还这本书吗？"
 
 #: SearchResultsWork.html
 #, fuzzy
@@ -8665,6 +8660,11 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "此作品未出现在任何书单上。"
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, fuzzy
+msgid "Loading carousel"
+msgstr "登录问题"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"

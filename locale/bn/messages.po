@@ -38,7 +38,7 @@ msgstr "দেখুন"
 msgid "or"
 msgstr "বা"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "বদল করুন"
 
@@ -471,7 +471,7 @@ msgstr "অপেক্ষা না করে চালিয়ে যান"
 msgid "Library Explorer"
 msgstr "लाइब्रेरी एक्सप्लोरर"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 #, fuzzy
 msgid "Loading..."
 msgstr "संपादन..."
@@ -566,7 +566,7 @@ msgstr "नई किताब जोड़ी गई।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "बंद करें"
 
@@ -893,7 +893,7 @@ msgstr "वेटलिस्ट में शामिल हों"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "OpenLibrary पर \"%(title)s \"के बारे में और जानें"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "अधिक जानें"
 
@@ -1262,11 +1262,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "এই বইয়ের জন্য %(count)d জন অপেক্ষা করছেন।"
 msgstr[1] "এই বইয়ের জন্য %(count)d জন অপেক্ষা করছেন।"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "अभी तक डाउनलोड नहीं किया गया है।"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "डाक डाउनलोड करें"
 
@@ -1290,7 +1290,7 @@ msgstr "প্রতীক্ষা সূচি ত্যাগ করুন"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "আপনি কি সত্যিই <br/><strong>TITLE</strong> প্রতীক্ষা সূচি ত্যাগ করতে চান?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1774,10 +1774,6 @@ msgstr "আমরা %(email)s-এ একটি ইমেইল পাঠিয�
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "তারপর, Open Library-তে ফিরে আসুন এবং কিছু চমৎকার বই খুঁজুন!"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "বার্ষিক পাঠ লক্ষ্য"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "অনুসরণ করছি"
@@ -1946,7 +1942,7 @@ msgstr "ओपन लाइब्रेरी में एक नई कित�
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "আমদানি করার জন্য IA শনাক্তকারী যোগ করুন, প্রতি লাইনে একটি করে।"
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "सबमिट"
 
@@ -3304,35 +3300,22 @@ msgstr "এগুলির কোনোটিই আমি যোগ করত�
 msgid "Continue"
 msgstr "योगदान"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "नाम गायब है"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " %(name)s द्वारा"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "১ জন অপেক্ষা করছে"
 msgstr[1] "%(count)d জন অপেক্ষা করছে"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "ADE-এর মাধ্যমে ফেরত দিন"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "ঋণের মেয়াদ শেষ"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "क्या आप वाकई यह किताब लौटा रहे हैं?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "रिटर्न बुक"
 
@@ -3522,6 +3505,11 @@ msgstr "प्रकाशित करने की तारीख अज्�
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "%(languagelist)s में"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " %(name)s द्वारा"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4336,7 +4324,7 @@ msgstr "पूर्ण"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "মুদ্রণ-প্রতিবন্ধিতা বিশেষ অ্যাক্সেসের যোগ্যতা"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "অনুসরণ করুন"
 
@@ -4951,7 +4939,7 @@ msgstr "ডেটা গুণমানের সারণি"
 msgid "Quality Criteria"
 msgstr "গুণমানের মানদণ্ড"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "सभी देखें"
 
@@ -5069,33 +5057,33 @@ msgstr "कोई ब्यौरा नेईं."
 msgid "Recent Activity"
 msgstr "हाल की गतिविधि"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Cover of book"
 msgstr "उधार लेने की किताब"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "তালিকার মালিকের অবতার"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "You"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "এই পাঠক অনুসরণ সক্রিয় করেননি"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "OpenLibrary Logo"
 msgstr "ओपन लाइब्रेरी लोगो"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr "Community Reviews"
@@ -5704,24 +5692,28 @@ msgstr "इस लेखक द्वारा और किताबें द�
 msgid "published most by this publisher"
 msgstr "इस प्रकाशक द्वारा सबसे अधिक प्रकाशित"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "आप इस साल कितनी किताबें पढ़ना चाहेंगे?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 #, fuzzy
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "ध्यान दें: अपना लक्ष्य हटाने के लिए \"0\" सबमिट करें।  आपके चेक इन को सुरक्षित रखा जाएगा।"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, fuzzy, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span> <span class=\"reading-goal-progress__goal\"> %(goal)d</span> किताबें"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "%(year)d रीडिंग लक्ष्य में बदलाव करें"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "বার্ষিক পাঠ লক্ষ্য"
 
 #: recentchanges/header.html
 #, fuzzy
@@ -6399,6 +6391,10 @@ msgstr "শনাক্তকারী"
 #: type/author/edit.html
 msgid "Author Identifiers Purpose"
 msgstr "लेखक पहचानकर्ता उद्देश्य"
+
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "नाम गायब है"
 
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
@@ -7331,7 +7327,7 @@ msgstr "संबंधित पुस्तकें"
 msgid "Go to next section"
 msgstr "পরবর্তী বিভাগে যান"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "समाप्त हो रहा"
 
@@ -7461,31 +7457,26 @@ msgstr "কিছু ভুল হয়েছে।"
 msgid "Retry"
 msgstr "পুনরায় চেষ্টা করুন"
 
-#: RawQueryCarousel.html
-#, fuzzy
-msgid "Loading carousel"
-msgstr "लॉग इन करने में परेशानी"
-
-#: RawQueryCarousel.html
-msgid "Failed to fetch carousel."
-msgstr "ক্যারোসেল আনতে ব্যর্থ হয়েছে।"
-
-#: RawQueryCarousel.html
-msgid "Retry?"
-msgstr "পুনরায় চেষ্টা করবেন?"
-
-#: RawQueryCarousel.html
-msgid "No books match the current filters."
-msgstr "বর্তমান ফিল্টারে কোনো বই মেলেনি।"
-
-#: RawQueryCarousel.html
-msgid "Retry without filters?"
-msgstr "ফিল্টার ছাড়া পুনরায় চেষ্টা করবেন?"
-
-#: RawQueryCarousel.html
+#: RawQueryCarousel.html.jinja
 #, fuzzy
 msgid "Search collection"
 msgstr "कलेक्शन एक्सप्लोर करें"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Failed to fetch carousel."
+msgstr "ক্যারোসেল আনতে ব্যর্থ হয়েছে।"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry?"
+msgstr "পুনরায় চেষ্টা করবেন?"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "No books match the current filters."
+msgstr "বর্তমান ফিল্টারে কোনো বই মেলেনি।"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry without filters?"
+msgstr "ফিল্টার ছাড়া পুনরায় চেষ্টা করবেন?"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7514,6 +7505,10 @@ msgstr "मार्क देखें"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "संबंधित..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "क्या आप वाकई यह किताब लौटा रहे हैं?"
 
 #: SearchResultsWork.html
 #, fuzzy
@@ -8554,6 +8549,11 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "এই কাজটি কোনো তালিকায় নেই।"
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, fuzzy
+msgid "Loading carousel"
+msgstr "लॉग इन करने में परेशानी"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"

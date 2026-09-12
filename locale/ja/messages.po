@@ -35,7 +35,7 @@ msgstr "表示"
 msgid "or"
 msgstr "または"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "編集"
 
@@ -449,7 +449,7 @@ msgstr "待たずに続行"
 msgid "Library Explorer"
 msgstr "ライブラリーエクスプローラー"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -538,7 +538,7 @@ msgstr "新しい本が追加されました。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library カタログを改善していただきありがとうございます！"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "閉じる"
 
@@ -851,7 +851,7 @@ msgstr "順番待ちリストに参加"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Open Libraryで「%(title)s」について詳しく見る"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "詳細を見る"
 
@@ -1209,11 +1209,11 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "この本を待っている人が%(count)d人います。"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "まだダウンロードされていません。"
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "今すぐダウンロード"
 
@@ -1237,7 +1237,7 @@ msgstr "順番待ちリストを離れる"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "<br/><strong>TITLE</strong>の順番待ちリストを離れてもよいですか？"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1711,10 +1711,6 @@ msgstr "%(email)sにアカウント確認用のリンクを含むメールを送
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "その後、Open Libraryに戻って素晴らしい本を見つけましょう！"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "年間読書目標"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "フォロー中"
@@ -1877,7 +1873,7 @@ msgstr "新しい本をインポートキューに追加"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "インポートするIA識別子を1行につき1つ入力してください。"
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "送信"
 
@@ -3129,34 +3125,21 @@ msgstr "これらのどれも追加したい本と一致しません。"
 msgid "Continue"
 msgstr "続ける"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "名前がありません"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " %(name)s著"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1人が待っています"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "ADE経由で返却"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "貸出期限切れ"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "本当にこの本を返却しますか？"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "本を返却"
 
@@ -3339,6 +3322,11 @@ msgstr "出版日不明、%(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "%(languagelist)sで"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " %(name)s著"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4132,7 +4120,7 @@ msgstr "完了"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "印刷障害特別アクセスの資格"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "フォロー"
 
@@ -4727,7 +4715,7 @@ msgstr "データ品質テーブル"
 msgid "Quality Criteria"
 msgstr "品質基準"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "すべて見る"
 
@@ -4836,31 +4824,31 @@ msgstr "説明なし。"
 msgid "Recent Activity"
 msgstr "最近の活動"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "本の表紙"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "リストオーナーのアバター"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "あなた"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "この利用者はフォロー機能を有効にしていません"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "OpenLibrary Logo"
 msgstr "OpenLibraryのロゴ"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr ""
@@ -5443,23 +5431,27 @@ msgstr "この著者のもっと多くの本を見て、著者について学ぶ
 msgid "published most by this publisher"
 msgstr "この出版社から最も多く出版"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "今年は何冊読みたいですか？"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "読書目標を解除するには「0」を入力してください。チェックインは保持されます。"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span>冊"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "%(year)d年の読書目標を編集"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "年間読書目標"
 
 #: recentchanges/header.html
 msgid "By"
@@ -6126,6 +6118,10 @@ msgstr "識別子"
 #: type/author/edit.html
 msgid "Author Identifiers Purpose"
 msgstr "著者識別子の目的"
+
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "名前がありません"
 
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
@@ -7014,7 +7010,7 @@ msgstr "関連書籍"
 msgid "Go to next section"
 msgstr "次のセクションへ"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "有効期限"
 
@@ -7141,29 +7137,25 @@ msgstr "問題が発生しました。"
 msgid "Retry"
 msgstr "再試行"
 
-#: RawQueryCarousel.html
-msgid "Loading carousel"
-msgstr "カルーセルを読み込み中"
+#: RawQueryCarousel.html.jinja
+msgid "Search collection"
+msgstr "コレクションを検索"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Failed to fetch carousel."
 msgstr "カルーセルの取得に失敗しました。"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry?"
 msgstr "再試行しますか？"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "No books match the current filters."
 msgstr "現在のフィルターに一致する本はありません。"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry without filters?"
 msgstr "フィルターなしで再試行しますか？"
-
-#: RawQueryCarousel.html
-msgid "Search collection"
-msgstr "コレクションを検索"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7192,6 +7184,10 @@ msgstr "MARCを表示"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "関連..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "本当にこの本を返却しますか？"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -8197,6 +8193,10 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "この作品はどのリストにも表示されていません。"
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Loading carousel"
+msgstr "カルーセルを読み込み中"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"

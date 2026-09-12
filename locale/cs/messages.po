@@ -36,7 +36,7 @@ msgstr "Zobrazit"
 msgid "or"
 msgstr "nebo"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "Editovat"
 
@@ -465,7 +465,7 @@ msgstr "Pokračovat bez čekání"
 msgid "Library Explorer"
 msgstr "Knihovnický režim"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 #, fuzzy
 msgid "Loading..."
 msgstr "Upravuje..."
@@ -563,7 +563,7 @@ msgstr "Přidat knihu"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Děkujeme za vylepšení katalogu Open Library!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "Zvařít"
 
@@ -899,7 +899,7 @@ msgstr "Přidat se na čekací listinu"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Zjistit více o \"%(title)s\" na OpenLibrary"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 #, fuzzy
 msgid "Learn More"
 msgstr "Knihovnický režim"
@@ -1282,11 +1282,11 @@ msgstr[0] "Na tuto knihu čeká %(count)d osoba."
 msgstr[1] "Na tuto knihu čekají %(count)d osoby."
 msgstr[2] "Na tuto knihu čeká %(count)d osob."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "Zatím nestaženo."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "Stáhnout nyní"
 
@@ -1310,7 +1310,7 @@ msgstr "Opustit čekací listinu"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "Opravdu chcete opustit čekací listinu pro<br/><strong>TITLE</strong>?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1821,11 +1821,6 @@ msgstr "Na adresu %(email)s jsme zaslali e-mail s odkazem pro ověření vašeho
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "Pak se vraťte na Open Library a najděte skvělé knihy!"
 
-#: account/view.html
-#, fuzzy
-msgid "Yearly Reading Goal"
-msgstr "Můj záznam četby"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "Sleduje"
@@ -1996,7 +1991,7 @@ msgstr "Přidat do Open Library novou knihu"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Přidejte identifikátory IA k importu, jeden na řádek."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Odeslat"
 
@@ -3322,16 +3317,7 @@ msgstr "Žádný z nich neodpovídá knize, kterou chci přidat."
 msgid "Continue"
 msgstr "Přispěvatelé"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "chybí název"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " od %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
@@ -3339,20 +3325,15 @@ msgstr[0] "1 osoba čeká"
 msgstr[1] "%(count)d osob čeká"
 msgstr[2] ""
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "Vrátit přes ADE"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "Výpůjčka vypršela"
 
-#: ReturnForm.html books/custom_carousel_card.html
-#, fuzzy
-msgid "Really return this book?"
-msgstr "Smazat tento záznam"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 #, fuzzy
 msgid "Return book"
 msgstr "Náhodna kniha"
@@ -3545,6 +3526,11 @@ msgstr "Datum vydání neznámo, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "v %(languagelist)s"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " od %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4363,7 +4349,7 @@ msgstr "Dokončeno"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "Kvalifikace pro zvláštní přístup pro osoby s tiskovou vadou"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "Sledovat"
 
@@ -5004,7 +4990,7 @@ msgstr "Tabulka kvality dat"
 msgid "Quality Criteria"
 msgstr "Kritéria kvality"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 #, fuzzy
 msgid "See all"
 msgstr "Vše"
@@ -5129,31 +5115,31 @@ msgstr "Bez popisu."
 msgid "Recent Activity"
 msgstr "Nedávná aktivita"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "Obálka knihy"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "Avatar vlastníka seznamu"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "Vy"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "Tento čtenář nepovolil sledování"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "OpenLibrary Logo"
 msgstr "Logo OpenLibrary"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr "Moje seznamy"
@@ -5783,23 +5769,28 @@ msgstr "Zobrazit více knih tohoto autora a zjistit více informací"
 msgid "published most by this publisher"
 msgstr "nejvíce vydáno timto vydavatelem"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "Kolik knih chcete letos přečíst?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "Zadejte \"0\" pro zrušení čtenářského cíle. Vaše záznamy čtení budou zachovány."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> knih"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "Upravit čtenářský cíl %(year)d"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+#, fuzzy
+msgid "Yearly Reading Goal"
+msgstr "Můj záznam četby"
 
 #: recentchanges/header.html
 #, fuzzy
@@ -6514,6 +6505,10 @@ msgstr "Identifikátory"
 #: type/author/edit.html
 msgid "Author Identifiers Purpose"
 msgstr "Účel identifikátorů autora"
+
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "chybí název"
 
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
@@ -7493,7 +7488,7 @@ msgstr "Vytvořte to"
 msgid "Go to next section"
 msgstr "Přejít na další sekci"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 #, fuzzy
 msgid "Expires"
 msgstr "Propadlé výpůjčky"
@@ -7626,30 +7621,26 @@ msgstr "Něco se pokazilo."
 msgid "Retry"
 msgstr "Zkusit znovu"
 
-#: RawQueryCarousel.html
-msgid "Loading carousel"
-msgstr "Načítání kolotoče"
-
-#: RawQueryCarousel.html
-msgid "Failed to fetch carousel."
-msgstr "Načítání kolotoče se nezdařilo."
-
-#: RawQueryCarousel.html
-msgid "Retry?"
-msgstr "Zkusit znovu?"
-
-#: RawQueryCarousel.html
-msgid "No books match the current filters."
-msgstr "Žádné knihy neodpovídají aktuálním filtrům."
-
-#: RawQueryCarousel.html
-msgid "Retry without filters?"
-msgstr "Zkusit znovu bez filtrů?"
-
-#: RawQueryCarousel.html
+#: RawQueryCarousel.html.jinja
 #, fuzzy
 msgid "Search collection"
 msgstr "Rok vydání"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Failed to fetch carousel."
+msgstr "Načítání kolotoče se nezdařilo."
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry?"
+msgstr "Zkusit znovu?"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "No books match the current filters."
+msgstr "Žádné knihy neodpovídají aktuálním filtrům."
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry without filters?"
+msgstr "Zkusit znovu bez filtrů?"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7682,6 +7673,11 @@ msgstr "Zobrazit"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Související..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+#, fuzzy
+msgid "Really return this book?"
+msgstr "Smazat tento záznam"
 
 #: SearchResultsWork.html
 #, fuzzy
@@ -8724,6 +8720,10 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "Toto dílo se nevyskytuje v žádném seznamu."
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Loading carousel"
+msgstr "Načítání kolotoče"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
