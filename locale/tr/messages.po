@@ -35,7 +35,7 @@ msgstr "Görüntüle"
 msgid "or"
 msgstr "veya"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -457,7 +457,7 @@ msgstr "Beklemeden devam et"
 msgid "Library Explorer"
 msgstr "Kütüphane gezgini"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 #, fuzzy
 msgid "Loading..."
 msgstr "Bağlantılı…"
@@ -552,7 +552,7 @@ msgstr "Yeni kitap eklendi."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "Kapat"
 
@@ -878,7 +878,7 @@ msgstr "Bekleme listesine katıl"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "OpenLibrary'de &quot;%(title)s&quot; hakkında daha fazla bilgi edinin"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Daha fazla bilgi"
 
@@ -1244,11 +1244,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Bu kitap için %(count)d kişi bekliyor."
 msgstr[1] "Bu kitap için %(count)d kişi bekliyor."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "Henüz indirilmedi."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "Şimdi indir"
 
@@ -1272,7 +1272,7 @@ msgstr "Bekleme Listesinden Çık"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "Bekleme listesinden ayrılmak istediğinizden emin misiniz<br/><strong>TITLE</strong>?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1755,11 +1755,6 @@ msgstr "%(email)s adresine hesabınızı doğrulamak için bir bağlantı içere
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "Ardından Open Library'ye geri dönün ve harika kitaplar bulun!"
 
-#: account/view.html
-#, fuzzy
-msgid "Yearly Reading Goal"
-msgstr "Şu anda okuyorum"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "Takip Edilen"
@@ -1928,7 +1923,7 @@ msgstr "OpenLibrary'ye yeni bir kitap mı ekliyorsunuz?"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Lütfen içe aktarılacak IA tanımlayıcılarını, her satıra bir tane olacak şekilde ekleyin."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Gönder"
 
@@ -3223,35 +3218,22 @@ msgstr "Bunların hiçbiri eklemek istediğim kitapla eşleşmiyor."
 msgid "Continue"
 msgstr "Devam et"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "ad eksik"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " — %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1 kişi bekliyor"
 msgstr[1] "%(count)d kişi bekliyor"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "ADE ile İade Et"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "Kredi Süresi Doldu"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "Bu kitabı gerçekten iade edecek misiniz?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "Kitabı iade et"
 
@@ -3438,6 +3420,11 @@ msgstr "Yayım tarihi bilinmiyor, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "%(languagelist)s dilinde"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " — %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -4236,7 +4223,7 @@ msgstr "Tamamlandı"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "Baskı Engeli Özel Erişimi için Uygunluk"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "Takip Et"
 
@@ -4846,7 +4833,7 @@ msgstr "Veri kalitesi tablosu"
 msgid "Quality Criteria"
 msgstr "Kalite Kriterleri"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "Tümünü gör"
 
@@ -4962,32 +4949,32 @@ msgstr "Açıklama yok."
 msgid "Recent Activity"
 msgstr "Son Etkinlik"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "Kitabın kapağı"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "Liste sahibinin avatarı"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "Siz"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "Bu okuyucu takip etmeyi etkinleştirmemiş"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "OpenLibrary Logo"
 msgstr "Kütüphane gezgini"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr ""
@@ -5586,23 +5573,28 @@ msgstr "Bu yazarın daha fazla kitabını görün ve onun hakkında bilgi edinin
 msgid "published most by this publisher"
 msgstr "bu yayıncı tarafından en çok yayımlanan"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "Bu yıl kaç kitap okumak istersiniz?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "Okuma hedefinizi kaldırmak için \"0\" girin. Giriş kayıtlarınız korunacaktır."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Kitap"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "%(year)d Okuma Hedefini Düzenle"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+#, fuzzy
+msgid "Yearly Reading Goal"
+msgstr "Şu anda okuyorum"
 
 #: recentchanges/header.html
 #, fuzzy
@@ -6281,6 +6273,10 @@ msgstr "Tanımlayıcılar"
 #: type/author/edit.html
 msgid "Author Identifiers Purpose"
 msgstr "Yazar Tanımlayıcılarının Amacı"
+
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "ad eksik"
 
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
@@ -7200,7 +7196,7 @@ msgstr "İlgili Kitaplar"
 msgid "Go to next section"
 msgstr "Sonraki bölüme git"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "Sona eriyor"
 
@@ -7329,31 +7325,26 @@ msgstr "Bir şeyler yanlış gitti."
 msgid "Retry"
 msgstr "Yeniden dene"
 
-#: RawQueryCarousel.html
-#, fuzzy
-msgid "Loading carousel"
-msgstr "Oturum açma Sorunu"
-
-#: RawQueryCarousel.html
-msgid "Failed to fetch carousel."
-msgstr "Döngü yüklenemedi."
-
-#: RawQueryCarousel.html
-msgid "Retry?"
-msgstr "Yeniden dene?"
-
-#: RawQueryCarousel.html
-msgid "No books match the current filters."
-msgstr "Mevcut filtrelere uyan kitap yok."
-
-#: RawQueryCarousel.html
-msgid "Retry without filters?"
-msgstr "Filtreler olmadan tekrar dene?"
-
-#: RawQueryCarousel.html
+#: RawQueryCarousel.html.jinja
 #, fuzzy
 msgid "Search collection"
 msgstr "Kitap ara"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Failed to fetch carousel."
+msgstr "Döngü yüklenemedi."
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry?"
+msgstr "Yeniden dene?"
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "No books match the current filters."
+msgstr "Mevcut filtrelere uyan kitap yok."
+
+#: RawQueryCarouselPlaceholder.html.jinja
+msgid "Retry without filters?"
+msgstr "Filtreler olmadan tekrar dene?"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7382,6 +7373,10 @@ msgstr "MARC'ı Görüntüle"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Bağlantılı…"
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "Bu kitabı gerçekten iade edecek misiniz?"
 
 #: SearchResultsWork.html
 #, fuzzy
@@ -8408,6 +8403,11 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "Bu eser herhangi bir listede görünmüyor."
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, fuzzy
+msgid "Loading carousel"
+msgstr "Oturum açma Sorunu"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
