@@ -34,7 +34,7 @@ msgstr "보기"
 msgid "or"
 msgstr "또는"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "편집"
 
@@ -448,7 +448,7 @@ msgstr "기다리지 않고 계속"
 msgid "Library Explorer"
 msgstr "도서관 탐색기"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "로딩 중..."
 
@@ -537,7 +537,7 @@ msgstr "새 책이 추가되었습니다."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library 카탈로그 개선에 참여해 주셔서 감사합니다!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "닫기"
 
@@ -850,7 +850,7 @@ msgstr "대기 명단에 등록"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "\"%(title)s\\ 에 대해 더 알아보기"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "더 알아보기"
 
@@ -1201,11 +1201,11 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "이 책을 기다리는 사람이 %(count)d명 있습니다."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "아직 다운로드되지 않았습니다."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "지금 다운로드"
 
@@ -1229,7 +1229,7 @@ msgstr "대기 취소"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "<br/><strong>TITLE</strong>의 대기를 취소하시겠씁니까?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1700,10 +1700,6 @@ msgstr "%(email)s(으)로 계정을 인증하는 링크가 포함된 이메일�
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "그 후 Open Library로 돌아와서 좋은 책을 찾아보십시오!"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "연간 독서 목표"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "팔로잉"
@@ -1866,7 +1862,7 @@ msgstr "가져오기 대기열에 새 책 추가"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "가져올 IA 식별자를 한 줄에 하나씩 입력하세요."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "제출"
 
@@ -2799,6 +2795,10 @@ msgstr "OpenStax에서 PDF 다운로드"
 msgid "More at OpenStax"
 msgstr "OpenStax에서 더 보기"
 
+#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
+msgid "More reading options"
+msgstr "더 많은 읽기 옵션"
+
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3115,34 +3115,21 @@ msgstr "추가하려는 책과 일치하는 항목이 없습니다."
 msgid "Continue"
 msgstr "계속"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "name 없음"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " %(name)s 지음"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1명 대기 중"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "ADE로 반납"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "대출 만료됨"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "정말 이 책을 반납하시겠어요?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "반납"
 
@@ -3324,6 +3311,11 @@ msgstr "Publish date 알 수 없음, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "%(languagelist)s로"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " %(name)s 지음"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -3813,7 +3805,7 @@ msgstr "파일 형식"
 msgid "Provider Name"
 msgstr "제공자 이름"
 
-#: books/edit/edition.html
+#: books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "구매"
 
@@ -4116,7 +4108,7 @@ msgstr "완료"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "인쇄물 이용 장애 특별 접근 자격"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "팔로우"
 
@@ -4140,7 +4132,7 @@ msgstr "프로젝트 소개"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "Open Library는 출판된 모든 책에 대한 웹 페이지를 목표로 하는 오픈 소스 도서관 라이브러리입니다. "
 
-#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html.jinja
+#: home/about.html search/work_search_facets.html.jinja
 msgid "More"
 msgstr "더 보기"
 
@@ -4709,7 +4701,7 @@ msgstr "데이터 품질 표"
 msgid "Quality Criteria"
 msgstr "품질 기준"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "모두 보기"
 
@@ -4818,31 +4810,31 @@ msgstr "설명 없음."
 msgid "Recent Activity"
 msgstr "최근 활동"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "책 표지"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "목록 소유자 아바타"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "나"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "이 이용자는 팔로우 기능을 활성화하지 않았습니다"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "OpenLibrary Logo"
 msgstr "OpenLibrary 로고"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Community List"
 msgstr "커뮤니티 목록"
 
@@ -5201,10 +5193,6 @@ msgstr "책장에서 이 책을 삭제하면 이 작품의 체크인 기록도 �
 msgid "More reading options for %(title)s"
 msgstr "%(title)s에 대한 더 많은 읽기 옵션"
 
-#: ReadButton.html my_books/dropper.html
-msgid "More reading options"
-msgstr "더 많은 읽기 옵션"
-
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "목록에 추가"
@@ -5423,23 +5411,27 @@ msgstr "이 저자의 더 많은 책 보기 및 정보 알아보기"
 msgid "published most by this publisher"
 msgstr "이 출판사에서 가장 많이 출판됨"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "올해 몇 권을 읽고 싶으신가요?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "독서 목표를 해제하려면 \"0\"을 입력하세요. 체크인 기록은 보존됩니다."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> 권"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "%(year)d년 독서 목표 편집"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "연간 독서 목표"
 
 #: recentchanges/header.html
 msgid "By"
@@ -6093,6 +6085,10 @@ msgstr "식별자"
 msgid "Author Identifiers Purpose"
 msgstr "저자 식별자 목적"
 
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "name 없음"
+
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
 msgid "%(page_title)s | Open Library"
@@ -6274,10 +6270,6 @@ msgstr "페이지"
 #: type/edition/view.html type/work/view.html
 msgid "ISBNs"
 msgstr "ISBN"
-
-#: databarWork.html type/edition/view.html type/work/view.html
-msgid "Buy this book"
-msgstr "이 책 구매"
 
 #: type/edition/view.html type/work/view.html
 msgid "Book Details"
@@ -6905,10 +6897,6 @@ msgstr "%(store)s에서 이 판의 판매 정보를 찾아보세요"
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "이 링크를 통해 책을 구매하면 Internet Archive가 <a class=\"nostyle\" href=\"/help/faq/about#selling\">소액의 수수료</a>를 받을 수 있습니다."
 
-#: AffiliateLinksLoadingIndicator.html
-msgid "Fetching prices"
-msgstr "가격 조회 중"
-
 #: BatchImportNavigation.html
 msgid "Pending Imports"
 msgstr "대기 중인 가져오기"
@@ -6980,7 +6968,7 @@ msgstr "관련 도서"
 msgid "Go to next section"
 msgstr "다음 섹션으로 이동"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "만료"
 
@@ -7043,6 +7031,10 @@ msgid "You'll be next in line."
 msgstr "다음 차례입니다."
 
 #: LoanStatus.html
+msgid "All copies are checked out."
+msgstr "모든 사본이 대출 중입니다."
+
+#: LoanStatus.html
 msgid "This book is currently checked out, please check back later."
 msgstr "이 책은 현재 대출 중입니다. 나중에 다시 확인해 주세요."
 
@@ -7055,8 +7047,8 @@ msgid "Only a preview is available."
 msgstr "미리보기만 제공됩니다."
 
 #: LocateButton.html
-msgid "Locate"
-msgstr "위치 찾기"
+msgid "Find in a library"
+msgstr "도서관에서 찾기"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7107,29 +7099,25 @@ msgstr "문제가 발생했습니다."
 msgid "Retry"
 msgstr "다시 시도"
 
-#: RawQueryCarousel.html
-msgid "Loading carousel"
-msgstr "캐러셀 로딩 중"
+#: RawQueryCarousel.html.jinja
+msgid "Search collection"
+msgstr "컬렉션 검색"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Failed to fetch carousel."
 msgstr "캐러셀을 불러오지 못했습니다."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry?"
 msgstr "다시 시도?"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "No books match the current filters."
 msgstr "현재 필터에 맞는 책이 없습니다."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry without filters?"
 msgstr "필터 없이 다시 시도?"
-
-#: RawQueryCarousel.html
-msgid "Search collection"
-msgstr "컬렉션 검색"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7158,6 +7146,10 @@ msgstr "MARC 보기"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "관련 항목..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "정말 이 책을 반납하시겠어요?"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -7603,18 +7595,6 @@ msgstr "페이지 유형 변경 시 주의하세요!"
 msgid "(Simplest solution: If you aren't sure whether this should be changed, don't change it.)"
 msgstr "(가장 간단한 해결책: 변경 여부가 불확실하다면 변경하지 마세요.)"
 
-#: WorldcatLink.html
-msgid "Check nearby libraries"
-msgstr "근처 도서관 확인"
-
-#: WorldcatLink.html
-msgid "Check WorldCat for an edition near you"
-msgstr "근처 WorldCat 도서관에서 판 찾기"
-
-#: WorldcatLink.html
-msgid "WorldCat"
-msgstr "WorldCat"
-
 #: databarDiff.html databarEdit.html
 msgid "View the editing history of this page"
 msgstr "이 페이지의 편집 이력 보기"
@@ -7648,6 +7628,10 @@ msgstr "이 템플릿 편집"
 #, python-format
 msgid "View Volume %(num)d"
 msgstr "%(num)d권 보기"
+
+#: databarWork.html
+msgid "Buy this book"
+msgstr "이 책 구매"
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8147,10 +8131,6 @@ msgid "Better World Books"
 msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid " - includes shipping"
-msgstr " - 배송비 포함"
-
-#: openlibrary/plugins/openlibrary/partials.py
 msgid "Amazon"
 msgstr "Amazon"
 
@@ -8161,6 +8141,10 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "이 작품은 어떤 목록에도 없습니다."
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Loading carousel"
+msgstr "캐러셀 로딩 중"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
@@ -9066,4 +9050,22 @@ msgstr "%(title)s - 검색"
 
 #~ msgid "no"
 #~ msgstr "아니요"
+
+#~ msgid "Fetching prices"
+#~ msgstr "가격 조회 중"
+
+#~ msgid "Locate"
+#~ msgstr "위치 찾기"
+
+#~ msgid "Check nearby libraries"
+#~ msgstr "근처 도서관 확인"
+
+#~ msgid "Check WorldCat for an edition near you"
+#~ msgstr "근처 WorldCat 도서관에서 판 찾기"
+
+#~ msgid "WorldCat"
+#~ msgstr "WorldCat"
+
+#~ msgid " - includes shipping"
+#~ msgstr " - 배송비 포함"
 

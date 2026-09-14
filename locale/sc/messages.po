@@ -35,7 +35,7 @@ msgstr "Pòmpia"
 msgid "or"
 msgstr "o"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "Modìfica"
 
@@ -451,7 +451,7 @@ msgstr "Continua sena istetìre"
 msgid "Library Explorer"
 msgstr "Esploradore de sa biblioteca"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Carrighende..."
 
@@ -541,7 +541,7 @@ msgstr "Libru nou annantu."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Gràtzias medas pro àere megioradu cussu registru!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "Serra"
 
@@ -860,7 +860,7 @@ msgstr "Auni·ti a sa lista de isetu"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Impara de prus subra de \"%(title)s\" in s'OpenLibrary"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Impara de prus"
 
@@ -1219,11 +1219,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "B'at %(count)d persone isetende pro custu libru."
 msgstr[1] "Bi sunt %(count)d persones isetende pro custu libru."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "Galu no iscarrigadu."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "Iscàrriga como"
 
@@ -1247,7 +1247,7 @@ msgstr "Lassa sa lista de isetu"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "Ses seguru de bòlere lassare sa lista de isetu pro<br/><strong>TITLE</strong>?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1725,10 +1725,6 @@ msgstr "Amus imbiadu un'email a %(email)s chi cuntenet unu ligàmene pro verific
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "A pustis, torra a s'Open Library e atzapa libros de primore!"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "Obietivu de letura annuale"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "Sighende"
@@ -1893,7 +1889,7 @@ msgstr "Agiunghe libros noos a sa fila de importatzione"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Annanghe sos identificadores IA de importare, unu pro lìnia."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Imbia"
 
@@ -2840,6 +2836,10 @@ msgstr "Iscàrriga PDF dae OpenStax"
 msgid "More at OpenStax"
 msgstr "De prus in OpenStax"
 
+#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Àteras optziones de letura"
+
 #: book_providers/read_button.html
 #, fuzzy, python-format
 msgid "Listen to a reading from %s"
@@ -3161,35 +3161,22 @@ msgstr "Perunu de custos currispondet cun su libru chi bògio annànghere."
 msgid "Continue"
 msgstr "Sighi"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "nùmene chi mancat"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " de %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1 persona in atesa"
 msgstr[1] "%(count)d persones in atesa"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "Torra tràmite ADE"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "Prèstidu iscadidu"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "Boles torrare a beru custu libru?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "Torra su libru"
 
@@ -3373,6 +3360,11 @@ msgstr "Data de publicatzione disconnota, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "in %(languagelist)s"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " de %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -3870,7 +3862,7 @@ msgstr "Formadu de archìviu"
 msgid "Provider Name"
 msgstr "Nùmene de su frunidore"
 
-#: books/edit/edition.html
+#: books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Còmpora"
 
@@ -4179,7 +4171,7 @@ msgstr "Acabadu"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "Qualificatzione pro s'Atzessu Ispetziale pro Incapatzidade de Impressione"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "Sighi"
 
@@ -4205,7 +4197,7 @@ msgstr "Subra su Progetu"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "S'Open Library est unu catàlogu abertu, chi si podet modificare e punnat a tènnere una pàgina web pro cada libru mai publicadu."
 
-#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html.jinja
+#: home/about.html search/work_search_facets.html.jinja
 msgid "More"
 msgstr "De prus"
 
@@ -4784,7 +4776,7 @@ msgstr "Tabella de calidade de datos"
 msgid "Quality Criteria"
 msgstr "Critèrios de Calidade"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "Abbista totu"
 
@@ -4899,34 +4891,34 @@ msgstr "Peruna descritzione."
 msgid "Recent Activity"
 msgstr "Atividade reghente"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Cover of book"
 msgstr "Piga in prèstidu su libru"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "Avatar de su proprietàriu de sa lista"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "Tue"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "This patron has not enabled following"
 msgstr "Metzenates sighende"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "OpenLibrary Logo"
 msgstr "Logotipu de s'Open Library"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 #, fuzzy
 msgid "Community List"
 msgstr "Comunidade"
@@ -5288,10 +5280,6 @@ msgstr "S'eliminatzione de custu libru dae is istantes tuos at a iscantzellare i
 msgid "More reading options for %(title)s"
 msgstr "Àteras optziones de letura pro %(title)s"
 
-#: ReadButton.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Àteras optziones de letura"
-
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Annanghe a sa lista"
@@ -5514,23 +5502,27 @@ msgstr "Abbista prus libros de custu autore, e impara cosas subra de issu"
 msgid "published most by this publisher"
 msgstr "publicadu mescamente dae custu editore"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "Cantos libros dias bòlere lèghere cust'annu?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "Inserta \"0\" pro annullare s'obietivu de letura tuo. Sas registratziones tuas s'ant a preservare."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> libros"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "Modìfica s'obietivu de leghidura pro su %(year)d"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "Obietivu de letura annuale"
 
 #: recentchanges/header.html
 msgid "By"
@@ -6196,6 +6188,10 @@ msgstr "Identificadores"
 msgid "Author Identifiers Purpose"
 msgstr "Punna de s'identificadore de s'autore"
 
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "nùmene chi mancat"
+
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
 msgid "%(page_title)s | Open Library"
@@ -6380,10 +6376,6 @@ msgstr "Pàginas"
 #: type/edition/view.html type/work/view.html
 msgid "ISBNs"
 msgstr "ISBN"
-
-#: databarWork.html type/edition/view.html type/work/view.html
-msgid "Buy this book"
-msgstr "Còmpora custu libru"
 
 #: type/edition/view.html type/work/view.html
 msgid "Book Details"
@@ -7026,10 +7018,6 @@ msgstr "Chirca cust'editzione in bèndida in %(store)s"
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "Cando còmporas libros impreende custos ligàmenes s'Internet Archive diat pòdere balangiare una <a class=\"nostyle\" href=\"/help/faq/about#selling\">cummissione minore</a>."
 
-#: AffiliateLinksLoadingIndicator.html
-msgid "Fetching prices"
-msgstr "Recuperende sos prètzios"
-
 #: BatchImportNavigation.html
 msgid "Pending Imports"
 msgstr "Importatziones in isetu"
@@ -7105,7 +7093,7 @@ msgstr "Libros ligados"
 msgid "Go to next section"
 msgstr "Bae a sa setzione imbeniente"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "Iscadit"
 
@@ -7168,6 +7156,10 @@ msgid "You'll be next in line."
 msgstr "As a èssere su pròssimu in lìnia."
 
 #: LoanStatus.html
+msgid "All copies are checked out."
+msgstr "Totu sas còpias sunt in prèstidu."
+
+#: LoanStatus.html
 msgid "This book is currently checked out, please check back later."
 msgstr "Custu libru est in prèstidu, torra a averguare prus a tardu."
 
@@ -7180,8 +7172,8 @@ msgid "Only a preview is available."
 msgstr "Un'anteprima est disponìbile isceti."
 
 #: LocateButton.html
-msgid "Locate"
-msgstr "Atzapa"
+msgid "Find in a library"
+msgstr "Chirca in una biblioteca"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7232,30 +7224,25 @@ msgstr "Calicuna cosa est andada mali."
 msgid "Retry"
 msgstr "Torra a proare"
 
-#: RawQueryCarousel.html
-#, fuzzy
-msgid "Loading carousel"
-msgstr "Indicadore de carrigamentu"
+#: RawQueryCarousel.html.jinja
+msgid "Search collection"
+msgstr "Chirca una colletzione"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Failed to fetch carousel."
 msgstr "Fallidu is prenus de su carusèlliu."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry?"
 msgstr "Retenta?"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "No books match the current filters."
 msgstr "Nessunu libru currispondet is filtros currentes."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry without filters?"
 msgstr "Retenta sena filtros?"
-
-#: RawQueryCarousel.html
-msgid "Search collection"
-msgstr "Chirca una colletzione"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7284,6 +7271,10 @@ msgstr "Ammustra MARC"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Ligados..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "Boles torrare a beru custu libru?"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -7740,18 +7731,6 @@ msgstr "Dae cara cambiende sa casta de pàgina!"
 msgid "(Simplest solution: If you aren't sure whether this should be changed, don't change it.)"
 msgstr "(Solutzione prus fàtzile: si non ses seguru si diat èssere su casu de la cambiare, non la càmbies.)"
 
-#: WorldcatLink.html
-msgid "Check nearby libraries"
-msgstr "Chirca in sas bibliotecas a curtzu"
-
-#: WorldcatLink.html
-msgid "Check WorldCat for an edition near you"
-msgstr "Chirca in WorldCat un'editzione a curtzu a tie"
-
-#: WorldcatLink.html
-msgid "WorldCat"
-msgstr "WorldCat"
-
 #: databarDiff.html databarEdit.html
 msgid "View the editing history of this page"
 msgstr "Abbista sa cronologia de sas modìficas de custa pàgina"
@@ -7785,6 +7764,10 @@ msgstr "Modìfica custu modellu"
 #, python-format
 msgid "View Volume %(num)d"
 msgstr "Abbista su volume %(num)d"
+
+#: databarWork.html
+msgid "Buy this book"
+msgstr "Còmpora custu libru"
 
 #: openlibrary/core/bookshelves.py
 #, fuzzy
@@ -8308,10 +8291,6 @@ msgid "Better World Books"
 msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid " - includes shipping"
-msgstr " - includet s'ispeditzione"
-
-#: openlibrary/plugins/openlibrary/partials.py
 msgid "Amazon"
 msgstr "Amazon"
 
@@ -8322,6 +8301,11 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "Cust'òpera no aparit in peruna lista."
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, fuzzy
+msgid "Loading carousel"
+msgstr "Indicadore de carrigamentu"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
@@ -9907,4 +9891,22 @@ msgstr "%(title)s - chirca"
 
 #~ msgid "no"
 #~ msgstr "nono"
+
+#~ msgid "Fetching prices"
+#~ msgstr "Recuperende sos prètzios"
+
+#~ msgid "Locate"
+#~ msgstr "Atzapa"
+
+#~ msgid "Check nearby libraries"
+#~ msgstr "Chirca in sas bibliotecas a curtzu"
+
+#~ msgid "Check WorldCat for an edition near you"
+#~ msgstr "Chirca in WorldCat un'editzione a curtzu a tie"
+
+#~ msgid "WorldCat"
+#~ msgstr "WorldCat"
+
+#~ msgid " - includes shipping"
+#~ msgstr " - includet s'ispeditzione"
 

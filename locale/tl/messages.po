@@ -35,7 +35,7 @@ msgstr "Tingnan"
 msgid "or"
 msgstr "o"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "I-edit"
 
@@ -449,7 +449,7 @@ msgstr "Magpatuloy nang hindi nag-aantay"
 msgid "Library Explorer"
 msgstr "Library Explorer"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Naglo-load..."
 
@@ -538,7 +538,7 @@ msgstr "Idinagdag ang bagong libro."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Salamat sa pagpapabuti ng Open Library catalog!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "Isara"
 
@@ -856,7 +856,7 @@ msgstr "Sumali sa Waitlist"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Matuto nang higit pa tungkol sa \"%(title)s\" sa OpenLibrary"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Matuto Nang Higit Pa"
 
@@ -1213,11 +1213,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "May %(count)d taong naghihintay para sa librong ito."
 msgstr[1] "May %(count)d mga taong naghihintay para sa librong ito."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "Hindi pa na-download."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "I-download Ngayon"
 
@@ -1241,7 +1241,7 @@ msgstr "Umalis sa Listahan ng Paghihintay"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "Sigurado ka bang nais mong umalis sa listahan ng paghihintay ng<br/><strong>TITLE</strong>?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1719,10 +1719,6 @@ msgstr "Nagpadala kami ng email sa %(email)s na naglalaman ng link para beripika
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "Pagkatapos, bumalik sa Open Library at humanap ng mga magagandang aklat!"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "Taunang Layunin sa Pagbasa"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "Sinasundan"
@@ -1887,7 +1883,7 @@ msgstr "Magdagdag ng mga bagong aklat sa pila ng pag-import"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Pakidagdag ang mga IA identifier na ipapasok, isa sa bawat linya."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Isumite"
 
@@ -2822,6 +2818,10 @@ msgstr "I-download ang PDF mula sa OpenStax"
 msgid "More at OpenStax"
 msgstr "More sa OpenStax"
 
+#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Higit pang mga opsyon sa pagbasa"
+
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3141,35 +3141,22 @@ msgstr "Wala sa mga ito ang tugma sa librong gusto kong idagdag."
 msgid "Continue"
 msgstr "Magpatuloy"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "kulang ang pangalan"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " ni %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1 taong naghihintay"
 msgstr[1] "%(count)d na taong naghihintay"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "Ibalik sa pamamagitan ng ADE"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "Nag-expire ang Pautang"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "Talagang ibabalik ang aklat na ito?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "Ibalik ang aklat"
 
@@ -3352,6 +3339,11 @@ msgstr "Petsa ng paglalathala hindi alam, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "sa %(languagelist)s"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " ni %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -3847,7 +3839,7 @@ msgstr "Format ng File"
 msgid "Provider Name"
 msgstr "Pangalan ng Nagbigay"
 
-#: books/edit/edition.html
+#: books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Bumili"
 
@@ -4151,7 +4143,7 @@ msgstr "Natapos"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "Pagkuwalipika para sa Espesyal na Access ng Print Disability"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "Sundan"
 
@@ -4175,7 +4167,7 @@ msgstr "Tungkol sa Proyekto"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "Ang Open Library ay isang bukas at maaring i-edit na katalogo ng aklatan, nais na magkaroon ng isang web page para sa bawat aklat na nailathala."
 
-#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html.jinja
+#: home/about.html search/work_search_facets.html.jinja
 msgid "More"
 msgstr "Higit pa"
 
@@ -4756,7 +4748,7 @@ msgstr "Talaan ng kalidad ng data"
 msgid "Quality Criteria"
 msgstr "Mga Pamantayan ng Kalidad"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "Tingnan ang lahat"
 
@@ -4871,31 +4863,31 @@ msgstr "Walang paglalarawan."
 msgid "Recent Activity"
 msgstr "Kam recent na Gawain"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "Takip ng aklat"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "Avatar ng may-ari ng listahan"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "Ikaw"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "Hindi pinagana ng patron na ito ang pag-sunod"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "OpenLibrary Logo"
 msgstr "Logo ng OpenLibrary"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Community List"
 msgstr "Listahan ng Komunidad"
 
@@ -5255,10 +5247,6 @@ msgstr "Ang pag-alis ng aklat na ito mula sa iyong mga istante ay magtatanggal n
 msgid "More reading options for %(title)s"
 msgstr "Higit pang mga opsyon sa pagbasa para sa %(title)s"
 
-#: ReadButton.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Higit pang mga opsyon sa pagbasa"
-
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Idagdag sa Listahan"
@@ -5480,23 +5468,27 @@ msgstr "Tingnan ang higit pang mga aklat mula sa may-akdang ito at alamin ang tu
 msgid "published most by this publisher"
 msgstr "pinakamaraming inilathala ng publisher na ito"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "Ilang aklat ang nais mong basahin sa taong ito?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "Pumasok ng \"0\" upang alisin ang iyong layunin sa pagbabasa. Ang iyong mga check-in ay mapapanatili."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Mga Aklat"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "I-edit ang Layunin sa Pagbasa para sa %(year)d"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "Taunang Layunin sa Pagbasa"
 
 #: recentchanges/header.html
 msgid "By"
@@ -6158,6 +6150,10 @@ msgstr "Mga Tagatukoy"
 msgid "Author Identifiers Purpose"
 msgstr "Layunin ng mga Tagatukoy ng May-akda"
 
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "kulang ang pangalan"
+
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
 msgid "%(page_title)s | Open Library"
@@ -6339,10 +6335,6 @@ msgstr "Mga Pahina"
 #: type/edition/view.html type/work/view.html
 msgid "ISBNs"
 msgstr "ISBNs"
-
-#: databarWork.html type/edition/view.html type/work/view.html
-msgid "Buy this book"
-msgstr "Bumili ng aklat na ito"
 
 #: type/edition/view.html type/work/view.html
 msgid "Book Details"
@@ -6979,10 +6971,6 @@ msgstr "Hanapin ang edisyong ito na ibinenta sa %(store)s"
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "Kapag bumili ka ng mga aklat gamit ang mga link na ito, maaaring kumita ang Internet Archive ng <a class=\"nostyle\" href=\"/help/faq/about#selling\">maliit na komisyon</a>."
 
-#: AffiliateLinksLoadingIndicator.html
-msgid "Fetching prices"
-msgstr "Kinukuha ang mga presyo"
-
 #: BatchImportNavigation.html
 msgid "Pending Imports"
 msgstr "Naghihintay na Imports"
@@ -7057,7 +7045,7 @@ msgstr "Kaugnay na mga Aklat"
 msgid "Go to next section"
 msgstr "Pumunta sa susunod na bahagi"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "Mag-e-expire"
 
@@ -7120,6 +7108,10 @@ msgid "You'll be next in line."
 msgstr "Ikaw ay susunod sa pila."
 
 #: LoanStatus.html
+msgid "All copies are checked out."
+msgstr "Lahat ng kopya ay hiniram na."
+
+#: LoanStatus.html
 msgid "This book is currently checked out, please check back later."
 msgstr "Ang aklat na ito ay kasalukuyang hiniram, mangyaring bumalik mamaya."
 
@@ -7132,8 +7124,8 @@ msgid "Only a preview is available."
 msgstr "Tanging preview lamang ang available."
 
 #: LocateButton.html
-msgid "Locate"
-msgstr "Hanapin"
+msgid "Find in a library"
+msgstr "Hanapin sa isang aklatan"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7184,29 +7176,25 @@ msgstr "May naganap na error."
 msgid "Retry"
 msgstr "Subukang muli"
 
-#: RawQueryCarousel.html
-msgid "Loading carousel"
-msgstr "Nagloload ng carousel"
+#: RawQueryCarousel.html.jinja
+msgid "Search collection"
+msgstr "Maghanap sa koleksyon"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Failed to fetch carousel."
 msgstr "Nabigong kunin ang carousel."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry?"
 msgstr "Subukan muli?"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "No books match the current filters."
 msgstr "Walang aklat na tumutugma sa kasalukuyang mga filter."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry without filters?"
 msgstr "Subukan muli nang walang filters?"
-
-#: RawQueryCarousel.html
-msgid "Search collection"
-msgstr "Maghanap sa koleksyon"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7235,6 +7223,10 @@ msgstr "Tingnan ang MARC"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Kaugnay..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "Talagang ibabalik ang aklat na ito?"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -7687,18 +7679,6 @@ msgstr "Mangyaring maging maingat sa pagbabago ng Uri ng Pahina!"
 msgid "(Simplest solution: If you aren't sure whether this should be changed, don't change it.)"
 msgstr "(Pinakasimpleng solusyon: Kung hindi ka sigurado kung ito ay dapat baguhin, huwag itong baguhin.)"
 
-#: WorldcatLink.html
-msgid "Check nearby libraries"
-msgstr "Suriin ang mga kalapit na aklatan"
-
-#: WorldcatLink.html
-msgid "Check WorldCat for an edition near you"
-msgstr "Suriin ang WorldCat para sa isang edisyon na malapit sa iyo"
-
-#: WorldcatLink.html
-msgid "WorldCat"
-msgstr "WorldCat"
-
 #: databarDiff.html databarEdit.html
 msgid "View the editing history of this page"
 msgstr "Tingnan ang kasaysayan ng pag-edit ng pahinang ito"
@@ -7732,6 +7712,10 @@ msgstr "I-edit ang template na ito"
 #, python-format
 msgid "View Volume %(num)d"
 msgstr "Tingnan ang Dami %(num)d"
+
+#: databarWork.html
+msgid "Buy this book"
+msgstr "Bumili ng aklat na ito"
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8231,10 +8215,6 @@ msgid "Better World Books"
 msgstr "Mas Magandang Mundo ng mga Aklat"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid " - includes shipping"
-msgstr " - kasama ang pagpapadala"
-
-#: openlibrary/plugins/openlibrary/partials.py
 msgid "Amazon"
 msgstr "Amazon"
 
@@ -8245,6 +8225,10 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "Ang gawaing ito ay hindi lumalabas sa alinmang listahan."
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Loading carousel"
+msgstr "Nagloload ng carousel"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
@@ -9387,4 +9371,22 @@ msgstr "%(title)s - paghahanap"
 
 #~ msgid "no"
 #~ msgstr "hindi"
+
+#~ msgid "Fetching prices"
+#~ msgstr "Kinukuha ang mga presyo"
+
+#~ msgid "Locate"
+#~ msgstr "Hanapin"
+
+#~ msgid "Check nearby libraries"
+#~ msgstr "Suriin ang mga kalapit na aklatan"
+
+#~ msgid "Check WorldCat for an edition near you"
+#~ msgstr "Suriin ang WorldCat para sa isang edisyon na malapit sa iyo"
+
+#~ msgid "WorldCat"
+#~ msgstr "WorldCat"
+
+#~ msgid " - includes shipping"
+#~ msgstr " - kasama ang pagpapadala"
 

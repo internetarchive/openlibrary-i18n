@@ -35,7 +35,7 @@ msgstr "Ver"
 msgid "or"
 msgstr "o"
 
-#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html subjects.html type/edition/compact_title.html type/user/view.html
+#: account.html databarHistory.html databarTemplate.html databarView.html my_books/check_ins/check_in_prompt.html reading_goals/reading_goal_progress.html.jinja subjects.html type/edition/compact_title.html type/user/view.html
 msgid "Edit"
 msgstr "Editar"
 
@@ -449,7 +449,7 @@ msgstr "Continuar sin esperar"
 msgid "Library Explorer"
 msgstr "Explorador de biblioteca"
 
-#: RelatedSubjects.html.jinja account/create.html books/custom_carousel.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html openlibrary/plugins/openlibrary/partials.py search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -538,7 +538,7 @@ msgstr "Añadido nuevo libro."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "¡Muchas gracias por mejorar el catálogo de la Biblioteca Abierta!"
 
-#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html
+#: NotesModal.html ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja
 msgid "Close"
 msgstr "Cerrar"
 
@@ -858,7 +858,7 @@ msgstr "Reservar"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Más información sobre \"%(title)s\" en la Biblioteca Abierta"
 
-#: reading_goals/reading_goal_form.html widget.html
+#: reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Aprende más"
 
@@ -1215,11 +1215,11 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Hay %(count)d persona esperando este libro."
 msgstr[1] "Hay %(count)d personas esperando por este libro."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Not yet downloaded."
 msgstr "Aún no se ha descargado."
 
-#: account/loans.html books/custom_carousel_card.html
+#: account/loans.html books/custom_carousel_card.html.jinja
 msgid "Download Now"
 msgstr "Descargar ahora"
 
@@ -1243,7 +1243,7 @@ msgstr "Abandonar la lista de espera"
 msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
 msgstr "¿Estás seguro de que quieres abandonar la lista de espera de <br/><strong>TITLE</strong>?"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1721,10 +1721,6 @@ msgstr "Hemos enviado un correo electrónico a %(email)s con un enlace para veri
 msgid "Then, come back to Open Library and find some great books!"
 msgstr "Después, vuelve a la Biblioteca Abierta y ¡encuentra libros fantásticos!"
 
-#: account/view.html
-msgid "Yearly Reading Goal"
-msgstr "Objetivo anual de lectura"
-
 #: account/view.html books/mybooks_breadcrumb_select.html
 msgid "Following"
 msgstr "Siguiendo"
@@ -1889,7 +1885,7 @@ msgstr "Añadir nuevos libros a la cola de importación"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Por favor, añada los identificadores IA a importar, uno por línea."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html my_books/check_ins/check_in_form.html reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Enviar"
 
@@ -2834,6 +2830,10 @@ msgstr "Descargar PDF desde OpenStax"
 msgid "More at OpenStax"
 msgstr "Más en OpenStax"
 
+#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Más opciones de lectura"
+
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3153,35 +3153,22 @@ msgstr "Ninguno de estos coincide con el libro que quiero añadir."
 msgid "Continue"
 msgstr "Continuar"
 
-#: books/custom_carousel_card.html type/author/view.html
-msgid "name missing"
-msgstr "falta el nombre"
-
-#: books/custom_carousel_card.html books/mobile_carousel.html
-#, python-format
-msgid " by %(name)s"
-msgstr " por %(name)s"
-
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
 msgid_plural "%(count)d people waiting"
 msgstr[0] "1 persona esperando"
 msgstr[1] "%(count)d personas esperando"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Return via ADE"
 msgstr "Devolver mediante ADE"
 
-#: books/custom_carousel_card.html
+#: books/custom_carousel_card.html.jinja
 msgid "Loan Expired"
 msgstr "Préstamo caducado"
 
-#: ReturnForm.html books/custom_carousel_card.html
-msgid "Really return this book?"
-msgstr "¿Devolver este libro de verdad?"
-
-#: ReturnForm.html books/custom_carousel_card.html
+#: ReturnForm.html books/custom_carousel_card.html.jinja
 msgid "Return book"
 msgstr "Devolver libro"
 
@@ -3365,6 +3352,11 @@ msgstr "Fecha de publicación desconocida, %(publisher)s"
 #, python-format
 msgid "in %(languagelist)s"
 msgstr "en %(languagelist)s"
+
+#: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid " by %(name)s"
+msgstr " por %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this
@@ -3862,7 +3854,7 @@ msgstr "Formato de archivo"
 msgid "Provider Name"
 msgstr "Nombre del proveedor"
 
-#: books/edit/edition.html
+#: books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Comprar"
 
@@ -4166,7 +4158,7 @@ msgstr "Finalizado"
 msgid "Qualifying for Print Disability Special Access"
 msgstr "Requisitos para acceder al servicio especial para personas con discapacidad visual"
 
-#: follow/follow.html lists/list_follow.html
+#: follow/follow.html lists/list_follow.html.jinja
 msgid "Follow"
 msgstr "Seguir"
 
@@ -4190,7 +4182,7 @@ msgstr "Sobre el proyecto"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "Biblioteca Abierta es un catálogo de biblioteca abierto y editable, orientado a tener una página web por cada libro que se haya publicado jamás."
 
-#: AffiliateLinks.html.jinja home/about.html search/work_search_facets.html.jinja
+#: home/about.html search/work_search_facets.html.jinja
 msgid "More"
 msgstr "Más"
 
@@ -4769,7 +4761,7 @@ msgstr "Tabla de calidad de datos"
 msgid "Quality Criteria"
 msgstr "Criterios de calidad"
 
-#: lists/carousel.html lists/home.html lists/showcase.html
+#: lists/carousel.html.jinja lists/home.html lists/showcase.html
 msgid "See all"
 msgstr "Ver todo"
 
@@ -4884,31 +4876,31 @@ msgstr "Sin descripción."
 msgid "Recent Activity"
 msgstr "Actividad reciente"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Cover of book"
 msgstr "Portada del libro"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Avatar of the owner of the list"
 msgstr "Avatar del propietario de la lista"
 
-#: lists/list_follow.html lists/widget.html my_books/dropdown_content.html
+#: lists/list_follow.html.jinja lists/widget.html my_books/dropdown_content.html
 msgid "You"
 msgstr "Tú"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "This patron has not enabled following"
 msgstr "Este usuario no ha habilitado el seguimiento"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "🔒︎"
 msgstr "🔒︎"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "OpenLibrary Logo"
 msgstr "Logo de la Biblioteca Abierta"
 
-#: lists/list_follow.html
+#: lists/list_follow.html.jinja
 msgid "Community List"
 msgstr "Lista de comunidad"
 
@@ -5268,10 +5260,6 @@ msgstr "Eliminar este libro de tus estantes eliminará tus registros de lectura 
 msgid "More reading options for %(title)s"
 msgstr "Más opciones de lectura para %(title)s"
 
-#: ReadButton.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Más opciones de lectura"
-
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Añadir a lista"
@@ -5493,23 +5481,27 @@ msgstr "Ver más libros de este autor y aprender más sobre él"
 msgid "published most by this publisher"
 msgstr "los más publicados por esta editorial"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "How many books would you like to read this year?"
 msgstr "¿Cuántos libros te gustaría leer este año?"
 
-#: reading_goals/reading_goal_form.html
+#: reading_goals/reading_goal_form.html.jinja
 msgid "Enter \"0\" to unset your reading goal. Your check-ins will be preserved."
 msgstr "Introduce \"0\" para anular tu objetivo de lectura. Tus registros se conservarán."
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Books"
 msgstr "<span class=\"reading-goal-progress__books-read\">%(books_read)d</span>/<span class=\"reading-goal-progress__goal\">%(goal)d</span> Libros"
 
-#: reading_goals/reading_goal_progress.html
+#: reading_goals/reading_goal_progress.html.jinja
 #, python-format
 msgid "Edit %(year)d Reading Goal"
 msgstr "Editar objetivo de lectura de %(year)d"
+
+#: reading_goals/yearly_goal_dialog.html.jinja
+msgid "Yearly Reading Goal"
+msgstr "Objetivo anual de lectura"
 
 #: recentchanges/header.html
 msgid "By"
@@ -6171,6 +6163,10 @@ msgstr "Identificadores"
 msgid "Author Identifiers Purpose"
 msgstr "Propósito de los identificadores de autor"
 
+#: openlibrary/plugins/openlibrary/partials.py type/author/view.html
+msgid "name missing"
+msgstr "falta el nombre"
+
 #: type/author/view.html type/edition/view.html type/work/view.html
 #, python-format
 msgid "%(page_title)s | Open Library"
@@ -6356,10 +6352,6 @@ msgstr "Páginas"
 #: type/edition/view.html type/work/view.html
 msgid "ISBNs"
 msgstr "ISBNs"
-
-#: databarWork.html type/edition/view.html type/work/view.html
-msgid "Buy this book"
-msgstr "Comprar este libro"
 
 #: type/edition/view.html type/work/view.html
 msgid "Book Details"
@@ -6999,10 +6991,6 @@ msgstr "Buscar esta edición a la venta en %(store)s"
 msgid "When you buy books using these links the Internet Archive may earn a <a class=\"nostyle\" href=\"/help/faq/about#selling\">small commission</a>."
 msgstr "Cuando compras libros usando estos enlaces, el Archivo de Internet puede ganar una <a class=\"nostyle\" href=\"/help/faq/about#selling\">pequeña comisión</a>."
 
-#: AffiliateLinksLoadingIndicator.html
-msgid "Fetching prices"
-msgstr "Búsqueda de precios"
-
 #: BatchImportNavigation.html
 msgid "Pending Imports"
 msgstr "Importaciones pendientes"
@@ -7077,7 +7065,7 @@ msgstr "Libros relacionados"
 msgid "Go to next section"
 msgstr "Ir a la siguiente sección"
 
-#: FormatExpiry.html
+#: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "Expira"
 
@@ -7140,6 +7128,10 @@ msgid "You'll be next in line."
 msgstr "Serás el siguiente en la lista."
 
 #: LoanStatus.html
+msgid "All copies are checked out."
+msgstr "Todos los ejemplares están prestados."
+
+#: LoanStatus.html
 msgid "This book is currently checked out, please check back later."
 msgstr "Este libro se encuentra actualmente en proceso de revisión. Por favor, vuelva a consultarlo más tarde."
 
@@ -7152,8 +7144,8 @@ msgid "Only a preview is available."
 msgstr "Solo hay una vista previa disponible."
 
 #: LocateButton.html
-msgid "Locate"
-msgstr "Buscar"
+msgid "Find in a library"
+msgstr "Buscar en una biblioteca"
 
 # Se traduce como «No en biblioteca» para evitar que el texto se corte en el
 # botón donde se muestra.
@@ -7206,29 +7198,25 @@ msgstr "Algo salió mal."
 msgid "Retry"
 msgstr "Reintentar"
 
-#: RawQueryCarousel.html
-msgid "Loading carousel"
-msgstr "Cargando carrusel"
+#: RawQueryCarousel.html.jinja
+msgid "Search collection"
+msgstr "Buscar colección"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Failed to fetch carousel."
 msgstr "No se ha podido cargar el carrusel."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry?"
 msgstr "¿Reintentar?"
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "No books match the current filters."
 msgstr "No hay libros que coincidan con los filtros actuales."
 
-#: RawQueryCarousel.html
+#: RawQueryCarouselPlaceholder.html.jinja
 msgid "Retry without filters?"
 msgstr "¿Reintentar sin filtros?"
-
-#: RawQueryCarousel.html
-msgid "Search collection"
-msgstr "Buscar colección"
 
 #: ReadButton.html
 msgid "Special Access"
@@ -7257,6 +7245,10 @@ msgstr "Ver MARC"
 #: RelatedSubjects.html.jinja
 msgid "Related..."
 msgstr "Relacionado..."
+
+#: ReturnForm.html openlibrary/plugins/openlibrary/partials.py
+msgid "Really return this book?"
+msgstr "¿Devolver este libro de verdad?"
 
 #: SearchResultsWork.html
 msgid "added to"
@@ -7712,18 +7704,6 @@ msgstr "¡Por favor, ten cuidado al cambiar el tipo de página!"
 msgid "(Simplest solution: If you aren't sure whether this should be changed, don't change it.)"
 msgstr "(La solución más simple: Si no estás seguro de si esto debe ser cambiado, no lo cambies.)"
 
-#: WorldcatLink.html
-msgid "Check nearby libraries"
-msgstr "Buscar en bibliotecas cercanas"
-
-#: WorldcatLink.html
-msgid "Check WorldCat for an edition near you"
-msgstr "Buscar en WorldCat una edición cercana a ti"
-
-#: WorldcatLink.html
-msgid "WorldCat"
-msgstr "WorldCat"
-
 #: databarDiff.html databarEdit.html
 msgid "View the editing history of this page"
 msgstr "Ver el historial de edición de esta página"
@@ -7757,6 +7737,10 @@ msgstr "Editar esta plantilla"
 #, python-format
 msgid "View Volume %(num)d"
 msgstr "Ver volumen %(num)d"
+
+#: databarWork.html
+msgid "Buy this book"
+msgstr "Comprar este libro"
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8257,10 +8241,6 @@ msgid "Better World Books"
 msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid " - includes shipping"
-msgstr " - incluye el envío"
-
-#: openlibrary/plugins/openlibrary/partials.py
 msgid "Amazon"
 msgstr "Amazon"
 
@@ -8271,6 +8251,10 @@ msgstr "Bookshop.org"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "Esta obra no figura en ninguna lista."
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Loading carousel"
+msgstr "Cargando carrusel"
 
 #: openlibrary/plugins/openlibrary/pd.py
 msgid "I don't have one yet"
@@ -9931,4 +9915,22 @@ msgstr "%(title)s - búsqueda"
 
 #~ msgid "no"
 #~ msgstr "no"
+
+#~ msgid "Fetching prices"
+#~ msgstr "Búsqueda de precios"
+
+#~ msgid "Locate"
+#~ msgstr "Buscar"
+
+#~ msgid "Check nearby libraries"
+#~ msgstr "Buscar en bibliotecas cercanas"
+
+#~ msgid "Check WorldCat for an edition near you"
+#~ msgstr "Buscar en WorldCat una edición cercana a ti"
+
+#~ msgid "WorldCat"
+#~ msgstr "WorldCat"
+
+#~ msgid " - includes shipping"
+#~ msgstr " - incluye el envío"
 
