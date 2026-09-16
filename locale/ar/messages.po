@@ -1424,7 +1424,7 @@ msgstr "مراجعاتي"
 msgid "Import & Export Options"
 msgstr "خيارات الاستيراد والتصدير"
 
-#: BookByline.html FulltextSearchSuggestionItem.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "مؤلف غير معروف"
 
@@ -3484,7 +3484,7 @@ msgstr "هل تعرف أي معرفات لهذه النسخة؟"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "تنطبق هذه المعرّفات على جميع طبعات هذا العمل، مثلاً معرّفات أعمال Wikidata. للمعرّفات الخاصة بالطبعة مثل ISBN أو LCCN، انتقل إلى تبويب الطبعة."
 
-#: FulltextSearchSuggestionItem.html IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "غلاف: %(title)s"
@@ -5938,7 +5938,7 @@ msgstr "استعِر عبر الإنترنت"
 msgid "Search Open Library for %s"
 msgstr "ابحث في Open Library عن %s"
 
-#: FulltextSearchSuggestion.html SearchNavigation.html search/inside.html
+#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
 msgid "Search Inside"
 msgstr "البحث داخل"
 
@@ -7363,29 +7363,25 @@ msgstr "انتقل إلى القسم التالي"
 msgid "Expires"
 msgstr "تاريخ الانتهاء"
 
-#: FulltextSearchSuggestion.html
-msgid "Checking for Search Inside matches"
-msgstr "البحث عن تطابقات بحث داخل الكتاب"
-
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "تم العثور على %(book_count)s كتاباً بمقاطع مطابقة"
 
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "عرض جميع %(results_count)s تطابقات البحث داخل الكتاب"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❝"
 msgstr "❝"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❞"
 msgstr "❞"
 
-#: FulltextSuggestionSnippet.html
+#: FulltextSuggestionSnippet.html.jinja
 #, fuzzy, python-format
 msgid "Page: %(page)s"
 msgstr "الصفحة %(page)s"
@@ -7783,6 +7779,21 @@ msgstr "أعد المحاولة"
 #: TestingEnvironment.html.jinja
 msgid "Could not complete that action."
 msgstr "تعذر إتمام هذا الإجراء."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "PR %(num)s does not exist."
+msgstr "طلب السحب %(num)s غير موجود."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not check PR %(num)s — GitHub is unavailable."
+msgstr "تعذر التحقق من طلب السحب %(num)s — GitHub غير متاح."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not add PR %(num)s."
+msgstr "تعذرت إضافة طلب السحب %(num)s."
 
 #: TestingEnvironment.html.jinja
 msgid "Testing Environment"
@@ -8570,6 +8581,10 @@ msgstr "أمازون"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Checking for Search Inside matches"
+msgstr "البحث عن تطابقات بحث داخل الكتاب"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."

@@ -1346,7 +1346,7 @@ msgstr "내 리뷰"
 msgid "Import & Export Options"
 msgstr "가져오기 및 내보내기 옵션"
 
-#: BookByline.html FulltextSearchSuggestionItem.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "알 수 없는 저자"
 
@@ -3292,7 +3292,7 @@ msgstr "알고 있나요 any identifiers 이 작품에 대해?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "이 식별자는 Wikidata 작품 식별자처럼 이 작품의 모든 판본에 적용됩니다. ISBN이나 LCCN처럼 판본별 식별자는 판본 탭에서 입력하세요."
 
-#: FulltextSearchSuggestionItem.html IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "%(title)s의 표지"
@@ -5636,7 +5636,7 @@ msgstr "온라인 대출"
 msgid "Search Open Library for %s"
 msgstr "Open Library에서 %s 검색"
 
-#: FulltextSearchSuggestion.html SearchNavigation.html search/inside.html
+#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
 msgid "Search Inside"
 msgstr "내부 검색"
 
@@ -6972,29 +6972,25 @@ msgstr "다음 섹션으로 이동"
 msgid "Expires"
 msgstr "만료"
 
-#: FulltextSearchSuggestion.html
-msgid "Checking for Search Inside matches"
-msgstr "내부 검색 결과 확인 중"
-
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "%(book_count)s권에서 일치하는 구절 발견"
 
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "%(results_count)s개 내부 검색 결과 전체 보기"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❝"
 msgstr "❝"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❞"
 msgstr "❞"
 
-#: FulltextSuggestionSnippet.html
+#: FulltextSuggestionSnippet.html.jinja
 #, python-format
 msgid "Page: %(page)s"
 msgstr "페이지: %(page)s"
@@ -7380,6 +7376,21 @@ msgstr "다시 시도"
 #: TestingEnvironment.html.jinja
 msgid "Could not complete that action."
 msgstr "해당 작업을 완료할 수 없습니다."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "PR %(num)s does not exist."
+msgstr "PR %(num)s이(가) 존재하지 않습니다."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not check PR %(num)s — GitHub is unavailable."
+msgstr "PR %(num)s을(를) 확인할 수 없습니다 — GitHub를 사용할 수 없습니다."
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not add PR %(num)s."
+msgstr "PR %(num)s을(를) 추가할 수 없습니다."
 
 #: TestingEnvironment.html.jinja
 msgid "Testing Environment"
@@ -8137,6 +8148,10 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Checking for Search Inside matches"
+msgstr "내부 검색 결과 확인 중"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."

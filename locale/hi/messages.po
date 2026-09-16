@@ -1424,7 +1424,7 @@ msgstr "मेरी समीक्षाएँ"
 msgid "Import & Export Options"
 msgstr "इम्पोर्ट और एक्सपोर्ट विकल्प"
 
-#: BookByline.html FulltextSearchSuggestionItem.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "अज्ञात लेखक"
 
@@ -3507,7 +3507,7 @@ msgstr "क्या आप इस संस्करण के लिए कि
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "ये पहचानकर्ता इस कृति के सभी संस्करणों पर लागू होते हैं, उदाहरण के लिए Wikidata कृति पहचानकर्ता। संस्करण-विशिष्ट पहचानकर्ताओं के लिए, जैसे ISBN या LCCN, संस्करण टैब पर जाएँ।"
 
-#: FulltextSearchSuggestionItem.html IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "कवर: %(title)s"
@@ -5960,7 +5960,7 @@ msgstr "अभी उधार लें"
 msgid "Search Open Library for %s"
 msgstr "%s के लिए ओपन लाइब्रेरी खोजें"
 
-#: FulltextSearchSuggestion.html SearchNavigation.html search/inside.html
+#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
 msgid "Search Inside"
 msgstr "अंदर खोजें"
 
@@ -7374,29 +7374,25 @@ msgstr "अगले अनुभाग पर जाएँ"
 msgid "Expires"
 msgstr "समाप्त हो रहा"
 
-#: FulltextSearchSuggestion.html
-msgid "Checking for Search Inside matches"
-msgstr "अंदर खोज मिलान जाँचा जा रहा है"
-
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "%(book_count)s books found with matching passages"
 msgstr "%(book_count)s पुस्तकें मिलान वाले अंशों के साथ मिलीं"
 
-#: FulltextSearchSuggestion.html
+#: FulltextSearchSuggestion.html.jinja
 #, python-format
 msgid "See all %(results_count)s Search Inside Matches"
 msgstr "सभी %(results_count)s अंदर खोज मिलान देखें"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❝"
 msgstr "❝"
 
-#: FulltextSnippet.html FulltextSuggestionSnippet.html
+#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
 msgid "❞"
 msgstr "❞"
 
-#: FulltextSuggestionSnippet.html
+#: FulltextSuggestionSnippet.html.jinja
 #, fuzzy, python-format
 msgid "Page: %(page)s"
 msgstr "पेज %(page)s"
@@ -7795,6 +7791,21 @@ msgstr "फिर से प्रयास करें"
 #: TestingEnvironment.html.jinja
 msgid "Could not complete that action."
 msgstr "वह कार्रवाई पूरी नहीं हो सकी।"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "PR %(num)s does not exist."
+msgstr "PR %(num)s मौजूद नहीं है।"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not check PR %(num)s — GitHub is unavailable."
+msgstr "PR %(num)s की जांच नहीं की जा सकी — GitHub उपलब्ध नहीं है।"
+
+#: TestingEnvironment.html.jinja
+#, python-format
+msgid "Could not add PR %(num)s."
+msgstr "PR %(num)s जोड़ा नहीं जा सका।"
 
 #: TestingEnvironment.html.jinja
 msgid "Testing Environment"
@@ -8585,6 +8596,10 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
+
+#: openlibrary/plugins/openlibrary/partials.py
+msgid "Checking for Search Inside matches"
+msgstr "अंदर खोज मिलान जाँचा जा रहा है"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
