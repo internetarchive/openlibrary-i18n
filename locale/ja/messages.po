@@ -437,7 +437,7 @@ msgstr "この本は、Open Library 信頼済み書籍プロバイダーであ�
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "%(time)s 秒後に自動的に %(url)s にリダイレクトされます"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -538,7 +538,7 @@ msgstr "新しい本が追加されました。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library カタログを改善していただきありがとうございます！"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "閉じる"
 
@@ -1234,12 +1234,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "現在、待機している本はありません。"
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "順番待ちリストを離れる"
+msgid "Leave the waiting list?"
+msgstr "順番待ちリストを離れますか？"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
+msgstr "順番待ちリストから離脱"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "<br/><strong>TITLE</strong>の順番待ちリストを離れてもよいですか？"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "<strong>%(title)s</strong>の順番待ちリストの位置を失います。"
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1280,10 +1285,6 @@ msgstr[0] "借りるまであと1時間です。"
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "今すぐ借りる"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "順番待ちリストを離れますか？"
 
 #: account/loans.html
 msgid "Loan History"
@@ -4871,38 +4872,38 @@ msgstr ""
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / リスト"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "はい、確認します"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "いいえ、キャンセル"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "このリストを削除"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "このリストを削除しますか？"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "リストを削除"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "このリストを削除してよろしいですか？"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "この操作は元に戻せません。"
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "このシードを削除しますか？"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "このリストから削除しますか？"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "削除"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "<strong>%(title)s</strong>をこのリストから削除してよろしいですか？"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong>がこのリストから削除されます。"
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -4978,17 +4979,25 @@ msgstr "「著者を統合」を押してください。"
 msgid "No primary record"
 msgstr "プライマリレコードがありません"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "OK"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "重複を指向させるプライマリレコードを選択してください。"
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "ご注意ください..."
+msgid "Merge these authors?"
+msgstr "これらの著者を統合しますか？"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "著者を統合"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "これらのレコードを統合してよろしいですか？<b>本当に確認してください</b>。"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "重複したレコードは主レコードにリダイレクトされます。"
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5641,10 +5650,6 @@ msgid "Is the same author listed twice?"
 msgstr "同じ著者が2度リストされていますか？"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "著者を統合"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "検索に直接一致する<strong>著者</strong>は見つかりませんでした"
 
@@ -6273,10 +6278,6 @@ msgstr "ノートを削除できませんでした。もう一度お試しくだ
 msgid "Delete this note?"
 msgstr "このノートを削除しますか?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "この操作は元に戻せません。"
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "の版："
@@ -6601,20 +6602,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "<span>%(date)s</span>に最終更新"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "シードを削除"
+msgid "This item will be removed from the list."
+msgstr "この項目はリストから削除されます。"
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "このアイテムをリストから削除してよろしいですか？"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "シードを削除"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "リストの最後のアイテムを削除しようとしています。これによりリスト全体が削除されます。続けてよろしいですか？"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "これはリストの最後の項目です。削除するとリスト全体が削除されます。"
 
 #: type/list/view_body.html
 #, python-format
@@ -7142,10 +7135,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "あなたは順番待ちリストで%(wlsize)d人中<strong>%(spot)d番目</strong>です。"
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "順番待ちリストから離脱"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "順番待ち読者：%(count)s人"
@@ -7558,10 +7547,6 @@ msgstr "デプロイに失敗しました（マージ競合）"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "このPRは既にクローズされています。"
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "OK"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9550,4 +9535,40 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "この版についての私的なメモ："
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "順番待ちリストを離れる"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "<br/><strong>TITLE</strong>の順番待ちリストを離れてもよいですか？"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "はい、確認します"
+
+#~ msgid "No, cancel"
+#~ msgstr "いいえ、キャンセル"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "このリストを削除してよろしいですか？"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "<strong>%(title)s</strong>をこのリストから削除してよろしいですか？"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "ご注意ください..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "これらのレコードを統合してよろしいですか？<b>本当に確認してください</b>。"
+
+#~ msgid "Remove seed"
+#~ msgstr "シードを削除"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "このアイテムをリストから削除してよろしいですか？"
+
+#~ msgid "Remove Seed"
+#~ msgstr "シードを削除"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "リストの最後のアイテムを削除しようとしています。これによりリスト全体が削除されます。続けてよろしいですか？"
 

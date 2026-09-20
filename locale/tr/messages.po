@@ -445,7 +445,7 @@ msgstr "Bu kitap, üçüncü taraf bir Open Library Güvenilir Kitap Sağlayıc�
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "%(time)s saniye içinde otomatik olarak şuraya yönlendirileceksiniz: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "İptal et"
 
@@ -552,7 +552,7 @@ msgstr "Yeni kitap eklendi."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Kapat"
 
@@ -1269,12 +1269,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "Şu anda hiçbir kitap için beklemiyor değilsiniz."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "Bekleme Listesinden Çık"
+msgid "Leave the waiting list?"
+msgstr "Bekleme listesinden çıkılsın mı?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
+msgstr "Bekleme listesinden ayrıl"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "Bekleme listesinden ayrılmak istediğinizden emin misiniz<br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "<strong>%(title)s</strong> için bekleme listesindeki yerinizi kaybedeceksiniz."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1319,10 +1324,6 @@ msgstr[1] "Ödünç almak için %(hours)d saatiniz daha var."
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Şimdi Ödünç Al"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "Bekleme listesinden çıkılsın mı?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -4997,39 +4998,39 @@ msgstr ""
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / Listeler"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Evet, eminim"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "Hayır, iptal"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "Bu listeyi sil"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "Bu liste silinsin mi?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "Listeyi sil"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "Bu listeyi silmek istediğinizden emin misiniz?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Bu işlem geri alınamaz."
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "Bu öğeyi kaldır?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "Bu listeden kaldırılsın mı?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 #, fuzzy
 msgid "Remove"
 msgstr "Kaldırıldı"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "<strong>%(title)s</strong>'i bu listeden kaldırmak istediğinizden emin misiniz?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> bu listeden kaldırılacak."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5105,17 +5106,25 @@ msgstr "YAZARLARI BİRLEŞTİR'e basın."
 msgid "No primary record"
 msgstr "Birincil kayıt yok"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "Tamam"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Kopyaları yönlendirmek için bir birincil kayıt seçmeniz gerekiyor."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Lütfen Dikkatli Olun..."
+msgid "Merge these authors?"
+msgstr "Bu yazarlar birleştirilsin mi?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "Yazarları birleştir"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>Emin misiniz</b> bu kayıtları birleştirmek istediğinizden?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Yinelenen kayıtlar birincil kayda yönlendirilecek."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5792,10 +5801,6 @@ msgid "Is the same author listed twice?"
 msgstr "Aynı yazar iki kez mi listelendi?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "Yazarları birleştir"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Aramanızla doğrudan eşleşen <strong>yazar</strong> bulunamadı"
 
@@ -6429,10 +6434,6 @@ msgstr "Notunuz silinemedi. Lütfen tekrar deneyin."
 msgid "Delete this note?"
 msgstr "Bu not silinsin mi?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Bu işlem geri alınamaz."
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "Baskısı"
@@ -6766,20 +6767,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Son değişiklik <span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "Öğeyi kaldır"
+msgid "This item will be removed from the list."
+msgstr "Bu öğe listeden kaldırılacak."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "Bu öğeyi listeden kaldırmak istediğinizden emin misiniz?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "Öğeyi Kaldır"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Listedeki son öğeyi kaldırmak üzeresiniz. Bu işlem tüm listeyi silecektir. Devam etmek istediğinizden emin misiniz?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Bu, listedeki son öğe. Kaldırıldığında tüm liste silinecek."
 
 #: type/list/view_body.html
 #, python-format
@@ -7329,10 +7322,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Bekleme listesinde %(wlsize)d kişiden <strong>%(spot)d. sıradasınız</strong>."
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "Bekleme listesinden ayrıl"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Sıradaki okuyucu sayısı: %(count)s"
@@ -7755,10 +7744,6 @@ msgstr "Dağıtım başarısız oldu (birleştirme çakışması)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Bu PR zaten kapatıldı."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "Tamam"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9738,4 +9723,40 @@ msgstr "Ara - %(title)s"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Bu baskı hakkındaki özel notlarım:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Bekleme Listesinden Çık"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "Bekleme listesinden ayrılmak istediğinizden emin misiniz<br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Evet, eminim"
+
+#~ msgid "No, cancel"
+#~ msgstr "Hayır, iptal"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "Bu listeyi silmek istediğinizden emin misiniz?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "<strong>%(title)s</strong>'i bu listeden kaldırmak istediğinizden emin misiniz?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Lütfen Dikkatli Olun..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>Emin misiniz</b> bu kayıtları birleştirmek istediğinizden?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Öğeyi kaldır"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "Bu öğeyi listeden kaldırmak istediğinizden emin misiniz?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Öğeyi Kaldır"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Listedeki son öğeyi kaldırmak üzeresiniz. Bu işlem tüm listeyi silecektir. Devam etmek istediğinizden emin misiniz?"
 

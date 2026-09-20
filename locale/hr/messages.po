@@ -438,7 +438,7 @@ msgstr "Ovu knjigu osigurava %(book_provider)s, neovisan i pouzdan pružatelj kn
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "Za %(time)s s ćeš automatski biti preusmjeren/a na: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Prekini"
 
@@ -539,7 +539,7 @@ msgstr "Dodana je nova knjiga."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Hvala ti ne poboljšavanju kataloga knjižnice Open Library!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Zatvori"
 
@@ -1240,12 +1240,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "Trenutačno ne čekaš na nijednu knjigu."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
+msgid "Leave the waiting list?"
+msgstr "Želiš se izbrisati iz popisa čekanja?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
 msgstr "Izbriši se iz popisa čekanja"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "Stvarno se želiš izbrisati iz popisa čekanja za<br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "Izgubit ćete svoje mjesto na listi čekanja za <strong>%(title)s</strong>."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1294,10 +1299,6 @@ msgstr[2] "Za posuđivanje ti preostaje još %(hours)d sati."
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Posudi sada"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "Želiš se izbrisati iz popisa čekanja?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -4908,38 +4909,38 @@ msgstr "Popis zajednice"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / popisi"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Da, siguran/na sam"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "Ne, prekini"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "Izbriši ovaj popis"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "Izbrisati ovaj popis?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "Izbriši popis"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "Stvarno želiš izbrisati ovaj popis?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Ovo se ne može poništiti."
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "Ukloniti ovaj element?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "Ukloniti s ovog popisa?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "Ukloni"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "Stvarno želiš ukloniti <strong>%(title)s</strong> s ovog popisa?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> će biti uklonjen s ovog popisa."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5015,17 +5016,25 @@ msgstr "Pritisni SJEDINI AUTORE."
 msgid "No primary record"
 msgstr "Nema primarnog zapisa"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "U redu"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Moraš odabrati primarni zapis na koji će duplikati ukazivati."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Oprez …"
+msgid "Merge these authors?"
+msgstr "Spojiti ove autore?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "Sjedini autore"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>Stvarno</b> želiš sjediniti ove zapise?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Duplicirani zapisi bit će preusmjereni na primarni zapis."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5690,10 +5699,6 @@ msgid "Is the same author listed twice?"
 msgstr "Je li isti autor naveden dvaput?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "Sjedini autore"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Nijedan <strong>autor</strong> se ne poklapa s tvojom pretragom"
 
@@ -6314,10 +6319,6 @@ msgstr "Vašu napomenu nije bilo moguće izbrisati. Pokušajte ponovno."
 msgid "Delete this note?"
 msgstr "Izbrisati ovu napomenu?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Ovo se ne može poništiti."
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "Izdanje od"
@@ -6642,20 +6643,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Zadnja promjena <span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "Ukloni element"
+msgid "This item will be removed from the list."
+msgstr "Ova stavka bit će uklonjena s popisa."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "Stvarno želiš ukloniti ovaj element iz popisa?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "Ukloni element"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Uklonit ćeš zadnju stavku u popisu. Time se briše cijeli popis. Stvarno želiš nastaviti?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Ovo je posljednja stavka na popisu. Njezinim uklanjanjem izbrisat će se cijeli popis."
 
 #: type/list/view_body.html
 #, python-format
@@ -7198,10 +7191,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Ti si <strong>%(spot)d.</strong> od %(wlsize)d na popisu čekanja."
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "Izbriši se iz popisa čekanja"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Broj čitatelja u redu čekanja: %(count)s"
@@ -7619,10 +7608,6 @@ msgstr "Postavljanje nije uspjelo (sukob spajanja)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Ovaj PR je već zatvoren."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "U redu"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9426,4 +9411,40 @@ msgstr "%(title)s – pretraga"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Moje privatne napomene o ovom izdanju:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Izbriši se iz popisa čekanja"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "Stvarno se želiš izbrisati iz popisa čekanja za<br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Da, siguran/na sam"
+
+#~ msgid "No, cancel"
+#~ msgstr "Ne, prekini"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "Stvarno želiš izbrisati ovaj popis?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "Stvarno želiš ukloniti <strong>%(title)s</strong> s ovog popisa?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Oprez …"
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>Stvarno</b> želiš sjediniti ove zapise?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Ukloni element"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "Stvarno želiš ukloniti ovaj element iz popisa?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Ukloni element"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Uklonit ćeš zadnju stavku u popisu. Time se briše cijeli popis. Stvarno želiš nastaviti?"
 

@@ -459,7 +459,7 @@ msgstr "यह पुस्तक %(book_provider)s द्वारा प्र
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "%(time)s सेकंड में, आप स्वचालित रूप से इस पर पुनर्निर्देशित होंगे: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -566,7 +566,7 @@ msgstr "नई किताब जोड़ी गई।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "बंद करें"
 
@@ -1298,12 +1298,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "आप इस समय किसी भी किताब का इंतजार नहीं कर रहे हैं।"
 
 #: account/loans.html
-msgid "Leave the Waiting List"
+msgid "Leave the waiting list?"
+msgstr "वेटिंग लिस्ट छोड़ दें?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
 msgstr "प्रतीक्षा सूची छोड़ें"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "क्या आप वाकई <br/><strong>TITLE</strong> की प्रतीक्षा सूची छोड़ना चाहते हैं?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "आप <strong>%(title)s</strong> की प्रतीक्षा सूची में अपना स्थान खो देंगे।"
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1348,10 +1353,6 @@ msgstr[1] "आपके पास इसे उधार लेने के ल
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "अभी उधार लें"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "वेटिंग लिस्ट छोड़ दें?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -5132,38 +5133,38 @@ msgstr "Community Reviews"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / लिस्ट"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "हाँ, मुझे यकीन है"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "नहीं, कैंसिल करें"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "इस सूची को नष्ट"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "क्या इस सूची को हटाएँ?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "ज्ञापन सूची हटाएँ"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "क्या आप निश्चित हैं कि आप इन संपर्क सूची को मिटाना चाहते हैं ?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "इसे पूर्ववत नहीं किया जा सकता।"
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "इस बीज को हटा दें?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "क्या इस सूची से हटाएँ?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "हटायो"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "क्या आप वाकई <strong>%(title)s</strong> को इस लिस्ट से हटाना चाहते हैं?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> को इस सूची से हटा दिया जाएगा।"
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5240,17 +5241,25 @@ msgstr "मर्ज लेखकों को दबाएँ।"
 msgid "No primary record"
 msgstr "कोई प्राथमिक रिकॉर्ड नहीं"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "ठीक है"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "डुप्लिकेट की ओर इशारा करने के लिए आपको एक प्राथमिक रिकॉर्ड चुनना होगा।"
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "कृपया सावधान रहें ..."
+msgid "Merge these authors?"
+msgstr "क्या इन लेखकों को मर्ज करें?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "लेखकों को मिलाएँ"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>क्या आप वाकई</b> इन रिकॉर्ड को मर्ज करना चाहते हैं?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "डुप्लिकेट रिकॉर्ड को मुख्य रिकॉर्ड पर पुनर्निर्देशित किया जाएगा।"
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5943,10 +5952,6 @@ msgid "Is the same author listed twice?"
 msgstr "क्या एक ही लेखक दो बार सूचीबद्ध है?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "लेखकों को मिलाएँ"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "आपकी खोज से सीधे कोई <strong>लेखक</strong> मेल नहीं खाया"
 
@@ -6590,10 +6595,6 @@ msgstr "आपका नोट डिलीट नहीं हो सका। 
 msgid "Delete this note?"
 msgstr "क्या इस नोट को डिलीट करें?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "इसे पूर्ववत नहीं किया जा सकता।"
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "का एक संस्करण"
@@ -6935,20 +6936,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "आखिरी बार <span>%(date)s</span> अपडेट किया गया"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "बीज निकालें"
+msgid "This item will be removed from the list."
+msgstr "इस आइटम को सूची से हटा दिया जाएगा।"
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "क्या आप वाकई इस आइटम को लिस्ट से हटाना चाहते हैं?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "बीज निकालें"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "आप सूची में से अंतिम आइटम को हटाने वाले हैं। इससे पूरी लिस्ट डिलीट हो जाएगी। क्या आप वाकई जारी रखना चाहते हैं?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "यह सूची का अंतिम आइटम है। इसे हटाने से पूरी सूची हट जाएगी।"
 
 #: type/list/view_body.html
 #, python-format
@@ -7513,10 +7506,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "आप प्रतीक्षा सूची में <strong>%(wlsize)d में से #%(spot)d</strong> में हैं।"
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "प्रतीक्षा सूची छोड़ें"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "पंक्ति में पाठक: %(count)s"
@@ -7943,10 +7932,6 @@ msgstr "डिप्लॉय विफल (मर्ज कॉन्फ्ल�
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "यह PR पहले से ही बंद है।"
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "ठीक है"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9707,4 +9692,40 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "इस संस्करण के बारे में मेरे निजी नोट:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "प्रतीक्षा सूची छोड़ें"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "क्या आप वाकई <br/><strong>TITLE</strong> की प्रतीक्षा सूची छोड़ना चाहते हैं?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "हाँ, मुझे यकीन है"
+
+#~ msgid "No, cancel"
+#~ msgstr "नहीं, कैंसिल करें"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "क्या आप निश्चित हैं कि आप इन संपर्क सूची को मिटाना चाहते हैं ?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "क्या आप वाकई <strong>%(title)s</strong> को इस लिस्ट से हटाना चाहते हैं?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "कृपया सावधान रहें ..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>क्या आप वाकई</b> इन रिकॉर्ड को मर्ज करना चाहते हैं?"
+
+#~ msgid "Remove seed"
+#~ msgstr "बीज निकालें"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "क्या आप वाकई इस आइटम को लिस्ट से हटाना चाहते हैं?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "बीज निकालें"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "आप सूची में से अंतिम आइटम को हटाने वाले हैं। इससे पूरी लिस्ट डिलीट हो जाएगी। क्या आप वाकई जारी रखना चाहते हैं?"
 

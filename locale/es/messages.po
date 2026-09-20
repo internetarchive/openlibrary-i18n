@@ -437,7 +437,7 @@ msgstr "Este libro es proporcionado por %(book_provider)s, un proveedor de libro
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "En %(time)s segundos, serás redirigido automáticamente a: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -538,7 +538,7 @@ msgstr "Añadido nuevo libro."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "¡Muchas gracias por mejorar el catálogo de la Biblioteca Abierta!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Cerrar"
 
@@ -1240,12 +1240,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "No estás en espera de ningún libro en este momento."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
+msgid "Leave the waiting list?"
+msgstr "¿Abandonar la lista de espera?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
 msgstr "Abandonar la lista de espera"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "¿Estás seguro de que quieres abandonar la lista de espera de <br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "Perderá su lugar en la lista de espera de <strong>%(title)s</strong>."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1290,10 +1295,6 @@ msgstr[1] "Tienes %(hours)d horas más para pedirlo prestado."
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Prestar ahora"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "¿Abandonar la lista de espera?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -4918,38 +4919,38 @@ msgstr "Lista de comunidad"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / Listas"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Sí, estoy seguro"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "No, cancelar"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "Borrar esta lista"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "¿Eliminar esta lista?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "Borrar lista"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "¿Estás seguro de que quieres borrar esta lista?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "¿Quitar este elemento?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "¿Quitar de esta lista?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "Eliminar"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "¿Estás seguro de que quieres quitar <strong>%(title)s</strong> de tu lista?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> se eliminará de esta lista."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5025,17 +5026,25 @@ msgstr "Presiona FUSIONAR AUTORES."
 msgid "No primary record"
 msgstr "Sin registro principal"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "Aceptar"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Debes seleccionar un registro maestro al que dirigir los duplicados."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Por favor, ten cuidado..."
+msgid "Merge these authors?"
+msgstr "¿Fusionar estos autores?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "Fusionar autores"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "¿<b>Estás seguro</b> de que quieres fusionar estos registros?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Los registros duplicados se redirigirán al registro principal."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5695,10 +5704,6 @@ msgid "Is the same author listed twice?"
 msgstr "¿El mismo autor aparece dos veces en la lista?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "Fusionar autores"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "No hay <strong>autores</strong> que coincidan directamente con tu búsqueda"
 
@@ -6319,10 +6324,6 @@ msgstr "No se pudo borrar tu nota. Inténtalo de nuevo."
 msgid "Delete this note?"
 msgstr "¿Borrar esta nota?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Esto no se puede deshacer."
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "Una edición de"
@@ -6653,20 +6654,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Última modificación <span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "Quitar elemento"
+msgid "This item will be removed from the list."
+msgstr "Este elemento se eliminará de la lista."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "¿Estás seguro de que quieres quitar este elemento de la lista?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "Quitar elemento"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Estás a punto de quitar el último elemento de la lista. Eso borrará toda la lista. ¿Estás seguro de que quieres continuar?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Este es el último elemento de la lista. Al quitarlo, se eliminará toda la lista."
 
 #: type/list/view_body.html
 #, python-format
@@ -7207,10 +7200,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Eres el <strong>#%(spot)d</strong> de %(wlsize)d en la lista de espera."
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "Abandonar la lista de espera"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Lectores en línea: %(count)s"
@@ -7633,10 +7622,6 @@ msgstr "El despliegue falló (conflicto de fusión)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Este PR ya está cerrado."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "Aceptar"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -10049,4 +10034,40 @@ msgstr "%(title)s - búsqueda"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Mis notas privadas sobre esta edición:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Abandonar la lista de espera"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "¿Estás seguro de que quieres abandonar la lista de espera de <br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Sí, estoy seguro"
+
+#~ msgid "No, cancel"
+#~ msgstr "No, cancelar"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "¿Estás seguro de que quieres borrar esta lista?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "¿Estás seguro de que quieres quitar <strong>%(title)s</strong> de tu lista?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Por favor, ten cuidado..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "¿<b>Estás seguro</b> de que quieres fusionar estos registros?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Quitar elemento"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "¿Estás seguro de que quieres quitar este elemento de la lista?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Quitar elemento"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Estás a punto de quitar el último elemento de la lista. Eso borrará toda la lista. ¿Estás seguro de que quieres continuar?"
 

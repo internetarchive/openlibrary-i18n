@@ -452,7 +452,7 @@ msgstr "Tuto knihu poskytuje %(book_provider)s, důvěryhodný dodavatel třetí
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "Za %(time)s sekund budete automaticky přesměrováni na: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -563,7 +563,7 @@ msgstr "Přidat knihu"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Děkujeme za vylepšení katalogu Open Library!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Zvařít"
 
@@ -1307,12 +1307,18 @@ msgid "You are not waiting for any books at this moment."
 msgstr "Momentálně na žádné knihy nečekáte."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "Opustit čekací listinu"
+msgid "Leave the waiting list?"
+msgstr "Opustit čekací listinu?"
+
+#: LoanStatus.html account/loans.html
+#, fuzzy
+msgid "Leave waiting list"
+msgstr "Seznamy četby"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "Opravdu chcete opustit čekací listinu pro<br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "Ztratíte své místo ve frontě na <strong>%(title)s</strong>."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1362,10 +1368,6 @@ msgstr[2] ""
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Půjčit nyní"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "Opustit čekací listinu?"
 
 #: account/loans.html
 #, fuzzy
@@ -5162,43 +5164,42 @@ msgstr "Moje seznamy"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / Seznamy"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Ano, jsem si jist/a"
-
-#: lists/lists.html type/list/view_body.html
-#, fuzzy
-msgid "No, cancel"
-msgstr "Zrušit"
-
 #: lists/lists.html
 #, fuzzy
 msgid "Delete this list"
 msgstr "Smazat tento záznam"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "Smazat tento seznam?"
+
+#: lists/lists.html type/list/view_body.html
 #, fuzzy
 msgid "Delete list"
 msgstr "Smazat tento záznam"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "Opravdu chcete smazat tento seznam?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Tuto akci nelze vrátit zpět."
 
 #: lists/lists.html
 #, fuzzy
 msgid "Remove this seed?"
 msgstr "Smazat tento záznam"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "Odebrat z tohoto seznamu?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 #, fuzzy
 msgid "Remove"
 msgstr "Smazáno"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "Opravdu chcete odebrat <strong>%(title)s</strong> z tohoto seznamu?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> bude odebráno z tohoto seznamu."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5280,17 +5281,26 @@ msgstr "Stiskněte SLOUČIT AUTORY."
 msgid "No primary record"
 msgstr "Žádný primární záznam"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "OK"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Musíte vybrat primární záznam, na který budou odkazovat duplicity."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Buďte prosím opatrní…"
+msgid "Merge these authors?"
+msgstr "Sloučit tyto autory?"
+
+#: merge/authors.html search/authors.html
+#, fuzzy
+msgid "Merge authors"
+msgstr "Autoři"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>Opravdu chcete</b> sloučit tyto záznamy?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Duplicitní záznamy budou přesměrovány na primární záznam."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5999,11 +6009,6 @@ msgid "Is the same author listed twice?"
 msgstr "Je stejný autor uveden dvakrát?"
 
 #: search/authors.html
-#, fuzzy
-msgid "Merge authors"
-msgstr "Autoři"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Žádní <strong>autoři</strong> přímo neodpovídají vašemu vyhledávání"
 
@@ -6672,10 +6677,6 @@ msgstr "Vaši poznámku se nepodařilo smazat. Zkuste to prosím znovu."
 msgid "Delete this note?"
 msgstr "Smazat tuto poznámku?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Tuto akci nelze vrátit zpět."
-
 #: type/edition/title_and_author.html
 #, fuzzy
 msgid "An edition of"
@@ -7030,22 +7031,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Naposledy upraveno <span>%(date)s</span>"
 
 #: type/list/view_body.html
-#, fuzzy
-msgid "Remove seed"
-msgstr "Smazáno"
+msgid "This item will be removed from the list."
+msgstr "Tato položka bude odebrána ze seznamu."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "Opravdu chcete odebrat tuto položku ze seznamu?"
-
-#: type/list/view_body.html
-#, fuzzy
-msgid "Remove Seed"
-msgstr "Smazáno"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Chystáte se odebrat poslední položku ze seznamu. Tím se odstraní celý seznam. Opravdu chcete pokračovat?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Toto je poslední položka v seznamu. Jejím odebráním se smaže celý seznam."
 
 #: type/list/view_body.html
 #, python-format
@@ -7624,11 +7615,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Jste <strong>#%(spot)d</strong> z %(wlsize)d na čekacím listině."
 
 #: LoanStatus.html
-#, fuzzy
-msgid "Leave waiting list"
-msgstr "Seznamy četby"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Čtenáři v řadě: %(count)s"
@@ -8070,10 +8056,6 @@ msgstr "Nasazení selhalo (konflikt při slučování)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Tento PR je již uzavřen."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "OK"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9910,4 +9892,40 @@ msgstr "%(title)s – vyhledávání"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Moje soukromé poznámky k tomuto vydání:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Opustit čekací listinu"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "Opravdu chcete opustit čekací listinu pro<br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Ano, jsem si jist/a"
+
+#~ msgid "No, cancel"
+#~ msgstr "Zrušit"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "Opravdu chcete smazat tento seznam?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "Opravdu chcete odebrat <strong>%(title)s</strong> z tohoto seznamu?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Buďte prosím opatrní…"
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>Opravdu chcete</b> sloučit tyto záznamy?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Smazáno"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "Opravdu chcete odebrat tuto položku ze seznamu?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Smazáno"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Chystáte se odebrat poslední položku ze seznamu. Tím se odstraní celý seznam. Opravdu chcete pokračovat?"
 

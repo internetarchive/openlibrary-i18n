@@ -461,7 +461,7 @@ msgstr "本书由%(book_provider)s提供，这是一家第三方Open Library受�
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "在%(time)s秒内，您将自动重定向至：%(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "取消"
 
@@ -568,7 +568,7 @@ msgstr "添加了新的书籍。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "非常感谢您完善了这份记录！"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "关闭"
 
@@ -1307,12 +1307,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "您目前没有在等待任何书籍。"
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "退出等候名单"
+msgid "Leave the waiting list?"
+msgstr "要退出这个等候名单吗？"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
+msgstr "离开等候名单"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "您确定要退出<br/><strong>TITLE</strong>的等候名单吗？"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "您将失去在<strong>%(title)s</strong>等候名单中的位置。"
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1357,10 +1362,6 @@ msgstr[1] "您还有%(hours)d个小时的时间来借阅它。"
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "立即借阅"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "要退出这个等候名单吗？"
 
 #: account/loans.html
 #, fuzzy
@@ -5165,38 +5166,38 @@ msgstr "社区评论"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / 清单"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "是的，我确定"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "不，还是取消吧"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "删除此清单"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "删除此列表？"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "删除清单"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "确定要删除这个清单吗？"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "此操作无法撤销。"
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "删除这个元素吗？"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "从此列表中移除？"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "删除"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "确定要删除这个清单里的<strong>%(title)s</strong>吗？"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong>将从此列表中移除。"
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5273,18 +5274,26 @@ msgstr "按下 合并作者。"
 msgid "No primary record"
 msgstr "没有主档案"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "确定"
+
 #: merge/authors.html
 #, fuzzy
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "你必须选择一个主记录，以指导副本。"
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "请小心..."
+msgid "Merge these authors?"
+msgstr "合并这些作者？"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "合并作者"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>您确定</b>要合并这些档案吗？"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "重复的记录将被重定向到主记录。"
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -6002,10 +6011,6 @@ msgid "Is the same author listed twice?"
 msgstr "同一个作者被列入两次？"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "合并作者"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "没有<strong>作者</strong>与您的搜索直接匹配"
 
@@ -6640,10 +6645,6 @@ msgstr "无法删除您的笔记。请重试。"
 msgid "Delete this note?"
 msgstr "删除这条笔记?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "此操作无法撤销。"
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "版本"
@@ -6989,20 +6990,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "最后一次更新于<span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "移除元素"
+msgid "This item will be removed from the list."
+msgstr "此项目将从列表中移除。"
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "您确定要把这个项目从清单中删除吗？"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "移除元素"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "您即将删除这个清单中的最后一个项目。这将会删除整个清单。您确定要继续吗？"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "这是列表中的最后一项。移除它将删除整个列表。"
 
 #: type/list/view_body.html
 #, python-format
@@ -7568,10 +7561,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "在这个有着%(wlsize)d位等候者的等候名单中，您排在第<strong>#%(spot)d</strong>位。"
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "离开等候名单"
-
-#: LoanStatus.html
 #, fuzzy, python-format
 msgid "Readers in line: %(count)s"
 msgstr "等候这个标题的读者人数: %(count)s"
@@ -7999,10 +7988,6 @@ msgstr "部署失败（合并冲突）"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "此 PR 已关闭。"
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "确定"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9852,4 +9837,40 @@ msgstr "%(title)s - 搜索"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "我对这个版本的私人笔记:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "退出等候名单"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "您确定要退出<br/><strong>TITLE</strong>的等候名单吗？"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "是的，我确定"
+
+#~ msgid "No, cancel"
+#~ msgstr "不，还是取消吧"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "确定要删除这个清单吗？"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "确定要删除这个清单里的<strong>%(title)s</strong>吗？"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "请小心..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>您确定</b>要合并这些档案吗？"
+
+#~ msgid "Remove seed"
+#~ msgstr "移除元素"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "您确定要把这个项目从清单中删除吗？"
+
+#~ msgid "Remove Seed"
+#~ msgstr "移除元素"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "您即将删除这个清单中的最后一个项目。这将会删除整个清单。您确定要继续吗？"
 

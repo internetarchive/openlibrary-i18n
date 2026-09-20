@@ -455,7 +455,7 @@ msgstr "Цю книгу надано %(book_provider)s — стороннім н
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "Через %(time)s секунд вас буде автоматично перенаправлено до: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -562,7 +562,7 @@ msgstr "Додано нову книгу."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Дуже дякуємо за те, що покращили наші дані!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Закрити"
 
@@ -1296,12 +1296,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "Зараз ви не чекаєте ні на одну книгу."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "Покинути список очікування"
+msgid "Leave the waiting list?"
+msgstr "Покинути список очікування?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
+msgstr "Покинути чергу очікування"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "Ви впевнені, що хочете покинути список очікування для <br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "Ви втратите своє місце в черзі на <strong>%(title)s</strong>."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1350,10 +1355,6 @@ msgstr[2] "У вас є ще %(hours)d годин, щоб позичити."
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Позичити зараз"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "Покинути список очікування?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -5141,38 +5142,38 @@ msgstr "Відгуки спільноти"
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / Списки"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Так, я впевнений"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "Ні, відмінити"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "Видалити цей список"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "Видалити цей список?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "Видалити цей список"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "Ви впевнені, що хочете видалити цей список?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Цю дію не можна скасувати."
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "Видалити цей елемент?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "Вилучити з цього списку?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "Видалити"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "Ви впевнені, що хочете видалити <strong>%(title)s</strong> з цього списку?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> буде вилучено з цього списку."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5249,17 +5250,25 @@ msgstr "Натисніть ОБ'ЄДНАТИ АВТОРІВ."
 msgid "No primary record"
 msgstr "Немає основного запису"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "Гаразд"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Ви повинні обрати основний запис на якого вказуватимуть дублікати."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Будь ласка, будьте обережні..."
+msgid "Merge these authors?"
+msgstr "Об'єднати цих авторів?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "Об'єднати авторів"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>Ви впевнені</b>, що хочете об'єднати ці записи?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Дублікати записів буде перенаправлено до основного запису."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5955,10 +5964,6 @@ msgid "Is the same author listed twice?"
 msgstr "Один і той самий автор зустрічається двічі?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "Об'єднати авторів"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Жоден <strong>автор</strong> не відповідає вашому запиту"
 
@@ -6604,10 +6609,6 @@ msgstr "Не вдалося видалити нотатку. Будь ласка
 msgid "Delete this note?"
 msgstr "Видалити цю нотатку?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Цю дію не можна скасувати."
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "Видання"
@@ -6949,20 +6950,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Востаннє оновлено <span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "Видалити елемент"
+msgid "This item will be removed from the list."
+msgstr "Цей елемент буде вилучено зі списку."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "Ви впевнені, що хочете видалити цей елемент зі списку?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "Видалити елемент"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Цей елемент є останнім в списку, його видалення призведе до видалення цілого списку. Ви впевнені, що хочете продовжити?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Це останній елемент у списку. Його вилучення призведе до видалення всього списку."
 
 #: type/list/view_body.html
 #, python-format
@@ -7531,10 +7524,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Ви <strong>#%(spot)d</strong> із %(wlsize)d у черзі очікування."
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "Покинути чергу очікування"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Читачів у черзі: %(count)s"
@@ -7963,10 +7952,6 @@ msgstr "Деплой не вдався (конфлікт злиття)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Цей PR вже закрито."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "Гаразд"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9828,4 +9813,40 @@ msgstr "%(title)s - пошук"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Мої приватні нотатки про це видання:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Покинути список очікування"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "Ви впевнені, що хочете покинути список очікування для <br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Так, я впевнений"
+
+#~ msgid "No, cancel"
+#~ msgstr "Ні, відмінити"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "Ви впевнені, що хочете видалити цей список?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "Ви впевнені, що хочете видалити <strong>%(title)s</strong> з цього списку?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Будь ласка, будьте обережні..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>Ви впевнені</b>, що хочете об'єднати ці записи?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Видалити елемент"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "Ви впевнені, що хочете видалити цей елемент зі списку?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Видалити елемент"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Цей елемент є останнім в списку, його видалення призведе до видалення цілого списку. Ви впевнені, що хочете продовжити?"
 

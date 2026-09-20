@@ -439,7 +439,7 @@ msgstr "Această carte este oferită de %(book_provider)s, un furnizor de cărț
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "În %(time)s secunde, vei fi redirecționat automat la: %(url)s"
 
-#: EditButtons.html PreviewSearchInside.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html my_books/dropdown_content.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -540,7 +540,7 @@ msgstr "Carte nouă adăugată."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Vă mulțumim pentru îmbunătățirea catalogului Open Library!"
 
-#: ObservationsModal.html ShareModal.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html
+#: ObservationsModal.html ShareModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lib/exports.html lists/lists.html merge/authors.html my_books/check_ins/check_in_prompt.html my_books/dropdown_content.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Închide"
 
@@ -1243,12 +1243,17 @@ msgid "You are not waiting for any books at this moment."
 msgstr "Nu așteptați nicio carte în acest moment."
 
 #: account/loans.html
-msgid "Leave the Waiting List"
-msgstr "Părăsește lista de așteptare"
+msgid "Leave the waiting list?"
+msgstr "Părăsești lista de așteptare?"
+
+#: LoanStatus.html account/loans.html
+msgid "Leave waiting list"
+msgstr "Ieșiți din lista de așteptare"
 
 #: account/loans.html
-msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
-msgstr "Sigur dorești să părăsești lista de așteptare pentru<br/><strong>TITLE</strong>?"
+#, python-format
+msgid "You will lose your place in line for <strong>%(title)s</strong>."
+msgstr "Îți vei pierde locul în lista de așteptare pentru <strong>%(title)s</strong>."
 
 #: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
 #, python-format
@@ -1297,10 +1302,6 @@ msgstr[2] ""
 #: account/loans.html
 msgid "Borrow Now"
 msgstr "Împrumută acum"
-
-#: account/loans.html
-msgid "Leave the waiting list?"
-msgstr "Părăsești lista de așteptare?"
 
 #: account/loans.html
 msgid "Loan History"
@@ -4926,38 +4927,38 @@ msgstr ""
 msgid "%(owner)s / Lists"
 msgstr "%(owner)s / Liste"
 
-#: lists/lists.html type/list/view_body.html
-msgid "Yes, I'm sure"
-msgstr "Da, sunt sigur"
-
-#: lists/lists.html type/list/view_body.html
-msgid "No, cancel"
-msgstr "Nu, anulează"
-
 #: lists/lists.html
 msgid "Delete this list"
 msgstr "Șterge această listă"
 
-#: lists/lists.html
+#: lists/lists.html type/list/view_body.html
+msgid "Delete this list?"
+msgstr "Ștergi această listă?"
+
+#: lists/lists.html type/list/view_body.html
 msgid "Delete list"
 msgstr "Șterge lista"
 
-#: lists/lists.html
-msgid "Are you sure you want to delete this list?"
-msgstr "Ești sigur că vrei să ștergi această listă?"
+#: lists/lists.html type/edition/notes_modal_i18n.html
+msgid "This cannot be undone."
+msgstr "Această acțiune nu poate fi anulată."
 
 #: lists/lists.html
 msgid "Remove this seed?"
 msgstr "Eliminați această intrare?"
 
-#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/series/edit.html
+#: lists/lists.html type/list/view_body.html
+msgid "Remove from this list?"
+msgstr "Elimini din această listă?"
+
+#: TestingEnvironment.html.jinja lists/lists.html type/list/edit.html type/list/view_body.html type/series/edit.html
 msgid "Remove"
 msgstr "Elimină"
 
 #: lists/lists.html
 #, python-format
-msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
-msgstr "Ești sigur că vrei să elimini <strong>%(title)s</strong> din această listă?"
+msgid "<strong>%(title)s</strong> will be removed from this list."
+msgstr "<strong>%(title)s</strong> va fi eliminat din această listă."
 
 #: lists/lists.html
 msgid "This reader hasn't created any lists yet."
@@ -5033,17 +5034,25 @@ msgstr "Apăsați FUZIONEAZĂ AUTORI."
 msgid "No primary record"
 msgstr "Fără înregistrare principală"
 
+#: TestingEnvironment.html.jinja merge/authors.html
+msgid "OK"
+msgstr "OK"
+
 #: merge/authors.html
 msgid "You must select a primary record to point the duplicates toward."
 msgstr "Trebuie să selectați o înregistrare principală spre care să indice duplicatele."
 
 #: merge/authors.html
-msgid "Please Be Careful..."
-msgstr "Atenție vă rugăm..."
+msgid "Merge these authors?"
+msgstr "Combini acești autori?"
+
+#: merge/authors.html search/authors.html
+msgid "Merge authors"
+msgstr "Fuzionați autori"
 
 #: merge/authors.html
-msgid "<b>Are you sure</b> you want to merge these records?"
-msgstr "<b>Ești sigur</b> că vrei să fuzionezi aceste înregistrări?"
+msgid "The duplicate records will be redirected to the primary record."
+msgstr "Înregistrările duplicate vor fi redirecționate către înregistrarea principală."
 
 #: merge/authors.html recentchanges/merge/view.html
 msgid "Primary"
@@ -5706,10 +5715,6 @@ msgid "Is the same author listed twice?"
 msgstr "Autorul este listat de două ori?"
 
 #: search/authors.html
-msgid "Merge authors"
-msgstr "Fuzionați autori"
-
-#: search/authors.html
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Niciun <strong>autor</strong> nu s-a potrivit direct cu căutarea dvs."
 
@@ -6332,10 +6337,6 @@ msgstr "Nota nu a putut fi ștearsă. Încercați din nou."
 msgid "Delete this note?"
 msgstr "Ștergeți această notă?"
 
-#: type/edition/notes_modal_i18n.html
-msgid "This cannot be undone."
-msgstr "Această acțiune nu poate fi anulată."
-
 #: type/edition/title_and_author.html
 msgid "An edition of"
 msgstr "O ediție a"
@@ -6667,20 +6668,12 @@ msgid "Last modified <span>%(date)s</span>"
 msgstr "Ultima modificare <span>%(date)s</span>"
 
 #: type/list/view_body.html
-msgid "Remove seed"
-msgstr "Eliminați elementul"
+msgid "This item will be removed from the list."
+msgstr "Acest element va fi eliminat din listă."
 
 #: type/list/view_body.html
-msgid "Are you sure you want to remove this item from the list?"
-msgstr "Sigur doriți să eliminați acest element din listă?"
-
-#: type/list/view_body.html
-msgid "Remove Seed"
-msgstr "Eliminați elementul"
-
-#: type/list/view_body.html
-msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
-msgstr "Urmează să eliminați ultimul element din listă. Aceasta va șterge întreaga listă. Sigur doriți să continuați?"
+msgid "This is the last item in the list. Removing it will delete the whole list."
+msgstr "Acesta este ultimul element din listă. Eliminarea lui va șterge întreaga listă."
 
 #: type/list/view_body.html
 #, python-format
@@ -7224,10 +7217,6 @@ msgid "You are <strong>#%(spot)d</strong> of %(wlsize)d on the waiting list."
 msgstr "Ești <strong>#%(spot)d</strong> din %(wlsize)d pe lista de așteptare."
 
 #: LoanStatus.html
-msgid "Leave waiting list"
-msgstr "Ieșiți din lista de așteptare"
-
-#: LoanStatus.html
 #, python-format
 msgid "Readers in line: %(count)s"
 msgstr "Cititori la rând: %(count)s"
@@ -7648,10 +7637,6 @@ msgstr "Implementare eșuată (conflict de merge)"
 #: TestingEnvironment.html.jinja
 msgid "This PR is already closed."
 msgstr "Acest PR este deja închis."
-
-#: TestingEnvironment.html.jinja
-msgid "OK"
-msgstr "OK"
 
 #: TestingEnvironment.html.jinja
 #, python-format
@@ -9385,4 +9370,40 @@ msgstr "%(title)s - căutare"
 
 #~ msgid "My private notes about this edition:"
 #~ msgstr "Notele mele private despre această ediție:"
+
+#~ msgid "Leave the Waiting List"
+#~ msgstr "Părăsește lista de așteptare"
+
+#~ msgid "Are you sure you want to leave the waiting list of<br/><strong>TITLE</strong>?"
+#~ msgstr "Sigur dorești să părăsești lista de așteptare pentru<br/><strong>TITLE</strong>?"
+
+#~ msgid "Yes, I'm sure"
+#~ msgstr "Da, sunt sigur"
+
+#~ msgid "No, cancel"
+#~ msgstr "Nu, anulează"
+
+#~ msgid "Are you sure you want to delete this list?"
+#~ msgstr "Ești sigur că vrei să ștergi această listă?"
+
+#~ msgid "Are you sure you want to remove <strong>%(title)s</strong> from this list?"
+#~ msgstr "Ești sigur că vrei să elimini <strong>%(title)s</strong> din această listă?"
+
+#~ msgid "Please Be Careful..."
+#~ msgstr "Atenție vă rugăm..."
+
+#~ msgid "<b>Are you sure</b> you want to merge these records?"
+#~ msgstr "<b>Ești sigur</b> că vrei să fuzionezi aceste înregistrări?"
+
+#~ msgid "Remove seed"
+#~ msgstr "Eliminați elementul"
+
+#~ msgid "Are you sure you want to remove this item from the list?"
+#~ msgstr "Sigur doriți să eliminați acest element din listă?"
+
+#~ msgid "Remove Seed"
+#~ msgstr "Eliminați elementul"
+
+#~ msgid "You are about to remove the last item in the list. That will delete the whole list. Are you sure you want to continue?"
+#~ msgstr "Urmează să eliminați ultimul element din listă. Aceasta va șterge întreaga listă. Sigur doriți să continuați?"
 
