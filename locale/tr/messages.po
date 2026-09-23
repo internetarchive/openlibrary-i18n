@@ -891,6 +891,10 @@ msgstr "Daha fazla bilgi"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> üzerinde"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "İçeride Arama eşleşmeleri kontrol ediliyor"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Kitap ara"
@@ -907,21 +911,21 @@ msgstr "Bu sadece süper kütüphaneciler tarafından görülebilir."
 msgid "Solr Editions"
 msgstr "Solr basımı"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Önizleme"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "E-kitap bulunabilirliği için sonuçları filtrele"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Dil"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "Dil"
@@ -930,11 +934,11 @@ msgstr "Dil"
 msgid "Languages"
 msgstr "Diller"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "Dil"
@@ -965,25 +969,19 @@ msgstr "Solr Hata Ayıklama:"
 msgid "Full URL:"
 msgstr "Tam URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "<strong>%(path_id)s</strong> aramanızla doğrudan eşleşen sonuç bulunamadı."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Eşleşen kitap veya yazar yok"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "Yeni kitap eklendi."
+msgid "Add a new book"
+msgstr "Yeni bir kitap ekle"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "İçeride Arama eşleşmeleri kontrol ediliyor"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Yazarlar"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Kitaplar"
 
@@ -1399,7 +1397,7 @@ msgstr "İncelemelerim"
 msgid "Import & Export Options"
 msgstr "İçe ve Dışa Aktarma Seçenekleri"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Bilinmeyen yazar"
 
@@ -2904,10 +2902,6 @@ msgstr "OpenStax'tan PDF İndir"
 msgid "More at OpenStax"
 msgstr "OpenStax'ta Daha Fazlası"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Daha fazla okuma seçeneği"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3410,7 +3404,7 @@ msgstr "Bu eser için herhangi bir tanımlayıcı biliyor musunuz?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Bu tanımlayıcılar bu eserin tüm baskılarına uygulanır; örneğin Wikidata eser tanımlayıcıları. ISBN veya LCCN gibi baskıya özgü tanımlayıcılar için baskı sekmesine gidin."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Kapak: %(title)s"
@@ -5369,6 +5363,10 @@ msgstr "Bu kitabı raflardan kaldırmak bu eser için giriş kayıtlarınızı s
 msgid "More reading options for %(title)s"
 msgstr "%(title)s için daha fazla okuma seçeneği"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Daha fazla okuma seçeneği"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Listeye Ekle"
@@ -5823,27 +5821,39 @@ msgstr "Ödünç al"
 msgid "Search Open Library for %s"
 msgstr "Open Library'de %s için arama yapın"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "İçinde Ara"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Aramanızla eşleşen <strong>İçinde Ara</strong> metni bulunamadı"
+msgid "Choose one language"
+msgstr "Bir dil seçin"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Yaklaşık %(count)s sonuç bulundu"
-msgstr[1] "Yaklaşık %(count)s sonuç bulundu"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Yaklaşık %(total)s sonuç"
+msgstr[1] "Yaklaşık %(total)s sonuç"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "%(seconds)s saniyede"
-msgstr[1] "%(seconds)s saniyede"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "Yaklaşık %(total)s sonuçtan %(start)s - %(end)s"
+msgstr[1] "Yaklaşık %(total)s sonuçtan %(start)s - %(end)s"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Sonuç bulunamadı. Farklı bir kelime veya ifade deneyin."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Bu sayfadaki eşleşmelerin hiçbiri bu filtrelerle gösterilemiyor. Başka bir sayfa deneyin veya bir filtreyi kaldırın."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Başka sonuç yok. Daha önceki bir sayfayı deneyin."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5898,19 +5908,28 @@ msgid "See results"
 msgstr "Sonuçları gör"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "%s sonucu gör"
+msgid "Go to full search"
+msgstr "Tam aramaya git"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "%s sonucu gör"
+msgid "See %s book"
+msgstr "%s kitabı gör"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Tüm %s sonucu gör"
+msgid "See %s books"
+msgstr "%s kitabı gör"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "%s kitabın tümünü gör"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "%s kitabın tümü"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -5941,11 +5960,6 @@ msgid "Showing %s of %s results"
 msgstr "%s / %s sonuçtan gösteriliyor"
 
 #: search/search_modal_i18n.html
-#, fuzzy
-msgid "Top results"
-msgstr "Sonuç bulunamadı."
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "Başlıksız"
 
@@ -5966,6 +5980,25 @@ msgstr "Son aramalar"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "\"%s\"yi son aramalardan kaldır"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Kitapların içinde ara"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s kitabın içinde ara"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "Kitapların içinde %s eşleşme bulundu"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "Kitapların içinde %s eşleşme bulundu"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7280,28 +7313,17 @@ msgstr "Sonraki bölüme git"
 msgid "Expires"
 msgstr "Sona eriyor"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s tarafından"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s kitapta eşleşen pasaj bulundu"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Tüm %(results_count)s İçinde Ara eşleşmelerini gör"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Sayfa: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "%(count)s kitabın içinde ara"
+msgstr[1] "%(count)s kitabın içinde ara"
 
 #: IABook.html
 #, python-format
@@ -7346,7 +7368,7 @@ msgstr "Ödünç Alındı"
 msgid "Only a preview is available."
 msgstr "Yalnızca önizleme mevcut."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Yakındaki Kütüphaneler"
 
@@ -7433,7 +7455,7 @@ msgstr "Internet Archive'dan e-kitap ödünç al"
 msgid "Read ebook from Internet Archive"
 msgstr "Internet Archive'dan e-kitap oku"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Dinle"
 
@@ -8460,10 +8482,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "İçinde Ara eşleşmeleri kontrol ediliyor"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9765,4 +9783,53 @@ msgstr "Ara - %(title)s"
 
 #~ msgid "QR code icon"
 #~ msgstr "QR kodu simgesi"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "<strong>%(path_id)s</strong> aramanızla doğrudan eşleşen sonuç bulunamadı."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Yeni kitap eklendi."
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Aramanızla eşleşen <strong>İçinde Ara</strong> metni bulunamadı"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Yaklaşık %(count)s sonuç bulundu"
+#~ msgstr[1] "Yaklaşık %(count)s sonuç bulundu"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "%(seconds)s saniyede"
+#~ msgstr[1] "%(seconds)s saniyede"
+
+#~ msgid "See %s result"
+#~ msgstr "%s sonucu gör"
+
+#~ msgid "See %s results"
+#~ msgstr "%s sonucu gör"
+
+#~ msgid "See all %s results"
+#~ msgstr "Tüm %s sonucu gör"
+
+#~ msgid "Top results"
+#~ msgstr "Sonuç bulunamadı."
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s kitapta eşleşen pasaj bulundu"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Tüm %(results_count)s İçinde Ara eşleşmelerini gör"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Sayfa: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "İçinde Ara eşleşmeleri kontrol ediliyor"
 

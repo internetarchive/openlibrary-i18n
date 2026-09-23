@@ -913,6 +913,10 @@ msgstr "Knihovnický režim"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "Kontrola shod v Prohledávání textu"
+
 #: work_search.html
 #, fuzzy
 msgid "Search Books"
@@ -931,19 +935,19 @@ msgstr "Toto je viditelné pouze pro super knihovníky."
 msgid "Solr Editions"
 msgstr "Njvíc vydání"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Pouze ke čtení"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrovat podle dostupnosti"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Jazyk"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "Vybrat tento jazyk"
@@ -953,11 +957,11 @@ msgstr "Vybrat tento jazyk"
 msgid "Languages"
 msgstr "Jazyk"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Načítání…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "Jazyk"
@@ -990,25 +994,19 @@ msgstr "Ladění Solr:"
 msgid "Full URL:"
 msgstr "Celá URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Žádné <strong>%(path_id)s</strong> přímo neodpovídá vašemu hledání."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Žádné odpovídající knihy ani autoři"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "Přidat knihu"
+msgid "Add a new book"
+msgstr "Přidat novou knihu"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "Kontrola shod v Prohledávání textu"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Autoři"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Books"
 msgstr "Moje knihy"
@@ -1449,7 +1447,7 @@ msgstr "Můj profil"
 msgid "Import & Export Options"
 msgstr "Možnosti importu a exportu"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 #, fuzzy
 msgid "Unknown author"
 msgstr "Autor"
@@ -2999,10 +2997,6 @@ msgstr "Stáhnout PDF z OpenStax"
 msgid "More at OpenStax"
 msgstr "Více na OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Další možnosti čtení"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3517,7 +3511,7 @@ msgstr "Znáte neějaké identifikátory pro tohle vydání"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Tyto identifikátory platí pro všechna vydání tohoto díla, například identifikátory díla Wikidata. Pro identifikátory specifické pro vydání, jako ISBN nebo LCCN, přejděte na záložku vydání."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Obálka: %(title)s"
@@ -5556,6 +5550,10 @@ msgstr "Odebráním této knihy z vašich polic se smaže záznamy přečtení p
 msgid "More reading options for %(title)s"
 msgstr "Další možnosti čtení pro %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Další možnosti čtení"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Přidat do seznamu"
@@ -6030,29 +6028,41 @@ msgstr "Vypůjčit online"
 msgid "Search Open Library for %s"
 msgstr "Hledat v Open Library %s"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Hledat uvnitř"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Žádný text <strong>Hledat uvnitř</strong> neodpovídá vašemu vyhledávání"
+msgid "Choose one language"
+msgstr "Vyberte jeden jazyk"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Nalezen přibližně %(count)s výsledek"
-msgstr[1] "Nalezeny přibližně %(count)s výsledky"
-msgstr[2] "Nalezeno přibližně %(count)s výsledků"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Přibližně %(total)s výsledek"
+msgstr[1] "Přibližně %(total)s výsledky"
+msgstr[2] "Přibližně %(total)s výsledků"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "za %(seconds)s sekundu"
-msgstr[1] "za %(seconds)s sekundy"
-msgstr[2] "za %(seconds)s sekund"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s z přibližně %(total)s výsledku"
+msgstr[1] "%(start)s - %(end)s z přibližně %(total)s výsledků"
+msgstr[2] "%(start)s - %(end)s z přibližně %(total)s výsledků"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Nebyly nalezeny žádné výsledky. Zkuste jiné slovo nebo frázi."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Žádnou z shod na této stránce nelze s těmito filtry zobrazit. Zkuste jinou stránku nebo odeberte filtr."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Žádné další výsledky. Zkuste předchozí stránku."
 
 #: search/layout_options.html
 msgid "View as"
@@ -6109,19 +6119,28 @@ msgid "See results"
 msgstr "Zobrazit výsledky"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Zobrazit %s výsledek"
+msgid "Go to full search"
+msgstr "Přejít na úplné vyhledávání"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Zobrazit %s výsledků"
+msgid "See %s book"
+msgstr "Zobrazit %s knihu"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Zobrazit všech %s výsledků"
+msgid "See %s books"
+msgstr "Zobrazit %s knih"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Zobrazit všech %s knih"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Všech %s knih"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -6153,11 +6172,6 @@ msgstr "Zobrazeno %s z %s výsledků"
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "Výsledky hledání"
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "Název"
 
@@ -6180,6 +6194,25 @@ msgstr "Poslední změny"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Odebrat \"%s\" z nedávných vyhledávání"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Hledat uvnitř knih"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Hledat uvnitř %s knih"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s shoda nalezena uvnitř knih"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s shod nalezeno uvnitř knih"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7573,28 +7606,18 @@ msgstr "Přejít na další sekci"
 msgid "Expires"
 msgstr "Propadlé výpůjčky"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "od %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s knih nalezeno se shodujícími pasážemi"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Zobrazit všech %(results_count)s shod hledání v knize"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Strana: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Hledat uvnitř %(count)s knihy"
+msgstr[1] "Hledat uvnitř %(count)s knih"
+msgstr[2] "Hledat uvnitř %(count)s knih"
 
 #: IABook.html
 #, python-format
@@ -7639,7 +7662,7 @@ msgstr "Vypůjčeno"
 msgid "Only a preview is available."
 msgstr "K dispozici je pouze náhled."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Blízké knihovny"
 
@@ -7729,7 +7752,7 @@ msgstr "Zapoměli jste váš Internet Archive email"
 msgid "Read ebook from Internet Archive"
 msgstr "Internetový Archiv"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 #, fuzzy
 msgid "Listen"
 msgstr "Seznamy"
@@ -8776,10 +8799,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Hledání shod v textu knih"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9934,4 +9953,55 @@ msgstr "%(title)s – vyhledávání"
 
 #~ msgid "QR code icon"
 #~ msgstr "Ikona QR kódu"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Žádné <strong>%(path_id)s</strong> přímo neodpovídá vašemu hledání."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Přidat knihu"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Žádný text <strong>Hledat uvnitř</strong> neodpovídá vašemu vyhledávání"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Nalezen přibližně %(count)s výsledek"
+#~ msgstr[1] "Nalezeny přibližně %(count)s výsledky"
+#~ msgstr[2] "Nalezeno přibližně %(count)s výsledků"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "za %(seconds)s sekundu"
+#~ msgstr[1] "za %(seconds)s sekundy"
+#~ msgstr[2] "za %(seconds)s sekund"
+
+#~ msgid "See %s result"
+#~ msgstr "Zobrazit %s výsledek"
+
+#~ msgid "See %s results"
+#~ msgstr "Zobrazit %s výsledků"
+
+#~ msgid "See all %s results"
+#~ msgstr "Zobrazit všech %s výsledků"
+
+#~ msgid "Top results"
+#~ msgstr "Výsledky hledání"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s knih nalezeno se shodujícími pasážemi"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Zobrazit všech %(results_count)s shod hledání v knize"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Strana: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Hledání shod v textu knih"
 

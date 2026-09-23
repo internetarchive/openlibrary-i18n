@@ -869,6 +869,10 @@ msgstr "Matuto Nang Higit Pa"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr ""
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "Tinitingnan ang mga tugma sa Search Inside"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Maghanap ng Mga Libro"
@@ -885,19 +889,19 @@ msgstr "Ito ay nakikita lamang ng mga super librarian."
 msgid "Solr Editions"
 msgstr "Mga Edision ng Solr"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Mababasa Lamang"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "I-filter ayon sa availability"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Wika"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Search languages…"
 msgstr "Maghanap ng mga wika…"
 
@@ -905,11 +909,11 @@ msgstr "Maghanap ng mga wika…"
 msgid "Languages"
 msgstr "Wika"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Naglo-load…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 msgid "Filter by language"
 msgstr "I-filter ayon sa wika"
 
@@ -939,24 +943,19 @@ msgstr "Pag-debug ng Solr:"
 msgid "Full URL:"
 msgstr "Buong URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Walang <strong>%(path_id)s</strong> na direktang tumugma sa iyong paghahanap."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Walang tugmang aklat o may-akda"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "Magdagdag ng bagong libro?"
+msgid "Add a new book"
+msgstr "Magdagdag ng bagong aklat"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "Tinitingnan ang mga tugma sa Search Inside"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Mga May-Akda"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Mga Aklat"
 
@@ -1367,7 +1366,7 @@ msgstr "Aking mga Pagsusuri"
 msgid "Import & Export Options"
 msgstr "Mga Opsyon sa Pag-import at Pag-export"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Hindi Kilalang may-akda"
 
@@ -2823,10 +2822,6 @@ msgstr "I-download ang PDF mula sa OpenStax"
 msgid "More at OpenStax"
 msgstr "More sa OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Higit pang mga opsyon sa pagbasa"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3325,7 +3320,7 @@ msgstr "Alam mo ba ang anumang mga identifier para sa trabahong ito?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Ang mga identifier na ito ay nalalapat sa lahat ng edisyon ng trabahong ito, halimbawa ang mga identifier ng wikidata. Para sa mga espesyal na identifier para sa edisyon, tulad ng ISBN o LCCN, pumunta sa tab ng edisyon."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Pabalat ng: %(title)s"
@@ -5265,6 +5260,10 @@ msgstr "Ang pag-alis ng aklat na ito mula sa iyong mga istante ay magtatanggal n
 msgid "More reading options for %(title)s"
 msgstr "Higit pang mga opsyon sa pagbasa para sa %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Higit pang mga opsyon sa pagbasa"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Idagdag sa Listahan"
@@ -5711,27 +5710,39 @@ msgstr "Manghiram Online"
 msgid "Search Open Library for %s"
 msgstr "Maghanap sa Open Library para sa %s"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Maghanap Sa Loob"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Walang <strong>Search Inside</strong> na teksto na tumugma sa iyong paghahanap"
+msgid "Choose one language"
+msgstr "Pumili ng isang wika"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Tungkol sa %(count)s resulta ang natagpuan"
-msgstr[1] "Tungkol sa %(count)s mga resulta ang natagpuan"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Humigit-kumulang %(total)s resulta"
+msgstr[1] "Humigit-kumulang %(total)s na resulta"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "sa %(seconds)s segundo"
-msgstr[1] "sa %(seconds)s mga segundo"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s ng humigit-kumulang %(total)s resulta"
+msgstr[1] "%(start)s - %(end)s ng humigit-kumulang %(total)s na resulta"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Walang nahanap na resulta. Subukan ang ibang salita o parirala."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Wala sa mga tugma sa pahinang ito ang maipapakita gamit ang mga filter na ito. Subukan ang ibang pahina o alisin ang isang filter."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Wala nang ibang resulta. Subukan ang naunang pahina."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5782,19 +5793,28 @@ msgid "See results"
 msgstr "Tingnan ang mga resulta"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Tingnan ang %s resulta"
+msgid "Go to full search"
+msgstr "Pumunta sa buong paghahanap"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Tingnan ang %s mga resulta"
+msgid "See %s book"
+msgstr "Tingnan ang %s aklat"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Tingnan ang lahat ng %s resulta"
+msgid "See %s books"
+msgstr "Tingnan ang %s na aklat"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Tingnan ang lahat ng %s na aklat"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Lahat ng %s na aklat"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -5822,10 +5842,6 @@ msgid "Showing %s of %s results"
 msgstr "Nagpapakita ng %s sa %s na resulta"
 
 #: search/search_modal_i18n.html
-msgid "Top results"
-msgstr "Mga nangungunang resulta"
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "Walang Pamagat"
 
@@ -5846,6 +5862,25 @@ msgstr "Mga kamakailang paghahanap"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Alisin ang \"%s\" mula sa mga kamakailang paghahanap"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Maghanap sa loob ng mga aklat"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Maghanap sa loob ng %s na aklat"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s tugma ang natagpuan sa loob ng mga aklat"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s na tugma ang natagpuan sa loob ng mga aklat"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7138,28 +7173,17 @@ msgstr "Pumunta sa susunod na bahagi"
 msgid "Expires"
 msgstr "Mag-e-expire"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "ni %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s mga aklat na natagpuan na may tugmang bahagi"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Tingnan ang lahat ng %(results_count)s Search Inside Matches"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Pahina: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Maghanap sa loob ng %(count)s aklat"
+msgstr[1] "Maghanap sa loob ng %(count)s na aklat"
 
 #: IABook.html
 #, python-format
@@ -7204,7 +7228,7 @@ msgstr "Nakahiram"
 msgid "Only a preview is available."
 msgstr "Tanging preview lamang ang available."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Mga Aklatang Malapit"
 
@@ -7289,7 +7313,7 @@ msgstr "Hiramin ang ebook mula sa Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Basahin ang ebook mula sa Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Makinig"
 
@@ -8300,10 +8324,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Sinasabing tingnan ang mga tugma sa Search Inside"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9532,4 +9552,53 @@ msgstr "%(title)s - paghahanap"
 
 #~ msgid "QR code icon"
 #~ msgstr "QR code icon"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Walang <strong>%(path_id)s</strong> na direktang tumugma sa iyong paghahanap."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Magdagdag ng bagong libro?"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Walang <strong>Search Inside</strong> na teksto na tumugma sa iyong paghahanap"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Tungkol sa %(count)s resulta ang natagpuan"
+#~ msgstr[1] "Tungkol sa %(count)s mga resulta ang natagpuan"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "sa %(seconds)s segundo"
+#~ msgstr[1] "sa %(seconds)s mga segundo"
+
+#~ msgid "See %s result"
+#~ msgstr "Tingnan ang %s resulta"
+
+#~ msgid "See %s results"
+#~ msgstr "Tingnan ang %s mga resulta"
+
+#~ msgid "See all %s results"
+#~ msgstr "Tingnan ang lahat ng %s resulta"
+
+#~ msgid "Top results"
+#~ msgstr "Mga nangungunang resulta"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s mga aklat na natagpuan na may tugmang bahagi"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Tingnan ang lahat ng %(results_count)s Search Inside Matches"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Pahina: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Sinasabing tingnan ang mga tugma sa Search Inside"
 

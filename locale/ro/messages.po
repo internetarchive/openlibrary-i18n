@@ -871,6 +871,10 @@ msgstr "Află mai multe"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "pe <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "Se verifică potrivirile Search Inside"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Caută cărți"
@@ -887,19 +891,19 @@ msgstr "Aceasta este vizibilă doar pentru super-bibliotecari."
 msgid "Solr Editions"
 msgstr "Ediții Solr"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Doar lizibil"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrați după disponibilitate"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Limbă"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Search languages…"
 msgstr "Căutați limbi…"
 
@@ -907,11 +911,11 @@ msgstr "Căutați limbi…"
 msgid "Languages"
 msgstr "Limbi"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Se încarcă…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 msgid "Filter by language"
 msgstr "Filtrați după limbă"
 
@@ -943,24 +947,19 @@ msgstr "Depanare Solr:"
 msgid "Full URL:"
 msgstr "URL complet:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Niciun <strong>%(path_id)s</strong> nu a corespuns direct căutării dvs."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Nicio carte sau autor potrivit"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "Adaugă o carte nouă?"
+msgid "Add a new book"
+msgstr "Adaugă o carte nouă"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "Se verifică potrivirile Search Inside"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Autori"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Cărți"
 
@@ -1376,7 +1375,7 @@ msgstr "Recenziile mele"
 msgid "Import & Export Options"
 msgstr "Opțiunile de import și export"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Autor necunoscut"
 
@@ -2835,10 +2834,6 @@ msgstr "Descarcă PDF de la OpenStax"
 msgid "More at OpenStax"
 msgstr "Mai mult la OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Mai multe opțiuni de citire"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3340,7 +3335,7 @@ msgstr "Cunoști vreun identificator pentru această operă?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Acești identificatori se aplică tuturor edițiilor acestei opere, de exemplu identificatorii Wikidata. Pentru identificatori specifici ediției, cum ar fi ISBN sau LCCN, mergi la fila ediție."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Copertă pentru: %(title)s"
@@ -5286,6 +5281,10 @@ msgstr "Eliminarea acestei cărți de pe rafturile tale va șterge înregistrăr
 msgid "More reading options for %(title)s"
 msgstr "Mai multe opțiuni de citire pentru %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Mai multe opțiuni de citire"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Adaugă la listă"
@@ -5735,29 +5734,41 @@ msgstr "Împrumutați online"
 msgid "Search Open Library for %s"
 msgstr "Căutați în Open Library %s"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Căutare în interior"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Niciun text <strong>Search Inside</strong> nu s-a potrivit cu căutarea dvs."
+msgid "Choose one language"
+msgstr "Alegeți o limbă"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "S-a găsit aproximativ %(count)s rezultat"
-msgstr[1] "S-au găsit aproximativ %(count)s rezultate"
-msgstr[2] ""
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Aproximativ %(total)s rezultat"
+msgstr[1] "Aproximativ %(total)s rezultate"
+msgstr[2] "Aproximativ %(total)s de rezultate"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "în %(seconds)s secundă"
-msgstr[1] "în %(seconds)s secunde"
-msgstr[2] ""
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s din aproximativ %(total)s rezultat"
+msgstr[1] "%(start)s - %(end)s din aproximativ %(total)s rezultate"
+msgstr[2] "%(start)s - %(end)s din aproximativ %(total)s de rezultate"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Niciun rezultat găsit. Încercați un alt cuvânt sau o altă expresie."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Nicio potrivire de pe această pagină nu poate fi afișată cu aceste filtre. Încercați o altă pagină sau eliminați un filtru."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Nu mai există rezultate. Încercați o pagină anterioară."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5808,19 +5819,28 @@ msgid "See results"
 msgstr "Vedeți rezultatele"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Vedeți %s rezultat"
+msgid "Go to full search"
+msgstr "Mergi la căutarea completă"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Vedeți %s rezultate"
+msgid "See %s book"
+msgstr "Vezi %s carte"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Vedeți toate rezultatele %s"
+msgid "See %s books"
+msgstr "Vezi %s cărți"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Vezi toate cele %s cărți"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Toate cele %s cărți"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -5848,10 +5868,6 @@ msgid "Showing %s of %s results"
 msgstr "Se afișează %s din %s rezultate"
 
 #: search/search_modal_i18n.html
-msgid "Top results"
-msgstr "Cele mai relevante rezultate"
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "Fără titlu"
 
@@ -5872,6 +5888,25 @@ msgstr "Căutări recente"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Eliminați \"%s\" din căutările recente"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Caută în interiorul cărților"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Caută în interiorul a %s cărți"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s potrivire găsită în interiorul cărților"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s potriviri găsite în interiorul cărților"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7175,28 +7210,18 @@ msgstr "Mergeți la secțiunea următoare"
 msgid "Expires"
 msgstr "Expiră"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "de %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s cărți găsite cu pasaje corespunzătoare"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Vedeți toate %(results_count)s potriviri Search Inside"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Pagina: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Caută în interiorul a %(count)s carte"
+msgstr[1] "Caută în interiorul a %(count)s cărți"
+msgstr[2] "Caută în interiorul a %(count)s de cărți"
 
 #: IABook.html
 #, python-format
@@ -7241,7 +7266,7 @@ msgstr "Împrumutată"
 msgid "Only a preview is available."
 msgstr "Este disponibilă doar o previzualizare."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Biblioteci din apropiere"
 
@@ -7326,7 +7351,7 @@ msgstr "Împrumutați ebook de la Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Citiți ebook de la Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Ascultați"
 
@@ -8346,10 +8371,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Se verifică potrivirile Search Inside"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9412,4 +9433,55 @@ msgstr "%(title)s - căutare"
 
 #~ msgid "QR code icon"
 #~ msgstr "Pictogramă cod QR"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Niciun <strong>%(path_id)s</strong> nu a corespuns direct căutării dvs."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Adaugă o carte nouă?"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Niciun text <strong>Search Inside</strong> nu s-a potrivit cu căutarea dvs."
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "S-a găsit aproximativ %(count)s rezultat"
+#~ msgstr[1] "S-au găsit aproximativ %(count)s rezultate"
+#~ msgstr[2] ""
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "în %(seconds)s secundă"
+#~ msgstr[1] "în %(seconds)s secunde"
+#~ msgstr[2] ""
+
+#~ msgid "See %s result"
+#~ msgstr "Vedeți %s rezultat"
+
+#~ msgid "See %s results"
+#~ msgstr "Vedeți %s rezultate"
+
+#~ msgid "See all %s results"
+#~ msgstr "Vedeți toate rezultatele %s"
+
+#~ msgid "Top results"
+#~ msgstr "Cele mai relevante rezultate"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s cărți găsite cu pasaje corespunzătoare"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Vedeți toate %(results_count)s potriviri Search Inside"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Pagina: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Se verifică potrivirile Search Inside"
 

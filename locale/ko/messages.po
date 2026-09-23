@@ -863,6 +863,10 @@ msgstr "더 알아보기"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>에서"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "검색 결과 확인 중"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "도서 검색"
@@ -879,19 +883,19 @@ msgstr "super librarians에게만 표시됩니다."
 msgid "Solr Editions"
 msgstr "Solr 에디션"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "읽기 가능만"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "이용 가능 여부로 필터링"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "언어"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Search languages…"
 msgstr "언어 검색…"
 
@@ -899,11 +903,11 @@ msgstr "언어 검색…"
 msgid "Languages"
 msgstr "언어"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "로딩 중…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 msgid "Filter by language"
 msgstr "언어로 필터링"
 
@@ -931,24 +935,19 @@ msgstr "Solr 디버깅:"
 msgid "Full URL:"
 msgstr "전체 URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "검색어와 일치하는 <strong>%(path_id)s</strong>가 없습니다."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "일치하는 책이나 저자가 없습니다"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "새로운 책을 추가하시겠습니까?"
+msgid "Add a new book"
+msgstr "새 책 추가"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "검색 결과 확인 중"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "저자"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "책"
 
@@ -1351,7 +1350,7 @@ msgstr "내 리뷰"
 msgid "Import & Export Options"
 msgstr "가져오기 및 내보내기 옵션"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "알 수 없는 저자"
 
@@ -2800,10 +2799,6 @@ msgstr "OpenStax에서 PDF 다운로드"
 msgid "More at OpenStax"
 msgstr "OpenStax에서 더 보기"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "더 많은 읽기 옵션"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3297,7 +3292,7 @@ msgstr "알고 있나요 any identifiers 이 작품에 대해?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "이 식별자는 Wikidata 작품 식별자처럼 이 작품의 모든 판본에 적용됩니다. ISBN이나 LCCN처럼 판본별 식별자는 판본 탭에서 입력하세요."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "%(title)s의 표지"
@@ -5211,6 +5206,10 @@ msgstr "책장에서 이 책을 삭제하면 이 작품의 체크인 기록도 �
 msgid "More reading options for %(title)s"
 msgstr "%(title)s에 대한 더 많은 읽기 옵션"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "더 많은 읽기 옵션"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "목록에 추가"
@@ -5650,25 +5649,37 @@ msgstr "온라인 대출"
 msgid "Search Open Library for %s"
 msgstr "Open Library에서 %s 검색"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "내부 검색"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "검색어와 일치하는 <strong>내부 검색</strong> 텍스트가 없습니다"
+msgid "Choose one language"
+msgstr "언어를 하나 선택하세요"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "약 %(count)s개의 결과 찾음"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "약 %(total)s개의 결과"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "%(seconds)s초 만에"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "약 %(total)s개 중 %(start)s - %(end)s"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "결과를 찾을 수 없습니다. 다른 단어나 문구를 시도해 보세요."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "이 필터로는 이 페이지의 일치 항목을 표시할 수 없습니다. 다른 페이지를 시도하거나 필터를 제거하세요."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "더 이상 결과가 없습니다. 이전 페이지를 시도해 보세요."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5719,19 +5730,28 @@ msgid "See results"
 msgstr "결과 보기"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "%s개의 결과 보기"
+msgid "Go to full search"
+msgstr "전체 검색으로 이동"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "%s개의 결과 보기"
+msgid "See %s book"
+msgstr "%s권의 책 보기"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "전체 %s개의 결과 보기"
+msgid "See %s books"
+msgstr "%s권의 책 보기"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "%s권의 책 모두 보기"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "%s권의 모든 책"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -5759,10 +5779,6 @@ msgid "Showing %s of %s results"
 msgstr "%s / %s개 결과 표시"
 
 #: search/search_modal_i18n.html
-msgid "Top results"
-msgstr "상위 결과"
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "제목 없음"
 
@@ -5783,6 +5799,25 @@ msgstr "최근 검색어"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "최근 검색어에서 \"%s\" 삭제"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "책 내부 검색"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s권의 책 내부 검색"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "책 내부에서 %s개의 일치 항목을 찾았습니다"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "책 내부에서 %s개의 일치 항목을 찾았습니다"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7059,28 +7094,16 @@ msgstr "다음 섹션으로 이동"
 msgid "Expires"
 msgstr "만료"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s 저"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s권에서 일치하는 구절 발견"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "%(results_count)s개 내부 검색 결과 전체 보기"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "페이지: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "%(count)s권의 책 내부 검색"
 
 #: IABook.html
 #, python-format
@@ -7125,7 +7148,7 @@ msgstr "대출 중"
 msgid "Only a preview is available."
 msgstr "미리보기만 제공됩니다."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "근처 도서관"
 
@@ -7210,7 +7233,7 @@ msgstr "Internet Archive에서 전자책 대출"
 msgid "Read ebook from Internet Archive"
 msgstr "Internet Archive에서 전자책 읽기"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "듣기"
 
@@ -8216,10 +8239,6 @@ msgid "Bookshop.org"
 msgstr "Bookshop.org"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "내부 검색 결과 확인 중"
-
-#: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
 msgstr "이 작품은 어떤 목록에도 없습니다."
 
@@ -9209,4 +9228,51 @@ msgstr "%(title)s - 검색"
 
 #~ msgid "QR code icon"
 #~ msgstr "QR 코드 아이콘"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "검색어와 일치하는 <strong>%(path_id)s</strong>가 없습니다."
+
+#~ msgid "Add a new book?"
+#~ msgstr "새로운 책을 추가하시겠습니까?"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "검색어와 일치하는 <strong>내부 검색</strong> 텍스트가 없습니다"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "약 %(count)s개의 결과 찾음"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "%(seconds)s초 만에"
+
+#~ msgid "See %s result"
+#~ msgstr "%s개의 결과 보기"
+
+#~ msgid "See %s results"
+#~ msgstr "%s개의 결과 보기"
+
+#~ msgid "See all %s results"
+#~ msgstr "전체 %s개의 결과 보기"
+
+#~ msgid "Top results"
+#~ msgstr "상위 결과"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s권에서 일치하는 구절 발견"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "%(results_count)s개 내부 검색 결과 전체 보기"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "페이지: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "내부 검색 결과 확인 중"
 

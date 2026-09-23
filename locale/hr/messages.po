@@ -869,6 +869,10 @@ msgstr "Saznaj više"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "Provjera poklapanja pretraživanja unutar"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Traži knjige"
@@ -885,19 +889,19 @@ msgstr "Ovo vide samo glavni knjižničari."
 msgid "Solr Editions"
 msgstr "Solr Editions"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Samo za čitanje"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtriraj po dostupnosti"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Jezik"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Search languages…"
 msgstr "Pretraži jezike…"
 
@@ -905,11 +909,11 @@ msgstr "Pretraži jezike…"
 msgid "Languages"
 msgstr "Jezici"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Učitavanje…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 msgid "Filter by language"
 msgstr "Filtriraj po jeziku"
 
@@ -941,24 +945,19 @@ msgstr "Solr otklanjanje grešaka:"
 msgid "Full URL:"
 msgstr "Potpuni URL"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Nijedan <strong>%(path_id)s</strong> se ne poklapa s tvojom pretragom."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Nema odgovarajućih knjiga ili autora"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "Dodati novu knjigu?"
+msgid "Add a new book"
+msgstr "Dodaj novu knjigu"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "Provjera poklapanja pretraživanja unutar"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Autori"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Knjige"
 
@@ -1373,7 +1372,7 @@ msgstr "Moje recenzije"
 msgid "Import & Export Options"
 msgstr "Opcije uvoza i izvoza"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Nepoznat autor"
 
@@ -2828,10 +2827,6 @@ msgstr "Preuzmi PDF datoteku od OpenStax"
 msgid "More at OpenStax"
 msgstr "Više na OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Više opcija čitanja"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3331,7 +3326,7 @@ msgstr "Poznaš li bilo koji identifikator za ovo djelo?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Ovi se identifikatori primjenjuju na sva izdanja ovog djela, na primjer Wikidata identifikatore djela. Za identifikatore specifičnih izdanja, kao što su ISBN ili LCCN idi na kartici izdanja."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Naslovnica za: %(title)s"
@@ -5268,6 +5263,10 @@ msgstr "Uklanjanjem ove knjige s vaših polica izbrisat će se vaše provjere za
 msgid "More reading options for %(title)s"
 msgstr "Više opcija čitanja za %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Više opcija čitanja"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Dodaj u popis"
@@ -5719,29 +5718,41 @@ msgstr "Posudi online"
 msgid "Search Open Library for %s"
 msgstr "Traži %s u Open Library"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Traži unutar"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Nijedan <strong>Traži unutar</strong> tekst se ne poklapa s tvojom pretragom"
+msgid "Choose one language"
+msgstr "Odaberite jedan jezik"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Pronađen je otprilike %(count)s rezultat"
-msgstr[1] "Pronađena su otprilike %(count)s rezultata"
-msgstr[2] "Pronađeno je otprilike %(count)s rezultata"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Otprilike %(total)s rezultat"
+msgstr[1] "Otprilike %(total)s rezultata"
+msgstr[2] "Otprilike %(total)s rezultata"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "u roku od %(seconds)s sekunde"
-msgstr[1] "u roku od %(seconds)s sekunde"
-msgstr[2] "u roku od %(seconds)s sekundi"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s od otprilike %(total)s rezultata"
+msgstr[1] "%(start)s - %(end)s od otprilike %(total)s rezultata"
+msgstr[2] "%(start)s - %(end)s od otprilike %(total)s rezultata"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Nema pronađenih rezultata. Pokušajte s drugom riječi ili izrazom."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Nijedno podudaranje na ovoj stranici ne može se prikazati s ovim filtrima. Pokušajte s drugom stranicom ili uklonite filtar."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Nema više rezultata. Pokušajte s ranijom stranicom."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5792,19 +5803,28 @@ msgid "See results"
 msgstr "Pogledaj rezultate"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Pogledaj %s rezultat"
+msgid "Go to full search"
+msgstr "Idi na potpunu pretragu"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Pogledaj %s rezultata"
+msgid "See %s book"
+msgstr "Pogledaj %s knjigu"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Pogledaj svih %s rezultata"
+msgid "See %s books"
+msgstr "Pogledaj %s knjiga"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Pogledaj svih %s knjiga"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Svih %s knjiga"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -5832,10 +5852,6 @@ msgid "Showing %s of %s results"
 msgstr "Prikazano %s od %s rezultata"
 
 #: search/search_modal_i18n.html
-msgid "Top results"
-msgstr "Najbolji rezultati"
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "Bez naslova"
 
@@ -5856,6 +5872,25 @@ msgstr "Nedavne pretrage"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Ukloni „%s” iz nedavnih pretraga"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Pretraži unutar knjiga"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Pretraži unutar %s knjiga"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s podudaranje pronađeno unutar knjiga"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s podudaranja pronađena unutar knjiga"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7149,28 +7184,18 @@ msgstr "Idi na sljedeći odjeljak"
 msgid "Expires"
 msgstr "Isteče"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "autora %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s pronađene knjige s odgovarajućim odlomcima"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Pogledaj sva %(results_count)s poklapanja za „Traži unutar“"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Stranica: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Pretraži unutar %(count)s knjige"
+msgstr[1] "Pretraži unutar %(count)s knjiga"
+msgstr[2] "Pretraži unutar %(count)s knjiga"
 
 #: IABook.html
 #, python-format
@@ -7215,7 +7240,7 @@ msgstr "Posuđeno"
 msgid "Only a preview is available."
 msgstr "Dostupan je samo pregled."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Obližnje knjižnice"
 
@@ -7300,7 +7325,7 @@ msgstr "Posudi e-knjigu od Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Čitaj e-knjigu od Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Slušaj"
 
@@ -8310,10 +8335,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Provjera poklapanja pretrage unutar"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9453,4 +9474,55 @@ msgstr "%(title)s – pretraga"
 
 #~ msgid "QR code icon"
 #~ msgstr "Ikona QR koda"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Nijedan <strong>%(path_id)s</strong> se ne poklapa s tvojom pretragom."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Dodati novu knjigu?"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Nijedan <strong>Traži unutar</strong> tekst se ne poklapa s tvojom pretragom"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Pronađen je otprilike %(count)s rezultat"
+#~ msgstr[1] "Pronađena su otprilike %(count)s rezultata"
+#~ msgstr[2] "Pronađeno je otprilike %(count)s rezultata"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "u roku od %(seconds)s sekunde"
+#~ msgstr[1] "u roku od %(seconds)s sekunde"
+#~ msgstr[2] "u roku od %(seconds)s sekundi"
+
+#~ msgid "See %s result"
+#~ msgstr "Pogledaj %s rezultat"
+
+#~ msgid "See %s results"
+#~ msgstr "Pogledaj %s rezultata"
+
+#~ msgid "See all %s results"
+#~ msgstr "Pogledaj svih %s rezultata"
+
+#~ msgid "Top results"
+#~ msgstr "Najbolji rezultati"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s pronađene knjige s odgovarajućim odlomcima"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Pogledaj sva %(results_count)s poklapanja za „Traži unutar“"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Stranica: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Provjera poklapanja pretrage unutar"
 
