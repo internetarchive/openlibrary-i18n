@@ -919,6 +919,11 @@ msgstr "మరింత చదవండి"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> లో"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+#, fuzzy
+msgid "Checking Search Inside matches"
+msgstr "మరిన్ని శోధనావిధానాలు"
+
 #: work_search.html
 #, fuzzy
 msgid "Search Books"
@@ -936,21 +941,21 @@ msgstr "ఇది కేవలం సూపర్ లైబ్రేరియన
 msgid "Solr Editions"
 msgstr "Solr ఎడిషన్లు"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "అడ్మిన్ మాత్రమే"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "అందుబాటులో ఉంది"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "భాష"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "ఈ భాష ఎంచుకోండి"
@@ -960,11 +965,11 @@ msgstr "ఈ భాష ఎంచుకోండి"
 msgid "Languages"
 msgstr "భాష"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "లోడ్ అవుతోంది…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "భాష"
@@ -995,26 +1000,19 @@ msgstr "Solr డీబగ్గింగ్:"
 msgid "Full URL:"
 msgstr "పూర్తి URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "మీ శోధనకు నేరుగా <strong>%(path_id)s</strong> సరిపోలలేదు."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "సరిపోలే పుస్తకాలు లేదా రచయితలు లేరు"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "పుస్తకం చేర్చు"
+msgid "Add a new book"
+msgstr "కొత్త పుస్తకాన్ని జోడించండి"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-#, fuzzy
-msgid "Checking Search Inside matches"
-msgstr "మరిన్ని శోధనావిధానాలు"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "రచయితలు"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "పుస్తకాలు"
 
@@ -1450,7 +1448,7 @@ msgstr "నా పుస్తక సమీక్ష"
 msgid "Import & Export Options"
 msgstr "దిగుమతి మరియు ఎగుమతి ఎంపికలు"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 #, fuzzy
 msgid "Unknown author"
 msgstr "<em>తెలియని రచయిత</em> ద్వారా"
@@ -3026,10 +3024,6 @@ msgstr "OpenStax నుండి PDF డౌన్‌లోడ్ చేయండ
 msgid "More at OpenStax"
 msgstr "OpenStax లో మరింత"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "మరిన్ని చదివే ఎంపికలు"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3549,7 +3543,7 @@ msgstr "ఈ ఎడిషన్ కోసం గుర్తింపు సం�
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "ఈ గుర్తింపులు ఈ రచన యొక్క అన్ని ఎడిషన్లకు వర్తిస్తాయి, ఉదాహరణకు Wikidata రచన గుర్తింపులు. ISBN లేదా LCCN వంటి ఎడిషన్-నిర్దిష్ట గుర్తింపులకు, ఎడిషన్ ట్యాబ్‌కు వెళ్ళండి."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "కవర్: %(title)s"
@@ -5576,6 +5570,10 @@ msgstr "మీ షెల్ఫ్‌ల నుండి ఈ పుస్తక�
 msgid "More reading options for %(title)s"
 msgstr "%(title)s కోసం మరిన్ని చదివే ఎంపికలు"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "మరిన్ని చదివే ఎంపికలు"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "జాబితాలో చేర్చండి"
@@ -6061,28 +6059,40 @@ msgstr "ఆన్‌లైన్‌లో అరువు తీసుకోం�
 msgid "Search Open Library for %s"
 msgstr "Open Library లో %s శోధించండి"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 #, fuzzy
 msgid "Search Inside"
 msgstr "మరిన్ని శోధనావిధానాలు"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "మీ శోధనకు <strong>లోపల శోధన</strong> టెక్స్ట్ సరిపోలలేదు"
+msgid "Choose one language"
+msgstr "ఒక భాషను ఎంచుకోండి"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "సుమారు %(count)s ఫలితం కనుగొనబడింది"
-msgstr[1] "సుమారు %(count)s ఫలితాలు కనుగొనబడ్డాయి"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "సుమారు %(total)s ఫలితం"
+msgstr[1] "సుమారు %(total)s ఫలితాలు"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "%(seconds)s సెకనులో"
-msgstr[1] "%(seconds)s సెకన్లలో"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "సుమారు %(total)s ఫలితాలలో %(start)s - %(end)s"
+msgstr[1] "సుమారు %(total)s ఫలితాలలో %(start)s - %(end)s"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "ఫలితాలు కనబడలేదు. వేరే పదం లేదా పదబంధాన్ని ప్రయత్నించండి."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "ఈ ఫిల్టర్‌లతో ఈ పేజీలోని సరిపోలికలు ఏవీ చూపించలేము. వేరే పేజీని ప్రయత్నించండి లేదా ఫిల్టర్‌ను తీసివేయండి."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "ఇక ఫలితాలు లేవు. మునుపటి పేజీని ప్రయత్నించండి."
 
 #: search/layout_options.html
 msgid "View as"
@@ -6140,19 +6150,28 @@ msgid "See results"
 msgstr "ఫలితాలను చూడండి"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "%s ఫలితాన్ని చూడండి"
+msgid "Go to full search"
+msgstr "పూర్తి శోధనకు వెళ్లండి"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "%s ఫలితాలను చూడండి"
+msgid "See %s book"
+msgstr "%s పుస్తకాన్ని చూడండి"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "%s ఫలితాలు అన్నీ చూడండి"
+msgid "See %s books"
+msgstr "%s పుస్తకాలను చూడండి"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "అన్ని %s పుస్తకాలను చూడండి"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "అన్ని %s పుస్తకాలు"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -6184,11 +6203,6 @@ msgstr "%s లో %s ఫలితాలు చూపిస్తున్నా�
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "శోధనా ఫలితాలు"
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "శీర్షిక:"
 
@@ -6211,6 +6225,25 @@ msgstr "ఇటీవలి మార్పులు"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "ఇటీవలి శోధనల నుండి \"%s\" తొలగించు"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "పుస్తకాల లోపల శోధించండి"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s పుస్తకాల లోపల శోధించండి"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "పుస్తకాల లోపల %s సరిపోలిక కనబడింది"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "పుస్తకాల లోపల %s సరిపోలికలు కనబడ్డాయి"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7604,28 +7637,17 @@ msgstr "తదుపరి విభాగానికి వెళ్ళు"
 msgid "Expires"
 msgstr "రుణం గడువు"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s చే"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s పుస్తకాలు సరిపోలే భాగాలతో కనుగొనబడ్డాయి"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "%(results_count)s లోపల శోధన జతలు అన్నీ చూడండి"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "పేజీ: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "%(count)s పుస్తకం లోపల శోధించండి"
+msgstr[1] "%(count)s పుస్తకాల లోపల శోధించండి"
 
 #: IABook.html
 #, python-format
@@ -7670,7 +7692,7 @@ msgstr "తీసుకోబడింది"
 msgid "Only a preview is available."
 msgstr "కేవలం ప్రివ్యూ మాత్రమే అందుబాటులో ఉంది."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "సమీప లైబ్రరీలు"
 
@@ -7758,7 +7780,7 @@ msgstr "ఇంటర్నెట్ ఆర్కైవ్ నుండి ఈబ
 msgid "Read ebook from Internet Archive"
 msgstr "ఇంటర్నెట్ ఆర్కైవ్ నుండి ఈబుక్ చదవండి"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 #, fuzzy
 msgid "Listen"
 msgstr "జాబితాలు"
@@ -8806,10 +8828,6 @@ msgstr "అమెజాన్"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "బుక్‌షాప్.ఆర్గ్"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "లోపల శోధన జతలు తనిఖీ చేస్తున్నాము"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9909,4 +9927,53 @@ msgstr "%(title)s - శోధన"
 
 #~ msgid "QR code icon"
 #~ msgstr "QR కోడ్ చిహ్నం"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "మీ శోధనకు నేరుగా <strong>%(path_id)s</strong> సరిపోలలేదు."
+
+#~ msgid "Add a new book?"
+#~ msgstr "పుస్తకం చేర్చు"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "మీ శోధనకు <strong>లోపల శోధన</strong> టెక్స్ట్ సరిపోలలేదు"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "సుమారు %(count)s ఫలితం కనుగొనబడింది"
+#~ msgstr[1] "సుమారు %(count)s ఫలితాలు కనుగొనబడ్డాయి"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "%(seconds)s సెకనులో"
+#~ msgstr[1] "%(seconds)s సెకన్లలో"
+
+#~ msgid "See %s result"
+#~ msgstr "%s ఫలితాన్ని చూడండి"
+
+#~ msgid "See %s results"
+#~ msgstr "%s ఫలితాలను చూడండి"
+
+#~ msgid "See all %s results"
+#~ msgstr "%s ఫలితాలు అన్నీ చూడండి"
+
+#~ msgid "Top results"
+#~ msgstr "శోధనా ఫలితాలు"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s పుస్తకాలు సరిపోలే భాగాలతో కనుగొనబడ్డాయి"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "%(results_count)s లోపల శోధన జతలు అన్నీ చూడండి"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "పేజీ: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "లోపల శోధన జతలు తనిఖీ చేస్తున్నాము"
 
