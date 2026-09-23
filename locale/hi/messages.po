@@ -910,6 +910,11 @@ msgstr "अधिक जानें"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> पर"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+#, fuzzy
+msgid "Checking Search Inside matches"
+msgstr "अंदर खोजें"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "किताबों के लिए खोज करें"
@@ -926,21 +931,21 @@ msgstr "यह केवल सुपर लाइब्रेरियन क�
 msgid "Solr Editions"
 msgstr "सोलर एडिशन"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "सिर्फ़ एडमिन के लिए"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "ई - बुक उपलब्धता के लिए फ़िल्टर के नतीजे"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "भाषा"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "इस भाषा का चयन करें"
@@ -949,11 +954,11 @@ msgstr "इस भाषा का चयन करें"
 msgid "Languages"
 msgstr "भाषाएँ"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "लोड हो रहा है…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "भाषा"
@@ -984,26 +989,19 @@ msgstr "Solr डीबगिंग:"
 msgid "Full URL:"
 msgstr "पूर्ण URL:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "कोई भी <strong>%(path_id)s</strong> सीधे आपकी खोज से मेल नहीं खाया।"
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "कोई मिलती-जुलती किताबें या लेखक नहीं मिले"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "नई किताब जोड़ी गई।"
+msgid "Add a new book"
+msgstr "नई किताब जोड़ें"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-#, fuzzy
-msgid "Checking Search Inside matches"
-msgstr "अंदर खोजें"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "लेखक"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "पुस्तक"
 
@@ -1429,7 +1427,7 @@ msgstr "मेरी समीक्षाएँ"
 msgid "Import & Export Options"
 msgstr "इम्पोर्ट और एक्सपोर्ट विकल्प"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "अज्ञात लेखक"
 
@@ -2984,10 +2982,6 @@ msgstr "OpenStax से PDF डाउनलोड करें"
 msgid "More at OpenStax"
 msgstr "OpenStax पर और जानकारी"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "अधिक पठन विकल्प"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3512,7 +3506,7 @@ msgstr "क्या आप इस संस्करण के लिए कि
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "ये पहचानकर्ता इस कृति के सभी संस्करणों पर लागू होते हैं, उदाहरण के लिए Wikidata कृति पहचानकर्ता। संस्करण-विशिष्ट पहचानकर्ताओं के लिए, जैसे ISBN या LCCN, संस्करण टैब पर जाएँ।"
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "कवर: %(title)s"
@@ -5513,6 +5507,10 @@ msgstr "इस पुस्तक को अपनी अलमारियो�
 msgid "More reading options for %(title)s"
 msgstr "%(title)s के लिए अधिक पठन विकल्प"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "अधिक पठन विकल्प"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "बड्डी सूची जोड़ें"
@@ -5973,27 +5971,39 @@ msgstr "अभी उधार लें"
 msgid "Search Open Library for %s"
 msgstr "%s के लिए ओपन लाइब्रेरी खोजें"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "अंदर खोजें"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "आपकी खोज से कोई <strong>अंदर खोज</strong> टेक्स्ट मेल नहीं खाया"
+msgid "Choose one language"
+msgstr "एक भाषा चुनें"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "लगभग %(count)s परिणाम मिला"
-msgstr[1] "लगभग %(count)s परिणाम मिला"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "लगभग %(total)s परिणाम"
+msgstr[1] "लगभग %(total)s परिणाम"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "%(seconds)s सेकंड में"
-msgstr[1] "%(seconds)s सेकंड में"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "लगभग %(total)s परिणामों में से %(start)s - %(end)s"
+msgstr[1] "लगभग %(total)s परिणामों में से %(start)s - %(end)s"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "कोई परिणाम नहीं मिला। कोई दूसरा शब्द या वाक्यांश आज़माएं।"
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "इन फ़िल्टर के साथ इस पृष्ठ पर कोई भी मिलान नहीं दिखाया जा सकता। कोई दूसरा पृष्ठ आज़माएं या कोई फ़िल्टर हटाएं।"
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "अब और परिणाम नहीं। कोई पहले का पृष्ठ आज़माएं।"
 
 #: search/layout_options.html
 msgid "View as"
@@ -6048,19 +6058,28 @@ msgid "See results"
 msgstr "परिणाम देखें"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "%s परिणाम देखें"
+msgid "Go to full search"
+msgstr "पूर्ण खोज पर जाएं"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "%s परिणाम देखें"
+msgid "See %s book"
+msgstr "%s किताब देखें"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "सभी %s परिणाम देखें"
+msgid "See %s books"
+msgstr "%s किताबें देखें"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "सभी %s किताबें देखें"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "सभी %s किताबें"
 
 #: search/search_modal_i18n.html
 #, fuzzy
@@ -6093,11 +6112,6 @@ msgstr "%s में से %s परिणाम दिखाए जा रह�
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "कोई नतीजा नहीं मिला।"
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "शीर्षक"
 
@@ -6120,6 +6134,25 @@ msgstr "Recent changes"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "हाल की खोजों से \"%s\" हटाएँ"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "किताबों के अंदर खोजें"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s किताबों के अंदर खोजें"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "किताबों के अंदर %s मिलान मिला"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "किताबों के अंदर %s मिलान मिले"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7462,28 +7495,17 @@ msgstr "अगले अनुभाग पर जाएँ"
 msgid "Expires"
 msgstr "समाप्त हो रहा"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s द्वारा"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s पुस्तकें मिलान वाले अंशों के साथ मिलीं"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "सभी %(results_count)s अंदर खोज मिलान देखें"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, fuzzy, python-format
-msgid "Page: %(page)s"
-msgstr "पेज %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "%(count)s किताब के अंदर खोजें"
+msgstr[1] "%(count)s किताबों के अंदर खोजें"
 
 #: IABook.html
 #, python-format
@@ -7529,7 +7551,7 @@ msgstr "चेक आउट किया गया"
 msgid "Only a preview is available."
 msgstr "केवल एक पूर्वावलोकन उपलब्ध है।"
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "आस-पास के पुस्तकालय"
 
@@ -7616,7 +7638,7 @@ msgstr "इंटरनेट आर्काइव से ई - बुक उ�
 msgid "Read ebook from Internet Archive"
 msgstr "इंटरनेट आर्काइव से ईबुक पढ़ें"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "बात सुनो"
 
@@ -8662,10 +8684,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "अंदर खोज मिलान जाँचा जा रहा है"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9732,4 +9750,53 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "QR code icon"
 #~ msgstr "QR कोड आइकन"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "कोई भी <strong>%(path_id)s</strong> सीधे आपकी खोज से मेल नहीं खाया।"
+
+#~ msgid "Add a new book?"
+#~ msgstr "नई किताब जोड़ी गई।"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "आपकी खोज से कोई <strong>अंदर खोज</strong> टेक्स्ट मेल नहीं खाया"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "लगभग %(count)s परिणाम मिला"
+#~ msgstr[1] "लगभग %(count)s परिणाम मिला"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "%(seconds)s सेकंड में"
+#~ msgstr[1] "%(seconds)s सेकंड में"
+
+#~ msgid "See %s result"
+#~ msgstr "%s परिणाम देखें"
+
+#~ msgid "See %s results"
+#~ msgstr "%s परिणाम देखें"
+
+#~ msgid "See all %s results"
+#~ msgstr "सभी %s परिणाम देखें"
+
+#~ msgid "Top results"
+#~ msgstr "कोई नतीजा नहीं मिला।"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s पुस्तकें मिलान वाले अंशों के साथ मिलीं"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "सभी %(results_count)s अंदर खोज मिलान देखें"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "पेज %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "अंदर खोज मिलान जाँचा जा रहा है"
 
