@@ -906,6 +906,11 @@ msgstr "Дізнатися більше"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "на <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+#, fuzzy
+msgid "Checking Search Inside matches"
+msgstr "Шукати всередині"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Шукати книги"
@@ -922,21 +927,21 @@ msgstr "Це можуть бачити лише супербібліотекар
 msgid "Solr Editions"
 msgstr "Solr видання"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Лише для адмінів"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "Фільтрувати результати за наявністю електронної книги"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Мова"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "Обрати цю мову"
@@ -945,11 +950,11 @@ msgstr "Обрати цю мову"
 msgid "Languages"
 msgstr "Мови"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Завантаження…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "Мова"
@@ -982,26 +987,19 @@ msgstr "Налагодження Solr:"
 msgid "Full URL:"
 msgstr "Повна URL-адреса:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Жоден <strong>%(path_id)s</strong> не відповідає безпосередньо вашому пошуку."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Немає відповідних книг або авторів"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "Додано нову книгу."
+msgid "Add a new book"
+msgstr "Додати нову книгу"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-#, fuzzy
-msgid "Checking Search Inside matches"
-msgstr "Шукати всередині"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Автори"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Книги"
 
@@ -1431,7 +1429,7 @@ msgstr "Мої відгуки"
 msgid "Import & Export Options"
 msgstr "Налаштування імпорту та експорту"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Невідомий автор"
 
@@ -2983,10 +2981,6 @@ msgstr "Завантажити PDF з OpenStax"
 msgid "More at OpenStax"
 msgstr "Більше на OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Більше варіантів читання"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3513,7 +3507,7 @@ msgstr "Чи знаєте ви будь-які ідентифікатори дл
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Ці ідентифікатори застосовуються до всіх видань цього твору, наприклад ідентифікатори Wikidata. Для ідентифікаторів конкретних видань, таких як ISBN або LCCN, перейдіть на вкладку видання."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Обкладинка %(title)s"
@@ -5520,6 +5514,10 @@ msgstr "Видалення цієї книги з полиць призведе 
 msgid "More reading options for %(title)s"
 msgstr "Більше варіантів читання для %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Більше варіантів читання"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Додати до списку"
@@ -5985,29 +5983,41 @@ msgstr "Позичити зараз"
 msgid "Search Open Library for %s"
 msgstr "Шукати %s в Open Library"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Шукати всередині"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Жодний текст <strong>пошуку всередині</strong> не відповідає вашому запиту"
+msgid "Choose one language"
+msgstr "Оберіть одну мову"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Близько %(count)s результату знайдено"
-msgstr[1] "Близько %(count)s результатів знайдено"
-msgstr[2] "Близько %(count)s результатів знайдено"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Близько %(total)s результату"
+msgstr[1] "Близько %(total)s результатів"
+msgstr[2] "Близько %(total)s результатів"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "за %(seconds)s"
-msgstr[1] "за %(seconds)s"
-msgstr[2] "за %(seconds)s"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s з приблизно %(total)s результату"
+msgstr[1] "%(start)s - %(end)s з приблизно %(total)s результатів"
+msgstr[2] "%(start)s - %(end)s з приблизно %(total)s результатів"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Результатів не знайдено. Спробуйте інше слово або фразу."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Жоден зі збігів на цій сторінці не можна показати з цими фільтрами. Спробуйте іншу сторінку або видаліть фільтр."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Більше немає результатів. Спробуйте попередню сторінку."
 
 #: search/layout_options.html
 msgid "View as"
@@ -6061,19 +6071,28 @@ msgid "See results"
 msgstr "Переглянути результати"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Переглянути %s результат"
+msgid "Go to full search"
+msgstr "Перейти до повного пошуку"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Переглянути %s результати"
+msgid "See %s book"
+msgstr "Переглянути %s книгу"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Переглянути всі %s результати"
+msgid "See %s books"
+msgstr "Переглянути %s книг"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Переглянути всі %s книг"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Усі %s книг"
 
 #: search/search_modal_i18n.html
 #, fuzzy
@@ -6106,11 +6125,6 @@ msgstr "Показано %s з %s результатів"
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "Нічого не знайдено."
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "Назва"
 
@@ -6133,6 +6147,25 @@ msgstr "Останні зміни"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Видалити «%s» з нещодавніх пошуків"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Пошук усередині книг"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Пошук усередині %s книг"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s збіг знайдено всередині книг"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s збігів знайдено всередині книг"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7480,28 +7513,18 @@ msgstr "Перейти до наступного розділу"
 msgid "Expires"
 msgstr "Закінчується"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "автор: %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "Знайдено %(book_count)s книг із відповідними уривками"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Переглянути всі %(results_count)s збіги пошуку всередині"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, fuzzy, python-format
-msgid "Page: %(page)s"
-msgstr "Сторінка %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Пошук усередині %(count)s книги"
+msgstr[1] "Пошук усередині %(count)s книг"
+msgstr[2] "Пошук усередині %(count)s книг"
 
 #: IABook.html
 #, python-format
@@ -7547,7 +7570,7 @@ msgstr "Позичено"
 msgid "Only a preview is available."
 msgstr "Доступний лише передперегляд."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Бібліотеки поблизу"
 
@@ -7634,7 +7657,7 @@ msgstr "Позичити електронну книгу з Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Читати електронну книгу з Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Слухати"
 
@@ -8681,10 +8704,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Перевірка збігів у пошуку всередині"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9853,4 +9872,55 @@ msgstr "%(title)s - пошук"
 
 #~ msgid "QR code icon"
 #~ msgstr "Значок QR-коду"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Жоден <strong>%(path_id)s</strong> не відповідає безпосередньо вашому пошуку."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Додано нову книгу."
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Жодний текст <strong>пошуку всередині</strong> не відповідає вашому запиту"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Близько %(count)s результату знайдено"
+#~ msgstr[1] "Близько %(count)s результатів знайдено"
+#~ msgstr[2] "Близько %(count)s результатів знайдено"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "за %(seconds)s"
+#~ msgstr[1] "за %(seconds)s"
+#~ msgstr[2] "за %(seconds)s"
+
+#~ msgid "See %s result"
+#~ msgstr "Переглянути %s результат"
+
+#~ msgid "See %s results"
+#~ msgstr "Переглянути %s результати"
+
+#~ msgid "See all %s results"
+#~ msgstr "Переглянути всі %s результати"
+
+#~ msgid "Top results"
+#~ msgstr "Нічого не знайдено."
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "Знайдено %(book_count)s книг із відповідними уривками"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Переглянути всі %(results_count)s збіги пошуку всередині"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Сторінка %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Перевірка збігів у пошуку всередині"
 
