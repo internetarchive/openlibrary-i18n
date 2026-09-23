@@ -877,6 +877,10 @@ msgstr "Pelajari Lebih Lanjut"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "di <a target=\"_blank\" href=\"%(link)s\" rel=\"noopener noreferrer\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "Memeriksa kecocokan Pencarian Dalam"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "Cari Buku"
@@ -893,21 +897,21 @@ msgstr "Ini hanya terlihat oleh super pustakawan."
 msgid "Solr Editions"
 msgstr "Edisi Solr"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Pratinjau"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "Filter hasil berdasarkan ketersediaan ebook"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Bahasa"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "Pilih bahasa ini"
@@ -916,11 +920,11 @@ msgstr "Pilih bahasa ini"
 msgid "Languages"
 msgstr "Bahasa"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Memuat…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "Bahasa"
@@ -949,24 +953,19 @@ msgstr "Debugging Solr:"
 msgid "Full URL:"
 msgstr "URL Lengkap:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Tidak ada <strong>%(path_id)s</strong> yang langsung cocok dengan pencarian Anda."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Tidak ada buku atau penulis yang cocok"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "Tambahkan buku baru?"
+msgid "Add a new book"
+msgstr "Tambahkan buku baru"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "Memeriksa kecocokan Pencarian Dalam"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Penulis"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Buku"
 
@@ -1373,7 +1372,7 @@ msgstr "Ulasan Saya"
 msgid "Import & Export Options"
 msgstr "Opsi Impor & Ekspor"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Penulis tidak diketahui"
 
@@ -2849,10 +2848,6 @@ msgstr "Unduh PDF dari OpenStax"
 msgid "More at OpenStax"
 msgstr "Lebih banyak di OpenStax"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Opsi membaca lainnya"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3349,7 +3344,7 @@ msgstr "Apakah Anda mengetahui identifier untuk karya ini?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Identifier ini berlaku untuk semua edisi karya ini, misalnya identifier karya Wikidata. Untuk identifier khusus edisi, seperti ISBN atau LCCN, pergi ke tab edisi."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Sampul dari: %(title)s"
@@ -5288,6 +5283,10 @@ msgstr "Menghapus buku ini dari rak Anda akan menghapus check-in Anda untuk kary
 msgid "More reading options for %(title)s"
 msgstr "Opsi membaca lainnya untuk %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Opsi membaca lainnya"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Tambahkan ke Daftar"
@@ -5733,25 +5732,37 @@ msgstr "Pinjam Sekarang"
 msgid "Search Open Library for %s"
 msgstr "Cari Open Library untuk %s"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Cari di Dalam"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Tidak ada teks <strong>Cari Di Dalam</strong> yang cocok dengan pencarian Anda"
+msgid "Choose one language"
+msgstr "Pilih satu bahasa"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Sekitar %(count)s hasil ditemukan"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Sekitar %(total)s hasil"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "dalam %(seconds)s detik"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s dari sekitar %(total)s hasil"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Tidak ada hasil yang ditemukan. Coba kata atau frasa lain."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Tidak ada kecocokan di halaman ini yang dapat ditampilkan dengan filter ini. Coba halaman lain atau hapus filter."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Tidak ada hasil lagi. Coba halaman sebelumnya."
 
 #: search/layout_options.html
 msgid "View as"
@@ -5806,19 +5817,28 @@ msgid "See results"
 msgstr "Lihat hasil"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Lihat %s hasil"
+msgid "Go to full search"
+msgstr "Buka pencarian lengkap"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Lihat %s hasil"
+msgid "See %s book"
+msgstr "Lihat %s buku"
 
 #: search/search_modal_i18n.html
-#, fuzzy, python-format
-msgid "See all %s results"
-msgstr ""
+#, python-format
+msgid "See %s books"
+msgstr "Lihat %s buku"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Lihat semua %s buku"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Semua %s buku"
 
 #: search/search_modal_i18n.html
 #, fuzzy
@@ -5851,11 +5871,6 @@ msgstr ""
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "Hasil"
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "Judul"
 
@@ -5878,6 +5893,25 @@ msgstr "Perubahan Terbaru"
 #, fuzzy, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr ""
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Cari di dalam buku"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Cari di dalam %s buku"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s kecocokan ditemukan di dalam buku"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s kecocokan ditemukan di dalam buku"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7175,28 +7209,16 @@ msgstr "Pergi ke bagian berikutnya"
 msgid "Expires"
 msgstr "Kedaluwarsa"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "oleh %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s buku ditemukan dengan bagian yang cocok"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Lihat semua %(results_count)s Kecocokan Search Inside"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "Halaman: %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Cari di dalam %(count)s buku"
 
 #: IABook.html
 #, fuzzy, python-format
@@ -7241,7 +7263,7 @@ msgstr "Dipinjam"
 msgid "Only a preview is available."
 msgstr "Hanya pratinjau yang tersedia."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Perpustakaan Terdekat"
 
@@ -7327,7 +7349,7 @@ msgstr "Pinjam ebook dari Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Baca ebook dari Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Dengarkan"
 
@@ -8340,10 +8362,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Memeriksa kecocokan Search Inside"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9733,4 +9751,51 @@ msgstr "%(title)s - pencarian"
 
 #~ msgid "QR code icon"
 #~ msgstr "Ikon kode QR"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Tidak ada <strong>%(path_id)s</strong> yang langsung cocok dengan pencarian Anda."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Tambahkan buku baru?"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Tidak ada teks <strong>Cari Di Dalam</strong> yang cocok dengan pencarian Anda"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Sekitar %(count)s hasil ditemukan"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "dalam %(seconds)s detik"
+
+#~ msgid "See %s result"
+#~ msgstr "Lihat %s hasil"
+
+#~ msgid "See %s results"
+#~ msgstr "Lihat %s hasil"
+
+#~ msgid "See all %s results"
+#~ msgstr ""
+
+#~ msgid "Top results"
+#~ msgstr "Hasil"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s buku ditemukan dengan bagian yang cocok"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Lihat semua %(results_count)s Kecocokan Search Inside"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Halaman: %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Memeriksa kecocokan Search Inside"
 
