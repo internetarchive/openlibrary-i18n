@@ -919,6 +919,11 @@ msgstr "Aprenda mais"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "em <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+#, fuzzy
+msgid "Checking Search Inside matches"
+msgstr "Buscar Dentro"
+
 #: work_search.html
 #, fuzzy
 msgid "Search Books"
@@ -937,19 +942,19 @@ msgstr "Isto só é visível para super bibliotecários."
 msgid "Solr Editions"
 msgstr "Número de Edições"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Somente legível"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrar por disponibilidade"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Idioma"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Search languages…"
 msgstr "Pesquisar idiomas…"
 
@@ -957,11 +962,11 @@ msgstr "Pesquisar idiomas…"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "Carregando…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 msgid "Filter by language"
 msgstr "Filtrar por idioma"
 
@@ -991,26 +996,19 @@ msgstr "Depuração do Solr:"
 msgid "Full URL:"
 msgstr "URL completa:"
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "Nenhum <strong>%(path_id)s</strong> correspondeu diretamente à sua pesquisa."
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "Nenhum livro ou autor correspondente"
 
 #: work_search.html
-#, fuzzy
-msgid "Add a new book?"
-msgstr "Novo livro adicionado."
+msgid "Add a new book"
+msgstr "Adicionar um novo livro"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-#, fuzzy
-msgid "Checking Search Inside matches"
-msgstr "Buscar Dentro"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "Autores"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "Livros"
 
@@ -1440,7 +1438,7 @@ msgstr "Minhas resenhas"
 msgid "Import & Export Options"
 msgstr "Opções de importação y exportação"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Autor desconhecido"
 
@@ -3006,10 +3004,6 @@ msgstr "Baixar um PDF do Internet Archive"
 msgid "More at OpenStax"
 msgstr "Mais em LibriVox"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "Mais opções de leitura"
-
 #: book_providers/read_button.html
 #, fuzzy, python-format
 msgid "Listen to a reading from %s"
@@ -3538,7 +3532,7 @@ msgstr "Você conhece algum identificador para esta edição?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Esses identificadores se aplicam a todas as edições desta obra, por exemplo identificadores de obra do Wikidata. Para identificadores específicos de edição, como ISBN ou LCCN, vá para a aba de edição."
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Capa de: %(title)s"
@@ -5561,6 +5555,10 @@ msgstr "Remover este livro das suas estantes também excluirá seus registros de
 msgid "More reading options for %(title)s"
 msgstr "Mais opções de leitura para %(title)s"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "Mais opções de leitura"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "Adicionar a lista"
@@ -6037,27 +6035,39 @@ msgstr "Pedir emprestado online"
 msgid "Search Open Library for %s"
 msgstr "Buscar %s na Open Library"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "Buscar Dentro"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "Nenhum texto de <strong>Pesquisa no livro</strong> correspondeu à sua pesquisa"
+msgid "Choose one language"
+msgstr "Escolha um idioma"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "Por volta de %(count)s resultado encontrado"
-msgstr[1] "Por volta de %(count)s resultados encontrados"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "Cerca de %(total)s resultado"
+msgstr[1] "Cerca de %(total)s resultados"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "em %(seconds)s"
-msgstr[1] "em %(seconds)s"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "%(start)s - %(end)s de cerca de %(total)s resultado"
+msgstr[1] "%(start)s - %(end)s de cerca de %(total)s resultados"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "Nenhum resultado encontrado. Tente outra palavra ou frase."
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "Nenhuma das correspondências nesta página pode ser exibida com esses filtros. Tente outra página ou remova um filtro."
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "Não há mais resultados. Tente uma página anterior."
 
 #: search/layout_options.html
 msgid "View as"
@@ -6109,19 +6119,28 @@ msgid "See results"
 msgstr "Ver resultados"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "Ver %s resultado"
+msgid "Go to full search"
+msgstr "Ir para a busca completa"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "Ver %s resultados"
+msgid "See %s book"
+msgstr "Ver %s livro"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "Ver todos os %s resultados"
+msgid "See %s books"
+msgstr "Ver %s livros"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "Ver todos os %s livros"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "Todos os %s livros"
 
 #: search/search_modal_i18n.html
 msgid "Clear all"
@@ -6149,10 +6168,6 @@ msgid "Showing %s of %s results"
 msgstr "Mostrando %s de %s resultados"
 
 #: search/search_modal_i18n.html
-msgid "Top results"
-msgstr "Principais resultados"
-
-#: search/search_modal_i18n.html
 msgid "Untitled"
 msgstr "Sem título"
 
@@ -6173,6 +6188,25 @@ msgstr "Pesquisas recentes"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "Remover \"%s\" das pesquisas recentes"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "Buscar dentro dos livros"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Buscar dentro de %s livros"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s correspondência encontrada dentro dos livros"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s correspondências encontradas dentro dos livros"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7525,28 +7559,17 @@ msgstr "Ir para a próxima seção"
 msgid "Expires"
 msgstr "Expira"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "por %(authors)s"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "%(book_count)s livros encontrados com trechos correspondentes"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "Ver todas as %(results_count)s correspondências do Pesquisa no livro"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, fuzzy, python-format
-msgid "Page: %(page)s"
-msgstr "Página %(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "Buscar dentro de %(count)s livro"
+msgstr[1] "Buscar dentro de %(count)s livros"
 
 #: IABook.html
 #, fuzzy, python-format
@@ -7592,7 +7615,7 @@ msgstr "Emprestado"
 msgid "Only a preview is available."
 msgstr "Apenas está disponível uma vista prévia."
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Bibliotecas próximas"
 
@@ -7679,7 +7702,7 @@ msgstr "Pegar emprestado o eBook a partir do Internet Archive"
 msgid "Read ebook from Internet Archive"
 msgstr "Ler eBook a partir do Internet Archive"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "Escutar"
 
@@ -8726,10 +8749,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "Verificando correspondências do Pesquisa no livro"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -10332,4 +10351,53 @@ msgstr "%(title)s - busca"
 
 #~ msgid "QR code icon"
 #~ msgstr "Ícone de código QR"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "Nenhum <strong>%(path_id)s</strong> correspondeu diretamente à sua pesquisa."
+
+#~ msgid "Add a new book?"
+#~ msgstr "Novo livro adicionado."
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "Nenhum texto de <strong>Pesquisa no livro</strong> correspondeu à sua pesquisa"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "Por volta de %(count)s resultado encontrado"
+#~ msgstr[1] "Por volta de %(count)s resultados encontrados"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "em %(seconds)s"
+#~ msgstr[1] "em %(seconds)s"
+
+#~ msgid "See %s result"
+#~ msgstr "Ver %s resultado"
+
+#~ msgid "See %s results"
+#~ msgstr "Ver %s resultados"
+
+#~ msgid "See all %s results"
+#~ msgstr "Ver todos os %s resultados"
+
+#~ msgid "Top results"
+#~ msgstr "Principais resultados"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "%(book_count)s livros encontrados com trechos correspondentes"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "Ver todas as %(results_count)s correspondências do Pesquisa no livro"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "Página %(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "Verificando correspondências do Pesquisa no livro"
 
