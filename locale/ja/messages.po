@@ -864,6 +864,10 @@ msgstr "詳細を見る"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>で"
 
+#: search/authors.html search/lists.html search/subjects.html work_search.html
+msgid "Checking Search Inside matches"
+msgstr "検索内の一致を確認中"
+
 #: work_search.html
 msgid "Search Books"
 msgstr "本を検索"
@@ -881,21 +885,21 @@ msgstr "これはスーパーライブラリアンにのみ表示されます。
 msgid "Solr Editions"
 msgstr ""
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "プレビューのみ"
 
-#: account/reading_log.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Filter by availability"
 msgstr "電子書籍の利用可否で結果をフィルター"
 
-#: openlibrary/plugins/worksearch/code.py search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "言語"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "この言語を選択"
@@ -904,11 +908,11 @@ msgstr "この言語を選択"
 msgid "Languages"
 msgstr "言語"
 
-#: search/search_modal_i18n.html work_search.html
+#: search/inside.html search/search_modal_i18n.html work_search.html
 msgid "Loading…"
 msgstr "読み込み中…"
 
-#: work_search.html
+#: search/inside.html work_search.html
 #, fuzzy
 msgid "Filter by language"
 msgstr "言語"
@@ -937,24 +941,19 @@ msgstr "Solrデバッグ："
 msgid "Full URL:"
 msgstr "完全なURL："
 
-#: work_search.html
-#, python-format
-msgid "No <strong>%(path_id)s</strong> directly matched your search."
-msgstr "検索に直接一致する<strong>%(path_id)s</strong>はありませんでした。"
+#: search/search_modal_i18n.html work_search.html
+msgid "No matching books or authors"
+msgstr "一致する本や著者が見つかりません"
 
 #: work_search.html
-msgid "Add a new book?"
-msgstr "新しい本を追加しますか？"
+msgid "Add a new book"
+msgstr "新しい本を追加"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
-msgid "Checking Search Inside matches"
-msgstr "検索内の一致を確認中"
-
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
 msgid "Authors"
 msgstr "著者"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
 msgid "Books"
 msgstr "本"
 
@@ -1360,7 +1359,7 @@ msgstr ""
 msgid "Import & Export Options"
 msgstr "インポート＆エクスポートオプション"
 
-#: BookByline.html FulltextSearchSuggestionItem.html.jinja SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "著者不明"
 
@@ -2814,10 +2813,6 @@ msgstr "OpenStaxからPDFをダウンロード"
 msgid "More at OpenStax"
 msgstr "OpenStaxでもっと見る"
 
-#: LoanStatus.html ReadButton.html book_providers/read_button.html my_books/dropper.html
-msgid "More reading options"
-msgstr "その他の読書オプション"
-
 #: book_providers/read_button.html
 #, python-format
 msgid "Listen to a reading from %s"
@@ -3312,7 +3307,7 @@ msgstr "この作品の識別子をご存知ですか？"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "これらの識別子はこの作品のすべての版に適用されます（例：Wikidata作品識別子）。ISBNやLCCNなど版固有の識別子は版タブからどうぞ。"
 
-#: FulltextSearchSuggestionItem.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html lists/widget.html my_books/dropdown_content.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "カバー：%(title)s"
@@ -5230,6 +5225,10 @@ msgstr "この本を棚から削除すると、この作品のチェックイン
 msgid "More reading options for %(title)s"
 msgstr "%(title)s のその他の読書オプション"
 
+#: ReadingOptionsMenu.html my_books/dropper.html
+msgid "More reading options"
+msgstr "その他の読書オプション"
+
 #: my_books/primary_action.html
 msgid "Add to List"
 msgstr "リストに追加"
@@ -5672,25 +5671,37 @@ msgstr "今すぐ借りる"
 msgid "Search Open Library for %s"
 msgstr "Open Libraryで%sを検索"
 
-#: FulltextSearchSuggestion.html.jinja SearchNavigation.html search/inside.html
+#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
 msgid "Search Inside"
 msgstr "本文検索"
 
 #: search/inside.html
-msgid "No <strong>Search Inside</strong> text matched your search"
-msgstr "検索に一致する<strong>本文検索</strong>のテキストは見つかりませんでした"
+msgid "Choose one language"
+msgstr "言語を1つ選択してください"
 
 #: search/inside.html
 #, python-format
-msgid "About %(count)s result found"
-msgid_plural "About %(count)s results found"
-msgstr[0] "約%(count)s件の結果が見つかりました"
+msgid "About %(total)s result"
+msgid_plural "About %(total)s results"
+msgstr[0] "約%(total)s件の結果"
 
 #: search/inside.html
 #, python-format
-msgid "in %(seconds)s second"
-msgid_plural "in %(seconds)s seconds"
-msgstr[0] "%(seconds)s秒で"
+msgid "%(start)s - %(end)s of about %(total)s result"
+msgid_plural "%(start)s - %(end)s of about %(total)s results"
+msgstr[0] "約%(total)s件中%(start)s - %(end)s件"
+
+#: search/inside.html
+msgid "No results found. Try a different word or phrase."
+msgstr "結果が見つかりませんでした。別の単語やフレーズをお試しください。"
+
+#: search/inside.html
+msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
+msgstr "このフィルターでは、このページの一致結果を表示できません。別のページを試すか、フィルターを解除してください。"
+
+#: search/inside.html
+msgid "No more results. Try an earlier page."
+msgstr "これ以上結果はありません。前のページをお試しください。"
 
 #: search/layout_options.html
 msgid "View as"
@@ -5745,19 +5756,28 @@ msgid "See results"
 msgstr "結果を見る"
 
 #: search/search_modal_i18n.html
-#, python-format
-msgid "See %s result"
-msgstr "%s件の結果を見る"
+msgid "Go to full search"
+msgstr "完全な検索へ移動"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See %s results"
-msgstr "%s件の結果を見る"
+msgid "See %s book"
+msgstr "%s冊の本を見る"
 
 #: search/search_modal_i18n.html
 #, python-format
-msgid "See all %s results"
-msgstr "%s 件の結果をすべて見る"
+msgid "See %s books"
+msgstr "%s冊の本を見る"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "See all %s books"
+msgstr "すべての%s冊の本を見る"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "All %s books"
+msgstr "すべての%s冊の本"
 
 #: search/search_modal_i18n.html
 #, fuzzy
@@ -5790,11 +5810,6 @@ msgstr "%s 件中 %s 件を表示中"
 
 #: search/search_modal_i18n.html
 #, fuzzy
-msgid "Top results"
-msgstr "結果"
-
-#: search/search_modal_i18n.html
-#, fuzzy
 msgid "Untitled"
 msgstr "タイトル"
 
@@ -5817,6 +5832,25 @@ msgstr "最近の変更"
 #, python-format
 msgid "Remove \"%s\" from recent searches"
 msgstr "「%s」を最近の検索から削除"
+
+#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
+msgid "Search inside books"
+msgstr "本の中を検索"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s冊の本の中を検索"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s match found inside books"
+msgstr "本の中で%s件の一致が見つかりました"
+
+#: search/search_modal_i18n.html
+#, python-format
+msgid "%s matches found inside books"
+msgstr "本の中で%s件の一致が見つかりました"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -7093,28 +7127,16 @@ msgstr "次のセクションへ"
 msgid "Expires"
 msgstr "有効期限"
 
+#: FulltextResultIA.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s 著"
+
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
-msgid "%(book_count)s books found with matching passages"
-msgstr "一致する箇所のある%(book_count)s冊が見つかりました"
-
-#: FulltextSearchSuggestion.html.jinja
-#, python-format
-msgid "See all %(results_count)s Search Inside Matches"
-msgstr "%(results_count)s件の本文検索結果をすべて表示"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❝"
-msgstr "❝"
-
-#: FulltextSnippet.html FulltextSuggestionSnippet.html.jinja
-msgid "❞"
-msgstr "❞"
-
-#: FulltextSuggestionSnippet.html.jinja
-#, python-format
-msgid "Page: %(page)s"
-msgstr "ページ：%(page)s"
+msgid "Search Inside %(count)s book"
+msgid_plural "Search Inside %(count)s books"
+msgstr[0] "%(count)s冊の本の中を検索"
 
 #: IABook.html
 #, python-format
@@ -7159,7 +7181,7 @@ msgstr "貸し出し中"
 msgid "Only a preview is available."
 msgstr "プレビューのみ利用可能です。"
 
-#: LocateButton.html
+#: LocateButton.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "近くの図書館"
 
@@ -7244,7 +7266,7 @@ msgstr "Internet Archiveから電子書籍を借りる"
 msgid "Read ebook from Internet Archive"
 msgstr "Internet Archiveで電子書籍を読む"
 
-#: ReadButton.html
+#: ReadingOptionsMenu.html
 msgid "Listen"
 msgstr "聴く"
 
@@ -8250,10 +8272,6 @@ msgstr "Amazon"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
 msgstr "Bookshop.org"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Checking for Search Inside matches"
-msgstr "本文検索の一致を確認中"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "This work does not appear on any lists."
@@ -9577,4 +9595,51 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "QR code icon"
 #~ msgstr "QRコードアイコン"
+
+#~ msgid "No <strong>%(path_id)s</strong> directly matched your search."
+#~ msgstr "検索に直接一致する<strong>%(path_id)s</strong>はありませんでした。"
+
+#~ msgid "Add a new book?"
+#~ msgstr "新しい本を追加しますか？"
+
+#~ msgid "No <strong>Search Inside</strong> text matched your search"
+#~ msgstr "検索に一致する<strong>本文検索</strong>のテキストは見つかりませんでした"
+
+#~ msgid "About %(count)s result found"
+#~ msgid_plural "About %(count)s results found"
+#~ msgstr[0] "約%(count)s件の結果が見つかりました"
+
+#~ msgid "in %(seconds)s second"
+#~ msgid_plural "in %(seconds)s seconds"
+#~ msgstr[0] "%(seconds)s秒で"
+
+#~ msgid "See %s result"
+#~ msgstr "%s件の結果を見る"
+
+#~ msgid "See %s results"
+#~ msgstr "%s件の結果を見る"
+
+#~ msgid "See all %s results"
+#~ msgstr "%s 件の結果をすべて見る"
+
+#~ msgid "Top results"
+#~ msgstr "結果"
+
+#~ msgid "%(book_count)s books found with matching passages"
+#~ msgstr "一致する箇所のある%(book_count)s冊が見つかりました"
+
+#~ msgid "See all %(results_count)s Search Inside Matches"
+#~ msgstr "%(results_count)s件の本文検索結果をすべて表示"
+
+#~ msgid "❝"
+#~ msgstr "❝"
+
+#~ msgid "❞"
+#~ msgstr "❞"
+
+#~ msgid "Page: %(page)s"
+#~ msgstr "ページ：%(page)s"
+
+#~ msgid "Checking for Search Inside matches"
+#~ msgstr "本文検索の一致を確認中"
 
