@@ -201,11 +201,31 @@ class TestRegressions:
         assert f.reason == "empty-plural-form"
         assert 5 in f.n or 0 in f.n
 
-    def test_translation_identical_to_english_counts_but_is_not_visible(self):
+    def test_translation_identical_to_english_is_reported_not_gating(self):
         live = _live('msgid "PR"\nmsgstr ""')
         [f] = _regressions(_cat('msgid "PR"\nmsgstr "PR"'),
                            _cat('#, fuzzy\nmsgid "PR"\nmsgstr "Anterior"'), live)
-        assert f.visible is False
+        assert f.visible is False and f.gating is False
+
+    @pytest.mark.parametrize("ol_msgstr, gates", [
+        ("Add a new series", False),   # byte-identical to the msgid: page unchanged
+        ("Add a new serieS", True),    # one character differs: page changes
+    ])
+    def test_identical_to_english_control(self, tmp_path, ol_msgstr, gates):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        entry = 'msgid "Add a new series"\nmsgstr "%s"'
+        (ol_dir).mkdir()
+        (ol_dir / "messages.pot").write_text(_po_text(entry % "", ENABLE))
+        (ol_dir / "es").mkdir()
+        (ol_dir / "es" / "messages.po").write_text(_po_text(entry % ol_msgstr, ENABLE))
+        (locale / "es").mkdir(parents=True)
+        (locale / "es" / "messages.po").write_text(
+            _po_text("#, fuzzy\n" + entry % "Añadir un nuevo rol", ENABLE))
+        out = _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", "-")
+        report = json.loads(out.stdout)
+        assert out.returncode == (1 if gates else 0), out.stdout
+        assert report["totals"]["regressions"] == (1 if gates else 0)
+        assert report["totals"]["regressions_identical_to_english"] == (0 if gates else 1)
 
     def test_visible_regression_is_flagged_visible(self):
         live = _live('msgid "Enable"\nmsgstr ""')

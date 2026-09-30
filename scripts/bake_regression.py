@@ -21,7 +21,9 @@ Findings, per language:
                        at some n for plurals, and the baked catalog renders the
                        English there: the entry is missing, fuzzy or empty, the
                        plural form n selects is empty, or the msgstr is the
-                       English text itself.
+                       English text itself. Gates only when the rendered page
+                       changes; where openlibrary's msgstr is itself the English
+                       it is reported as "identical to English", not gating.
   placeholder          a non-fuzzy baked msgstr (any plural form) whose
                        %-placeholders differ from the English it stands in for.
                        Gates unless openlibrary already ships the same defect at
@@ -212,8 +214,9 @@ class Finding:
     # False when openlibrary's msgstr is identical to the English, so losing it
     # changes nothing on the page.
     visible: bool = True
-    # Only gating findings set the exit status. A placeholder defect that
-    # openlibrary already ships in the same entry is reported but does not gate.
+    # Only gating findings set the exit status. Reported but not gating: a
+    # regression whose page is byte-identical either way (visible False), and a
+    # placeholder defect openlibrary already ships at the same n.
     gating: bool = True
     openlibrary_msgstr: str | list[str] | None = None
     baked_msgstr: str | list[str] | None = None
@@ -307,6 +310,11 @@ def find_regressions(
         lost = [n for n in ns if goes_english(n)]
         if not lost:
             continue
+        visible = any(
+            renders_translation(ol_t, ctx, msgid, msgid_plural, n)
+            and not renders_translation(baked_t, ctx, msgid, msgid_plural, n)
+            for n in lost
+        )
         findings.append(Finding(
             kind="regression",
             lang=lang,
@@ -315,11 +323,8 @@ def find_regressions(
             msgid_plural=msgid_plural,
             reason=_why_english(baked_message, lost[0]),
             n=[n for n in lost if n is not None],
-            visible=any(
-                renders_translation(ol_t, message.context, msgid, msgid_plural, n)
-                and not renders_translation(baked_t, message.context, msgid, msgid_plural, n)
-                for n in lost
-            ),
+            visible=visible,
+            gating=visible,
             openlibrary_msgstr=_jsonable(message.string),
             baked_msgstr=_jsonable(baked_message.string) if baked_message else None,
             detail=["singular"] if msgid_plural is None else [f"n={n}" for n in lost],
@@ -745,7 +750,10 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
         "baked": baked_source.describe(),
         "live_msgids": len(live),
         "totals": {
-            "regressions": sum(len(r["regressions"]) for r in languages.values()),
+            "regressions": sum(
+                1 for r in languages.values() for f in r["regressions"] if f.gating),
+            "regressions_identical_to_english": sum(
+                1 for r in languages.values() for f in r["regressions"] if not f.gating),
             "placeholder_defects_new": sum(
                 1 for r in languages.values() for f in r["placeholder_defects"] if f.gating),
             "placeholder_defects": sum(len(r["placeholder_defects"]) for r in languages.values()),
@@ -758,7 +766,7 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
             lang: {
                 "openlibrary_translated": r["openlibrary_translated"],
                 "rejected": any(f.kind == "rejected_locale" for f in r["locale_findings"]),
-                "regressions": len(r["regressions"]),
+                "regressions": sum(1 for f in r["regressions"] if f.gating),
                 "placeholder_defects_new": sum(1 for f in r["placeholder_defects"] if f.gating),
                 "placeholder_defects": len(r["placeholder_defects"]),
             }
@@ -803,22 +811,19 @@ def format_report(report: dict) -> str:
     lines.append("")
     by_reason: dict[str, int] = {}
     for f in report["findings"]:
-        if f["kind"] == "regression":
+        if f["kind"] == "regression" and f["gating"]:
             by_reason[f["reason"]] = by_reason.get(f["reason"], 0) + 1
-    invisible = sum(1 for f in report["findings"]
-                    if f["kind"] == "regression" and not f["visible"])
     lines.append(f"regressions to English: {totals['regressions']}"
                  + (f"  ({', '.join(f'{k} {v}' for k, v in sorted(by_reason.items()))})"
                     if by_reason else ""))
-    if invisible:
-        lines.append(f"  of which {invisible} lose a msgstr identical to the English,"
-                     " so the page does not change")
     lines.append(f"placeholder defects not already in openlibrary: "
                  f"{totals['placeholder_defects_new']}")
     lines.append(f"rejected locales:       {totals['rejected_locales']}")
     lines.append(f"gating total:           {totals['gating']}")
     lines.append("")
     lines.append("reported, not gating:")
+    lines.append(f"  identical to English: {totals['regressions_identical_to_english']}"
+                 " (openlibrary's msgstr is the English text, so the page is unchanged)")
     lines.append(f"  placeholder defects, all baked msgstrs: {totals['placeholder_defects']}"
                  f" ({totals['placeholder_defects'] - totals['placeholder_defects_new']}"
                  " also shipped by openlibrary today)")
