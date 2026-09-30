@@ -2,7 +2,7 @@
 
 Where [Open Library](https://openlibrary.org)'s translations are maintained.
 
-This repository holds the `.po` translation file for each language, the `messages.pot` template they are built from, translation tooling, and validation tests. Starting with [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070), the Open Library production image copies each `locale/<lang>/messages.po` from here over the matching `openlibrary/i18n/<lang>/messages.po` in the main repository. So **translation changes belong here**: an edit to one of those files in the main repository is overwritten at build.
+This repository holds the `.po` translation file for each language, the `messages.pot` template they are built from, translation tooling, and validation tests. Starting with [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070), the Open Library production image copies each `locale/<lang>/messages.po` from here over the matching `openlibrary/i18n/<lang>/messages.po` in the main repository. So **translation changes belong here**: an edit to one of those files in the main repository is overwritten at build. The one exception: a language whose file here fails the build's safety check keeps the main repository's file for that build.
 
 Until [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070) ships, the site still reads the main repository's files, so a change made here reaches openlibrary.org when it ships, not before. That delay is expected, and the change is not lost.
 
@@ -39,7 +39,7 @@ openlibrary-i18n/
 1. English strings are extracted into `openlibrary/i18n/messages.pot` in the [main repository](https://github.com/internetarchive/openlibrary) by its `generate-pot` pre-commit hook.
 2. When that file changes on `master`, the main repository's `trigger-i18n.yml` sends a `repository_dispatch` event here.
 3. `translate.yml` runs on that event (or on a manual `workflow_dispatch`; it has no schedule). It downloads the new `messages.pot`, updates every `locale/<lang>/messages.po` from it (`./i18n pull --sync`), and then an AI translation step, following `i18n-translation-instructions.md`, fills untranslated strings and opens a PR per batch of languages. The workflow then merges those PRs itself.
-4. `validate-pr.yml` runs `tests/test_po_files.py` and the format-string validators on PRs that touch `locale/` or `messages.pot`, and reports the result on the PR. **`main` has no branch protection, so a failing check does not prevent a merge.** Review is what catches a bad translation.
+4. `validate-pr.yml` runs `tests/test_po_files.py` and the format-string validators on PRs that touch `locale/` or `messages.pot`, and reports the result on the PR. The HTML-check step currently errors on any PR that changes two or more languages: its `paste -sd ' or '` joins `de` and `es` as `de es`, which `pytest -k` rejects. So change one language per PR. **`main` has no branch protection, so a failing check does not prevent a merge.** Review is what catches a bad translation.
 
 ## Contributing translations
 
