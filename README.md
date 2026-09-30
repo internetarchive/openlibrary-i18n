@@ -4,6 +4,8 @@ Where [Open Library](https://openlibrary.org)'s translations are maintained.
 
 This repository holds the `.po` translation file for each language, the `messages.pot` template they are built from, translation tooling, and validation tests. Starting with [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070), the Open Library production image copies each `locale/<lang>/messages.po` from here over the matching `openlibrary/i18n/<lang>/messages.po` in the main repository. So **translation changes belong here**: an edit to one of those files in the main repository is overwritten at build.
 
+Until [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070) ships, the site still reads the main repository's files, so a change made here reaches openlibrary.org when it ships, not before. That delay is expected, and the change is not lost.
+
 The default branch is `main`.
 
 ## Language coverage
