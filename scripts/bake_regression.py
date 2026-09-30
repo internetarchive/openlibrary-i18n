@@ -6,11 +6,11 @@ baked msgstrs have broken %-placeholders?
 
   ./i18n bake-regression [--openlibrary-ref master] [--ref HEAD] [--json out.json]
 
-What "baking" means here is openlibrary#13070 as of c3f58ba: at image build,
+What "baking" means here is openlibrary#13070 as of 26b45e8: at image build,
 install_translations() copies locale/<lang>/messages.po from this repo over
 openlibrary/i18n/<lang>/messages.po for every <lang> here, creating the
-directory if needed, unless the file fails check_po_file() (it does not parse
-or compile, or a compiled msgstr raises when formatted), in which case that
+directory if needed, unless the file fails check_po_file() (it does not parse,
+compile or load, or a compiled msgstr raises when formatted), in which case that
 locale keeps openlibrary's committed file. openlibrary then compiles each
 catalog with babel's write_mo() at its default use_fuzzy=False. So both sides
 are compiled with write_mo() and loaded with babel.support.Translations -- the
@@ -568,11 +568,12 @@ def live_keys_from_pot(pot: Catalog) -> set[tuple[str | None, str]]:
 
 def _format_args(message: Message):
     """
-    Stand-in arguments shaped like the ones the msgid expects at runtime.
-    Mirrors openlibrary#13070 (c3f58ba) openlibrary/i18n/__init__.py _format_args.
+    Stand-in arguments shaped like the ones the msgid expects at runtime. A msgid
+    with no placeholders gets {}: Jinja's newstyle gettext applies `% variables`
+    even when there are none. Mirrors openlibrary#13070 (26b45e8) _format_args.
     """
     if not message.python_format:
-        return None
+        return {}
     ids = message.id if isinstance(message.id, (list, tuple)) else [message.id]
     names: set[str] = set()
     positional = 0
@@ -584,28 +585,32 @@ def _format_args(message: Message):
         return dict.fromkeys(names, 1)
     if positional:
         return (1,) * positional
-    return None
+    return {}
 
 
 def install_rejections(data: bytes) -> list[str]:
     """
     Why openlibrary#13070's install_translations() would refuse this .po and keep
-    openlibrary's committed file instead: it does not parse or compile, or a
-    compiled (non-fuzzy) msgstr raises when formatted. Mirrors check_po_file at
-    c3f58ba; line numbers are dropped so two runs compare equal.
+    openlibrary's committed file instead: it does not parse, compile or load the
+    way load_translations() loads it, or a compiled (non-fuzzy) msgstr raises when
+    formatted, or renders a dict's repr through a positional placeholder. Mirrors
+    check_po_file at 26b45e8; line numbers are dropped so two runs compare equal.
     """
     try:
         catalog = read_po(BytesIO(data), abort_invalid=True)
-        write_mo(BytesIO(), catalog)
+        mo = BytesIO()
+        write_mo(mo, catalog)
+        mo.seek(0)
+        translations = Translations(mo)
+        for n in range(PLURAL_PROBE_LIMIT):
+            translations.plural(n)
     except Exception as e:
-        return [f"does not parse/compile: {type(e).__name__}: {e}"]
+        return [f"does not parse/compile/load: {type(e).__name__}: {e}"]
     errors = []
     for message in catalog:
         if not message.id or message.fuzzy:
             continue
         args = _format_args(message)
-        if args is None:
-            continue
         strings = message.string if isinstance(message.string, (list, tuple)) else [message.string]
         for msgstr in strings:
             if not msgstr:
@@ -614,6 +619,13 @@ def install_rejections(data: bytes) -> list[str]:
                 msgstr % args
             except (TypeError, ValueError, KeyError) as e:
                 errors.append(f"{msgstr!r}: {type(e).__name__}: {e}")
+                continue
+            # "%s" % {...} does not raise; it renders the dict's repr.
+            if isinstance(args, dict) and any(
+                m.group(0) != "%%" and not m.group(0).startswith("%(")
+                for m in _CFMT_RE.finditer(msgstr)
+            ):
+                errors.append(f"{msgstr!r}: positional placeholder where the msgid has none")
     return errors
 
 

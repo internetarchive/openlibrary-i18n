@@ -622,6 +622,20 @@ class TestBakeRejection:
         assert br.install_rejections(_po_text("#, fuzzy\n" + self.CRASH).encode()) == []
         assert br.install_rejections(_po_text(self.CRASH).encode())
 
+    def test_placeholder_free_msgid_is_formatted_with_an_empty_dict(self):
+        # Jinja's newstyle gettext applies % variables even when there are none.
+        assert br.install_rejections(_po_text('msgid "Done"\nmsgstr "Hecho %(x)s"').encode())
+        assert br.install_rejections(_po_text('msgid "100%% done"\nmsgstr "100%% hecho"').encode()) == []
+
+    def test_positional_placeholder_under_named_arguments_renders_a_dict(self):
+        # "%s" % {"name": 1} does not raise; it shows "{'name': 1}" on the page.
+        assert br.install_rejections(_po_text('msgid "by %(name)s"\nmsgstr "por %s"').encode())
+
+    def test_plural_rule_that_fails_to_load_rejects(self):
+        text = _po_text('msgid "Enable"\nmsgstr "Activar"',
+                        plural_forms="nplurals=2; plural=(n / 0);", language="es")
+        assert br.install_rejections(text.encode())
+
     def test_unparseable_file_is_a_rejection_not_an_error(self, tmp_path):
         ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
         _pot(ol_dir, ENABLE)
