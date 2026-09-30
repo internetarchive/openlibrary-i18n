@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 from io import BytesIO
@@ -17,7 +18,9 @@ import pytest
 from babel.messages.pofile import read_po
 
 _ROOT = Path(__file__).parent.parent
-_SCRIPT = _ROOT / "scripts" / "bake_regression.py"
+# Overridable so the CLI-level tests can be pointed at an older revision of the
+# script to watch them fail first.
+_SCRIPT = Path(os.environ.get("BAKE_REGRESSION_SCRIPT", _ROOT / "scripts" / "bake_regression.py"))
 _spec = importlib.util.spec_from_file_location("bake_regression", _SCRIPT)
 br = importlib.util.module_from_spec(_spec)
 sys.modules["bake_regression"] = br  # dataclasses resolve types via sys.modules
@@ -295,7 +298,9 @@ class TestPluralRule:
 class TestPlaceholderGating:
     """A placeholder defect gates only when openlibrary does not already ship it."""
 
-    ENTRY_BAD = 'msgid "by %(name)s"\nmsgstr "par %(nom)s"'
+    # Drops the placeholder: wrong on the page, but formatting does not raise,
+    # so the bake still installs the locale.
+    ENTRY_BAD = 'msgid "by %(name)s"\nmsgstr "par"'
     ENTRY_GOOD = 'msgid "by %(name)s"\nmsgstr "par %(name)s"'
 
     def _run(self, tmp_path, ol_entry):
@@ -358,7 +363,7 @@ class TestCLI:
         assert str(ol_dir) in out.stdout and str(locale) in out.stdout
 
     def test_placeholder_defect_alone_fails(self, tmp_path):
-        entry = 'msgid "by %(name)s"\nmsgstr "par %(nom)s"'
+        entry = 'msgid "by %(name)s"\nmsgstr "par"'
         ol_dir, locale = _write_pair(tmp_path, ol={"fr": [ENABLE]},
                                      baked={"fr": [ENABLE, entry]})
         out = _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", "-")
@@ -374,7 +379,7 @@ class TestCLI:
         assert same.returncode == 0, same.stdout
         assert "not in baseline:        0" in same.stdout
 
-        entry = 'msgid "by %(name)s"\nmsgstr "par %(nom)s"'
+        entry = 'msgid "by %(name)s"\nmsgstr "por"'
         (locale / "es" / "messages.po").write_text(_po_text(ENABLE_FUZZY, entry))
         (ol_dir / "messages.pot").write_text(
             _po_text('msgid "Enable"\nmsgstr ""', 'msgid "by %(name)s"\nmsgstr ""'))
@@ -382,12 +387,14 @@ class TestCLI:
         assert worse.returncode == 1
         assert "not in baseline:        1" in worse.stdout
 
-    def test_locale_without_openlibrary_directory_is_a_bake_error(self, tmp_path):
+    def test_locale_without_openlibrary_directory_is_installed_as_new(self, tmp_path):
+        # openlibrary#13070's install_translations() creates the directory.
         ol_dir, locale = _write_pair(tmp_path, ol={"es": [ENABLE]},
                                      baked={"es": [ENABLE], "zz": [ENABLE]})
         out = _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", "-")
-        assert out.returncode == 1
-        assert json.loads(out.stdout)["totals"]["bake_errors"] == 1
+        assert out.returncode == 0, out.stdout
+        [f] = [f for f in json.loads(out.stdout)["findings"] if f["lang"] == "zz"]
+        assert f["kind"] == "new_locale" and f["gating"] is False
 
     def test_openlibrary_only_locale_is_reported_not_counted(self, tmp_path):
         ol_dir, locale = _write_pair(tmp_path, ol={"es": [ENABLE], "az": [ENABLE]},
@@ -423,3 +430,237 @@ class TestCLI:
             capture_output=True, text=True, cwd=_ROOT)
         assert out.returncode == 1, out.stderr
         assert "regressions to English: 1" in out.stdout
+
+
+# ---------------------------------------------------------------------------
+# Ways a real regression could read as a pass (adversarial review of #104)
+# ---------------------------------------------------------------------------
+
+FR_FORMS = "nplurals=2; plural=(n > 1);"
+
+
+def _write(root: Path, lang: str, entries: list[str], plural_forms=TWO_FORMS, language="de"):
+    (root / lang).mkdir(parents=True, exist_ok=True)
+    (root / lang / "messages.po").write_text(
+        _po_text(*entries, plural_forms=plural_forms, language=language))
+
+
+def _pot(ol_dir: Path, *entries: str):
+    ol_dir.mkdir(parents=True, exist_ok=True)
+    (ol_dir / "messages.pot").write_text(_po_text(*entries))
+
+
+def _run(ol_dir, locale, *extra):
+    out = _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", "-", *extra)
+    report = json.loads(out.stdout) if out.returncode in (0, 1) else None
+    return out.returncode, report, out
+
+
+DAYS_POT = DAYS_ID + '\nmsgstr[0] ""\nmsgstr[1] ""'
+
+
+class TestBaselineComparesWhatIsWrong:
+    def _pl(self, tmp_path, base_entry, head_entry):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, WAITING_ID + '\nmsgstr[0] ""\nmsgstr[1] ""')
+        _write(ol_dir, "pl", [WAITING_OL], plural_forms=None)
+        _write(locale, "pl", [base_entry], plural_forms=PL_FORMS, language="pl")
+        base = tmp_path / "base.json"
+        _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", base)
+        _write(locale, "pl", [head_entry], plural_forms=PL_FORMS, language="pl")
+        return _run(ol_dir, locale, "--baseline", base)
+
+    def test_more_forms_going_english_on_a_regressing_entry_is_new(self, tmp_path):
+        code, report, out = self._pl(tmp_path, WAITING_PL_EMPTY_3RD, "#, fuzzy\n" + WAITING_PL_FULL)
+        assert code == 1, out.stdout
+        assert report["totals"]["new_findings"] == 1
+
+    def test_fewer_forms_going_english_is_not_new(self, tmp_path):
+        emptier = WAITING_ID + '\nmsgstr[0] "Czeka %(count)d osoba na tę książkę."\nmsgstr[1] ""\nmsgstr[2] ""'
+        code, report, out = self._pl(tmp_path, emptier, WAITING_PL_EMPTY_3RD)
+        assert code == 0, out.stdout
+
+    def _ru(self, tmp_path, base_forms, head_forms):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        # openlibrary leaves the plural untranslated; "Enable" keeps its side live.
+        _pot(ol_dir, DAYS_POT, ENABLE)
+        _write(ol_dir, "ru", [DAYS_POT, ENABLE], plural_forms=RU_FORMS, language="ru")
+        entry = lambda forms: DAYS_ID + "".join(f'\nmsgstr[{i}] "{f}"' for i, f in enumerate(forms))
+        _write(locale, "ru", [entry(base_forms), ENABLE], plural_forms=RU_FORMS, language="ru")
+        base = tmp_path / "base.json"
+        _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", base)
+        _write(locale, "ru", [entry(head_forms), ENABLE], plural_forms=RU_FORMS, language="ru")
+        return _run(ol_dir, locale, "--baseline", base)
+
+    def test_second_placeholder_defect_on_an_entry_with_one_is_new(self, tmp_path):
+        good = ["Ожидает 1 день", "Ожидает %(count)d дня", "Ожидает %(count)d дней"]
+        worse = ["Ожидает 1 день", "Ожидает %(count)d дня", "Ожидает много дней"]
+        code, report, out = self._ru(tmp_path, good, worse)
+        assert code == 1, out.stdout
+        assert report["totals"]["new_findings"] == 1
+
+    def test_partly_fixed_placeholder_defect_is_not_new(self, tmp_path):
+        bad = ["Ожидает 1 день", "Ожидает %(count)d дня", "Ожидает много дней"]
+        better = ["Ожидает 1 день", "Ожидает %(count)d дня", "Ожидает %(count)d дней"]
+        code, report, out = self._ru(tmp_path, bad, better)
+        assert code == 0, out.stdout
+
+    def test_same_msgid_in_another_msgctxt_is_a_different_finding(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        a = 'msgctxt "a"\nmsgid "Open"\nmsgstr "Abrir"'
+        b = 'msgctxt "b"\nmsgid "Open"\nmsgstr "Abierto"'
+        _pot(ol_dir, a, b)
+        _write(ol_dir, "es", [a, b])
+        _write(locale, "es", ["#, fuzzy\n" + a, b])
+        base = tmp_path / "base.json"
+        _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", base)
+        _write(locale, "es", ["#, fuzzy\n" + a, "#, fuzzy\n" + b])
+        code, report, out = _run(ol_dir, locale, "--baseline", base)
+        assert code == 1, out.stdout
+        assert report["totals"]["new_findings"] == 1
+
+
+class TestAlreadyShippedComparesWhatIsWrong:
+    def test_defect_beyond_what_openlibrary_ships_gates(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, DAYS_POT)
+        # openlibrary shows "1 jour" at n=0: a defect it already ships.
+        ol_entry = DAYS_ID + '\nmsgstr[0] "1 jour"\nmsgstr[1] "%(count)d jours"'
+        _write(ol_dir, "fr", [ol_entry], plural_forms=FR_FORMS, language="fr")
+        # The bake keeps that and also drops the count for n >= 2.
+        baked = DAYS_ID + '\nmsgstr[0] "1 jour"\nmsgstr[1] "des jours"'
+        _write(locale, "fr", [baked], plural_forms=FR_FORMS, language="fr")
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, out.stdout
+        assert report["totals"]["placeholder_defects_new"] == 1
+
+    def test_same_defect_openlibrary_ships_does_not_gate(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, DAYS_POT)
+        entry = DAYS_ID + '\nmsgstr[0] "1 jour"\nmsgstr[1] "%(count)d jours"'
+        _write(ol_dir, "fr", [entry], plural_forms=FR_FORMS, language="fr")
+        _write(locale, "fr", [entry], plural_forms=FR_FORMS, language="fr")
+        code, report, out = _run(ol_dir, locale)
+        assert code == 0, out.stdout
+        assert report["totals"]["placeholder_defects"] == 1
+
+    def test_openlibrary_defect_on_another_entry_does_not_excuse_this_one(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        a = 'msgid "by %(name)s"\nmsgstr "par"'
+        b_good = 'msgid "for %(name)s"\nmsgstr "pour %(name)s"'
+        b_bad = 'msgid "for %(name)s"\nmsgstr "pour"'
+        _pot(ol_dir, a, b_good)
+        _write(ol_dir, "fr", [a, b_good])
+        _write(locale, "fr", [a, b_bad])
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, out.stdout
+        assert report["totals"]["placeholder_defects_new"] == 1
+
+
+class TestRendersEnglish:
+    def test_msgstr_that_is_the_english_text_is_a_regression(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, 'msgid "Borrow"\nmsgstr ""')
+        _write(ol_dir, "es", ['msgid "Borrow"\nmsgstr "Prestar"'])
+        _write(locale, "es", ['msgid "Borrow"\nmsgstr "Borrow"'])
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, out.stdout
+        assert [f["reason"] for f in report["findings"]] == ["english-copy"]
+
+    def test_plural_msgid_in_context_is_looked_up_in_context(self):
+        # The baked side has the plural only without the context openlibrary asks for.
+        ctx_entry = 'msgctxt "queue"\n' + WAITING_OL
+        live = _live('msgctxt "queue"\n' + WAITING_ID + '\nmsgstr[0] ""\nmsgstr[1] ""')
+        [f] = _regressions(_cat(ctx_entry), _cat(WAITING_OL), live)
+        assert f.msgctxt == "queue"
+
+    def test_singular_in_context_reports_the_baked_entry_in_context(self):
+        ol = _cat('msgctxt "button"\nmsgid "Enable"\nmsgstr "Activar"')
+        baked = _cat('msgctxt "button"\n' + ENABLE_FUZZY, ENABLE)
+        live = _live('msgctxt "button"\nmsgid "Enable"\nmsgstr ""')
+        [f] = _regressions(ol, baked, live)
+        assert f.reason == "fuzzy" and f.baked_msgstr == "Ejemplo"
+
+    def test_form_only_the_baked_rule_selects_is_probed(self):
+        # openlibrary: 2 forms; baked: 3 forms whose middle form is empty.
+        live = _live(WAITING_ID + '\nmsgstr[0] ""\nmsgstr[1] ""')
+        baked = WAITING_ID + ('\nmsgstr[0] "Czeka %(count)d osoba na tę książkę."\nmsgstr[1] ""'
+                              '\nmsgstr[2] "Czeka %(count)d osób na tę książkę."')
+        [f] = _regressions(_cat(WAITING_OL, plural_forms=None),
+                           _cat(baked, plural_forms=PL_FORMS, language="pl"), live)
+        assert 2 in f.n and 5 not in f.n
+
+
+class TestBakeRejection:
+    """openlibrary#13070 keeps openlibrary's file for a locale whose .po would crash a render."""
+
+    CRASH = 'msgid "by %(name)s"\nmsgstr "par %(nom)s"'
+
+    def test_render_crash_rejects_the_locale_and_gates(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, ENABLE, 'msgid "by %(name)s"\nmsgstr ""')
+        _write(ol_dir, "fr", [ENABLE, self.CRASH])
+        _write(locale, "fr", [ENABLE, self.CRASH])
+        # openlibrary ships the very same msgstr, so it is not a new placeholder
+        # defect; the new harm is that this repo's whole fr is not baked.
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, out.stdout
+        assert report["languages"]["fr"]["rejected"] is True
+        assert report["totals"]["rejected_locales"] == 1
+
+    def test_crash_on_an_entry_openlibrary_ships_with_a_lesser_defect(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, DAYS_POT)
+        _write(ol_dir, "fr", [DAYS_ID + '\nmsgstr[0] "1 jour"\nmsgstr[1] "%(count)d jours"'],
+               plural_forms=FR_FORMS, language="fr")
+        _write(locale, "fr", [DAYS_ID + '\nmsgstr[0] "1 jour"\nmsgstr[1] "%(nombre)d jours"'],
+               plural_forms=FR_FORMS, language="fr")
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, out.stdout
+
+    def test_fuzzy_crash_does_not_reject(self):
+        assert br.install_rejections(_po_text("#, fuzzy\n" + self.CRASH).encode()) == []
+        assert br.install_rejections(_po_text(self.CRASH).encode())
+
+    def test_unparseable_file_is_a_rejection_not_an_error(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, ENABLE)
+        _write(ol_dir, "es", [ENABLE])
+        (locale / "es").mkdir(parents=True)
+        (locale / "es" / "messages.po").write_text(_po_text('msgid "a"\nthis is not po\nmsgstr "b"'))
+        code, report, out = _run(ol_dir, locale)
+        assert code == 1, (out.stdout, out.stderr)
+        assert report["languages"]["es"]["rejected"] is True
+
+
+class TestNotLiveIsAnError:
+    def test_one_empty_openlibrary_language_is_an_error(self, tmp_path):
+        ol_dir, locale = tmp_path / "ol", tmp_path / "locale"
+        _pot(ol_dir, ENABLE)
+        _write(ol_dir, "es", [ENABLE])
+        (ol_dir / "de").mkdir()
+        (ol_dir / "de" / "messages.po").write_bytes(b"")
+        _write(locale, "es", [ENABLE])
+        _write(locale, "de", ["#, fuzzy\n" + ENABLE])
+        code, _, out = _run(ol_dir, locale)
+        assert code == 2, out.stdout
+
+    def test_baseline_against_another_openlibrary_is_an_error(self, tmp_path):
+        ol_dir, locale = _write_pair(tmp_path, ol={"es": [ENABLE]}, baked={"es": [ENABLE_FUZZY]})
+        base = tmp_path / "base.json"
+        _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", base)
+        other = tmp_path / "ol2"
+        other.mkdir()
+        (other / "messages.pot").write_text((ol_dir / "messages.pot").read_text())
+        _write(other, "es", [ENABLE])
+        code, _, out = _run(other, locale, "--baseline", base)
+        assert code == 2, out.stdout
+
+    def test_openlibrary_side_that_changed_under_the_baseline_is_an_error(self, tmp_path):
+        ol_dir, locale = _write_pair(tmp_path, ol={"es": [ENABLE, 'msgid "Deploy"\nmsgstr "Implementar"']},
+                                     baked={"es": [ENABLE_FUZZY]})
+        base = tmp_path / "base.json"
+        _cli("--openlibrary-dir", ol_dir, "--locale-dir", locale, "--json", base)
+        _write(ol_dir, "es", [ENABLE])
+        code, _, out = _run(ol_dir, locale, "--baseline", base)
+        assert code == 2, out.stdout

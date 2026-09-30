@@ -3,9 +3,17 @@ name: Bake regression
 # Would baking this repo into openlibrary (openlibrary#13070) turn strings that
 # openlibrary shows translated into English, or ship broken placeholders?
 #
-# On a pull request this fails only on findings the PR's base does not already
-# have: a red run means "this PR makes the bake worse". The absolute numbers are
-# in the job summary. It is not a required check.
+# Each run compares a commit with the one before it, against one openlibrary
+# commit, and fails only on findings the earlier commit does not already have:
+# red means "this change makes the bake worse". The absolute numbers are in the
+# job summary. It is not a required check.
+#
+#   pull_request   the PR's merge commit vs its first parent (main as merged into)
+#   push to main   the pushed commit vs the one it replaced
+#   schedule       main vs main as of 25 hours ago. translate.yml merges its PRs
+#                  with github.token, and pushes made with that token trigger no
+#                  workflows, so without this a bot merge would never be measured.
+#   dispatch       absolute: fails if main has any gating finding
 
 on:
   pull_request:
@@ -17,6 +25,10 @@ on:
       - "scripts/bake_regression.py"
       - "tests/test_bake_regression.py"
       - ".github/workflows/bake-regression.yml"
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
   workflow_dispatch:
     inputs:
       openlibrary_ref:
@@ -48,18 +60,45 @@ jobs:
 
       - name: Resolve the openlibrary commit once, for both runs
         id: ol
+        env:
+          REF: ${{ inputs.openlibrary_ref || 'master' }}
         run: |
-          REF="${{ inputs.openlibrary_ref || 'master' }}"
-          SHA=$(git ls-remote https://github.com/internetarchive/openlibrary "refs/heads/$REF" | cut -f1)
-          [ -n "$SHA" ] || SHA="$REF"
+          set -euo pipefail
+          if [[ "$REF" =~ ^[0-9a-f]{40}$ ]]; then
+            SHA="$REF"
+          else
+            SHA=$(git ls-remote https://github.com/internetarchive/openlibrary "refs/heads/$REF" | cut -f1)
+          fi
+          # Never fall back to a branch name: two runs would resolve it separately.
+          [[ "$SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "cannot resolve openlibrary $REF"; exit 1; }
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
 
-      - name: Base (what main bakes today)
-        if: github.event_name == 'pull_request'
+      - name: Choose the commit to compare against
+        id: base
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          case "$EVENT" in
+            pull_request) BASE=$(git rev-parse HEAD^1) ;;
+            push) BASE="$BEFORE" ;;
+            schedule) BASE=$(git rev-list -1 --before="25 hours ago" HEAD) ;;
+            *) BASE="" ;;
+          esac
+          # A new branch (all zeros) or no commit that old: measure absolutely.
+          if [[ "$BASE" =~ ^0+$ ]] || ! git cat-file -e "${BASE:-none}^{commit}" 2>/dev/null; then
+            BASE=""
+          fi
+          echo "sha=$BASE" >> "$GITHUB_OUTPUT"
+          echo "comparing $(git rev-parse HEAD) against ${BASE:-nothing (absolute)}"
+
+      - name: Base (the commit before this change)
+        if: steps.base.outputs.sha != ''
         run: |
           set +e
           ./i18n bake-regression --openlibrary-ref "${{ steps.ol.outputs.sha }}" \
-            --ref "${{ github.event.pull_request.base.sha }}" --json base.json > base.txt
+            --ref "${{ steps.base.outputs.sha }}" --json base.json > base.txt
           code=$?
           cat base.txt
           # 0 or 1 are results; 2 means the check did not run, which must not pass.

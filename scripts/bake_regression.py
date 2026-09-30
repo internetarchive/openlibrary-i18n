@@ -6,36 +6,44 @@ baked msgstrs have broken %-placeholders?
 
   ./i18n bake-regression [--openlibrary-ref master] [--ref HEAD] [--json out.json]
 
-What "baking" means here is openlibrary#13070: at image build, olbase copies
-locale/<lang>/messages.po from this repo over openlibrary/i18n/<lang>/messages.po
-for every <lang> directory present here, then openlibrary compiles each catalog
-with babel's write_mo() at its default use_fuzzy=False. So both sides are
-compiled with write_mo() and loaded with babel.support.Translations -- the same
-calls openlibrary makes -- and asked for each string, rather than inferring
-from msgstr text what gettext would do.
+What "baking" means here is openlibrary#13070 as of c3f58ba: at image build,
+install_translations() copies locale/<lang>/messages.po from this repo over
+openlibrary/i18n/<lang>/messages.po for every <lang> here, creating the
+directory if needed, unless the file fails check_po_file() (it does not parse
+or compile, or a compiled msgstr raises when formatted), in which case that
+locale keeps openlibrary's committed file. openlibrary then compiles each
+catalog with babel's write_mo() at its default use_fuzzy=False. So both sides
+are compiled with write_mo() and loaded with babel.support.Translations -- the
+same calls openlibrary makes -- and asked for each string.
 
 Findings, per language:
-  regression           openlibrary's compiled catalog holds a translation for
-                       (msgctxt, msgid), at some n for plurals, and the baked
-                       catalog compiles to the English there: the entry is
-                       missing, fuzzy, empty, or the plural form n selects is
-                       empty or absent.
+  regression           openlibrary renders a translation for (msgctxt, msgid),
+                       at some n for plurals, and the baked catalog renders the
+                       English there: the entry is missing, fuzzy or empty, the
+                       plural form n selects is empty, or the msgstr is the
+                       English text itself.
   placeholder          a non-fuzzy baked msgstr (any plural form) whose
                        %-placeholders differ from the English it stands in for.
-                       Gates only when openlibrary's version of the same entry
-                       does not have the defect; the absolute count is reported.
+                       Gates unless openlibrary already ships the same defect at
+                       the same n; the absolute count is reported.
+  rejected_locale      the bake would refuse this repo's file and keep
+                       openlibrary's, so none of this repo's work on the locale
+                       ships. Gates.
   plural_rule          a Plural-Forms rule that can never select one of its
                        declared forms. Reported, not gating.
-  bake_error           a locale here with no openlibrary/i18n/<lang>/ directory:
-                       the Dockerfile's cp has no destination and the build fails.
+  new_locale           a locale openlibrary does not have; the bake installs it.
+                       Reported, not gating.
+
+Findings are compared by what exactly is wrong (which n, which placeholders),
+not only by entry: a new defect on an entry that already has one is new.
 
 Only msgids in openlibrary's messages.pot at the compared ref are considered;
 translations of msgids no template requests are never rendered.
 
 Exit status: 0 no gating findings, 1 gating findings (with --baseline, only
-those not in the baseline),
-2 the check could not run (fetch failure, empty input). An empty openlibrary
-side is treated as an error, never as "no regressions".
+those the baseline does not already include), 2 the check could not run
+(fetch failure, an empty openlibrary catalog, or a baseline made against a
+different openlibrary side). An error never reads as "no regressions".
 """
 from __future__ import annotations
 
@@ -64,6 +72,11 @@ RAW_URL = "https://raw.githubusercontent.com/{repo}/{sha}/openlibrary/i18n/{path
 
 # Large enough that every plural rule in CLDR has shown each of its forms.
 PLURAL_PROBE_LIMIT = 1000
+
+# The n values a finding's detail is recorded at, so two runs (base and head, or
+# openlibrary and baked) describe a plural entry at the same n whatever their
+# plural rules. Covers every CLDR distinction up to n % 100 and n % 10.
+DETAIL_NS = tuple(range(0, 112))
 
 _FALLBACK = "\x00bake-regression-fallback\x00"
 
@@ -204,9 +217,32 @@ class Finding:
     gating: bool = True
     openlibrary_msgstr: str | list[str] | None = None
     baked_msgstr: str | list[str] | None = None
+    # What exactly is wrong, as comparable strings: "n=5" for a plural regressing
+    # at n=5, "n=21:%(count)d" for a placeholder defect at n=21, and so on. A
+    # finding is only "the same" as another if its detail is a subset of theirs,
+    # so a new defect on an entry that already has one is still new.
+    detail: list[str] = field(default_factory=list)
 
     def key(self) -> tuple:
         return (self.kind, self.lang, self.msgctxt or "", self.msgid)
+
+    def covered_by(self, others: dict[tuple, set[str]]) -> bool:
+        """True if an existing finding for this entry already includes all of this one."""
+        known = others.get(self.key())
+        return known is not None and set(self.detail) <= known
+
+
+def _detail_index(findings) -> dict[tuple, set[str]]:
+    """key -> union of detail, from Finding objects or report dicts."""
+    index: dict[tuple, set[str]] = {}
+    for f in findings:
+        if isinstance(f, Finding):
+            key, detail = f.key(), f.detail
+        else:
+            key = (f["kind"], f["lang"], f["msgctxt"] or "", f["msgid"])
+            detail = f.get("detail") or []
+        index.setdefault(key, set()).update(detail)
+    return index
 
 
 def _split_id(message: Message) -> tuple[str, str | None]:
@@ -235,7 +271,7 @@ def _why_english(message: Message | None, n: int | None) -> str:
         return "empty"
     if n is not None:
         return "not-plural"
-    return "unknown"
+    return "english-copy"
 
 
 def find_regressions(
@@ -246,7 +282,7 @@ def find_regressions(
 ) -> list[Finding]:
     ol_t = compile_catalog(openlibrary)
     baked_t = compile_catalog(baked)
-    probes = plural_probes(ol_t, baked_t)
+    probes = sorted(set(plural_probes(ol_t, baked_t)) | set(DETAIL_NS))
     findings = []
     for message in openlibrary:
         if not message.id:
@@ -256,11 +292,19 @@ def find_regressions(
             continue
         ns = [None] if msgid_plural is None else probes
         baked_message = baked.get(msgid, context=message.context)
-        lost = [
-            n for n in ns
-            if has_translation(ol_t, message, message.context, msgid, msgid_plural, n)
-            and not has_translation(baked_t, baked_message, message.context, msgid, msgid_plural, n)
-        ]
+        ctx = message.context
+
+        def goes_english(n):
+            if not has_translation(ol_t, message, ctx, msgid, msgid_plural, n):
+                return False
+            if not has_translation(baked_t, baked_message, ctx, msgid, msgid_plural, n):
+                return True
+            # A non-fuzzy msgstr that is the English text: openlibrary showed a
+            # translation and the bake shows English.
+            return (renders_translation(ol_t, ctx, msgid, msgid_plural, n)
+                    and not renders_translation(baked_t, ctx, msgid, msgid_plural, n))
+
+        lost = [n for n in ns if goes_english(n)]
         if not lost:
             continue
         findings.append(Finding(
@@ -278,6 +322,7 @@ def find_regressions(
             ),
             openlibrary_msgstr=_jsonable(message.string),
             baked_msgstr=_jsonable(baked_message.string) if baked_message else None,
+            detail=["singular"] if msgid_plural is None else [f"n={n}" for n in lost],
         ))
     return findings
 
@@ -289,6 +334,11 @@ def placeholder_signature(s: str) -> tuple[frozenset[str], tuple[str, ...]]:
         frozenset(x for x in specs if x.startswith("%(")),
         tuple(x for x in specs if not x.startswith("%(")),
     )
+
+
+def _sig_text(sig: tuple[frozenset[str], tuple[str, ...]]) -> str:
+    named, positional = sig
+    return " ".join(sorted(named) + list(positional)) or "none"
 
 
 def find_placeholder_defects(
@@ -305,6 +355,7 @@ def find_placeholder_defects(
     also carry no placeholders, as Arabic's zero form does ("no books").
     """
     forms = forms_selected(baked)
+    form_at = {n: form for form, ns in forms.items() for n in ns}
     no_placeholders = (frozenset(), ())
     findings = []
     for message in baked:
@@ -321,6 +372,7 @@ def find_placeholder_defects(
                     kind="placeholder", lang=lang, msgctxt=message.context, msgid=msgid,
                     reason="msgstr placeholders differ from msgid",
                     baked_msgstr=message.string,
+                    detail=[f"singular:{_sig_text(placeholder_signature(message.string))}"],
                 ))
             continue
         strings = message.string if isinstance(message.string, (list, tuple)) else (message.string,)
@@ -346,6 +398,10 @@ def find_placeholder_defects(
                        % ",".join(map(str, bad_forms)),
                 n=sorted(set(bad_n)),
                 baked_msgstr=list(strings),
+                detail=[
+                    f"n={n}:{_sig_text(placeholder_signature(strings[form_at[n]]))}"
+                    for n in DETAIL_NS if form_at.get(n) in bad_forms
+                ],
             ))
     return findings
 
@@ -510,12 +566,58 @@ def live_keys_from_pot(pot: Catalog) -> set[tuple[str | None, str]]:
     return {(m.context, _split_id(m)[0]) for m in pot if m.id}
 
 
-def check_language(lang: str, openlibrary: Catalog, baked: Catalog, live: set) -> dict:
-    regressions = find_regressions(lang, openlibrary, baked, live)
-    placeholders = find_placeholder_defects(lang, baked, live)
-    already_shipped = {f.key() for f in find_placeholder_defects(lang, openlibrary, live)}
-    for f in placeholders:
-        f.gating = f.key() not in already_shipped
+def _format_args(message: Message):
+    """
+    Stand-in arguments shaped like the ones the msgid expects at runtime.
+    Mirrors openlibrary#13070 (c3f58ba) openlibrary/i18n/__init__.py _format_args.
+    """
+    if not message.python_format:
+        return None
+    ids = message.id if isinstance(message.id, (list, tuple)) else [message.id]
+    names: set[str] = set()
+    positional = 0
+    for msgid in ids:
+        pieces = [m.group(0) for m in _CFMT_RE.finditer(str(msgid)) if m.group(0) != "%%"]
+        names.update(p[2:p.index(")")] for p in pieces if p.startswith("%("))
+        positional = max(positional, sum(1 for p in pieces if not p.startswith("%(")))
+    if names:
+        return dict.fromkeys(names, 1)
+    if positional:
+        return (1,) * positional
+    return None
+
+
+def install_rejections(data: bytes) -> list[str]:
+    """
+    Why openlibrary#13070's install_translations() would refuse this .po and keep
+    openlibrary's committed file instead: it does not parse or compile, or a
+    compiled (non-fuzzy) msgstr raises when formatted. Mirrors check_po_file at
+    c3f58ba; line numbers are dropped so two runs compare equal.
+    """
+    try:
+        catalog = read_po(BytesIO(data), abort_invalid=True)
+        write_mo(BytesIO(), catalog)
+    except Exception as e:
+        return [f"does not parse/compile: {type(e).__name__}: {e}"]
+    errors = []
+    for message in catalog:
+        if not message.id or message.fuzzy:
+            continue
+        args = _format_args(message)
+        if args is None:
+            continue
+        strings = message.string if isinstance(message.string, (list, tuple)) else [message.string]
+        for msgstr in strings:
+            if not msgstr:
+                continue
+            try:
+                msgstr % args
+            except (TypeError, ValueError, KeyError) as e:
+                errors.append(f"{msgstr!r}: {type(e).__name__}: {e}")
+    return errors
+
+
+def count_translated(openlibrary: Catalog, live: set) -> int:
     ol_t = compile_catalog(openlibrary)
     probes = plural_probes(ol_t)
     translated = 0
@@ -528,11 +630,31 @@ def check_language(lang: str, openlibrary: Catalog, baked: Catalog, live: set) -
         ns = [None] if msgid_plural is None else probes
         if any(has_translation(ol_t, m, m.context, msgid, msgid_plural, n) for n in ns):
             translated += 1
+    return translated
+
+
+def check_language(lang: str, openlibrary: Catalog, baked: Catalog, live: set) -> dict:
+    regressions = find_regressions(lang, openlibrary, baked, live)
+    placeholders = find_placeholder_defects(lang, baked, live)
+    shipped = _detail_index(find_placeholder_defects(lang, openlibrary, live))
+    for f in placeholders:
+        f.gating = not f.covered_by(shipped)
     return {
-        "openlibrary_translated": translated,
+        "openlibrary_translated": count_translated(openlibrary, live),
         "regressions": regressions,
         "placeholder_defects": placeholders,
         "plural_rule_defects": find_plural_rule_defects(lang, baked),
+        "locale_findings": [],
+    }
+
+
+def _empty_result(translated: int, locale_findings: list[Finding]) -> dict:
+    return {
+        "openlibrary_translated": translated,
+        "regressions": [],
+        "placeholder_defects": [],
+        "plural_rule_defects": [],
+        "locale_findings": locale_findings,
     }
 
 
@@ -553,41 +675,58 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
             lambda lang: openlibrary_source.fetch(f"{lang}/messages.po"), langs)))
 
     languages: dict[str, dict] = {}
-    bake_errors: list[Finding] = []
     for lang in langs:
+        baked_bytes = baked_source.fetch(f"{lang}/messages.po")
+        rejections = install_rejections(baked_bytes)
         ol_bytes = ol_files[lang]
         if ol_bytes is None:
-            bake_errors.append(Finding(
-                kind="bake_error", lang=lang, msgctxt=None, msgid="",
-                reason=f"openlibrary/i18n/{lang}/ does not exist; the olbase cp has no destination",
-            ))
+            # install_translations() creates the directory: a new locale is baked
+            # as is. Nothing in openlibrary to regress from.
+            found = [Finding(
+                kind="new_locale", lang=lang, msgctxt=None, msgid="", gating=False,
+                reason=f"openlibrary has no {lang}/; the bake installs it as a new locale",
+            )]
+            if rejections:
+                found.append(Finding(
+                    kind="rejected_locale", lang=lang, msgctxt=None, msgid="",
+                    reason=f"the bake would refuse this new locale: {len(rejections)} error(s)",
+                    detail=sorted(set(rejections)),
+                ))
+            languages[lang] = _empty_result(0, found)
             continue
-        result = check_language(
-            lang,
-            _parse(ol_bytes, f"openlibrary {lang}/messages.po"),
-            _parse(baked_source.fetch(f"{lang}/messages.po"), f"baked {lang}/messages.po"),
-            live,
-        )
-        languages[lang] = result
+        openlibrary = _parse(ol_bytes, f"openlibrary {lang}/messages.po")
+        if not any(m.id for m in openlibrary):
+            raise CheckError(f"openlibrary {lang}/messages.po has no entries; "
+                             "a truncated fetch must not read as no regressions")
+        if rejections:
+            # The bake keeps openlibrary's file for this locale, so nothing this
+            # repo holds for it reaches production. That is the finding.
+            languages[lang] = _empty_result(count_translated(openlibrary, live), [Finding(
+                kind="rejected_locale", lang=lang, msgctxt=None, msgid="",
+                reason=(f"the bake would keep openlibrary's {lang}/messages.po: "
+                        f"{len(rejections)} msgstr(s) raise when formatted"),
+                detail=sorted(set(rejections)),
+            )])
+            continue
+        languages[lang] = check_language(
+            lang, openlibrary, _parse(baked_bytes, f"baked {lang}/messages.po"), live)
 
     if not any(r["openlibrary_translated"] for r in languages.values()):
         raise CheckError("openlibrary renders no translations at all; the comparison is not live")
 
+    if baseline is not None:
+        _check_comparable(baseline, openlibrary_source.describe(), languages)
+
     ol_langs = openlibrary_source.languages()
     not_baked = None if ol_langs is None else sorted(set(ol_langs) - set(langs))
 
-    findings = bake_errors + [
+    findings = [
         f for r in languages.values()
-        for f in r["regressions"] + r["placeholder_defects"] + r["plural_rule_defects"]
+        for f in (r["locale_findings"] + r["regressions"] + r["placeholder_defects"]
+                  + r["plural_rule_defects"])
     ]
-    baseline_keys = None
-    if baseline is not None:
-        baseline_keys = {
-            (f["kind"], f["lang"], f["msgctxt"] or "", f["msgid"])
-            for f in baseline.get("findings", [])
-        }
-    new = [f for f in findings
-           if f.gating and (baseline_keys is None or f.key() not in baseline_keys)]
+    known = _detail_index(baseline.get("findings", [])) if baseline is not None else {}
+    new = [f for f in findings if f.gating and not f.covered_by(known)]
 
     return {
         "openlibrary": openlibrary_source.describe(),
@@ -599,13 +738,14 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
                 1 for r in languages.values() for f in r["placeholder_defects"] if f.gating),
             "placeholder_defects": sum(len(r["placeholder_defects"]) for r in languages.values()),
             "plural_rule_defects": sum(len(r["plural_rule_defects"]) for r in languages.values()),
-            "bake_errors": len(bake_errors),
+            "rejected_locales": sum(1 for f in findings if f.kind == "rejected_locale"),
             "gating": sum(1 for f in findings if f.gating),
             "new_findings": len(new) if baseline is not None else None,
         },
         "languages": {
             lang: {
                 "openlibrary_translated": r["openlibrary_translated"],
+                "rejected": any(f.kind == "rejected_locale" for f in r["locale_findings"]),
                 "regressions": len(r["regressions"]),
                 "placeholder_defects_new": sum(1 for f in r["placeholder_defects"] if f.gating),
                 "placeholder_defects": len(r["placeholder_defects"]),
@@ -617,6 +757,20 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
         "new_findings": [asdict(f) for f in new] if baseline is not None else None,
         "status": "fail" if new else "pass",
     }
+
+
+def _check_comparable(baseline: dict, openlibrary: dict, languages: dict) -> None:
+    """A baseline only means something against the same openlibrary side."""
+    base_ol = baseline.get("openlibrary", {})
+    if base_ol.get("sha") != openlibrary.get("sha") or base_ol.get("dir") != openlibrary.get("dir"):
+        raise CheckError(f"baseline compared against openlibrary {base_ol}, this run against "
+                         f"{openlibrary}; both runs must use the same openlibrary commit")
+    for lang, r in languages.items():
+        before = baseline.get("languages", {}).get(lang, {}).get("openlibrary_translated")
+        if before is not None and before != r["openlibrary_translated"]:
+            raise CheckError(f"openlibrary {lang} renders {r['openlibrary_translated']} "
+                             f"translations in this run and {before} in the baseline's, "
+                             "against the same commit; a fetch was incomplete")
 
 
 def format_report(report: dict) -> str:
@@ -632,7 +786,8 @@ def format_report(report: dict) -> str:
                  f"{'placeholder new':>17}{'placeholder all':>17}")
     for lang, r in report["languages"].items():
         lines.append(f"{lang:<6}{r['openlibrary_translated']:>15}{r['regressions']:>13}"
-                     f"{r['placeholder_defects_new']:>17}{r['placeholder_defects']:>17}")
+                     f"{r['placeholder_defects_new']:>17}{r['placeholder_defects']:>17}"
+                     + ("  REJECTED: openlibrary's file kept" if r["rejected"] else ""))
     lines.append("")
     by_reason: dict[str, int] = {}
     for f in report["findings"]:
@@ -648,7 +803,7 @@ def format_report(report: dict) -> str:
                      " so the page does not change")
     lines.append(f"placeholder defects not already in openlibrary: "
                  f"{totals['placeholder_defects_new']}")
-    lines.append(f"bake errors:            {totals['bake_errors']}")
+    lines.append(f"rejected locales:       {totals['rejected_locales']}")
     lines.append(f"gating total:           {totals['gating']}")
     lines.append("")
     lines.append("reported, not gating:")
@@ -656,8 +811,8 @@ def format_report(report: dict) -> str:
                  f" ({totals['placeholder_defects'] - totals['placeholder_defects_new']}"
                  " also shipped by openlibrary today)")
     for f in report["findings"]:
-        if f["kind"] == "plural_rule":
-            lines.append(f"  plural rule, {f['lang']}: {f['reason']}")
+        if f["kind"] in ("plural_rule", "new_locale"):
+            lines.append(f"  {f['kind'].replace('_', ' ')}, {f['lang']}: {f['reason']}")
     if report["not_baked"] is None:
         lines.append("openlibrary-only locales: unknown (directory listing unavailable)")
     elif report["not_baked"]:
@@ -677,7 +832,8 @@ def format_findings(findings: list[dict]) -> str:
     lines = []
     for f in findings:
         ctx = f"[{f['msgctxt']}] " if f["msgctxt"] else ""
-        n = f" n={f['n']}" if f["n"] else ""
+        shown = f["n"][:8]
+        n = (f" n={shown}" + ("…" if len(f["n"]) > 8 else "")) if f["n"] else ""
         gate = "" if f["gating"] else " (not gating)"
         lines.append(f"{f['kind']:<12} {f['lang']:<4} {f['reason']}{n}{gate}: {ctx}{f['msgid']!r}")
     return "\n".join(lines)
