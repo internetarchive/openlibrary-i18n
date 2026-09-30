@@ -18,6 +18,9 @@ Open Library i18n toolbox — ./i18n <command>
   validate <lang>        Validate format strings; exits non-zero on error.
   test <lang>            Run pytest tests/test_po_files.py -k <lang>.
   compile <lang>         Compile .po -> .mo via pybabel.
+  bake-regression        Would baking this repo into openlibrary turn translated
+    [--openlibrary-ref R] strings English or break placeholders? Exit 1 if so.
+    [--ref R] [--json P] See scripts/bake_regression.py --help.
 """
 from __future__ import annotations
 
@@ -457,7 +460,20 @@ def run_tests(lang: str) -> None:
 # CLI
 # ---------------------------------------------------------------------------
 
+def bake_regression(argv: list[str]) -> int:
+    import importlib.util
+    path = REPO_ROOT / "scripts" / "bake_regression.py"
+    spec = importlib.util.spec_from_file_location("bake_regression", path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["bake_regression"] = mod  # dataclasses resolve types via sys.modules
+    spec.loader.exec_module(mod)
+    return mod.main(argv)
+
+
 def main() -> None:
+    if sys.argv[1:2] == ["bake-regression"]:
+        sys.exit(bake_regression(sys.argv[2:]))
+
     parser = argparse.ArgumentParser(
         description="Open Library i18n toolbox",
         formatter_class=argparse.RawDescriptionHelpFormatter,

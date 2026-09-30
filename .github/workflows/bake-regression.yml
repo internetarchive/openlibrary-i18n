@@ -1,0 +1,109 @@
+name: Bake regression
+
+# Would baking this repo into openlibrary (openlibrary#13070) turn strings that
+# openlibrary shows translated into English, or ship broken placeholders?
+#
+# On a pull request this fails only on findings the PR's base does not already
+# have: a red run means "this PR makes the bake worse". The absolute numbers are
+# in the job summary. It is not a required check.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "locale/**"
+      - "messages.pot"
+      - "i18n"
+      - "scripts/bake_regression.py"
+      - "tests/test_bake_regression.py"
+      - ".github/workflows/bake-regression.yml"
+  workflow_dispatch:
+    inputs:
+      openlibrary_ref:
+        description: "openlibrary branch, tag or SHA to compare against"
+        default: "master"
+
+permissions:
+  contents: read
+
+jobs:
+  bake-regression:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # openlibrary pins Babel 2.18.0; write_mo() behaviour is what is being measured.
+      - run: pip install "Babel==2.18.0" pytest
+
+      - name: Unit tests
+        run: python -m pytest tests/test_bake_regression.py -q
+
+      - name: Resolve the openlibrary commit once, for both runs
+        id: ol
+        run: |
+          REF="${{ inputs.openlibrary_ref || 'master' }}"
+          SHA=$(git ls-remote https://github.com/internetarchive/openlibrary "refs/heads/$REF" | cut -f1)
+          [ -n "$SHA" ] || SHA="$REF"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Base (what main bakes today)
+        if: github.event_name == 'pull_request'
+        run: |
+          set +e
+          ./i18n bake-regression --openlibrary-ref "${{ steps.ol.outputs.sha }}" \
+            --ref "${{ github.event.pull_request.base.sha }}" --json base.json > base.txt
+          code=$?
+          cat base.txt
+          # 0 or 1 are results; 2 means the check did not run, which must not pass.
+          [ "$code" -le 1 ]
+
+      - name: This change
+        run: |
+          set +e
+          BASELINE=""
+          [ -f base.json ] && BASELINE="--baseline base.json"
+          ./i18n bake-regression --openlibrary-ref "${{ steps.ol.outputs.sha }}" \
+            --ref HEAD $BASELINE --json head.json --list > head.txt
+          code=$?
+          {
+            echo '## Bake regression'
+            echo
+            echo '```'
+            sed -n '/^openlibrary:/,$p' head.txt
+            echo '```'
+            if [ -f base.txt ]; then
+              echo
+              echo '<details><summary>Base branch</summary>'
+              echo
+              echo '```'
+              cat base.txt
+              echo '```'
+              echo '</details>'
+            fi
+            echo
+            echo '<details><summary>Every finding</summary>'
+            echo
+            echo '```'
+            sed -n '1,/^openlibrary:/p' head.txt | sed '$d'
+            echo '```'
+            echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+          cat head.txt
+          exit $code
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bake-regression
+          path: |
+            base.json
+            head.json
+          if-no-files-found: ignore
