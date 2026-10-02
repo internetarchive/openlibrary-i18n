@@ -1,0 +1,148 @@
+name: Bake regression
+
+# Would baking this repo into openlibrary (openlibrary#13070) turn strings that
+# openlibrary shows translated into English, or ship broken placeholders?
+#
+# Each run compares a commit with the one before it, against one openlibrary
+# commit, and fails only on findings the earlier commit does not already have:
+# red means "this change makes the bake worse". The absolute numbers are in the
+# job summary. It is not a required check.
+#
+#   pull_request   the PR's merge commit vs its first parent (main as merged into)
+#   push to main   the pushed commit vs the one it replaced
+#   schedule       main vs main as of 25 hours ago. translate.yml merges its PRs
+#                  with github.token, and pushes made with that token trigger no
+#                  workflows, so without this a bot merge would never be measured.
+#   dispatch       absolute: fails if main has any gating finding
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "locale/**"
+      - "messages.pot"
+      - "i18n"
+      - "scripts/bake_regression.py"
+      - "tests/test_bake_regression.py"
+      - ".github/workflows/bake-regression.yml"
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      openlibrary_ref:
+        description: "openlibrary branch, tag or SHA to compare against"
+        default: "master"
+
+permissions:
+  contents: read
+
+jobs:
+  bake-regression:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # openlibrary pins Babel 2.18.0; write_mo() behaviour is what is being measured.
+      - run: pip install "Babel==2.18.0" pytest
+
+      - name: Unit tests
+        run: python -m pytest tests/test_bake_regression.py -q
+
+      - name: Resolve the openlibrary commit once, for both runs
+        id: ol
+        env:
+          REF: ${{ inputs.openlibrary_ref || 'master' }}
+        run: |
+          set -euo pipefail
+          if [[ "$REF" =~ ^[0-9a-f]{40}$ ]]; then
+            SHA="$REF"
+          else
+            SHA=$(git ls-remote https://github.com/internetarchive/openlibrary "refs/heads/$REF" | cut -f1)
+          fi
+          # Never fall back to a branch name: two runs would resolve it separately.
+          [[ "$SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "cannot resolve openlibrary $REF"; exit 1; }
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Choose the commit to compare against
+        id: base
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          case "$EVENT" in
+            pull_request) BASE=$(git rev-parse HEAD^1) ;;
+            push) BASE="$BEFORE" ;;
+            schedule) BASE=$(git rev-list -1 --before="25 hours ago" HEAD) ;;
+            *) BASE="" ;;
+          esac
+          # A new branch (all zeros) or no commit that old: measure absolutely.
+          if [[ "$BASE" =~ ^0+$ ]] || ! git cat-file -e "${BASE:-none}^{commit}" 2>/dev/null; then
+            BASE=""
+          fi
+          echo "sha=$BASE" >> "$GITHUB_OUTPUT"
+          echo "comparing $(git rev-parse HEAD) against ${BASE:-nothing (absolute)}"
+
+      - name: Base (the commit before this change)
+        if: steps.base.outputs.sha != ''
+        run: |
+          set +e
+          ./i18n bake-regression --openlibrary-ref "${{ steps.ol.outputs.sha }}" \
+            --ref "${{ steps.base.outputs.sha }}" --json base.json > base.txt
+          code=$?
+          cat base.txt
+          # 0 or 1 are results; 2 means the check did not run, which must not pass.
+          [ "$code" -le 1 ]
+
+      - name: This change
+        run: |
+          set +e
+          BASELINE=""
+          [ -f base.json ] && BASELINE="--baseline base.json"
+          ./i18n bake-regression --openlibrary-ref "${{ steps.ol.outputs.sha }}" \
+            --ref HEAD $BASELINE --json head.json --list > head.txt
+          code=$?
+          {
+            echo '## Bake regression'
+            echo
+            echo '```'
+            sed -n '/^openlibrary:/,$p' head.txt
+            echo '```'
+            if [ -f base.txt ]; then
+              echo
+              echo '<details><summary>Base branch</summary>'
+              echo
+              echo '```'
+              cat base.txt
+              echo '```'
+              echo '</details>'
+            fi
+            echo
+            echo '<details><summary>Every finding</summary>'
+            echo
+            echo '```'
+            sed -n '1,/^openlibrary:/p' head.txt | sed '$d'
+            echo '```'
+            echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+          cat head.txt
+          exit $code
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bake-regression
+          path: |
+            base.json
+            head.json
+          if-no-files-found: ignore
