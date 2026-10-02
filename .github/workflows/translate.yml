@@ -96,17 +96,51 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.OL_BOT_PAT }}
 
-      - name: Auto-merge completed PR
+      - name: Merge translation PRs that pass required checks
         if: success()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+          # This repo has allow_auto_merge:false and main has no branch
+          # protection, so nothing but this gate stops unreviewed machine output
+          # from landing. Merge a PR ONLY once both required checks -- validate
+          # (validate-pr.yml) and bake-regression -- have actually passed; a
+          # failing, pending, skipped or absent check never merges. There is no
+          # blind fallback (the old `--auto || plain-merge` could merge unchecked
+          # since --auto is disabled here). scripts/merge_gate.py makes the
+          # pass/no-pass decision and is unit-tested in tests/test_merge_gate.py.
           gh pr list \
             --state open \
             --json number,headRefName \
             --jq '.[] | select(.headRefName | startswith("i18n/ai-")) | .number' \
           | while IFS= read -r pr; do
-              gh pr merge "$pr" --auto --squash --delete-branch \
-              || gh pr merge "$pr" --squash --delete-branch \
-              || echo "WARNING: could not merge PR #$pr"
+              echo "::group::PR #$pr"
+              # The checks run on the PR, not in this job, and may still be
+              # starting when we get here. Poll (bounded) until a verdict exists:
+              # `--watch` waits out checks that are *registered* and still
+              # running; `--mode settled` tells "not reported yet / still
+              # pending" (keep waiting) from "finished but not all passing"
+              # (stop now, leave the PR open). A PR whose checks never register
+              # is simply left for a later dispatch -- never merged unchecked.
+              for _ in $(seq 1 20); do
+                gh pr checks "$pr" --watch --interval 30 >/dev/null 2>&1 || true
+                checks="$(gh pr checks "$pr" --json name,bucket 2>/dev/null || echo '[]')"
+                if printf '%s' "$checks" \
+                     | python3 scripts/merge_gate.py --require validate --require bake-regression; then
+                  # Another matrix shard runs this same loop, so a merge may
+                  # already have happened; tolerate that without aborting (set -e).
+                  gh pr merge "$pr" --squash --delete-branch \
+                    || echo "note: merge of PR #$pr did not complete (already merged, or its state changed)"
+                  break
+                fi
+                if printf '%s' "$checks" \
+                     | python3 scripts/merge_gate.py --mode settled --require validate --require bake-regression; then
+                  echo "Leaving PR #$pr open: its required checks finished but did not all pass."
+                  break
+                fi
+                echo "Waiting for required checks on PR #$pr to register/complete..."
+                sleep 30
+              done
+              echo "::endgroup::"
             done

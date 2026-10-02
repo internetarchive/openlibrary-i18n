@@ -1,0 +1,32 @@
+name: Test merge gate
+
+# scripts/merge_gate.py is the only thing standing between unreviewed machine
+# translations and main (translate.yml merges with it; the repo has no branch
+# protection and allow_auto_merge:false). Nothing else runs its tests, so a
+# regression in it would otherwise ship silently. Run its tests whenever it, or
+# its tests, or this workflow change.
+
+on:
+  pull_request:
+    paths:
+      - "scripts/merge_gate.py"
+      - "tests/test_merge_gate.py"
+      - ".github/workflows/test-merge-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-merge-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pytest
+
+      - name: Run merge-gate tests
+        run: python -m pytest tests/test_merge_gate.py -q
