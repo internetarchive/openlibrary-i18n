@@ -258,6 +258,103 @@ class TestFixFormatErrors:
         assert _fix_format_errors(_catalog(po)) == []
 
 
+class TestFixFormatErrorsPluralPlaceholders:
+    """A form the plural rule selects for some n other than 1 may carry the count (#15).
+
+    With nplurals=1 that is msgstr[0] at every n; in ru/uk/hr it is msgstr[0]
+    at n=21, 31, ...
+    """
+
+    HEADER_1 = (
+        b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+        b'"Plural-Forms: nplurals=1; plural=0;\\n"\n\n'
+    )
+    HEADER_2 = (
+        b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+        b'"Plural-Forms: nplurals=2; plural=(n != 1);\\n"\n\n'
+    )
+    HEADER_RU = (
+        b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+        b'"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : '
+        b'n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n"\n\n'
+    )
+    HEADER_PL = (
+        b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+        b'"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : '
+        b'n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n"\n\n'
+    )
+    ENTRY = (
+        'msgid "There is one person ahead of you."\n'
+        'msgid_plural "There are %(count)d people ahead of you."\n'
+        'msgstr[0] "{0}"\n'
+    )
+
+    def _cat(self, header: bytes, msgstr0: str, extra: str = ""):
+        return _catalog(header + (self.ENTRY.format(msgstr0) + extra).encode())
+
+    def test_keeps_plural_placeholder_in_single_form(self):
+        cat = self._cat(self.HEADER_1, "あなたの前に%(count)d人います。")
+        assert _fix_format_errors(cat) == []
+        assert cat["There is one person ahead of you."].string == ("あなたの前に%(count)d人います。",)
+
+    def test_keeps_positional_plural_placeholder_in_single_form(self):
+        po = self.HEADER_1 + b'msgid "one item"\nmsgid_plural "%d items"\nmsgstr[0] "%d\xe4\xbb\xb6"\n'
+        assert _fix_format_errors(_catalog(po)) == []
+
+    def test_still_clears_unknown_placeholder_in_single_form(self):
+        cat = self._cat(self.HEADER_1, "あなたの前に%(wrong)d人います。")
+        assert _fix_format_errors(cat) == ["There is one person ahead of you."]
+
+    def test_still_clears_single_form_missing_singular_placeholder(self):
+        po = self.HEADER_1 + (
+            'msgid "%(who)s merged one duplicate"\n'
+            'msgid_plural "%(who)s merged %(count)d duplicates"\n'
+            'msgstr[0] "%(count)d件を統合しました"\n'
+        ).encode()
+        assert _fix_format_errors(_catalog(po)) == ["%(who)s merged one duplicate"]
+
+    def test_keeps_plural_placeholder_in_form_also_selected_by_21(self):
+        cat = self._cat(self.HEADER_RU, "Перед вами %(count)d человек.",
+                        'msgstr[1] "Перед вами %(count)d человека."\n'
+                        'msgstr[2] "Перед вами %(count)d человек."\n')
+        assert _fix_format_errors(cat) == []
+
+    def test_still_clears_unknown_placeholder_in_form_also_selected_by_21(self):
+        cat = self._cat(self.HEADER_RU, "Перед вами %(wrong)d человек.",
+                        'msgstr[1] "Перед вами %(count)d человека."\n'
+                        'msgstr[2] "Перед вами %(count)d человек."\n')
+        assert _fix_format_errors(cat) == ["There is one person ahead of you."]
+
+    def test_form_selected_only_by_one_still_checked_against_msgid(self):
+        cat = self._cat(self.HEADER_2, "Vor Ihnen sind %(count)d Personen.",
+                        'msgstr[1] "Vor Ihnen sind %(count)d Personen."\n')
+        assert _fix_format_errors(cat) == ["There is one person ahead of you."]
+
+    def test_three_form_rule_selecting_form_0_only_at_one_still_checked(self):
+        cat = self._cat(self.HEADER_PL, "Przed tobą jest %(count)d osoba.",
+                        'msgstr[1] "Przed tobą są %(count)d osoby."\n'
+                        'msgstr[2] "Przed tobą jest %(count)d osób."\n')
+        assert _fix_format_errors(cat) == ["There is one person ahead of you."]
+
+    def test_non_plural_message_in_single_form_catalog_still_checked_against_msgid(self):
+        po = self.HEADER_1 + '#, python-format\nmsgid "%s works"\nmsgstr "作品"\n'.encode()
+        assert _fix_format_errors(_catalog(po)) == ["%s works"]
+
+    def test_non_plural_message_dropping_named_placeholder_still_cleared(self):
+        po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo"')
+        assert _fix_format_errors(_catalog(po)) == ["Hello %(name)s"]
+
+    @pytest.mark.parametrize("rule", ["n ! = 1", "(1/n)", "(n%0)"])
+    def test_malformed_plural_rule_does_not_crash_and_keeps_old_behaviour(self, rule):
+        header = (
+            b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+            b'"Plural-Forms: nplurals=2; plural=' + rule.encode() + b';\\n"\n\n'
+        )
+        cat = self._cat(header, "Vor Ihnen sind %(count)d Personen.",
+                        'msgstr[1] "Vor Ihnen sind %(count)d Personen."\n')
+        assert _fix_format_errors(cat) == ["There is one person ahead of you."]
+
+
 # ---------------------------------------------------------------------------
 # _fix_format_type_mismatch
 # ---------------------------------------------------------------------------
@@ -344,6 +441,161 @@ class TestFixValidatorFailures:
     def test_no_change_for_valid_entries(self):
         po = _po('msgid "Hello %(name)s"\nmsgstr "Hallo %(name)s"')
         assert _mod._fix_validator_failures(_catalog(po)) == []
+
+
+class TestValidateCfmtOrder:
+    """Named placeholders are looked up by key, so a translation may reorder or
+    repeat them; positional ones bind in sequence, so their order must hold."""
+
+    def _errors(self, msgid: str, msgstr: str):
+        po = _po(f'#, python-format\nmsgid "{msgid}"\nmsgstr "{msgstr}"')
+        cat = _catalog(po)
+        return _mod._get_validate_fn()(cat[msgid], cat)
+
+    def test_accepts_reordered_named_placeholders(self):
+        # openlibrary's uk translation, excluded from the port (#105) by this bug.
+        msgid = ("%(username)s has read %(total)d books. Join %(username)s on "
+                 "OpenLibrary.org and tell the world about the books that you care about.")
+        msgstr = ("%(total)d книг були прочитані %(username)s. Приєднайтеся до %(username)s "
+                  "на OpenLibrary.org і розкажіть світові про книги, які вас хвилюють.")
+        assert self._errors(msgid, msgstr) == []
+
+    def test_still_rejects_reordered_positional_placeholders(self):
+        assert self._errors("Page %s of %d", "%d Seite von %s") != []
+
+    def test_fingerprint_keeps_positional_order(self):
+        # Babel's own check also rejects the case above, so pin the fingerprint itself.
+        fingerprint = _mod._get_validate_fn().__globals__["_cfmt_fingerprint"]
+        assert fingerprint("Page %s of %d") != fingerprint("%d Seite von %s")
+
+    def test_still_rejects_dropped_named_placeholder(self):
+        assert self._errors("%(a)s and %(b)s", "%(a)s und") != []
+
+    def test_still_rejects_unknown_named_placeholder(self):
+        assert self._errors("%(a)s and %(b)s", "%(a)s und %(c)s") != []
+
+    def test_still_rejects_dropped_percent_literal(self):
+        assert self._errors("100%% Complete!", "100 Fertig!") != []
+
+    def test_accepts_named_placeholder_repeated_fewer_times(self):
+        assert self._errors("%(a)s and %(a)s", "%(a)s") == []
+
+
+class TestValidatePluralPlaceholders:
+    """A form selected for some n other than 1 answers to msgid_plural (#15)."""
+
+    HEADER_1 = TestFixFormatErrorsPluralPlaceholders.HEADER_1
+    HEADER_2 = TestFixFormatErrorsPluralPlaceholders.HEADER_2
+    HEADER_RU = TestFixFormatErrorsPluralPlaceholders.HEADER_RU
+    HEADER_PL = TestFixFormatErrorsPluralPlaceholders.HEADER_PL
+    RU_REST = 'msgstr[1] "У %(name)s %(count)s списка."\nmsgstr[2] "У %(name)s %(count)s списков."\n'
+    ENTRY = (
+        'msgid "%(name)s has 1 list."\n'
+        'msgid_plural "%(name)s has %(count)s lists."\n'
+        'msgstr[0] "{0}"\n'
+    )
+
+    def _errors(self, header: bytes, msgstr0: str, extra: str = ""):
+        cat = _catalog(header + (self.ENTRY.format(msgstr0) + extra).encode())
+        return _mod._get_validate_fn()(cat[("%(name)s has 1 list.", "%(name)s has %(count)s lists.")], cat)
+
+    def test_accepts_plural_placeholder_in_single_form(self):
+        assert self._errors(self.HEADER_1, "%(name)sには%(count)s件のリストがあります。") == []
+
+    def test_fix_keeps_plural_placeholder_in_single_form(self):
+        po = self.HEADER_1 + self.ENTRY.format("%(name)sには%(count)s件のリストがあります。").encode()
+        assert _mod._fix_validator_failures(_catalog(po)) == []
+
+    def test_still_rejects_unknown_placeholder_in_single_form(self):
+        assert self._errors(self.HEADER_1, "%(name)sには%(wrong)s件のリストがあります。") != []
+
+    def test_still_rejects_type_mismatch_in_single_form(self):
+        assert self._errors(self.HEADER_1, "%(name)sには%(count)d件のリストがあります。") != []
+
+    def test_accepts_plural_placeholder_in_form_also_selected_by_21(self):
+        assert self._errors(self.HEADER_RU, "У %(name)s %(count)s список.", self.RU_REST) == []
+
+    def test_still_rejects_unknown_placeholder_in_form_also_selected_by_21(self):
+        assert self._errors(self.HEADER_RU, "У %(name)s %(wrong)s список.", self.RU_REST) != []
+
+    def test_form_selected_only_by_one_still_checked_against_msgid(self):
+        extra = 'msgstr[1] "%(name)s hat %(count)s Listen."\n'
+        assert self._errors(self.HEADER_2, "%(name)s hat %(count)s Liste.", extra) != []
+
+    def test_three_form_rule_selecting_form_0_only_at_one_still_checked(self):
+        extra = 'msgstr[1] "%(name)s ma %(count)s listy."\nmsgstr[2] "%(name)s ma %(count)s list."\n'
+        assert self._errors(self.HEADER_PL, "%(name)s ma %(count)s listę.", extra) != []
+
+    def test_rejects_unknown_placeholder_when_plural_msgid_has_none(self):
+        po = self.HEADER_1 + (
+            '#, python-format\nmsgid "%(name)s has one list"\nmsgid_plural "Many lists"\n'
+            'msgstr[0] "%(bogus)s"\n'
+        ).encode()
+        cat = _catalog(po)
+        assert _mod._get_validate_fn()(cat[("%(name)s has one list", "Many lists")], cat) != []
+
+    def test_rejects_placeholder_neither_msgid_has_in_form_shown_at_zero(self):
+        header = (
+            b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+            b'"Plural-Forms: nplurals=2; plural=(n > 1);\\n"\n\n'
+        )
+        po = header + (
+            '#, python-format\nmsgid "%(name)s has one list"\nmsgid_plural "Lists"\n'
+            'msgstr[0] "%(name)s a %(count)d liste"\nmsgstr[1] "Des listes"\n'
+        ).encode()
+        cat = _catalog(po)
+        assert _mod._get_validate_fn()(cat[("%(name)s has one list", "Lists")], cat) != []
+
+    def test_rejects_type_mismatch_when_plural_msgid_brings_nothing(self):
+        # A placeholder-free msgid_plural must not switch Babel's singular check off.
+        po = self.HEADER_1 + (
+            '#, python-format\nmsgid "%(name)s has one list"\nmsgid_plural "Lists"\n'
+            'msgstr[0] "%(name)d件"\n'
+        ).encode()
+        cat = _catalog(po)
+        assert _mod._get_validate_fn()(cat[("%(name)s has one list", "Lists")], cat) != []
+
+    def test_plural_msgid_with_fewer_positionals_brings_nothing(self):
+        po = self.HEADER_1 + (
+            '#, python-format\nmsgid "%s of %d"\nmsgid_plural "%s"\nmsgstr[0] "%s"\n'
+        ).encode()
+        cat = _catalog(po)
+        assert _mod._get_validate_fn()(cat[("%s of %d", "%s")], cat) != []
+
+    def test_mixed_kind_msgids_get_no_plural_allowance_in_validate_or_fix(self):
+        po = self.HEADER_1 + (
+            '#, python-format\nmsgid "one %s"\nmsgid_plural "%(count)d of them"\n'
+            'msgstr[0] "それら"\n'
+        ).encode()
+        cat = _catalog(po)
+        assert _mod._get_validate_fn()(cat[("one %s", "%(count)d of them")], cat) != []
+        assert _fix_format_errors(_catalog(po)) == ["one %s"]
+
+    def test_still_requires_singular_placeholder_like_fix_does(self):
+        # `./i18n fix` clears this (see TestFixFormatErrorsPluralPlaceholders); validate must agree.
+        po = self.HEADER_1 + (
+            '#, python-format\nmsgid "%(who)s merged one duplicate"\n'
+            'msgid_plural "%(who)s merged %(count)d duplicates"\nmsgstr[0] "%(count)d件"\n'
+        ).encode()
+        cat = _catalog(po)
+        key = ("%(who)s merged one duplicate", "%(who)s merged %(count)d duplicates")
+        assert _mod._get_validate_fn()(cat[key], cat) != []
+        assert _fix_format_errors(_catalog(po)) == ["%(who)s merged one duplicate"]
+
+    @pytest.mark.parametrize("rule", ["n ! = 1", "(1/n)", "(n%0)"])
+    def test_malformed_plural_rule_does_not_crash(self, rule):
+        header = (
+            b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+            b'"Plural-Forms: nplurals=2; plural=' + rule.encode() + b';\\n"\n\n'
+        )
+        extra = 'msgstr[1] "%(name)s hat %(count)s Listen."\n'
+        assert self._errors(header, "%(name)s hat %(count)s Liste.", extra) != []
+
+    def test_non_plural_message_still_checked_against_msgid(self):
+        cat = _catalog(self.HEADER_1 + 'msgid "Hello %(name)s"\nmsgstr "%(name)s %(count)s"\n'.encode())
+        errors = _mod._get_validate_fn()(cat["Hello %(name)s"], cat)
+        # Babel's own check, not only the custom cfmt one that also fires here.
+        assert any("unknown named placeholder 'count'" in e for e in errors)
 
 
 # ---------------------------------------------------------------------------

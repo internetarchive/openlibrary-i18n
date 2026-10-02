@@ -25,6 +25,7 @@ Open Library i18n toolbox — ./i18n <command>
 from __future__ import annotations
 
 import argparse
+import gettext
 import json
 import re
 import subprocess
@@ -158,6 +159,16 @@ def _fix_html_attrs(catalog) -> int:
     return fixed
 
 
+def _form_selected_beyond_one(catalog, index: int) -> bool:
+    """Does the catalog's plural rule select form `index` for some n != 1?"""
+    try:
+        rule = gettext.c2py(catalog.plural_expr)
+        return any(rule(n) == index for n in range(1000) if n != 1)
+    except (ValueError, ArithmeticError):
+        # A rule gettext cannot evaluate: keep the singular-only check.
+        return False
+
+
 def _fix_format_errors(catalog) -> list[str]:
     """Clear msgstr for entries with placeholder mismatches. Returns list of cleared msgids."""
     def named(s: str) -> set:
@@ -167,15 +178,28 @@ def _fix_format_errors(catalog) -> list[str]:
     def positional(s: str) -> list:
         return re.findall(r'(?<!%)%[sdifruoxXeEgGc]', s)
 
+    # msgstr[0] may also carry the plural msgid's placeholders (the count) when
+    # the plural rule shows it for some n other than 1: every n with nplurals=1,
+    # n=21, 31, ... in ru/uk/hr, n=0 in fr — see #15.
+    form0_beyond_one = _form_selected_beyond_one(catalog, 0)
+
+    def mixed_kinds(singular: str, plural: str) -> bool:
+        # One msgid positional and the other named: no rule says which form 0 answers to.
+        return bool((positional(singular) and named(plural)) or (named(singular) and positional(plural)))
+
     def mismatch(msgid, msgstr) -> bool:
         if not msgstr:
             return False
         id_s = msgid[0] if isinstance(msgid, tuple) else msgid
         ms_s = (msgstr[0] or '') if isinstance(msgstr, tuple) else msgstr
         id_n, ms_n = named(id_s), named(ms_s)
-        if id_n - ms_n or ms_n - id_n:
+        allowed_n, allowed_pos = id_n, {len(positional(id_s))}
+        if form0_beyond_one and isinstance(msgid, tuple) and not mixed_kinds(*msgid):
+            allowed_n = id_n | named(msgid[1])
+            allowed_pos.add(len(positional(msgid[1])))
+        if id_n - ms_n or ms_n - allowed_n:
             return True
-        if len(positional(id_s)) != len(positional(ms_s)):
+        if len(positional(ms_s)) not in allowed_pos:
             return True
         if id_n and positional(ms_s) and not ms_n:
             return True

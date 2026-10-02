@@ -45,6 +45,14 @@ jobs:
             python -m pytest tests/test_po_files.py -k "$K_EXPR" -q
           fi
 
+      # Every locale, not the changed-languages list: plural and placeholder
+      # regressions, and the toolbox's own checks. The sync CLI test rewrites a
+      # real locale file, so it is left out.
+      - name: Run plural-form and toolbox tests
+        run: |
+          python -m pytest tests/test_plural_forms.py tests/test_i18n.py -q \
+            --deselect tests/test_i18n.py::TestCLI::test_sync_suppresses_pybabel_stderr
+
       - name: Validate format strings
         run: |
           LANGS="${{ steps.changed-langs.outputs.langs }}"
