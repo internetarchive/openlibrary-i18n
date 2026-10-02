@@ -83,7 +83,15 @@ jobs:
           GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
         with:
           prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
-          claude_args: "--max-turns 750 --permission-mode bypassPermissions"
+          # Pin the model. claude-code-action@v1 has no `model` input, so the id
+          # goes through claude_args (passed straight to the claude CLI). Without
+          # a pin the CLI default drifted to `claude-sonnet-5-5`, which returned
+          # 404 model_not_found in this pipeline's runs from 2026-09-28 on (e.g.
+          # run 36623332913: "may not exist or you may not have access to it"),
+          # so none completed. The last completing run (36095667073, 2026-09-25)
+          # used `claude-sonnet-5`; pin that known-good id so a default change
+          # cannot silently break or alter the pipeline.
+          claude_args: "--max-turns 750 --permission-mode bypassPermissions --model claude-sonnet-5"
           show_full_output: true
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.OL_BOT_PAT }}
