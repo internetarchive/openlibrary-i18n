@@ -1,0 +1,62 @@
+# Self-hosted Weblate for internetarchive/openlibrary-i18n
+#
+# Contributor-facing translation UI on top of the canonical translation store
+# (openlibrary-i18n). See README.md for the full stand-up, the branch model, and
+# how Weblate coexists with the daily translate.yml AI run.
+#
+# This is the base stack (Weblate + PostgreSQL + Valkey/Redis). It is adapted
+# from the official Weblate Docker Compose
+# (https://github.com/WeblateOrg/docker-compose) with two changes: a published
+# port so the UI is reachable locally, and image pins for reproducibility.
+#
+#   cp environment.example environment     # then edit: set WEBLATE_ADMIN_PASSWORD etc.
+#   docker compose up -d                   # first boot runs DB migrations (~1-2 min)
+#   open http://localhost:${WEBLATE_PORT:-8098}/
+#
+# For the fully-local integration test (no GitHub credentials, no real-repo
+# writes) layer the override on top:
+#   docker compose -f docker-compose.yml -f docker-compose.localtest.yml up -d
+
+services:
+  cache:
+    image: valkey/valkey:9.1.2
+    restart: unless-stopped
+    read_only: true
+    volumes:
+      - redis-data:/data
+    command: [valkey-server, --save, "60", "1", --loglevel, warning]
+
+  database:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    env_file:
+      - ./environment
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
+  weblate:
+    image: weblate/weblate:2026.10
+    restart: unless-stopped
+    depends_on:
+      - cache
+      - database
+    env_file:
+      - ./environment
+    ports:
+      # Host-only by default: bind to loopback so a local stand-up is not exposed
+      # on the network. Drop the 127.0.0.1 prefix (and put Weblate behind a TLS
+      # proxy, WEBLATE_ENABLE_HTTPS=1) for a real deployment.
+      - "127.0.0.1:${WEBLATE_PORT:-8098}:8080"
+    volumes:
+      - weblate-data:/app/data
+      - weblate-cache:/app/cache
+    read_only: true
+    tmpfs:
+      - /run
+      - /tmp
+
+volumes:
+  weblate-data: {}
+  weblate-cache: {}
+  postgres-data: {}
+  redis-data: {}

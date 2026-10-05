@@ -1,0 +1,20 @@
+# Local integration-test override — NO GitHub credentials, NO real-repo writes.
+#
+# Layers a read-write bind mount of a local directory of bare git repos into the
+# Weblate container at /repos, so a Weblate component can use a file:// URL as a
+# stand-in for GitHub. This is exactly how the integration test documented in
+# README.md was run: Weblate clones file:///repos/openlibrary-i18n.git, an edit is
+# made in the UI/API, and Weblate commits and pushes it to a `weblate` branch of
+# that bare repo — never to `main`.
+#
+# WEBLATE_LOCAL_REPOS_DIR must be an absolute host path. On this Mac mini the
+# Docker VM (Colima) only mounts /Users/mek, so the path must live under there.
+#
+# Usage:
+#   export WEBLATE_LOCAL_REPOS_DIR=/Users/mek/Projects/<...>/repos
+#   docker compose -f docker-compose.yml -f docker-compose.localtest.yml up -d
+
+services:
+  weblate:
+    volumes:
+      - ${WEBLATE_LOCAL_REPOS_DIR:?set WEBLATE_LOCAL_REPOS_DIR to an absolute host path under /Users/mek}:/repos

@@ -1,0 +1,53 @@
+# Weblate configuration for the openlibrary-i18n stand-up.
+# Copy to `environment` and edit. `environment` is gitignored — it holds secrets.
+# Full reference: https://docs.weblate.org/en/latest/admin/install/docker.html
+
+# --- Core -------------------------------------------------------------------
+WEBLATE_SITE_TITLE=Open Library Translations
+WEBLATE_SITE_DOMAIN=localhost:8098
+WEBLATE_ADMIN_NAME=Admin
+WEBLATE_ADMIN_EMAIL=admin@example.com
+# Set a real password before first boot; the admin user is created on first boot.
+WEBLATE_ADMIN_PASSWORD=
+WEBLATE_SERVER_EMAIL=weblate@example.com
+WEBLATE_DEFAULT_FROM_EMAIL=weblate@example.com
+WEBLATE_DEBUG=0
+WEBLATE_LOGLEVEL=INFO
+# Loopback-only stand-up; tighten for a networked deployment.
+WEBLATE_ALLOWED_HOSTS=*
+# Require an account to view/translate. Keep registration closed for a stand-up.
+WEBLATE_REGISTRATION_OPEN=0
+#WEBLATE_REQUIRE_LOGIN=1
+
+# Host port the UI is published on (see docker-compose.yml). Keep in sync with
+# WEBLATE_SITE_DOMAIN above.
+WEBLATE_PORT=8098
+
+# --- GitHub integration (real-repo mode only; leave blank for the local test) --
+# Weblate opens pull requests via the `gh`/GitHub API using these. For
+# openlibrary-i18n, issue a FINE-GRAINED PAT scoped to that ONE repository with
+# exactly: Contents: Read and write, Pull requests: Read and write,
+# Metadata: Read-only. Nothing org-wide; nothing to do with the translate.yml
+# pipeline secrets (OL_BOT_PAT / CLAUDE_CODE_OAUTH_TOKEN). See README.md.
+#WEBLATE_GITHUB_USERNAME=openlibrary-bot
+#WEBLATE_GITHUB_TOKEN=
+
+# --- PostgreSQL -------------------------------------------------------------
+POSTGRES_PASSWORD=weblate
+POSTGRES_USER=weblate
+POSTGRES_DB=weblate
+POSTGRES_HOST=database
+POSTGRES_PORT=
+# Needed by the postgres entrypoint on some versions.
+POSTGRES_DATABASE=weblate
+
+# --- Cache ------------------------------------------------------------------
+REDIS_HOST=cache
+REDIS_PORT=6379
+
+# --- Mail (optional for a stand-up) -----------------------------------------
+WEBLATE_EMAIL_HOST=127.0.0.1
+WEBLATE_EMAIL_HOST_USER=
+WEBLATE_EMAIL_HOST_PASSWORD=
+
+CLIENT_MAX_BODY_SIZE=1000M
