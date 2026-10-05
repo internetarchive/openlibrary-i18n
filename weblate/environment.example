@@ -23,6 +23,15 @@ WEBLATE_REGISTRATION_OPEN=0
 # WEBLATE_SITE_DOMAIN above.
 WEBLATE_PORT=8098
 
+# --- Behind a reverse proxy / tunnel (required for any non-loopback access) --
+# If you front Weblate with a TLS proxy or a tunnel (e.g. cloudflared), set
+# WEBLATE_SITE_DOMAIN to the PUBLIC hostname and set BOTH of the following, or
+# login/edit POSTs 403 with "CSRF verification failed" (the browser's https Origin
+# won't match Django's http-computed scheme). See README "Running behind a reverse
+# proxy". Verified against a cloudflared tunnel.
+#WEBLATE_ENABLE_HTTPS=1
+#WEBLATE_SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO,https
+
 # --- GitHub integration (real-repo mode only; leave blank for the local test) --
 # Weblate opens pull requests via the GitHub API using these, AND the component
 # must be created on the `github` VCS backend (setup_component.py does this by

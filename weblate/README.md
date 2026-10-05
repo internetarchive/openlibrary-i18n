@@ -239,11 +239,39 @@ request" push style.
 
 ---
 
-## Security / operational notes for a real deployment
+## Running behind a reverse proxy / TLS (verified)
 
-- The compose publishes the UI on **127.0.0.1 only**. For a networked deployment,
-  put Weblate behind a TLS-terminating proxy and set `WEBLATE_ENABLE_HTTPS=1`
-  (see the official [`docker-compose-https.yml`](https://github.com/WeblateOrg/docker-compose)).
+The compose publishes the UI on **127.0.0.1 only**, so reaching it from another
+machine means putting it behind a reverse proxy that terminates TLS (an nginx/Caddy
+front end, or a tunnel such as `cloudflared tunnel --url http://localhost:8098`).
+Three `environment` settings are then **required** — the first two are not optional,
+and omitting them produces a login that looks broken:
+
+```ini
+WEBLATE_SITE_DOMAIN=your-public-host.example.com   # the public hostname, no scheme
+WEBLATE_ENABLE_HTTPS=1
+WEBLATE_SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO,https
+```
+
+**Why both of the last two matter (verified against a `cloudflared` quick tunnel,
+2026-10-05):** the browser sends an `https://…` `Origin`, but the proxy forwards the
+request to Weblate over plain `http` internally. Without
+`WEBLATE_SECURE_PROXY_SSL_HEADER`, Django computes `request.scheme == "http"`, so its
+CSRF origin check compares the `https` Origin against an `http` expected origin, they
+don't match, and **every login (and every edit POST) 403s** with
+`CSRF verification failed`. Setting the proxy-SSL header makes `request.scheme` resolve
+to `https` (from the `X-Forwarded-Proto` the proxy sends), the origins match, and login
+`302`s normally. `WEBLATE_SITE_DOMAIN` must be the public host so Weblate trusts that
+origin and builds correct absolute URLs.
+
+Recreate the `weblate` container after changing these (`docker compose up -d weblate`).
+A `cloudflared` quick tunnel is **ephemeral** — the `*.trycloudflare.com` URL changes
+whenever the tunnel restarts and dies with the process; a stable URL means a named
+Cloudflare tunnel (account + DNS) or your own proxy with a real certificate. See the
+official [`docker-compose-https.yml`](https://github.com/WeblateOrg/docker-compose) for
+a built-in TLS front end.
+
+## Security / operational notes for a real deployment
 - `environment` holds secrets and is gitignored. Set/rotate
   `WEBLATE_ADMIN_PASSWORD`, `POSTGRES_PASSWORD` (the template ships a weak
   `weblate` default), and the PAT if they ever land anywhere shared.
