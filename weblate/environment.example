@@ -1,0 +1,73 @@
+# Weblate configuration for the openlibrary-i18n stand-up.
+# Copy to `environment` and edit. `environment` is gitignored — it holds secrets.
+# Full reference: https://docs.weblate.org/en/latest/admin/install/docker.html
+
+# --- Core -------------------------------------------------------------------
+WEBLATE_SITE_TITLE=Open Library Translations
+WEBLATE_SITE_DOMAIN=localhost:8098
+WEBLATE_ADMIN_NAME=Admin
+WEBLATE_ADMIN_EMAIL=admin@example.com
+# Set a real password before first boot; the admin user is created on first boot.
+WEBLATE_ADMIN_PASSWORD=
+WEBLATE_SERVER_EMAIL=weblate@example.com
+WEBLATE_DEFAULT_FROM_EMAIL=weblate@example.com
+WEBLATE_DEBUG=0
+WEBLATE_LOGLEVEL=INFO
+# Loopback-only stand-up; tighten for a networked deployment.
+WEBLATE_ALLOWED_HOSTS=*
+# Require an account to view/translate. Keep registration closed for a stand-up.
+WEBLATE_REGISTRATION_OPEN=0
+#WEBLATE_REQUIRE_LOGIN=1
+
+# Host port the UI is published on (see docker-compose.yml). Keep in sync with
+# WEBLATE_SITE_DOMAIN above.
+WEBLATE_PORT=8098
+
+# --- Behind a reverse proxy / tunnel (required for any non-loopback access) --
+# If you front Weblate with a TLS proxy or a tunnel (e.g. cloudflared), set
+# WEBLATE_SITE_DOMAIN to the PUBLIC hostname and set BOTH of the following, or
+# login/edit POSTs 403 with "CSRF verification failed" (the browser's https Origin
+# won't match Django's http-computed scheme). See README "Running behind a reverse
+# proxy". Verified against a cloudflared tunnel.
+#WEBLATE_ENABLE_HTTPS=1
+#WEBLATE_SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO,https
+
+# --- GitHub integration (real-repo mode only; leave blank for the local test) --
+# Weblate opens pull requests via the GitHub API using these, AND the component
+# must be created on the `github` VCS backend (setup_component.py does this by
+# default; see README "Real-repo wiring"). For openlibrary-i18n, issue a
+# FINE-GRAINED PAT scoped to that ONE repository with exactly:
+# Contents: Read and write, Pull requests: Read and write, Metadata: Read-only.
+# Nothing org-wide; nothing to do with the translate.yml pipeline secrets
+# (OL_BOT_PAT / CLAUDE_CODE_OAUTH_TOKEN). See README.md.
+# ALL THREE are required together — setting USERNAME/TOKEN without HOST fails
+# startup (ImproperlyConfigured: missing WEBLATE_GITHUB_HOST).
+#WEBLATE_GITHUB_HOST=github.com
+#WEBLATE_GITHUB_USERNAME=openlibrary-bot
+#WEBLATE_GITHUB_TOKEN=
+
+# LOCAL INTEGRATION TEST ONLY — do NOT set for a real GitHub deployment.
+# Weblate blocks file:// VCS by default (VCS_ALLOW_SCHEMES defaults to https,ssh);
+# the file:// round-trip test needs it added. Real GitHub uses https.
+#WEBLATE_VCS_ALLOW_SCHEMES=https,ssh,file
+
+# --- PostgreSQL -------------------------------------------------------------
+# Change this weak default before any non-loopback use.
+POSTGRES_PASSWORD=weblate
+POSTGRES_USER=weblate
+POSTGRES_DB=weblate
+POSTGRES_HOST=database
+POSTGRES_PORT=
+# Needed by the postgres entrypoint on some versions.
+POSTGRES_DATABASE=weblate
+
+# --- Cache ------------------------------------------------------------------
+REDIS_HOST=cache
+REDIS_PORT=6379
+
+# --- Mail (optional for a stand-up) -----------------------------------------
+WEBLATE_EMAIL_HOST=127.0.0.1
+WEBLATE_EMAIL_HOST_USER=
+WEBLATE_EMAIL_HOST_PASSWORD=
+
+CLIENT_MAX_BODY_SIZE=1000M
