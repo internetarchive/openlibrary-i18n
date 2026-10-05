@@ -11,15 +11,22 @@ Get the admin token once the stack is up:
   docker compose exec -T weblate weblate shell -c \
     "from weblate.auth.models import User; print(User.objects.get(username='admin').auth_token.key)"
 
-Then, for the real repo:
+Then, for the real repo (default) — this uses the `github` VCS backend so Weblate
+opens a PULL REQUEST against main (needs WEBLATE_GITHUB_USERNAME/TOKEN set in the
+container's environment, see README.md):
 
   WEBLATE_URL=http://localhost:8098 \
   WEBLATE_TOKEN=wlu_... \
   OLI_REPO=https://github.com/internetarchive/openlibrary-i18n.git \
   python3 setup_component.py
 
-For the local file:// integration test, set OLI_REPO/OLI_PUSH to
-file:///repos/openlibrary-i18n.git (and WEBLATE_VCS_ALLOW_SCHEMES=https,ssh,file).
+For the local file:// integration test, use the plain `git` backend (pushes to
+the `weblate` branch; no PR layer) and allow the file:// scheme:
+
+  WEBLATE_URL=http://localhost:8098 WEBLATE_TOKEN=wlu_... \
+  OLI_REPO=file:///repos/openlibrary-i18n.git OLI_VCS=git \
+  python3 setup_component.py
+  # (container also needs WEBLATE_VCS_ALLOW_SCHEMES=https,ssh,file)
 """
 
 import json
@@ -38,6 +45,13 @@ BRANCH = os.environ.get("OLI_BRANCH", "main")
 # The branch model: push OUTSIDE the i18n/ namespace so the AI pipeline never
 # auto-merges or counts Weblate PRs. See README.md.
 PUSH_BRANCH = os.environ.get("OLI_PUSH_BRANCH", "weblate")
+# VCS backend: "github" opens a GitHub pull request (real repo, the default);
+# "git" just pushes to push_branch with no PR (used by the local file:// test).
+# NOTE: the "github" backend is only available once WEBLATE_GITHUB_USERNAME and
+# WEBLATE_GITHUB_TOKEN are set in the container's environment (verified on Weblate
+# 2026.10); otherwise component creation fails because the backend isn't
+# registered. See README "Real-repo wiring".
+VCS = os.environ.get("OLI_VCS", "github")
 
 
 def call(method: str, path: str, payload: dict | None = None):
@@ -79,11 +93,13 @@ def main() -> None:
             {
                 "name": "Website",
                 "slug": "website",
-                "vcs": "git",
+                "vcs": VCS,
                 "repo": REPO,
                 "push": PUSH,
                 "branch": BRANCH,
                 "push_branch": PUSH_BRANCH,
+                # Rebase so Weblate absorbs the AI run's merges to main cleanly.
+                "merge_style": "rebase",
                 "file_format": "po",
                 "filemask": "locale/*/messages.po",
                 "new_base": "messages.pot",
@@ -91,7 +107,10 @@ def main() -> None:
             },
         ),
     )
-    print(f"\nComponent configured: {REPO} ({BRANCH}) -> push branch '{PUSH_BRANCH}'.")
+    print(
+        f"\nComponent configured: {REPO} ({BRANCH}) -> push branch "
+        f"'{PUSH_BRANCH}' via '{VCS}' backend."
+    )
 
 
 if __name__ == "__main__":

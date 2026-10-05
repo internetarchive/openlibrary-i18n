@@ -6,8 +6,13 @@
 #
 # This is the base stack (Weblate + PostgreSQL + Valkey/Redis). It is adapted
 # from the official Weblate Docker Compose
-# (https://github.com/WeblateOrg/docker-compose) with two changes: a published
-# port so the UI is reachable locally, and image pins for reproducibility.
+# (https://github.com/WeblateOrg/docker-compose) with three changes from upstream:
+#   1. the weblate image is pinned to a tag (upstream leaves it untagged);
+#   2. a loopback-only port is published so the UI is reachable locally;
+#   3. restart policy is `unless-stopped` (upstream uses `always`).
+# The read-only containers + tmpfs and the postgres/valkey pins are upstream
+# defaults, kept as-is; the read-only weblate container was boot-tested with this
+# stand-up (migrations ran, UI 200, round-trip succeeded).
 #
 #   cp environment.example environment     # then edit: set WEBLATE_ADMIN_PASSWORD etc.
 #   docker compose up -d                   # first boot runs DB migrations (~1-2 min)

@@ -24,15 +24,23 @@ WEBLATE_REGISTRATION_OPEN=0
 WEBLATE_PORT=8098
 
 # --- GitHub integration (real-repo mode only; leave blank for the local test) --
-# Weblate opens pull requests via the `gh`/GitHub API using these. For
-# openlibrary-i18n, issue a FINE-GRAINED PAT scoped to that ONE repository with
-# exactly: Contents: Read and write, Pull requests: Read and write,
-# Metadata: Read-only. Nothing org-wide; nothing to do with the translate.yml
-# pipeline secrets (OL_BOT_PAT / CLAUDE_CODE_OAUTH_TOKEN). See README.md.
+# Weblate opens pull requests via the GitHub API using these, AND the component
+# must be created on the `github` VCS backend (setup_component.py does this by
+# default; see README "Real-repo wiring"). For openlibrary-i18n, issue a
+# FINE-GRAINED PAT scoped to that ONE repository with exactly:
+# Contents: Read and write, Pull requests: Read and write, Metadata: Read-only.
+# Nothing org-wide; nothing to do with the translate.yml pipeline secrets
+# (OL_BOT_PAT / CLAUDE_CODE_OAUTH_TOKEN). See README.md.
 #WEBLATE_GITHUB_USERNAME=openlibrary-bot
 #WEBLATE_GITHUB_TOKEN=
 
+# LOCAL INTEGRATION TEST ONLY — do NOT set for a real GitHub deployment.
+# Weblate blocks file:// VCS by default (VCS_ALLOW_SCHEMES defaults to https,ssh);
+# the file:// round-trip test needs it added. Real GitHub uses https.
+#WEBLATE_VCS_ALLOW_SCHEMES=https,ssh,file
+
 # --- PostgreSQL -------------------------------------------------------------
+# Change this weak default before any non-loopback use.
 POSTGRES_PASSWORD=weblate
 POSTGRES_USER=weblate
 POSTGRES_DB=weblate

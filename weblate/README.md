@@ -24,10 +24,10 @@ not a production deployment.
 
 | File | Purpose |
 |---|---|
-| `docker-compose.yml` | Base stack: Weblate + PostgreSQL + Valkey (Redis). Adapted from the [official Weblate compose](https://github.com/WeblateOrg/docker-compose), pinned and with a loopback port published. |
+| `docker-compose.yml` | Base stack: Weblate + PostgreSQL + Valkey (Redis). Adapted from the [official Weblate compose](https://github.com/WeblateOrg/docker-compose): the weblate image is pinned, a loopback port is published, and restart policy is `unless-stopped`. The read-only containers + tmpfs are upstream defaults (boot-tested here). |
 | `docker-compose.localtest.yml` | Override that mounts a local dir of **bare git repos** into the container, so a component can use a `file://` URL as a GitHub stand-in. This is how the integration test below was run — no credentials, no real-repo writes. |
 | `environment.example` | Config template. Copy to `environment` (gitignored) and edit. |
-| `setup_component.py` | Reproducible project+component creation via the REST API: sets `branch=main`, `push_branch=weblate`, `filemask=locale/*/messages.po`. Works for both the local test and the real repo. |
+| `setup_component.py` | Reproducible project+component creation via the REST API: sets `branch=main`, `push_branch=weblate`, `merge_style=rebase`, `filemask=locale/*/messages.po`. Defaults to the `github` backend (opens PRs) for the real repo; pass `OLI_VCS=git` for the local `file://` test (push-only, no PR). |
 
 ---
 
@@ -92,7 +92,7 @@ as machine output and **squash-merged to `main` unreviewed**. Never use that pre
 The AI agent is instructed to halt when ≥5 such PRs are open:
 
 ```bash
-# i18n-translation-instructions.md (3c5982b), lines 39-41
+# i18n-translation-instructions.md (3c5982b), lines 40-41
 OPEN=$(gh pr list --state open --json headRefName \
   --jq '[.[] | select(.headRefName | startswith("i18n/"))] | length')
 ```
@@ -140,7 +140,13 @@ create or use it** — it is Mek's to issue.
 WEBLATE_GITHUB_USERNAME=openlibrary-bot      # the account the PAT belongs to
 WEBLATE_GITHUB_TOKEN=<the fine-grained PAT>
 ```
-Weblate uses these to open PRs via the GitHub API.
+Weblate uses these to open PRs via the GitHub API. **Set these before creating the
+component:** the `github` ("GitHub pull request") VCS backend only registers once
+GitHub credentials are configured (verified against Weblate 2026.10:
+`GitMergeRequestBase.is_configured()` returns `bool(get_credentials_configuration())`).
+Without them, selecting that backend fails because it isn't available. (Weblate
+2026.10 also offers a `github-app` backend that authenticates as a GitHub App
+instead of a PAT; this stand-up uses the simpler PAT path.)
 
 **3. Configure the component** (UI → *Manage → Repository maintenance*, or the API):
 - **Source code repository:** `https://github.com/internetarchive/openlibrary-i18n.git`
@@ -154,6 +160,12 @@ Weblate uses these to open PRs via the GitHub API.
 - **Pull request / push style:** `GitHub pull request`
 - Turn **off** committing straight to the upstream branch; Weblate pushes to
   `weblate` and opens a PR against `main`.
+
+`setup_component.py` automates this: with its default `OLI_VCS=github` it creates
+the component on the `github` backend with `push_branch=weblate` and
+`merge_style=rebase`, so a run against the real repo opens PRs rather than pushing
+directly. (The `github` backend is what makes it a *pull request*; the plain `git`
+backend used by the local test only pushes the branch.)
 
 With that, a Weblate edit → commit on `weblate` → **pull request to `main`**, which
 a maintainer reviews and merges, exactly as the branch model prescribes.
@@ -232,8 +244,9 @@ request" push style.
 - The compose publishes the UI on **127.0.0.1 only**. For a networked deployment,
   put Weblate behind a TLS-terminating proxy and set `WEBLATE_ENABLE_HTTPS=1`
   (see the official [`docker-compose-https.yml`](https://github.com/WeblateOrg/docker-compose)).
-- `environment` holds secrets and is gitignored. Rotate `WEBLATE_ADMIN_PASSWORD`
-  and the PAT if they ever land anywhere shared.
+- `environment` holds secrets and is gitignored. Set/rotate
+  `WEBLATE_ADMIN_PASSWORD`, `POSTGRES_PASSWORD` (the template ships a weak
+  `weblate` default), and the PAT if they ever land anywhere shared.
 - Keep `WEBLATE_REGISTRATION_OPEN=0` until an auth model (who may translate) is
   decided — a later milestone.
 - Images are pinned (`weblate/weblate:2026.10`, `postgres:18-alpine`,
