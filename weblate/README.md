@@ -135,14 +135,20 @@ create or use it** — it is Mek's to issue.
 - This is entirely separate from the pipeline secrets (`OL_BOT_PAT`,
   `CLAUDE_CODE_OAUTH_TOKEN`) and does not touch `translate.yml`.
 
-**2. Give it to Weblate** (in `environment`):
+**2. Give it to Weblate** (in `environment`) — **all three are required:**
 ```ini
+WEBLATE_GITHUB_HOST=github.com               # REQUIRED; omitting it fails startup
 WEBLATE_GITHUB_USERNAME=openlibrary-bot      # the account the PAT belongs to
 WEBLATE_GITHUB_TOKEN=<the fine-grained PAT>
 ```
-Weblate uses these to open PRs via the GitHub API. **Set these before creating the
-component:** the `github` ("GitHub pull request") VCS backend only registers once
-GitHub credentials are configured (verified against Weblate 2026.10:
+If a username/token is set without `WEBLATE_GITHUB_HOST`, the container refuses to
+boot with `ImproperlyConfigured: Incomplete GITHUB_CREDENTIALS configuration:
+missing WEBLATE_GITHUB_HOST` (verified on 2026.10 in `get_env_credentials()`). (The
+equivalent one-liner is `WEBLATE_GITHUB_CREDENTIALS={"github.com": {"username":
+"openlibrary-bot", "token": "..."}}`.) Weblate uses these to open PRs via the GitHub
+API. **Set them before creating the component:** the `github` ("GitHub pull request")
+VCS backend only registers once GitHub credentials are configured (verified against
+Weblate 2026.10:
 `GitMergeRequestBase.is_configured()` returns `bool(get_credentials_configuration())`).
 Without them, selecting that backend fails because it isn't available. (Weblate
 2026.10 also offers a `github-app` backend that authenticates as a GitHub App

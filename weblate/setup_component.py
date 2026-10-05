@@ -12,8 +12,9 @@ Get the admin token once the stack is up:
     "from weblate.auth.models import User; print(User.objects.get(username='admin').auth_token.key)"
 
 Then, for the real repo (default) — this uses the `github` VCS backend so Weblate
-opens a PULL REQUEST against main (needs WEBLATE_GITHUB_USERNAME/TOKEN set in the
-container's environment, see README.md):
+opens a PULL REQUEST against main (needs WEBLATE_GITHUB_HOST=github.com,
+WEBLATE_GITHUB_USERNAME and WEBLATE_GITHUB_TOKEN all set in the container's
+environment — omitting HOST fails startup; see README.md):
 
   WEBLATE_URL=http://localhost:8098 \
   WEBLATE_TOKEN=wlu_... \
@@ -47,8 +48,9 @@ BRANCH = os.environ.get("OLI_BRANCH", "main")
 PUSH_BRANCH = os.environ.get("OLI_PUSH_BRANCH", "weblate")
 # VCS backend: "github" opens a GitHub pull request (real repo, the default);
 # "git" just pushes to push_branch with no PR (used by the local file:// test).
-# NOTE: the "github" backend is only available once WEBLATE_GITHUB_USERNAME and
-# WEBLATE_GITHUB_TOKEN are set in the container's environment (verified on Weblate
+# NOTE: the "github" backend is only available once GitHub credentials are set in
+# the container's environment — WEBLATE_GITHUB_HOST (=github.com),
+# WEBLATE_GITHUB_USERNAME and WEBLATE_GITHUB_TOKEN, all three (verified on Weblate
 # 2026.10); otherwise component creation fails because the backend isn't
 # registered. See README "Real-repo wiring".
 VCS = os.environ.get("OLI_VCS", "github")
