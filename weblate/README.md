@@ -133,7 +133,7 @@ create or use it** — it is Mek's to issue.
 - Permissions: **Contents: Read and write**, **Pull requests: Read and write**,
   **Metadata: Read-only**. Nothing else; nothing org-wide.
 - This is entirely separate from the pipeline secrets (`OL_BOT_PAT`,
-  `CLAUDE_CODE_OAUTH_TOKEN`) and does not touch `translate.yml`.
+  `OL_BOT_CLAUDE_OAUTH_TOKEN`) and does not touch `translate.yml`.
 
 **2. Give it to Weblate** (in `environment`) — **all three are required:**
 ```ini
