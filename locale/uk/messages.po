@@ -51,9 +51,13 @@ msgstr "Переглянути або редагувати ваш читацьк
 msgid "View or Edit your Lists"
 msgstr "Переглянути або редагувати ваші списки"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "Налаштування імпорту та експорту"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "Імпортувати ваші дані"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "Експортувати ваші дані"
 
 #: account.html
 #, fuzzy
@@ -562,7 +566,7 @@ msgstr "Додано нову книгу."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Дуже дякуємо за те, що покращили наші дані!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Закрити"
 
@@ -727,10 +731,6 @@ msgstr "Ім'я"
 msgid "System information"
 msgstr "Системна інформація"
 
-#: status.html
-msgid "Features enabled"
-msgstr "Увімкнені функції"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "Редагувати тег для цієї теми"
@@ -889,7 +889,7 @@ msgstr "Приєднатися до списку очікування"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Дізнатися більше про &quot;%(title)s&quot; на OpenLibrary"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Дізнатися більше"
 
@@ -1139,6 +1139,52 @@ msgstr "Реєструючись, ви погоджуєтесь із <a class=\"
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "Вже маєте обліковий запис? <a href=\"/account/login\">Увійти</a>"
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "Експортувати ваш читацький журнал"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "Завантажте копію свого %(link_start)sжурналу читання%(link_end)s."
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "Завантажити (формат .csv)"
+
+#: account/export.html
+msgid "Export your book notes"
+msgstr "Експортувати ваші нотатки до книг"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "Завантажте копію своїх <a href=\"/help/faq/book-notes\">нотаток до книг</a>."
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "Експортувати відгуки"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "Завантажте копію своїх <a href=\"/help/faq/reviews#book-tags\">тегів рецензій</a>."
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "Експортувати огляд ваших списків"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "Завантажте зведення своїх <a href=\"/help/faq/reading-log.en#lists\">списків</a>."
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "Експортувати ваші рейтинги книг"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "Завантажте копію своїх %(link_start)sоцінок у зірках%(link_end)s."
+
 #: account/follows.html
 #, fuzzy
 msgid "There is nothing to see here yet."
@@ -1153,82 +1199,68 @@ msgid "Import from Goodreads"
 msgstr "Імпорт з Goodreads"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "Для отримання інструкцій щодо експорту даних зверніться до: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "Формат: .csv (макс. 10 МБ)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "Обмеження на розмір файлу 10 МБ і лише у форматі .csv"
+msgid "How to export?"
+msgstr "Як експортувати?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "Перетягніть сюди свій файл CSV, або"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "натисніть, щоб вибрати файл"
 
 #: account/import.html
 msgid "Load Books"
 msgstr "Завантажити книги"
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "Експортувати ваш читацький журнал"
+msgid "Scan barcodes"
+msgstr "Сканувати штрихкоди"
 
 #: account/import.html
-msgid "Download a copy of your reading log."
-msgstr "Завантажити копію вашого читацького журналу."
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "Миттєво додавайте фізичні книги до свого журналу читання, скануючи їхні штрихкоди камерою пристрою."
 
 #: account/import.html
-#, fuzzy
-msgid "What is a reading log?"
-msgstr "Читацький журнал"
+msgid "Launch Barcode Scanner"
+msgstr "Запустити сканер штрихкодів"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "Завантажити (формат .csv)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "Шукаєте експорт? Його перенесено на окрему сторінку - натисніть тут, щоб експортувати свої дані."
 
 #: account/import.html
-msgid "Export your book notes"
-msgstr "Експортувати ваші нотатки до книг"
+msgid "Help us decide which importers to build next"
+msgstr "Допоможіть нам вирішити, які інструменти імпорту створити наступними"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "Завантажити копію ваших нотаток до книг."
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "Розкажіть нам, де зараз знаходяться ваші книги. Ми враховуємо запити під час планування наступного інструменту імпорту."
 
 #: account/import.html
-msgid "What are book notes?"
-msgstr "Що таке нотатки?"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "Експортувати відгуки"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "Імпортуйте свої книги та каталоги з LibraryThing."
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "Завантажити копію ваших відгуків-міток."
+msgid "Express interest in this"
+msgstr "Висловити зацікавленість у цьому"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "Що таке відгуки-мітки?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "Експортувати огляд ваших списків"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "Завантажити усі ваші списки та їхній вміст."
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "Що таке списки?"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "Експортувати ваші рейтинги книг"
-
-#: account/import.html
-#, fuzzy
-msgid "Download a copy of your star ratings."
-msgstr "Завантажити копію даних про ваш рейтинг книг."
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "Що таке рейтинг?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "Імпортуйте свої журнали читання та виклики з StoryGraph."
 
 #: account/import.html
 #, fuzzy
@@ -1422,10 +1454,6 @@ msgstr "Мої нотатки"
 #: account/mybooks.html account/sidebar.html
 msgid "My Reviews"
 msgstr "Мої відгуки"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "Налаштування імпорту та експорту"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1762,11 +1790,6 @@ msgstr "Створити новий список"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "Безіменний список"
-
-#: account/topmenu.html
-#, fuzzy
-msgid "Import & Export"
-msgstr "Імпорт та експорт"
 
 #: account/topmenu.html
 #, python-format
@@ -2984,9 +3007,9 @@ msgstr "Більше на OpenStax"
 msgid "Listen to a reading from %s"
 msgstr "Слухати читання з %s"
 
-#: book_providers/read_button.html
-msgid "Audiobook"
-msgstr "Аудіокнига"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "Слухати"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3575,10 +3598,6 @@ msgstr "Списки (%(count)d)"
 #: NotesModalDialog.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py type/edition/modal_links.html
 msgid "Notes"
 msgstr "Нотатки"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "Імпорт та експорт"
 
 #: books/series-autocomplete.html
 #, fuzzy
@@ -4263,10 +4282,6 @@ msgstr "Керувати фотографіями автора"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Фото %(author)s"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "Натисніть, щоб закрити"
 
 #: covers/author_photo.html
 #, python-format
@@ -7540,15 +7555,6 @@ msgstr[2] "%(n)s інших"
 msgid "by an <em>unknown author</em>"
 msgstr "від <em>невідомого автора</em>"
 
-#: BookPreview.html
-#, fuzzy
-msgid "Preview Only"
-msgstr "Передперегляд книги"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "Немає передперегляду"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "Передперегляд книги"
@@ -7560,6 +7566,10 @@ msgstr "Попередній перегляд книги"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Дізнайтеся більше про цю книгу на Archive.org"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "Бібліотеки поблизу"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7653,20 +7663,8 @@ msgid "All copies are checked out."
 msgstr "Усі примірники позичені."
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "Ця книга зараз позичена, перевірте пізніше."
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "Позичено"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "Доступний лише передперегляд."
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "Бібліотеки поблизу"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7754,10 +7752,6 @@ msgstr "Читати електронну книгу з Internet Archive"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "Більше варіантів читання"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "Слухати"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -10153,4 +10147,73 @@ msgstr "%(title)s - пошук"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "Дублікати записів буде перенаправлено до основного запису."
+
+#~ msgid "Import and Export Options"
+#~ msgstr "Налаштування імпорту та експорту"
+
+#~ msgid "Features enabled"
+#~ msgstr "Увімкнені функції"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "Для отримання інструкцій щодо експорту даних зверніться до: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "Обмеження на розмір файлу 10 МБ і лише у форматі .csv"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "Завантажити копію вашого читацького журналу."
+
+#~ msgid "What is a reading log?"
+#~ msgstr "Читацький журнал"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "Завантажити копію ваших нотаток до книг."
+
+#~ msgid "What are book notes?"
+#~ msgstr "Що таке нотатки?"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "Завантажити копію ваших відгуків-міток."
+
+#~ msgid "What are review tags?"
+#~ msgstr "Що таке відгуки-мітки?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "Завантажити усі ваші списки та їхній вміст."
+
+#~ msgid "What are lists?"
+#~ msgstr "Що таке списки?"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "Завантажити копію даних про ваш рейтинг книг."
+
+#~ msgid "What are star ratings?"
+#~ msgstr "Що таке рейтинг?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "Налаштування імпорту та експорту"
+
+#~ msgid "Import & Export"
+#~ msgstr "Імпорт та експорт"
+
+#~ msgid "Audiobook"
+#~ msgstr "Аудіокнига"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "Імпорт та експорт"
+
+#~ msgid "Click to close"
+#~ msgstr "Натисніть, щоб закрити"
+
+#~ msgid "Preview Only"
+#~ msgstr "Передперегляд книги"
+
+#~ msgid "No Preview"
+#~ msgstr "Немає передперегляду"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "Ця книга зараз позичена, перевірте пізніше."
+
+#~ msgid "Only a preview is available."
+#~ msgstr "Доступний лише передперегляд."
 

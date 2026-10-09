@@ -54,9 +54,13 @@ msgstr "নিজের রিডিং লগ দেখুন বা বদল 
 msgid "View or Edit your Lists"
 msgstr "নিজের তালিকা দেখুন বা বদল করুন"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "আমদানি - রপ্তানি সম্বন্ধীয় অপশন"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "আপনার ডেটা আমদানি করুন"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "আপনার ডেটা রপ্তানি করুন"
 
 #: account.html
 #, fuzzy
@@ -566,7 +570,7 @@ msgstr "नई किताब जोड़ी गई।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "बंद करें"
 
@@ -731,10 +735,6 @@ msgstr "नाम"
 msgid "System information"
 msgstr "সিস্টেম তথ্য"
 
-#: status.html
-msgid "Features enabled"
-msgstr "সক্রিয় বৈশিষ্ট্যসমূহ"
-
 #: subjects.html
 #, fuzzy
 msgid "Edit tag for this subject"
@@ -889,7 +889,7 @@ msgstr "वेटलिस्ट में शामिल हों"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "OpenLibrary पर \"%(title)s \"के बारे में और जानें"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "अधिक जानें"
 
@@ -1134,6 +1134,52 @@ msgstr "সাইন আপ করার মাধ্যমে, আপনি Int
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "ইতোমধ্যে অ্যাকাউন্ট আছে? <a href=\"/account/login\">লগ ইন করুন</a>"
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "নিজের রিডিং লগ রপ্তানি করুন"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "আপনার %(link_start)sপাঠ লগ%(link_end)s-এর একটি কপি ডাউনলোড করুন।"
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "ডাউনলোড করুন (.csv ফরম্যাট)"
+
+#: account/export.html
+msgid "Export your book notes"
+msgstr "নিজের বুক নোটস রপ্তানি করুন"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "আপনার <a href=\"/help/faq/book-notes\">বইয়ের নোট</a>-এর একটি কপি ডাউনলোড করুন।"
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "নিজের সমীক্ষাগুলি রপ্তানি করুন"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "আপনার <a href=\"/help/faq/reviews#book-tags\">রিভিউ ট্যাগ</a>-এর একটি কপি ডাউনলোড করুন।"
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "নিজের সূচির ওভারভিউ রপ্তানি করুন"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "আপনার <a href=\"/help/faq/reading-log.en#lists\">তালিকার</a> একটি সারাংশ ডাউনলোড করুন।"
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "নিজের ষ্টার রেটিংগুলি রপ্তানি করুন"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "আপনার %(link_start)sস্টার রেটিং%(link_end)s-এর একটি কপি ডাউনলোড করুন।"
+
 #: account/follows.html
 #, fuzzy
 msgid "There is nothing to see here yet."
@@ -1148,80 +1194,68 @@ msgid "Import from Goodreads"
 msgstr "Goodreads से इंपोर्ट करें"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "ডেটা রপ্তানির নির্দেশনার জন্য দেখুন: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "ফরম্যাট: .csv (সর্বোচ্চ ১০MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "फ़ाइल आकार सीमा केवल 10MB और .csv फ़ाइल प्रकार"
+msgid "How to export?"
+msgstr "কীভাবে রপ্তানি করবেন?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "আপনার CSV ফাইলটি এখানে টেনে এনে ছাড়ুন, অথবা"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "ব্রাউজ করতে ক্লিক করুন"
 
 #: account/import.html
 msgid "Load Books"
 msgstr "किताबें लोड करें"
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "নিজের রিডিং লগ রপ্তানি করুন"
+msgid "Scan barcodes"
+msgstr "বারকোড স্ক্যান করুন"
 
 #: account/import.html
-msgid "Download a copy of your reading log."
-msgstr "নিজের রিডিং লগের একটি কপি ডাউনলোড করুন।"
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "আপনার ডিভাইসের ক্যামেরা দিয়ে বারকোড স্ক্যান করে তাৎক্ষণিকভাবে শারীরিক বই আপনার পাঠ লগে যোগ করুন।"
 
 #: account/import.html
-msgid "What is a reading log?"
-msgstr "রিডিং লগ কী?"
+msgid "Launch Barcode Scanner"
+msgstr "বারকোড স্ক্যানার চালু করুন"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "ডাউনলোড করুন (.csv ফরম্যাট)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "রপ্তানি খুঁজছেন? সেগুলো একটি আলাদা পৃষ্ঠায় সরানো হয়েছে - আপনার ডেটা রপ্তানি করতে এখানে ক্লিক করুন।"
 
 #: account/import.html
-msgid "Export your book notes"
-msgstr "নিজের বুক নোটস রপ্তানি করুন"
+msgid "Help us decide which importers to build next"
+msgstr "পরবর্তীতে কোন আমদানিকারক তৈরি করা উচিত তা সিদ্ধান্ত নিতে আমাদের সাহায্য করুন"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "নিজের বুক নোটস এর একটি কপি ডাউনলোড করুন।"
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "আপনার বইগুলো এখন কোথায় আছে তা আমাদের জানান। পরবর্তী আমদানিকারক পরিকল্পনার সময় আমরা অনুরোধ গণনা করি।"
 
 #: account/import.html
-msgid "What are book notes?"
-msgstr "বুক নোটস কি?"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "নিজের সমীক্ষাগুলি রপ্তানি করুন"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "LibraryThing থেকে আপনার বই ও ক্যাটালগ আমদানি করুন।"
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "নিজের সমীক্ষা ট্যাগগুলির একটি কপি ডাউনলোড করুন।"
+msgid "Express interest in this"
+msgstr "এতে আগ্রহ প্রকাশ করুন"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "সমীক্ষা ট্যাগ কি?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "নিজের সূচির ওভারভিউ রপ্তানি করুন"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "আপনার সূচির সারাংশ এবং তার বিষয়বস্তূ ডাউনলোড করুন।"
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "সূচি কি?"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "নিজের ষ্টার রেটিংগুলি রপ্তানি করুন"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "আপনার স্টার রেটিংয়ের একটি কপি ডাউনলোড করুন।"
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "ষ্টার রেটিং কি?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "StoryGraph থেকে আপনার পাঠ লগ ও চ্যালেঞ্জ আমদানি করুন।"
 
 #: account/import.html
 #, fuzzy
@@ -1409,10 +1443,6 @@ msgstr "मेरे नोट्स"
 #: account/mybooks.html account/sidebar.html
 msgid "My Reviews"
 msgstr "मेरी समीक्षाएँ"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "इम्पोर्ट और एक्सपोर्ट विकल्प"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1746,11 +1776,6 @@ msgstr "नई कार्य सूची सृजित करें"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "बिना शीर्षक वाली लिस्ट"
-
-#: account/topmenu.html
-#, fuzzy
-msgid "Import & Export"
-msgstr "आयात और निर्यात"
 
 #: account/topmenu.html
 #, python-format
@@ -2970,9 +2995,9 @@ msgstr "OpenStax पर और जानकारी"
 msgid "Listen to a reading from %s"
 msgstr "%s থেকে একটি পাঠ শুনুন"
 
-#: book_providers/read_button.html
-msgid "Audiobook"
-msgstr "ऑडियोबुक"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "बात सुनो"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3557,10 +3582,6 @@ msgstr "তালিকা (%(count)d)"
 #: NotesModalDialog.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py type/edition/modal_links.html
 msgid "Notes"
 msgstr "टीप"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "आयात और निर्यात"
 
 #: books/series-autocomplete.html
 msgid "Add a new series"
@@ -4239,10 +4260,6 @@ msgstr "लेखक की फ़ोटो मैनेज करें"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s-এর ছবি"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "বন্ধ করতে ক্লিক করুন"
 
 #: covers/author_photo.html
 #, python-format
@@ -7470,15 +7487,6 @@ msgstr[1] "%(n)s अन्य"
 msgid "by an <em>unknown author</em>"
 msgstr "एक <em>अज्ञात लेखक</em> द्वारा"
 
-#: BookPreview.html
-#, fuzzy
-msgid "Preview Only"
-msgstr "पुस्तक का पूर्वावलोकन करें"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "কোনো প্রিভিউ নেই"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "पुस्तक का पूर्वावलोकन करें"
@@ -7490,6 +7498,10 @@ msgstr "বইয়ের পূর্বরূপ"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Archive.org-এ এই বই সম্পর্কে আরও দেখুন"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "নিকটবর্তী গ্রন্থাগারসমূহ"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7580,20 +7592,8 @@ msgid "All copies are checked out."
 msgstr "সব কপি ধার দেওয়া হয়েছে।"
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "यह किताब फ़िलहाल चेक आउट की जा रही है, कृपया बाद में फिर से देखें।"
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "चेक आउट किया गया"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "শুধুমাত্র একটি প্রিভিউ উপলব্ধ।"
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "নিকটবর্তী গ্রন্থাগারসমূহ"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7681,10 +7681,6 @@ msgstr "इंटरनेट आर्काइव से ईबुक पढ�
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "আরও পড়ার অপশন"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "बात सुनो"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -10212,4 +10208,73 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "নকল রেকর্ডগুলি মূল রেকর্ডে পুনঃনির্দেশিত করা হবে।"
+
+#~ msgid "Import and Export Options"
+#~ msgstr "আমদানি - রপ্তানি সম্বন্ধীয় অপশন"
+
+#~ msgid "Features enabled"
+#~ msgstr "সক্রিয় বৈশিষ্ট্যসমূহ"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "ডেটা রপ্তানির নির্দেশনার জন্য দেখুন: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "फ़ाइल आकार सीमा केवल 10MB और .csv फ़ाइल प्रकार"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "নিজের রিডিং লগের একটি কপি ডাউনলোড করুন।"
+
+#~ msgid "What is a reading log?"
+#~ msgstr "রিডিং লগ কী?"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "নিজের বুক নোটস এর একটি কপি ডাউনলোড করুন।"
+
+#~ msgid "What are book notes?"
+#~ msgstr "বুক নোটস কি?"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "নিজের সমীক্ষা ট্যাগগুলির একটি কপি ডাউনলোড করুন।"
+
+#~ msgid "What are review tags?"
+#~ msgstr "সমীক্ষা ট্যাগ কি?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "আপনার সূচির সারাংশ এবং তার বিষয়বস্তূ ডাউনলোড করুন।"
+
+#~ msgid "What are lists?"
+#~ msgstr "সূচি কি?"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "আপনার স্টার রেটিংয়ের একটি কপি ডাউনলোড করুন।"
+
+#~ msgid "What are star ratings?"
+#~ msgstr "ষ্টার রেটিং কি?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "इम्पोर्ट और एक्सपोर्ट विकल्प"
+
+#~ msgid "Import & Export"
+#~ msgstr "आयात और निर्यात"
+
+#~ msgid "Audiobook"
+#~ msgstr "ऑडियोबुक"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "आयात और निर्यात"
+
+#~ msgid "Click to close"
+#~ msgstr "বন্ধ করতে ক্লিক করুন"
+
+#~ msgid "Preview Only"
+#~ msgstr "पुस्तक का पूर्वावलोकन करें"
+
+#~ msgid "No Preview"
+#~ msgstr "কোনো প্রিভিউ নেই"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "यह किताब फ़िलहाल चेक आउट की जा रही है, कृपया बाद में फिर से देखें।"
+
+#~ msgid "Only a preview is available."
+#~ msgstr "শুধুমাত্র একটি প্রিভিউ উপলব্ধ।"
 

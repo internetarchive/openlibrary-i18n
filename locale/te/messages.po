@@ -52,9 +52,13 @@ msgstr "మీ చదివిన వివరాలను చూడండి �
 msgid "View or Edit your Lists"
 msgstr "మీ జాబితాలను చూడండి లేదా సవరించండి"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "దిగుమతి మరియు ఎగుమతి ఎంపికలు"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "మీ డేటాను దిగుమతి చేయండి"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "మీ డేటాను ఎగుమతి చేయండి"
 
 #: account.html
 msgid "Manage Privacy & Content Moderation Settings"
@@ -567,7 +571,7 @@ msgstr "పుస్తకం చేర్చు"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library కేటలాగ్‌ను మెరుగుపరచినందుకు ధన్యవాదాలు!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "మూసు"
 
@@ -731,10 +735,6 @@ msgstr "పేరు "
 #: status.html
 msgid "System information"
 msgstr "సిస్టమ్ సమాచారం"
-
-#: status.html
-msgid "Features enabled"
-msgstr "ఎనేబుల్ చేసిన లక్షణాలు"
 
 #: subjects.html
 msgid "Edit tag for this subject"
@@ -901,7 +901,7 @@ msgstr "వెయిటింగ్ లిస్ట్‌లో చేరండ�
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "OpenLibrary లో \"%(title)s\" గురించి మరింత తెలుసుకోండి"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 #, fuzzy
 msgid "Learn More"
 msgstr "మరింత చదవండి"
@@ -1153,6 +1153,54 @@ msgstr "సైన్ అప్ చేయడం ద్వారా, మీరు 
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "ఇప్పటికే ఖాతా ఉందా? <a href=\"/account/login\">లాగిన్</a> చేయండి"
 
+#: account/export.html
+#, fuzzy
+msgid "Export your Reading Log"
+msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "మీ %(link_start)sపఠన లాగ్%(link_end)s కాపీని డౌన్‌లోడ్ చేయండి."
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "డౌన్‌లోడ్ (.csv ఆకృతి)"
+
+#: account/export.html
+#, fuzzy
+msgid "Export your book notes"
+msgstr "నా పుస్తక నోట్స్"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "మీ <a href=\"/help/faq/book-notes\">పుస్తక గమనికల</a> కాపీని డౌన్‌లోడ్ చేయండి."
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "మీ సమీక్షలు ఎగుమతి చేయండి"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "మీ <a href=\"/help/faq/reviews#book-tags\">సమీక్ష ట్యాగ్‌ల</a> కాపీని డౌన్‌లోడ్ చేయండి."
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "మీ జాబితా సారాంశం ఎగుమతి చేయండి"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "మీ <a href=\"/help/faq/reading-log.en#lists\">జాబితాల</a> సారాంశాన్ని డౌన్‌లోడ్ చేయండి."
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "మీ స్టార్ రేటింగ్‌లు ఎగుమతి చేయండి"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "మీ %(link_start)sనక్షత్ర రేటింగ్‌ల%(link_end)s కాపీని డౌన్‌లోడ్ చేయండి."
+
 #: account/follows.html
 #, fuzzy
 msgid "There is nothing to see here yet."
@@ -1167,12 +1215,20 @@ msgid "Import from Goodreads"
 msgstr "Goodreads నుండి దిగుమతి చేయండి"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "డేటా ఎగుమతి సూచనలకు చూడండి: <a href=\"https://www.goodreads.com/review/import\">Goodreads దిగుమతి/ఎగుమతి</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "ఫార్మాట్: .csv (గరిష్టంగా 10MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "ఫైల్ పరిమాణం 10MB మరియు .csv ఫైల్ రకం మాత్రమే"
+msgid "How to export?"
+msgstr "ఎలా ఎగుమతి చేయాలి?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "మీ CSV ఫైల్‌ను ఇక్కడ లాగి వదలండి, లేదా"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "బ్రౌజ్ చేయడానికి క్లిక్ చేయండి"
 
 #: account/import.html
 #, fuzzy
@@ -1180,73 +1236,48 @@ msgid "Load Books"
 msgstr "సంబంధిత పుస్తకాలు"
 
 #: account/import.html
-#, fuzzy
-msgid "Export your Reading Log"
-msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
+msgid "Scan barcodes"
+msgstr "బార్‌కోడ్‌లను స్కాన్ చేయండి"
 
 #: account/import.html
-#, fuzzy
-msgid "Download a copy of your reading log."
-msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "మీ పరికరం కెమెరాతో బార్‌కోడ్‌లను స్కాన్ చేయడం ద్వారా భౌతిక పుస్తకాలను తక్షణమే మీ పఠన లాగ్‌కు జోడించండి."
 
 #: account/import.html
-#, fuzzy
-msgid "What is a reading log?"
-msgstr "చదివే ప్రదేశం "
+msgid "Launch Barcode Scanner"
+msgstr "బార్‌కోడ్ స్కానర్‌ను ప్రారంభించండి"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "డౌన్‌లోడ్ (.csv ఆకృతి)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "ఎగుమతుల కోసం చూస్తున్నారా? అవి ప్రత్యేక పేజీకి తరలించబడ్డాయి - మీ డేటాను ఎగుమతి చేయడానికి ఇక్కడ క్లిక్ చేయండి."
 
 #: account/import.html
-#, fuzzy
-msgid "Export your book notes"
-msgstr "నా పుస్తక నోట్స్"
+msgid "Help us decide which importers to build next"
+msgstr "తర్వాత ఏ దిగుమతిదారులను నిర్మించాలో నిర్ణయించడంలో మాకు సహాయపడండి"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "మీ పుస్తక నోట్స్ కాపీ డౌన్‌లోడ్ చేయండి."
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "మీ పుస్తకాలు ఇప్పుడు ఎక్కడ ఉన్నాయో మాకు చెప్పండి. తదుపరి దిగుమతిదారును ప్రణాళిక చేసేటప్పుడు మేము అభ్యర్థనలను లెక్కిస్తాము."
 
 #: account/import.html
-#, fuzzy
-msgid "What are book notes?"
-msgstr "నా పుస్తక నోట్స్"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "మీ సమీక్షలు ఎగుమతి చేయండి"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "LibraryThing నుండి మీ పుస్తకాలు మరియు కేటలాగ్‌లను దిగుమతి చేయండి."
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "మీ సమీక్ష ట్యాగుల కాపీ డౌన్‌లోడ్ చేయండి."
+msgid "Express interest in this"
+msgstr "దీనిపై ఆసక్తిని వ్యక్తం చేయండి"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "సమీక్ష ట్యాగులు అంటే ఏమిటి?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "మీ జాబితా సారాంశం ఎగుమతి చేయండి"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "మీ జాబితాల మరియు వాటి విషయాల సారాంశం డౌన్‌లోడ్ చేయండి."
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "జాబితాలు అంటే ఏమిటి?"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "మీ స్టార్ రేటింగ్‌లు ఎగుమతి చేయండి"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "మీ స్టార్ రేటింగ్‌ల కాపీ డౌన్‌లోడ్ చేయండి."
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "స్టార్ రేటింగ్‌లు అంటే ఏమిటి?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "StoryGraph నుండి మీ పఠన లాగ్‌లు మరియు సవాళ్లను దిగుమతి చేయండి."
 
 #: account/import.html
 #, fuzzy
@@ -1441,10 +1472,6 @@ msgstr "నా పుస్తక నోట్స్"
 #, fuzzy
 msgid "My Reviews"
 msgstr "నా పుస్తక సమీక్ష"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "దిగుమతి మరియు ఎగుమతి ఎంపికలు"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 #, fuzzy
@@ -1795,10 +1822,6 @@ msgstr "కొత్త జాబితాను సృష్టించండ�
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "శీర్షిక లేని జాబితా"
-
-#: account/topmenu.html
-msgid "Import & Export"
-msgstr "దిగుమతి మరియు ఎగుమతి"
 
 #: account/topmenu.html
 #, python-format
@@ -3027,10 +3050,10 @@ msgstr "OpenStax లో మరింత"
 msgid "Listen to a reading from %s"
 msgstr "%s నుండి చదవడం వినండి"
 
-#: book_providers/read_button.html
+#: ReadingOptionsMenu.html book_providers/read_button.html
 #, fuzzy
-msgid "Audiobook"
-msgstr "ఒక పుస్తకం చేర్చు"
+msgid "Listen"
+msgstr "జాబితాలు"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3612,10 +3635,6 @@ msgstr "జాబితాలు (%(count)d)"
 #, fuzzy
 msgid "Notes"
 msgstr "గమనికలు:"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "దిగుమతి మరియు ఎగుమతి"
 
 #: books/series-autocomplete.html
 #, fuzzy
@@ -4305,10 +4324,6 @@ msgstr "పెద్ద రచయిత ఫోటో చూపించు"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s యొక్క ఫోటో"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "మూసివేయడానికి క్లిక్ చేయండి"
 
 #: covers/author_photo.html
 #, python-format
@@ -7651,15 +7666,6 @@ msgstr[1] "%(n)s ఇతరులు"
 msgid "by an <em>unknown author</em>"
 msgstr "<em>తెలియని రచయిత</em> ద్వారా"
 
-#: BookPreview.html
-#, fuzzy
-msgid "Preview Only"
-msgstr "పుస్తక ప్రివ్యూ"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "ప్రివ్యూ లేదు"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "పుస్తక ప్రివ్యూ"
@@ -7671,6 +7677,10 @@ msgstr "పుస్తక ప్రివ్యూ"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Archive.orgలో ఈ పుస్తకం గురించి మరింత చూడండి"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "సమీప లైబ్రరీలు"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7761,20 +7771,8 @@ msgid "All copies are checked out."
 msgstr "అన్ని ప్రతులు చెక్అవుట్ చేయబడ్డాయి."
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "ఈ పుస్తకం ప్రస్తుతం తీసుకోబడింది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి"
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "తీసుకోబడింది"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "కేవలం ప్రివ్యూ మాత్రమే అందుబాటులో ఉంది."
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "సమీప లైబ్రరీలు"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7863,11 +7861,6 @@ msgstr "ఇంటర్నెట్ ఆర్కైవ్ నుండి ఈబ
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "మరిన్ని చదివే ఎంపికలు"
-
-#: ReadingOptionsMenu.html
-#, fuzzy
-msgid "Listen"
-msgstr "జాబితాలు"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -10198,4 +10191,73 @@ msgstr "%(title)s - శోధన"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "నకిలీ రికార్డులు ప్రాథమిక రికార్డుకు దారిమళ్లించబడతాయి."
+
+#~ msgid "Import and Export Options"
+#~ msgstr "దిగుమతి మరియు ఎగుమతి ఎంపికలు"
+
+#~ msgid "Features enabled"
+#~ msgstr "ఎనేబుల్ చేసిన లక్షణాలు"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "డేటా ఎగుమతి సూచనలకు చూడండి: <a href=\"https://www.goodreads.com/review/import\">Goodreads దిగుమతి/ఎగుమతి</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "ఫైల్ పరిమాణం 10MB మరియు .csv ఫైల్ రకం మాత్రమే"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
+
+#~ msgid "What is a reading log?"
+#~ msgstr "చదివే ప్రదేశం "
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "మీ పుస్తక నోట్స్ కాపీ డౌన్‌లోడ్ చేయండి."
+
+#~ msgid "What are book notes?"
+#~ msgstr "నా పుస్తక నోట్స్"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "మీ సమీక్ష ట్యాగుల కాపీ డౌన్‌లోడ్ చేయండి."
+
+#~ msgid "What are review tags?"
+#~ msgstr "సమీక్ష ట్యాగులు అంటే ఏమిటి?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "మీ జాబితాల మరియు వాటి విషయాల సారాంశం డౌన్‌లోడ్ చేయండి."
+
+#~ msgid "What are lists?"
+#~ msgstr "జాబితాలు అంటే ఏమిటి?"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "మీ స్టార్ రేటింగ్‌ల కాపీ డౌన్‌లోడ్ చేయండి."
+
+#~ msgid "What are star ratings?"
+#~ msgstr "స్టార్ రేటింగ్‌లు అంటే ఏమిటి?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "దిగుమతి మరియు ఎగుమతి ఎంపికలు"
+
+#~ msgid "Import & Export"
+#~ msgstr "దిగుమతి మరియు ఎగుమతి"
+
+#~ msgid "Audiobook"
+#~ msgstr "ఒక పుస్తకం చేర్చు"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "దిగుమతి మరియు ఎగుమతి"
+
+#~ msgid "Click to close"
+#~ msgstr "మూసివేయడానికి క్లిక్ చేయండి"
+
+#~ msgid "Preview Only"
+#~ msgstr "పుస్తక ప్రివ్యూ"
+
+#~ msgid "No Preview"
+#~ msgstr "ప్రివ్యూ లేదు"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "ఈ పుస్తకం ప్రస్తుతం తీసుకోబడింది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి"
+
+#~ msgid "Only a preview is available."
+#~ msgstr "కేవలం ప్రివ్యూ మాత్రమే అందుబాటులో ఉంది."
 

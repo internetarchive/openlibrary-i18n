@@ -51,9 +51,13 @@ msgstr "Okuma kaydınızı görüntüleyin veya düzenleyin"
 msgid "View or Edit your Lists"
 msgstr "Listenizi görüntüleyin veya düzenleyin"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "İçe ve dışa aktarım seçenekleri"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "Verilerinizi içe aktarın"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "Verilerinizi dışa aktarın"
 
 #: account.html
 #, fuzzy
@@ -552,7 +556,7 @@ msgstr "Yeni kitap eklendi."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Kapat"
 
@@ -715,10 +719,6 @@ msgstr "Ad"
 msgid "System information"
 msgstr "Sistem bilgisi"
 
-#: status.html
-msgid "Features enabled"
-msgstr "Etkinleştirilen özellikler"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "Bu konu için etiketi düzenle"
@@ -874,7 +874,7 @@ msgstr "Bekleme listesine katıl"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "OpenLibrary'de &quot;%(title)s&quot; hakkında daha fazla bilgi edinin"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Daha fazla bilgi"
 
@@ -1116,6 +1116,52 @@ msgstr "Kaydolarak, Internet Archive'ın <a class=\"ol-signup-form__link\" href=
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "Zaten hesabınız var mı? <a href=\"/account/login\">Giriş yapın</a>"
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "Okuma Günlüğünüzü Dışa Aktar"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "%(link_start)sOkuma günlüğünüzün%(link_end)s bir kopyasını indirin."
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "İndir (.csv formatı)"
+
+#: account/export.html
+msgid "Export your book notes"
+msgstr "Kitap notlarınızı dışa aktar"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "<a href=\"/help/faq/book-notes\">Kitap notlarınızın</a> bir kopyasını indirin."
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "İncelemelerinizi dışa aktar"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "<a href=\"/help/faq/reviews#book-tags\">İnceleme etiketlerinizin</a> bir kopyasını indirin."
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "Liste genel bakışınızı dışa aktar"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "<a href=\"/help/faq/reading-log.en#lists\">Listelerinizin</a> bir özetini indirin."
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "Yıldız puanlarınızı dışa aktar"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "%(link_start)sYıldız derecelendirmelerinizin%(link_end)s bir kopyasını indirin."
+
 #: account/follows.html
 msgid "There is nothing to see here yet."
 msgstr "Burada henüz görülecek bir şey yok."
@@ -1129,81 +1175,68 @@ msgid "Import from Goodreads"
 msgstr "Goodreads'ten İçe Aktar"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "Veri dışa aktarma talimatları için bakın: <a href=\"https://www.goodreads.com/review/import\">Goodreads İçe/Dışa Aktarma</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "Biçim: .csv (Maks. 10MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "Dosya boyutu sınırı 10 MB, yalnızca .csv dosya türü"
+msgid "How to export?"
+msgstr "Nasıl dışa aktarılır?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "CSV dosyanızı buraya sürükleyip bırakın veya"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "göz atmak için tıklayın"
 
 #: account/import.html
 msgid "Load Books"
 msgstr "Kitapları Yükle"
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "Okuma Günlüğünüzü Dışa Aktar"
+msgid "Scan barcodes"
+msgstr "Barkod tara"
 
 #: account/import.html
-msgid "Download a copy of your reading log."
-msgstr "Okuma günlüğünüzün bir kopyasını indirin."
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "Cihazınızın kamerasıyla barkodlarını tarayarak fiziksel kitapları anında okuma günlüğünüze ekleyin."
 
 #: account/import.html
-#, fuzzy
-msgid "What is a reading log?"
-msgstr "Okuma Kaydı"
+msgid "Launch Barcode Scanner"
+msgstr "Barkod Tarayıcıyı Başlat"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "İndir (.csv formatı)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "Dışa aktarmaları mı arıyorsunuz? Ayrı bir sayfaya taşındılar - verilerinizi dışa aktarmak için buraya tıklayın."
 
 #: account/import.html
-msgid "Export your book notes"
-msgstr "Kitap notlarınızı dışa aktar"
+msgid "Help us decide which importers to build next"
+msgstr "Sırada hangi içe aktarma araçlarını oluşturacağımıza karar vermemize yardımcı olun"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "Kitap notlarınızın bir kopyasını indirin."
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "Kitaplarınızın şu anda nerede olduğunu bize söyleyin. Bir sonraki içe aktarma aracını planlarken talepleri sayıyoruz."
 
 #: account/import.html
-msgid "What are book notes?"
-msgstr "Kitap notları nedir?"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "İncelemelerinizi dışa aktar"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "Kitaplarınızı ve kataloglarınızı LibraryThing'den içe aktarın."
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "İnceleme etiketlerinizin bir kopyasını indirin."
+msgid "Express interest in this"
+msgstr "Buna ilgi gösterin"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "İnceleme etiketleri nedir?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "Liste genel bakışınızı dışa aktar"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "Listelerinizin ve içeriklerinin özetini indirin."
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "Listeler nedir?"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "Yıldız puanlarınızı dışa aktar"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "Yıldız puanlarınızın bir kopyasını indirin."
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "Yıldız puanları nedir?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "Okuma günlüklerinizi ve meydan okumalarınızı StoryGraph'tan içe aktarın."
 
 #: account/import.html
 #, fuzzy
@@ -1390,10 +1423,6 @@ msgstr "Notlarım"
 #: account/mybooks.html account/sidebar.html
 msgid "My Reviews"
 msgstr "İncelemelerim"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "İçe ve Dışa Aktarma Seçenekleri"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1727,11 +1756,6 @@ msgstr "Oluşturmak mı?"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "Başlıksız liste"
-
-#: account/topmenu.html
-#, fuzzy
-msgid "Import & Export"
-msgstr "İthalat ve İhracat"
 
 #: account/topmenu.html
 #, python-format
@@ -2905,9 +2929,9 @@ msgstr "OpenStax'ta Daha Fazlası"
 msgid "Listen to a reading from %s"
 msgstr "%s'ten bir okuma dinle"
 
-#: book_providers/read_button.html
-msgid "Audiobook"
-msgstr "Sesli Kitap"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "Dinle"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3472,10 +3496,6 @@ msgstr "Listeler (%(count)d)"
 #: NotesModalDialog.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py type/edition/modal_links.html
 msgid "Notes"
 msgstr "Notlar"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "İthalat ve İhracat"
 
 #: books/series-autocomplete.html
 #, fuzzy
@@ -4139,10 +4159,6 @@ msgstr "Daha büyük yazar fotoğrafını göster"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s fotoğrafı"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "Kapatmak için tıklayın"
 
 #: covers/author_photo.html
 #, python-format
@@ -7340,15 +7356,6 @@ msgstr[1] "%(n)s diğer"
 msgid "by an <em>unknown author</em>"
 msgstr "<em>bilinmeyen yazar</em> tarafından"
 
-#: BookPreview.html
-#, fuzzy
-msgid "Preview Only"
-msgstr "Önizleme"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "Önizleme yok"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "Kitabı Önizle"
@@ -7360,6 +7367,10 @@ msgstr "Kitap Önizleme"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Bu kitap hakkında Archive.org'da daha fazla bilgi edinin"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "Yakındaki Kütüphaneler"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7448,20 +7459,8 @@ msgid "All copies are checked out."
 msgstr "Tüm kopyalar ödünç alındı."
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "Bu kitap şu anda ödünç alındı, lütfen daha sonra tekrar kontrol edin."
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "Ödünç Alındı"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "Yalnızca önizleme mevcut."
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "Yakındaki Kütüphaneler"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7549,10 +7548,6 @@ msgstr "Internet Archive'dan e-kitap oku"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "Daha fazla okuma seçeneği"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "Dinle"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -10065,4 +10060,73 @@ msgstr "Ara - %(title)s"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "Yinelenen kayıtlar birincil kayda yönlendirilecek."
+
+#~ msgid "Import and Export Options"
+#~ msgstr "İçe ve dışa aktarım seçenekleri"
+
+#~ msgid "Features enabled"
+#~ msgstr "Etkinleştirilen özellikler"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "Veri dışa aktarma talimatları için bakın: <a href=\"https://www.goodreads.com/review/import\">Goodreads İçe/Dışa Aktarma</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "Dosya boyutu sınırı 10 MB, yalnızca .csv dosya türü"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "Okuma günlüğünüzün bir kopyasını indirin."
+
+#~ msgid "What is a reading log?"
+#~ msgstr "Okuma Kaydı"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "Kitap notlarınızın bir kopyasını indirin."
+
+#~ msgid "What are book notes?"
+#~ msgstr "Kitap notları nedir?"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "İnceleme etiketlerinizin bir kopyasını indirin."
+
+#~ msgid "What are review tags?"
+#~ msgstr "İnceleme etiketleri nedir?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "Listelerinizin ve içeriklerinin özetini indirin."
+
+#~ msgid "What are lists?"
+#~ msgstr "Listeler nedir?"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "Yıldız puanlarınızın bir kopyasını indirin."
+
+#~ msgid "What are star ratings?"
+#~ msgstr "Yıldız puanları nedir?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "İçe ve Dışa Aktarma Seçenekleri"
+
+#~ msgid "Import & Export"
+#~ msgstr "İthalat ve İhracat"
+
+#~ msgid "Audiobook"
+#~ msgstr "Sesli Kitap"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "İthalat ve İhracat"
+
+#~ msgid "Click to close"
+#~ msgstr "Kapatmak için tıklayın"
+
+#~ msgid "Preview Only"
+#~ msgstr "Önizleme"
+
+#~ msgid "No Preview"
+#~ msgstr "Önizleme yok"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "Bu kitap şu anda ödünç alındı, lütfen daha sonra tekrar kontrol edin."
+
+#~ msgid "Only a preview is available."
+#~ msgstr "Yalnızca önizleme mevcut."
 

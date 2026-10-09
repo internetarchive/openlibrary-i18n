@@ -51,9 +51,13 @@ msgstr "読書記録を表示または編集"
 msgid "View or Edit your Lists"
 msgstr "リストを表示または編集"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "インポートとエクスポートのオプション"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "データをインポート"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "データをエクスポート"
 
 #: account.html
 msgid "Manage Privacy & Content Moderation Settings"
@@ -538,7 +542,7 @@ msgstr "新しい本が追加されました。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library カタログを改善していただきありがとうございます！"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "閉じる"
 
@@ -693,10 +697,6 @@ msgstr "名前"
 msgid "System information"
 msgstr "システム情報"
 
-#: status.html
-msgid "Features enabled"
-msgstr "有効な機能"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "このサブジェクトのタグを編集"
@@ -847,7 +847,7 @@ msgstr "順番待ちリストに参加"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Open Libraryで「%(title)s」について詳しく見る"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "詳細を見る"
 
@@ -1086,6 +1086,52 @@ msgstr "登録することで、Internet Archiveの<a class=\"ol-signup-form__li
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "アカウントをお持ちですか？<a href=\"/account/login\">ログイン</a>"
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "読書記録をエクスポート"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "%(link_start)s読書ログ%(link_end)sのコピーをダウンロードします。"
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "ダウンロード（.csv形式）"
+
+#: account/export.html
+msgid "Export your book notes"
+msgstr "ブックノートをエクスポート"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "<a href=\"/help/faq/book-notes\">本のメモ</a>のコピーをダウンロードします。"
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "レビューをエクスポート"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "<a href=\"/help/faq/reviews#book-tags\">レビュータグ</a>のコピーをダウンロードします。"
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "リスト概要をエクスポート"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "<a href=\"/help/faq/reading-log.en#lists\">リスト</a>の概要をダウンロードします。"
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "星評価をエクスポート"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "%(link_start)s星評価%(link_end)sのコピーをダウンロードします。"
+
 #: account/follows.html
 msgid "There is nothing to see here yet."
 msgstr "まだ表示するものがありません。"
@@ -1099,12 +1145,20 @@ msgid "Import from Goodreads"
 msgstr "Goodreadsからインポート"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "データのエクスポート手順については：<a href=\"https://www.goodreads.com/review/import\">Goodreads インポート/エクスポート</a>を参照してください"
+msgid "Format: .csv (Max 10MB)"
+msgstr "形式: .csv (最大10MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "ファイルサイズは10MB以下、.csvファイルのみ"
+msgid "How to export?"
+msgstr "エクスポート方法は?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "CSVファイルをここにドラッグ&ドロップするか、"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "クリックして参照"
 
 #: account/import.html
 #, fuzzy
@@ -1112,68 +1166,48 @@ msgid "Load Books"
 msgstr ""
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "読書記録をエクスポート"
+msgid "Scan barcodes"
+msgstr "バーコードをスキャン"
 
 #: account/import.html
-msgid "Download a copy of your reading log."
-msgstr "読書記録のコピーをダウンロード。"
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "デバイスのカメラでバーコードをスキャンして、実物の本を読書ログにすぐに追加します。"
 
 #: account/import.html
-msgid "What is a reading log?"
-msgstr "読書記録とは？"
+msgid "Launch Barcode Scanner"
+msgstr "バーコードスキャナーを起動"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "ダウンロード（.csv形式）"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "エクスポートをお探しですか? 別のページに移動しました - データをエクスポートするにはここをクリックしてください。"
 
 #: account/import.html
-msgid "Export your book notes"
-msgstr "ブックノートをエクスポート"
+msgid "Help us decide which importers to build next"
+msgstr "次に構築するインポーターの決定にご協力ください"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "ブックノートのコピーをダウンロード。"
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "お持ちの本が現在どこにあるか教えてください。次のインポーターを計画する際にリクエスト数を集計します。"
 
 #: account/import.html
-msgid "What are book notes?"
-msgstr "ブックノートとは？"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "レビューをエクスポート"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "LibraryThingから本とカタログをインポートします。"
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "レビュータグのコピーをダウンロード。"
+msgid "Express interest in this"
+msgstr "興味があることを伝える"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "レビュータグとは？"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "リスト概要をエクスポート"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "リストとその内容の概要をダウンロード。"
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "リストとは？"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "星評価をエクスポート"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "星評価のコピーをダウンロード。"
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "星評価とは？"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "StoryGraphから読書ログとチャレンジをインポートします。"
 
 #: account/import.html
 msgid "Importing..."
@@ -1352,10 +1386,6 @@ msgstr "私のノート"
 #, fuzzy
 msgid "My Reviews"
 msgstr ""
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "インポート＆エクスポートオプション"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1685,10 +1715,6 @@ msgstr "リストを作成"
 #, fuzzy
 msgid "Untitled list"
 msgstr ""
-
-#: account/topmenu.html
-msgid "Import & Export"
-msgstr "インポート＆エクスポート"
 
 #: account/topmenu.html
 #, python-format
@@ -2816,9 +2842,9 @@ msgstr "OpenStaxでもっと見る"
 msgid "Listen to a reading from %s"
 msgstr "%sからの朗読を聴く"
 
-#: book_providers/read_button.html
-msgid "Audiobook"
-msgstr "オーディオブック"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "聴く"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3375,10 +3401,6 @@ msgstr "リスト (%(count)d)"
 #: NotesModalDialog.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py type/edition/modal_links.html
 msgid "Notes"
 msgstr "ノート"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "インポートとエクスポート"
 
 #: books/series-autocomplete.html
 msgid "Add a new series"
@@ -4037,10 +4059,6 @@ msgstr "著者の写真を拡大"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)sの写真"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "クリックして閉じる"
 
 #: covers/author_photo.html
 #, python-format
@@ -7154,14 +7172,6 @@ msgstr[0] "他%(n)s件"
 msgid "by an <em>unknown author</em>"
 msgstr "<em>不明な著者</em>による"
 
-#: BookPreview.html
-msgid "Preview Only"
-msgstr "プレビューのみ"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "プレビューなし"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "本をプレビュー"
@@ -7173,6 +7183,10 @@ msgstr "本のプレビュー"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Archive.orgでこの本の詳細を見る"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "近くの図書館"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7258,20 +7272,8 @@ msgid "All copies are checked out."
 msgstr "すべてのコピーが貸し出し中です。"
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "この本は現在貸し出し中です。後ほどご確認ください。"
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "貸し出し中"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "プレビューのみ利用可能です。"
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "近くの図書館"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7357,10 +7359,6 @@ msgstr "Internet Archiveで電子書籍を読む"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "その他の読書オプション"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "聴く"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -9872,4 +9870,73 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "重複したレコードは主レコードにリダイレクトされます。"
+
+#~ msgid "Import and Export Options"
+#~ msgstr "インポートとエクスポートのオプション"
+
+#~ msgid "Features enabled"
+#~ msgstr "有効な機能"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "データのエクスポート手順については：<a href=\"https://www.goodreads.com/review/import\">Goodreads インポート/エクスポート</a>を参照してください"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "ファイルサイズは10MB以下、.csvファイルのみ"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "読書記録のコピーをダウンロード。"
+
+#~ msgid "What is a reading log?"
+#~ msgstr "読書記録とは？"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "ブックノートのコピーをダウンロード。"
+
+#~ msgid "What are book notes?"
+#~ msgstr "ブックノートとは？"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "レビュータグのコピーをダウンロード。"
+
+#~ msgid "What are review tags?"
+#~ msgstr "レビュータグとは？"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "リストとその内容の概要をダウンロード。"
+
+#~ msgid "What are lists?"
+#~ msgstr "リストとは？"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "星評価のコピーをダウンロード。"
+
+#~ msgid "What are star ratings?"
+#~ msgstr "星評価とは？"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "インポート＆エクスポートオプション"
+
+#~ msgid "Import & Export"
+#~ msgstr "インポート＆エクスポート"
+
+#~ msgid "Audiobook"
+#~ msgstr "オーディオブック"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "インポートとエクスポート"
+
+#~ msgid "Click to close"
+#~ msgstr "クリックして閉じる"
+
+#~ msgid "Preview Only"
+#~ msgstr "プレビューのみ"
+
+#~ msgid "No Preview"
+#~ msgstr "プレビューなし"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "この本は現在貸し出し中です。後ほどご確認ください。"
+
+#~ msgid "Only a preview is available."
+#~ msgstr "プレビューのみ利用可能です。"
 

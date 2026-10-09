@@ -52,9 +52,13 @@ msgstr "Wyświetl lub edytuj Dziennik Lektur"
 msgid "View or Edit your Lists"
 msgstr "Wyświetl lub edytuj Twoje Listy"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "Opcje importu i eksportu"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "Importuj swoje dane"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "Eksportuj swoje dane"
 
 #: account.html
 #, fuzzy
@@ -568,7 +572,7 @@ msgstr "Dodaj książkę"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Dziękujemy za ulepszanie katalogu Open Library!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Zamknij"
 
@@ -737,10 +741,6 @@ msgstr "Imię i nazwisko"
 msgid "System information"
 msgstr "Informacje o systemie"
 
-#: status.html
-msgid "Features enabled"
-msgstr "Włączone funkcje"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "Edytuj tag dla tego tematu"
@@ -905,7 +905,7 @@ msgstr "Dołącz do listy oczekujących"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "Dowiedz się więcej o \"%(title)s\" w OpenLibrary"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "Dowiedz się więcej"
 
@@ -1157,6 +1157,54 @@ msgstr "Rejestrując się, zgadzasz się z <a class=\"ol-signup-form__link\" hre
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "Masz już konto? <a href=\"/account/login\">Zaloguj się</a>"
 
+#: account/export.html
+#, fuzzy
+msgid "Export your Reading Log"
+msgstr "Wyświetl lub edytuj Dziennik Lektur"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "Pobierz kopię swojego %(link_start)sdziennika czytania%(link_end)s."
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "Pobierz (format .csv)"
+
+#: account/export.html
+#, fuzzy
+msgid "Export your book notes"
+msgstr "Zobacz książki"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "Pobierz kopię swoich <a href=\"/help/faq/book-notes\">notatek o książkach</a>."
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "Eksportuj swoje recenzje"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "Pobierz kopię swoich <a href=\"/help/faq/reviews#book-tags\">tagów recenzji</a>."
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "Eksportuj przegląd swoich list"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "Pobierz podsumowanie swoich <a href=\"/help/faq/reading-log.en#lists\">list</a>."
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "Eksportuj swoje oceny gwiazdkowe"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "Pobierz kopię swoich %(link_start)socen w gwiazdkach%(link_end)s."
+
 #: account/follows.html
 #, fuzzy
 msgid "There is nothing to see here yet."
@@ -1171,12 +1219,20 @@ msgid "Import from Goodreads"
 msgstr "Importuj z Goodreads"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "Instrukcje dotyczące eksportu danych znajdziesz tutaj: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "Format: .csv (maks. 10 MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "Limit rozmiaru pliku 10 MB, tylko pliki .csv"
+msgid "How to export?"
+msgstr "Jak eksportować?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "Przeciągnij i upuść tutaj plik CSV, lub"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "kliknij, aby przeglądać"
 
 #: account/import.html
 #, fuzzy
@@ -1184,74 +1240,48 @@ msgid "Load Books"
 msgstr "Dodaj książkę"
 
 #: account/import.html
-#, fuzzy
-msgid "Export your Reading Log"
-msgstr "Wyświetl lub edytuj Dziennik Lektur"
+msgid "Scan barcodes"
+msgstr "Skanuj kody kreskowe"
 
 #: account/import.html
-#, fuzzy
-msgid "Download a copy of your reading log."
-msgstr "Wyświetl lub edytuj Dziennik Lektur"
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "Natychmiast dodawaj fizyczne książki do dziennika czytania, skanując ich kody kreskowe kamerą urządzenia."
 
 #: account/import.html
-#, fuzzy
-msgid "What is a reading log?"
-msgstr "Dziennik Lektur"
+msgid "Launch Barcode Scanner"
+msgstr "Uruchom skaner kodów kreskowych"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "Pobierz (format .csv)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "Szukasz eksportów? Zostały przeniesione na osobną stronę - kliknij tutaj, aby wyeksportować swoje dane."
 
 #: account/import.html
-#, fuzzy
-msgid "Export your book notes"
-msgstr "Zobacz książki"
+msgid "Help us decide which importers to build next"
+msgstr "Pomóż nam zdecydować, które importery zbudować jako następne"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "Pobierz kopię swoich notatek o książkach."
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "Powiedz nam, gdzie teraz znajdują się twoje książki. Liczymy zgłoszenia podczas planowania kolejnego importera."
 
 #: account/import.html
-#, fuzzy
-msgid "What are book notes?"
-msgstr "Jaki to rodzaj książki?"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "Eksportuj swoje recenzje"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "Importuj swoje książki i katalogi z LibraryThing."
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "Pobierz kopię tagów swoich recenzji."
+msgid "Express interest in this"
+msgstr "Wyraź zainteresowanie tym"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "Czym są tagi recenzji?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "Eksportuj przegląd swoich list"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "Pobierz podsumowanie swoich list i ich zawartości."
-
-#: account/import.html
-#, fuzzy
-msgid "What are lists?"
-msgstr "Aktywne Listy"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "Eksportuj swoje oceny gwiazdkowe"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "Pobierz kopię swoich ocen gwiazdkowych."
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "Czym są oceny gwiazdkowe?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "Importuj swoje dzienniki czytania i wyzwania ze StoryGraph."
 
 #: account/import.html
 #, fuzzy
@@ -1450,10 +1480,6 @@ msgstr "Notatki:"
 #, fuzzy
 msgid "My Reviews"
 msgstr "Mój profil"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "Opcje importu i eksportu"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1807,10 +1833,6 @@ msgstr "Stwórz nową listę"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "Lista bez tytułu"
-
-#: account/topmenu.html
-msgid "Import & Export"
-msgstr "Import i eksport"
 
 #: account/topmenu.html
 #, python-format
@@ -3047,10 +3069,9 @@ msgstr "Więcej na OpenStax"
 msgid "Listen to a reading from %s"
 msgstr "Posłuchaj czytania z %s"
 
-#: book_providers/read_button.html
-#, fuzzy
-msgid "Audiobook"
-msgstr "Losowa książka"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "Słuchaj"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3639,10 +3660,6 @@ msgstr "Chce przeczytać (%(count)d)"
 #, fuzzy
 msgid "Notes"
 msgstr "Notatki:"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "Importy i eksporty"
 
 #: books/series-autocomplete.html
 #, fuzzy
@@ -4331,10 +4348,6 @@ msgstr "Powiększ zdjęcie autora"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Zdjęcie %(author)s"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "Kliknij, aby zamknąć"
 
 #: covers/author_photo.html
 #, python-format
@@ -7684,15 +7697,6 @@ msgstr[2] "%(n)s innych"
 msgid "by an <em>unknown author</em>"
 msgstr "<em>autor nieznany</em>"
 
-#: BookPreview.html
-#, fuzzy
-msgid "Preview Only"
-msgstr "Wypożycz teraz"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "Brak podglądu"
-
 #: BookPreviewFloater.html
 #, fuzzy
 msgid "Preview Book"
@@ -7705,6 +7709,10 @@ msgstr "Podgląd książki"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Zobacz więcej o tej książce na Archive.org"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "Pobliskie biblioteki"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7799,21 +7807,9 @@ msgid "All copies are checked out."
 msgstr "Wszystkie egzemplarze są wypożyczone."
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "Ta książka jest aktualnie wypożyczona, proszę wróć później."
-
-#: LoanStatus.html
 #, fuzzy
 msgid "Checked Out"
 msgstr "Książki, które zaznaczyłeś"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "Dostępny jest tylko podgląd."
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "Pobliskie biblioteki"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7903,10 +7899,6 @@ msgstr "Przeczytaj e-book z Internet Archive"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "Więcej opcji czytania"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "Słuchaj"
 
 #: RecentChanges.html
 #, fuzzy
@@ -10348,4 +10340,73 @@ msgstr "%(title)s - wyszukiwanie"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "Zduplikowane rekordy zostaną przekierowane do rekordu głównego."
+
+#~ msgid "Import and Export Options"
+#~ msgstr "Opcje importu i eksportu"
+
+#~ msgid "Features enabled"
+#~ msgstr "Włączone funkcje"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "Instrukcje dotyczące eksportu danych znajdziesz tutaj: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "Limit rozmiaru pliku 10 MB, tylko pliki .csv"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "Wyświetl lub edytuj Dziennik Lektur"
+
+#~ msgid "What is a reading log?"
+#~ msgstr "Dziennik Lektur"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "Pobierz kopię swoich notatek o książkach."
+
+#~ msgid "What are book notes?"
+#~ msgstr "Jaki to rodzaj książki?"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "Pobierz kopię tagów swoich recenzji."
+
+#~ msgid "What are review tags?"
+#~ msgstr "Czym są tagi recenzji?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "Pobierz podsumowanie swoich list i ich zawartości."
+
+#~ msgid "What are lists?"
+#~ msgstr "Aktywne Listy"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "Pobierz kopię swoich ocen gwiazdkowych."
+
+#~ msgid "What are star ratings?"
+#~ msgstr "Czym są oceny gwiazdkowe?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "Opcje importu i eksportu"
+
+#~ msgid "Import & Export"
+#~ msgstr "Import i eksport"
+
+#~ msgid "Audiobook"
+#~ msgstr "Losowa książka"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "Importy i eksporty"
+
+#~ msgid "Click to close"
+#~ msgstr "Kliknij, aby zamknąć"
+
+#~ msgid "Preview Only"
+#~ msgstr "Wypożycz teraz"
+
+#~ msgid "No Preview"
+#~ msgstr "Brak podglądu"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "Ta książka jest aktualnie wypożyczona, proszę wróć później."
+
+#~ msgid "Only a preview is available."
+#~ msgstr "Dostępny jest tylko podgląd."
 

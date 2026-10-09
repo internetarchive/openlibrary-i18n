@@ -50,9 +50,13 @@ msgstr "독서 기록 보기 / 편집"
 msgid "View or Edit your Lists"
 msgstr "목록 보기 / 편집"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "가져오기 및 내보내기 옵션"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "데이터 가져오기"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "데이터 내보내기"
 
 #: account.html
 msgid "Manage Privacy & Content Moderation Settings"
@@ -537,7 +541,7 @@ msgstr "새 책이 추가되었습니다."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library 카탈로그 개선에 참여해 주셔서 감사합니다!"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "닫기"
 
@@ -691,10 +695,6 @@ msgstr "이름"
 msgid "System information"
 msgstr "시스템 정보"
 
-#: status.html
-msgid "Features enabled"
-msgstr "활성화된 기능"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "이 주제의 태그 편집"
@@ -846,7 +846,7 @@ msgstr "대기 명단에 등록"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "\"%(title)s\\ 에 대해 더 알아보기"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "더 알아보기"
 
@@ -1080,6 +1080,52 @@ msgstr "가입하면 Internet Archive의 <a class=\"ol-signup-form__link\" href=
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "계정이 이미 있으신가요? <a href=\"/account/login\">로그인</a>"
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "독서 기록 내보내기"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "%(link_start)s독서 기록%(link_end)s 사본을 다운로드하세요."
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "다운로드 (.csv 형식)"
+
+#: account/export.html
+msgid "Export your book notes"
+msgstr "책 메모 내보내기"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "<a href=\"/help/faq/book-notes\">책 메모</a> 사본을 다운로드하세요."
+
+#: account/export.html
+msgid "Export your reviews"
+msgstr "리뷰 내보내기"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "<a href=\"/help/faq/reviews#book-tags\">리뷰 태그</a> 사본을 다운로드하세요."
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "목록 개요 내보내기"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "<a href=\"/help/faq/reading-log.en#lists\">목록</a> 요약을 다운로드하세요."
+
+#: account/export.html
+msgid "Export your star ratings"
+msgstr "별점 내보내기"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "%(link_start)s별점%(link_end)s 사본을 다운로드하세요."
+
 #: account/follows.html
 msgid "There is nothing to see here yet."
 msgstr "아직 볼 것이 없습니다."
@@ -1093,80 +1139,68 @@ msgid "Import from Goodreads"
 msgstr "Goodreads에서 가져오기"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "데이터 내보내기 방법은 <a href=\"https://www.goodreads.com/review/import\">Goodreads 가져오기/내보내기</a>를 참고하세요"
+msgid "Format: .csv (Max 10MB)"
+msgstr "형식: .csv (최대 10MB)"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "파일 크기 10MB 제한, .csv 파일 형식만 가능"
+msgid "How to export?"
+msgstr "내보내는 방법은?"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "CSV 파일을 여기에 끌어다 놓거나"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "클릭하여 찾아보기"
 
 #: account/import.html
 msgid "Load Books"
 msgstr "책 불러오기"
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "독서 기록 내보내기"
+msgid "Scan barcodes"
+msgstr "바코드 스캔"
 
 #: account/import.html
-msgid "Download a copy of your reading log."
-msgstr "독서 기록 사본을 다운로드합니다."
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "기기의 카메라로 바코드를 스캔하여 실물 책을 독서 기록에 즉시 추가하세요."
 
 #: account/import.html
-msgid "What is a reading log?"
-msgstr "독서 기록이란?"
+msgid "Launch Barcode Scanner"
+msgstr "바코드 스캐너 실행"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "다운로드 (.csv 형식)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "내보내기를 찾고 계신가요? 별도 페이지로 이동했습니다 - 데이터를 내보내려면 여기를 클릭하세요."
 
 #: account/import.html
-msgid "Export your book notes"
-msgstr "책 메모 내보내기"
+msgid "Help us decide which importers to build next"
+msgstr "다음에 만들 가져오기 도구를 결정하는 데 도움을 주세요"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "책 메모 사본을 다운로드합니다."
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "현재 책이 어디에 있는지 알려주세요. 다음 가져오기 도구를 계획할 때 요청 수를 집계합니다."
 
 #: account/import.html
-msgid "What are book notes?"
-msgstr "책 메모란?"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-msgid "Export your reviews"
-msgstr "리뷰 내보내기"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "LibraryThing에서 책과 카탈로그를 가져옵니다."
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "리뷰 태그 사본을 다운로드합니다."
+msgid "Express interest in this"
+msgstr "관심 표현하기"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "리뷰 태그란?"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "목록 개요 내보내기"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "목록과 내용의 요약본을 다운로드합니다."
-
-#: account/import.html
-msgid "What are lists?"
-msgstr "목록이란?"
-
-#: account/import.html
-msgid "Export your star ratings"
-msgstr "별점 내보내기"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "별점 사본을 다운로드합니다."
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "별점이란?"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "StoryGraph에서 독서 기록과 챌린지를 가져옵니다."
 
 #: account/import.html
 msgid "Importing..."
@@ -1343,10 +1377,6 @@ msgstr "내 메모"
 #: account/mybooks.html account/sidebar.html
 msgid "My Reviews"
 msgstr "내 리뷰"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "가져오기 및 내보내기 옵션"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1674,10 +1704,6 @@ msgstr "리스트 만들기"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "제목 없는 리스트"
-
-#: account/topmenu.html
-msgid "Import & Export"
-msgstr "가져오기 및 내보내기"
 
 #: account/topmenu.html
 #, python-format
@@ -2801,9 +2827,9 @@ msgstr "OpenStax에서 더 보기"
 msgid "Listen to a reading from %s"
 msgstr "%s의 낭독 듣기"
 
-#: book_providers/read_button.html
-msgid "Audiobook"
-msgstr "오디오북"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "듣기"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3359,10 +3385,6 @@ msgstr "목록 (%(count)d)"
 #: NotesModalDialog.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py type/edition/modal_links.html
 msgid "Notes"
 msgstr "노트"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-msgid "Imports and Exports"
-msgstr "가져오기 및 내보내기"
 
 #: books/series-autocomplete.html
 msgid "Add a new series"
@@ -4020,10 +4042,6 @@ msgstr "더 큰 저자 사진 보기"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s의 사진"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "클릭하여 닫기"
 
 #: covers/author_photo.html
 #, python-format
@@ -7121,14 +7139,6 @@ msgstr[0] "%(n)s 명 외"
 msgid "by an <em>unknown author</em>"
 msgstr "<em>알 수 없는 저자</em>의"
 
-#: BookPreview.html
-msgid "Preview Only"
-msgstr "미리보기 전용"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "미리보기 없음"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "책 미리보기"
@@ -7140,6 +7150,10 @@ msgstr "책 미리보기"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "Archive.org에서 이 책에 대해 더 알아보기"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "근처 도서관"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7225,20 +7239,8 @@ msgid "All copies are checked out."
 msgstr "모든 사본이 대출 중입니다."
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "이 책은 현재 대출 중입니다. 나중에 다시 확인해 주세요."
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "대출 중"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "미리보기만 제공됩니다."
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "근처 도서관"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7324,10 +7326,6 @@ msgstr "Internet Archive에서 전자책 읽기"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "더 많은 읽기 옵션"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "듣기"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -9505,4 +9503,73 @@ msgstr "%(title)s - 검색"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "중복된 레코드는 기본 레코드로 리디렉션됩니다."
+
+#~ msgid "Import and Export Options"
+#~ msgstr "가져오기 및 내보내기 옵션"
+
+#~ msgid "Features enabled"
+#~ msgstr "활성화된 기능"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "데이터 내보내기 방법은 <a href=\"https://www.goodreads.com/review/import\">Goodreads 가져오기/내보내기</a>를 참고하세요"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "파일 크기 10MB 제한, .csv 파일 형식만 가능"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "독서 기록 사본을 다운로드합니다."
+
+#~ msgid "What is a reading log?"
+#~ msgstr "독서 기록이란?"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "책 메모 사본을 다운로드합니다."
+
+#~ msgid "What are book notes?"
+#~ msgstr "책 메모란?"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "리뷰 태그 사본을 다운로드합니다."
+
+#~ msgid "What are review tags?"
+#~ msgstr "리뷰 태그란?"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "목록과 내용의 요약본을 다운로드합니다."
+
+#~ msgid "What are lists?"
+#~ msgstr "목록이란?"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "별점 사본을 다운로드합니다."
+
+#~ msgid "What are star ratings?"
+#~ msgstr "별점이란?"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "가져오기 및 내보내기 옵션"
+
+#~ msgid "Import & Export"
+#~ msgstr "가져오기 및 내보내기"
+
+#~ msgid "Audiobook"
+#~ msgstr "오디오북"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "가져오기 및 내보내기"
+
+#~ msgid "Click to close"
+#~ msgstr "클릭하여 닫기"
+
+#~ msgid "Preview Only"
+#~ msgstr "미리보기 전용"
+
+#~ msgid "No Preview"
+#~ msgstr "미리보기 없음"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "이 책은 현재 대출 중입니다. 나중에 다시 확인해 주세요."
+
+#~ msgid "Only a preview is available."
+#~ msgstr "미리보기만 제공됩니다."
 

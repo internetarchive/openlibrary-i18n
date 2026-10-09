@@ -52,9 +52,13 @@ msgstr "查看或编辑您的阅读日志"
 msgid "View or Edit your Lists"
 msgstr "查看或编辑您的清单"
 
-#: account.html
-msgid "Import and Export Options"
-msgstr "导入和导出选项"
+#: account.html account/mybooks.html account/sidebar.html account/topmenu.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Import your data"
+msgstr "导入您的数据"
+
+#: account.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
+msgid "Export your data"
+msgstr "导出您的数据"
 
 #: account.html
 #, fuzzy
@@ -568,7 +572,7 @@ msgstr "添加了新的书籍。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "非常感谢您完善了这份记录！"
 
-#: ObservationsModal.html account/loans.html covers/author_photo.html covers/book_cover.html covers/change.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "关闭"
 
@@ -732,10 +736,6 @@ msgstr "名字"
 msgid "System information"
 msgstr "系统信息"
 
-#: status.html
-msgid "Features enabled"
-msgstr "已启用的功能"
-
 #: subjects.html
 msgid "Edit tag for this subject"
 msgstr "编辑此主题的标签"
@@ -897,7 +897,7 @@ msgstr "加入等候名单"
 msgid "Learn more about \"%(title)s\" at OpenLibrary"
 msgstr "在开放图书馆了解更多关于«%(title)s»的信息"
 
-#: reading_goals/reading_goal_form.html.jinja widget.html
+#: LoanStatus.html reading_goals/reading_goal_form.html.jinja widget.html
 msgid "Learn More"
 msgstr "了解更多"
 
@@ -1147,6 +1147,55 @@ msgstr "通过完成注册程序，您同意接受互联网档案馆的<a href='
 msgid "Already have an account? <a href=\"/account/login\">Log in</a>"
 msgstr "没有账号？<a href=\"/account/create\">立即注册</a>."
 
+#: account/export.html
+msgid "Export your Reading Log"
+msgstr "导出您的阅读日志"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sreading log%(link_end)s."
+msgstr "下载您的%(link_start)s阅读记录%(link_end)s副本。"
+
+#: account/export.html
+msgid "Download (.csv format)"
+msgstr "下载(.csv 格式)"
+
+#: account/export.html
+#, fuzzy
+msgid "Export your book notes"
+msgstr "我的图书笔记"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/book-notes\">book notes</a>."
+msgstr "下载您的<a href=\"/help/faq/book-notes\">读书笔记</a>副本。"
+
+#: account/export.html
+#, fuzzy
+msgid "Export your reviews"
+msgstr "导出您的阅读日志"
+
+#: account/export.html
+msgid "Download a copy of your <a href=\"/help/faq/reviews#book-tags\">review tags</a>."
+msgstr "下载您的<a href=\"/help/faq/reviews#book-tags\">书评标签</a>副本。"
+
+#: account/export.html
+msgid "Export your list overview"
+msgstr "导出您的书单概览"
+
+#: account/export.html
+msgid "Download a summary of your <a href=\"/help/faq/reading-log.en#lists\">lists</a>."
+msgstr "下载您的<a href=\"/help/faq/reading-log.en#lists\">列表</a>摘要。"
+
+#: account/export.html
+#, fuzzy
+msgid "Export your star ratings"
+msgstr "导出您的阅读日志"
+
+#: account/export.html
+#, python-format
+msgid "Download a copy of your %(link_start)sstar ratings%(link_end)s."
+msgstr "下载您的%(link_start)s星级评分%(link_end)s副本。"
+
 #: account/follows.html
 #, fuzzy
 msgid "There is nothing to see here yet."
@@ -1161,87 +1210,68 @@ msgid "Import from Goodreads"
 msgstr "从Goodreads导入"
 
 #: account/import.html
-msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
-msgstr "有关导出数据的说明，请参阅：<a href=\"https://www.goodreads.com/review/import\">Goodreads导入/导出</a>"
+msgid "Format: .csv (Max 10MB)"
+msgstr "格式：.csv（最大 10MB）"
 
 #: account/import.html
-msgid "File size limit 10MB and .csv file type only"
-msgstr "文件大小限制为10MB，且只能使用.csv文件类型。"
+msgid "How to export?"
+msgstr "如何导出？"
+
+#: account/import.html
+msgid "Drag & drop your CSV file here, or"
+msgstr "将您的 CSV 文件拖放到此处，或"
+
+#: account/import.html
+msgid "click to browse"
+msgstr "点击浏览"
 
 #: account/import.html
 msgid "Load Books"
 msgstr "加载书籍"
 
 #: account/import.html
-msgid "Export your Reading Log"
-msgstr "导出您的阅读日志"
+msgid "Scan barcodes"
+msgstr "扫描条形码"
 
 #: account/import.html
-#, fuzzy
-msgid "Download a copy of your reading log."
-msgstr "导出您的阅读日志"
+msgid "Instantly add physical books to your reading log by scanning their barcodes with your device's camera."
+msgstr "使用设备摄像头扫描条形码，立即将实体书添加到您的阅读记录中。"
 
 #: account/import.html
-#, fuzzy
-msgid "What is a reading log?"
-msgstr "阅读日志"
+msgid "Launch Barcode Scanner"
+msgstr "启动条形码扫描器"
 
 #: account/import.html
-msgid "Download (.csv format)"
-msgstr "下载(.csv 格式)"
+msgid "Looking for exports? They've moved to a separate page - click here to export your data."
+msgstr "在寻找导出功能吗？它已移至单独的页面 - 点击此处导出您的数据。"
 
 #: account/import.html
-#, fuzzy
-msgid "Export your book notes"
-msgstr "我的图书笔记"
+msgid "Help us decide which importers to build next"
+msgstr "帮助我们决定接下来要构建哪些导入工具"
 
 #: account/import.html
-msgid "Download a copy of your book notes."
-msgstr "下载您的书籍笔记副本。"
+msgid "Tell us where your books live now. We count requests when we plan the next importer."
+msgstr "告诉我们您的书现在在哪里。我们在规划下一个导入工具时会统计请求。"
 
 #: account/import.html
-#, fuzzy
-msgid "What are book notes?"
-msgstr "添加一份图书笔记"
+msgid "LibraryThing"
+msgstr "LibraryThing"
 
 #: account/import.html
-#, fuzzy
-msgid "Export your reviews"
-msgstr "导出您的阅读日志"
+msgid "Import your books and catalogs from LibraryThing."
+msgstr "从 LibraryThing 导入您的书籍和目录。"
 
 #: account/import.html
-msgid "Download a copy of your review tags."
-msgstr "下载您的书评标签副本。"
+msgid "Express interest in this"
+msgstr "表达您的兴趣"
 
 #: account/import.html
-msgid "What are review tags?"
-msgstr "什么是书评标签？"
+msgid "StoryGraph"
+msgstr "StoryGraph"
 
 #: account/import.html
-msgid "Export your list overview"
-msgstr "导出您的书单概览"
-
-#: account/import.html
-msgid "Download a summary of your lists and their contents."
-msgstr "下载您的书单及其内容的摘要。"
-
-#: account/import.html
-#, fuzzy
-msgid "What are lists?"
-msgstr "活跃请单"
-
-#: account/import.html
-#, fuzzy
-msgid "Export your star ratings"
-msgstr "导出您的阅读日志"
-
-#: account/import.html
-msgid "Download a copy of your star ratings."
-msgstr "下载您的星级评分副本。"
-
-#: account/import.html
-msgid "What are star ratings?"
-msgstr "什么是星级评分？"
+msgid "Import your reading logs and challenges from StoryGraph."
+msgstr "从 StoryGraph 导入您的阅读记录和挑战。"
 
 #: account/import.html
 #, fuzzy
@@ -1431,10 +1461,6 @@ msgstr "我的图书笔记"
 #, fuzzy
 msgid "My Reviews"
 msgstr "评价"
-
-#: account/mybooks.html account/sidebar.html
-msgid "Import & Export Options"
-msgstr "导入和导出选项"
 
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
@@ -1774,11 +1800,6 @@ msgstr "创建一个新的清单"
 #: account/sidebar.html
 msgid "Untitled list"
 msgstr "未命名书单"
-
-#: account/topmenu.html
-#, fuzzy
-msgid "Import & Export"
-msgstr "导入 / 导出"
 
 #: account/topmenu.html
 #, python-format
@@ -3007,10 +3028,9 @@ msgstr "更多内容请访问OpenStax"
 msgid "Listen to a reading from %s"
 msgstr "从%s收听朗读"
 
-#: book_providers/read_button.html
-#, fuzzy
-msgid "Audiobook"
-msgstr "随机书籍"
+#: ReadingOptionsMenu.html book_providers/read_button.html
+msgid "Listen"
+msgstr "聆听"
 
 #: book_providers/read_button.html
 #, python-format
@@ -3597,11 +3617,6 @@ msgstr "我的笔记(%(count)d)"
 #, fuzzy
 msgid "Notes"
 msgstr "说明:"
-
-#: books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/account.py
-#, fuzzy
-msgid "Imports and Exports"
-msgstr "导入 / 导出"
 
 #: books/series-autocomplete.html
 #, fuzzy
@@ -4293,10 +4308,6 @@ msgstr "管理作者照片"
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s的照片"
-
-#: covers/author_photo.html
-msgid "Click to close"
-msgstr "点击关闭"
 
 #: covers/author_photo.html
 #, python-format
@@ -7565,14 +7576,6 @@ msgstr[1] "另外 %(n)s 个"
 msgid "by an <em>unknown author</em>"
 msgstr "出自<em>未知的作者</em>"
 
-#: BookPreview.html
-msgid "Preview Only"
-msgstr "仅供预览"
-
-#: BookPreview.html
-msgid "No Preview"
-msgstr "没有预览"
-
 #: BookPreviewFloater.html
 msgid "Preview Book"
 msgstr "预览书籍"
@@ -7584,6 +7587,10 @@ msgstr "预览书籍"
 #: BookPreviewFloater.html
 msgid "See more about this book on Archive.org"
 msgstr "在Archive.org上查看更多关于这本书的信息"
+
+#: CheckWorldcat.html ReadingOptionsMenu.html
+msgid "Nearby Libraries"
+msgstr "附近的图书馆"
 
 #: DisplayCode.html
 msgid "Templates in the website are disabled now. Editing them will not have any effect on the live website."
@@ -7674,20 +7681,8 @@ msgid "All copies are checked out."
 msgstr "所有副本均已借出。"
 
 #: LoanStatus.html
-msgid "This book is currently checked out, please check back later."
-msgstr "这本书目前已经被借走了，请稍后再回来查看。"
-
-#: LoanStatus.html
 msgid "Checked Out"
 msgstr "借阅"
-
-#: LoanStatus.html
-msgid "Only a preview is available."
-msgstr "仅提供预览。"
-
-#: LocateButton.html ReadingOptionsMenu.html
-msgid "Nearby Libraries"
-msgstr "附近的图书馆"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -7775,10 +7770,6 @@ msgstr "阅读互联网档案馆上的电子书"
 #: ReadingOptionsMenu.html
 msgid "More reading options"
 msgstr "更多阅读选项"
-
-#: ReadingOptionsMenu.html
-msgid "Listen"
-msgstr "聆听"
 
 #: RecentChanges.html
 msgid "View MARC"
@@ -10165,4 +10156,73 @@ msgstr "%(title)s - 搜索"
 
 #~ msgid "The duplicate records will be redirected to the primary record."
 #~ msgstr "重复的记录将被重定向到主记录。"
+
+#~ msgid "Import and Export Options"
+#~ msgstr "导入和导出选项"
+
+#~ msgid "Features enabled"
+#~ msgstr "已启用的功能"
+
+#~ msgid "For instructions on exporting data refer to: <a href=\"https://www.goodreads.com/review/import\">Goodreads Import/Export</a>"
+#~ msgstr "有关导出数据的说明，请参阅：<a href=\"https://www.goodreads.com/review/import\">Goodreads导入/导出</a>"
+
+#~ msgid "File size limit 10MB and .csv file type only"
+#~ msgstr "文件大小限制为10MB，且只能使用.csv文件类型。"
+
+#~ msgid "Download a copy of your reading log."
+#~ msgstr "导出您的阅读日志"
+
+#~ msgid "What is a reading log?"
+#~ msgstr "阅读日志"
+
+#~ msgid "Download a copy of your book notes."
+#~ msgstr "下载您的书籍笔记副本。"
+
+#~ msgid "What are book notes?"
+#~ msgstr "添加一份图书笔记"
+
+#~ msgid "Download a copy of your review tags."
+#~ msgstr "下载您的书评标签副本。"
+
+#~ msgid "What are review tags?"
+#~ msgstr "什么是书评标签？"
+
+#~ msgid "Download a summary of your lists and their contents."
+#~ msgstr "下载您的书单及其内容的摘要。"
+
+#~ msgid "What are lists?"
+#~ msgstr "活跃请单"
+
+#~ msgid "Download a copy of your star ratings."
+#~ msgstr "下载您的星级评分副本。"
+
+#~ msgid "What are star ratings?"
+#~ msgstr "什么是星级评分？"
+
+#~ msgid "Import & Export Options"
+#~ msgstr "导入和导出选项"
+
+#~ msgid "Import & Export"
+#~ msgstr "导入 / 导出"
+
+#~ msgid "Audiobook"
+#~ msgstr "随机书籍"
+
+#~ msgid "Imports and Exports"
+#~ msgstr "导入 / 导出"
+
+#~ msgid "Click to close"
+#~ msgstr "点击关闭"
+
+#~ msgid "Preview Only"
+#~ msgstr "仅供预览"
+
+#~ msgid "No Preview"
+#~ msgstr "没有预览"
+
+#~ msgid "This book is currently checked out, please check back later."
+#~ msgstr "这本书目前已经被借走了，请稍后再回来查看。"
+
+#~ msgid "Only a preview is available."
+#~ msgstr "仅提供预览。"
 
