@@ -550,7 +550,7 @@ msgstr "নতুন কিতাপ যোগ কৰা হ'ল।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library কেটালগ উন্নত কৰাৰ বাবে আপোনাক ধন্যবাদ!"
 
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "বন্ধ কৰক"
 
@@ -897,7 +897,7 @@ msgstr "কেৱল পঢ়িব পৰা"
 msgid "Filter by availability"
 msgstr "উপলব্ধতা অনুসাৰে ফিল্টাৰ কৰক"
 
-#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "ভাষা"
 
@@ -905,7 +905,7 @@ msgstr "ভাষা"
 msgid "Search languages…"
 msgstr "ভাষা বিচাৰক…"
 
-#: books/edit/edition.html languages/index.html search/search_modal_i18n.html work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html search/search_modal_i18n.html work_search.html
 msgid "Languages"
 msgstr "ভাষাসমূহ"
 
@@ -1480,7 +1480,7 @@ msgstr "নাই, ধন্যবাদ"
 msgid "Yes! Please!"
 msgstr "হয়! অনুগ্ৰহ কৰি!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html covers/manage.html my_books/shelf_button_i18n.html
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/parts.html.jinja covers/manage.html my_books/shelf_button_i18n.html
 msgid "Save"
 msgstr "সংৰক্ষণ কৰক"
 
@@ -3103,7 +3103,7 @@ msgstr "ISBN 10"
 msgid "ISBN 13"
 msgstr "ISBN 13"
 
-#: books/add.html
+#: books/add.html openlibrary/plugins/openlibrary/contribute.py
 msgid "LCCN"
 msgstr "LCCN"
 
@@ -3649,7 +3649,7 @@ msgstr "বিবৃতি দ্বাৰা:"
 msgid "For example: <em>edited by David Anderson</em>"
 msgstr "উদাহৰণস্বৰূপ: <em>David Anderson-এ সম্পাদনা কৰিছে</em>"
 
-#: books/edit/edition.html
+#: books/edit/edition.html openlibrary/contribute/field_guides.py
 msgid "What language is this edition written in?"
 msgstr "এই সংস্কৰণ কোন ভাষাত লিখা হৈছে?"
 
@@ -4041,6 +4041,107 @@ msgstr "Open Library লৈ উভতি যাওক"
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "বাল্ক সন্ধান (বিটা)"
+
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks"
+msgstr "কাৰ্যসমূহ"
+
+#: contribute/dashboard.html.jinja
+msgid "Fill in what's missing on real books, one detail at a time."
+msgstr "প্ৰকৃত কিতাপৰ অনুপস্থিত তথ্য এটা এটাকৈ পূৰণ কৰক।"
+
+#: contribute/dashboard.html.jinja
+msgid "Surprise me"
+msgstr "মোক আচৰিত কৰক"
+
+#: contribute/dashboard.html.jinja
+msgid "A random book that needs a hand."
+msgstr "সহায়ৰ প্ৰয়োজন হোৱা এখন যাদৃচ্ছিক কিতাপ।"
+
+#: contribute/dashboard.html.jinja
+msgid "Filter tasks"
+msgstr "কাৰ্য ফিল্টাৰ কৰক"
+
+#: contribute/dashboard.html.jinja
+msgid "Missing"
+msgstr "অনুপস্থিত"
+
+#: contribute/dashboard.html.jinja
+msgid "Your recent fixes"
+msgstr "আপোনাৰ শেহতীয়া শুধৰণীসমূহ"
+
+#: contribute/dashboard.html.jinja
+msgid "See all your edits"
+msgstr "আপোনাৰ সকলো সম্পাদনা চাওক"
+
+#: contribute/dashboard.html.jinja
+msgid "Fixes you save here show up in this list."
+msgstr "আপুনি ইয়াত সংৰক্ষণ কৰা শুধৰণীবোৰ এই তালিকাত দেখা যায়।"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Saved"
+msgstr "সংৰক্ষিত"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Skipped"
+msgstr "বাদ দিয়া হৈছে"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s: %(value)s"
+msgstr "%(title)s ৰ বাবে %(field)s: %(value)s"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s"
+msgstr "%(title)s ৰ বাবে %(field)s"
+
+#: contribute/done.html.jinja
+msgid "The record is updated."
+msgstr "ৰেকৰ্ড আপডেট কৰা হৈছে।"
+
+#: contribute/done.html.jinja
+msgid "See it in the record's history"
+msgstr "ৰেকৰ্ডৰ ইতিহাসত ইয়াক চাওক"
+
+#: contribute/done.html.jinja
+msgid "Nothing on the record changed."
+msgstr "ৰেকৰ্ডত একো সলনি হোৱা নাই।"
+
+#: contribute/done.html.jinja
+msgid "While you're on this book"
+msgstr "আপুনি এই কিতাপখনত থাকোঁতে"
+
+#: contribute/done.html.jinja
+msgid "Next task"
+msgstr "পৰৱৰ্তী কাৰ্য"
+
+#: contribute/done.html.jinja
+msgid "Pick a different book"
+msgstr "এখন বেলেগ কিতাপ বাছনি কৰক"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in on this edition"
+msgstr "%(field)s এই সংস্কৰণত ইতিমধ্যে পূৰণ কৰা হৈছে"
+
+#: contribute/nothing.html.jinja
+msgid "Someone filled it in since the list was made. Thank you for checking."
+msgstr "তালিকাখন বনোৱাৰ পিছত কাৰোবাই ইয়াক পূৰণ কৰিছে। পৰীক্ষা কৰাৰ বাবে ধন্যবাদ।"
+
+#: contribute/nothing.html.jinja contribute/task.html.jinja
+msgid "Back to the list"
+msgstr "তালিকালৈ উভতি যাওক"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s সংৰক্ষণ কৰা হ'ল: %(value)s"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s সংৰক্ষণ কৰা হ'ল"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -5519,7 +5620,7 @@ msgstr "আন কিবা চেষ্টা কৰিবনে?"
 msgid "Publisher: %(name)s"
 msgstr "প্ৰকাশক: %(name)s"
 
-#: openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "প্ৰকাশক"
 
@@ -5754,7 +5855,7 @@ msgstr "%(count)d ৰেকৰ্ড পৰিৱৰ্তন কৰা হৈ�
 msgid "All fields"
 msgstr "সকলো ক্ষেত্ৰ"
 
-#: search/advancedsearch.html
+#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -6329,7 +6430,7 @@ msgstr "এই লেখক আন কোনো নামেৰেও পৰি�
 msgid "For example: Lev Nikolayevich Tolstoy was also known as Leo Tolstoy. Please list one name per line."
 msgstr "উদাহৰণস্বৰূপ: Lev Nikolayevich Tolstoy Leo Tolstoy নামেও পৰিচিত আছিল। অনুগ্ৰহ কৰি প্ৰতিটো শাৰীত এটা নাম দিয়ক।"
 
-#: type/author/edit.html
+#: openlibrary/plugins/openlibrary/contribute.py type/author/edit.html
 msgid "Identifiers"
 msgstr "পৰিচায়ক"
 
@@ -6528,7 +6629,7 @@ msgstr "প্ৰকাশৰ তাৰিখ"
 msgid "Show other books from %(publisher)s"
 msgstr "%(publisher)s-ৰ অন্য কিতাপ দেখুৱাওক"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "পৃষ্ঠাসমূহ"
 
@@ -6584,7 +6685,7 @@ msgstr "অনুবাদিত"
 msgid "External Links"
 msgstr "বাহ্যিক লিংক"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Format"
 msgstr "বিন্যাস"
 
@@ -7946,6 +8047,313 @@ msgstr "খণ্ড %(num)d চাওক"
 msgid "Buy this book"
 msgstr "এই কিতাপ কিনক"
 
+#: contribute/parts.html.jinja
+#, python-format
+msgid "one of %(count)s editions of this work"
+msgstr "এই ৰচনাৰ %(count)s টা সংস্কৰণৰ এটা"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Why this book: on about %(count)s readers' shelves."
+msgstr "কিয় এই কিতাপ: প্ৰায় %(count)s জন পাঠকৰ তাকত আছে।"
+
+#: contribute/parts.html.jinja
+msgid "Go to book page"
+msgstr "কিতাপৰ পৃষ্ঠালৈ যাওক"
+
+#: contribute/parts.html.jinja
+msgid "Go to edit page"
+msgstr "সম্পাদনা পৃষ্ঠালৈ যাওক"
+
+#: contribute/parts.html.jinja
+msgid "How to answer"
+msgstr "কেনেকৈ উত্তৰ দিব"
+
+#: contribute/parts.html.jinja
+msgid "This edition has no ISBN to search by, so look it up by title and author."
+msgstr "এই সংস্কৰণৰ সন্ধান কৰিবলৈ কোনো ISBN নাই, সেয়েহে শীৰ্ষক আৰু লেখকৰ দ্বাৰা ইয়াক বিচাৰক।"
+
+#: contribute/parts.html.jinja
+msgid "Guideline"
+msgstr "নিৰ্দেশিকা"
+
+#: contribute/parts.html.jinja
+msgid "How this edit goes wrong"
+msgstr "এই সম্পাদনা কেনেকৈ ভুল হয়"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "The other edition"
+msgid_plural "The other %(count)d editions"
+msgstr[0] "আন সংস্কৰণটো"
+msgstr[1] "অন্য %(count)d টা সংস্কৰণ"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "1 other value"
+msgid_plural "%(count)d other values"
+msgstr[0] "১টা অন্য মান"
+msgstr[1] "%(count)d টা অন্য মান"
+
+#: contribute/parts.html.jinja
+msgid "Not filled in"
+msgstr "পূৰণ কৰা হোৱা নাই"
+
+#: contribute/parts.html.jinja
+msgid "See each edition"
+msgstr "প্ৰতিটো সংস্কৰণ চাওক"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "And %(count)s more."
+msgstr "আৰু %(count)s টা।"
+
+#: contribute/parts.html.jinja
+msgid "That looks like a valid number."
+msgstr "সেইটো এটা বৈধ সংখ্যাৰ দৰে লাগিছে।"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Will be stored as %(value)s."
+msgstr "%(value)s হিচাপে সংৰক্ষণ কৰা হ'ব।"
+
+#: contribute/parts.html.jinja
+msgid "Paste only the number, not the web address."
+msgstr "কেৱল সংখ্যাটো পেষ্ট কৰক, ৱেব ঠিকনা নহয়।"
+
+#: contribute/parts.html.jinja openlibrary/contribute/save.py
+msgid "That is not a valid number for this catalog."
+msgstr "এই কেটেলগৰ বাবে সেইটো বৈধ সংখ্যা নহয়।"
+
+#: contribute/parts.html.jinja
+msgid "Choose a language"
+msgstr "এটা ভাষা বাছনি কৰক"
+
+#: contribute/parts.html.jinja
+msgid "Filter languages"
+msgstr "ভাষা ফিল্টাৰ কৰক"
+
+#: contribute/parts.html.jinja
+msgid "No matching language"
+msgstr "মিল থকা কোনো ভাষা নাই"
+
+#: contribute/parts.html.jinja
+msgid "Other editions say"
+msgstr "অন্য সংস্কৰণসমূহে কয়"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(value)s, on 1 edition"
+msgid_plural "%(value)s, on %(count)d editions"
+msgstr[0] "%(value)s, ১টা সংস্কৰণত"
+msgstr[1] "%(value)s, %(count)d টা সংস্কৰণত"
+
+#: contribute/parts.html.jinja
+msgid "I opened the record and the year and publisher match this edition."
+msgstr "মই ৰেকৰ্ডটো খুলিলোঁ আৰু বছৰ আৰু প্ৰকাশক এই সংস্কৰণৰ সৈতে মিলে।"
+
+#: contribute/parts.html.jinja
+msgid "Add a comment about your edit"
+msgstr "আপোনাৰ সম্পাদনা সম্পৰ্কে এটা মন্তব্য যোগ কৰক"
+
+#: contribute/parts.html.jinja
+msgid "Edit comment"
+msgstr "মন্তব্য সম্পাদনা কৰক"
+
+#: contribute/parts.html.jinja
+msgid "Where you found it"
+msgstr "আপুনি ইয়াক ক'ত পাইছিল"
+
+#: contribute/parts.html.jinja
+msgid "Save and next"
+msgstr "সংৰক্ষণ কৰক আৰু পৰৱৰ্তী"
+
+#: contribute/parts.html.jinja
+msgid "I couldn't find it"
+msgstr "মই ইয়াক বিচাৰি নাপালোঁ"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Next: a random task from %(filter)s"
+msgstr "পৰৱৰ্তী: %(filter)s ৰ পৰা এটা যাদৃচ্ছিক কাৰ্য"
+
+#: contribute/parts.html.jinja
+msgid "Next: a random task from all open tasks"
+msgstr "পৰৱৰ্তী: সকলো মুকলি কাৰ্যৰ পৰা এটা যাদৃচ্ছিক কাৰ্য"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat"
+msgstr "WorldCat"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Google Books"
+msgstr "Google Books"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Amazon"
+msgstr "Amazon"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress"
+msgstr "Library of Congress"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in language"
+msgstr "ভাষা পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up in WorldCat or Google Books; both list the language of the text. The title page and cover tell you too."
+msgstr "WorldCat বা Google Books ত ISBN বিচাৰক; দুয়োটাতে লিখনিৰ ভাষা তালিকাভুক্ত কৰা থাকে। শিৰোনাম পৃষ্ঠা আৰু মুখপাতেও আপোনাক কয়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
+msgstr "এটা ৰচনাৰ সংস্কৰণসমূহে সাধাৰণতে একেটা ভাষা ভাগ কৰে, কিন্তু অনুবাদে নকৰে। এই সংস্কৰণৰ নিজৰ লিখনি পৰীক্ষা কৰক।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Record the language of the text, not the language of the title page. A translation is in the language it was translated into."
+msgstr "লিখনিৰ ভাষা লিপিবদ্ধ কৰক, শিৰোনাম পৃষ্ঠাৰ ভাষা নহয়। এটা অনুবাদ যি ভাষালৈ অনুবাদ কৰা হৈছিল সেই ভাষাত থাকে।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example English"
+msgstr "উদাহৰণস্বৰূপে ইংৰাজী"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Page count"
+msgstr "পৃষ্ঠা সংখ্যা"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in page count"
+msgstr "পৃষ্ঠা সংখ্যা পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "How many pages does this edition have?"
+msgstr "এই সংস্কৰণত কিমান পৃষ্ঠা আছে?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat lists the page count in the record's description. Google Books calls it Length. Make sure the record is for this ISBN, not another printing."
+msgstr "WorldCat এ ৰেকৰ্ডৰ বিৱৰণত পৃষ্ঠা সংখ্যা তালিকাভুক্ত কৰে। Google Books এ ইয়াক Length বুলি কয়। ৰেকৰ্ডটো এই ISBN ৰ বাবে হয় নিশ্চিত কৰক, আন কোনো প্ৰিণ্টিঙৰ বাবে নহয়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
+msgstr "কেটেলগসমূহে সন্মুখৰ অংশ বেলেগ বেলেগভাৱে গণনা কৰে, সেয়েহে কেইটামান পৃষ্ঠাৰ পাৰ্থক্য থকা সংখ্যাবোৰ একেটা গণনা। মুখ্য লিখনিৰ সৰ্বশেষ সংখ্যাযুক্ত পৃষ্ঠাটো ব্যৱহাৰ কৰক।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 320"
+msgstr "উদাহৰণস্বৰূপে 320"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publisher"
+msgstr "প্ৰকাশক পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Who published this edition?"
+msgstr "এই সংস্কৰণটো কোনে প্ৰকাশ কৰিছিল?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The imprint is printed on the title page and the spine. WorldCat and the Library of Congress list it under Publisher."
+msgstr "ইম্প্ৰিণ্টটো শিৰোনাম পৃষ্ঠা আৰু সূচীত ছপা থাকে। WorldCat আৰু Library of Congress এ ইয়াক Publisher ৰ অধীনত তালিকাভুক্ত কৰে।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
+msgstr "Open Library এ কিতাপত ছপা ইম্প্ৰিণ্টটো লিপিবদ্ধ কৰে, মূল কোম্পানীটো নহয়। Anchor Books, Penguin Random House নহয়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Publisher as printed"
+msgstr "ছপা অনুসৰি প্ৰকাশক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress number (LCCN)"
+msgstr "Library of Congress নম্বৰ (LCCN)"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in LCCN"
+msgstr "LCCN পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's Library of Congress number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address instead of the number itself."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 75425165"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "OCLC/WorldCat number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in OCLC number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's WorldCat (OCLC) number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Digits only, for example 47810608"
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Pick a language from the list."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Enter the page count as a whole number."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Fill in an answer, or choose “I couldn't find it”."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "This field can't be filled in here."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+#, python-format
+msgid "Filled in %(field)s from Open Library Tasks"
+msgstr ""
+
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
 msgstr "[ৰেকৰ্ড মচা হৈছে]"
@@ -8338,6 +8746,43 @@ msgstr "চীনা"
 msgid "Filipino"
 msgstr "ফিলিপিনো"
 
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are open to librarians only, for now"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Published"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "OCLC"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "All open tasks"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "Missing: %(field)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Most needed"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing missing here right now. Thank you."
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing to fill in here"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Open the record and confirm it matches this edition first."
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Art"
 msgstr "শিল্প"
@@ -8441,10 +8886,6 @@ msgstr "আকস্মিক কিতাপ"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
 msgstr "Better World Books"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Amazon"
-msgstr "Amazon"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
