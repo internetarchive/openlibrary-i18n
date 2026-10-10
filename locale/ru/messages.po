@@ -824,7 +824,7 @@ msgstr "Хочу прочитать"
 msgid "Currently Reading"
 msgstr "Сейчас читаю"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Читать"
 
@@ -889,7 +889,7 @@ msgstr "Читать \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Занять \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Занять"
 
@@ -1301,6 +1301,23 @@ msgstr "Редактирование"
 msgid "No ISBN"
 msgstr "ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Выдано из %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Ещё не загружено."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Загрузить сейчас"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Вернуть через<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
@@ -1308,6 +1325,22 @@ msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Активный заём (%(count)d)"
 msgstr[1] "Активные займы (%(count)d)"
 msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "Не удалось связаться с %(libraries)s, поэтому выдачи оттуда не отображаются."
+msgstr[1] "Не удалось связаться с этими библиотеками, поэтому выдачи оттуда не отображаются: %(libraries)s."
+msgstr[2] "Не удалось связаться с этими библиотеками, поэтому выдачи оттуда не отображаются: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s нужно подключить заново, прежде чем можно будет показать её выдачи. Повторная выдача книги оттуда восстановит соединение."
+msgstr[1] "Эти библиотеки нужно подключить заново, прежде чем можно будет показать их выдачи: %(libraries)s. Повторная выдача книги из одной из них восстановит соединение."
+msgstr[2] "Эти библиотеки нужно подключить заново, прежде чем можно будет показать их выдачи: %(libraries)s. Повторная выдача книги из одной из них восстановит соединение."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1328,18 +1361,6 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "%(count)d человек ждёт эту книгу."
 msgstr[1] "%(count)d человек ждут эту книгу."
 msgstr[2] ""
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Ещё не загружено."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Загрузить сейчас"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Вернуть через<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -3042,6 +3063,11 @@ msgid "More at OpenStax"
 msgstr "Больше на LibriVox"
 
 #: book_providers/read_button.html
+#, python-format
+msgid "Read your loan from %s"
+msgstr "Читать вашу книгу из %s"
+
+#: book_providers/read_button.html
 #, fuzzy, python-format
 msgid "Listen to a reading from %s"
 msgstr ""
@@ -3054,6 +3080,11 @@ msgstr "Слушать"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Читать бесплатно онлайн на %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Взять электронную книгу из %s"
 
 #: book_providers/runeberg_download_options.html
 #, fuzzy
@@ -4240,6 +4271,31 @@ msgstr "Удалить эту ссылку"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "Под \"хорошими\" подразумеваются те, что имеют отношение к книге. Неуместные ссылки будут удаляться. Явный спам будет удаляться без колебаний."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Выдано"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Срок возврата вашей книги — %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Выдача оформлена."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Читать сейчас"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Назад в Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Массовый поиск (бета)"
@@ -4762,10 +4818,6 @@ msgstr "Создано %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "Отредактировано %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -9092,6 +9144,16 @@ msgstr "Ваш адрес электронной почты"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Введите пароль"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Выдано из %(library)s. Срок возврата вашей книги — %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Выдано из %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

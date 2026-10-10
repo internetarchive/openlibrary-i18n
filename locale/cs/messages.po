@@ -815,7 +815,7 @@ msgstr "Chci přečíst"
 msgid "Currently Reading"
 msgstr "Současné výpůjčky"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Číst"
 
@@ -880,7 +880,7 @@ msgstr "Číst \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Půjčit si \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 #, fuzzy
 msgid "Borrow"
 msgstr "Procházet"
@@ -1291,6 +1291,23 @@ msgstr "Revize"
 msgid "No ISBN"
 msgstr "Přihlásit se"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Vypůjčeno z %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Zatím nestaženo."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Stáhnout nyní"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Vrátit přes<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
@@ -1298,6 +1315,22 @@ msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Aktivní výpůjčka (%(count)d)"
 msgstr[1] "Aktivní výpůjčky (%(count)d)"
 msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "Nelze se připojit k %(libraries)s, takže zde nejsou zobrazeny žádné výpůjčky."
+msgstr[1] "Nelze se připojit k těmto knihovnám, takže zde nejsou zobrazeny žádné výpůjčky: %(libraries)s."
+msgstr[2] "Nelze se připojit k těmto knihovnám, takže zde nejsou zobrazeny žádné výpůjčky: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s je třeba znovu připojit, než budou moci být zobrazeny její výpůjčky. Opětovná výpůjčka knihy z ní obnoví spojení."
+msgstr[1] "Tyto knihovny je třeba znovu připojit, než budou moci být zobrazeny jejich výpůjčky: %(libraries)s. Opětovná výpůjčka knihy z některé z nich obnoví spojení."
+msgstr[2] "Tyto knihovny je třeba znovu připojit, než budou moci být zobrazeny jejich výpůjčky: %(libraries)s. Opětovná výpůjčka knihy z některé z nich obnoví spojení."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1318,18 +1351,6 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Na tuto knihu čeká %(count)d osoba."
 msgstr[1] "Na tuto knihu čekají %(count)d osoby."
 msgstr[2] "Na tuto knihu čeká %(count)d osob."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Zatím nestaženo."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Stáhnout nyní"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Vrátit přes<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -3024,6 +3045,11 @@ msgstr "Více na OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Přečtěte si svou výpůjčku z %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Poslechnout čtení z %s"
 
@@ -3036,6 +3062,11 @@ msgstr "Seznamy"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Číst zdarma online z %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Vypůjčit e-knihu z %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4195,6 +4226,32 @@ msgstr "Odebrat tento odkaz"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Dobrý\" znamená žádné spamové odkazy. Udržujte je relevantní pro knihu. Irelevantní weby mohou být odstraněny. Očividný spam bude bez milosti smazán."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Vypůjčeno"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+#, fuzzy
+msgid "Open Library"
+msgstr "Vítejte v Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Vaše výpůjčka musí být vrácena %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Vaše výpůjčka byla vytvořena."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Číst nyní"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Zpět na Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Hromadné vyhledávání (beta)"
@@ -4723,11 +4780,6 @@ msgstr "Vytvořil(a) %(user)s"
 #, fuzzy, python-format
 msgid "Edited by %(user)s"
 msgstr "Ahoj %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-#, fuzzy
-msgid "Open Library"
-msgstr "Vítejte v Open Library"
 
 #: lib/nav_foot.html.jinja
 #, fuzzy
@@ -9085,6 +9137,16 @@ msgstr "Vaše emailová adresa"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Vyberte heslo"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Vypůjčeno z %(library)s. Vaše výpůjčka musí být vrácena %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Vypůjčeno z %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

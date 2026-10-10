@@ -815,7 +815,7 @@ msgstr "पढ़ने में रुचि"
 msgid "Currently Reading"
 msgstr "फ़िलहाल पढ़ रहे हैं"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "पढ़ें"
 
@@ -875,7 +875,7 @@ msgstr "\"%(title)s\" पढ़ें"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" उधार लें"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "उधार"
 
@@ -1276,12 +1276,43 @@ msgstr "সংশোধন"
 msgid "No ISBN"
 msgstr "ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s থেকে ধার নেওয়া হয়েছে"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "अभी तक डाउनलोड नहीं किया गया है।"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "डाक डाउनलोड करें"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Adobe Digital Editions এর দ্বারা ফেরত করুন<br/>"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "সক্রিয় ঋণ (%(count)d)"
 msgstr[1] "সক্রিয় ঋণগুলি (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s-এর সাথে সংযোগ করা যায়নি, তাই সেখানকার কোনো ধার দেখানো হচ্ছে না।"
+msgstr[1] "এই লাইব্রেরিগুলির সাথে সংযোগ করা যায়নি, তাই সেখানকার কোনো ধার দেখানো হচ্ছে না: %(libraries)s।"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "এর ধারগুলি দেখানোর আগে %(libraries)s-কে আবার সংযুক্ত করতে হবে। সেখান থেকে আবার একটি বই ধার নিলে সংযোগ পুনরুদ্ধার হবে।"
+msgstr[1] "এদের ধারগুলি দেখানোর আগে এই লাইব্রেরিগুলিকে আবার সংযুক্ত করতে হবে: %(libraries)s। এগুলির যেকোনো একটি থেকে আবার একটি বই ধার নিলে সংযোগ পুনরুদ্ধার হবে।"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1301,18 +1332,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "এই বইয়ের জন্য %(count)d জন অপেক্ষা করছেন।"
 msgstr[1] "এই বইয়ের জন্য %(count)d জন অপেক্ষা করছেন।"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "अभी तक डाउनलोड नहीं किया गया है।"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "डाक डाउनलोड करें"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Adobe Digital Editions এর দ্বারা ফেরত করুন<br/>"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2996,6 +3015,11 @@ msgstr "OpenStax पर और जानकारी"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s থেকে আপনার ধার করা বইটি পড়ুন"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s থেকে একটি পাঠ শুনুন"
 
@@ -3007,6 +3031,11 @@ msgstr "बात सुनो"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s থেকে বিনামূল্যে অনলাইনে পড়ুন"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s থেকে ইবুক ধার নিন"
 
 #: book_providers/runeberg_download_options.html
 #, fuzzy
@@ -4169,6 +4198,31 @@ msgstr "इस लिंक को हटाएँ"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"अच्छा\" का मतलब है कोई स्पैम लिंक नहीं, कृपया। उन्हें किताब के लिए प्रासंगिक रखें। अप्रासंगिक साइटों को हटाया जा सकता है। स्पष्ट स्पैम को बिना किसी पछतावे के हटा दिया जाएगा।"
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "ধার নেওয়া হয়েছে"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "ओपन लाइब्रेरी"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "আপনার ধার ফেরত দেওয়ার তারিখ %(due)s।"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "আপনার ধার তৈরি হয়েছে।"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "এখনই পড়ুন"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library-এ ফিরে যান"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 #, fuzzy
 msgid "Bulk Search (beta)"
@@ -4685,10 +4739,6 @@ msgstr "%(user)s द्वारा बनाया गया"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s द्वारा संपादित"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "ओपन लाइब्रेरी"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8925,6 +8975,16 @@ msgstr "आपका ईमेल पता"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "पासवर्ड चुनें"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s থেকে ধার নেওয়া হয়েছে। আপনার ধার ফেরত দেওয়ার তারিখ %(due)s।"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s থেকে ধার নেওয়া হয়েছে।"
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

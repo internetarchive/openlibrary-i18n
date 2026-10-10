@@ -543,7 +543,7 @@ msgstr "Dodana je nova knjiga."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Hvala ti ne poboljšavanju kataloga knjižnice Open Library!"
 
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Zatvori"
 
@@ -776,7 +776,7 @@ msgstr "Želim čitati"
 msgid "Currently Reading"
 msgstr "Trenutačno čitam"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Čitaj"
 
@@ -838,7 +838,7 @@ msgstr "Čitaj „%(title)s”"
 msgid "Borrow \"%(title)s\""
 msgstr "Posudi „%(title)s”"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Posudi"
 
@@ -893,7 +893,7 @@ msgstr "Samo za čitanje"
 msgid "Filter by availability"
 msgstr "Filtriraj po dostupnosti"
 
-#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Jezik"
 
@@ -901,7 +901,7 @@ msgstr "Jezik"
 msgid "Search languages…"
 msgstr "Pretraži jezike…"
 
-#: books/edit/edition.html languages/index.html search/search_modal_i18n.html work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html search/search_modal_i18n.html work_search.html
 msgid "Languages"
 msgstr "Jezici"
 
@@ -1228,6 +1228,23 @@ msgstr "Razlog"
 msgid "No ISBN"
 msgstr "Nema ISBN-a"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Posuđeno iz %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Još nije preuzeto."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Preuzmi sada"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Vrati putem<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
@@ -1235,6 +1252,22 @@ msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Aktivna posudba (%(count)d)"
 msgstr[1] "Aktivne posudbe (%(count)d)"
 msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "Nije bilo moguće uspostaviti vezu s %(libraries)s, pa posudbe odande nisu prikazane."
+msgstr[1] "Nije bilo moguće uspostaviti vezu s ovim knjižnicama, pa posudbe odande nisu prikazane: %(libraries)s."
+msgstr[2] "Nije bilo moguće uspostaviti vezu s ovim knjižnicama, pa posudbe odande nisu prikazane: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s potrebno je ponovno povezati prije nego što se mogu prikazati njezine posudbe. Ponovna posudba knjige odande obnovit će vezu."
+msgstr[1] "Ove knjižnice potrebno je ponovno povezati prije nego što se mogu prikazati njihove posudbe: %(libraries)s. Ponovna posudba knjige iz jedne od njih obnovit će vezu."
+msgstr[2] "Ove knjižnice potrebno je ponovno povezati prije nego što se mogu prikazati njihove posudbe: %(libraries)s. Ponovna posudba knjige iz jedne od njih obnovit će vezu."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1255,18 +1288,6 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "%(count)d osoba čeka na ovu knjigu."
 msgstr[1] "%(count)d osobe čekaju na ovu knjigu."
 msgstr[2] "%(count)d osoba čekaju na ovu knjigu."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Još nije preuzeto."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Preuzmi sada"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Vrati putem<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -1465,7 +1486,7 @@ msgstr "Ne, hvala"
 msgid "Yes! Please!"
 msgstr "Da, molim!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html covers/manage.html my_books/shelf_button_i18n.html
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/parts.html.jinja covers/manage.html my_books/shelf_button_i18n.html
 msgid "Save"
 msgstr "Spremi"
 
@@ -2856,6 +2877,11 @@ msgstr "Više na OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Pročitajte svoju posudbu iz %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Slušaj čitanje od %s"
 
@@ -2867,6 +2893,11 @@ msgstr "Slušaj"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Čitaj besplatno na internetu od %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Posudi e-knjigu iz %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3083,7 +3114,7 @@ msgstr "ISBN 10"
 msgid "ISBN 13"
 msgstr "ISBN 13"
 
-#: books/add.html
+#: books/add.html openlibrary/plugins/openlibrary/contribute.py
 msgid "LCCN"
 msgstr "LCCN"
 
@@ -3631,7 +3662,7 @@ msgstr "Prema izjavi:"
 msgid "For example: <em>edited by David Anderson</em>"
 msgstr "Na primjer: <em>uredio David Anderson</em>"
 
-#: books/edit/edition.html
+#: books/edit/edition.html openlibrary/contribute/field_guides.py
 msgid "What language is this edition written in?"
 msgstr "Na kojem je jeziku napisano ovo izdanje?"
 
@@ -3995,9 +4026,135 @@ msgstr "Ukloni ovu poveznicu"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "„Dobre” poveznice znači da su relevantne za knjigu. Irelevatne web-stranice će se možda ukloniti. Očiti spam će se izbrisati bez grižnje savjesti."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Posuđeno"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Vaša posudba dospijeva %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Vaša posudba je kreirana."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Pročitaj sada"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Natrag na Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Skupna pretraga (beta)"
+
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks"
+msgstr "Zadaci"
+
+#: contribute/dashboard.html.jinja
+msgid "Fill in what's missing on real books, one detail at a time."
+msgstr "Popunite ono što nedostaje na stvarnim knjigama, jedan detalj odjednom."
+
+#: contribute/dashboard.html.jinja
+msgid "Surprise me"
+msgstr "Iznenadi me"
+
+#: contribute/dashboard.html.jinja
+msgid "A random book that needs a hand."
+msgstr "Nasumična knjiga kojoj treba pomoć."
+
+#: contribute/dashboard.html.jinja
+msgid "Filter tasks"
+msgstr "Filtriraj zadatke"
+
+#: contribute/dashboard.html.jinja
+msgid "Missing"
+msgstr "Nedostaje"
+
+#: contribute/dashboard.html.jinja
+msgid "Your recent fixes"
+msgstr "Vaše nedavne ispravke"
+
+#: contribute/dashboard.html.jinja
+msgid "See all your edits"
+msgstr "Pogledajte sve svoje izmjene"
+
+#: contribute/dashboard.html.jinja
+msgid "Fixes you save here show up in this list."
+msgstr "Ispravke koje ovdje spremite pojavit će se na ovom popisu."
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Saved"
+msgstr "Spremljeno"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Skipped"
+msgstr "Preskočeno"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s: %(value)s"
+msgstr "%(field)s za %(title)s: %(value)s"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s"
+msgstr "%(field)s za %(title)s"
+
+#: contribute/done.html.jinja
+msgid "The record is updated."
+msgstr "Zapis je ažuriran."
+
+#: contribute/done.html.jinja
+msgid "See it in the record's history"
+msgstr "Pogledajte to u povijesti zapisa"
+
+#: contribute/done.html.jinja
+msgid "Nothing on the record changed."
+msgstr "Ništa se nije promijenilo u zapisu."
+
+#: contribute/done.html.jinja
+msgid "While you're on this book"
+msgstr "Dok ste na ovoj knjizi"
+
+#: contribute/done.html.jinja
+msgid "Next task"
+msgstr "Sljedeći zadatak"
+
+#: contribute/done.html.jinja
+msgid "Pick a different book"
+msgstr "Odaberite drugu knjigu"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in on this edition"
+msgstr "%(field)s je već popunjeno za ovo izdanje"
+
+#: contribute/nothing.html.jinja
+msgid "Someone filled it in since the list was made. Thank you for checking."
+msgstr "Netko je to već popunio otkako je popis napravljen. Hvala vam na provjeri."
+
+#: contribute/nothing.html.jinja contribute/task.html.jinja
+msgid "Back to the list"
+msgstr "Natrag na popis"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+msgstr "Spremljeno %(field)s za %(link_start)s%(title)s%(link_end)s: %(value)s"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+msgstr "Spremljeno %(field)s za %(link_start)s%(title)s%(link_end)s"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -4496,10 +4653,6 @@ msgstr "Stvoreno od %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "Autor promjene: %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -5496,7 +5649,7 @@ msgstr "Želiš li pokušati nešto drugo?"
 msgid "Publisher: %(name)s"
 msgstr "Izdavač: %(name)s"
 
-#: openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Izdavač"
 
@@ -5736,7 +5889,7 @@ msgstr "%(count)d zapisa promijenjeno."
 msgid "All fields"
 msgstr "Sva polja"
 
-#: search/advancedsearch.html
+#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -6314,7 +6467,7 @@ msgstr "Je li ovaj autor poznat pod drugim imenima?"
 msgid "For example: Lev Nikolayevich Tolstoy was also known as Leo Tolstoy. Please list one name per line."
 msgstr "Na primjer: Lav Nikolajevič Tolstoj je bio poznat i kao Lav Tolstoj. Navedi jedno ime po retku."
 
-#: type/author/edit.html
+#: openlibrary/plugins/openlibrary/contribute.py type/author/edit.html
 msgid "Identifiers"
 msgstr "Identifikatori"
 
@@ -6512,7 +6665,7 @@ msgstr "Datum objavljivanja"
 msgid "Show other books from %(publisher)s"
 msgstr "Prikaži ostale knjige izdavača %(publisher)s"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "Stranice"
 
@@ -6568,7 +6721,7 @@ msgstr "Prevedeno iz"
 msgid "External Links"
 msgstr "Vanjske poveznice"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Format"
 msgstr "Format"
 
@@ -7941,6 +8094,316 @@ msgstr "Pogledaj svezak broj %(num)d"
 msgid "Buy this book"
 msgstr "Kupi ovu knjigu"
 
+#: contribute/parts.html.jinja
+#, python-format
+msgid "one of %(count)s editions of this work"
+msgstr "jedno od %(count)s izdanja ovog djela"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Why this book: on about %(count)s readers' shelves."
+msgstr "Zašto ova knjiga: na oko %(count)s polica čitatelja."
+
+#: contribute/parts.html.jinja
+msgid "Go to book page"
+msgstr "Idi na stranicu knjige"
+
+#: contribute/parts.html.jinja
+msgid "Go to edit page"
+msgstr "Idi na stranicu za uređivanje"
+
+#: contribute/parts.html.jinja
+msgid "How to answer"
+msgstr "Kako odgovoriti"
+
+#: contribute/parts.html.jinja
+msgid "This edition has no ISBN to search by, so look it up by title and author."
+msgstr "Ovo izdanje nema ISBN po kojem bi se moglo pretraživati, pa ga potražite po naslovu i autoru."
+
+#: contribute/parts.html.jinja
+msgid "Guideline"
+msgstr "Smjernica"
+
+#: contribute/parts.html.jinja
+msgid "How this edit goes wrong"
+msgstr "Kako ova izmjena može biti pogrešna"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "The other edition"
+msgid_plural "The other %(count)d editions"
+msgstr[0] "Drugo izdanje"
+msgstr[1] "Druga %(count)d izdanja"
+msgstr[2] "Drugih %(count)d izdanja"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "1 other value"
+msgid_plural "%(count)d other values"
+msgstr[0] "1 druga vrijednost"
+msgstr[1] "%(count)d druge vrijednosti"
+msgstr[2] "%(count)d drugih vrijednosti"
+
+#: contribute/parts.html.jinja
+msgid "Not filled in"
+msgstr "Nije popunjeno"
+
+#: contribute/parts.html.jinja
+msgid "See each edition"
+msgstr "Pogledajte svako izdanje"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "And %(count)s more."
+msgstr "I još %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "That looks like a valid number."
+msgstr "To izgleda kao valjan broj."
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Will be stored as %(value)s."
+msgstr "Bit će spremljeno kao %(value)s."
+
+#: contribute/parts.html.jinja
+msgid "Paste only the number, not the web address."
+msgstr "Zalijepite samo broj, a ne web adresu."
+
+#: contribute/parts.html.jinja openlibrary/contribute/save.py
+msgid "That is not a valid number for this catalog."
+msgstr "To nije valjan broj za ovaj katalog."
+
+#: contribute/parts.html.jinja
+msgid "Choose a language"
+msgstr "Odaberite jezik"
+
+#: contribute/parts.html.jinja
+msgid "Filter languages"
+msgstr "Filtriraj jezike"
+
+#: contribute/parts.html.jinja
+msgid "No matching language"
+msgstr "Nema podudarajućeg jezika"
+
+#: contribute/parts.html.jinja
+msgid "Other editions say"
+msgstr "Druga izdanja navode"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(value)s, on 1 edition"
+msgid_plural "%(value)s, on %(count)d editions"
+msgstr[0] "%(value)s, na 1 izdanju"
+msgstr[1] "%(value)s, na %(count)d izdanja"
+msgstr[2] "%(value)s, na %(count)d izdanja"
+
+#: contribute/parts.html.jinja
+msgid "I opened the record and the year and publisher match this edition."
+msgstr "Zapis je otvoren, a godina i izdavač odgovaraju ovom izdanju."
+
+#: contribute/parts.html.jinja
+msgid "Add a comment about your edit"
+msgstr "Dodajte komentar o svojoj izmjeni"
+
+#: contribute/parts.html.jinja
+msgid "Edit comment"
+msgstr "Komentar o izmjeni"
+
+#: contribute/parts.html.jinja
+msgid "Where you found it"
+msgstr "Gdje ste to pronašli"
+
+#: contribute/parts.html.jinja
+msgid "Save and next"
+msgstr "Spremi i dalje"
+
+#: contribute/parts.html.jinja
+msgid "I couldn't find it"
+msgstr "Nisam uspio/la pronaći"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Next: a random task from %(filter)s"
+msgstr "Sljedeće: nasumičan zadatak iz %(filter)s"
+
+#: contribute/parts.html.jinja
+msgid "Next: a random task from all open tasks"
+msgstr "Sljedeće: nasumičan zadatak iz svih otvorenih zadataka"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat"
+msgstr "WorldCat"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Google Books"
+msgstr "Google Books"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Amazon"
+msgstr "Amazon"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress"
+msgstr "Kongresna knjižnica"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in language"
+msgstr "Popunite jezik"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up in WorldCat or Google Books; both list the language of the text. The title page and cover tell you too."
+msgstr "Potražite ISBN u WorldCatu ili Google Booksu; oba navode jezik teksta. Naslovna stranica i korice vam to također kažu."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
+msgstr "Izdanja djela obično dijele isti jezik, ali prijevod neće. Provjerite tekst ovog izdanja."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Record the language of the text, not the language of the title page. A translation is in the language it was translated into."
+msgstr "Zabilježite jezik teksta, a ne jezik naslovne stranice. Prijevod je na jeziku na koji je preveden."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example English"
+msgstr "Na primjer engleski"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Page count"
+msgstr "Broj stranica"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in page count"
+msgstr "Popunite broj stranica"
+
+#: openlibrary/contribute/field_guides.py
+msgid "How many pages does this edition have?"
+msgstr "Koliko stranica ima ovo izdanje?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat lists the page count in the record's description. Google Books calls it Length. Make sure the record is for this ISBN, not another printing."
+msgstr "WorldCat navodi broj stranica u opisu zapisa. Google Books to naziva Duljina. Provjerite da je zapis za ovaj ISBN, a ne za drugo izdanje."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
+msgstr "Katalozi različito broje uvodne stranice, pa se brojevi koji se razlikuju za nekoliko stranica smatraju istim brojem. Koristite zadnju numeriranu stranicu glavnog teksta."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 320"
+msgstr "Na primjer 320"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publisher"
+msgstr "Popunite izdavača"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Who published this edition?"
+msgstr "Tko je izdao ovo izdanje?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The imprint is printed on the title page and the spine. WorldCat and the Library of Congress list it under Publisher."
+msgstr "Izdavač je otisnut na naslovnoj stranici i hrptu. WorldCat i Kongresna knjižnica navode ga pod Izdavač."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
+msgstr "Open Library bilježi izdavača otisnutog na knjizi, a ne matičnu kompaniju. Anchor Books, a ne Penguin Random House."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Publisher as printed"
+msgstr "Izdavač kako je otisnuto"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress number (LCCN)"
+msgstr "Broj Kongresne knjižnice (LCCN)"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in LCCN"
+msgstr "Popunite LCCN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's Library of Congress number?"
+msgstr "Koji je LCCN broj ovog izdanja?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+msgstr "Pretražite katalog Kongresne knjižnice za ovaj ISBN. Otvorite zapis čija se godina i izdavač podudaraju s ovim izdanjem i kopirajte broj prikazan kao LCCN."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
+msgstr "Oblici s crticom i bez nje isti su broj: 75-425165 i 75425165. Zalijepite bilo koji; Open Library pohranjuje oblik bez crtice."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+msgstr "Broj pripada drugom izdanju. Rezultati pretrage prvo prikazuju najpoznatije, a ne vaše."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+msgstr "Broj je već na drugom izdanju ovog djela, što znači da je jedan od dva zapisa pogrešan."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address instead of the number itself."
+msgstr "Lijepljenje web adrese umjesto samog broja."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 75425165"
+msgstr "Na primjer 75425165"
+
+#: openlibrary/contribute/field_guides.py
+msgid "OCLC/WorldCat number"
+msgstr "OCLC/WorldCat broj"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in OCLC number"
+msgstr "Popunite OCLC broj"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's WorldCat (OCLC) number?"
+msgstr "Koji je WorldCat (OCLC) broj ovog izdanja?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+msgstr "Pretražite WorldCat za ovaj ISBN. Otvorite zapis čiji se godina, izdavač i format podudaraju s ovim izdanjem i kopirajte broj prikazan kao OCLC Number."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+msgstr "OCLC broj način je na koji knjižnice diljem svijeta upućuju na jedno katalogizirano izdanje. To je jedno od rijetkih polja koje Open Library koristi za pronalaženje duplikata ove knjige kada stignu novi zapisi."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
+msgstr "Prefiksi ocm, ocn, on i (OCoLC) dodani su od strane knjižničnih sustava i nisu dio broja. ocm00047810608 je 47810608."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+msgstr "Broj pripada drugom izdanju, izdanju knjižnog kluba ili e-knjizi, a ne tiskanom primjerku."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
+msgstr "Lijepljenje web adrese ili ostavljanje prefiksa ocm/ocn."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Digits only, for example 47810608"
+msgstr "Samo brojke, na primjer 47810608"
+
+#: openlibrary/contribute/save.py
+msgid "Pick a language from the list."
+msgstr "Odaberite jezik s popisa."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the page count as a whole number."
+msgstr "Unesite broj stranica kao cijeli broj."
+
+#: openlibrary/contribute/save.py
+msgid "Fill in an answer, or choose “I couldn't find it”."
+msgstr "Unesite odgovor ili odaberite „Nisam uspio/la pronaći”."
+
+#: openlibrary/contribute/save.py
+msgid "This field can't be filled in here."
+msgstr "Ovo polje nije moguće popuniti ovdje."
+
+#: openlibrary/contribute/save.py
+#, python-format
+msgid "Filled in %(field)s from Open Library Tasks"
+msgstr "Popunjeno %(field)s putem Open Library zadataka"
+
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
 msgstr "[Zapis izbrisan]"
@@ -8333,6 +8796,43 @@ msgstr "Kineski"
 msgid "Filipino"
 msgstr "Filipinski"
 
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are open to librarians only, for now"
+msgstr "Zadaci su za sada dostupni samo knjižničarima"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Published"
+msgstr "Objavljeno"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "OCLC"
+msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "All open tasks"
+msgstr "Svi otvoreni zadaci"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "Missing: %(field)s"
+msgstr "Nedostaje: %(field)s"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Most needed"
+msgstr "Najpotrebnije"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing missing here right now. Thank you."
+msgstr "Trenutno ovdje ništa ne nedostaje. Hvala vam."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing to fill in here"
+msgstr "Ovdje nema ničega za popuniti"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Open the record and confirm it matches this edition first."
+msgstr "Prvo otvorite zapis i potvrdite da se podudara s ovim izdanjem."
+
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Art"
 msgstr "Umjetnost"
@@ -8436,10 +8936,6 @@ msgstr "Slučajna knjiga"
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
 msgstr "Better World Books"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Amazon"
-msgstr "Amazon"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -8628,6 +9124,16 @@ msgstr "Tvoja e-mail adresa"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Odaberi lozinku"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Posuđeno iz %(library)s. Vaša posudba dospijeva %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Posuđeno iz %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

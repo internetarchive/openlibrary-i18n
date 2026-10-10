@@ -774,7 +774,7 @@ msgstr "読みたい"
 msgid "Currently Reading"
 msgstr "読書中"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "読んだ"
 
@@ -833,7 +833,7 @@ msgstr "「%(title)s」を読む"
 msgid "Borrow \"%(title)s\""
 msgstr "「%(title)s」を借りる"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "借りる"
 
@@ -1226,11 +1226,40 @@ msgstr ""
 msgid "No ISBN"
 msgstr "ISBNなし"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s から借りています"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "まだダウンロードされていません。"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "今すぐダウンロード"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "<br/>Adobe Digital Editionsで返却"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "アクティブな貸出（%(count)d件）"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s に接続できなかったため、そこでの貸し出しは表示されていません。"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "貸し出しを表示するには、%(libraries)s への再接続が必要です。そこから再度本を借りると接続が復元されます。"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1249,18 +1278,6 @@ msgstr "ローンアクション"
 msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "この本を待っている人が%(count)d人います。"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "まだダウンロードされていません。"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "今すぐダウンロード"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "<br/>Adobe Digital Editionsで返却"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2843,6 +2860,11 @@ msgstr "OpenStaxでもっと見る"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s から借りた本を読む"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%sからの朗読を聴く"
 
@@ -2854,6 +2876,11 @@ msgstr "聴く"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%sから無料でオンライン読書"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s から電子書籍を借りる"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3978,6 +4005,31 @@ msgstr "このリンクを削除"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "「優良な」とはスパムリンクを含まないことです。本に関連したリンクにしてください。無関係なサイトは削除される場合があります。明らかなスパムは容赦なく削除されます。"
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "貸し出し中"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "返却期限は %(due)s です。"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "貸し出しが作成されました。"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "今すぐ読む"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library に戻る"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "一括検索（ベータ）"
@@ -4473,10 +4525,6 @@ msgstr "%(user)sが作成"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)sが編集"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8558,6 +8606,16 @@ msgstr "メールアドレス"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "パスワードを選択"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s から借りています。返却期限は %(due)s です。"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s から借りています。"
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

@@ -778,7 +778,7 @@ msgstr "Chèrgio lèghere"
 msgid "Currently Reading"
 msgstr "So leghende"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Leghe"
 
@@ -842,7 +842,7 @@ msgstr "Leghe \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Piga in prèstidu \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Piga in prèstidu"
 
@@ -1233,12 +1233,43 @@ msgstr "Resone"
 msgid "No ISBN"
 msgstr "Perunu ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Pigadu in prèstidu dae %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Galu no iscarrigadu."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Iscàrriga como"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Torra pro mèdiu de<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Prèstidu ativu (%(count)d)"
 msgstr[1] "Prèstidos ativos (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "No est istadu possìbile regiùnghere %(libraries)s, duncas sos prèstidos suos no sunt ammustrados."
+msgstr[1] "No est istadu possìbile regiùnghere custas bibliotecas, duncas sos prèstidos issoro no sunt ammustrados: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s depet torrare a si connètiere in antis chi sos prèstidos suos pòdant èssere ammustrados. Si pigas in prèstidu unu àteru libru dae cussa biblioteca, sa connessione s'at a restabilire."
+msgstr[1] "Custas bibliotecas depent torrare a si connètiere in antis chi sos prèstidos issoro pòdant èssere ammustrados: %(libraries)s. Si pigas in prèstidu unu libru dae una de issas un'àtera bia, sa connessione s'at a restabilire."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1258,18 +1289,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "B'at %(count)d persone isetende pro custu libru."
 msgstr[1] "Bi sunt %(count)d persones isetende pro custu libru."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Galu no iscarrigadu."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Iscàrriga como"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Torra pro mèdiu de<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2867,6 +2886,11 @@ msgid "More at OpenStax"
 msgstr "De prus in OpenStax"
 
 #: book_providers/read_button.html
+#, python-format
+msgid "Read your loan from %s"
+msgstr "Leghe su prèstidu tuo dae %s"
+
+#: book_providers/read_button.html
 #, fuzzy, python-format
 msgid "Listen to a reading from %s"
 msgstr ""
@@ -2879,6 +2903,11 @@ msgstr "Ascurta"
 #, fuzzy, python-format
 msgid "Read free online from %s"
 msgstr ""
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Piga in prèstidu su libru eletrònicu dae %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4018,6 +4047,31 @@ msgstr "Boga custu ligàmene"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Bonas\" bolet nàrrere chi non siat ligàmenes de arga, pro praghere. Mantene·los rilevantes pro su libru. Sitos chene rilevàntzia diat pòdere èssere bogados. Arga ladina at a èssere iscantzellada chene impudu."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Pigadu in prèstidu"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Su prèstidu tuo iscadit su %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Su prèstidu tuo est istadu creadu."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Lèghelu como"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Torra a Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Chirca de lotos (beta)"
@@ -4522,10 +4576,6 @@ msgstr "Creadu dae %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "Modificadu dae %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8688,6 +8738,16 @@ msgstr "S'indiritzu de posta eletrònica tuo"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Issèbera una crae de intrada"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Pigadu in prèstidu dae %(library)s. Su prèstidu tuo iscadit su %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Pigadu in prèstidu dae %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

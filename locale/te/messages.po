@@ -821,7 +821,7 @@ msgstr "చదవాలని ఉంది"
 msgid "Currently Reading"
 msgstr "ప్రస్తుతం చదువుతున్నాను"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "చదువు"
 
@@ -886,7 +886,7 @@ msgstr "%(title)s ను సవరించండి"
 msgid "Borrow \"%(title)s\""
 msgstr "%(title)s ను సవరించండి"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 #, fuzzy
 msgid "Borrow"
 msgstr "విహరించు"
@@ -1298,12 +1298,43 @@ msgstr "సవరణ"
 msgid "No ISBN"
 msgstr "ఫలితాలు లేవు"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s నుండి అరువు తీసుకోబడింది"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "ఇంకా డౌన్‌లోడ్ చేయబడలేదు."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "ఇప్పుడే డౌన్‌లోడ్ చేయండి"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "<br/>Adobe Digital Editions ద్వారా తిరిగి ఇవ్వండి"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "సక్రియ రుణం (%(count)d)"
 msgstr[1] "సక్రియ రుణాలు (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s ను సంప్రదించలేకపోయాము, కాబట్టి అక్కడి రుణాలు చూపబడవు."
+msgstr[1] "ఈ గ్రంథాలయాలను సంప్రదించలేకపోయాము, కాబట్టి అక్కడి రుణాలు చూపబడవు: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "దాని రుణాలు చూపించడానికి ముందు %(libraries)s ను మళ్లీ కనెక్ట్ చేయాలి. అక్కడి నుండి మళ్లీ పుస్తకం అరువు తీసుకుంటే కనెక్షన్ పునరుద్ధరించబడుతుంది."
+msgstr[1] "వాటి రుణాలు చూపించడానికి ముందు ఈ గ్రంథాలయాలను మళ్లీ కనెక్ట్ చేయాలి: %(libraries)s. వాటిలో దేని నుండైనా మళ్లీ పుస్తకం అరువు తీసుకుంటే కనెక్షన్ పునరుద్ధరించబడుతుంది."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1323,18 +1354,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "ఈ పుస్తకం కోసం %(count)d వ్యక్తి వేచి ఉన్నారు."
 msgstr[1] "ఈ పుస్తకం కోసం %(count)d మంది వేచి ఉన్నారు."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "ఇంకా డౌన్‌లోడ్ చేయబడలేదు."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "ఇప్పుడే డౌన్‌లోడ్ చేయండి"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "<br/>Adobe Digital Editions ద్వారా తిరిగి ఇవ్వండి"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -3051,6 +3070,11 @@ msgstr "OpenStax లో మరింత"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s నుండి మీ అరువు పుస్తకాన్ని చదవండి"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s నుండి చదవడం వినండి"
 
@@ -3063,6 +3087,11 @@ msgstr "జాబితాలు"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s నుండి ఆన్‌లైన్‌లో ఉచితంగా చదవండి"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s నుండి ఈ-పుస్తకాన్ని అరువు తీసుకోండి"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4233,6 +4262,32 @@ msgstr "ఈ లింక్‌ను తొలగించు"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"మంచి\" అంటే స్పామ్ లింక్‌లు వద్దు. వాటిని పుస్తకానికి సంబంధించినవిగా ఉంచండి. అసంబద్ధ సైట్లు తొలగించబడవచ్చు. స్పష్టమైన స్పామ్ పశ్చాత్తాపం లేకుండా తొలగించబడుతుంది."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "అరువు తీసుకోబడింది"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+#, fuzzy
+msgid "Open Library"
+msgstr "లైబ్రరీలో లేదు"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "మీ రుణం తిరిగి ఇవ్వాల్సిన తేదీ %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "మీ రుణం సృష్టించబడింది."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "ఇప్పుడే చదవండి"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library కు తిరిగి వెళ్ళండి"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "బల్క్ శోధన (బీటా)"
@@ -4754,11 +4809,6 @@ msgstr "%(user)s ద్వారా సృష్టించబడింది"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s ద్వారా సవరించబడింది"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-#, fuzzy
-msgid "Open Library"
-msgstr "లైబ్రరీలో లేదు"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -9110,6 +9160,16 @@ msgstr "మీ ఈమెయిలు చిరునామా"
 #, fuzzy
 msgid "Choose a password"
 msgstr "ఒక సంకేతపదం ఎంచుకోండి"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s నుండి అరువు తీసుకోబడింది. మీ రుణం తిరిగి ఇవ్వాల్సిన తేదీ %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s నుండి అరువు తీసుకోబడింది."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

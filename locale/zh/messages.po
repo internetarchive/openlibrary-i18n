@@ -819,7 +819,7 @@ msgstr "想读"
 msgid "Currently Reading"
 msgstr "正在阅读"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "阅读"
 
@@ -883,7 +883,7 @@ msgstr "阅读 \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "借阅 \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "借阅"
 
@@ -1292,12 +1292,43 @@ msgstr "修订"
 msgid "No ISBN"
 msgstr "ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "从%(library)s借阅"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "尚未下载。"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "立即下载"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "通过<br/>Adobe Digital Editions返回"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "有效借阅（%(count)d）"
 msgstr[1] "有效借阅（%(count)d）"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "无法连接到%(libraries)s，因此不会显示该馆的借阅记录。"
+msgstr[1] "无法连接到这些图书馆，因此不会显示其借阅记录：%(libraries)s。"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s需要重新连接后才能显示其借阅记录。再次从该馆借阅一本书将恢复连接。"
+msgstr[1] "这些图书馆需要重新连接后才能显示其借阅记录：%(libraries)s。再次从其中一家借阅一本书将恢复连接。"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1317,18 +1348,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "有 %(count)d 人在等候这本书。"
 msgstr[1] "有 %(count)d 人在等候这本书。"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "尚未下载。"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "立即下载"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "通过<br/>Adobe Digital Editions返回"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -3029,6 +3048,11 @@ msgstr "更多内容请访问OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "从%s阅读您借阅的书籍"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "从%s收听朗读"
 
@@ -3040,6 +3064,11 @@ msgstr "聆听"
 #, python-format
 msgid "Read free online from %s"
 msgstr "从%s免费在线阅读"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "从%s租借电子书"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4218,6 +4247,31 @@ msgstr "删除这个链接"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Good\"意味着没有垃圾链接（拜托了！）。请让它们和书籍有关。不相关的网站可能会被删除。公然的垃圾邮件将被不留情地删除。"
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "已借阅"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "开放图书馆"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "您的借阅将于%(due)s到期。"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "您的借阅已创建。"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "立即阅读"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "返回Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "批量搜索（测试版）"
@@ -4735,10 +4789,6 @@ msgstr "由 %(user)s 创建"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "由 %(user)s 编辑"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "开放图书馆"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -9019,6 +9069,16 @@ msgstr "您的电子邮箱地址"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "设置一个密码"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "从%(library)s借阅。您的借阅将于%(due)s到期。"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "从%(library)s借阅。"
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

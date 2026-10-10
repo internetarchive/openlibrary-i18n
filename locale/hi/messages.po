@@ -815,7 +815,7 @@ msgstr "पढ़ने में रुचि"
 msgid "Currently Reading"
 msgstr "फ़िलहाल पढ़ रहे हैं"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "पढ़ें"
 
@@ -879,7 +879,7 @@ msgstr "\"%(title)s\" पढ़ें"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" उधार लें"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "उधार"
 
@@ -1285,12 +1285,43 @@ msgstr "संशोधन"
 msgid "No ISBN"
 msgstr "ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s से उधार लिया गया"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "अभी तक डाउनलोड नहीं किया गया है।"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "डाक डाउनलोड करें"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Adobe Digital Editions के ज़रिए वापसी<br/>"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "सक्रिय ऋण (%(count)d)"
 msgstr[1] "सक्रिय ऋण (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s से संपर्क नहीं हो सका, इसलिए वहाँ के कोई भी उधार नहीं दिखाए जा रहे हैं।"
+msgstr[1] "इन लाइब्रेरी से संपर्क नहीं हो सका, इसलिए वहाँ के कोई भी उधार नहीं दिखाए जा रहे हैं: %(libraries)s।"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "इसके उधार दिखाने से पहले %(libraries)s को फिर से जोड़ना होगा। वहाँ से दोबारा किताब उधार लेने पर कनेक्शन बहाल हो जाएगा।"
+msgstr[1] "इनके उधार दिखाने से पहले इन लाइब्रेरी को फिर से जोड़ना होगा: %(libraries)s। इनमें से किसी से भी दोबारा किताब उधार लेने पर कनेक्शन बहाल हो जाएगा।"
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1310,18 +1341,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "इस पुस्तक की प्रतीक्षा में %(count)d व्यक्ति है।"
 msgstr[1] "इस पुस्तक की प्रतीक्षा में %(count)d व्यक्ति हैं।"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "अभी तक डाउनलोड नहीं किया गया है।"
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "डाक डाउनलोड करें"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Adobe Digital Editions के ज़रिए वापसी<br/>"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -3009,6 +3028,11 @@ msgstr "OpenStax पर और जानकारी"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s से लिया अपना उधार पढ़ें"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s से एक वाचन सुनें"
 
@@ -3020,6 +3044,11 @@ msgstr "बात सुनो"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s से निःशुल्क ऑनलाइन पढ़ें"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s से ई-बुक उधार लें"
 
 #: book_providers/runeberg_download_options.html
 #, fuzzy
@@ -4190,6 +4219,31 @@ msgstr "इस लिंक को हटाएँ"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"अच्छा\" का मतलब है कोई स्पैम लिंक नहीं, कृपया। उन्हें किताब के लिए प्रासंगिक रखें। अप्रासंगिक साइटों को हटाया जा सकता है। स्पष्ट स्पैम को बिना किसी पछतावे के हटा दिया जाएगा।"
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "उधार लिया गया"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "ओपन लाइब्रेरी"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "आपका उधार %(due)s को देय है।"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "आपका उधार बन गया है।"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "अभी पढ़ें"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library पर वापस जाएँ"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 #, fuzzy
 msgid "Bulk Search (beta)"
@@ -4706,10 +4760,6 @@ msgstr "%(user)s द्वारा बनाया गया"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s द्वारा संपादित"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "ओपन लाइब्रेरी"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8979,6 +9029,16 @@ msgstr "आपका ईमेल पता"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "पासवर्ड चुनें"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s से उधार लिया गया। आपका उधार %(due)s को देय है।"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s से उधार लिया गया।"
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

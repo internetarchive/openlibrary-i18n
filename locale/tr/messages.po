@@ -798,7 +798,7 @@ msgstr "Okumak istiyorum"
 msgid "Currently Reading"
 msgstr "Şu anda okuyorum"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Okudum"
 
@@ -860,7 +860,7 @@ msgstr "Oku \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" ödünç al"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Ödünç al"
 
@@ -1257,12 +1257,43 @@ msgstr "Revizyon"
 msgid "No ISBN"
 msgstr "Oturum aç"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s kütüphanesinden ödünç alındı"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Henüz indirilmedi."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Şimdi indir"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "İade edin<br/>Adobe Digital Editions aracılığıyla"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Aktif Kredi (%(count)d)"
 msgstr[1] "Aktif Krediler (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s ile bağlantı kurulamadı, bu nedenle oradaki ödünç kitaplar gösterilmiyor."
+msgstr[1] "Bu kütüphanelerle bağlantı kurulamadı, bu nedenle oradaki ödünç kitaplar gösterilmiyor: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "Ödünç kitaplarının gösterilebilmesi için %(libraries)s ile yeniden bağlantı kurulması gerekiyor. Oradan tekrar bir kitap ödünç almak bağlantıyı yeniden kuracaktır."
+msgstr[1] "Ödünç kitaplarının gösterilebilmesi için bu kütüphanelerle yeniden bağlantı kurulması gerekiyor: %(libraries)s. Bunlardan birinden tekrar bir kitap ödünç almak bağlantıyı yeniden kuracaktır."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1282,18 +1313,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Bu kitap için %(count)d kişi bekliyor."
 msgstr[1] "Bu kitap için %(count)d kişi bekliyor."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Henüz indirilmedi."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Şimdi indir"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "İade edin<br/>Adobe Digital Editions aracılığıyla"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2930,6 +2949,11 @@ msgstr "OpenStax'ta Daha Fazlası"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s kütüphanesinden ödünç aldığınız kitabı okuyun"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s'ten bir okuma dinle"
 
@@ -2941,6 +2965,11 @@ msgstr "Dinle"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s'ten ücretsiz çevrimiçi oku"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s kütüphanesinden e-kitap ödünç alın"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4078,6 +4107,31 @@ msgstr "Bu bağlantıyı kaldır"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"İyi\" demek spam içermeyen bağlantılar demektir. Kitapla alakalı tutun. Alakasız siteler kaldırılabilir. Açık spam acımasızca silinir."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Ödünç alındı"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Ödünç aldığınız kitabın iade tarihi %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Ödünç alma işleminiz oluşturuldu."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Şimdi oku"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library’a geri dön"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Toplu Arama (beta)"
@@ -4580,10 +4634,6 @@ msgstr "%(user)s tarafından oluşturuldu"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s tarafından düzenlendi"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8770,6 +8820,16 @@ msgstr "E-posta adresiniz"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Bir şifre seç"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s kütüphanesinden ödünç alındı. Ödünç aldığınız kitabın iade tarihi %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s kütüphanesinden ödünç alındı."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

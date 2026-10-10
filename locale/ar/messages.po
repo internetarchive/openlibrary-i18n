@@ -812,7 +812,7 @@ msgstr "أريد قراءته"
 msgid "Currently Reading"
 msgstr "أقرأ حالياً"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "اقرأ"
 
@@ -877,7 +877,7 @@ msgstr "اقرأ \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "استعِر \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "استعِر"
 
@@ -1282,12 +1282,45 @@ msgstr "الإصدار"
 msgid "No ISBN"
 msgstr "رقم ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "مستعار من %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "لم يتم تحميله بعد."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "حمل الآن"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "الإرجاع عبر<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "استعارة نشطة (%(count)d)"
 msgstr[1] "استعارات نشطة (%(count)d)"
+msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "تعذّر الوصول إلى %(libraries)s، لذا لا تظهر أي إعارات منها."
+msgstr[1] "تعذّر الوصول إلى هذه المكتبات، لذا لا تظهر أي إعارات منها: %(libraries)s."
+msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "تحتاج %(libraries)s إلى إعادة الاتصال قبل أن يتسنى عرض إعاراتها. استعارة كتاب منها مرة أخرى ستعيد الاتصال."
+msgstr[1] "تحتاج هذه المكتبات إلى إعادة الاتصال قبل أن يتسنى عرض إعاراتها: %(libraries)s. استعارة كتاب من إحداها مرة أخرى سيعيد الاتصال."
 msgstr[2] ""
 
 #: account/loans.html
@@ -1309,18 +1342,6 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "يوجد %(count)d شخص ينتظر هذا الكتاب."
 msgstr[1] "يوجد %(count)d شخصاً ينتظر هذا الكتاب."
 msgstr[2] ""
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "لم يتم تحميله بعد."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "حمل الآن"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "الإرجاع عبر<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2989,6 +3010,11 @@ msgid "More at OpenStax"
 msgstr "المزيد على OpenStax"
 
 #: book_providers/read_button.html
+#, python-format
+msgid "Read your loan from %s"
+msgstr "اقرأ إعارتك من %s"
+
+#: book_providers/read_button.html
 #, fuzzy, python-format
 msgid "Listen to a reading from %s"
 msgstr ""
@@ -3001,6 +3027,11 @@ msgstr "استماع"
 #, python-format
 msgid "Read free online from %s"
 msgstr "اقرأ مجاناً عبر الإنترنت من %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "استعر الكتاب الإلكتروني من %s"
 
 #: book_providers/runeberg_download_options.html
 #, fuzzy
@@ -4162,6 +4193,32 @@ msgstr "إزالة هذا الرابط"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "تعني \"جيدة\" عدم وجود روابط سبام، من فضلك. اجعلها ذات صلة بالكتاب. قد تتم إزالة المواقع غير ذات الصلة. سيتم حذف السبام الواضح بدون تردد."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "مستعار"
+
+# | msgid "Sign Up to Open Library"
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "إعارتك مستحقة في %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "تم إنشاء إعارتك."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "اقرأه الآن"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "العودة إلى Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 #, fuzzy
 msgid "Bulk Search (beta)"
@@ -4683,11 +4740,6 @@ msgstr "أنشئ بواسطة %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "تم تعديله بواسطة %(user)s"
-
-# | msgid "Sign Up to Open Library"
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8967,6 +9019,16 @@ msgstr "عنوان بريدك الإلكتروني"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "اختر كلمة مرور"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "مستعار من %(library)s. إعارتك مستحقة في %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "مستعار من %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

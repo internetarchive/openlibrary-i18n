@@ -774,7 +774,7 @@ msgstr "Gustong Basahin"
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Basahin"
 
@@ -838,7 +838,7 @@ msgstr "Basahin ang \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Umatras ng \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Hiramin"
 
@@ -1228,12 +1228,43 @@ msgstr "Dahilan"
 msgid "No ISBN"
 msgstr "Walang ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Hiniram mula sa %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Hindi pa na-download."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "I-download Ngayon"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Ibalik sa pamamagitan ng<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Aktibong Pautang (%(count)d)"
 msgstr[1] "Mga Aktibong Pautang (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "Hindi maabot ang %(libraries)s, kaya hindi ipinapakita ang mga paghiram doon."
+msgstr[1] "Hindi maabot ang mga aklatang ito, kaya hindi ipinapakita ang mga paghiram doon: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "Kailangang ikonekta muli ang %(libraries)s bago maipakita ang mga paghiram dito. Ang muling paghiram ng aklat mula rito ay magpapanumbalik ng koneksyon."
+msgstr[1] "Kailangang ikonekta muli ang mga aklatang ito bago maipakita ang mga paghiram dito: %(libraries)s. Ang muling paghiram ng aklat mula sa alinman sa mga ito ay magpapanumbalik ng koneksyon."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1253,18 +1284,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "May %(count)d taong naghihintay para sa librong ito."
 msgstr[1] "May %(count)d mga taong naghihintay para sa librong ito."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Hindi pa na-download."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "I-download Ngayon"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Ibalik sa pamamagitan ng<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2851,6 +2870,11 @@ msgstr "More sa OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Basahin ang hiniram mo mula sa %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Makinig sa isang pagbabasa mula sa %s"
 
@@ -2862,6 +2886,11 @@ msgstr "Makinig"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Magbasa nang libre online mula sa %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Humiram ng ebook mula sa %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3996,6 +4025,31 @@ msgstr "Tanggalin ang link na ito"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Mabuti\" ay nangangahulugang walang mga spammy na link, pakisuyo. Panatilihin itong may kinalaman sa aklat. Ang mga hindi kaugnay na site ay maaaring alisin. Ang mga halatang spam ay aalisin nang walang awa."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Hiniram"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Dapat ibalik ang hiniram mo sa %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Nalikha na ang iyong paghiram."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Basahin ngayon"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Bumalik sa Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Bulk Search (beta)"
@@ -4498,10 +4552,6 @@ msgstr "Nilikha ni %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "In-edit ni %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8612,6 +8662,16 @@ msgstr "Ang iyong email address"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Pumili ng password"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Hiniram mula sa %(library)s. Dapat ibalik ang hiniram mo sa %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Hiniram mula sa %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

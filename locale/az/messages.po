@@ -774,7 +774,7 @@ msgstr "Oxumaq istəyirəm"
 msgid "Currently Reading"
 msgstr "Hazırda oxuyuram"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Oxu"
 
@@ -834,7 +834,7 @@ msgstr "\"%(title)s\" kitabını oxu"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" kitabını borc al"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Borc al"
 
@@ -1222,12 +1222,43 @@ msgstr "Səbəb"
 msgid "No ISBN"
 msgstr "ISBN yoxdur"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s kitabxanasından götürülüb"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Hələ endirilməyib."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "İndi endir"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Adobe Digital Editions vasitəsilə<br/>qaytar"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Hazırda borc alınmış kitab (%(count)d)"
 msgstr[1] "Hazırda borc alınmış kitab (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s ilə əlaqə qurula bilmədi, buna görə də oradakı icarələr göstərilmir."
+msgstr[1] "Bu kitabxanalarla əlaqə qurula bilmədi, buna görə də onlardakı icarələr göstərilmir: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "İcarələrin göstərilməsi üçün %(libraries)s yenidən qoşulmalıdır. Oradan yenidən kitab götürmək əlaqəni bərpa edəcək."
+msgstr[1] "İcarələrinin göstərilməsi üçün bu kitabxanalar yenidən qoşulmalıdır: %(libraries)s. Onlardan birindən yenidən kitab götürmək əlaqəni bərpa edəcək."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1247,18 +1278,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Bu kitabı %(count)d nəfər gözləyir."
 msgstr[1] "Bu kitabı %(count)d nəfər gözləyir."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Hələ endirilməyib."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "İndi endir"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Adobe Digital Editions vasitəsilə<br/>qaytar"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2839,6 +2858,11 @@ msgstr "OpenStax-da daha çox"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s-dan götürdüyünüz kitabı oxuyun"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s mənbəyindən səsləndirilmiş mətni dinlə"
 
@@ -2850,6 +2874,11 @@ msgstr "Dinlə"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s mənbəyindən onlayn pulsuz oxu"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s-dan elektron kitab götürün"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3975,6 +4004,31 @@ msgstr "Bu keçidi çıxar"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Yaxşı\" dedikdə spam keçidlərinin olmaması nəzərdə tutulur. Keçidlər kitabla əlaqəli olmalıdır. Əlaqəsiz saytlar çıxarıla bilər. Aşkar spam tərəddüdsüz silinəcək."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Götürülüb"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "İcarənizin bitmə tarixi %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "İcarəniz yaradıldı."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "İndi oxuyun"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library-ə qayıt"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Kütləvi axtarış (beta)"
@@ -4472,10 +4526,6 @@ msgstr "%(user)s tərəfindən yaradılıb"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s tərəfindən redaktə edilib"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8567,6 +8617,16 @@ msgstr "E-poçt ünvanınız"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Parol seç"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "%(library)s kitabxanasından götürülüb. İcarənizin bitmə tarixi %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "%(library)s kitabxanasından götürülüb."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format

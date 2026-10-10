@@ -777,7 +777,7 @@ msgstr "Doresc să citesc"
 msgid "Currently Reading"
 msgstr "În curs de citire"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Citit"
 
@@ -840,7 +840,7 @@ msgstr "Citește \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Împrumută \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Împrumută"
 
@@ -1230,12 +1230,45 @@ msgstr "Motiv"
 msgid "No ISBN"
 msgstr "Fără ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Împrumutat de la %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Nu a fost descărcat încă."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Descarcă acum"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Returnează prin<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Împrumut activ (%(count)d)"
 msgstr[1] "Împrumuturi active (%(count)d)"
+msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s nu a putut fi contactat(ă), așa că împrumuturile de acolo nu sunt afișate."
+msgstr[1] "%(libraries)s nu a putut fi contactat(ă), așa că împrumuturile de acolo nu sunt afișate."
+msgstr[2] ""
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s trebuie reconectat(ă) înainte ca împrumuturile sale să poată fi afișate. Împrumutarea unei cărți de acolo din nou va restabili conexiunea."
+msgstr[1] "%(libraries)s trebuie reconectat(ă) înainte ca împrumuturile sale să poată fi afișate. Împrumutarea unei cărți de acolo din nou va restabili conexiunea."
 msgstr[2] ""
 
 #: account/loans.html
@@ -1257,18 +1290,6 @@ msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Există %(count)d persoană care așteaptă această carte."
 msgstr[1] "Există %(count)d persoane care așteaptă această carte."
 msgstr[2] ""
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Nu a fost descărcat încă."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Descarcă acum"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Returnează prin<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -2863,6 +2884,11 @@ msgstr "Mai mult la OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Citește-ți împrumutul de la %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Ascultă o lectură de la %s"
 
@@ -2874,6 +2900,11 @@ msgstr "Ascultați"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Citește gratuit online de la %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Împrumută cartea electronică de la %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -4007,6 +4038,31 @@ msgstr "Elimină acest link"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Bun\" înseamnă fără linkuri spam, vă rugăm. Păstrați-le relevante pentru carte. Site-urile irelevante pot fi eliminate. Spam-ul evident va fi șters fără remușcări."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Împrumutat"
+
+#: borrow/provider_popup_result.html.jinja lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Împrumutul dumneavoastră expiră la %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Împrumutul dumneavoastră a fost creat."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Citește acum"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Înapoi la Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Căutare în masă (beta)"
@@ -4509,10 +4565,6 @@ msgstr "Creat de %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "Editat de %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
 
 #: lib/nav_foot.html.jinja
 msgid "Vision"
@@ -8666,6 +8718,16 @@ msgstr "Adresa dvs. de email"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Alegeți o parolă"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr "Împrumutat de la %(library)s. Împrumutul dumneavoastră expiră la %(due)s."
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr "Împrumutat de la %(library)s."
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format
