@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: account.html account/notifications.html account/privacy.html lib/nav_head.html type/user/view.html
+#: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -453,7 +453,7 @@ msgstr "Batal"
 msgid "Continue without waiting"
 msgstr "Lanjutkan tanpa menunggu"
 
-#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
+#: library_explorer.html openlibrary/core/shell/nav.py
 msgid "Library Explorer"
 msgstr "Pencarian Pustaka"
 
@@ -461,7 +461,7 @@ msgstr "Pencarian Pustaka"
 msgid "Loading..."
 msgstr "Memuat..."
 
-#: lib/nav_head.html login.html
+#: login.html shell/header.html.jinja
 msgid "Log In"
 msgstr "Masuk"
 
@@ -550,7 +550,7 @@ msgstr "Buku baru ditambahkan."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Terima kasih telah meningkatkan katalog Open Library!"
 
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Tutup"
 
@@ -669,14 +669,6 @@ msgstr "Tautan Unduhan"
 msgid "Next"
 msgstr "Berikutnya"
 
-#: site.html.jinja
-msgid "Skip to main content"
-msgstr "Lewati ke konten utama"
-
-#: site.html.jinja
-msgid "It looks like you're offline."
-msgstr "Sepertinya Anda sedang offline."
-
 #: status.html
 msgid "Open Library server status"
 msgstr "Status server Open Library"
@@ -783,7 +775,7 @@ msgstr "Ingin Dibaca"
 msgid "Currently Reading"
 msgstr "Sedang Dibaca"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Baca"
 
@@ -846,7 +838,7 @@ msgstr "Baca \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Pinjam \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Pinjam"
 
@@ -893,7 +885,7 @@ msgstr "Ini hanya terlihat oleh super pustakawan."
 msgid "Solr Editions"
 msgstr "Edisi Solr"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
 #, fuzzy
 msgid "Readable Only"
 msgstr "Pratinjau"
@@ -903,20 +895,20 @@ msgstr "Pratinjau"
 msgid "Filter by availability"
 msgstr "Filter hasil berdasarkan ketersediaan ebook"
 
-#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Bahasa"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 #, fuzzy
 msgid "Search languages…"
 msgstr "Pilih bahasa ini"
 
-#: books/edit/edition.html languages/index.html search/search_modal_i18n.html work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html openlibrary/core/shell/search_modal.py work_search.html
 msgid "Languages"
 msgstr "Bahasa"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 msgid "Loading…"
 msgstr "Memuat…"
 
@@ -949,7 +941,7 @@ msgstr "Debugging Solr:"
 msgid "Full URL:"
 msgstr "URL Lengkap:"
 
-#: search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py work_search.html
 msgid "No matching books or authors"
 msgstr "Tidak ada buku atau penulis yang cocok"
 
@@ -957,11 +949,11 @@ msgstr "Tidak ada buku atau penulis yang cocok"
 msgid "Add a new book"
 msgstr "Tambahkan buku baru"
 
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Penulis"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Buku"
 
@@ -1054,7 +1046,7 @@ msgstr "Program yang memenuhi syarat harus dipilih"
 msgid "Sign Up to Open Library"
 msgstr "Daftar ke Open Library"
 
-#: account/create.html lib/nav_head.html
+#: account/create.html shell/header.html.jinja
 msgid "Sign Up"
 msgstr "Daftar"
 
@@ -1240,11 +1232,40 @@ msgstr "Revisi"
 msgid "No ISBN"
 msgstr "Masuk"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Dipinjam dari %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Belum diunduh."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "Unduh Sekarang"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Kembalikan melalui<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Peminjaman Aktif (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s tidak dapat dihubungi, sehingga pinjaman di sana tidak ditampilkan."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "%(libraries)s perlu dihubungkan ulang sebelum pinjamannya dapat ditampilkan. Meminjam buku darinya lagi akan memulihkan koneksi."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1263,18 +1284,6 @@ msgstr "Tindakan pinjaman"
 msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Ada %(count)d orang yang menunggu buku ini."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Belum diunduh."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "Unduh Sekarang"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Kembalikan melalui<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -1465,7 +1474,7 @@ msgstr "Tidak, terima kasih"
 msgid "Yes! Please!"
 msgstr "Ya! Tolong!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html covers/manage.html my_books/shelf_button_i18n.html
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/parts.html.jinja covers/manage.html my_books/shelf_button_i18n.html
 msgid "Save"
 msgstr "Simpan"
 
@@ -1624,7 +1633,7 @@ msgstr "Ingin Dibaca"
 msgid "My %(shelf_name)s Stats"
 msgstr "Statistik %(shelf_name)s Saya"
 
-#: account/readinglog_stats.html lib/nav_head.html
+#: account/readinglog_stats.html openlibrary/core/shell/header.py shell/header.html.jinja
 msgid "My Books"
 msgstr "Buku Saya"
 
@@ -1688,12 +1697,12 @@ msgid "Works by Time Period"
 msgstr "Karya Berdasarkan Periode Waktu"
 
 #: account/readinglog_stats.html
-msgid "Matching works"
-msgstr "Karya yang cocok"
-
-#: account/readinglog_stats.html
 msgid "Click on a bar to see matching works"
 msgstr "Klik pada batang untuk melihat karya yang cocok"
+
+#: account/readinglog_stats.html
+msgid "Matching works"
+msgstr "Karya yang cocok"
 
 #: account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py
 msgid "My Feed"
@@ -1717,7 +1726,7 @@ msgstr "Log Membaca"
 msgid "My lists"
 msgstr "Daftar saya"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Daftar"
 
@@ -1932,7 +1941,7 @@ msgstr "Buku Baru Diimpor Per Hari"
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Anda perlu mengaktifkan JavaScript untuk melihat grafik yang keren ini!"
 
-#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html site/stats.html.jinja
+#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html shell/stats.html.jinja
 msgid "Summary"
 msgstr "Ringkasan"
 
@@ -2746,7 +2755,7 @@ msgstr "Tidak ditemukan"
 msgid "Search for an Author"
 msgstr "Cari Penulis"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lib/nav_head.html lists/home.html publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/search_modal_i18n.html search/searchbox.html type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Cari"
 
@@ -2877,6 +2886,11 @@ msgstr "Lebih banyak di OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Baca pinjaman Anda dari %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Dengarkan bacaan dari %s"
 
@@ -2888,6 +2902,11 @@ msgstr "Dengarkan"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Baca gratis daring dari %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Pinjam ebook dari %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3050,7 +3069,7 @@ msgstr "Gunakan <b><i>Judul: Subjudul</i></b> untuk menambahkan subjudul."
 msgid "Required field"
 msgstr "Field wajib"
 
-#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html search/search_modal_i18n.html
+#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html
 msgid "Author"
 msgstr "Penulis"
 
@@ -3102,7 +3121,7 @@ msgstr "ISBN 10"
 msgid "ISBN 13"
 msgstr "ISBN 13"
 
-#: books/add.html
+#: books/add.html openlibrary/plugins/openlibrary/contribute.py
 msgid "LCCN"
 msgstr "LCCN"
 
@@ -3156,7 +3175,7 @@ msgstr "Hapus penulis ini"
 msgid "Add another author?"
 msgstr "Tambahkan penulis lain?"
 
-#: books/check.html lib/nav_foot.html.jinja lib/nav_head.html
+#: books/check.html shell/footer.html.jinja shell/header.html.jinja
 msgid "Add a Book"
 msgstr "Tambahkan Buku"
 
@@ -3655,7 +3674,7 @@ msgstr "Pernyataan Oleh:"
 msgid "For example: <em>edited by David Anderson</em>"
 msgstr "Misalnya: <em>diedit oleh David Anderson</em>"
 
-#: books/edit/edition.html
+#: books/edit/edition.html openlibrary/contribute/field_guides.py
 msgid "What language is this edition written in?"
 msgstr "Dalam bahasa apa edisi ini ditulis?"
 
@@ -3845,7 +3864,7 @@ msgstr "Penomoran halaman?"
 msgid "Note the highest number in each pagination pattern."
 msgstr "Catat angka tertinggi dalam setiap pola penomoran halaman."
 
-#: books/edit/edition.html lib/nav_foot.html.jinja
+#: books/edit/edition.html shell/footer.html.jinja
 msgid "Help"
 msgstr "Bantuan"
 
@@ -4022,9 +4041,135 @@ msgstr "Hapus tautan ini"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Baik\" berarti tidak ada tautan spam. Jaga agar tetap relevan dengan buku. Situs yang tidak relevan dapat dihapus. Spam terang-terangan akan dihapus tanpa ampun."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Dipinjam"
+
+#: borrow/provider_popup_result.html.jinja openlibrary/plugins/openlibrary/api.py shell/footer.html.jinja shell/head.html.jinja
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Pinjaman Anda jatuh tempo %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Pinjaman Anda telah dibuat."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Baca sekarang"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Kembali ke Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Pencarian Massal (beta)"
+
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks"
+msgstr "Tugas"
+
+#: contribute/dashboard.html.jinja
+msgid "Fill in what's missing on real books, one detail at a time."
+msgstr "Lengkapi apa yang hilang pada buku nyata, satu detail pada satu waktu."
+
+#: contribute/dashboard.html.jinja
+msgid "Surprise me"
+msgstr "Kejutkan saya"
+
+#: contribute/dashboard.html.jinja
+msgid "A random book that needs a hand."
+msgstr "Buku acak yang membutuhkan bantuan."
+
+#: contribute/dashboard.html.jinja
+msgid "Filter tasks"
+msgstr "Saring tugas"
+
+#: contribute/dashboard.html.jinja
+msgid "Missing"
+msgstr "Hilang"
+
+#: contribute/dashboard.html.jinja
+msgid "Your recent fixes"
+msgstr "Perbaikan terbaru Anda"
+
+#: contribute/dashboard.html.jinja
+msgid "See all your edits"
+msgstr "Lihat semua suntingan Anda"
+
+#: contribute/dashboard.html.jinja
+msgid "Fixes you save here show up in this list."
+msgstr "Perbaikan yang Anda simpan di sini akan muncul di daftar ini."
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Saved"
+msgstr "Tersimpan"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Skipped"
+msgstr "Dilewati"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s: %(value)s"
+msgstr "%(field)s untuk %(title)s: %(value)s"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s"
+msgstr "%(field)s untuk %(title)s"
+
+#: contribute/done.html.jinja
+msgid "The record is updated."
+msgstr "Rekaman telah diperbarui."
+
+#: contribute/done.html.jinja
+msgid "See it in the record's history"
+msgstr "Lihat di riwayat rekaman"
+
+#: contribute/done.html.jinja
+msgid "Nothing on the record changed."
+msgstr "Tidak ada yang berubah pada rekaman."
+
+#: contribute/done.html.jinja
+msgid "While you're on this book"
+msgstr "Selagi Anda berada di buku ini"
+
+#: contribute/done.html.jinja
+msgid "Next task"
+msgstr "Tugas berikutnya"
+
+#: contribute/done.html.jinja
+msgid "Pick a different book"
+msgstr "Pilih buku lain"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in on this edition"
+msgstr "%(field)s sudah diisi pada edisi ini"
+
+#: contribute/nothing.html.jinja
+msgid "Someone filled it in since the list was made. Thank you for checking."
+msgstr "Seseorang telah mengisinya sejak daftar ini dibuat. Terima kasih telah memeriksa."
+
+#: contribute/nothing.html.jinja contribute/task.html.jinja
+msgid "Back to the list"
+msgstr "Kembali ke daftar"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+msgstr "Menyimpan %(field)s untuk %(link_start)s%(title)s%(link_end)s: %(value)s"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+msgstr "Menyimpan %(field)s untuk %(link_start)s%(title)s%(link_end)s"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -4426,26 +4571,6 @@ msgid "%s ebook edition"
 msgid_plural "%s ebook editions"
 msgstr[0] "%s edisi ebook"
 
-#: lib/browse_popover.html
-msgid "Browse books by topic"
-msgstr "Jelajahi buku berdasarkan topik"
-
-#: lib/browse_popover.html
-msgid "Most popular right now"
-msgstr "Paling populer saat ini"
-
-#: lib/browse_popover.html
-msgid "Browse the virtual shelves"
-msgstr "Jelajahi rak virtual"
-
-#: lib/browse_popover.html
-msgid "Reader-curated collections"
-msgstr "Koleksi kurasi pembaca"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Jelajahi"
-
 #: lib/edit_head.html lib/view_head.html
 msgid "This doc was last edited by"
 msgstr "Dokumen ini terakhir diedit oleh"
@@ -4486,10 +4611,6 @@ msgstr "Salin dan tempel kode ini ke halaman Wikipedia Anda."
 msgid "Copy Wikipedia citation"
 msgstr "Salin kutipan Wikipedia"
 
-#: lib/header_dropdown.html lib/nav_head.html
-msgid "Menu"
-msgstr "Menu"
-
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
 msgstr "Riwayat"
@@ -4518,255 +4639,6 @@ msgstr "Dibuat oleh %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "Diedit oleh %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Vision"
-msgstr "Visi"
-
-#: lib/nav_foot.html.jinja
-msgid "Volunteer"
-msgstr "Sukarelawan"
-
-#: lib/nav_foot.html.jinja
-msgid "Partner With Us"
-msgstr "Bermitra Dengan Kami"
-
-#: lib/nav_foot.html.jinja
-msgid "Jobs"
-msgstr "Pekerjaan"
-
-#: lib/nav_foot.html.jinja
-msgid "Careers"
-msgstr "Karir"
-
-#: lib/nav_foot.html.jinja
-msgid "Blog"
-msgstr "Blog"
-
-#: lib/nav_foot.html.jinja
-msgid "Terms of Service"
-msgstr "Ketentuan Layanan"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Donate"
-msgstr "Donasi"
-
-#: lib/nav_foot.html.jinja
-msgid "Discover"
-msgstr "Temukan"
-
-#: lib/nav_foot.html.jinja
-msgid "Go home"
-msgstr "Ke beranda"
-
-#: lib/nav_foot.html.jinja
-msgid "Home"
-msgstr "Beranda"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Books"
-msgstr "Jelajahi Buku"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore authors"
-msgstr "Jelajahi penulis"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore subjects"
-msgstr "Jelajahi subjek"
-
-#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Subjek"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore collections"
-msgstr "Jelajahi koleksi"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py type/page/view.html
-msgid "Collections"
-msgstr "Koleksi"
-
-#: SearchNavigation.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
-msgid "Advanced Search"
-msgstr "Pencarian Lanjutan"
-
-#: lib/nav_foot.html.jinja
-msgid "Navigate to top of this page"
-msgstr "Navigasi ke atas halaman ini"
-
-#: lib/nav_foot.html.jinja
-msgid "Return to Top"
-msgstr "Kembali ke Atas"
-
-#: lib/nav_foot.html.jinja
-msgid "Develop"
-msgstr "Kembangkan"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library Developer Center"
-msgstr "Jelajahi Pusat Pengembang Open Library"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html
-msgid "Developer Center"
-msgstr "Pusat Pengembang"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library APIs"
-msgstr "Jelajahi API Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "API Documentation"
-msgstr "Dokumentasi API"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Open Library data"
-msgstr "Data massal Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Data Dumps"
-msgstr "Ekspor Data Massal"
-
-#: lib/nav_foot.html.jinja
-msgid "Write a bot"
-msgstr "Tulis bot"
-
-#: lib/nav_foot.html.jinja
-msgid "Writing Bots"
-msgstr "Menulis Bot"
-
-#: lib/nav_foot.html.jinja
-msgid "Help Center"
-msgstr "Pusat Bantuan"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact"
-msgstr "Kontak"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact Us"
-msgstr "Hubungi Kami"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggest Edits"
-msgstr "Sarankan Pengeditan"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggesting Edits"
-msgstr "Menyarankan Pengeditan"
-
-#: lib/nav_foot.html.jinja
-msgid "Add a new book to Open Library"
-msgstr "Tambahkan buku baru ke Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Release Notes"
-msgstr "Catatan Rilis"
-
-#: lib/nav_foot.html.jinja
-msgid "Bluesky"
-msgstr "Bluesky"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on Bluesky"
-msgstr "Beranda Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Twitter"
-msgstr "Twitter"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on Twitter"
-msgstr "Beranda Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "GitHub"
-msgstr "GitHub"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on GitHub"
-msgstr "Logo Open Library"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Change Website Language"
-msgstr "Ubah Bahasa Situs Web"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html type/list/embed.html
-msgid "Open Library logo"
-msgstr "Logo Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
-msgstr "Open Library adalah inisiatif dari <a href=\"//archive.org/\">Internet Archive</a>, sebuah nirlaba 501(c)(3), membangun perpustakaan digital situs Internet dan artefak budaya lainnya dalam bentuk digital. <a href=\"//archive.org/projects/\">Proyek</a> lainnya meliputi <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> dan <a href=\"//archive-it.org\">archive-it.org</a>"
-
-#: lib/nav_foot.html.jinja
-#, python-format
-msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-msgstr "versi <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Open Library Internet Archive: Satu halaman untuk setiap buku"
-
-#: lib/nav_head.html
-msgid "Search by barcode"
-msgstr "Cari berdasarkan barcode"
-
-#: lib/nav_head.html
-msgid "My account"
-msgstr "Akun saya"
-
-#: lib/nav_head.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "Bergabung %(date)s"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "Open Library Saya"
-
-#: lib/nav_head.html
-msgid "Loans, Reading Log, Lists, Stats"
-msgstr "Pinjaman, Log Membaca, Daftar, Statistik"
-
-#: lib/nav_head.html
-msgid "My Profile"
-msgstr "Profil Saya"
-
-#: lib/nav_head.html
-msgid "Pending Merge Requests"
-msgstr "Permintaan Penggabungan Tertunda"
-
-#: lib/nav_head.html
-msgid "Log out"
-msgstr "Keluar"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "Berkontribusi"
-
-#: lib/nav_head.html
-msgid "Recent Community Edits"
-msgstr "Pengeditan Komunitas Terbaru"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Sumber Daya"
-
-#: lib/nav_head.html
-msgid "Help & Support"
-msgstr "Bantuan & Dukungan"
-
-#: lib/nav_head.html
-msgid "Librarians Portal"
-msgstr "Portal Pustakawan"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5505,7 +5377,7 @@ msgstr "Coba sesuatu yang lain?"
 msgid "Publisher: %(name)s"
 msgstr "Penerbit: %(name)s"
 
-#: openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Penerbit"
 
@@ -5733,11 +5605,15 @@ msgstr "Pembatalan dari <a href=\"$parent.url()\">%(kind)s</a>."
 msgid "%(count)d records modified."
 msgstr ""
 
+#: SearchNavigation.html openlibrary/core/shell/nav.py search/advancedsearch.html shell/footer.html.jinja
+msgid "Advanced Search"
+msgstr "Pencarian Lanjutan"
+
 #: search/advancedsearch.html
 msgid "All fields"
 msgstr "Semua bidang"
 
-#: search/advancedsearch.html
+#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -5782,26 +5658,12 @@ msgstr "Gabungkan penulis"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Tidak ada <strong>penulis</strong> yang langsung cocok dengan pencarian Anda"
 
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-#, fuzzy
-msgid "All books"
-msgstr "Muat Buku"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "Free to read now"
-msgstr "Gratis dibaca sekarang"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-#, fuzzy
-msgid "Borrow online"
-msgstr "Pinjam Sekarang"
-
 #: search/inside.html
 #, python-format
 msgid "Search Open Library for %s"
 msgstr "Cari Open Library untuk %s"
 
-#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
+#: SearchNavigation.html openlibrary/core/shell/search_modal.py search/inside.html
 msgid "Search Inside"
 msgstr "Cari di Dalam"
 
@@ -5860,163 +5722,6 @@ msgstr "Tidak ada <strong>daftar</strong> yang langsung cocok dengan pencarian A
 #: search/publishers.html
 msgid "Publishers Search"
 msgstr "Pencarian Penerbit"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Search Open Library"
-msgstr "Mencari di Open Library"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Search books and authors…"
-msgstr "Cari Penulis"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Close search"
-msgstr "Pencarian Penerbit"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Clear search"
-msgstr "Pencarian Penerbit"
-
-#: search/search_modal_i18n.html
-msgid "See results"
-msgstr "Lihat hasil"
-
-#: search/search_modal_i18n.html
-msgid "Go to full search"
-msgstr "Buka pencarian lengkap"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s book"
-msgstr "Lihat %s buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s books"
-msgstr "Lihat %s buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See all %s books"
-msgstr "Lihat semua %s buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "All %s books"
-msgstr "Semua %s buku"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Clear all"
-msgstr "Lihat semua"
-
-#: search/search_modal_i18n.html
-msgid "Search scope"
-msgstr "Cakupan pencarian"
-
-#: search/search_modal_i18n.html
-msgid "Inside books"
-msgstr "Di dalam buku"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Search filters"
-msgstr "Facet pencarian"
-
-#: search/search_modal_i18n.html type/work/editions_datatable.html
-msgid "Availability"
-msgstr "Ketersediaan"
-
-#: search/search_modal_i18n.html
-msgid "Searching books and authors…"
-msgstr "Mencari buku dan penulis…"
-
-#: search/search_modal_i18n.html
-msgid "Searching inside books…"
-msgstr "Mencari di dalam buku…"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "No results found"
-msgstr "Tidak ada hasil ditemukan."
-
-#: search/search_modal_i18n.html
-#, fuzzy, python-format
-msgid "Showing %s of %s results"
-msgstr ""
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Untitled"
-msgstr "Judul"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Readable"
-msgstr "Baca Lebih Sedikit"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Readable in %s"
-msgstr "Dapat dibaca dalam %s"
-
-#: search/search_modal_i18n.html
-#, fuzzy
-msgid "Recent searches"
-msgstr "Perubahan Terbaru"
-
-#: search/search_modal_i18n.html
-#, fuzzy, python-format
-msgid "Remove \"%s\" from recent searches"
-msgstr ""
-
-#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
-msgid "Search inside books"
-msgstr "Cari di dalam buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s book"
-msgstr "Cari di dalam %s buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s books"
-msgstr "Cari di dalam %s buku"
-
-#: search/search_modal_i18n.html
-msgid "View all"
-msgstr "Lihat semua"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books…"
-msgstr "Cari di dalam buku…"
-
-#: search/search_modal_i18n.html
-msgid "Type a word or phrase to find it on the pages of millions of books."
-msgstr "Ketik kata atau frasa untuk menemukannya di halaman jutaan buku."
-
-#: search/search_modal_i18n.html
-msgid "No matches inside books"
-msgstr "Tidak ada kecocokan di dalam buku"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books is temporarily unavailable. Please try again later."
-msgstr "Pencarian di dalam buku untuk sementara tidak tersedia. Silakan coba lagi nanti."
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s match found inside books"
-msgstr "%s kecocokan ditemukan di dalam buku"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s matches found inside books"
-msgstr "%s kecocokan ditemukan di dalam buku"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -6083,7 +5788,7 @@ msgstr "Paling Tinggi Dinilai"
 msgid "Any"
 msgstr "Semua"
 
-#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+#: openlibrary/core/shell/nav.py search/sort_options.html
 msgid "Trending"
 msgstr "Trending"
 
@@ -6164,20 +5869,288 @@ msgstr "Gabungkan duplikat"
 msgid "Less"
 msgstr "lebih sedikit"
 
-#: site/alert.html.jinja
+#: shell/alert.html.jinja
 #, fuzzy
 msgid "Internet Archive logo"
 msgstr "Lupa email yang Anda gunakan untuk Internet Archive?"
 
-#: site/head.html
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Donate"
+msgstr "Donasi"
+
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Change Website Language"
+msgstr "Ubah Bahasa Situs Web"
+
+#: shell/base.html.jinja
+msgid "Skip to main content"
+msgstr "Lewati ke konten utama"
+
+#: shell/base.html.jinja
+msgid "It looks like you're offline."
+msgstr "Sepertinya Anda sedang offline."
+
+#: shell/browse_popover.html.jinja
+msgid "Browse books by topic"
+msgstr "Jelajahi buku berdasarkan topik"
+
+#: shell/browse_popover.html.jinja
+msgid "Most popular right now"
+msgstr "Paling populer saat ini"
+
+#: shell/browse_popover.html.jinja
+msgid "Browse the virtual shelves"
+msgstr "Jelajahi rak virtual"
+
+#: shell/browse_popover.html.jinja
+msgid "Reader-curated collections"
+msgstr "Koleksi kurasi pembaca"
+
+#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+msgid "Browse"
+msgstr "Jelajahi"
+
+#: shell/footer.html.jinja
+msgid "Vision"
+msgstr "Visi"
+
+#: shell/footer.html.jinja
+msgid "Volunteer"
+msgstr "Sukarelawan"
+
+#: shell/footer.html.jinja
+msgid "Partner With Us"
+msgstr "Bermitra Dengan Kami"
+
+#: shell/footer.html.jinja
+msgid "Jobs"
+msgstr "Pekerjaan"
+
+#: shell/footer.html.jinja
+msgid "Careers"
+msgstr "Karir"
+
+#: shell/footer.html.jinja
+msgid "Blog"
+msgstr "Blog"
+
+#: shell/footer.html.jinja
+msgid "Terms of Service"
+msgstr "Ketentuan Layanan"
+
+#: shell/footer.html.jinja
+msgid "Discover"
+msgstr "Temukan"
+
+#: shell/footer.html.jinja
+msgid "Go home"
+msgstr "Ke beranda"
+
+#: shell/footer.html.jinja
+msgid "Home"
+msgstr "Beranda"
+
+#: shell/footer.html.jinja
+msgid "Explore Books"
+msgstr "Jelajahi Buku"
+
+#: shell/footer.html.jinja
+msgid "Explore authors"
+msgstr "Jelajahi penulis"
+
+#: shell/footer.html.jinja
+msgid "Explore subjects"
+msgstr "Jelajahi subjek"
+
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Subjek"
+
+#: shell/footer.html.jinja
+msgid "Explore collections"
+msgstr "Jelajahi koleksi"
+
+#: openlibrary/core/shell/nav.py shell/footer.html.jinja type/page/view.html
+msgid "Collections"
+msgstr "Koleksi"
+
+#: shell/footer.html.jinja
+msgid "Navigate to top of this page"
+msgstr "Navigasi ke atas halaman ini"
+
+#: shell/footer.html.jinja
+msgid "Return to Top"
+msgstr "Kembali ke Atas"
+
+#: shell/footer.html.jinja
+msgid "Develop"
+msgstr "Kembangkan"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library Developer Center"
+msgstr "Jelajahi Pusat Pengembang Open Library"
+
+#: shell/footer.html.jinja shell/header.html.jinja
+msgid "Developer Center"
+msgstr "Pusat Pengembang"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library APIs"
+msgstr "Jelajahi API Open Library"
+
+#: shell/footer.html.jinja
+msgid "API Documentation"
+msgstr "Dokumentasi API"
+
+#: shell/footer.html.jinja
+msgid "Bulk Open Library data"
+msgstr "Data massal Open Library"
+
+#: shell/footer.html.jinja
+msgid "Bulk Data Dumps"
+msgstr "Ekspor Data Massal"
+
+#: shell/footer.html.jinja
+msgid "Write a bot"
+msgstr "Tulis bot"
+
+#: shell/footer.html.jinja
+msgid "Writing Bots"
+msgstr "Menulis Bot"
+
+#: shell/footer.html.jinja
+msgid "Help Center"
+msgstr "Pusat Bantuan"
+
+#: shell/footer.html.jinja
+msgid "Contact"
+msgstr "Kontak"
+
+#: shell/footer.html.jinja
+msgid "Contact Us"
+msgstr "Hubungi Kami"
+
+#: shell/footer.html.jinja
+msgid "Suggest Edits"
+msgstr "Sarankan Pengeditan"
+
+#: shell/footer.html.jinja
+msgid "Suggesting Edits"
+msgstr "Menyarankan Pengeditan"
+
+#: shell/footer.html.jinja
+msgid "Add a new book to Open Library"
+msgstr "Tambahkan buku baru ke Open Library"
+
+#: shell/footer.html.jinja
+msgid "Release Notes"
+msgstr "Catatan Rilis"
+
+#: shell/footer.html.jinja
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on Bluesky"
+msgstr "Beranda Open Library"
+
+#: shell/footer.html.jinja
+msgid "Twitter"
+msgstr "Twitter"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on Twitter"
+msgstr "Beranda Open Library"
+
+#: shell/footer.html.jinja
+msgid "GitHub"
+msgstr "GitHub"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on GitHub"
+msgstr "Logo Open Library"
+
+#: shell/footer.html.jinja shell/header.html.jinja type/list/embed.html
+msgid "Open Library logo"
+msgstr "Logo Open Library"
+
+#: shell/footer.html.jinja
+msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
+msgstr "Open Library adalah inisiatif dari <a href=\"//archive.org/\">Internet Archive</a>, sebuah nirlaba 501(c)(3), membangun perpustakaan digital situs Internet dan artefak budaya lainnya dalam bentuk digital. <a href=\"//archive.org/projects/\">Proyek</a> lainnya meliputi <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> dan <a href=\"//archive-it.org\">archive-it.org</a>"
+
+#: shell/footer.html.jinja
+#, python-format
+msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+msgstr "versi <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+
+#: shell/head.html.jinja
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published. Read, borrow, and discover more than 3M books for free."
 msgstr "Open Library adalah katalog perpustakaan terbuka yang dapat diedit, membangun halaman web untuk setiap buku yang pernah diterbitkan. Baca, pinjam, dan temukan lebih dari 3 juta buku secara gratis."
 
-#: site/stats.html.jinja
+#: shell/header.html.jinja
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Open Library Internet Archive: Satu halaman untuk setiap buku"
+
+#: shell/header.html.jinja
+msgid "Search by barcode"
+msgstr "Cari berdasarkan barcode"
+
+#: shell/header.html.jinja shell/header_dropdown.html.jinja
+msgid "Menu"
+msgstr "Menu"
+
+#: shell/header.html.jinja
+msgid "My account"
+msgstr "Akun saya"
+
+#: shell/header.html.jinja
+msgid "My Open Library"
+msgstr "Open Library Saya"
+
+#: shell/header.html.jinja
+msgid "Loans, Reading Log, Lists, Stats"
+msgstr "Pinjaman, Log Membaca, Daftar, Statistik"
+
+#: shell/header.html.jinja
+msgid "My Profile"
+msgstr "Profil Saya"
+
+#: shell/header.html.jinja
+msgid "Pending Merge Requests"
+msgstr "Permintaan Penggabungan Tertunda"
+
+#: shell/header.html.jinja
+msgid "Log out"
+msgstr "Keluar"
+
+#: shell/header.html.jinja
+msgid "Contribute"
+msgstr "Berkontribusi"
+
+#: shell/header.html.jinja
+msgid "Recent Community Edits"
+msgstr "Pengeditan Komunitas Terbaru"
+
+#: shell/header.html.jinja
+msgid "Resources"
+msgstr "Sumber Daya"
+
+#: shell/header.html.jinja
+msgid "Help & Support"
+msgstr "Bantuan & Dukungan"
+
+#: shell/header.html.jinja
+msgid "Librarians Portal"
+msgstr "Portal Pustakawan"
+
+#: shell/stats.html.jinja
 msgid "Debug Stats"
 msgstr "Statistik Debug"
 
-#: EditionNavBar.html site/stats.html.jinja
+#: EditionNavBar.html shell/stats.html.jinja
 msgid "Details"
 msgstr "Detail"
 
@@ -6324,7 +6297,7 @@ msgstr "Apakah penulis ini dikenal dengan nama lain?"
 msgid "For example: Lev Nikolayevich Tolstoy was also known as Leo Tolstoy. Please list one name per line."
 msgstr "Misalnya: Lev Nikolayevich Tolstoy juga dikenal sebagai Leo Tolstoy. Harap daftarkan satu nama per baris."
 
-#: type/author/edit.html
+#: openlibrary/plugins/openlibrary/contribute.py type/author/edit.html
 msgid "Identifiers"
 msgstr "Identifier"
 
@@ -6523,7 +6496,7 @@ msgstr "Tanggal Terbit"
 msgid "Show other books from %(publisher)s"
 msgstr "Tampilkan buku lain dari %(publisher)s"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "Halaman"
 
@@ -6579,7 +6552,7 @@ msgstr "Diterjemahkan Dari"
 msgid "External Links"
 msgstr "Tautan Eksternal"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Format"
 msgstr "Format"
 
@@ -7056,6 +7029,11 @@ msgstr "Sedang Mengedit:"
 msgid "Display Name"
 msgstr "Nama Tampilan"
 
+#: openlibrary/core/shell/header.py type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "Bergabung %(date)s"
+
 #: type/user/view.html
 msgid "admin page"
 msgstr "halaman admin"
@@ -7127,6 +7105,10 @@ msgstr "Lihat semua %(count)d edisi?"
 #: type/work/editions_datatable.html
 msgid "Edition"
 msgstr "Edisi"
+
+#: openlibrary/core/shell/search_modal.py type/work/editions_datatable.html
+msgid "Availability"
+msgstr "Ketersediaan"
 
 #: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
@@ -7313,6 +7295,10 @@ msgstr "Kedaluwarsa"
 #, python-format
 msgid "by %(authors)s"
 msgstr "oleh %(authors)s"
+
+#: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
+msgid "Search inside books"
+msgstr "Cari di dalam buku"
 
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
@@ -7952,6 +7938,310 @@ msgstr "Lihat Volume %(num)d"
 msgid "Buy this book"
 msgstr "Beli buku ini"
 
+#: contribute/parts.html.jinja
+#, python-format
+msgid "one of %(count)s editions of this work"
+msgstr "['salah satu dari %(count)s edisi karya ini']"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Why this book: on about %(count)s readers' shelves."
+msgstr "['Mengapa buku ini: ada di sekitar %(count)s rak pembaca.']"
+
+#: contribute/parts.html.jinja
+msgid "Go to book page"
+msgstr "Pergi ke halaman buku"
+
+#: contribute/parts.html.jinja
+msgid "Go to edit page"
+msgstr "Pergi ke halaman sunting"
+
+#: contribute/parts.html.jinja
+msgid "How to answer"
+msgstr "Cara menjawab"
+
+#: contribute/parts.html.jinja
+msgid "This edition has no ISBN to search by, so look it up by title and author."
+msgstr "Edisi ini tidak memiliki ISBN untuk dicari, jadi carilah berdasarkan judul dan penulis."
+
+#: contribute/parts.html.jinja
+msgid "Guideline"
+msgstr "Panduan"
+
+#: contribute/parts.html.jinja
+msgid "How this edit goes wrong"
+msgstr "Bagaimana suntingan ini bisa salah"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "The other edition"
+msgid_plural "The other %(count)d editions"
+msgstr[0] "%(count)d edisi lainnya"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "1 other value"
+msgid_plural "%(count)d other values"
+msgstr[0] "%(count)d nilai lainnya"
+
+#: contribute/parts.html.jinja
+msgid "Not filled in"
+msgstr "Belum diisi"
+
+#: contribute/parts.html.jinja
+msgid "See each edition"
+msgstr "Lihat setiap edisi"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "And %(count)s more."
+msgstr "Dan %(count)s lainnya."
+
+#: contribute/parts.html.jinja
+msgid "That looks like a valid number."
+msgstr "Itu tampak seperti nomor yang valid."
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Will be stored as %(value)s."
+msgstr "Akan disimpan sebagai %(value)s."
+
+#: contribute/parts.html.jinja
+msgid "Paste only the number, not the web address."
+msgstr "Tempel hanya nomornya, bukan alamat webnya."
+
+#: contribute/parts.html.jinja openlibrary/contribute/save.py
+msgid "That is not a valid number for this catalog."
+msgstr "Itu bukan nomor yang valid untuk katalog ini."
+
+#: contribute/parts.html.jinja
+msgid "Choose a language"
+msgstr "Pilih bahasa"
+
+#: contribute/parts.html.jinja
+msgid "Filter languages"
+msgstr "Saring bahasa"
+
+#: contribute/parts.html.jinja
+msgid "No matching language"
+msgstr "Tidak ada bahasa yang cocok"
+
+#: contribute/parts.html.jinja
+msgid "Other editions say"
+msgstr "Edisi lain menyebutkan"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(value)s, on 1 edition"
+msgid_plural "%(value)s, on %(count)d editions"
+msgstr[0] "%(value)s, pada %(count)d edisi"
+
+#: contribute/parts.html.jinja
+msgid "I opened the record and the year and publisher match this edition."
+msgstr "Saya membuka rekaman dan tahun serta penerbitnya cocok dengan edisi ini."
+
+#: contribute/parts.html.jinja
+msgid "Add a comment about your edit"
+msgstr "Tambahkan komentar tentang suntingan Anda"
+
+#: contribute/parts.html.jinja
+msgid "Edit comment"
+msgstr "Sunting komentar"
+
+#: contribute/parts.html.jinja
+msgid "Where you found it"
+msgstr "Di mana Anda menemukannya"
+
+#: contribute/parts.html.jinja
+msgid "Save and next"
+msgstr "Simpan dan lanjut"
+
+#: contribute/parts.html.jinja
+msgid "I couldn't find it"
+msgstr "Saya tidak dapat menemukannya"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Next: a random task from %(filter)s"
+msgstr "Berikutnya: tugas acak dari %(filter)s"
+
+#: contribute/parts.html.jinja
+msgid "Next: a random task from all open tasks"
+msgstr "Berikutnya: tugas acak dari semua tugas terbuka"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat"
+msgstr "WorldCat"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Google Books"
+msgstr "Google Books"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Amazon"
+msgstr "Amazon"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress"
+msgstr "Library of Congress"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in language"
+msgstr "Isi bahasa"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up in WorldCat or Google Books; both list the language of the text. The title page and cover tell you too."
+msgstr "Cari ISBN di WorldCat atau Google Books; keduanya mencantumkan bahasa teks. Halaman judul dan sampul juga memberitahu Anda."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
+msgstr "Edisi dari sebuah karya biasanya memiliki bahasa yang sama, tetapi terjemahan tidak. Periksa teks edisi ini sendiri."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Record the language of the text, not the language of the title page. A translation is in the language it was translated into."
+msgstr "Catat bahasa teks, bukan bahasa halaman judul. Terjemahan berada dalam bahasa yang digunakan untuk menerjemahkannya."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example English"
+msgstr "Contohnya Inggris"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Page count"
+msgstr "Jumlah halaman"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in page count"
+msgstr "Isi jumlah halaman"
+
+#: openlibrary/contribute/field_guides.py
+msgid "How many pages does this edition have?"
+msgstr "Berapa banyak halaman yang dimiliki edisi ini?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat lists the page count in the record's description. Google Books calls it Length. Make sure the record is for this ISBN, not another printing."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 320"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publisher"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Who published this edition?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The imprint is printed on the title page and the spine. WorldCat and the Library of Congress list it under Publisher."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Publisher as printed"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress number (LCCN)"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in LCCN"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's Library of Congress number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address instead of the number itself."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 75425165"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "OCLC/WorldCat number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in OCLC number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's WorldCat (OCLC) number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Digits only, for example 47810608"
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Pick a language from the list."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Enter the page count as a whole number."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Fill in an answer, or choose “I couldn't find it”."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "This field can't be filled in here."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+#, python-format
+msgid "Filled in %(field)s from Open Library Tasks"
+msgstr ""
+
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
 msgstr "[Catatan dihapus]"
@@ -7959,6 +8249,181 @@ msgstr "[Catatan dihapus]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "Tidak diketahui"
+
+#: openlibrary/core/shell/nav.py
+msgid "K-12 Student Library"
+msgstr "Perpustakaan Siswa K-12"
+
+#: openlibrary/core/shell/nav.py
+msgid "Book Talks"
+msgstr "Diskusi Buku"
+
+#: openlibrary/core/shell/nav.py
+msgid "Random Book"
+msgstr "Buku Acak"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+#, fuzzy
+msgid "All books"
+msgstr "Muat Buku"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "Free to read now"
+msgstr "Gratis dibaca sekarang"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+#, fuzzy
+msgid "Borrow online"
+msgstr "Pinjam Sekarang"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Search Open Library"
+msgstr "Mencari di Open Library"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Search books and authors…"
+msgstr "Cari Penulis"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Close search"
+msgstr "Pencarian Penerbit"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Clear search"
+msgstr "Pencarian Penerbit"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "See results"
+msgstr "Lihat hasil"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Go to full search"
+msgstr "Buka pencarian lengkap"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s book"
+msgstr "Lihat %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s books"
+msgstr "Lihat %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See all %s books"
+msgstr "Lihat semua %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "All %s books"
+msgstr "Semua %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Clear all"
+msgstr "Lihat semua"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search scope"
+msgstr "Cakupan pencarian"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Inside books"
+msgstr "Di dalam buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Search filters"
+msgstr "Facet pencarian"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching books and authors…"
+msgstr "Mencari buku dan penulis…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching inside books…"
+msgstr "Mencari di dalam buku…"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "No results found"
+msgstr "Tidak ada hasil ditemukan."
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy, python-format
+msgid "Showing %s of %s results"
+msgstr ""
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Untitled"
+msgstr "Judul"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Readable"
+msgstr "Baca Lebih Sedikit"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Readable in %s"
+msgstr "Dapat dibaca dalam %s"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy
+msgid "Recent searches"
+msgstr "Perubahan Terbaru"
+
+#: openlibrary/core/shell/search_modal.py
+#, fuzzy, python-format
+msgid "Remove \"%s\" from recent searches"
+msgstr ""
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s book"
+msgstr "Cari di dalam %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Cari di dalam %s buku"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "View all"
+msgstr "Lihat semua"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books…"
+msgstr "Cari di dalam buku…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Type a word or phrase to find it on the pages of millions of books."
+msgstr "Ketik kata atau frasa untuk menemukannya di halaman jutaan buku."
+
+#: openlibrary/core/shell/search_modal.py
+msgid "No matches inside books"
+msgstr "Tidak ada kecocokan di dalam buku"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books is temporarily unavailable. Please try again later."
+msgstr "Pencarian di dalam buku untuk sementara tidak tersedia. Silakan coba lagi nanti."
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s kecocokan ditemukan di dalam buku"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s kecocokan ditemukan di dalam buku"
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -8345,6 +8810,43 @@ msgstr "Tionghoa"
 msgid "Filipino"
 msgstr "gagal"
 
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are open to librarians only, for now"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Published"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "OCLC"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "All open tasks"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "Missing: %(field)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Most needed"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing missing here right now. Thank you."
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing to fill in here"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Open the record and confirm it matches this edition first."
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Art"
 msgstr "Seni"
@@ -8435,25 +8937,9 @@ msgstr "Memiliki klasifikasi LoC"
 msgid "Has number of pages"
 msgstr "Memiliki jumlah halaman"
 
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "K-12 Student Library"
-msgstr "Perpustakaan Siswa K-12"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Book Talks"
-msgstr "Diskusi Buku"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Random Book"
-msgstr "Buku Acak"
-
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
 msgstr "Better World Books"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Amazon"
-msgstr "Amazon"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -8642,6 +9128,16 @@ msgstr "Alamat email Anda"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Pilih kata sandi"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr ""
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format
