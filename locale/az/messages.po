@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: account.html account/notifications.html account/privacy.html lib/nav_head.html type/user/view.html
+#: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
 msgstr "Parametrlər"
 
@@ -449,7 +449,7 @@ msgstr "Ləğv et"
 msgid "Continue without waiting"
 msgstr "Gözləmədən davam et"
 
-#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
+#: library_explorer.html openlibrary/core/shell/nav.py
 msgid "Library Explorer"
 msgstr "Kitabxana bələdçisi"
 
@@ -457,7 +457,7 @@ msgstr "Kitabxana bələdçisi"
 msgid "Loading..."
 msgstr "Yüklənir..."
 
-#: lib/nav_head.html login.html
+#: login.html shell/header.html.jinja
 msgid "Log In"
 msgstr "Daxil ol"
 
@@ -542,7 +542,7 @@ msgstr "Yeni kitab əlavə edildi."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library kataloqunu təkmilləşdirdiyiniz üçün təşəkkür edirik!"
 
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Bağla"
 
@@ -660,14 +660,6 @@ msgstr "Endirmə keçidi"
 msgid "Next"
 msgstr "Növbəti"
 
-#: site.html.jinja
-msgid "Skip to main content"
-msgstr "Əsas məzmuna keç"
-
-#: site.html.jinja
-msgid "It looks like you're offline."
-msgstr "Deyəsən, internetə qoşulmamısınız."
-
 #: status.html
 msgid "Open Library server status"
 msgstr "Open Library serverinin vəziyyəti"
@@ -774,7 +766,7 @@ msgstr "Oxumaq istəyirəm"
 msgid "Currently Reading"
 msgstr "Hazırda oxuyuram"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Oxu"
 
@@ -834,7 +826,7 @@ msgstr "\"%(title)s\" kitabını oxu"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" kitabını borc al"
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Borc al"
 
@@ -881,7 +873,7 @@ msgstr "Bu, yalnız baş kitabxanaçılara görünür."
 msgid "Solr Editions"
 msgstr "Solr nəşrləri"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Yalnız oxuna bilənlər"
 
@@ -889,19 +881,19 @@ msgstr "Yalnız oxuna bilənlər"
 msgid "Filter by availability"
 msgstr "Əlçatanlığa görə süz"
 
-#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Dil"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 msgid "Search languages…"
 msgstr "Dil axtar…"
 
-#: books/edit/edition.html languages/index.html search/search_modal_i18n.html work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html openlibrary/core/shell/search_modal.py work_search.html
 msgid "Languages"
 msgstr "Dillər"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 msgid "Loading…"
 msgstr "Yüklənir…"
 
@@ -935,7 +927,7 @@ msgstr "Solr xətalarının araşdırılması:"
 msgid "Full URL:"
 msgstr "Tam URL:"
 
-#: search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py work_search.html
 msgid "No matching books or authors"
 msgstr "Uyğun kitab və ya müəllif tapılmadı"
 
@@ -943,11 +935,11 @@ msgstr "Uyğun kitab və ya müəllif tapılmadı"
 msgid "Add a new book"
 msgstr "Yeni kitab əlavə et"
 
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Müəlliflər"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Kitablar"
 
@@ -1040,7 +1032,7 @@ msgstr "Uyğun proqram seçilməlidir"
 msgid "Sign Up to Open Library"
 msgstr "Open Library-də qeydiyyatdan keç"
 
-#: account/create.html lib/nav_head.html
+#: account/create.html shell/header.html.jinja
 msgid "Sign Up"
 msgstr "Qeydiyyatdan keç"
 
@@ -1222,12 +1214,43 @@ msgstr "Səbəb"
 msgid "No ISBN"
 msgstr "ISBN yoxdur"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "%(library)s saytından götürülüb"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Hələ endirilməyib."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "İndi endir"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Adobe Digital Editions vasitəsilə<br/>qaytar"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Hazırda borc alınmış kitab (%(count)d)"
 msgstr[1] "Hazırda borc alınmış kitab (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "%(libraries)s ilə əlaqə qurula bilmədi, buna görə oradakı heç bir icarə göstərilmir."
+msgstr[1] "Bu kitabxanalarla əlaqə qurula bilmədi, buna görə oradakı icarələr göstərilmir: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "İcarələrin göstərilməsi üçün %(libraries)s ilə əlaqəni yenidən qurmaq lazımdır. Oradan yenidən kitab götürmək əlaqəni bərpa edəcək."
+msgstr[1] "İcarələrin göstərilməsi üçün bu kitabxanalarla əlaqəni yenidən qurmaq lazımdır: %(libraries)s. Onlardan birindən yenidən kitab götürmək əlaqəni bərpa edəcək."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1247,18 +1270,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "Bu kitabı %(count)d nəfər gözləyir."
 msgstr[1] "Bu kitabı %(count)d nəfər gözləyir."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Hələ endirilməyib."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "İndi endir"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Adobe Digital Editions vasitəsilə<br/>qaytar"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -1453,7 +1464,7 @@ msgstr "Xeyr, təşəkkür edirəm"
 msgid "Yes! Please!"
 msgstr "Bəli! Zəhmət olmasa!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html covers/manage.html my_books/shelf_button_i18n.html
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/parts.html.jinja covers/manage.html my_books/shelf_button_i18n.html
 msgid "Save"
 msgstr "Yadda saxla"
 
@@ -1612,7 +1623,7 @@ msgstr "Oxumaq istəyirəm"
 msgid "My %(shelf_name)s Stats"
 msgstr "%(shelf_name)s üzrə statistikam"
 
-#: account/readinglog_stats.html lib/nav_head.html
+#: account/readinglog_stats.html openlibrary/core/shell/header.py shell/header.html.jinja
 msgid "My Books"
 msgstr "Kitablarım"
 
@@ -1674,12 +1685,12 @@ msgid "Works by Time Period"
 msgstr "Zaman dövrünə görə əsərlər"
 
 #: account/readinglog_stats.html
-msgid "Matching works"
-msgstr "Uyğun əsərlər"
-
-#: account/readinglog_stats.html
 msgid "Click on a bar to see matching works"
 msgstr "Uyğun əsərləri görmək üçün sütuna klikləyin"
+
+#: account/readinglog_stats.html
+msgid "Matching works"
+msgstr "Uyğun əsərlər"
 
 #: account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py
 msgid "My Feed"
@@ -1703,7 +1714,7 @@ msgstr "Oxu gündəliyi"
 msgid "My lists"
 msgstr "Siyahılarım"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Siyahılar"
 
@@ -1916,7 +1927,7 @@ msgstr "Gün ərzində idxal edilmiş yeni kitablar"
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Bu gözəl diaqramı görmək üçün JavaScript-i aktivləşdirməlisiniz!"
 
-#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html site/stats.html.jinja
+#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html shell/stats.html.jinja
 msgid "Summary"
 msgstr "Xülasə"
 
@@ -2710,7 +2721,7 @@ msgstr "Heç nə tapılmadı"
 msgid "Search for an Author"
 msgstr "Müəllif axtar"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lib/nav_head.html lists/home.html publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/search_modal_i18n.html search/searchbox.html type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Axtar"
 
@@ -2839,6 +2850,11 @@ msgstr "OpenStax-da daha çox"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "%s saytından götürdüyünüz icarəni oxuyun"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "%s mənbəyindən səsləndirilmiş mətni dinlə"
 
@@ -2850,6 +2866,11 @@ msgstr "Dinlə"
 #, python-format
 msgid "Read free online from %s"
 msgstr "%s mənbəyindən onlayn pulsuz oxu"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "%s saytından elektron kitab götür"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3013,7 +3034,7 @@ msgstr "Altbaşlıq əlavə etmək üçün <b><i>Başlıq: Altbaşlıq</i></b> f
 msgid "Required field"
 msgstr "Tələb olunan sahə"
 
-#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html search/search_modal_i18n.html
+#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html
 msgid "Author"
 msgstr "Müəllif"
 
@@ -3065,7 +3086,7 @@ msgstr "ISBN 10"
 msgid "ISBN 13"
 msgstr "ISBN 13"
 
-#: books/add.html
+#: books/add.html openlibrary/plugins/openlibrary/contribute.py
 msgid "LCCN"
 msgstr "LCCN"
 
@@ -3118,7 +3139,7 @@ msgstr "Bu müəllifi çıxar"
 msgid "Add another author?"
 msgstr "Başqa müəllif əlavə edilsin?"
 
-#: books/check.html lib/nav_foot.html.jinja lib/nav_head.html
+#: books/check.html shell/footer.html.jinja shell/header.html.jinja
 msgid "Add a Book"
 msgstr "Kitab əlavə et"
 
@@ -3611,7 +3632,7 @@ msgstr "Məsuliyyət məlumatı:"
 msgid "For example: <em>edited by David Anderson</em>"
 msgstr "Məsələn: <em>redaktor: Devid Anderson</em>"
 
-#: books/edit/edition.html
+#: books/edit/edition.html openlibrary/contribute/field_guides.py
 msgid "What language is this edition written in?"
 msgstr "Bu nəşr hansı dildə yazılıb?"
 
@@ -3799,7 +3820,7 @@ msgstr "Səhifələrin nömrələnməsi?"
 msgid "Note the highest number in each pagination pattern."
 msgstr "Hər nömrələmə ardıcıllığındakı ən böyük nömrəni qeyd edin."
 
-#: books/edit/edition.html lib/nav_foot.html.jinja
+#: books/edit/edition.html shell/footer.html.jinja
 msgid "Help"
 msgstr "Kömək"
 
@@ -3975,9 +3996,135 @@ msgstr "Bu keçidi çıxar"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Yaxşı\" dedikdə spam keçidlərinin olmaması nəzərdə tutulur. Keçidlər kitabla əlaqəli olmalıdır. Əlaqəsiz saytlar çıxarıla bilər. Aşkar spam tərəddüdsüz silinəcək."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Götürülüb"
+
+#: borrow/provider_popup_result.html.jinja openlibrary/plugins/openlibrary/api.py shell/footer.html.jinja shell/head.html.jinja
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "İcarə müddətiniz %(due)s tarixində bitir."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "İcarəniz yaradıldı."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "İndi oxu"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Open Library-ə qayıt"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Kütləvi axtarış (beta)"
+
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks"
+msgstr "Tapşırıqlar"
+
+#: contribute/dashboard.html.jinja
+msgid "Fill in what's missing on real books, one detail at a time."
+msgstr "Real kitablarda çatışmayan məlumatları bir-bir tamamlayın."
+
+#: contribute/dashboard.html.jinja
+msgid "Surprise me"
+msgstr "Məni təəccübləndir"
+
+#: contribute/dashboard.html.jinja
+msgid "A random book that needs a hand."
+msgstr "Köməyə ehtiyacı olan təsadüfi kitab."
+
+#: contribute/dashboard.html.jinja
+msgid "Filter tasks"
+msgstr "Tapşırıqları süzgəcdən keçir"
+
+#: contribute/dashboard.html.jinja
+msgid "Missing"
+msgstr "Çatışmır"
+
+#: contribute/dashboard.html.jinja
+msgid "Your recent fixes"
+msgstr "Son düzəlişləriniz"
+
+#: contribute/dashboard.html.jinja
+msgid "See all your edits"
+msgstr "Bütün redaktələrinizə baxın"
+
+#: contribute/dashboard.html.jinja
+msgid "Fixes you save here show up in this list."
+msgstr "Burada saxladığınız düzəlişlər bu siyahıda görünür."
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Saved"
+msgstr "Saxlanıldı"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Skipped"
+msgstr "Keçildi"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s: %(value)s"
+msgstr "%(title)s üçün %(field)s: %(value)s"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s"
+msgstr "%(title)s üçün %(field)s"
+
+#: contribute/done.html.jinja
+msgid "The record is updated."
+msgstr "Qeyd yeniləndi."
+
+#: contribute/done.html.jinja
+msgid "See it in the record's history"
+msgstr "Qeydin tarixçəsində baxın"
+
+#: contribute/done.html.jinja
+msgid "Nothing on the record changed."
+msgstr "Qeyddə heç nə dəyişmədi."
+
+#: contribute/done.html.jinja
+msgid "While you're on this book"
+msgstr "Bu kitabdaykən"
+
+#: contribute/done.html.jinja
+msgid "Next task"
+msgstr "Növbəti tapşırıq"
+
+#: contribute/done.html.jinja
+msgid "Pick a different book"
+msgstr "Başqa kitab seçin"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in on this edition"
+msgstr "%(field)s bu nəşrdə artıq doldurulub"
+
+#: contribute/nothing.html.jinja
+msgid "Someone filled it in since the list was made. Thank you for checking."
+msgstr "Siyahı yaradıldıqdan sonra kimsə onu doldurub. Yoxladığınız üçün təşəkkürlər."
+
+#: contribute/nothing.html.jinja contribute/task.html.jinja
+msgid "Back to the list"
+msgstr "Siyahıya qayıt"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+msgstr "%(link_start)s%(title)s%(link_end)s üçün %(field)s saxlanıldı: %(value)s"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+msgstr "%(link_start)s%(title)s%(link_end)s üçün %(field)s saxlanıldı"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -4379,26 +4526,6 @@ msgid_plural "%s ebook editions"
 msgstr[0] "%s elektron kitab nəşri"
 msgstr[1] "%s elektron kitab nəşri"
 
-#: lib/browse_popover.html
-msgid "Browse books by topic"
-msgstr "Kitablara mövzu üzrə bax"
-
-#: lib/browse_popover.html
-msgid "Most popular right now"
-msgstr "Hazırda ən populyar olanlar"
-
-#: lib/browse_popover.html
-msgid "Browse the virtual shelves"
-msgstr "Virtual rəflərə bax"
-
-#: lib/browse_popover.html
-msgid "Reader-curated collections"
-msgstr "Oxucuların tərtib etdiyi kolleksiyalar"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Bax"
-
 #: lib/edit_head.html lib/view_head.html
 msgid "This doc was last edited by"
 msgstr "Bu sənədi son redaktə edən"
@@ -4439,10 +4566,6 @@ msgstr "Bu kodu kopyalayıb Vikipediya səhifənizə yapışdırın."
 msgid "Copy Wikipedia citation"
 msgstr "Vikipediya istinadını kopyala"
 
-#: lib/header_dropdown.html lib/nav_head.html
-msgid "Menu"
-msgstr "Menyu"
-
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
 msgstr "Tarixçə"
@@ -4472,252 +4595,6 @@ msgstr "%(user)s tərəfindən yaradılıb"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "%(user)s tərəfindən redaktə edilib"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Vision"
-msgstr "Gələcəyə baxış"
-
-#: lib/nav_foot.html.jinja
-msgid "Volunteer"
-msgstr "Könüllü ol"
-
-#: lib/nav_foot.html.jinja
-msgid "Partner With Us"
-msgstr "Bizimlə tərəfdaş ol"
-
-#: lib/nav_foot.html.jinja
-msgid "Jobs"
-msgstr "İş elanları"
-
-#: lib/nav_foot.html.jinja
-msgid "Careers"
-msgstr "Karyera"
-
-#: lib/nav_foot.html.jinja
-msgid "Blog"
-msgstr "Bloq"
-
-#: lib/nav_foot.html.jinja
-msgid "Terms of Service"
-msgstr "Xidmət şərtləri"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Donate"
-msgstr "İanə et"
-
-#: lib/nav_foot.html.jinja
-msgid "Discover"
-msgstr "Kəşf et"
-
-#: lib/nav_foot.html.jinja
-msgid "Go home"
-msgstr "Əsas səhifəyə keç"
-
-#: lib/nav_foot.html.jinja
-msgid "Home"
-msgstr "Əsas səhifə"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Books"
-msgstr "Kitabları kəşf et"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore authors"
-msgstr "Müəllifləri kəşf et"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore subjects"
-msgstr "Mövzuları kəşf et"
-
-#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Mövzular"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore collections"
-msgstr "Kolleksiyaları kəşf et"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py type/page/view.html
-msgid "Collections"
-msgstr "Kolleksiyalar"
-
-#: SearchNavigation.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
-msgid "Advanced Search"
-msgstr "Ətraflı axtarış"
-
-#: lib/nav_foot.html.jinja
-msgid "Navigate to top of this page"
-msgstr "Bu səhifənin yuxarısına keç"
-
-#: lib/nav_foot.html.jinja
-msgid "Return to Top"
-msgstr "Yuxarı qayıt"
-
-#: lib/nav_foot.html.jinja
-msgid "Develop"
-msgstr "Hazırla"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library Developer Center"
-msgstr "Open Library proqramçı mərkəzini kəşf et"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html
-msgid "Developer Center"
-msgstr "Proqramçı mərkəzi"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library APIs"
-msgstr "Open Library API-lərini kəşf et"
-
-#: lib/nav_foot.html.jinja
-msgid "API Documentation"
-msgstr "API sənədləri"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Open Library data"
-msgstr "Open Library məlumatları kütləvi şəkildə"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Data Dumps"
-msgstr "Verilənlərin kütləvi çıxarışları"
-
-#: lib/nav_foot.html.jinja
-msgid "Write a bot"
-msgstr "Bot yaz"
-
-#: lib/nav_foot.html.jinja
-msgid "Writing Bots"
-msgstr "Botların yazılması"
-
-#: lib/nav_foot.html.jinja
-msgid "Help Center"
-msgstr "Kömək mərkəzi"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact"
-msgstr "Əlaqə"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact Us"
-msgstr "Bizimlə əlaqə saxla"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggest Edits"
-msgstr "Düzəlişlər təklif et"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggesting Edits"
-msgstr "Düzəlişlərin təklif edilməsi"
-
-#: lib/nav_foot.html.jinja
-msgid "Add a new book to Open Library"
-msgstr "Open Library-yə yeni kitab əlavə et"
-
-#: lib/nav_foot.html.jinja
-msgid "Release Notes"
-msgstr "Buraxılış qeydləri"
-
-#: lib/nav_foot.html.jinja
-msgid "Bluesky"
-msgstr "Bluesky"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library on Bluesky"
-msgstr "Open Library Bluesky-da"
-
-#: lib/nav_foot.html.jinja
-msgid "Twitter"
-msgstr "Twitter"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library on Twitter"
-msgstr "Open Library Twitter-də"
-
-#: lib/nav_foot.html.jinja
-msgid "GitHub"
-msgstr "GitHub"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library on GitHub"
-msgstr "Open Library GitHub-da"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Change Website Language"
-msgstr "Veb saytın dilini dəyiş"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html type/list/embed.html
-msgid "Open Library logo"
-msgstr "Open Library loqosu"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
-msgstr "Open Library, internet saytlarının və rəqəmsal formada olan digər mədəniyyət nümunələrinin rəqəmsal kitabxanasını yaradan, 501(c)(3) statuslu qeyri-kommersiya təşkilatı <a href=\"//archive.org/\">Internet Archive</a> təşəbbüsüdür. Digər <a href=\"//archive.org/projects/\">layihələrə</a> <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> və <a href=\"//archive-it.org\">archive-it.org</a> daxildir"
-
-#: lib/nav_foot.html.jinja
-#, python-format
-msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-msgstr "versiya <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Internet Archive təşkilatının Open Library layihəsi: Hər kitab üçün bir səhifə"
-
-#: lib/nav_head.html
-msgid "Search by barcode"
-msgstr "Ştrixkod üzrə axtar"
-
-#: lib/nav_head.html
-msgid "My account"
-msgstr "Hesabım"
-
-#: lib/nav_head.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "Qoşulub: %(date)s"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "Mənim Open Library səhifəm"
-
-#: lib/nav_head.html
-msgid "Loans, Reading Log, Lists, Stats"
-msgstr "Müvəqqəti götürülmüş kitablar, mütaliə gündəliyi, siyahılar, statistika"
-
-#: lib/nav_head.html
-msgid "My Profile"
-msgstr "Profilim"
-
-#: lib/nav_head.html
-msgid "Pending Merge Requests"
-msgstr "Gözləyən birləşdirmə sorğuları"
-
-#: lib/nav_head.html
-msgid "Log out"
-msgstr "Çıx"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "Töhfə ver"
-
-#: lib/nav_head.html
-msgid "Recent Community Edits"
-msgstr "İcmanın son düzəlişləri"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Resurslar"
-
-#: lib/nav_head.html
-msgid "Help & Support"
-msgstr "Kömək və dəstək"
-
-#: lib/nav_head.html
-msgid "Librarians Portal"
-msgstr "Kitabxanaçılar portalı"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5459,7 +5336,7 @@ msgstr "Başqa bir şey sınamaq istəyirsiniz?"
 msgid "Publisher: %(name)s"
 msgstr "Nəşriyyat: %(name)s"
 
-#: openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Nəşriyyat"
 
@@ -5690,11 +5567,15 @@ msgstr "<a href=\"$parent.url()\">%(kind)s</a> əməliyyatının geri alınması
 msgid "%(count)d records modified."
 msgstr "%(count)d qeyd dəyişdirildi."
 
+#: SearchNavigation.html openlibrary/core/shell/nav.py search/advancedsearch.html shell/footer.html.jinja
+msgid "Advanced Search"
+msgstr "Ətraflı axtarış"
+
 #: search/advancedsearch.html
 msgid "All fields"
 msgstr "Bütün sahələr"
 
-#: search/advancedsearch.html
+#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -5739,24 +5620,12 @@ msgstr "Müəllifləri birləşdir"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Axtarışınıza birbaşa uyğun gələn <strong>müəllif</strong> tapılmadı"
 
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "All books"
-msgstr "Bütün kitablar"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "Free to read now"
-msgstr "İndi pulsuz oxuna bilənlər"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "Borrow online"
-msgstr "Onlayn borc götür"
-
 #: search/inside.html
 #, python-format
 msgid "Search Open Library for %s"
 msgstr "Open Library-də %s axtar"
 
-#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
+#: SearchNavigation.html openlibrary/core/shell/search_modal.py search/inside.html
 msgid "Search Inside"
 msgstr "Mətn daxilində axtar"
 
@@ -5817,153 +5686,6 @@ msgstr "Axtarışınıza birbaşa uyğun gələn <strong>siyahı</strong> tapıl
 #: search/publishers.html
 msgid "Publishers Search"
 msgstr "Nəşriyyatlar üzrə axtarış"
-
-#: search/search_modal_i18n.html
-msgid "Search Open Library"
-msgstr "Open Library-də axtar"
-
-#: search/search_modal_i18n.html
-msgid "Search books and authors…"
-msgstr "Kitabları və müəllifləri axtar…"
-
-#: search/search_modal_i18n.html
-msgid "Close search"
-msgstr "Axtarışı bağla"
-
-#: search/search_modal_i18n.html
-msgid "Clear search"
-msgstr "Axtarışı təmizlə"
-
-#: search/search_modal_i18n.html
-msgid "See results"
-msgstr "Nəticələrə bax"
-
-#: search/search_modal_i18n.html
-msgid "Go to full search"
-msgstr "Tam axtarışa keç"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s book"
-msgstr "%s kitaba bax"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s books"
-msgstr "%s kitaba bax"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See all %s books"
-msgstr "Bütün %s kitaba bax"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "All %s books"
-msgstr "Bütün %s kitab"
-
-#: search/search_modal_i18n.html
-msgid "Clear all"
-msgstr "Hamısını təmizlə"
-
-#: search/search_modal_i18n.html
-msgid "Search scope"
-msgstr "Axtarış əhatəsi"
-
-#: search/search_modal_i18n.html
-msgid "Inside books"
-msgstr "Kitabların daxilində"
-
-#: search/search_modal_i18n.html
-msgid "Search filters"
-msgstr "Axtarış süzgəcləri"
-
-#: search/search_modal_i18n.html type/work/editions_datatable.html
-msgid "Availability"
-msgstr "Əlçatanlıq"
-
-#: search/search_modal_i18n.html
-msgid "Searching books and authors…"
-msgstr "Kitablar və müəlliflər axtarılır…"
-
-#: search/search_modal_i18n.html
-msgid "Searching inside books…"
-msgstr "Kitabların daxilində axtarılır…"
-
-#: search/search_modal_i18n.html
-msgid "No results found"
-msgstr "Nəticə tapılmadı"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Showing %s of %s results"
-msgstr "%s nəticə göstərilir, cəmi %s nəticə var"
-
-#: search/search_modal_i18n.html
-msgid "Untitled"
-msgstr "Başlıqsız"
-
-#: search/search_modal_i18n.html
-msgid "Readable"
-msgstr "Oxuna bilən"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Readable in %s"
-msgstr "%s dilində oxuna bilər"
-
-#: search/search_modal_i18n.html
-msgid "Recent searches"
-msgstr "Son axtarışlar"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Remove \"%s\" from recent searches"
-msgstr "\"%s\" sorğusunu son axtarışlardan çıxar"
-
-#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
-msgid "Search inside books"
-msgstr "Kitabların daxilində axtar"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s book"
-msgstr "%s kitabın daxilində axtar"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s books"
-msgstr "%s kitabın daxilində axtar"
-
-#: search/search_modal_i18n.html
-msgid "View all"
-msgstr "Hamısına bax"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books…"
-msgstr "Kitabların daxilində axtar…"
-
-#: search/search_modal_i18n.html
-msgid "Type a word or phrase to find it on the pages of millions of books."
-msgstr "Milyonlarla kitabın səhifələrində tapmaq üçün söz və ya ifadə yazın."
-
-#: search/search_modal_i18n.html
-msgid "No matches inside books"
-msgstr "Kitabların daxilində uyğunluq tapılmadı"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books is temporarily unavailable. Please try again later."
-msgstr "Kitabların daxilində axtarış müvəqqəti əlçatan deyil. Zəhmət olmasa daha sonra yenidən cəhd edin."
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s match found inside books"
-msgstr "Kitabların daxilində %s uyğunluq tapıldı"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s matches found inside books"
-msgstr "Kitabların daxilində %s uyğunluq tapıldı"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -6029,7 +5751,7 @@ msgstr "Ən yüksək qiymətləndirilənlər"
 msgid "Any"
 msgstr "İstənilən"
 
-#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+#: openlibrary/core/shell/nav.py search/sort_options.html
 msgid "Trending"
 msgstr "Populyarlaşanlar"
 
@@ -6109,19 +5831,284 @@ msgstr "Təkrar qeydləri birləşdir"
 msgid "Less"
 msgstr "Daha az"
 
-#: site/alert.html.jinja
+#: shell/alert.html.jinja
 msgid "Internet Archive logo"
 msgstr "Internet Archive loqosu"
 
-#: site/head.html
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Donate"
+msgstr "İanə et"
+
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Change Website Language"
+msgstr "Veb saytın dilini dəyiş"
+
+#: shell/base.html.jinja
+msgid "Skip to main content"
+msgstr "Əsas məzmuna keç"
+
+#: shell/base.html.jinja
+msgid "It looks like you're offline."
+msgstr "Deyəsən, internetə qoşulmamısınız."
+
+#: shell/browse_popover.html.jinja
+msgid "Browse books by topic"
+msgstr "Kitablara mövzu üzrə bax"
+
+#: shell/browse_popover.html.jinja
+msgid "Most popular right now"
+msgstr "Hazırda ən populyar olanlar"
+
+#: shell/browse_popover.html.jinja
+msgid "Browse the virtual shelves"
+msgstr "Virtual rəflərə bax"
+
+#: shell/browse_popover.html.jinja
+msgid "Reader-curated collections"
+msgstr "Oxucuların tərtib etdiyi kolleksiyalar"
+
+#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+msgid "Browse"
+msgstr "Bax"
+
+#: shell/footer.html.jinja
+msgid "Vision"
+msgstr "Gələcəyə baxış"
+
+#: shell/footer.html.jinja
+msgid "Volunteer"
+msgstr "Könüllü ol"
+
+#: shell/footer.html.jinja
+msgid "Partner With Us"
+msgstr "Bizimlə tərəfdaş ol"
+
+#: shell/footer.html.jinja
+msgid "Jobs"
+msgstr "İş elanları"
+
+#: shell/footer.html.jinja
+msgid "Careers"
+msgstr "Karyera"
+
+#: shell/footer.html.jinja
+msgid "Blog"
+msgstr "Bloq"
+
+#: shell/footer.html.jinja
+msgid "Terms of Service"
+msgstr "Xidmət şərtləri"
+
+#: shell/footer.html.jinja
+msgid "Discover"
+msgstr "Kəşf et"
+
+#: shell/footer.html.jinja
+msgid "Go home"
+msgstr "Əsas səhifəyə keç"
+
+#: shell/footer.html.jinja
+msgid "Home"
+msgstr "Əsas səhifə"
+
+#: shell/footer.html.jinja
+msgid "Explore Books"
+msgstr "Kitabları kəşf et"
+
+#: shell/footer.html.jinja
+msgid "Explore authors"
+msgstr "Müəllifləri kəşf et"
+
+#: shell/footer.html.jinja
+msgid "Explore subjects"
+msgstr "Mövzuları kəşf et"
+
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Mövzular"
+
+#: shell/footer.html.jinja
+msgid "Explore collections"
+msgstr "Kolleksiyaları kəşf et"
+
+#: openlibrary/core/shell/nav.py shell/footer.html.jinja type/page/view.html
+msgid "Collections"
+msgstr "Kolleksiyalar"
+
+#: shell/footer.html.jinja
+msgid "Navigate to top of this page"
+msgstr "Bu səhifənin yuxarısına keç"
+
+#: shell/footer.html.jinja
+msgid "Return to Top"
+msgstr "Yuxarı qayıt"
+
+#: shell/footer.html.jinja
+msgid "Develop"
+msgstr "Hazırla"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library Developer Center"
+msgstr "Open Library proqramçı mərkəzini kəşf et"
+
+#: shell/footer.html.jinja shell/header.html.jinja
+msgid "Developer Center"
+msgstr "Proqramçı mərkəzi"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library APIs"
+msgstr "Open Library API-lərini kəşf et"
+
+#: shell/footer.html.jinja
+msgid "API Documentation"
+msgstr "API sənədləri"
+
+#: shell/footer.html.jinja
+msgid "Bulk Open Library data"
+msgstr "Open Library məlumatları kütləvi şəkildə"
+
+#: shell/footer.html.jinja
+msgid "Bulk Data Dumps"
+msgstr "Verilənlərin kütləvi çıxarışları"
+
+#: shell/footer.html.jinja
+msgid "Write a bot"
+msgstr "Bot yaz"
+
+#: shell/footer.html.jinja
+msgid "Writing Bots"
+msgstr "Botların yazılması"
+
+#: shell/footer.html.jinja
+msgid "Help Center"
+msgstr "Kömək mərkəzi"
+
+#: shell/footer.html.jinja
+msgid "Contact"
+msgstr "Əlaqə"
+
+#: shell/footer.html.jinja
+msgid "Contact Us"
+msgstr "Bizimlə əlaqə saxla"
+
+#: shell/footer.html.jinja
+msgid "Suggest Edits"
+msgstr "Düzəlişlər təklif et"
+
+#: shell/footer.html.jinja
+msgid "Suggesting Edits"
+msgstr "Düzəlişlərin təklif edilməsi"
+
+#: shell/footer.html.jinja
+msgid "Add a new book to Open Library"
+msgstr "Open Library-yə yeni kitab əlavə et"
+
+#: shell/footer.html.jinja
+msgid "Release Notes"
+msgstr "Buraxılış qeydləri"
+
+#: shell/footer.html.jinja
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: shell/footer.html.jinja
+msgid "Open Library on Bluesky"
+msgstr "Open Library Bluesky-da"
+
+#: shell/footer.html.jinja
+msgid "Twitter"
+msgstr "Twitter"
+
+#: shell/footer.html.jinja
+msgid "Open Library on Twitter"
+msgstr "Open Library Twitter-də"
+
+#: shell/footer.html.jinja
+msgid "GitHub"
+msgstr "GitHub"
+
+#: shell/footer.html.jinja
+msgid "Open Library on GitHub"
+msgstr "Open Library GitHub-da"
+
+#: shell/footer.html.jinja shell/header.html.jinja type/list/embed.html
+msgid "Open Library logo"
+msgstr "Open Library loqosu"
+
+#: shell/footer.html.jinja
+msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
+msgstr "Open Library, internet saytlarının və rəqəmsal formada olan digər mədəniyyət nümunələrinin rəqəmsal kitabxanasını yaradan, 501(c)(3) statuslu qeyri-kommersiya təşkilatı <a href=\"//archive.org/\">Internet Archive</a> təşəbbüsüdür. Digər <a href=\"//archive.org/projects/\">layihələrə</a> <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> və <a href=\"//archive-it.org\">archive-it.org</a> daxildir"
+
+#: shell/footer.html.jinja
+#, python-format
+msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+msgstr "versiya <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+
+#: shell/head.html.jinja
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published. Read, borrow, and discover more than 3M books for free."
 msgstr "Open Library indiyədək nəşr olunmuş hər kitab üçün veb səhifə yaratmağı hədəfləyən, hər kəsə açıq və redaktə edilə bilən kitabxana kataloqudur. 3 milyondan çox kitabı pulsuz oxuyun, borc götürün və kəşf edin."
 
-#: site/stats.html.jinja
+#: shell/header.html.jinja
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Internet Archive təşkilatının Open Library layihəsi: Hər kitab üçün bir səhifə"
+
+#: shell/header.html.jinja
+msgid "Search by barcode"
+msgstr "Ştrixkod üzrə axtar"
+
+#: shell/header.html.jinja shell/header_dropdown.html.jinja
+msgid "Menu"
+msgstr "Menyu"
+
+#: shell/header.html.jinja
+msgid "My account"
+msgstr "Hesabım"
+
+#: shell/header.html.jinja
+msgid "My Open Library"
+msgstr "Mənim Open Library səhifəm"
+
+#: shell/header.html.jinja
+msgid "Loans, Reading Log, Lists, Stats"
+msgstr "Müvəqqəti götürülmüş kitablar, mütaliə gündəliyi, siyahılar, statistika"
+
+#: shell/header.html.jinja
+msgid "My Profile"
+msgstr "Profilim"
+
+#: shell/header.html.jinja
+msgid "Pending Merge Requests"
+msgstr "Gözləyən birləşdirmə sorğuları"
+
+#: shell/header.html.jinja
+msgid "Log out"
+msgstr "Çıx"
+
+#: shell/header.html.jinja
+msgid "Contribute"
+msgstr "Töhfə ver"
+
+#: shell/header.html.jinja
+msgid "Recent Community Edits"
+msgstr "İcmanın son düzəlişləri"
+
+#: shell/header.html.jinja
+msgid "Resources"
+msgstr "Resurslar"
+
+#: shell/header.html.jinja
+msgid "Help & Support"
+msgstr "Kömək və dəstək"
+
+#: shell/header.html.jinja
+msgid "Librarians Portal"
+msgstr "Kitabxanaçılar portalı"
+
+#: shell/stats.html.jinja
 msgid "Debug Stats"
 msgstr "Sazlama statistikası"
 
-#: EditionNavBar.html site/stats.html.jinja
+#: EditionNavBar.html shell/stats.html.jinja
 msgid "Details"
 msgstr "Ətraflı məlumat"
 
@@ -6269,7 +6256,7 @@ msgstr "Bu müəllif başqa adlarla da tanınır?"
 msgid "For example: Lev Nikolayevich Tolstoy was also known as Leo Tolstoy. Please list one name per line."
 msgstr "Məsələn: Lev Nikolayeviç Tolstoy həm də Lev Tolstoy kimi tanınırdı. Hər sətirdə bir ad yazın."
 
-#: type/author/edit.html
+#: openlibrary/plugins/openlibrary/contribute.py type/author/edit.html
 msgid "Identifiers"
 msgstr "İdentifikatorlar"
 
@@ -6465,7 +6452,7 @@ msgstr "Nəşr tarixi"
 msgid "Show other books from %(publisher)s"
 msgstr "%(publisher)s tərəfindən nəşr edilmiş digər kitabları göstər"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "Səhifələr"
 
@@ -6521,7 +6508,7 @@ msgstr "Tərcümənin mənbə dili"
 msgid "External Links"
 msgstr "Xarici keçidlər"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Format"
 msgstr "Format"
 
@@ -6986,6 +6973,11 @@ msgstr "Hazırda redaktə olunur:"
 msgid "Display Name"
 msgstr "Görünən ad"
 
+#: openlibrary/core/shell/header.py type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "Qoşulub: %(date)s"
+
 #: type/user/view.html
 msgid "admin page"
 msgstr "inzibatçı səhifəsi"
@@ -7057,6 +7049,10 @@ msgstr "Bütün %(count)d nəşrə baxılsın?"
 #: type/work/editions_datatable.html
 msgid "Edition"
 msgstr "Nəşr"
+
+#: openlibrary/core/shell/search_modal.py type/work/editions_datatable.html
+msgid "Availability"
+msgstr "Əlçatanlıq"
 
 #: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
@@ -7246,6 +7242,10 @@ msgstr "Bitmə vaxtı"
 #, python-format
 msgid "by %(authors)s"
 msgstr "%(authors)s tərəfindən"
+
+#: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
+msgid "Search inside books"
+msgstr "Kitabların daxilində axtar"
 
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
@@ -7881,6 +7881,313 @@ msgstr "%(num)d nömrəli cildə bax"
 msgid "Buy this book"
 msgstr "Bu kitabı al"
 
+#: contribute/parts.html.jinja
+#, python-format
+msgid "one of %(count)s editions of this work"
+msgstr "bu əsərin %(count)s nəşrindən biri"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Why this book: on about %(count)s readers' shelves."
+msgstr "Bu kitab niyə: təxminən %(count)s oxucunun rəfində."
+
+#: contribute/parts.html.jinja
+msgid "Go to book page"
+msgstr "Kitab səhifəsinə keç"
+
+#: contribute/parts.html.jinja
+msgid "Go to edit page"
+msgstr "Redaktə səhifəsinə keç"
+
+#: contribute/parts.html.jinja
+msgid "How to answer"
+msgstr "Necə cavab vermək olar"
+
+#: contribute/parts.html.jinja
+msgid "This edition has no ISBN to search by, so look it up by title and author."
+msgstr "Bu nəşrdə axtarış üçün ISBN yoxdur, ona görə də başlıq və müəllifə görə axtarın."
+
+#: contribute/parts.html.jinja
+msgid "Guideline"
+msgstr "Təlimat"
+
+#: contribute/parts.html.jinja
+msgid "How this edit goes wrong"
+msgstr "Bu redaktə necə səhv gedə bilər"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "The other edition"
+msgid_plural "The other %(count)d editions"
+msgstr[0] "Digər nəşr"
+msgstr[1] "Digər %(count)d nəşr"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "1 other value"
+msgid_plural "%(count)d other values"
+msgstr[0] "1 digər dəyər"
+msgstr[1] "%(count)d digər dəyər"
+
+#: contribute/parts.html.jinja
+msgid "Not filled in"
+msgstr "Doldurulmayıb"
+
+#: contribute/parts.html.jinja
+msgid "See each edition"
+msgstr "Hər nəşrə baxın"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "And %(count)s more."
+msgstr "Və daha %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "That looks like a valid number."
+msgstr "Bu düzgün nömrəyə bənzəyir."
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Will be stored as %(value)s."
+msgstr "%(value)s kimi saxlanılacaq."
+
+#: contribute/parts.html.jinja
+msgid "Paste only the number, not the web address."
+msgstr "Yalnız nömrəni yapışdırın, veb ünvanı yox."
+
+#: contribute/parts.html.jinja openlibrary/contribute/save.py
+msgid "That is not a valid number for this catalog."
+msgstr "Bu, bu kataloq üçün düzgün nömrə deyil."
+
+#: contribute/parts.html.jinja
+msgid "Choose a language"
+msgstr "Dil seçin"
+
+#: contribute/parts.html.jinja
+msgid "Filter languages"
+msgstr "Dilləri süzgəcdən keçir"
+
+#: contribute/parts.html.jinja
+msgid "No matching language"
+msgstr "Uyğun dil tapılmadı"
+
+#: contribute/parts.html.jinja
+msgid "Other editions say"
+msgstr "Digər nəşrlərdə deyilir"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(value)s, on 1 edition"
+msgid_plural "%(value)s, on %(count)d editions"
+msgstr[0] "%(value)s, 1 nəşrdə"
+msgstr[1] "%(value)s, %(count)d nəşrdə"
+
+#: contribute/parts.html.jinja
+msgid "I opened the record and the year and publisher match this edition."
+msgstr "Qeydi açdım və il və nəşriyyat bu nəşrlə üst-üstə düşür."
+
+#: contribute/parts.html.jinja
+msgid "Add a comment about your edit"
+msgstr "Redaktəniz haqqında şərh əlavə edin"
+
+#: contribute/parts.html.jinja
+msgid "Edit comment"
+msgstr "Şərhi redaktə et"
+
+#: contribute/parts.html.jinja
+msgid "Where you found it"
+msgstr "Harada tapdığınız"
+
+#: contribute/parts.html.jinja
+msgid "Save and next"
+msgstr "Saxla və növbəti"
+
+#: contribute/parts.html.jinja
+msgid "I couldn't find it"
+msgstr "Tapa bilmədim"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Next: a random task from %(filter)s"
+msgstr "Növbəti: %(filter)s bölməsindən təsadüfi tapşırıq"
+
+#: contribute/parts.html.jinja
+msgid "Next: a random task from all open tasks"
+msgstr "Növbəti: bütün açıq tapşırıqlardan təsadüfi biri"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat"
+msgstr "WorldCat"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Google Books"
+msgstr "Google Books"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Amazon"
+msgstr "Amazon"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress"
+msgstr "Konqres Kitabxanası"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in language"
+msgstr "Dili doldurun"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up in WorldCat or Google Books; both list the language of the text. The title page and cover tell you too."
+msgstr "ISBN-i WorldCat və ya Google Books-da axtarın; hər ikisi mətnin dilini göstərir. Başlıq səhifəsi və üz qabığı da bunu göstərir."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
+msgstr "Bir əsərin nəşrləri adətən eyni dili paylaşır, lakin tərcümə fərqli olacaq. Bu nəşrin öz mətnini yoxlayın."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Record the language of the text, not the language of the title page. A translation is in the language it was translated into."
+msgstr "Başlıq səhifəsinin dilini deyil, mətnin dilini qeyd edin. Tərcümə, tərcümə olunduğu dildədir."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example English"
+msgstr "Məsələn, ingilis dili"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Page count"
+msgstr "Səhifə sayı"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in page count"
+msgstr "Səhifə sayını doldurun"
+
+#: openlibrary/contribute/field_guides.py
+msgid "How many pages does this edition have?"
+msgstr "Bu nəşrdə neçə səhifə var?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat lists the page count in the record's description. Google Books calls it Length. Make sure the record is for this ISBN, not another printing."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 320"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publisher"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Who published this edition?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The imprint is printed on the title page and the spine. WorldCat and the Library of Congress list it under Publisher."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Publisher as printed"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress number (LCCN)"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in LCCN"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's Library of Congress number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address instead of the number itself."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 75425165"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "OCLC/WorldCat number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in OCLC number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's WorldCat (OCLC) number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Digits only, for example 47810608"
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Pick a language from the list."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Enter the page count as a whole number."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Fill in an answer, or choose “I couldn't find it”."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "This field can't be filled in here."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+#, python-format
+msgid "Filled in %(field)s from Open Library Tasks"
+msgstr ""
+
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
 msgstr "[Yazı silinib]"
@@ -7888,6 +8195,169 @@ msgstr "[Yazı silinib]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "Naməlum"
+
+#: openlibrary/core/shell/nav.py
+msgid "K-12 Student Library"
+msgstr "Məktəbəqədər və 1–12-ci sinif şagirdləri üçün kitabxana"
+
+#: openlibrary/core/shell/nav.py
+msgid "Book Talks"
+msgstr "Kitab söhbətləri"
+
+#: openlibrary/core/shell/nav.py
+msgid "Random Book"
+msgstr "Təsadüfi kitab"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "All books"
+msgstr "Bütün kitablar"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "Free to read now"
+msgstr "İndi pulsuz oxuna bilənlər"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "Borrow online"
+msgstr "Onlayn borc götür"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search Open Library"
+msgstr "Open Library-də axtar"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search books and authors…"
+msgstr "Kitabları və müəllifləri axtar…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Close search"
+msgstr "Axtarışı bağla"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Clear search"
+msgstr "Axtarışı təmizlə"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "See results"
+msgstr "Nəticələrə bax"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Go to full search"
+msgstr "Tam axtarışa keç"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s book"
+msgstr "%s kitaba bax"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s books"
+msgstr "%s kitaba bax"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See all %s books"
+msgstr "Bütün %s kitaba bax"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "All %s books"
+msgstr "Bütün %s kitab"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Clear all"
+msgstr "Hamısını təmizlə"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search scope"
+msgstr "Axtarış əhatəsi"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Inside books"
+msgstr "Kitabların daxilində"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search filters"
+msgstr "Axtarış süzgəcləri"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching books and authors…"
+msgstr "Kitablar və müəlliflər axtarılır…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching inside books…"
+msgstr "Kitabların daxilində axtarılır…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "No results found"
+msgstr "Nəticə tapılmadı"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Showing %s of %s results"
+msgstr "%s nəticə göstərilir, cəmi %s nəticə var"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Untitled"
+msgstr "Başlıqsız"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Readable"
+msgstr "Oxuna bilən"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Readable in %s"
+msgstr "%s dilində oxuna bilər"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Recent searches"
+msgstr "Son axtarışlar"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Remove \"%s\" from recent searches"
+msgstr "\"%s\" sorğusunu son axtarışlardan çıxar"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s book"
+msgstr "%s kitabın daxilində axtar"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s kitabın daxilində axtar"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "View all"
+msgstr "Hamısına bax"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books…"
+msgstr "Kitabların daxilində axtar…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Type a word or phrase to find it on the pages of millions of books."
+msgstr "Milyonlarla kitabın səhifələrində tapmaq üçün söz və ya ifadə yazın."
+
+#: openlibrary/core/shell/search_modal.py
+msgid "No matches inside books"
+msgstr "Kitabların daxilində uyğunluq tapılmadı"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books is temporarily unavailable. Please try again later."
+msgstr "Kitabların daxilində axtarış müvəqqəti əlçatan deyil. Zəhmət olmasa daha sonra yenidən cəhd edin."
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s match found inside books"
+msgstr "Kitabların daxilində %s uyğunluq tapıldı"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s matches found inside books"
+msgstr "Kitabların daxilində %s uyğunluq tapıldı"
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -8273,6 +8743,43 @@ msgstr "Çin dili"
 msgid "Filipino"
 msgstr "Filippin dili"
 
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are open to librarians only, for now"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Published"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "OCLC"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "All open tasks"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "Missing: %(field)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Most needed"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing missing here right now. Thank you."
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing to fill in here"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Open the record and confirm it matches this edition first."
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Art"
 msgstr "İncəsənət"
@@ -8361,25 +8868,9 @@ msgstr "Konqres Kitabxanasının təsnifatı var"
 msgid "Has number of pages"
 msgstr "Səhifə sayı var"
 
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "K-12 Student Library"
-msgstr "Məktəbəqədər və 1–12-ci sinif şagirdləri üçün kitabxana"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Book Talks"
-msgstr "Kitab söhbətləri"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Random Book"
-msgstr "Təsadüfi kitab"
-
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
 msgstr "Better World Books"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Amazon"
-msgstr "Amazon"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -8567,6 +9058,16 @@ msgstr "E-poçt ünvanınız"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Parol seç"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr ""
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format
