@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: account.html account/notifications.html account/privacy.html lib/nav_head.html type/user/view.html
+#: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
 msgstr "Mga Setting"
 
@@ -449,7 +449,7 @@ msgstr "Kanselahin"
 msgid "Continue without waiting"
 msgstr "Magpatuloy nang hindi nag-aantay"
 
-#: library_explorer.html openlibrary/plugins/openlibrary/nav.py
+#: library_explorer.html openlibrary/core/shell/nav.py
 msgid "Library Explorer"
 msgstr "Library Explorer"
 
@@ -457,7 +457,7 @@ msgstr "Library Explorer"
 msgid "Loading..."
 msgstr "Naglo-load..."
 
-#: lib/nav_head.html login.html
+#: login.html shell/header.html.jinja
 msgid "Log In"
 msgstr "Mag-log In"
 
@@ -542,7 +542,7 @@ msgstr "Idinagdag ang bagong libro."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Salamat sa pagpapabuti ng Open Library catalog!"
 
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Isara"
 
@@ -660,14 +660,6 @@ msgstr "I-download ang Link"
 msgid "Next"
 msgstr "Susunod"
 
-#: site.html.jinja
-msgid "Skip to main content"
-msgstr "Lumaktaw sa pangunahing nilalaman"
-
-#: site.html.jinja
-msgid "It looks like you're offline."
-msgstr "Mukhang ikaw ay offline."
-
 #: status.html
 msgid "Open Library server status"
 msgstr "Katayuan ng server ng Open Library"
@@ -774,7 +766,7 @@ msgstr "Gustong Basahin"
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
-#: LoanReadForm.html ReadButton.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Basahin"
 
@@ -838,7 +830,7 @@ msgstr "Basahin ang \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Umatras ng \"%(title)s\""
 
-#: ReadButton.html books/edit/edition.html type/list/embed.html widget.html
+#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Hiramin"
 
@@ -885,7 +877,7 @@ msgstr "Ito ay nakikita lamang ng mga super librarian."
 msgid "Solr Editions"
 msgstr "Mga Edision ng Solr"
 
-#: account/reading_log.html openlibrary/plugins/worksearch/code.py search/availability_i18n.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Mababasa Lamang"
 
@@ -893,19 +885,19 @@ msgstr "Mababasa Lamang"
 msgid "Filter by availability"
 msgstr "I-filter ayon sa availability"
 
-#: openlibrary/plugins/worksearch/code.py search/inside.html search/search_modal_i18n.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Wika"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 msgid "Search languages…"
 msgstr "Maghanap ng mga wika…"
 
-#: books/edit/edition.html languages/index.html search/search_modal_i18n.html work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html openlibrary/core/shell/search_modal.py work_search.html
 msgid "Languages"
 msgstr "Wika"
 
-#: search/inside.html search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
 msgid "Loading…"
 msgstr "Naglo-load…"
 
@@ -939,7 +931,7 @@ msgstr "Pag-debug ng Solr:"
 msgid "Full URL:"
 msgstr "Buong URL:"
 
-#: search/search_modal_i18n.html work_search.html
+#: openlibrary/core/shell/search_modal.py work_search.html
 msgid "No matching books or authors"
 msgstr "Walang tugmang aklat o may-akda"
 
@@ -947,11 +939,11 @@ msgstr "Walang tugmang aklat o may-akda"
 msgid "Add a new book"
 msgstr "Magdagdag ng bagong aklat"
 
-#: SearchNavigation.html authors/index.html.jinja lib/nav_foot.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Mga May-Akda"
 
-#: SearchNavigation.html books/mybooks_breadcrumb_select.html lib/nav_foot.html.jinja openlibrary/plugins/upstream/mybooks.py search/search_modal_i18n.html work_search.html
+#: SearchNavigation.html books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Mga Aklat"
 
@@ -1044,7 +1036,7 @@ msgstr "Isang kwalipikadong programa ang dapat piliin"
 msgid "Sign Up to Open Library"
 msgstr "Mag-sign Up sa Open Library"
 
-#: account/create.html lib/nav_head.html
+#: account/create.html shell/header.html.jinja
 msgid "Sign Up"
 msgstr "Mag-sign Up"
 
@@ -1228,12 +1220,43 @@ msgstr "Dahilan"
 msgid "No ISBN"
 msgstr "Walang ISBN"
 
+#: account/loan_actions.html
+#, python-format
+msgid "Borrowed from %(library)s"
+msgstr "Hiniram mula sa %(library)s"
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Not yet downloaded."
+msgstr "Hindi pa na-download."
+
+#: account/loan_actions.html books/custom_carousel_card.html.jinja
+msgid "Download Now"
+msgstr "I-download Ngayon"
+
+#: account/loan_actions.html
+msgid "Return via<br/>Adobe Digital Editions"
+msgstr "Ibalik sa pamamagitan ng<br/>Adobe Digital Editions"
+
 #: account/loans.html
 #, python-format
 msgid "Active Loan (%(count)d)"
 msgid_plural "Active Loans (%(count)d)"
 msgstr[0] "Aktibong Pautang (%(count)d)"
 msgstr[1] "Mga Aktibong Pautang (%(count)d)"
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s could not be reached, so any loans there are not shown."
+msgid_plural "These libraries could not be reached, so any loans there are not shown: %(libraries)s."
+msgstr[0] "Hindi maabot ang %(libraries)s, kaya hindi ipinapakita ang anumang paghiram doon."
+msgstr[1] "Hindi maabot ang mga aklatang ito, kaya hindi ipinapakita ang anumang paghiram doon: %(libraries)s."
+
+#: account/loans.html
+#, python-format
+msgid "%(libraries)s needs reconnecting before its loans can be shown. Borrowing a book from it again will restore the connection."
+msgid_plural "These libraries need reconnecting before their loans can be shown: %(libraries)s. Borrowing a book from one again will restore the connection."
+msgstr[0] "Kailangang ikonekta ulit ang %(libraries)s bago maipakita ang mga paghiram dito. Ang muling paghiram ng aklat mula dito ay magpapanumbalik sa koneksyon."
+msgstr[1] "Kailangang ikonekta ulit ang mga aklatang ito bago maipakita ang kanilang mga paghiram: %(libraries)s. Ang muling paghiram ng aklat mula sa isa ay magpapanumbalik sa koneksyon."
 
 #: account/loans.html
 msgid "You've not checked out any books at this moment."
@@ -1253,18 +1276,6 @@ msgid "There is %(count)d person waiting for this book."
 msgid_plural "There are %(count)d people waiting for this book."
 msgstr[0] "May %(count)d taong naghihintay para sa librong ito."
 msgstr[1] "May %(count)d mga taong naghihintay para sa librong ito."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Not yet downloaded."
-msgstr "Hindi pa na-download."
-
-#: account/loans.html books/custom_carousel_card.html.jinja
-msgid "Download Now"
-msgstr "I-download Ngayon"
-
-#: account/loans.html
-msgid "Return via<br/>Adobe Digital Editions"
-msgstr "Ibalik sa pamamagitan ng<br/>Adobe Digital Editions"
 
 #: account/loans.html
 msgid "Books You're Waiting For"
@@ -1459,7 +1470,7 @@ msgstr "Hindi, salamat"
 msgid "Yes! Please!"
 msgstr "Oo! Pakiusap!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html covers/manage.html my_books/shelf_button_i18n.html
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/parts.html.jinja covers/manage.html my_books/shelf_button_i18n.html
 msgid "Save"
 msgstr "I-save"
 
@@ -1619,7 +1630,7 @@ msgstr "Gusto Kong Basahin"
 msgid "My %(shelf_name)s Stats"
 msgstr "Aking Statistika sa %(shelf_name)s"
 
-#: account/readinglog_stats.html lib/nav_head.html
+#: account/readinglog_stats.html openlibrary/core/shell/header.py shell/header.html.jinja
 msgid "My Books"
 msgstr "Aking mga Aklat"
 
@@ -1683,12 +1694,12 @@ msgid "Works by Time Period"
 msgstr "Mga Gawa ayon sa Panahon"
 
 #: account/readinglog_stats.html
-msgid "Matching works"
-msgstr "Umugma na mga gawa"
-
-#: account/readinglog_stats.html
 msgid "Click on a bar to see matching works"
 msgstr "I-click ang isang bar upang makita ang mga umuugma na gawa"
+
+#: account/readinglog_stats.html
+msgid "Matching works"
+msgstr "Umugma na mga gawa"
 
 #: account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py
 msgid "My Feed"
@@ -1712,7 +1723,7 @@ msgstr "Log ng Pagbasa"
 msgid "My lists"
 msgstr "Aking mga listahan"
 
-#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/plugins/openlibrary/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Mga Listahan"
 
@@ -1927,7 +1938,7 @@ msgstr "Mga Bagong Aklat na Inangkat bawat Araw"
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Kailangan mong i-on ang JavaScript upang makita ang maganda nyang tsart!"
 
-#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html site/stats.html.jinja
+#: admin/imports.html admin/imports_by_date.html admin/pd_dashboard.html shell/stats.html.jinja
 msgid "Summary"
 msgstr "Buod"
 
@@ -2722,7 +2733,7 @@ msgstr "Walang natagpuan"
 msgid "Search for an Author"
 msgstr "Maghanap ng May-akda"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lib/nav_head.html lists/home.html publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/search_modal_i18n.html search/searchbox.html type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Maghanap"
 
@@ -2851,6 +2862,11 @@ msgstr "More sa OpenStax"
 
 #: book_providers/read_button.html
 #, python-format
+msgid "Read your loan from %s"
+msgstr "Basahin ang iyong hiniram mula sa %s"
+
+#: book_providers/read_button.html
+#, python-format
 msgid "Listen to a reading from %s"
 msgstr "Makinig sa isang pagbabasa mula sa %s"
 
@@ -2862,6 +2878,11 @@ msgstr "Makinig"
 #, python-format
 msgid "Read free online from %s"
 msgstr "Magbasa nang libre online mula sa %s"
+
+#: book_providers/read_button.html
+#, python-format
+msgid "Borrow ebook from %s"
+msgstr "Humiram ng ebook mula sa %s"
 
 #: book_providers/runeberg_download_options.html
 msgid "Download all scanned images from Project Runeberg"
@@ -3025,7 +3046,7 @@ msgstr "Gamitin ang <b><i>Pamagat: Subtitle</i></b> upang magdagdag ng subtitle.
 msgid "Required field"
 msgstr "Kinakailangang field"
 
-#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html search/search_modal_i18n.html
+#: SearchAuthorSuggestion.html TestingEnvironment.html.jinja books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html
 msgid "Author"
 msgstr "May-akda"
 
@@ -3077,7 +3098,7 @@ msgstr "ISBN 10"
 msgid "ISBN 13"
 msgstr "ISBN 13"
 
-#: books/add.html
+#: books/add.html openlibrary/plugins/openlibrary/contribute.py
 msgid "LCCN"
 msgstr "LCCN"
 
@@ -3131,7 +3152,7 @@ msgstr "Tanggalin ang may-akdang ito"
 msgid "Add another author?"
 msgstr "Magdagdag ng isa pang may-akda?"
 
-#: books/check.html lib/nav_foot.html.jinja lib/nav_head.html
+#: books/check.html shell/footer.html.jinja shell/header.html.jinja
 msgid "Add a Book"
 msgstr "Magdagdag ng Libro"
 
@@ -3626,7 +3647,7 @@ msgstr "Sa Pahayag:"
 msgid "For example: <em>edited by David Anderson</em>"
 msgstr "Halimbawa: <em>ini-edit ni David Anderson</em>"
 
-#: books/edit/edition.html
+#: books/edit/edition.html openlibrary/contribute/field_guides.py
 #, fuzzy
 msgid "What language is this edition written in?"
 msgstr "Anong wika ang ginamit sa orihinal?"
@@ -3819,7 +3840,7 @@ msgstr "Pagpa-pahina?"
 msgid "Note the highest number in each pagination pattern."
 msgstr "Tandaan ang pinakamataas na numero sa bawat pattern ng pagpa-pahina."
 
-#: books/edit/edition.html lib/nav_foot.html.jinja
+#: books/edit/edition.html shell/footer.html.jinja
 msgid "Help"
 msgstr "Tulong"
 
@@ -3996,9 +4017,135 @@ msgstr "Tanggalin ang link na ito"
 msgid "\"Good\" means no spammy links, please. Keep them relevant to the book. Irrelevant sites may be removed. Blatant spam will be deleted without remorse."
 msgstr "\"Mabuti\" ay nangangahulugang walang mga spammy na link, pakisuyo. Panatilihin itong may kinalaman sa aklat. Ang mga hindi kaugnay na site ay maaaring alisin. Ang mga halatang spam ay aalisin nang walang awa."
 
+#: borrow/provider_popup_result.html.jinja
+msgid "Borrowed"
+msgstr "Hiniram"
+
+#: borrow/provider_popup_result.html.jinja openlibrary/plugins/openlibrary/api.py shell/footer.html.jinja shell/head.html.jinja
+msgid "Open Library"
+msgstr "Open Library"
+
+#: borrow/provider_popup_result.html.jinja
+#, python-format
+msgid "Your loan is due %(due)s."
+msgstr "Ang iyong paghiram ay dapat isauli sa %(due)s."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Your loan has been created."
+msgstr "Nagawa na ang iyong paghiram."
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Read it now"
+msgstr "Basahin ngayon"
+
+#: borrow/provider_popup_result.html.jinja
+msgid "Back to Open Library"
+msgstr "Bumalik sa Open Library"
+
 #: bulk_search/bulk_search.html search/advancedsearch.html
 msgid "Bulk Search (beta)"
 msgstr "Bulk Search (beta)"
+
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks"
+msgstr "Mga Gawain"
+
+#: contribute/dashboard.html.jinja
+msgid "Fill in what's missing on real books, one detail at a time."
+msgstr "Punan ang mga kulang sa tunay na mga aklat, isang detalye sa isang pagkakataon."
+
+#: contribute/dashboard.html.jinja
+msgid "Surprise me"
+msgstr "Gulatin mo ako"
+
+#: contribute/dashboard.html.jinja
+msgid "A random book that needs a hand."
+msgstr "Isang random na aklat na kailangan ng tulong."
+
+#: contribute/dashboard.html.jinja
+msgid "Filter tasks"
+msgstr "I-filter ang mga gawain"
+
+#: contribute/dashboard.html.jinja
+msgid "Missing"
+msgstr "Kulang"
+
+#: contribute/dashboard.html.jinja
+msgid "Your recent fixes"
+msgstr "Ang iyong mga kamakailang pag-aayos"
+
+#: contribute/dashboard.html.jinja
+msgid "See all your edits"
+msgstr "Tingnan ang lahat ng iyong mga pag-edit"
+
+#: contribute/dashboard.html.jinja
+msgid "Fixes you save here show up in this list."
+msgstr "Ang mga pag-aayos na iyong ise-save dito ay lalabas sa listahang ito."
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Saved"
+msgstr "Na-save"
+
+#: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Skipped"
+msgstr "Nilaktawan"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s: %(value)s"
+msgstr "%(field)s para sa %(title)s: %(value)s"
+
+#: contribute/done.html.jinja
+#, python-format
+msgid "%(field)s for %(title)s"
+msgstr "%(field)s para sa %(title)s"
+
+#: contribute/done.html.jinja
+msgid "The record is updated."
+msgstr "Na-update na ang record."
+
+#: contribute/done.html.jinja
+msgid "See it in the record's history"
+msgstr "Tingnan ito sa history ng record"
+
+#: contribute/done.html.jinja
+msgid "Nothing on the record changed."
+msgstr "Walang nagbago sa record."
+
+#: contribute/done.html.jinja
+msgid "While you're on this book"
+msgstr "Habang nasa aklat na ito"
+
+#: contribute/done.html.jinja
+msgid "Next task"
+msgstr "Susunod na gawain"
+
+#: contribute/done.html.jinja
+msgid "Pick a different book"
+msgstr "Pumili ng ibang aklat"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in on this edition"
+msgstr "Napunan na ang %(field)s sa edisyong ito"
+
+#: contribute/nothing.html.jinja
+msgid "Someone filled it in since the list was made. Thank you for checking."
+msgstr "May nagpunan na nito mula nang gawin ang listahan. Salamat sa pagche-check."
+
+#: contribute/nothing.html.jinja contribute/task.html.jinja
+msgid "Back to the list"
+msgstr "Bumalik sa listahan"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+msgstr "Na-save ang %(field)s para sa %(link_start)s%(title)s%(link_end)s: %(value)s"
+
+#: contribute/task.html.jinja
+#, python-format
+msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+msgstr "Na-save ang %(field)s para sa %(link_start)s%(title)s%(link_end)s"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -4405,26 +4552,6 @@ msgid_plural "%s ebook editions"
 msgstr[0] "%s edisyong ebook"
 msgstr[1] "%s mga edisyong ebook"
 
-#: lib/browse_popover.html
-msgid "Browse books by topic"
-msgstr "Mag-browse ng mga aklat ayon sa paksa"
-
-#: lib/browse_popover.html
-msgid "Most popular right now"
-msgstr "Pinaka-popular ngayon"
-
-#: lib/browse_popover.html
-msgid "Browse the virtual shelves"
-msgstr "Mag-browse sa mga virtual na istante"
-
-#: lib/browse_popover.html
-msgid "Reader-curated collections"
-msgstr "Mga koleksyong kinurado ng mga mambabasa"
-
-#: databarWork.html lib/browse_popover.html lib/nav_head.html
-msgid "Browse"
-msgstr "Mag-browse"
-
 #: lib/edit_head.html lib/view_head.html
 msgid "This doc was last edited by"
 msgstr "Ang dokumentong ito ay huling na-edit ni"
@@ -4465,10 +4592,6 @@ msgstr "Kopyahin at i-paste ang code na ito sa iyong pahina ng Wikipedia."
 msgid "Copy Wikipedia citation"
 msgstr "Kopyahin ang sipi ng Wikipedia"
 
-#: lib/header_dropdown.html lib/nav_head.html
-msgid "Menu"
-msgstr "Menu"
-
 #: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
 msgid "History"
 msgstr "Kasaysayan"
@@ -4498,255 +4621,6 @@ msgstr "Nilikha ni %(user)s"
 #, python-format
 msgid "Edited by %(user)s"
 msgstr "In-edit ni %(user)s"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/api.py site/head.html
-msgid "Open Library"
-msgstr "Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Vision"
-msgstr "Bisyon"
-
-#: lib/nav_foot.html.jinja
-msgid "Volunteer"
-msgstr "Maging boluntaryo"
-
-#: lib/nav_foot.html.jinja
-msgid "Partner With Us"
-msgstr "Makipagtulungan sa Amin"
-
-#: lib/nav_foot.html.jinja
-msgid "Jobs"
-msgstr "Mga Trabaho"
-
-#: lib/nav_foot.html.jinja
-msgid "Careers"
-msgstr "Karera"
-
-#: lib/nav_foot.html.jinja
-msgid "Blog"
-msgstr "Blog"
-
-#: lib/nav_foot.html.jinja
-msgid "Terms of Service"
-msgstr "Mga Tuntunin ng Serbisyo"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Donate"
-msgstr "Mag-donate"
-
-#: lib/nav_foot.html.jinja
-msgid "Discover"
-msgstr "Tuklasin"
-
-#: lib/nav_foot.html.jinja
-msgid "Go home"
-msgstr "Bumalik sa bahay"
-
-#: lib/nav_foot.html.jinja
-msgid "Home"
-msgstr "Bahay"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Books"
-msgstr "Galugarin ang mga Aklat"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore authors"
-msgstr "Galugarin ang mga may-akda"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore subjects"
-msgstr "Galugarin ang mga paksa"
-
-#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py openlibrary/plugins/worksearch/code.py subjects/notfound.html type/author/view.html type/list/view_body.html
-msgid "Subjects"
-msgstr "Mga Paksa"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore collections"
-msgstr "Galugarin ang mga koleksyon"
-
-#: lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py type/page/view.html
-msgid "Collections"
-msgstr "Mga Koleksyon"
-
-#: SearchNavigation.html lib/nav_foot.html.jinja openlibrary/plugins/openlibrary/nav.py search/advancedsearch.html
-msgid "Advanced Search"
-msgstr "Nabatid na Paghahanap"
-
-#: lib/nav_foot.html.jinja
-msgid "Navigate to top of this page"
-msgstr "Mag-navigate sa tuktok ng pahinang ito"
-
-#: lib/nav_foot.html.jinja
-msgid "Return to Top"
-msgstr "Bumalik sa Tuktok"
-
-#: lib/nav_foot.html.jinja
-msgid "Develop"
-msgstr "Bumuo"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library Developer Center"
-msgstr "Galugarin ang Open Library Developer Center"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html
-msgid "Developer Center"
-msgstr "Developer Center"
-
-#: lib/nav_foot.html.jinja
-msgid "Explore Open Library APIs"
-msgstr "Galugarin ang Open Library APIs"
-
-#: lib/nav_foot.html.jinja
-msgid "API Documentation"
-msgstr "Dokumentasyon ng API"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Open Library data"
-msgstr "Bulk na data ng Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Bulk Data Dumps"
-msgstr "Bulk na Data Dumps"
-
-#: lib/nav_foot.html.jinja
-msgid "Write a bot"
-msgstr "Sumulat ng bot"
-
-#: lib/nav_foot.html.jinja
-msgid "Writing Bots"
-msgstr "Pagsusulat ng Bots"
-
-#: lib/nav_foot.html.jinja
-msgid "Help Center"
-msgstr "Sentro ng Tulong"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact"
-msgstr "Makipag-ugnayan"
-
-#: lib/nav_foot.html.jinja
-msgid "Contact Us"
-msgstr "Makipag-ugnayan sa Amin"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggest Edits"
-msgstr "Mag-suggest ng mga Pag-edit"
-
-#: lib/nav_foot.html.jinja
-msgid "Suggesting Edits"
-msgstr "Pag-suggest ng mga Pag-edit"
-
-#: lib/nav_foot.html.jinja
-msgid "Add a new book to Open Library"
-msgstr "Magdagdag ng bagong aklat sa Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Release Notes"
-msgstr "Mga Tala ng Paglalabas"
-
-#: lib/nav_foot.html.jinja
-msgid "Bluesky"
-msgstr "Bluesky"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on Bluesky"
-msgstr "Bahay ng Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Twitter"
-msgstr "Twitter"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on Twitter"
-msgstr "Bahay ng Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "GitHub"
-msgstr "GitHub"
-
-#: lib/nav_foot.html.jinja
-#, fuzzy
-msgid "Open Library on GitHub"
-msgstr "Logo ng Open Library"
-
-#: lib/nav_foot.html.jinja site/alert.html.jinja
-msgid "Change Website Language"
-msgstr "Palitan ang Wika ng Website"
-
-#: lib/nav_foot.html.jinja lib/nav_head.html type/list/embed.html
-msgid "Open Library logo"
-msgstr "Logo ng Open Library"
-
-#: lib/nav_foot.html.jinja
-msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
-msgstr "Ang Open Library ay isang inisyatiba ng <a href=\"//archive.org/\">Internet Archive</a>, isang 501(c)(3) na non-profit, na nagtatayo ng digital na aklatan ng mga website ng Internet at iba pang mga kultural na artifact sa digital na anyo. Iba pang <a href=\"//archive.org/projects/\">mga proyekto</a> ay kinabibilangan ng <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> at <a href=\"//archive-it.org\">archive-it.org</a>."
-
-#: lib/nav_foot.html.jinja
-#, python-format
-msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-msgstr "bersyon <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
-
-#: lib/nav_head.html
-msgid "The Internet Archive's Open Library: One page for every book"
-msgstr "Open Library ng Internet Archive: Isang pahina para sa bawat aklat"
-
-#: lib/nav_head.html
-msgid "Search by barcode"
-msgstr "Maghanap gamit ang barcode"
-
-#: lib/nav_head.html
-msgid "My account"
-msgstr "Aking account"
-
-#: lib/nav_head.html type/user/view.html
-#, python-format
-msgid "Joined %(date)s"
-msgstr "Sumali noong %(date)s"
-
-#: lib/nav_head.html
-msgid "My Open Library"
-msgstr "Aking Open Library"
-
-#: lib/nav_head.html
-msgid "Loans, Reading Log, Lists, Stats"
-msgstr "Mga Pautang, Reading Log, Mga Listahan, Stats"
-
-#: lib/nav_head.html
-msgid "My Profile"
-msgstr "Aking Profile"
-
-#: lib/nav_head.html
-msgid "Pending Merge Requests"
-msgstr "Naka-abang na mga Kahilingan sa Pagsasama"
-
-#: lib/nav_head.html
-msgid "Log out"
-msgstr "Mag-logout"
-
-#: lib/nav_head.html
-msgid "Contribute"
-msgstr "Mag-ambag"
-
-#: lib/nav_head.html
-msgid "Recent Community Edits"
-msgstr "Kamakailang Mga Pag-edit ng Komunidad"
-
-#: lib/nav_head.html
-msgid "Resources"
-msgstr "Mga Mapagkukunan"
-
-#: lib/nav_head.html
-msgid "Help & Support"
-msgstr "Tulong at Suporta"
-
-#: lib/nav_head.html
-msgid "Librarians Portal"
-msgstr "Portal ng mga Librarian"
 
 #: lib/not_logged.html
 msgid "<strong>You are not <a href=\"/account/login\" title=\"Log in now\">logged in</a>.</strong> Open Library will record your IP address and include it in this page's publicly accessible edit history. If you <a href=\"/account/create\" title=\"Create an Open Library account\">create an account</a>, your IP address is concealed and you can more easily keep track of all your edits and additions."
@@ -5488,7 +5362,7 @@ msgstr "Subukan ang iba pa?"
 msgid "Publisher: %(name)s"
 msgstr "Publisher: %(name)s"
 
-#: openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Publisher"
 
@@ -5719,11 +5593,15 @@ msgstr "I-undo ang <a href=\"$parent.url()\">%(kind)s</a>."
 msgid "%(count)d records modified."
 msgstr "%(count)d mga tala ang gumawa."
 
+#: SearchNavigation.html openlibrary/core/shell/nav.py search/advancedsearch.html shell/footer.html.jinja
+msgid "Advanced Search"
+msgstr "Nabatid na Paghahanap"
+
 #: search/advancedsearch.html
 msgid "All fields"
 msgstr "Lahat ng field"
 
-#: search/advancedsearch.html
+#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -5768,24 +5646,12 @@ msgstr "Pagsamahin ang mga may-akda"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Walang <strong>mga may-akda</strong> na tumugma sa iyong paghahanap"
 
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "All books"
-msgstr "Lahat ng aklat"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "Free to read now"
-msgstr "Libreng basahin ngayon"
-
-#: openlibrary/plugins/worksearch/code.py search/availability_i18n.html
-msgid "Borrow online"
-msgstr "Manghiram Online"
-
 #: search/inside.html
 #, python-format
 msgid "Search Open Library for %s"
 msgstr "Maghanap sa Open Library para sa %s"
 
-#: SearchNavigation.html search/inside.html search/search_modal_i18n.html
+#: SearchNavigation.html openlibrary/core/shell/search_modal.py search/inside.html
 msgid "Search Inside"
 msgstr "Maghanap Sa Loob"
 
@@ -5846,153 +5712,6 @@ msgstr "Walang <strong>mga listahan</strong> na tumugma sa iyong paghahanap"
 #: search/publishers.html
 msgid "Publishers Search"
 msgstr "Paghahanap ng Publishers"
-
-#: search/search_modal_i18n.html
-msgid "Search Open Library"
-msgstr "Maghanap sa Open Library"
-
-#: search/search_modal_i18n.html
-msgid "Search books and authors…"
-msgstr "Maghanap ng mga aklat at may-akda…"
-
-#: search/search_modal_i18n.html
-msgid "Close search"
-msgstr "Isara ang paghahanap"
-
-#: search/search_modal_i18n.html
-msgid "Clear search"
-msgstr "I-clear ang paghahanap"
-
-#: search/search_modal_i18n.html
-msgid "See results"
-msgstr "Tingnan ang mga resulta"
-
-#: search/search_modal_i18n.html
-msgid "Go to full search"
-msgstr "Pumunta sa buong paghahanap"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s book"
-msgstr "Tingnan ang %s aklat"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See %s books"
-msgstr "Tingnan ang %s na aklat"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "See all %s books"
-msgstr "Tingnan ang lahat ng %s na aklat"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "All %s books"
-msgstr "Lahat ng %s na aklat"
-
-#: search/search_modal_i18n.html
-msgid "Clear all"
-msgstr "I-clear ang lahat"
-
-#: search/search_modal_i18n.html
-msgid "Search scope"
-msgstr "Saklaw ng paghahanap"
-
-#: search/search_modal_i18n.html
-msgid "Inside books"
-msgstr "Sa loob ng mga libro"
-
-#: search/search_modal_i18n.html
-msgid "Search filters"
-msgstr "Mga filter ng paghahanap"
-
-#: search/search_modal_i18n.html type/work/editions_datatable.html
-msgid "Availability"
-msgstr "Availability"
-
-#: search/search_modal_i18n.html
-msgid "Searching books and authors…"
-msgstr "Naghahanap ng mga libro at may-akda…"
-
-#: search/search_modal_i18n.html
-msgid "Searching inside books…"
-msgstr "Naghahanap sa loob ng mga libro…"
-
-#: search/search_modal_i18n.html
-msgid "No results found"
-msgstr "Walang nahanap na resulta"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Showing %s of %s results"
-msgstr "Nagpapakita ng %s sa %s na resulta"
-
-#: search/search_modal_i18n.html
-msgid "Untitled"
-msgstr "Walang Pamagat"
-
-#: search/search_modal_i18n.html
-msgid "Readable"
-msgstr "Mababasa"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Readable in %s"
-msgstr "Mababasa sa %s"
-
-#: search/search_modal_i18n.html
-msgid "Recent searches"
-msgstr "Mga kamakailang paghahanap"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Remove \"%s\" from recent searches"
-msgstr "Alisin ang \"%s\" mula sa mga kamakailang paghahanap"
-
-#: FulltextSearchSuggestion.html.jinja search/search_modal_i18n.html
-msgid "Search inside books"
-msgstr "Maghanap sa loob ng mga aklat"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s book"
-msgstr "Maghanap sa loob ng %s libro"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "Search Inside %s books"
-msgstr "Maghanap sa loob ng %s na aklat"
-
-#: search/search_modal_i18n.html
-msgid "View all"
-msgstr "Tingnan lahat"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books…"
-msgstr "Maghanap sa loob ng mga libro…"
-
-#: search/search_modal_i18n.html
-msgid "Type a word or phrase to find it on the pages of millions of books."
-msgstr "Mag-type ng salita o parirala upang mahanap ito sa mga pahina ng milyun-milyong libro."
-
-#: search/search_modal_i18n.html
-msgid "No matches inside books"
-msgstr "Walang tugma sa loob ng mga libro"
-
-#: search/search_modal_i18n.html
-msgid "Search inside books is temporarily unavailable. Please try again later."
-msgstr "Pansamantalang hindi available ang paghahanap sa loob ng mga libro. Pakisubukang muli mamaya."
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s match found inside books"
-msgstr "%s tugma ang natagpuan sa loob ng mga aklat"
-
-#: search/search_modal_i18n.html
-#, python-format
-msgid "%s matches found inside books"
-msgstr "%s na tugma ang natagpuan sa loob ng mga aklat"
 
 #: search/sort_options.html
 msgid "Relevance"
@@ -6058,7 +5777,7 @@ msgstr "Pinakamataas na Rating"
 msgid "Any"
 msgstr "Anuman"
 
-#: openlibrary/plugins/openlibrary/nav.py search/sort_options.html
+#: openlibrary/core/shell/nav.py search/sort_options.html
 msgid "Trending"
 msgstr "Kasalukuyang Uso"
 
@@ -6139,19 +5858,287 @@ msgstr "Pagsamahin ang mga duplicate"
 msgid "Less"
 msgstr "less"
 
-#: site/alert.html.jinja
+#: shell/alert.html.jinja
 msgid "Internet Archive logo"
 msgstr "Logo ng Internet Archive"
 
-#: site/head.html
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Donate"
+msgstr "Mag-donate"
+
+#: shell/alert.html.jinja shell/footer.html.jinja
+msgid "Change Website Language"
+msgstr "Palitan ang Wika ng Website"
+
+#: shell/base.html.jinja
+msgid "Skip to main content"
+msgstr "Lumaktaw sa pangunahing nilalaman"
+
+#: shell/base.html.jinja
+msgid "It looks like you're offline."
+msgstr "Mukhang ikaw ay offline."
+
+#: shell/browse_popover.html.jinja
+msgid "Browse books by topic"
+msgstr "Mag-browse ng mga aklat ayon sa paksa"
+
+#: shell/browse_popover.html.jinja
+msgid "Most popular right now"
+msgstr "Pinaka-popular ngayon"
+
+#: shell/browse_popover.html.jinja
+msgid "Browse the virtual shelves"
+msgstr "Mag-browse sa mga virtual na istante"
+
+#: shell/browse_popover.html.jinja
+msgid "Reader-curated collections"
+msgstr "Mga koleksyong kinurado ng mga mambabasa"
+
+#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+msgid "Browse"
+msgstr "Mag-browse"
+
+#: shell/footer.html.jinja
+msgid "Vision"
+msgstr "Bisyon"
+
+#: shell/footer.html.jinja
+msgid "Volunteer"
+msgstr "Maging boluntaryo"
+
+#: shell/footer.html.jinja
+msgid "Partner With Us"
+msgstr "Makipagtulungan sa Amin"
+
+#: shell/footer.html.jinja
+msgid "Jobs"
+msgstr "Mga Trabaho"
+
+#: shell/footer.html.jinja
+msgid "Careers"
+msgstr "Karera"
+
+#: shell/footer.html.jinja
+msgid "Blog"
+msgstr "Blog"
+
+#: shell/footer.html.jinja
+msgid "Terms of Service"
+msgstr "Mga Tuntunin ng Serbisyo"
+
+#: shell/footer.html.jinja
+msgid "Discover"
+msgstr "Tuklasin"
+
+#: shell/footer.html.jinja
+msgid "Go home"
+msgstr "Bumalik sa bahay"
+
+#: shell/footer.html.jinja
+msgid "Home"
+msgstr "Bahay"
+
+#: shell/footer.html.jinja
+msgid "Explore Books"
+msgstr "Galugarin ang mga Aklat"
+
+#: shell/footer.html.jinja
+msgid "Explore authors"
+msgstr "Galugarin ang mga may-akda"
+
+#: shell/footer.html.jinja
+msgid "Explore subjects"
+msgstr "Galugarin ang mga paksa"
+
+#: RelatedSubjects.html.jinja SearchNavigation.html SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+msgid "Subjects"
+msgstr "Mga Paksa"
+
+#: shell/footer.html.jinja
+msgid "Explore collections"
+msgstr "Galugarin ang mga koleksyon"
+
+#: openlibrary/core/shell/nav.py shell/footer.html.jinja type/page/view.html
+msgid "Collections"
+msgstr "Mga Koleksyon"
+
+#: shell/footer.html.jinja
+msgid "Navigate to top of this page"
+msgstr "Mag-navigate sa tuktok ng pahinang ito"
+
+#: shell/footer.html.jinja
+msgid "Return to Top"
+msgstr "Bumalik sa Tuktok"
+
+#: shell/footer.html.jinja
+msgid "Develop"
+msgstr "Bumuo"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library Developer Center"
+msgstr "Galugarin ang Open Library Developer Center"
+
+#: shell/footer.html.jinja shell/header.html.jinja
+msgid "Developer Center"
+msgstr "Developer Center"
+
+#: shell/footer.html.jinja
+msgid "Explore Open Library APIs"
+msgstr "Galugarin ang Open Library APIs"
+
+#: shell/footer.html.jinja
+msgid "API Documentation"
+msgstr "Dokumentasyon ng API"
+
+#: shell/footer.html.jinja
+msgid "Bulk Open Library data"
+msgstr "Bulk na data ng Open Library"
+
+#: shell/footer.html.jinja
+msgid "Bulk Data Dumps"
+msgstr "Bulk na Data Dumps"
+
+#: shell/footer.html.jinja
+msgid "Write a bot"
+msgstr "Sumulat ng bot"
+
+#: shell/footer.html.jinja
+msgid "Writing Bots"
+msgstr "Pagsusulat ng Bots"
+
+#: shell/footer.html.jinja
+msgid "Help Center"
+msgstr "Sentro ng Tulong"
+
+#: shell/footer.html.jinja
+msgid "Contact"
+msgstr "Makipag-ugnayan"
+
+#: shell/footer.html.jinja
+msgid "Contact Us"
+msgstr "Makipag-ugnayan sa Amin"
+
+#: shell/footer.html.jinja
+msgid "Suggest Edits"
+msgstr "Mag-suggest ng mga Pag-edit"
+
+#: shell/footer.html.jinja
+msgid "Suggesting Edits"
+msgstr "Pag-suggest ng mga Pag-edit"
+
+#: shell/footer.html.jinja
+msgid "Add a new book to Open Library"
+msgstr "Magdagdag ng bagong aklat sa Open Library"
+
+#: shell/footer.html.jinja
+msgid "Release Notes"
+msgstr "Mga Tala ng Paglalabas"
+
+#: shell/footer.html.jinja
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on Bluesky"
+msgstr "Bahay ng Open Library"
+
+#: shell/footer.html.jinja
+msgid "Twitter"
+msgstr "Twitter"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on Twitter"
+msgstr "Bahay ng Open Library"
+
+#: shell/footer.html.jinja
+msgid "GitHub"
+msgstr "GitHub"
+
+#: shell/footer.html.jinja
+#, fuzzy
+msgid "Open Library on GitHub"
+msgstr "Logo ng Open Library"
+
+#: shell/footer.html.jinja shell/header.html.jinja type/list/embed.html
+msgid "Open Library logo"
+msgstr "Logo ng Open Library"
+
+#: shell/footer.html.jinja
+msgid "Open Library is an initiative of the <a href=\"//archive.org/\">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in  digital form. Other <a href=\"//archive.org/projects/\">projects</a> include the <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> and <a href=\"//archive-it.org\">archive-it.org</a>"
+msgstr "Ang Open Library ay isang inisyatiba ng <a href=\"//archive.org/\">Internet Archive</a>, isang 501(c)(3) na non-profit, na nagtatayo ng digital na aklatan ng mga website ng Internet at iba pang mga kultural na artifact sa digital na anyo. Iba pang <a href=\"//archive.org/projects/\">mga proyekto</a> ay kinabibilangan ng <a href=\"//archive.org/web/\">Wayback Machine</a>, <a href=\"//archive.org/\">archive.org</a> at <a href=\"//archive-it.org\">archive-it.org</a>."
+
+#: shell/footer.html.jinja
+#, python-format
+msgid "version <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+msgstr "bersyon <a href=\"https://github.com/internetarchive/openlibrary/commit/%(git_rev_hash)s\">%(git_rev_hash)s</a>"
+
+#: shell/head.html.jinja
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published. Read, borrow, and discover more than 3M books for free."
 msgstr "Ang Open Library ay isang bukas, na-edit na katalogo ng aklatan, bumubuo patungo sa isang web pahina para sa bawat aklat na nailathala. Magbasa, manghiram, at matuklasan ang higit sa 3M aklat nang libre."
 
-#: site/stats.html.jinja
+#: shell/header.html.jinja
+msgid "The Internet Archive's Open Library: One page for every book"
+msgstr "Open Library ng Internet Archive: Isang pahina para sa bawat aklat"
+
+#: shell/header.html.jinja
+msgid "Search by barcode"
+msgstr "Maghanap gamit ang barcode"
+
+#: shell/header.html.jinja shell/header_dropdown.html.jinja
+msgid "Menu"
+msgstr "Menu"
+
+#: shell/header.html.jinja
+msgid "My account"
+msgstr "Aking account"
+
+#: shell/header.html.jinja
+msgid "My Open Library"
+msgstr "Aking Open Library"
+
+#: shell/header.html.jinja
+msgid "Loans, Reading Log, Lists, Stats"
+msgstr "Mga Pautang, Reading Log, Mga Listahan, Stats"
+
+#: shell/header.html.jinja
+msgid "My Profile"
+msgstr "Aking Profile"
+
+#: shell/header.html.jinja
+msgid "Pending Merge Requests"
+msgstr "Naka-abang na mga Kahilingan sa Pagsasama"
+
+#: shell/header.html.jinja
+msgid "Log out"
+msgstr "Mag-logout"
+
+#: shell/header.html.jinja
+msgid "Contribute"
+msgstr "Mag-ambag"
+
+#: shell/header.html.jinja
+msgid "Recent Community Edits"
+msgstr "Kamakailang Mga Pag-edit ng Komunidad"
+
+#: shell/header.html.jinja
+msgid "Resources"
+msgstr "Mga Mapagkukunan"
+
+#: shell/header.html.jinja
+msgid "Help & Support"
+msgstr "Tulong at Suporta"
+
+#: shell/header.html.jinja
+msgid "Librarians Portal"
+msgstr "Portal ng mga Librarian"
+
+#: shell/stats.html.jinja
 msgid "Debug Stats"
 msgstr "Stats ng Debug"
 
-#: EditionNavBar.html site/stats.html.jinja
+#: EditionNavBar.html shell/stats.html.jinja
 msgid "Details"
 msgstr "Detalye"
 
@@ -6299,7 +6286,7 @@ msgstr "May ibang pangalan ba ang may-akdang ito?"
 msgid "For example: Lev Nikolayevich Tolstoy was also known as Leo Tolstoy. Please list one name per line."
 msgstr "Halimbawa: Si Lev Nikolayevich Tolstoy ay kilala rin bilang Leo Tolstoy. Pakisulat ang isang pangalan sa bawat linya."
 
-#: type/author/edit.html
+#: openlibrary/plugins/openlibrary/contribute.py type/author/edit.html
 msgid "Identifiers"
 msgstr "Mga Tagatukoy"
 
@@ -6497,7 +6484,7 @@ msgstr "Petsa ng Paglathala"
 msgid "Show other books from %(publisher)s"
 msgstr "Ipakita ang iba pang mga aklat mula kay %(publisher)s"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Pages"
 msgstr "Mga Pahina"
 
@@ -6553,7 +6540,7 @@ msgstr "Isinalin Mula sa"
 msgid "External Links"
 msgstr "Mga Panlabas na Link"
 
-#: type/edition/view.html type/work/view.html
+#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
 msgid "Format"
 msgstr "Format"
 
@@ -7023,6 +7010,11 @@ msgstr "Kasalukuyang Naga-edit:"
 msgid "Display Name"
 msgstr "Pangalan sa Pagpapakita"
 
+#: openlibrary/core/shell/header.py type/user/view.html
+#, python-format
+msgid "Joined %(date)s"
+msgstr "Sumali noong %(date)s"
+
 #: type/user/view.html
 msgid "admin page"
 msgstr "admin na pahina"
@@ -7094,6 +7086,10 @@ msgstr "Tingnan ang lahat ng %(count)d edisyon?"
 #: type/work/editions_datatable.html
 msgid "Edition"
 msgstr "Edisyon"
+
+#: openlibrary/core/shell/search_modal.py type/work/editions_datatable.html
+msgid "Availability"
+msgstr "Availability"
 
 #: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
@@ -7285,6 +7281,10 @@ msgstr "Mag-e-expire"
 #, python-format
 msgid "by %(authors)s"
 msgstr "ni %(authors)s"
+
+#: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
+msgid "Search inside books"
+msgstr "Maghanap sa loob ng mga aklat"
 
 #: FulltextSearchSuggestion.html.jinja
 #, python-format
@@ -7925,6 +7925,313 @@ msgstr "Tingnan ang Dami %(num)d"
 msgid "Buy this book"
 msgstr "Bumili ng aklat na ito"
 
+#: contribute/parts.html.jinja
+#, python-format
+msgid "one of %(count)s editions of this work"
+msgstr "isa sa %(count)s na edisyon ng akdang ito"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Why this book: on about %(count)s readers' shelves."
+msgstr "Bakit ang aklat na ito: nasa humigit-kumulang %(count)s na shelf ng mga mambabasa."
+
+#: contribute/parts.html.jinja
+msgid "Go to book page"
+msgstr "Pumunta sa pahina ng aklat"
+
+#: contribute/parts.html.jinja
+msgid "Go to edit page"
+msgstr "Pumunta sa pahina ng pag-edit"
+
+#: contribute/parts.html.jinja
+msgid "How to answer"
+msgstr "Paano sumagot"
+
+#: contribute/parts.html.jinja
+msgid "This edition has no ISBN to search by, so look it up by title and author."
+msgstr "Walang ISBN ang edisyong ito na magagamit sa paghahanap, kaya hanapin ito sa pamamagitan ng pamagat at may-akda."
+
+#: contribute/parts.html.jinja
+msgid "Guideline"
+msgstr "Gabay"
+
+#: contribute/parts.html.jinja
+msgid "How this edit goes wrong"
+msgstr "Paano nagkakamali ang pag-edit na ito"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "The other edition"
+msgid_plural "The other %(count)d editions"
+msgstr[0] "Ang kabilang edisyon"
+msgstr[1] "Ang iba pang %(count)d edisyon"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "1 other value"
+msgid_plural "%(count)d other values"
+msgstr[0] "1 pang value"
+msgstr[1] "%(count)d pang value"
+
+#: contribute/parts.html.jinja
+msgid "Not filled in"
+msgstr "Hindi napunan"
+
+#: contribute/parts.html.jinja
+msgid "See each edition"
+msgstr "Tingnan ang bawat edisyon"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "And %(count)s more."
+msgstr "At %(count)s pa."
+
+#: contribute/parts.html.jinja
+msgid "That looks like a valid number."
+msgstr "Mukhang valid na numero iyan."
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Will be stored as %(value)s."
+msgstr "Maiimbak bilang %(value)s."
+
+#: contribute/parts.html.jinja
+msgid "Paste only the number, not the web address."
+msgstr "I-paste lamang ang numero, hindi ang web address."
+
+#: contribute/parts.html.jinja openlibrary/contribute/save.py
+msgid "That is not a valid number for this catalog."
+msgstr "Hindi iyan valid na numero para sa katalogong ito."
+
+#: contribute/parts.html.jinja
+msgid "Choose a language"
+msgstr "Pumili ng wika"
+
+#: contribute/parts.html.jinja
+msgid "Filter languages"
+msgstr "I-filter ang mga wika"
+
+#: contribute/parts.html.jinja
+msgid "No matching language"
+msgstr "Walang tugmang wika"
+
+#: contribute/parts.html.jinja
+msgid "Other editions say"
+msgstr "Sinasabi ng ibang edisyon"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(value)s, on 1 edition"
+msgid_plural "%(value)s, on %(count)d editions"
+msgstr[0] "%(value)s, sa 1 edisyon"
+msgstr[1] "%(value)s, sa %(count)d na edisyon"
+
+#: contribute/parts.html.jinja
+msgid "I opened the record and the year and publisher match this edition."
+msgstr "Binuksan ko ang record at tumutugma ang taon at publisher sa edisyong ito."
+
+#: contribute/parts.html.jinja
+msgid "Add a comment about your edit"
+msgstr "Magdagdag ng komento tungkol sa iyong pag-edit"
+
+#: contribute/parts.html.jinja
+msgid "Edit comment"
+msgstr "I-edit ang komento"
+
+#: contribute/parts.html.jinja
+msgid "Where you found it"
+msgstr "Kung saan mo ito nakita"
+
+#: contribute/parts.html.jinja
+msgid "Save and next"
+msgstr "I-save at sumunod"
+
+#: contribute/parts.html.jinja
+msgid "I couldn't find it"
+msgstr "Hindi ko ito nahanap"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Next: a random task from %(filter)s"
+msgstr "Susunod: isang random na gawain mula sa %(filter)s"
+
+#: contribute/parts.html.jinja
+msgid "Next: a random task from all open tasks"
+msgstr "Susunod: isang random na gawain mula sa lahat ng bukas na gawain"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat"
+msgstr "WorldCat"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Google Books"
+msgstr "Google Books"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Amazon"
+msgstr "Amazon"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress"
+msgstr "Library of Congress"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in language"
+msgstr "Punan ang wika"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up in WorldCat or Google Books; both list the language of the text. The title page and cover tell you too."
+msgstr "Hanapin ang ISBN sa WorldCat o Google Books; parehong naglilista ng wika ng teksto. Sinasabi rin ito ng title page at cover."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
+msgstr "Karaniwang pareho ang wika ng mga edisyon ng isang akda, pero hindi ito gagana sa isang salin. Suriin ang sariling teksto ng edisyong ito."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Record the language of the text, not the language of the title page. A translation is in the language it was translated into."
+msgstr "Itala ang wika ng teksto, hindi ang wika ng title page. Ang isang salin ay nasa wikang pinagsalinan nito."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example English"
+msgstr "Halimbawa, Ingles"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Page count"
+msgstr "Bilang ng pahina"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in page count"
+msgstr "Punan ang bilang ng pahina"
+
+#: openlibrary/contribute/field_guides.py
+msgid "How many pages does this edition have?"
+msgstr "Ilang pahina mayroon ang edisyong ito?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "WorldCat lists the page count in the record's description. Google Books calls it Length. Make sure the record is for this ISBN, not another printing."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 320"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publisher"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Who published this edition?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The imprint is printed on the title page and the spine. WorldCat and the Library of Congress list it under Publisher."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Publisher as printed"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Library of Congress number (LCCN)"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in LCCN"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's Library of Congress number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address instead of the number itself."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 75425165"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "OCLC/WorldCat number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in OCLC number"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's WorldCat (OCLC) number?"
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
+msgstr ""
+
+#: openlibrary/contribute/field_guides.py
+msgid "Digits only, for example 47810608"
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Pick a language from the list."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Enter the page count as a whole number."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "Fill in an answer, or choose “I couldn't find it”."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+msgid "This field can't be filled in here."
+msgstr ""
+
+#: openlibrary/contribute/save.py
+#, python-format
+msgid "Filled in %(field)s from Open Library Tasks"
+msgstr ""
+
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
 msgstr "[Talaan ay tinanggal]"
@@ -7932,6 +8239,169 @@ msgstr "[Talaan ay tinanggal]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "Hindi Kilala"
+
+#: openlibrary/core/shell/nav.py
+msgid "K-12 Student Library"
+msgstr "Aklatan ng mga Estudyante K-12"
+
+#: openlibrary/core/shell/nav.py
+msgid "Book Talks"
+msgstr "Mga Usapan Tungkol sa Aklat"
+
+#: openlibrary/core/shell/nav.py
+msgid "Random Book"
+msgstr "Random na Aklat"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "All books"
+msgstr "Lahat ng aklat"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "Free to read now"
+msgstr "Libreng basahin ngayon"
+
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
+msgid "Borrow online"
+msgstr "Manghiram Online"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search Open Library"
+msgstr "Maghanap sa Open Library"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search books and authors…"
+msgstr "Maghanap ng mga aklat at may-akda…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Close search"
+msgstr "Isara ang paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Clear search"
+msgstr "I-clear ang paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "See results"
+msgstr "Tingnan ang mga resulta"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Go to full search"
+msgstr "Pumunta sa buong paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s book"
+msgstr "Tingnan ang %s aklat"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See %s books"
+msgstr "Tingnan ang %s na aklat"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "See all %s books"
+msgstr "Tingnan ang lahat ng %s na aklat"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "All %s books"
+msgstr "Lahat ng %s na aklat"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Clear all"
+msgstr "I-clear ang lahat"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search scope"
+msgstr "Saklaw ng paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Inside books"
+msgstr "Sa loob ng mga libro"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search filters"
+msgstr "Mga filter ng paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching books and authors…"
+msgstr "Naghahanap ng mga libro at may-akda…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Searching inside books…"
+msgstr "Naghahanap sa loob ng mga libro…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "No results found"
+msgstr "Walang nahanap na resulta"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Showing %s of %s results"
+msgstr "Nagpapakita ng %s sa %s na resulta"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Untitled"
+msgstr "Walang Pamagat"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Readable"
+msgstr "Mababasa"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Readable in %s"
+msgstr "Mababasa sa %s"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Recent searches"
+msgstr "Mga kamakailang paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Remove \"%s\" from recent searches"
+msgstr "Alisin ang \"%s\" mula sa mga kamakailang paghahanap"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s book"
+msgstr "Maghanap sa loob ng %s libro"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "Search Inside %s books"
+msgstr "Maghanap sa loob ng %s na aklat"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "View all"
+msgstr "Tingnan lahat"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books…"
+msgstr "Maghanap sa loob ng mga libro…"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Type a word or phrase to find it on the pages of millions of books."
+msgstr "Mag-type ng salita o parirala upang mahanap ito sa mga pahina ng milyun-milyong libro."
+
+#: openlibrary/core/shell/search_modal.py
+msgid "No matches inside books"
+msgstr "Walang tugma sa loob ng mga libro"
+
+#: openlibrary/core/shell/search_modal.py
+msgid "Search inside books is temporarily unavailable. Please try again later."
+msgstr "Pansamantalang hindi available ang paghahanap sa loob ng mga libro. Pakisubukang muli mamaya."
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s match found inside books"
+msgstr "%s tugma ang natagpuan sa loob ng mga aklat"
+
+#: openlibrary/core/shell/search_modal.py
+#, python-format
+msgid "%s matches found inside books"
+msgstr "%s na tugma ang natagpuan sa loob ng mga aklat"
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -8317,6 +8787,43 @@ msgstr "Tsino"
 msgid "Filipino"
 msgstr "Filipino"
 
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are open to librarians only, for now"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Published"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "OCLC"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "All open tasks"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "Missing: %(field)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Most needed"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing missing here right now. Thank you."
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Nothing to fill in here"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Open the record and confirm it matches this edition first."
+msgstr ""
+
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Art"
 msgstr "Sining"
@@ -8405,25 +8912,9 @@ msgstr "Mayroong LoC klasipikasyon"
 msgid "Has number of pages"
 msgstr "Mayroong bilang ng mga pahina"
 
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "K-12 Student Library"
-msgstr "Aklatan ng mga Estudyante K-12"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Book Talks"
-msgstr "Mga Usapan Tungkol sa Aklat"
-
-#: openlibrary/plugins/openlibrary/nav.py
-msgid "Random Book"
-msgstr "Random na Aklat"
-
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Better World Books"
 msgstr "Mas Magandang Mundo ng mga Aklat"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Amazon"
-msgstr "Amazon"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -8612,6 +9103,16 @@ msgstr "Ang iyong email address"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Pumili ng password"
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s. Your loan is due %(due)s."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+#, python-format
+msgid "Borrowed from %(library)s."
+msgstr ""
 
 #: openlibrary/plugins/upstream/models.py
 #, python-format
