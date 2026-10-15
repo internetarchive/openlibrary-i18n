@@ -744,7 +744,7 @@ msgstr "今年"
 msgid "All Time"
 msgstr "全期間"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py trending.html
+#: openlibrary/plugins/openlibrary/api.py trending.html
 msgid "Trending Books"
 msgstr "トレンドの本"
 
@@ -1345,10 +1345,10 @@ msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">本を検索</a>して借りましょう。"
 
 #: account/loans.html
-msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
-msgstr "借りる本をお探しですか？スタッフのおすすめをご覧になるか、特定のサブジェクトで本を検索してください："
+msgid "Looking for a book to borrow? Check out our staff picks:"
+msgstr "借りる本をお探しですか？スタッフのおすすめをご覧ください："
 
-#: account/loans.html home/index.html
+#: account/loans.html
 msgid "Books We Love"
 msgstr "私たちのおすすめ本"
 
@@ -2072,7 +2072,7 @@ msgstr "追加された著者"
 msgid "Covers Added"
 msgstr "追加された表紙"
 
-#: admin/index.html home/stats.html
+#: admin/index.html openlibrary/plugins/openlibrary/home.py
 msgid "New Members"
 msgstr "新規メンバー"
 
@@ -2124,7 +2124,7 @@ msgstr "星評価された本"
 msgid "Star Rating Patrons"
 msgstr "星評価している利用者"
 
-#: admin/index.html home/stats.html
+#: admin/index.html
 msgid "Unique Visitors"
 msgstr "ユニークビジター"
 
@@ -3176,6 +3176,37 @@ msgstr "これらのどれも追加したい本と一致しません。"
 msgid "Continue"
 msgstr "続ける"
 
+#: books/custom_carousel.html.jinja
+#, python-format
+msgid "See all %(title)s"
+msgstr "%(title)sをすべて見る"
+
+#: CarouselSkeleton.html.jinja books/custom_carousel.html.jinja lists/carousel.html.jinja lists/home.html lists/showcase.html
+msgid "See all"
+msgstr "すべて見る"
+
+#: books/custom_carousel.html.jinja
+msgid "Previous page"
+msgstr "前のページ"
+
+#: books/custom_carousel.html.jinja
+msgid "Next page"
+msgstr "次のページ"
+
+#: books/custom_carousel.html.jinja
+msgid "Carousel pages"
+msgstr "カルーセルページ"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Go to page {page} of {total}"
+msgstr "{total}ページ中{page}ページ目に移動"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Page {page} of {total}"
+msgstr "{total}ページ中{page}ページ目"
+
 #: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
@@ -4104,6 +4135,49 @@ msgstr "次のタスク"
 msgid "Pick a different book"
 msgstr "別の本を選ぶ"
 
+#: contribute/landing.html.jinja
+msgid "Open Library Tasks"
+msgstr "Open Libraryのタスク"
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+msgstr "Open Libraryは毎月%(readers)s人の読者に%(books)s冊の登録された本を提供しており、%(mark_start)sOpen Librarian%(mark_end)sたちは毎週何千もの編集を行っています。"
+
+#: contribute/landing.html.jinja
+msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
+msgstr "Open Libraryには、表紙、言語、出版社などの詳細情報が欠けている本がまだ多くあります。あなたの力でそれらを補うことができます。"
+
+#: contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "最近の編集"
+
+#: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "%(authors)s 著"
+
+#: contribute/landing.html.jinja
+msgid "Quiet for the moment. Edits show up here as they happen."
+msgstr "現在は動きがありません。編集が行われるとここに表示されます。"
+
+#: contribute/landing.html.jinja
+msgid "What a task looks like"
+msgstr "タスクの例"
+
+#: contribute/landing.html.jinja
+msgid "Each task is one book and one empty field. Here are just a few examples."
+msgstr "各タスクは1冊の本と1つの空の項目です。以下はほんの一例です。"
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Add %(field)s"
+msgstr "%(field)sを追加"
+
+#: contribute/landing.html.jinja
+msgid "Join in"
+msgstr "参加する"
+
 #: contribute/nothing.html.jinja
 #, python-format
 msgid "%(field)s is already filled in on this edition"
@@ -4330,111 +4404,96 @@ msgstr "Wikipediaと同様に、カタログに新しい情報や修正を追加
 msgid "Latest Blog Posts"
 msgstr "最新のブログ記事"
 
-#: home/categories.html
-msgid "Browse by Subject"
-msgstr "サブジェクトで閲覧"
+#: home/browse_stacks.html.jinja
+msgid "Browse the stacks"
+msgstr "書架を閲覧する"
 
-#: home/categories.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+msgid "Trending"
+msgstr "トレンド"
+
+#: home/browse_stacks.html.jinja openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid "%(count)s Book"
-msgid_plural "%(count)s Books"
-msgstr[0] "%(count)s冊の本"
+msgid "Trending in %(genre)s"
+msgstr "%(genre)sで話題"
+
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja
+msgid "Jump to"
+msgstr "移動先"
+
+#: home/genre_shelf.html.jinja
+#, python-format
+msgid "%(genre)s subgenres"
+msgstr "%(genre)sのサブジャンル"
+
+#: home/genre_shelf.html.jinja merge_request_table/table_header.html
+msgid "Newest"
+msgstr "新しい順"
+
+#: home/genre_shelf.html.jinja
+msgid "Top rated"
+msgstr "評価の高い"
+
+#: home/genre_shelf.html.jinja search/sort_options.html
+msgid "Sort by"
+msgstr "並び替え基準"
 
 #: home/index.html home/welcome.html
 msgid "Welcome to Open Library"
 msgstr "Open Libraryへようこそ"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Classic Books"
-msgstr "古典書"
-
 #: home/index.html
-msgid "Recently Returned"
-msgstr "最近返却された本"
+msgid "Couldn't load this shelf. Try again?"
+msgstr "この棚を読み込めませんでした。再試行しますか？"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-msgid "Romance"
-msgstr "ロマンス"
+#: home/library_row.html.jinja
+msgid "A library made by the people who use it."
+msgstr "利用する人々によって作られた図書館。"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Kids"
-msgstr "子ども向け"
+#: home/library_row.html.jinja
+msgid "A catalog for every book ever published, maintained by readers like you."
+msgstr "これまでに出版されたすべての本のカタログを、あなたのような読者が維持しています。"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Thrillers"
-msgstr "スリラー"
+#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "Open Librarianになる"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-msgid "Textbooks"
-msgstr "教科書"
+#: home/library_row.html.jinja
+msgid "Editable"
+msgstr "編集可能"
 
-#: home/index.html
-msgid "Authors Alliance & MIT Press"
-msgstr "Authors Alliance & MIT Press"
+#: home/library_row.html.jinja
+msgid "By anyone, like Wikipedia"
+msgstr "Wikipediaのように誰でも"
 
-#: home/index.html
-msgid "Books in Local Environment"
-msgstr "ローカル環境の本"
+#: home/library_row.html.jinja
+msgid "Public"
+msgstr "公開"
 
-#: home/stats.html
-msgid "Around the Library"
-msgstr "図書館の動向"
+#: home/library_row.html.jinja
+msgid "Every record, free to download"
+msgstr "すべてのレコードを無料でダウンロード可能"
 
-#: home/stats.html
-msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
-msgstr "過去28日間の動向です。さらに<a href=\"/recentchanges\">最近の変更</a>"
+#: home/library_row.html.jinja
+msgid "Nonprofit"
+msgstr "非営利"
 
-#: home/stats.html
-msgid "See all visitors to OpenLibrary.org"
-msgstr "OpenLibrary.orgへのすべての訪問者を見る"
+#: home/library_row.html.jinja
+msgid "Run by the Internet Archive"
+msgstr "Internet Archiveによって運営"
 
-#: home/stats.html
-msgid "Area graph of recent unique visitors"
-msgstr "最近のユニーク訪問者のエリアグラフ"
+#: home/library_row.html.jinja
+msgid "In the last month"
+msgstr "過去1か月間"
 
-#: home/stats.html
-msgid "How many new Open Library members have we welcomed?"
-msgstr "どれだけの新しいOpen Libraryメンバーを迎えましたか？"
+#: home/library_row.html.jinja
+msgid "Change over the month, by 7-day average"
+msgstr "7日間平均による月間の変化"
 
-#: home/stats.html
-msgid "Area graph of new members"
-msgstr "新規メンバーのエリアグラフ"
-
-#: home/stats.html
-msgid "People are constantly updating the catalog"
-msgstr "人々は常にカタログを更新しています"
-
-#: home/stats.html
-msgid "Area graph of recent catalog edits"
-msgstr "最近のカタログ編集のエリアグラフ"
-
-#: home/stats.html
-msgid "Catalog Edits"
-msgstr "カタログ編集"
-
-#: home/stats.html
-msgid "Members can create Lists"
-msgstr "メンバーはリストを作成できます"
-
-#: home/stats.html
-msgid "Area graph of lists created recently"
-msgstr "最近作成されたリストのエリアグラフ"
-
-#: home/stats.html
-msgid "Lists Created"
-msgstr "作成されたリスト"
-
-#: home/stats.html
-msgid "We're a library, so we lend books, too"
-msgstr "私たちは図書館なので、本も貸し出します"
-
-#: home/stats.html
-msgid "Area graph of ebooks borrowed recently"
-msgstr "最近借りられた電子書籍のエリアグラフ"
-
-#: home/stats.html
-msgid "eBooks Borrowed"
-msgstr "借りられた電子書籍"
+#: home/library_row.html.jinja
+#, python-format
+msgid "Up %(percent)d%% over the month"
+msgstr "月間で%(percent)d%%増加"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -4475,14 +4534,6 @@ msgstr "全文検索を試す"
 #: home/welcome.html
 msgid "Find matching results within the text of millions of books"
 msgstr "数百万冊のテキスト内から一致する結果を見つける"
-
-#: home/welcome.html
-msgid "Be an Open Librarian"
-msgstr "オープンライブラリアンになる"
-
-#: home/welcome.html
-msgid "Dozens of ways you can help improve the library"
-msgstr "図書館の改善を助ける多くの方法"
 
 #: home/welcome.html
 msgid "Volunteer at Open Library"
@@ -4566,7 +4617,7 @@ msgstr "このコードをあなたのWikipediaページにコピー＆ペース
 msgid "Copy Wikipedia citation"
 msgstr "Wikipedia引用をコピー"
 
-#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
+#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "History"
 msgstr "履歴"
 
@@ -4614,10 +4665,6 @@ msgstr "データ品質テーブル"
 #: librarian_dashboard/data_quality_table.html
 msgid "Quality Criteria"
 msgstr "品質基準"
-
-#: lists/carousel.html.jinja lists/home.html lists/showcase.html
-msgid "See all"
-msgstr "すべて見る"
 
 #: lists/export_as_html.html
 #, fuzzy, python-format
@@ -5029,10 +5076,6 @@ msgstr "並び替え ▾"
 #: merge_request_table/table_header.html
 msgid "Sort"
 msgstr "並び替え"
-
-#: merge_request_table/table_header.html
-msgid "Newest"
-msgstr "新しい順"
 
 #: merge_request_table/table_header.html
 msgid "Oldest"
@@ -5734,17 +5777,9 @@ msgstr "評価が高い順"
 msgid "Any"
 msgstr "すべて"
 
-#: openlibrary/core/shell/nav.py search/sort_options.html
-msgid "Trending"
-msgstr "トレンド"
-
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "作品タイトル（ベータ：司書専用）"
-
-#: search/sort_options.html
-msgid "Sort by"
-msgstr "並び替え基準"
 
 #: search/sort_options.html
 msgid "Sort results"
@@ -6070,6 +6105,10 @@ msgstr "ログアウト"
 #: shell/header.html.jinja
 msgid "Contribute"
 msgstr "貢献"
+
+#: shell/header.html.jinja
+msgid "Improve the Catalog"
+msgstr "カタログを改善する"
 
 #: shell/header.html.jinja
 msgid "Recent Community Edits"
@@ -6809,7 +6848,7 @@ msgstr "書き手："
 msgid "Readers"
 msgstr "読者"
 
-#: type/permission/view.html
+#: openlibrary/plugins/openlibrary/home_genres.py type/permission/view.html
 msgid "Writers"
 msgstr "書き手"
 
@@ -7170,6 +7209,10 @@ msgstr "本のプレビュー"
 msgid "See more about this book on Archive.org"
 msgstr "Archive.orgでこの本の詳細を見る"
 
+#: CarouselSkeleton.html.jinja
+msgid "Loading carousel"
+msgstr "カルーセルを読み込み中"
+
 #: CheckWorldcat.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "近くの図書館"
@@ -7214,11 +7257,6 @@ msgstr "次のセクションへ"
 #: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "有効期限"
-
-#: FulltextResultIA.html.jinja
-#, python-format
-msgid "by %(authors)s"
-msgstr "%(authors)s 著"
 
 #: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
 msgid "Search inside books"
@@ -7985,6 +8023,42 @@ msgstr "次へ：%(filter)sからランダムなタスク"
 msgid "Next: a random task from all open tasks"
 msgstr "次へ：すべての未完了タスクからランダムなタスク"
 
+#: openlibrary/contribute/feed.py
+msgid "Edited this book"
+msgstr "この本を編集しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Added this book"
+msgstr "この本を追加しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Added a cover"
+msgstr "表紙を追加しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate authors"
+msgstr "重複した著者を統合しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate works"
+msgstr "重複した作品を統合しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Updated this record"
+msgstr "このレコードを更新しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Edited this author"
+msgstr "この著者を編集しました"
+
+#: openlibrary/contribute/feed.py
+msgid "Reverted an edit"
+msgstr "編集を取り消しました"
+
+#: openlibrary/contribute/feed.py
+msgid "a visitor"
+msgstr "訪問者"
+
 #: openlibrary/contribute/field_guides.py
 msgid "WorldCat"
 msgstr "WorldCat"
@@ -8653,6 +8727,26 @@ msgstr "利用者はアクセスする前に、この版が自分のニーズに
 msgid "Search Results"
 msgstr "検索結果"
 
+#: openlibrary/plugins/openlibrary/api.py
+msgid "Classic Books"
+msgstr "古典書"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
+msgid "Romance"
+msgstr "ロマンス"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home_genres.py
+msgid "Kids"
+msgstr "子ども向け"
+
+#: openlibrary/plugins/openlibrary/api.py
+msgid "Thrillers"
+msgstr "スリラー"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
+msgid "Textbooks"
+msgstr "教科書"
+
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
 msgstr "アラビア語"
@@ -8742,6 +8836,26 @@ msgid "All open tasks"
 msgstr "すべての未完了タスク"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+msgstr "タスクはOpen Librarian向けです。申し込みには数分かかります。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+msgstr "申し込みには数分かかり、Open Libraryのユーザー名が必要です。まず無料アカウントを作成してください。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Create an account"
+msgstr "アカウントを作成"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Log in"
+msgstr "ログイン"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Book cover"
+msgstr "表紙"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "不足：%(field)s"
@@ -8763,6 +8877,22 @@ msgid "Open the record and confirm it matches this edition first."
 msgstr "まずレコードを開き、この版と一致することを確認してください。"
 
 #: openlibrary/plugins/openlibrary/home.py
+msgid "Books Read"
+msgstr "読んだ本"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Catalog Edits"
+msgstr "カタログ編集"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Lists Updated"
+msgstr "更新されたリスト"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Lists Created"
+msgstr "作成されたリスト"
+
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Art"
 msgstr "芸術"
 
@@ -8770,7 +8900,7 @@ msgstr "芸術"
 msgid "Science Fiction"
 msgstr "サイエンスフィクション"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Fantasy"
 msgstr "ファンタジー"
 
@@ -8790,7 +8920,7 @@ msgstr "子ども向け"
 msgid "Medicine"
 msgstr "医学"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Religion"
 msgstr ""
@@ -8807,9 +8937,145 @@ msgstr "戯曲"
 msgid "Music"
 msgstr "音楽"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Science"
 msgstr "科学"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Biography"
+msgstr "伝記"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Philosophy"
+msgstr "哲学"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Psychology"
+msgstr "心理学"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Poetry"
+msgstr "詩"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Travel"
+msgstr "旅行"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Cooking"
+msgstr "料理"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Friendship"
+msgstr "友情"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Adventure"
+msgstr "冒険"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Mystery"
+msgstr "ミステリー"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "School"
+msgstr "学校"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Picture books"
+msgstr "絵本"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Humor"
+msgstr "ユーモア"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "United States"
+msgstr "アメリカ合衆国"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Great Britain"
+msgstr "イギリス"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "World War II"
+msgstr "第二次世界大戦"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Military"
+msgstr "軍事"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Ancient"
+msgstr "古代"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Middle Ages"
+msgstr "中世"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Historical"
+msgstr "歴史"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Western"
+msgstr "西部劇"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Regency"
+msgstr "リージェンシー"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Paranormal"
+msgstr "超常現象"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Contemporary"
+msgstr "現代"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Suspense"
+msgstr "サスペンス"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Women"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Memoir"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Royalty"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Artists"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Presidents"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "What's new"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Books we love"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Classics"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Most wanted"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Featured"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
@@ -8866,8 +9132,14 @@ msgid "This work does not appear on any lists."
 msgstr "この作品はどのリストにも表示されていません。"
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid "Loading carousel"
-msgstr "カルーセルを読み込み中"
+#, python-format
+msgid "Newest in %(genre)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid "Top rated in %(genre)s"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "On the Same Shelf"
@@ -9044,6 +9316,22 @@ msgstr "メールアドレス"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "パスワードを選択"
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library could not reach that library to return this book. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library is no longer connected to that library. Please borrow again to reconnect, then return."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "That library could not return this book right now. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "This book has been returned."
+msgstr ""
 
 #: openlibrary/plugins/upstream/lenny.py
 #, python-format
@@ -10439,4 +10727,68 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "Only a preview is available."
 #~ msgstr "プレビューのみ利用可能です。"
+
+#~ msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
+#~ msgstr "借りる本をお探しですか？スタッフのおすすめをご覧になるか、特定のサブジェクトで本を検索してください："
+
+#~ msgid "Browse by Subject"
+#~ msgstr "サブジェクトで閲覧"
+
+#~ msgid "%(count)s Book"
+#~ msgid_plural "%(count)s Books"
+#~ msgstr[0] "%(count)s冊の本"
+
+#~ msgid "Recently Returned"
+#~ msgstr "最近返却された本"
+
+#~ msgid "Authors Alliance & MIT Press"
+#~ msgstr "Authors Alliance & MIT Press"
+
+#~ msgid "Books in Local Environment"
+#~ msgstr "ローカル環境の本"
+
+#~ msgid "Around the Library"
+#~ msgstr "図書館の動向"
+
+#~ msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
+#~ msgstr "過去28日間の動向です。さらに<a href=\"/recentchanges\">最近の変更</a>"
+
+#~ msgid "See all visitors to OpenLibrary.org"
+#~ msgstr "OpenLibrary.orgへのすべての訪問者を見る"
+
+#~ msgid "Area graph of recent unique visitors"
+#~ msgstr "最近のユニーク訪問者のエリアグラフ"
+
+#~ msgid "How many new Open Library members have we welcomed?"
+#~ msgstr "どれだけの新しいOpen Libraryメンバーを迎えましたか？"
+
+#~ msgid "Area graph of new members"
+#~ msgstr "新規メンバーのエリアグラフ"
+
+#~ msgid "People are constantly updating the catalog"
+#~ msgstr "人々は常にカタログを更新しています"
+
+#~ msgid "Area graph of recent catalog edits"
+#~ msgstr "最近のカタログ編集のエリアグラフ"
+
+#~ msgid "Members can create Lists"
+#~ msgstr "メンバーはリストを作成できます"
+
+#~ msgid "Area graph of lists created recently"
+#~ msgstr "最近作成されたリストのエリアグラフ"
+
+#~ msgid "We're a library, so we lend books, too"
+#~ msgstr "私たちは図書館なので、本も貸し出します"
+
+#~ msgid "Area graph of ebooks borrowed recently"
+#~ msgstr "最近借りられた電子書籍のエリアグラフ"
+
+#~ msgid "eBooks Borrowed"
+#~ msgstr "借りられた電子書籍"
+
+#~ msgid "Be an Open Librarian"
+#~ msgstr "オープンライブラリアンになる"
+
+#~ msgid "Dozens of ways you can help improve the library"
+#~ msgstr "図書館の改善を助ける多くの方法"
 
