@@ -780,7 +780,7 @@ msgstr "Dieses Jahr"
 msgid "All Time"
 msgstr "Gesamtzeit"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py trending.html
+#: openlibrary/plugins/openlibrary/api.py trending.html
 msgid "Trending Books"
 msgstr "Beliebte Bücher"
 
@@ -1404,10 +1404,10 @@ msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "Ein Buch zur Ausleihe <a href=\"/search\">suchen</a> ."
 
 #: account/loans.html
-msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
-msgstr "Suchen Sie nach einem Buch zur Ausleihe? Schauen Sie sich unsere Empfehlungen an oder suchen Sie Bücher zu einem bestimmten Thema:"
+msgid "Looking for a book to borrow? Check out our staff picks:"
+msgstr "Suchen Sie ein Buch zum Ausleihen? Schauen Sie sich unsere Empfehlungen an:"
 
-#: account/loans.html home/index.html
+#: account/loans.html
 msgid "Books We Love"
 msgstr "Bücher die wir lieben"
 
@@ -1461,6 +1461,10 @@ msgstr "Meine Rezensionen"
 #: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
 msgid "Unknown author"
 msgstr "Unbekannter Autor"
+
+#: account/notes.html
+msgid "My notes for this work"
+msgstr "Meine Notizen zu diesem Werk"
 
 #: account/notes.html
 msgid "My notes for an edition of "
@@ -2156,7 +2160,7 @@ msgstr "Autoren hinzugefügt"
 msgid "Covers Added"
 msgstr "Titelbilder hinzugefügt"
 
-#: admin/index.html home/stats.html
+#: admin/index.html openlibrary/plugins/openlibrary/home.py
 msgid "New Members"
 msgstr "Neue Mitglieder"
 
@@ -2210,7 +2214,7 @@ msgstr "Bewertete Bücher"
 msgid "Star Rating Patrons"
 msgstr "Patrons, die Sternebewertungen abgeben"
 
-#: admin/index.html home/stats.html
+#: admin/index.html
 msgid "Unique Visitors"
 msgstr "Individuelle Besucher"
 
@@ -3330,6 +3334,37 @@ msgstr "Keines dieser Ergebnisse stimmt mit dem Buch überein, das ich hinzufüg
 msgid "Continue"
 msgstr "Mitarbeiten"
 
+#: books/custom_carousel.html.jinja
+#, python-format
+msgid "See all %(title)s"
+msgstr "Alle %(title)s anzeigen"
+
+#: CarouselSkeleton.html.jinja books/custom_carousel.html.jinja lists/carousel.html.jinja lists/home.html lists/showcase.html
+msgid "See all"
+msgstr "Alle anzeigen"
+
+#: books/custom_carousel.html.jinja
+msgid "Previous page"
+msgstr "Vorherige Seite"
+
+#: books/custom_carousel.html.jinja
+msgid "Next page"
+msgstr "Nächste Seite"
+
+#: books/custom_carousel.html.jinja
+msgid "Carousel pages"
+msgstr "Karussell-Seiten"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Go to page {page} of {total}"
+msgstr "Zu Seite {page} von {total} gehen"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Page {page} of {total}"
+msgstr "Seite {page} von {total}"
+
 #: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
@@ -4279,6 +4314,49 @@ msgstr "Nächste Aufgabe"
 msgid "Pick a different book"
 msgstr "Ein anderes Buch auswählen"
 
+#: contribute/landing.html.jinja
+msgid "Open Library Tasks"
+msgstr "Open Library Aufgaben"
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+msgstr "Open Library bedient jeden Monat %(readers)s Leser*innen mit %(books)s katalogisierten Büchern, und die %(mark_start)sOpen Librarians%(mark_end)s nehmen jede Woche Tausende von Bearbeitungen vor."
+
+#: contribute/landing.html.jinja
+msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
+msgstr "Bei vielen Büchern auf Open Library fehlt noch ein Detail: ein Cover, eine Sprache, ein Verlag. Sie können helfen, diese zu ergänzen."
+
+#: contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Kürzliche Bearbeitungen"
+
+#: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "von %(authors)s"
+
+#: contribute/landing.html.jinja
+msgid "Quiet for the moment. Edits show up here as they happen."
+msgstr "Momentan ruhig. Bearbeitungen erscheinen hier, sobald sie stattfinden."
+
+#: contribute/landing.html.jinja
+msgid "What a task looks like"
+msgstr "Wie eine Aufgabe aussieht"
+
+#: contribute/landing.html.jinja
+msgid "Each task is one book and one empty field. Here are just a few examples."
+msgstr "Jede Aufgabe besteht aus einem Buch und einem leeren Feld. Hier sind nur ein paar Beispiele."
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Add %(field)s"
+msgstr "%(field)s hinzufügen"
+
+#: contribute/landing.html.jinja
+msgid "Join in"
+msgstr "Mitmachen"
+
 #: contribute/nothing.html.jinja
 #, python-format
 msgid "%(field)s is already filled in on this edition"
@@ -4519,112 +4597,96 @@ msgstr "Wie in der Wikipedia auch, können Sie neue Informationen und Korrekture
 msgid "Latest Blog Posts"
 msgstr "Letzte Blog-Beiträge"
 
-#: home/categories.html
-msgid "Browse by Subject"
-msgstr "Nach Themen durchsuchen"
+#: home/browse_stacks.html.jinja
+msgid "Browse the stacks"
+msgstr "Durch die Regale stöbern"
 
-#: home/categories.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+msgid "Trending"
+msgstr "Beliebt"
+
+#: home/browse_stacks.html.jinja openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid "%(count)s Book"
-msgid_plural "%(count)s Books"
-msgstr[0] "%(count)s Buch"
-msgstr[1] "%(count)s Bücher"
+msgid "Trending in %(genre)s"
+msgstr "Beliebt in %(genre)s"
+
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja
+msgid "Jump to"
+msgstr "Springen zu"
+
+#: home/genre_shelf.html.jinja
+#, python-format
+msgid "%(genre)s subgenres"
+msgstr "%(genre)s-Subgenres"
+
+#: home/genre_shelf.html.jinja merge_request_table/table_header.html
+msgid "Newest"
+msgstr "Neueste"
+
+#: home/genre_shelf.html.jinja
+msgid "Top rated"
+msgstr "Bestbewertet"
+
+#: home/genre_shelf.html.jinja search/sort_options.html
+msgid "Sort by"
+msgstr "Sortieren nach"
 
 #: home/index.html home/welcome.html
 msgid "Welcome to Open Library"
 msgstr "Willkommen in der Open Library"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Classic Books"
-msgstr "Klassiker und Dauerbrenner"
-
 #: home/index.html
-msgid "Recently Returned"
-msgstr "Kürzlich zurückgegeben"
+msgid "Couldn't load this shelf. Try again?"
+msgstr "Dieses Regal konnte nicht geladen werden. Erneut versuchen?"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-msgid "Romance"
-msgstr "Romanze"
+#: home/library_row.html.jinja
+msgid "A library made by the people who use it."
+msgstr "Eine Bibliothek, gemacht von den Menschen, die sie nutzen."
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Kids"
-msgstr "Kinder"
+#: home/library_row.html.jinja
+msgid "A catalog for every book ever published, maintained by readers like you."
+msgstr "Ein Katalog für jedes jemals veröffentlichte Buch, gepflegt von Leser*innen wie Ihnen."
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Thrillers"
-msgstr "Thriller"
+#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "Werden Sie Open Librarian"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-msgid "Textbooks"
-msgstr "Lehrbücher"
+#: home/library_row.html.jinja
+msgid "Editable"
+msgstr "Bearbeitbar"
 
-#: home/index.html
-msgid "Authors Alliance & MIT Press"
-msgstr "Authors Alliance & MIT Press"
+#: home/library_row.html.jinja
+msgid "By anyone, like Wikipedia"
+msgstr "Von jedem, wie Wikipedia"
 
-#: home/index.html
-msgid "Books in Local Environment"
-msgstr "Bücher in lokaler Umgebung"
+#: home/library_row.html.jinja
+msgid "Public"
+msgstr "Öffentlich"
 
-#: home/stats.html
-msgid "Around the Library"
-msgstr "Über die Bibliothek"
+#: home/library_row.html.jinja
+msgid "Every record, free to download"
+msgstr "Jeder Datensatz kostenlos herunterladbar"
 
-#: home/stats.html
-msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
-msgstr "Hier sehen Sie was über die letzten 28 Tage passiert ist. Mehr <a href=\"/recentchanges\">kürzlich Änderungen</a>"
+#: home/library_row.html.jinja
+msgid "Nonprofit"
+msgstr "Gemeinnützig"
 
-#: home/stats.html
-msgid "See all visitors to OpenLibrary.org"
-msgstr "Alle Besucher der OpenLibrary.org anzeigen"
+#: home/library_row.html.jinja
+msgid "Run by the Internet Archive"
+msgstr "Betrieben vom Internet Archive"
 
-#: home/stats.html
-msgid "Area graph of recent unique visitors"
-msgstr "Flächendiagramm aktueller eindeutiger Besucher*innen"
+#: home/library_row.html.jinja
+msgid "In the last month"
+msgstr "Im letzten Monat"
 
-#: home/stats.html
-msgid "How many new Open Library members have we welcomed?"
-msgstr "Wie viele neue OpenLibrary-Mitglieder wurden begrüßt?"
+#: home/library_row.html.jinja
+msgid "Change over the month, by 7-day average"
+msgstr "Veränderung über den Monat, im 7-Tage-Durchschnitt"
 
-#: home/stats.html
-msgid "Area graph of new members"
-msgstr "Flächendiagramm neuer Mitglieder"
-
-#: home/stats.html
-msgid "People are constantly updating the catalog"
-msgstr "Der Katalog wird permanent erweitert"
-
-#: home/stats.html
-msgid "Area graph of recent catalog edits"
-msgstr "Flächendiagramm aktueller Katalogbearbeitungen"
-
-#: home/stats.html
-msgid "Catalog Edits"
-msgstr "Katalog Bearbeitungen"
-
-#: home/stats.html
-msgid "Members can create Lists"
-msgstr "Mitglieder können Listen anlegen"
-
-#: home/stats.html
-msgid "Area graph of lists created recently"
-msgstr "Flächendiagramm kürzlich erstellter Listen"
-
-#: home/stats.html
-msgid "Lists Created"
-msgstr "Erstellte Listen"
-
-#: home/stats.html
-msgid "We're a library, so we lend books, too"
-msgstr "Wir sind eine Bibliothek, also verleihen wir auch Bücher"
-
-#: home/stats.html
-msgid "Area graph of ebooks borrowed recently"
-msgstr "Flächendiagramm kürzlich entliehener E-Books"
-
-#: home/stats.html
-msgid "eBooks Borrowed"
-msgstr "Ausgeliehene eBooks"
+#: home/library_row.html.jinja
+#, python-format
+msgid "Up %(percent)d%% over the month"
+msgstr "Um %(percent)d%% im Laufe des Monats gestiegen"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -4666,14 +4728,6 @@ msgstr "Volltextsuche ausprobieren"
 #: home/welcome.html
 msgid "Find matching results within the text of millions of books"
 msgstr "Finden Sie passende Ergebnisse im Text von Millionen Büchern"
-
-#: home/welcome.html
-msgid "Be an Open Librarian"
-msgstr "Seien Sie ein freier Bibliothekar"
-
-#: home/welcome.html
-msgid "Dozens of ways you can help improve the library"
-msgstr "Dutzende Möglichkeiten wie Sie helfen können die Bibliothek zu verbessern"
 
 #: home/welcome.html
 msgid "Volunteer at Open Library"
@@ -4763,7 +4817,7 @@ msgstr "Fügen Sie diesen Code in Ihren Wikipedia-Artikel."
 msgid "Copy Wikipedia citation"
 msgstr "Wikipedia-Zitat kopieren"
 
-#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
+#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "History"
 msgstr "Verlauf"
 
@@ -4815,10 +4869,6 @@ msgstr "Datenqualitätstabelle"
 #: librarian_dashboard/data_quality_table.html
 msgid "Quality Criteria"
 msgstr "Qualitätskriterien"
-
-#: lists/carousel.html.jinja lists/home.html lists/showcase.html
-msgid "See all"
-msgstr "Alle anzeigen"
 
 #: lists/export_as_html.html
 #, python-format
@@ -5246,10 +5296,6 @@ msgstr "Sortieren ▾"
 #: merge_request_table/table_header.html
 msgid "Sort"
 msgstr "Sortieren"
-
-#: merge_request_table/table_header.html
-msgid "Newest"
-msgstr "Neueste"
 
 #: merge_request_table/table_header.html
 msgid "Oldest"
@@ -5987,17 +6033,9 @@ msgstr "Am besten bewertet"
 msgid "Any"
 msgstr "Alle"
 
-#: openlibrary/core/shell/nav.py search/sort_options.html
-msgid "Trending"
-msgstr "Beliebt"
-
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "Werktitel (beta: nur Librarians)"
-
-#: search/sort_options.html
-msgid "Sort by"
-msgstr "Sortieren nach"
 
 #: search/sort_options.html
 msgid "Sort results"
@@ -6344,6 +6382,10 @@ msgstr "Abmelden"
 #: shell/header.html.jinja
 msgid "Contribute"
 msgstr "Mitarbeiten"
+
+#: shell/header.html.jinja
+msgid "Improve the Catalog"
+msgstr "Katalog verbessern"
 
 #: shell/header.html.jinja
 msgid "Recent Community Edits"
@@ -7125,7 +7167,7 @@ msgstr "Autor*innen:"
 msgid "Readers"
 msgstr "Leser"
 
-#: type/permission/view.html
+#: openlibrary/plugins/openlibrary/home_genres.py type/permission/view.html
 msgid "Writers"
 msgstr "Autoren"
 
@@ -7510,6 +7552,11 @@ msgstr "Buchvorschau"
 msgid "See more about this book on Archive.org"
 msgstr "Mehr über dieses Buch auf Archive.org erfahren"
 
+#: CarouselSkeleton.html.jinja
+#, fuzzy
+msgid "Loading carousel"
+msgstr "Indicator lädt"
+
 #: CheckWorldcat.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Bibliotheken in der Nähe"
@@ -7558,11 +7605,6 @@ msgstr "Zum nächsten Abschnitt"
 #: FormatExpiry.html.jinja
 msgid "Expires"
 msgstr "Rückgabedatum"
-
-#: FulltextResultIA.html.jinja
-#, python-format
-msgid "by %(authors)s"
-msgstr "von %(authors)s"
 
 #: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
 msgid "Search inside books"
@@ -8349,6 +8391,42 @@ msgstr "Weiter: eine zufällige Aufgabe aus %(filter)s"
 msgid "Next: a random task from all open tasks"
 msgstr "Weiter: eine zufällige Aufgabe aus allen offenen Aufgaben"
 
+#: openlibrary/contribute/feed.py
+msgid "Edited this book"
+msgstr "Hat dieses Buch bearbeitet"
+
+#: openlibrary/contribute/feed.py
+msgid "Added this book"
+msgstr "Hat dieses Buch hinzugefügt"
+
+#: openlibrary/contribute/feed.py
+msgid "Added a cover"
+msgstr "Hat ein Cover hinzugefügt"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate authors"
+msgstr "Hat doppelte Autor*innen zusammengeführt"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate works"
+msgstr "Hat doppelte Werke zusammengeführt"
+
+#: openlibrary/contribute/feed.py
+msgid "Updated this record"
+msgstr "Hat diesen Datensatz aktualisiert"
+
+#: openlibrary/contribute/feed.py
+msgid "Edited this author"
+msgstr "Hat diese*n Autor*in bearbeitet"
+
+#: openlibrary/contribute/feed.py
+msgid "Reverted an edit"
+msgstr "Hat eine Bearbeitung rückgängig gemacht"
+
+#: openlibrary/contribute/feed.py
+msgid "a visitor"
+msgstr "ein*e Besucher*in"
+
 #: openlibrary/contribute/field_guides.py
 msgid "WorldCat"
 msgstr "WorldCat"
@@ -9010,6 +9088,26 @@ msgstr "Wie gut können Nutzer*innen feststellen, ob diese Auflage ihren Bedürf
 msgid "Search Results"
 msgstr "Listen durchsuchen"
 
+#: openlibrary/plugins/openlibrary/api.py
+msgid "Classic Books"
+msgstr "Klassiker und Dauerbrenner"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
+msgid "Romance"
+msgstr "Romanze"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home_genres.py
+msgid "Kids"
+msgstr "Kinder"
+
+#: openlibrary/plugins/openlibrary/api.py
+msgid "Thrillers"
+msgstr "Thriller"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
+msgid "Textbooks"
+msgstr "Lehrbücher"
+
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
 msgstr "Arabisch"
@@ -9102,6 +9200,26 @@ msgid "All open tasks"
 msgstr "Alle offenen Aufgaben"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+msgstr "Aufgaben sind für Open Librarians. Die Bewerbung dauert nur wenige Minuten."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+msgstr "Die Bewerbung dauert nur wenige Minuten und erfordert Ihren Open Library-Benutzernamen. Erstellen Sie daher zunächst ein kostenloses Konto."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Create an account"
+msgstr "Konto erstellen"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Log in"
+msgstr "Anmelden"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Book cover"
+msgstr "Buchcover"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "Fehlt: %(field)s"
@@ -9123,6 +9241,22 @@ msgid "Open the record and confirm it matches this edition first."
 msgstr "Öffnen Sie zuerst den Datensatz und bestätigen Sie, dass er zu dieser Ausgabe passt."
 
 #: openlibrary/plugins/openlibrary/home.py
+msgid "Books Read"
+msgstr "Gelesene Bücher"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Catalog Edits"
+msgstr "Katalog Bearbeitungen"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Lists Updated"
+msgstr "Aktualisierte Listen"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Lists Created"
+msgstr "Erstellte Listen"
+
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Art"
 msgstr "Start"
@@ -9132,7 +9266,7 @@ msgstr "Start"
 msgid "Science Fiction"
 msgstr "Klassifikationen"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Fantasy"
 msgstr "Alle"
@@ -9156,7 +9290,7 @@ msgstr "Kinder"
 msgid "Medicine"
 msgstr "Symbol für das Einbetten"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Religion"
 msgstr "Version"
@@ -9174,10 +9308,146 @@ msgstr "Orte"
 msgid "Music"
 msgstr "Musik"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Science"
 msgstr "Abbrechen"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Biography"
+msgstr "Biografie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Philosophy"
+msgstr "Philosophie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Psychology"
+msgstr "Psychologie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Poetry"
+msgstr "Lyrik"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Travel"
+msgstr "Reisen"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Cooking"
+msgstr "Kochen"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Friendship"
+msgstr "Freundschaft"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Adventure"
+msgstr "Abenteuer"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Mystery"
+msgstr "Krimi"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "School"
+msgstr "Schule"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Picture books"
+msgstr "Bilderbücher"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Humor"
+msgstr "Humor"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "United States"
+msgstr "Vereinigte Staaten"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Great Britain"
+msgstr "Großbritannien"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "World War II"
+msgstr "Zweiter Weltkrieg"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Military"
+msgstr "Militär"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Ancient"
+msgstr "Antike"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Middle Ages"
+msgstr "Mittelalter"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Historical"
+msgstr "Historisch"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Western"
+msgstr "Western"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Regency"
+msgstr "Regency"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Paranormal"
+msgstr "Paranormal"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Contemporary"
+msgstr "Zeitgenössisch"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Suspense"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Women"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Memoir"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Royalty"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Artists"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Presidents"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "What's new"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Books we love"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Classics"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Most wanted"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Featured"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 #, fuzzy
@@ -9241,9 +9511,14 @@ msgid "This work does not appear on any lists."
 msgstr "Das Werk ist bisher in keiner Liste vertreten."
 
 #: openlibrary/plugins/openlibrary/partials.py
-#, fuzzy
-msgid "Loading carousel"
-msgstr "Indicator lädt"
+#, python-format
+msgid "Newest in %(genre)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid "Top rated in %(genre)s"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "On the Same Shelf"
@@ -9425,6 +9700,22 @@ msgstr "Ihre E-Mail-Adresse"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Passwort wählen"
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library could not reach that library to return this book. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library is no longer connected to that library. Please borrow again to reconnect, then return."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "That library could not return this book right now. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "This book has been returned."
+msgstr ""
 
 #: openlibrary/plugins/upstream/lenny.py
 #, python-format
@@ -11493,4 +11784,69 @@ msgstr "%(title)s – Suche"
 
 #~ msgid "Only a preview is available."
 #~ msgstr "Es ist nur eine Vorschau verfügbar."
+
+#~ msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
+#~ msgstr "Suchen Sie nach einem Buch zur Ausleihe? Schauen Sie sich unsere Empfehlungen an oder suchen Sie Bücher zu einem bestimmten Thema:"
+
+#~ msgid "Browse by Subject"
+#~ msgstr "Nach Themen durchsuchen"
+
+#~ msgid "%(count)s Book"
+#~ msgid_plural "%(count)s Books"
+#~ msgstr[0] "%(count)s Buch"
+#~ msgstr[1] "%(count)s Bücher"
+
+#~ msgid "Recently Returned"
+#~ msgstr "Kürzlich zurückgegeben"
+
+#~ msgid "Authors Alliance & MIT Press"
+#~ msgstr "Authors Alliance & MIT Press"
+
+#~ msgid "Books in Local Environment"
+#~ msgstr "Bücher in lokaler Umgebung"
+
+#~ msgid "Around the Library"
+#~ msgstr "Über die Bibliothek"
+
+#~ msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
+#~ msgstr "Hier sehen Sie was über die letzten 28 Tage passiert ist. Mehr <a href=\"/recentchanges\">kürzlich Änderungen</a>"
+
+#~ msgid "See all visitors to OpenLibrary.org"
+#~ msgstr "Alle Besucher der OpenLibrary.org anzeigen"
+
+#~ msgid "Area graph of recent unique visitors"
+#~ msgstr "Flächendiagramm aktueller eindeutiger Besucher*innen"
+
+#~ msgid "How many new Open Library members have we welcomed?"
+#~ msgstr "Wie viele neue OpenLibrary-Mitglieder wurden begrüßt?"
+
+#~ msgid "Area graph of new members"
+#~ msgstr "Flächendiagramm neuer Mitglieder"
+
+#~ msgid "People are constantly updating the catalog"
+#~ msgstr "Der Katalog wird permanent erweitert"
+
+#~ msgid "Area graph of recent catalog edits"
+#~ msgstr "Flächendiagramm aktueller Katalogbearbeitungen"
+
+#~ msgid "Members can create Lists"
+#~ msgstr "Mitglieder können Listen anlegen"
+
+#~ msgid "Area graph of lists created recently"
+#~ msgstr "Flächendiagramm kürzlich erstellter Listen"
+
+#~ msgid "We're a library, so we lend books, too"
+#~ msgstr "Wir sind eine Bibliothek, also verleihen wir auch Bücher"
+
+#~ msgid "Area graph of ebooks borrowed recently"
+#~ msgstr "Flächendiagramm kürzlich entliehener E-Books"
+
+#~ msgid "eBooks Borrowed"
+#~ msgstr "Ausgeliehene eBooks"
+
+#~ msgid "Be an Open Librarian"
+#~ msgstr "Seien Sie ein freier Bibliothekar"
+
+#~ msgid "Dozens of ways you can help improve the library"
+#~ msgstr "Dutzende Möglichkeiten wie Sie helfen können die Bibliothek zu verbessern"
 
