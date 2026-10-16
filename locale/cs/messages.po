@@ -783,7 +783,7 @@ msgstr "Letos"
 msgid "All Time"
 msgstr "Celkem"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py trending.html
+#: openlibrary/plugins/openlibrary/api.py trending.html
 #, fuzzy
 msgid "Trending Books"
 msgstr "Čtenářské záznamy"
@@ -1429,10 +1429,10 @@ msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Vyhledejte knihu</a> k vypůjčení."
 
 #: account/loans.html
-msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
-msgstr "Hledáte knihu k výpůjčce? Prohlédněte si naše tipy od zaměstnanců nebo prohledejte náš katalog."
+msgid "Looking for a book to borrow? Check out our staff picks:"
+msgstr "Hledáte knihu k zapůjčení? Podívejte se na naše tipy:"
 
-#: account/loans.html home/index.html
+#: account/loans.html
 #, fuzzy
 msgid "Books We Love"
 msgstr "eKnihy kdekoliv"
@@ -1493,6 +1493,10 @@ msgstr "Můj profil"
 #, fuzzy
 msgid "Unknown author"
 msgstr "Autor"
+
+#: account/notes.html
+msgid "My notes for this work"
+msgstr "Moje poznámky k tomuto dílu"
 
 #: account/notes.html
 #, fuzzy
@@ -1791,13 +1795,13 @@ msgid "Works by Time Period"
 msgstr "Díla podle časového období"
 
 #: account/readinglog_stats.html
+msgid "Click on a bar to see matching works"
+msgstr "Kliknutím na sloupec zobrazíte odpovídající díla"
+
+#: account/readinglog_stats.html
 #, fuzzy
 msgid "Matching works"
 msgstr "Smazat tento záznam"
-
-#: account/readinglog_stats.html
-msgid "Click on a bar to see matching works"
-msgstr "Kliknutím na sloupec zobrazíte odpovídající díla"
 
 #: account/sidebar.html books/mybooks_breadcrumb_select.html openlibrary/plugins/upstream/mybooks.py
 msgid "My Feed"
@@ -2205,7 +2209,7 @@ msgstr "Autoři"
 msgid "Covers Added"
 msgstr "Přidané obálky"
 
-#: admin/index.html home/stats.html
+#: admin/index.html openlibrary/plugins/openlibrary/home.py
 #, fuzzy
 msgid "New Members"
 msgstr "Novější"
@@ -2263,7 +2267,7 @@ msgstr "eKnihy kdekoliv"
 msgid "Star Rating Patrons"
 msgstr "Čtenáři hodnotící hvězdičkami"
 
-#: admin/index.html home/stats.html
+#: admin/index.html
 msgid "Unique Visitors"
 msgstr "Unikátní návštěvníci"
 
@@ -3369,6 +3373,38 @@ msgstr "Žádný z nich neodpovídá knize, kterou chci přidat."
 msgid "Continue"
 msgstr "Přispěvatelé"
 
+#: books/custom_carousel.html.jinja
+#, python-format
+msgid "See all %(title)s"
+msgstr "Zobrazit vše: %(title)s"
+
+#: CarouselSkeleton.html.jinja books/custom_carousel.html.jinja lists/carousel.html.jinja lists/home.html lists/showcase.html
+#, fuzzy
+msgid "See all"
+msgstr "Vše"
+
+#: books/custom_carousel.html.jinja
+msgid "Previous page"
+msgstr "Předchozí stránka"
+
+#: books/custom_carousel.html.jinja
+msgid "Next page"
+msgstr "Další stránka"
+
+#: books/custom_carousel.html.jinja
+msgid "Carousel pages"
+msgstr "Stránky karuselu"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Go to page {page} of {total}"
+msgstr "Přejít na stránku {page} z {total}"
+
+#: books/custom_carousel.html.jinja
+#, python-brace-format
+msgid "Page {page} of {total}"
+msgstr "Stránka {page} z {total}"
+
 #: books/custom_carousel_card.html.jinja
 #, python-format
 msgid "1 person waiting"
@@ -4326,6 +4362,49 @@ msgstr "Další úkol"
 msgid "Pick a different book"
 msgstr "Vybrat jinou knihu"
 
+#: contribute/landing.html.jinja
+msgid "Open Library Tasks"
+msgstr "Úkoly Open Library"
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+msgstr "Open Library slouží %(readers)s čtenářům každý měsíc napříč %(books)s katalogizovanými knihami a jejich %(mark_start)sOpen Librarians%(mark_end)s provádějí tisíce úprav každý týden."
+
+#: contribute/landing.html.jinja
+msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
+msgstr "Mnoha knihám na Open Library stále chybí nějaký údaj: obálka, jazyk, nakladatel. Můžete pomoci je doplnit."
+
+#: contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Nedávné úpravy"
+
+#: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
+#, python-format
+msgid "by %(authors)s"
+msgstr "od %(authors)s"
+
+#: contribute/landing.html.jinja
+msgid "Quiet for the moment. Edits show up here as they happen."
+msgstr "Momentálně klid. Úpravy se zde zobrazí, jakmile nastanou."
+
+#: contribute/landing.html.jinja
+msgid "What a task looks like"
+msgstr "Jak úkol vypadá"
+
+#: contribute/landing.html.jinja
+msgid "Each task is one book and one empty field. Here are just a few examples."
+msgstr "Každý úkol je jedna kniha a jedno prázdné pole. Zde je jen několik příkladů."
+
+#: contribute/landing.html.jinja
+#, python-format
+msgid "Add %(field)s"
+msgstr "Přidat %(field)s"
+
+#: contribute/landing.html.jinja
+msgid "Join in"
+msgstr "Zapojte se"
+
 #: contribute/nothing.html.jinja
 #, python-format
 msgid "%(field)s is already filled in on this edition"
@@ -4563,121 +4642,99 @@ msgstr "Stejně jako Wikipedia, můžete přispívat novými informacemi nebo op
 msgid "Latest Blog Posts"
 msgstr "Nejnovější příspěvky na blogu"
 
-#: home/categories.html
-#, fuzzy
-msgid "Browse by Subject"
-msgstr "Další témata"
+#: home/browse_stacks.html.jinja
+msgid "Browse the stacks"
+msgstr "Procházet regály"
 
-#: home/categories.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#, fuzzy
+msgid "Trending"
+msgstr "Čtenářské záznamy"
+
+#: home/browse_stacks.html.jinja openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid "%(count)s Book"
-msgid_plural "%(count)s Books"
-msgstr[0] "%(count)s kniha"
-msgstr[1] "%(count)s knihy"
-msgstr[2] "%(count)s knih"
+msgid "Trending in %(genre)s"
+msgstr "Populární v žánru %(genre)s"
+
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja
+msgid "Jump to"
+msgstr "Přejít na"
+
+#: home/genre_shelf.html.jinja
+#, python-format
+msgid "%(genre)s subgenres"
+msgstr "Podžánry: %(genre)s"
+
+#: home/genre_shelf.html.jinja merge_request_table/table_header.html
+#, fuzzy
+msgid "Newest"
+msgstr "Novější"
+
+#: home/genre_shelf.html.jinja
+msgid "Top rated"
+msgstr "Nejlépe hodnocené"
+
+#: home/genre_shelf.html.jinja search/sort_options.html
+msgid "Sort by"
+msgstr "Řadit podle"
 
 #: home/index.html home/welcome.html
 #, fuzzy
 msgid "Welcome to Open Library"
 msgstr "Vítejte v Open Library"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-#, fuzzy
-msgid "Classic Books"
-msgstr "Klasifikace"
-
 #: home/index.html
-msgid "Recently Returned"
-msgstr "Nedávno vráceno"
+msgid "Couldn't load this shelf. Try again?"
+msgstr "Tuto poličku se nepodařilo načíst. Zkusit znovu?"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-#, fuzzy
-msgid "Romance"
-msgstr "Romantické"
+#: home/library_row.html.jinja
+msgid "A library made by the people who use it."
+msgstr "Knihovna vytvořená lidmi, kteří ji používají."
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-msgid "Kids"
-msgstr "Děti"
+#: home/library_row.html.jinja
+msgid "A catalog for every book ever published, maintained by readers like you."
+msgstr "Katalog pro každou knihu, která kdy vyšla, udržovaný čtenáři, jako jste vy."
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py
-#, fuzzy
-msgid "Thrillers"
-msgstr "filtry"
+#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "Staňte se Open Librarian"
 
-#: home/index.html openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
-#, fuzzy
-msgid "Textbooks"
-msgstr "knihy"
+#: home/library_row.html.jinja
+msgid "Editable"
+msgstr "Editovatelné"
 
-#: home/index.html
-msgid "Authors Alliance & MIT Press"
-msgstr "Authors Alliance & MIT Press"
+#: home/library_row.html.jinja
+msgid "By anyone, like Wikipedia"
+msgstr "Kýmkoli, podobně jako Wikipedie"
 
-#: home/index.html
-msgid "Books in Local Environment"
-msgstr "Knihy v místním prostředí"
+#: home/library_row.html.jinja
+msgid "Public"
+msgstr "Veřejné"
 
-#: home/stats.html
-msgid "Around the Library"
-msgstr "Kolem knihovny"
+#: home/library_row.html.jinja
+msgid "Every record, free to download"
+msgstr "Každý záznam zdarma ke stažení"
 
-#: home/stats.html
-msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
-msgstr "Zde je co se stalo za posledních 28 dní. Více <a href=\"/recentchanges\">nedávných změn</a>"
+#: home/library_row.html.jinja
+msgid "Nonprofit"
+msgstr "Nezisková organizace"
 
-#: home/stats.html
-#, fuzzy
-msgid "See all visitors to OpenLibrary.org"
-msgstr "Přidat knhu do Open Library"
+#: home/library_row.html.jinja
+msgid "Run by the Internet Archive"
+msgstr "Provozováno Internet Archive"
 
-#: home/stats.html
-msgid "Area graph of recent unique visitors"
-msgstr "Plošný graf nedávných unikátních návštěvníků"
+#: home/library_row.html.jinja
+msgid "In the last month"
+msgstr "Za poslední měsíc"
 
-#: home/stats.html
-msgid "How many new Open Library members have we welcomed?"
-msgstr "Kolik nových členů Open Library jsme přivítali?"
+#: home/library_row.html.jinja
+msgid "Change over the month, by 7-day average"
+msgstr "Změna za měsíc, podle 7denního průměru"
 
-#: home/stats.html
-msgid "Area graph of new members"
-msgstr "Plošný graf nových členů"
-
-#: home/stats.html
-msgid "People are constantly updating the catalog"
-msgstr "Lidé neustále aktualizují katalog"
-
-#: home/stats.html
-msgid "Area graph of recent catalog edits"
-msgstr "Plošný graf nedávných úprav katalogu"
-
-#: home/stats.html
-msgid "Catalog Edits"
-msgstr "Úpravy katalogu"
-
-#: home/stats.html
-msgid "Members can create Lists"
-msgstr "Členové mohou vytvářet Seznamy"
-
-#: home/stats.html
-msgid "Area graph of lists created recently"
-msgstr "Plošný graf nedávno vytvořených seznamů"
-
-#: home/stats.html
-#, fuzzy
-msgid "Lists Created"
-msgstr "Vytvořte to"
-
-#: home/stats.html
-msgid "We're a library, so we lend books, too"
-msgstr "Jsme knihovna, takže půjčujeme i knihy"
-
-#: home/stats.html
-msgid "Area graph of ebooks borrowed recently"
-msgstr "Plošný graf nedávno půjčených e-knih"
-
-#: home/stats.html
-msgid "eBooks Borrowed"
-msgstr "Půjčené e-knihy"
+#: home/library_row.html.jinja
+#, python-format
+msgid "Up %(percent)d%% over the month"
+msgstr "Nárůst o %(percent)d %% za měsíc"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -4719,15 +4776,6 @@ msgstr "Témata"
 #: home/welcome.html
 msgid "Find matching results within the text of millions of books"
 msgstr "Najděte odpovídající výsledky v textu milionů knih"
-
-#: home/welcome.html
-#, fuzzy
-msgid "Be an Open Librarian"
-msgstr "vytvořil nový Open Library účet!"
-
-#: home/welcome.html
-msgid "Dozens of ways you can help improve the library"
-msgstr "Desítky způsobů, jak můžete pomoci zlepšit knihovnu"
 
 #: home/welcome.html
 #, fuzzy
@@ -4819,7 +4867,7 @@ msgstr "Zkopírujte a vložte tento kód do vaší stránky Wikipedie."
 msgid "Copy Wikipedia citation"
 msgstr "Zkopírovat citaci Wikipedie"
 
-#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py
+#: databarDiff.html databarEdit.html databarTemplate.html databarView.html lib/history.html openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "History"
 msgstr "Historie"
 
@@ -4870,11 +4918,6 @@ msgstr "Tabulka kvality dat"
 #: librarian_dashboard/data_quality_table.html
 msgid "Quality Criteria"
 msgstr "Kritéria kvality"
-
-#: lists/carousel.html.jinja lists/home.html lists/showcase.html
-#, fuzzy
-msgid "See all"
-msgstr "Vše"
 
 #: lists/export_as_html.html
 #, python-format
@@ -5326,11 +5369,6 @@ msgstr "Řadit dle"
 #, fuzzy
 msgid "Sort"
 msgstr "nebo"
-
-#: merge_request_table/table_header.html
-#, fuzzy
-msgid "Newest"
-msgstr "Novější"
 
 #: merge_request_table/table_header.html
 #, fuzzy
@@ -6084,18 +6122,9 @@ msgstr "Nejlépe hodnocené"
 msgid "Any"
 msgstr "Fantasy"
 
-#: openlibrary/core/shell/nav.py search/sort_options.html
-#, fuzzy
-msgid "Trending"
-msgstr "Čtenářské záznamy"
-
 #: search/sort_options.html
 msgid "Work Title (beta: Librarian only)"
 msgstr "Název díla (beta: pouze knihovníci)"
-
-#: search/sort_options.html
-msgid "Sort by"
-msgstr "Řadit podle"
 
 #: search/sort_options.html
 msgid "Sort results"
@@ -6451,6 +6480,10 @@ msgstr "Odhlásit"
 #, fuzzy
 msgid "Contribute"
 msgstr "Přispěvatelé"
+
+#: shell/header.html.jinja
+msgid "Improve the Catalog"
+msgstr "Vylepšit katalog"
 
 #: shell/header.html.jinja
 msgid "Recent Community Edits"
@@ -7252,7 +7285,7 @@ msgstr "filtry"
 msgid "Readers"
 msgstr "Číst"
 
-#: type/permission/view.html
+#: openlibrary/plugins/openlibrary/home_genres.py type/permission/view.html
 #, fuzzy
 msgid "Writers"
 msgstr "filtry"
@@ -7645,6 +7678,10 @@ msgstr "Náhled knihy"
 msgid "See more about this book on Archive.org"
 msgstr "Zjistěte více o této knize na Archive.org"
 
+#: CarouselSkeleton.html.jinja
+msgid "Loading carousel"
+msgstr "Načítání kolotoče"
+
 #: CheckWorldcat.html ReadingOptionsMenu.html
 msgid "Nearby Libraries"
 msgstr "Blízké knihovny"
@@ -7696,11 +7733,6 @@ msgstr "Přejít na další sekci"
 #, fuzzy
 msgid "Expires"
 msgstr "Propadlé výpůjčky"
-
-#: FulltextResultIA.html.jinja
-#, python-format
-msgid "by %(authors)s"
-msgstr "od %(authors)s"
 
 #: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
 msgid "Search inside books"
@@ -8507,6 +8539,42 @@ msgstr "Další: náhodný úkol z %(filter)s"
 msgid "Next: a random task from all open tasks"
 msgstr "Další: náhodný úkol ze všech otevřených úkolů"
 
+#: openlibrary/contribute/feed.py
+msgid "Edited this book"
+msgstr "Upravil(a) tuto knihu"
+
+#: openlibrary/contribute/feed.py
+msgid "Added this book"
+msgstr "Přidal(a) tuto knihu"
+
+#: openlibrary/contribute/feed.py
+msgid "Added a cover"
+msgstr "Přidal(a) obálku"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate authors"
+msgstr "Sloučil(a) duplicitní autory"
+
+#: openlibrary/contribute/feed.py
+msgid "Merged duplicate works"
+msgstr "Sloučil(a) duplicitní díla"
+
+#: openlibrary/contribute/feed.py
+msgid "Updated this record"
+msgstr "Aktualizoval(a) tento záznam"
+
+#: openlibrary/contribute/feed.py
+msgid "Edited this author"
+msgstr "Upravil(a) tohoto autora"
+
+#: openlibrary/contribute/feed.py
+msgid "Reverted an edit"
+msgstr "Vrátil(a) úpravu zpět"
+
+#: openlibrary/contribute/feed.py
+msgid "a visitor"
+msgstr "návštěvník"
+
 #: openlibrary/contribute/field_guides.py
 msgid "WorldCat"
 msgstr "WorldCat"
@@ -9175,6 +9243,30 @@ msgstr "Jak dobře dokáže uživatel posoudit, zda je toto vydání relevantní
 msgid "Search Results"
 msgstr "Výsledky hledání"
 
+#: openlibrary/plugins/openlibrary/api.py
+#, fuzzy
+msgid "Classic Books"
+msgstr "Klasifikace"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py
+#, fuzzy
+msgid "Romance"
+msgstr "Romantické"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home_genres.py
+msgid "Kids"
+msgstr "Děti"
+
+#: openlibrary/plugins/openlibrary/api.py
+#, fuzzy
+msgid "Thrillers"
+msgstr "filtry"
+
+#: openlibrary/plugins/openlibrary/api.py openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
+#, fuzzy
+msgid "Textbooks"
+msgstr "knihy"
+
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
 msgstr "Arabsky"
@@ -9266,6 +9358,26 @@ msgid "All open tasks"
 msgstr "Všechny otevřené úkoly"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+msgstr "Úkoly jsou pro Open Librarians. Přihlášení trvá jen pár minut."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+msgstr "Přihlášení trvá jen pár minut a vyžaduje vaše uživatelské jméno Open Library, proto si nejprve vytvořte bezplatný účet."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Create an account"
+msgstr "Vytvořit účet"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Log in"
+msgstr "Přihlásit se"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Book cover"
+msgstr "Obálka knihy"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "Chybí: %(field)s"
@@ -9287,6 +9399,23 @@ msgid "Open the record and confirm it matches this edition first."
 msgstr "Nejprve otevřete záznam a potvrďte, že odpovídá tomuto vydání."
 
 #: openlibrary/plugins/openlibrary/home.py
+msgid "Books Read"
+msgstr "Přečtené knihy"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Catalog Edits"
+msgstr "Úpravy katalogu"
+
+#: openlibrary/plugins/openlibrary/home.py
+msgid "Lists Updated"
+msgstr "Aktualizované seznamy"
+
+#: openlibrary/plugins/openlibrary/home.py
+#, fuzzy
+msgid "Lists Created"
+msgstr "Vytvořte to"
+
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Art"
 msgstr "Umění"
 
@@ -9295,7 +9424,7 @@ msgstr "Umění"
 msgid "Science Fiction"
 msgstr "Věda"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Fantasy"
 msgstr "Fantasy"
 
@@ -9317,7 +9446,7 @@ msgstr "Děti"
 msgid "Medicine"
 msgstr "Upraveno"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 #, fuzzy
 msgid "Religion"
 msgstr "Revize"
@@ -9335,9 +9464,145 @@ msgstr "Místo"
 msgid "Music"
 msgstr "Hudba"
 
-#: openlibrary/plugins/openlibrary/home.py
+#: openlibrary/plugins/openlibrary/home.py openlibrary/plugins/openlibrary/home_genres.py
 msgid "Science"
 msgstr "Věda"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Biography"
+msgstr "Životopis"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Philosophy"
+msgstr "Filozofie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Psychology"
+msgstr "Psychologie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Poetry"
+msgstr "Poezie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Travel"
+msgstr "Cestování"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Cooking"
+msgstr "Vaření"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Friendship"
+msgstr "Přátelství"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Adventure"
+msgstr "Dobrodružství"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Mystery"
+msgstr "Mystery"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "School"
+msgstr "Škola"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Picture books"
+msgstr "Obrázkové knihy"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Humor"
+msgstr "Humor"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "United States"
+msgstr "Spojené státy"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Great Britain"
+msgstr "Velká Británie"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "World War II"
+msgstr "Druhá světová válka"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Military"
+msgstr "Vojenství"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Ancient"
+msgstr "Starověk"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Middle Ages"
+msgstr "Středověk"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Historical"
+msgstr "Historické"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Western"
+msgstr "Western"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Regency"
+msgstr "Regentství"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Paranormal"
+msgstr "Paranormální"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Contemporary"
+msgstr "Současné"
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Suspense"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Women"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Memoir"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Royalty"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Artists"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Presidents"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "What's new"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Books we love"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Classics"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Most wanted"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/home_genres.py
+msgid "Featured"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
@@ -9398,8 +9663,14 @@ msgid "This work does not appear on any lists."
 msgstr "Toto dílo se nevyskytuje v žádném seznamu."
 
 #: openlibrary/plugins/openlibrary/partials.py
-msgid "Loading carousel"
-msgstr "Načítání kolotoče"
+#, python-format
+msgid "Newest in %(genre)s"
+msgstr ""
+
+#: openlibrary/plugins/openlibrary/partials.py
+#, python-format
+msgid "Top rated in %(genre)s"
+msgstr ""
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "On the Same Shelf"
@@ -9581,6 +9852,22 @@ msgstr "Vaše emailová adresa"
 #: openlibrary/plugins/upstream/forms.py
 msgid "Choose a password"
 msgstr "Vyberte heslo"
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library could not reach that library to return this book. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "Open Library is no longer connected to that library. Please borrow again to reconnect, then return."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "That library could not return this book right now. Please try again later."
+msgstr ""
+
+#: openlibrary/plugins/upstream/lenny.py
+msgid "This book has been returned."
+msgstr ""
 
 #: openlibrary/plugins/upstream/lenny.py
 #, python-format
@@ -10806,4 +11093,70 @@ msgstr "%(title)s – vyhledávání"
 
 #~ msgid "Only a preview is available."
 #~ msgstr "K dispozici je pouze náhled."
+
+#~ msgid "Looking for a book to borrow?  Check out our staff picks, or search for a book on a specific subject:"
+#~ msgstr "Hledáte knihu k výpůjčce? Prohlédněte si naše tipy od zaměstnanců nebo prohledejte náš katalog."
+
+#~ msgid "Browse by Subject"
+#~ msgstr "Další témata"
+
+#~ msgid "%(count)s Book"
+#~ msgid_plural "%(count)s Books"
+#~ msgstr[0] "%(count)s kniha"
+#~ msgstr[1] "%(count)s knihy"
+#~ msgstr[2] "%(count)s knih"
+
+#~ msgid "Recently Returned"
+#~ msgstr "Nedávno vráceno"
+
+#~ msgid "Authors Alliance & MIT Press"
+#~ msgstr "Authors Alliance & MIT Press"
+
+#~ msgid "Books in Local Environment"
+#~ msgstr "Knihy v místním prostředí"
+
+#~ msgid "Around the Library"
+#~ msgstr "Kolem knihovny"
+
+#~ msgid "Here's what's happened over the last 28 days. More <a href=\"/recentchanges\">recent changes</a>"
+#~ msgstr "Zde je co se stalo za posledních 28 dní. Více <a href=\"/recentchanges\">nedávných změn</a>"
+
+#~ msgid "See all visitors to OpenLibrary.org"
+#~ msgstr "Přidat knhu do Open Library"
+
+#~ msgid "Area graph of recent unique visitors"
+#~ msgstr "Plošný graf nedávných unikátních návštěvníků"
+
+#~ msgid "How many new Open Library members have we welcomed?"
+#~ msgstr "Kolik nových členů Open Library jsme přivítali?"
+
+#~ msgid "Area graph of new members"
+#~ msgstr "Plošný graf nových členů"
+
+#~ msgid "People are constantly updating the catalog"
+#~ msgstr "Lidé neustále aktualizují katalog"
+
+#~ msgid "Area graph of recent catalog edits"
+#~ msgstr "Plošný graf nedávných úprav katalogu"
+
+#~ msgid "Members can create Lists"
+#~ msgstr "Členové mohou vytvářet Seznamy"
+
+#~ msgid "Area graph of lists created recently"
+#~ msgstr "Plošný graf nedávno vytvořených seznamů"
+
+#~ msgid "We're a library, so we lend books, too"
+#~ msgstr "Jsme knihovna, takže půjčujeme i knihy"
+
+#~ msgid "Area graph of ebooks borrowed recently"
+#~ msgstr "Plošný graf nedávno půjčených e-knih"
+
+#~ msgid "eBooks Borrowed"
+#~ msgstr "Půjčené e-knihy"
+
+#~ msgid "Be an Open Librarian"
+#~ msgstr "vytvořil nový Open Library účet!"
+
+#~ msgid "Dozens of ways you can help improve the library"
+#~ msgstr "Desítky způsobů, jak můžete pomoci zlepšit knihovnu"
 
