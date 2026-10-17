@@ -360,6 +360,87 @@ def apply_translations(lang: str, translations: dict) -> int:
     return count
 
 
+_bake_regression_mod = None
+
+
+def _bake_regression():
+    """Lazy-load scripts/bake_regression.py so the pre-push repair reuses the EXACT
+    placeholder detector the bake-regression check gates on — the two cannot drift."""
+    global _bake_regression_mod
+    if _bake_regression_mod is None:
+        import importlib.util
+        path = REPO_ROOT / "scripts" / "bake_regression.py"
+        spec = importlib.util.spec_from_file_location("bake_regression", path)
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules["bake_regression"] = mod  # dataclasses resolve types via sys.modules
+        spec.loader.exec_module(mod)
+        _bake_regression_mod = mod
+    return _bake_regression_mod
+
+
+def _repair_plural_form(form: str, missing: set[str]) -> str | None:
+    """Repair a plural form that hardcodes the number instead of carrying a
+    placeholder: replace its single bare integer with the single missing named
+    specifier (e.g. '1' -> '%(count)d'). Returns None when the repair is not
+    unambiguous (not exactly one missing specifier, or not exactly one bare
+    integer to swap) — the caller then clears the form so it re-translates."""
+    if len(missing) != 1:
+        return None
+    spec = next(iter(missing))
+    bare_int = r'(?<![%\w)])\d+(?!\w)'  # a digit run not part of a %(...)s specifier
+    if len(re.findall(bare_int, form)) != 1:
+        return None
+    return re.sub(bare_int, spec, form, count=1)
+
+
+def _fix_plural_placeholder_defects(catalog, lang: str) -> tuple[list[str], list[str]]:
+    """Reuse bake-regression's detector to find plural forms whose %-placeholders
+    differ from the English they stand in for — the class that passes `validate`
+    (it matches the singular msgid) but fails the bake-regression gate (a form
+    reused for n>1 must carry msgid_plural's placeholders). Repair the mechanical
+    case (hardcoded number -> %(count)d); clear the rest so they re-translate.
+    Returns (repaired_msgids, cleared_msgids)."""
+    br = _bake_regression()
+    forms = br.forms_selected(catalog)
+    no_placeholders = (frozenset(), ())
+    repaired: list[str] = []
+    cleared: list[str] = []
+    for message in catalog:
+        if not message.id or message.fuzzy or not message.string:
+            continue
+        if isinstance(message.id, str):  # singular-only; _fix_format_errors covers it
+            continue
+        msgid, msgid_plural = message.id[0], message.id[1]
+        strings = list(message.string) if isinstance(message.string, (list, tuple)) else [message.string]
+        singular_sig = br.placeholder_signature(msgid)
+        plural_sig = br.placeholder_signature(msgid_plural)
+        changed = False
+        for index, form in enumerate(strings):
+            if not form:
+                continue
+            selected_by = forms.get(index, [])
+            # Same allowance table as find_placeholder_defects: a form reused for
+            # any n != 1 must match the plural; a form only for n=1 may match
+            # either; a form only for n=0 may also carry no placeholders.
+            allowed = {plural_sig} if set(selected_by) - {1} else {singular_sig, plural_sig}
+            if set(selected_by) == {0}:
+                allowed.add(no_placeholders)
+            if br.placeholder_signature(form) in allowed:
+                continue
+            missing = plural_sig[0] - br.placeholder_signature(form)[0]
+            fixed_form = _repair_plural_form(form, missing)
+            if fixed_form is not None and br.placeholder_signature(fixed_form) in allowed:
+                strings[index] = fixed_form
+                repaired.append(msgid)
+            else:
+                strings[index] = ""  # cleared -> becomes untranslated -> re-translated
+                cleared.append(msgid)
+            changed = True
+        if changed:
+            message.string = tuple(strings)
+    return repaired, cleared
+
+
 def fix(lang: str) -> tuple[int, int]:
     """Fix HTML attrs, format-string errors, type mismatches, and header fuzzy flag.
     Returns (html_fixed, format_cleared_count)."""
@@ -369,13 +450,18 @@ def fix(lang: str) -> tuple[int, int]:
     type_fixed = _fix_format_type_mismatch(catalog)
     cleared_ids = _fix_format_errors(catalog)
     validator_cleared = _fix_validator_failures(catalog)
+    plural_repaired, plural_cleared = _fix_plural_placeholder_defects(catalog, lang)
     _write_po(lang, catalog)
-    # Print details for any cleared or type-fixed entries so runs are auditable.
+    # Print details for any cleared, repaired, or type-fixed entries so runs are auditable.
     for msgid in type_fixed:
         print(f"  type-fixed: {msgid!r}")
-    for msgid in cleared_ids + validator_cleared:
+    for msgid in plural_repaired:
+        print(f"  plural-placeholder-repaired: {msgid!r}")
+    for msgid in cleared_ids + validator_cleared + plural_cleared:
         print(f"  cleared: {msgid!r}")
-    return html, len(cleared_ids) + len(validator_cleared)
+    # Repaired entries are done; only cleared ones become untranslated and need
+    # another translate->apply->fix loop, so only they count toward the re-loop.
+    return html, len(cleared_ids) + len(validator_cleared) + len(plural_cleared)
 
 
 _validators_validate = None
