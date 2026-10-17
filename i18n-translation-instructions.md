@@ -203,12 +203,24 @@ Batch <langs> could not complete. PR was not opened (or was left as draft).
 ```
 
 **9. Commit and push immediately:**
+
+Stage ONLY this language's two files — never `git add -A`, never a broad `./i18n
+sync` that rewrites every locale. A commit that touches a language outside your
+batch is what stranded #188: those files collided with other PRs and the whole
+batch became un-mergeable. If you are ever unsure what is staged, reset every
+other language back to main first:
+
 ```bash
+./i18n isolate <all your batch languages>   # resets locale/<other-langs> to origin/main
 git add locale/{lang}/messages.po locale/{lang}/messages.mo
-git commit -m "i18n({lang}): batch {N} — AI translations (claude-sonnet-4-6)"
+git commit -m "i18n({lang}): batch {N} — AI translations (claude-sonnet-5)"
 git push origin "$BRANCH"
 ```
-Push right after every commit, not just at the end of the run. This step is only reached after `validate` and `test` have both exited 0, so it's always pushing already-verified work. If the run gets cut off later (turn limit, error), everything up to this point survives on the remote branch — Step 2's resume check picks it up next time instead of losing it.
+
+`validate-pr.yml` runs `./i18n check-scope` as a **required** check: if any changed
+language did no real translation work (a stray from a broad sync), the PR goes red
+and will not merge. Run `./i18n check-scope` yourself before marking ready to catch
+it early. Push right after every commit, not just at the end of the run. This step is only reached after `validate` and `test` have both exited 0, so it's always pushing already-verified work. If the run gets cut off later (turn limit, error), everything up to this point survives on the remote branch — Step 2's resume check picks it up next time instead of losing it.
 
 **Re-loop if `fix` cleared entries.** After `fix`, re-run `untranslated` — if `fix` cleared N entries they become untranslated again and need another translate→apply→fix→validate→test cycle. Repeat until both `untranslated` returns `[]` AND `validate` exits 0.
 
@@ -286,6 +298,16 @@ The workflow handles auto-merge after CI passes.
 
 If you cannot safely preserve all format strings, leave `msgstr` empty.
 
+**Plural forms: never replace a placeholder with a literal number.** A plural
+entry's English looks like `msgid "%(value)s, on 1 edition"` / `msgid_plural
+"%(value)s, on %(count)d editions"`. The singular English happens to contain the
+literal `1`, but every form you *write* is reused by gettext for many counts, so
+each form must carry the **placeholder** — write `…%(count)d…`, never the bare
+digit the English singular shows. Hardcoding `1` (or any number) in a form is the
+exact defect that broke id/ja/ko/ru/uk in #188: it passes `validate` but fails the
+deploy check and strands the whole PR. `./i18n fix` now repairs the obvious case
+and clears the rest, but do not rely on it — keep the placeholder yourself.
+
 ### HTML markup — preserve structure
 - Never translate tag names (`<a>`, `<strong>`, `<span>`) or attribute keys (`href`, `rel`, `class`)
 - `rel="noopener"`, `target="_blank"` → preserve exactly
@@ -308,7 +330,7 @@ Sample a few existing translations before starting to calibrate register.
 ## Commit format
 
 ```
-i18n({lang}): batch {N} — AI translations (claude-sonnet-4-6)
+i18n({lang}): batch {N} — AI translations (claude-sonnet-5)
 ```
 
 ---
