@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history so the scope guard can find this PR's merge-base off main.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,7 +26,7 @@ jobs:
       - name: Detect changed languages
         id: changed-langs
         run: |
-          git fetch origin ${{ github.base_ref }} --depth=1
+          git fetch origin ${{ github.base_ref }}
           LANGS=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
             | grep '^locale/' \
             | cut -d/ -f2 \
@@ -31,6 +34,12 @@ jobs:
             | tr '\n' ' ')
           echo "langs=$LANGS" >> "$GITHUB_OUTPUT"
           echo "Changed languages: $LANGS"
+
+      # A translation PR may only touch languages it actually translated. #188's
+      # batch re-synced 5 languages that belonged to other PRs; when those merged
+      # the batch went un-mergeably dirty and its real translations lingered.
+      - name: Check scope (no stray languages)
+        run: python ./i18n check-scope --base origin/${{ github.base_ref }}
 
       - name: Run test_po_files (HTML structure)
         run: |
