@@ -16,6 +16,10 @@ Open Library i18n toolbox — ./i18n <command>
   apply <lang> <json>    Apply {msgid: msgstr} translations file to .po.
   fix <lang>             Fix HTML attrs and format-string errors in .po.
   validate <lang>        Validate format strings; exits non-zero on error.
+  isolate <lang>...      Reset every OTHER language to origin/main, so a commit
+                         carries only the batch's own languages. Run before commit.
+  check-scope            CI gate: exit 1 if any changed language did no real
+    [--base REF]         translation work (the stray-stub signature from #188).
   test <lang>            Run pytest tests/test_po_files.py -k <lang>.
   compile <lang>         Compile .po -> .mo via pybabel.
   bake-regression        Would baking this repo into openlibrary turn translated
@@ -50,6 +54,114 @@ def known_langs() -> list[str]:
         p.name for p in LOCALE_DIR.iterdir()
         if p.is_dir() and (p / "messages.po").exists()
     )
+
+
+# ---------------------------------------------------------------------------
+# Scope guard — keep an AI translation PR to the languages it actually translated
+#
+# #188's batch shard staged a broad `sync` that touched 5 languages belonging to
+# other PRs; after those merged, the batch went un-mergeably dirty and its real
+# translations lingered. The guard below makes that impossible to merge: a PR may
+# only change a language it did real translation work on.
+# ---------------------------------------------------------------------------
+
+def _as_tuple(string) -> tuple:
+    """A msgstr is a str (singular) or a tuple/list of forms (plural); normalise."""
+    return tuple(string) if isinstance(string, (list, tuple)) else (string,)
+
+
+def _did_translation_work(base_catalog, head_catalog) -> bool:
+    """True iff head changes real translation content versus base: a msgstr that
+    became non-empty, or any existing msgstr whose text changed. A language whose
+    only diff is a re-sync (reordered entries, header bump, added empty stubs)
+    returns False — that is the stray signature #188 shipped. Pure."""
+    base_by = {(m.id, m.context): m for m in base_catalog if m.id}
+    for m in head_catalog:
+        if not m.id:
+            continue
+        bm = base_by.get((m.id, m.context))
+        if bm is None:
+            if any(_as_tuple(m.string)):
+                return True
+        elif _as_tuple(bm.string) != _as_tuple(m.string):
+            return True
+    return False
+
+
+def _git(*args: str) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", *args], cwd=REPO_ROOT, capture_output=True, text=True)
+
+
+def _changed_langs_since(base: str) -> list[str]:
+    """Languages whose messages.po differs from `base`, per git."""
+    out = _git("diff", "--name-only", base, "--", "locale").stdout
+    langs = {
+        line.split("/")[1]
+        for line in out.splitlines()
+        if line.startswith("locale/") and line.endswith("/messages.po")
+    }
+    return sorted(langs)
+
+
+def _base_catalog(base: str, lang: str):
+    """The base version of a language's catalog, or None if it is brand new."""
+    from babel.messages.pofile import read_po
+    proc = subprocess.run(
+        ["git", "show", f"{base}:locale/{lang}/messages.po"],
+        cwd=REPO_ROOT, capture_output=True,
+    )
+    if proc.returncode != 0 or not proc.stdout:
+        return None  # language does not exist at base — all of it is new work
+    import io
+    return read_po(io.BytesIO(proc.stdout))
+
+
+def isolate(batch: list[str], base: str = "origin/main") -> None:
+    """Reset every language NOT in `batch` back to `base`, so a commit cannot carry
+    a language that belongs to another PR. Run this before `git add` / commit."""
+    keep = set(batch)
+    strays = [f"locale/{lang}" for lang in known_langs() if lang not in keep]
+    if strays:
+        _git("checkout", base, "--", *strays)
+    print(f"isolate: kept {sorted(keep)}; reset {len(strays)} other language(s) to {base}")
+
+
+def _merge_base(ref: str) -> str:
+    """The branch point of HEAD off `ref`. Comparing against the merge-base (not
+    `ref`'s current tip) is what makes the guard correct when another PR advances
+    a language on main while this PR is open: #188's strays carried their
+    branch-point translations plus re-sync noise, so against the tip they looked
+    'changed' and escaped; against the branch point they correctly show no work.
+    Falls back to `ref` if there is no common ancestor (e.g. a shallow checkout)."""
+    proc = subprocess.run(["git", "merge-base", ref, "HEAD"],
+                          cwd=REPO_ROOT, capture_output=True, text=True)
+    return proc.stdout.strip() if proc.returncode == 0 and proc.stdout.strip() else ref
+
+
+def check_scope(ref: str = "origin/main") -> int:
+    """CI gate: fail if any changed language did no real translation work — the
+    stray signature from #188. Exit 0 when every changed language has work."""
+    from babel.messages.pofile import read_po
+    base = _merge_base(ref)
+    strays = []
+    for lang in _changed_langs_since(base):
+        base_cat = _base_catalog(base, lang)
+        if base_cat is None:
+            continue  # brand-new language is legitimate work by definition
+        with open(LOCALE_DIR / lang / "messages.po", "rb") as f:
+            head_cat = read_po(f)
+        if not _did_translation_work(base_cat, head_cat):
+            strays.append(lang)
+    if strays:
+        print(f"error: {len(strays)} language(s) changed with NO translation work: "
+              f"{strays}")
+        print("These belong to another PR or are re-sync noise. Reset them with:")
+        print(f"  ./i18n isolate <your batch langs>   # or")
+        print(f"  git checkout {base} -- " + " ".join(f"locale/{s}" for s in strays))
+        return 1
+    print(f"scope OK: every changed language did real translation work "
+          f"({len(_changed_langs_since(base))} changed)")
+    return 0
 
 
 # ---------------------------------------------------------------------------
@@ -615,6 +727,13 @@ def main() -> None:
     p = sub.add_parser("validate", help="Validate format strings (exits non-zero on error)")
     p.add_argument("lang")
 
+    p = sub.add_parser("isolate", help="Reset other languages to origin/main before commit")
+    p.add_argument("langs", nargs="+", help="The batch's language codes to keep")
+    p.add_argument("--base", default="origin/main")
+
+    p = sub.add_parser("check-scope", help="CI gate: fail on a changed language with no work")
+    p.add_argument("--base", default="origin/main")
+
     p = sub.add_parser("test", help="Run pytest for a language")
     p.add_argument("lang")
 
@@ -660,6 +779,12 @@ def main() -> None:
                     print(f"  {e}")
             sys.exit(f"{args.lang}: {len(errors)} error(s)")
         print(f"{args.lang}: OK")
+
+    elif args.cmd == "isolate":
+        isolate(args.langs, base=args.base)
+
+    elif args.cmd == "check-scope":
+        sys.exit(check_scope(ref=args.base))
 
     elif args.cmd == "test":
         run_tests(args.lang)
