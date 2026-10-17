@@ -1,0 +1,88 @@
+name: Reconcile translation PRs
+
+# Why this exists
+# ---------------
+# translate.yml only tries to merge the PRs it just created, inside the live run,
+# in a bounded poll. If a PR's required checks finish after that window closes, or
+# a PR is pushed with no checks, or main moves on underneath it, the live run is
+# already over and NOTHING ever looks at that PR again. That is how #188 stranded
+# 19 real translations until they were merged by hand.
+#
+# This workflow is the retry the live run lacks: on a schedule (and on demand) it
+# re-examines every open i18n/ai-* PR and, using the SAME merge gate the live run
+# uses (scripts/merge_gate.py, same two required checks), it:
+#   - merges any PR whose required checks are all passing;
+#   - refreshes a PR that is behind main (updates its branch) so its checks re-run
+#     against current main — next pass can then merge it;
+#   - leaves a genuinely-red PR open and logged, for a human / a re-translation.
+# It never merges anything the live run would not have merged: the bar is identical.
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # every 6 hours
+  workflow_dispatch:
+
+# One reconcile at a time; a scheduled run and a manual one must not race to merge.
+concurrency:
+  group: reconcile-translation-prs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # OL_BOT_PAT (not GITHUB_TOKEN) so that an `update-branch` push triggers
+          # the pull_request checks the merge gate waits on. Same reason as #151.
+          token: ${{ secrets.OL_BOT_PAT }}
+
+      - name: Reconcile open i18n/ai-* PRs
+        env:
+          GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
+        run: |
+          set -euo pipefail
+          REQUIRE=(--require validate --require "Verify translations deploy cleanly")
+
+          # number<TAB>mergeStateStatus for every open AI PR.
+          gh pr list \
+            --state open \
+            --json number,headRefName,mergeStateStatus \
+            --jq '.[] | select(.headRefName | startswith("i18n/ai-")) | "\(.number)\t\(.mergeStateStatus)"' \
+          | while IFS=$'\t' read -r pr state; do
+              echo "::group::PR #$pr (mergeStateStatus=$state)"
+
+              checks="$(gh pr checks "$pr" --json name,bucket 2>/dev/null || echo '[]')"
+
+              if printf '%s' "$checks" | python3 scripts/merge_gate.py "${REQUIRE[@]}"; then
+                # Green: merge it. Tolerate a concurrent merge (set -e).
+                gh pr merge "$pr" --squash --delete-branch \
+                  || echo "note: merge of PR #$pr did not complete (already merged, or state changed)"
+                echo "::endgroup::"
+                continue
+              fi
+
+              if printf '%s' "$checks" | python3 scripts/merge_gate.py --mode settled "${REQUIRE[@]}"; then
+                # Settled but not all passing: a genuine failure. Leave it for a
+                # human or a re-translation run; do not touch it.
+                echo "PR #$pr is red (required checks finished, not all passing) — left open."
+                echo "::endgroup::"
+                continue
+              fi
+
+              # Not settled: checks are missing/pending. If the PR is behind main,
+              # refresh it so its checks re-run against current main; otherwise just
+              # wait for the checks already in flight (next scheduled run re-checks).
+              if [ "$state" = "BEHIND" ]; then
+                echo "PR #$pr is behind main — updating its branch to re-trigger checks."
+                gh pr update-branch "$pr" \
+                  || echo "note: could not update PR #$pr (conflict, or nothing to update) — left open."
+              else
+                echo "PR #$pr has checks pending/not yet reported — leaving for the next run."
+              fi
+              echo "::endgroup::"
+            done
