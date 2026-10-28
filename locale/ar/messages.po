@@ -2112,6 +2112,10 @@ msgid "Stats"
 msgstr "إحصاءات"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "إحصاءات المهام: من يُجري التعديلات، وكيف تصمد تعديلات المهام"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "تعديلات يومية"
 
@@ -4284,6 +4288,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "تعذّر تحميل المهام الآن. أعد تحميل الصفحة للمحاولة مرة أخرى."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "المبادرة الحالية"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "إصلاحاتك الأخيرة"
 
@@ -5550,7 +5558,7 @@ msgstr "إضافة تاريخ"
 msgid "When did you finish this book?"
 msgstr "متى أنهيت قراءة هذا الكتاب؟"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "تخطي"
 
@@ -6549,6 +6557,30 @@ msgstr "أكثر الكتب تقييماً"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "أكثر الكتب تقييماً (منذ البداية)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "إحصاءات المهام"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "يغطي كل رقم الأيام حتى آخر إحصاء، لذا يتغيّر قليلاً كل يوم."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "جميع الإحصاءات"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "الأحدث"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "قبل 4 أسابيع"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "آخر 90 يومًا"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8493,15 +8525,6 @@ msgstr "حفظ والتالي"
 msgid "I couldn't find it"
 msgstr "لم أتمكن من إيجاده"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "التالي: مهمة عشوائية من %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "التالي: مهمة عشوائية من جميع المهام المفتوحة"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "تم تعديل هذا الكتاب"
@@ -8610,7 +8633,7 @@ msgstr "سجّل لغة النص، لا لغة صفحة العنوان. فالت
 msgid "For example English"
 msgstr "على سبيل المثال الإنجليزية"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "عدد الصفحات"
 
@@ -9383,6 +9406,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "أكثر %(count)s كتابًا قراءة"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "أكمل البيانات الناقصة في الكتب الأكثر إضافة إلى الأرفف."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "كل المهام المفتوحة"
 
@@ -9982,6 +10019,62 @@ msgstr "الكتب الإلكترونية الكلاسيكية"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s – بحث"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "عمليات حفظ المهام الملغاة، آخر 28 يومًا"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "المحررون، آخر 28 يومًا"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "المحررون، آخر 7 أيام"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "المحررون لأول مرة، آخر 28 يومًا"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "المحررون لأول مرة، آخر 7 أيام"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "عمليات حفظ المهام، آخر 28 يومًا"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "محررو المهام، آخر 28 يومًا"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "محررو المهام، آخر 7 أيام"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "المحررون"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "الحسابات المسجّلة الدخول التي غيّرت سجل كتاب أو عمل أو مؤلف. لا يتم احتساب الروبوتات."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "صفحة المهام"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "تعديلات محفوظة من صفحة المهام."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "حاجز أمان"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "عمليات حفظ المهام التي لم تعد قيمتها في السجل: أُلغيت أو أُعيدت أو غُيّرت بتعديل لاحق."
 
 #~ msgid "Read Text ISBN"
 #~ msgstr "قراءة نص ISBN"
@@ -11518,4 +11611,10 @@ msgstr "%(title)s – بحث"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "افتح السجل وتأكد من تطابقه مع هذه الطبعة أولاً."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "التالي: مهمة عشوائية من %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "التالي: مهمة عشوائية من جميع المهام المفتوحة"
 

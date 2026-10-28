@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:18+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: 2023-02-22 21:31+0200\n"
 "Last-Translator: Nazar \"Bicolino34\" Kotsur <bicolino34@gmail.com>\n"
 "Language: uk\n"
@@ -2114,6 +2114,10 @@ msgstr "<span class=\"login-counts\">0</span> читачів увійшли пр
 #: admin/index.html
 msgid "Stats"
 msgstr "Статистика"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Статистика завдань: хто редагує та наскільки зберігаються редагування завдань"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4312,6 +4316,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Не вдалося завантажити завдання зараз. Перезавантажте сторінку, щоб спробувати ще раз."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Поточна ініціатива"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Ваші останні виправлення"
 
@@ -5589,7 +5597,7 @@ msgstr "Додати дату"
 msgid "When did you finish this book?"
 msgstr "Коли ви закінчили цю книгу?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Пропустити"
 
@@ -6571,6 +6579,30 @@ msgstr "Найбільш оцінені книги"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Найбільш оцінені книги (за весь час)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Статистика завдань"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Кожне число охоплює дні до останнього підрахунку, тому воно трохи змінюється щодня."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Уся статистика"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Останні"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 тижні тому"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Останні 90 днів"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8511,15 +8543,6 @@ msgstr "Зберегти і далі"
 msgid "I couldn't find it"
 msgstr "Не вдалося знайти"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Далі: випадкове завдання з %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Далі: випадкове завдання з усіх відкритих завдань"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Відредаговано цю книгу"
@@ -8628,7 +8651,7 @@ msgstr "Вказуйте мову тексту, а не мову титульн�
 msgid "For example English"
 msgstr "Наприклад, англійська"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Кількість сторінок"
 
@@ -9414,6 +9437,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s найчитаніших книг"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Заповніть відсутні дані в книгах, які люди найчастіше додають на полицю."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Усі відкриті завдання"
 
@@ -10014,6 +10051,62 @@ msgstr "Електронні книги класики"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - пошук"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Скасовані збереження завдань за останні 28 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Редактори за останні 28 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Редактори за останні 7 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Нові редактори за останні 28 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Нові редактори за останні 7 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Збереження завдань за останні 28 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Редактори завдань за останні 28 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Редактори завдань за останні 7 днів"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Редактори"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Авторизовані облікові записи, які змінили запис книги, твору чи автора. Боти не враховуються."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Сторінка завдань"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Редагування, збережені зі сторінки завдань."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Запобіжний механізм"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Збереження завдань, значення яких більше немає в записі: скасовано, повернуто або змінено пізнішим редагуванням."
 
 #~ msgid "Your Notifications"
 #~ msgstr "Ваші сповіщення"
@@ -11346,4 +11439,10 @@ msgstr "%(title)s - пошук"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Далі: випадкове завдання з %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Далі: випадкове завдання з усіх відкритих завдань"
 

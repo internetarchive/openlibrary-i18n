@@ -2031,6 +2031,10 @@ msgid "Stats"
 msgstr "Statistik"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Statistik tugas: siapa yang menyunting, dan seberapa bertahan suntingan tugas"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Pengeditan Per Hari"
 
@@ -4138,6 +4142,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Tugas tidak dapat dimuat saat ini. Muat ulang halaman untuk mencoba lagi."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Inisiatif saat ini"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Perbaikan terbaru Anda"
 
@@ -5356,7 +5364,7 @@ msgstr "Tambahkan tanggal"
 msgid "When did you finish this book?"
 msgstr "Kapan Anda menyelesaikan buku ini?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Lewati"
 
@@ -6297,6 +6305,30 @@ msgstr "Buku Paling Banyak Dinilai"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Buku Paling Banyak Dinilai (Sepanjang Waktu)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Statistik Tugas"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Setiap angka mencakup hari hingga penghitungan terbaru, jadi berubah sedikit setiap hari."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Semua statistik"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Terbaru"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 minggu sebelumnya"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "90 hari terakhir"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8173,15 +8205,6 @@ msgstr "Simpan dan lanjut"
 msgid "I couldn't find it"
 msgstr "Saya tidak dapat menemukannya"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Berikutnya: tugas acak dari %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Berikutnya: tugas acak dari semua tugas terbuka"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Menyunting buku ini"
@@ -8290,7 +8313,7 @@ msgstr "Catat bahasa teks, bukan bahasa halaman judul. Terjemahan berada dalam b
 msgid "For example English"
 msgstr "Contohnya Inggris"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Jumlah halaman"
 
@@ -9070,6 +9093,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s buku yang paling banyak dibaca"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Lengkapi informasi yang hilang pada buku yang paling sering disimpan orang di rak."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Semua tugas terbuka"
 
@@ -9649,6 +9686,62 @@ msgstr "eBook Klasik"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - pencarian"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Penyimpanan tugas yang dibatalkan, 28 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Penyunting, 28 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Penyunting, 7 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Penyunting pertama kali, 28 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Penyunting pertama kali, 7 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Penyimpanan tugas, 28 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Penyunting tugas, 28 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Penyunting tugas, 7 hari terakhir"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Penyunting"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Akun yang masuk yang mengubah catatan buku, karya, atau penulis. Bot tidak dihitung."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Halaman tugas"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Suntingan yang disimpan dari halaman tugas."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Pengaman"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Penyimpanan tugas yang nilainya sudah tidak ada lagi di catatan: dibatalkan, dikembalikan, atau diubah oleh suntingan berikutnya."
 
 #~ msgid "Point your camera at a barcode! 📷"
 #~ msgstr "Arahkan kamera anda pada barcode! 📷"
@@ -11149,4 +11242,10 @@ msgstr "%(title)s - pencarian"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Buka rekaman dan pastikan dulu bahwa itu cocok dengan edisi ini."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Berikutnya: tugas acak dari %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Berikutnya: tugas acak dari semua tugas terbuka"
 

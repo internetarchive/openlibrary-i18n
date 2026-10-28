@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:20+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: tl\n"
@@ -2026,6 +2026,10 @@ msgstr "<span class=\"login-counts\">0</span> patron ang nag-log in kahit isang 
 #: admin/index.html
 msgid "Stats"
 msgstr "Statistika"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Istatistika ng Mga Gawain: sino ang nag-e-edit, at kung gaano katagal nananatili ang mga pag-edit sa Mga Gawain"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4114,6 +4118,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Hindi na-load ang mga gawain ngayon. I-reload ang pahina para subukang muli."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Kasalukuyang inisyatiba"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Ang iyong mga kamakailang pag-aayos"
 
@@ -5335,7 +5343,7 @@ msgstr "Magdagdag ng petsa"
 msgid "When did you finish this book?"
 msgstr "Kailan mo natapos ang aklat na ito?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Laktawan"
 
@@ -6280,6 +6288,30 @@ msgstr "Pinakamaraming Na-rate na Aklat"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Pinakamaraming Na-rate na Aklat (Lahat ng Oras)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Istatistika ng Mga Gawain"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Sinasaklaw ng bawat bilang ang mga araw hanggang sa pinakahuling bilang, kaya nagbabago ito nang kaunti araw-araw."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Lahat ng istatistika"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Pinakabago"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 linggo bago nito"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Huling 90 araw"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8157,15 +8189,6 @@ msgstr "I-save at sumunod"
 msgid "I couldn't find it"
 msgstr "Hindi ko ito nahanap"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Susunod: isang random na gawain mula sa %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Susunod: isang random na gawain mula sa lahat ng bukas na gawain"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Na-edit ang aklat na ito"
@@ -8274,7 +8297,7 @@ msgstr "Itala ang wika ng teksto, hindi ang wika ng title page. Ang isang salin 
 msgid "For example English"
 msgstr "Halimbawa, Ingles"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Bilang ng pahina"
 
@@ -9046,6 +9069,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Ang %(count)s na pinakabinasang mga aklat"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Punan ang mga kulang sa mga aklat na pinaka-madalas idagdag ng mga tao sa kanilang istante."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Lahat ng bukas na gawain"
 
@@ -9623,6 +9660,62 @@ msgstr "Klasikal na eBooks"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - paghahanap"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Mga na-undo na pag-save sa Mga Gawain, huling 28 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Mga editor, huling 28 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Mga editor, huling 7 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Mga unang beses na editor, huling 28 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Mga unang beses na editor, huling 7 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Mga pag-save sa Mga Gawain, huling 28 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Mga editor ng Mga Gawain, huling 28 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Mga editor ng Mga Gawain, huling 7 araw"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Mga editor"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Mga naka-sign in na account na nagbago ng talaan ng aklat, akda, o may-akda. Hindi kasama ang mga bot sa bilang."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Pahina ng Mga Gawain"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Mga pag-edit na na-save mula sa pahina ng Mga Gawain."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Pananggalang"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Mga pag-save sa Mga Gawain na ang halaga ay wala na sa talaan: na-undo, na-revert, o binago ng mas huling pag-edit."
 
 #~ msgid "Donate this book to the <a href=\"https://archive.org\">Internet Archive</a> library."
 #~ msgstr "Idonate ang aklat na ito sa <a href=\"https://archive.org\">Internet Archive</a> aklatan."
@@ -11028,4 +11121,10 @@ msgstr "%(title)s - paghahanap"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Susunod: isang random na gawain mula sa %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Susunod: isang random na gawain mula sa lahat ng bukas na gawain"
 

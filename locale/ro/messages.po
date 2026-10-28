@@ -2036,6 +2036,10 @@ msgid "Stats"
 msgstr "Statistici"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Statistici sarcini: cine editează și cât de bine rezistă editările sarcinilor"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Modificări pe zi"
 
@@ -4127,6 +4131,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Sarcinile nu au putut fi încărcate acum. Reîncarcă pagina pentru a încerca din nou."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Inițiativa curentă"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Corecturile tale recente"
 
@@ -5367,7 +5375,7 @@ msgstr "Adaugă data"
 msgid "When did you finish this book?"
 msgstr "Când ai terminat această carte?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Omite"
 
@@ -6321,6 +6329,30 @@ msgstr "Cărți cel mai bine evaluate"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Cărți cel mai bine evaluate (toată perioada)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Statistici sarcini"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Fiecare număr acoperă zilele până la ultima numărătoare, deci se schimbă puțin în fiecare zi."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Toate statisticile"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Cele mai recente"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "Cu 4 săptămâni înainte"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Ultimele 90 de zile"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8214,15 +8246,6 @@ msgstr "Salvează și continuă"
 msgid "I couldn't find it"
 msgstr "Nu am găsit-o"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Următorul: o sarcină aleatorie din %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Următorul: o sarcină aleatorie din toate sarcinile deschise"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "A editat această carte"
@@ -8331,7 +8354,7 @@ msgstr "Înregistrează limba textului, nu limba paginii de titlu. O traducere e
 msgid "For example English"
 msgstr "De exemplu, engleză"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Număr de pagini"
 
@@ -9101,6 +9124,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Cele mai citite %(count)s cărți"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Completează ce lipsește la cărțile pe care oamenii le pun cel mai des pe raft."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Toate sarcinile deschise"
 
@@ -9681,6 +9718,62 @@ msgstr "Cărți electronice clasice"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - căutare"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Salvări de sarcini anulate, ultimele 28 de zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editori, ultimele 28 de zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editori, ultimele 7 zile"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Editori noi, ultimele 28 de zile"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Editori noi, ultimele 7 zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Salvări de sarcini, ultimele 28 de zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Editori de sarcini, ultimele 28 de zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Editori de sarcini, ultimele 7 zile"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editori"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Conturi autentificate care au modificat o carte, operă sau autor. Roboții nu sunt numărați."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Pagina sarcinilor"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Editări salvate de pe pagina sarcinilor."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Măsură de siguranță"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Salvări de sarcini a căror valoare nu mai este în înregistrare: anulată, revenită sau modificată de o editare ulterioară."
 
 #~ msgid "Design Pattern Library"
 #~ msgstr ""
@@ -10860,4 +10953,10 @@ msgstr "%(title)s - căutare"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Deschide mai întâi înregistrarea și confirmă că se potrivește cu această ediție."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Următorul: o sarcină aleatorie din %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Următorul: o sarcină aleatorie din toate sarcinile deschise"
 

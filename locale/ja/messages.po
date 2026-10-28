@@ -2016,6 +2016,10 @@ msgid "Stats"
 msgstr "統計"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "タスク統計: 誰が編集しているか、タスクの編集がどれだけ保持されるか"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "1日あたりの編集数"
 
@@ -4094,6 +4098,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "タスクを読み込めませんでした。ページを再読み込みしてもう一度お試しください。"
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "現在の取り組み"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "最近の修正"
 
@@ -5304,7 +5312,7 @@ msgstr "日付を追加"
 msgid "When did you finish this book?"
 msgstr "この本を読み終えたのはいつですか？"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "スキップ"
 
@@ -6238,6 +6246,30 @@ msgstr "最も評価された本"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "最も評価された本（全期間）"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "タスク統計"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "各数値は直近の集計までの日数を含むため、毎日少しずつ変化します。"
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "すべての統計"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "最新"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4週間前"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "過去90日間"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8089,15 +8121,6 @@ msgstr "保存して次へ"
 msgid "I couldn't find it"
 msgstr "見つかりませんでした"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "次へ：%(filter)sからランダムなタスク"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "次へ：すべての未完了タスクからランダムなタスク"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "この本を編集しました"
@@ -8206,7 +8229,7 @@ msgstr "扉ページの言語ではなく、本文の言語を記録してくだ
 msgid "For example English"
 msgstr "例：英語"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "ページ数"
 
@@ -8985,6 +9008,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "最もよく読まれている%(count)s冊の本"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "人々が最もよく本棚に追加する本の不足情報を入力してください。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "すべての未完了タスク"
 
@@ -9564,6 +9601,62 @@ msgstr "クラシック電子書籍を非表示"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - 検索"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "取り消されたタスクの保存、過去28日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "編集者、過去28日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "編集者、過去7日間"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "初めての編集者、過去28日間"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "初めての編集者、過去7日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "タスクの保存、過去28日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "タスクの編集者、過去28日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "タスクの編集者、過去7日間"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "編集者"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "本、作品、著者のレコードを変更したログイン済みアカウント。ボットはカウントされません。"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "タスクページ"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "タスクページから保存された編集。"
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "ガードレール"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "値がレコードにもう存在しないタスクの保存: 取り消された、元に戻された、または後の編集で変更されたもの。"
 
 #~ msgid "We've sent the verification email to %(email)s. You'll need to read that and click on the verification link to verify your email."
 #~ msgstr ""
@@ -10996,4 +11089,10 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "まずレコードを開き、この版と一致することを確認してください。"
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "次へ：%(filter)sからランダムなタスク"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "次へ：すべての未完了タスクからランダムなタスク"
 

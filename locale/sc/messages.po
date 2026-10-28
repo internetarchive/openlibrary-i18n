@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:24+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: 2025-02-07 13:05+0100\n"
 "Last-Translator: \n"
 "Language: sc\n"
@@ -2031,6 +2031,10 @@ msgstr "<span class=\"login-counts\">0</span> patrinos ant intradu a su sistema 
 #: admin/index.html
 msgid "Stats"
 msgstr "Istatìsticas"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Istatìsticas de is Cumpitos: chie est modifichende, e cantu durant is modìficas de is Cumpitos"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4136,6 +4140,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Is incàrrigos no si sunt pòdidos carrigare como. Torra a carrigare sa pàgina pro proare torra."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Iniziativa atuale"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Is acontzos tuos reghentes"
 
@@ -5371,7 +5379,7 @@ msgstr "Annanghe data"
 msgid "When did you finish this book?"
 msgstr "Cando as acabadu custu libru?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Sarta"
 
@@ -6321,6 +6329,30 @@ msgstr "Libros prus votados"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Libros prus votados (de semper)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Istatìsticas de is Cumpitos"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Dònnia nùmeru còmporat is dies fintzas a s'ùrtimu contu, pro custu càmbiat unu pagu dònnia die."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Totu is istatìsticas"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Ùrtimu"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 chidas prima"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Ùrtimas 90 dies"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8213,15 +8245,6 @@ msgstr "Sarva e sighi"
 msgid "I couldn't find it"
 msgstr "No l'apo atzapadu"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Imbeniente: unu cumpitu a sorte dae %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Imbeniente: unu cumpitu a sorte dae totu is cumpitos abertos"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "At modificadu custu libru"
@@ -8330,7 +8353,7 @@ msgstr "Registra sa limba de su testu, non sa limba de sa pàgina de tìtulu. Un
 msgid "For example English"
 msgstr "Pro esempiu, Inglesu"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Nùmeru de pàginas"
 
@@ -9103,6 +9126,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Is %(count)s libros prus lèghidos"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Prena su chi mancat in is libros chi sa gente ponet prus a s'iscafale."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Totu is cumpitos abertos"
 
@@ -9702,6 +9739,62 @@ msgstr "Libru eletrònicu clàssicu"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - chirca"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Sarvamentos de Cumpitos annulados, ùrtimas 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editores, ùrtimas 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editores, ùrtimas 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Editores pro sa prima borta, ùrtimas 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Editores pro sa prima borta, ùrtimas 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Sarvamentos de Cumpitos, ùrtimas 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Editores de Cumpitos, ùrtimas 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Editores de Cumpitos, ùrtimas 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editores"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Contos cun intrada fata chi ant mudadu unu registru de libru, òpera o autore. Is bot no sunt contados."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Pàgina de is Cumpitos"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Modìficas sarvadas dae sa pàgina de is Cumpitos."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Mesura de seguresa"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Sarvamentos de Cumpitos chi su valore no est prus in su registru: annulados, torrados a oe o mudados de una modìfica posteriore."
 
 #~ msgid "Edit Subject Tag"
 #~ msgstr "Modìfica s'eticheta de s'argumentu"
@@ -11546,4 +11639,10 @@ msgstr "%(title)s - chirca"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Imbeniente: unu cumpitu a sorte dae %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Imbeniente: unu cumpitu a sorte dae totu is cumpitos abertos"
 
