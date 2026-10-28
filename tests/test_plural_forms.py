@@ -34,7 +34,7 @@ KNOWN_EMPTY_FORMS = {"cs", "hr", "ro", "ru", "uk"}
 # Locales whose form 0 still hardcodes "1"/"one" while also covering other n,
 # left for the same follow-up. The entries that would regress against
 # openlibrary are fixed; these are the rest. strict, as above.
-KNOWN_DROPPED_PLACEHOLDERS = {"ar", "fr", "hr"}
+KNOWN_DROPPED_PLACEHOLDERS: set[str] = set()
 
 
 def _locales() -> list[str]:

@@ -3262,6 +3262,10 @@ msgstr "Wybierz typ identyfikacji."
 msgid "Are you sure that's the published date?"
 msgstr "Czy na pewno to jest data wydania?"
 
+#: books/add.html openlibrary/plugins/upstream/addbook.py
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Wprowadź prawidłowy adres URL zaczynający się od http:// lub https://"
+
 #: books/add.html
 msgid "Add a book to Open Library"
 msgstr "Dodaj książkę do Open Library"
@@ -4370,6 +4374,10 @@ msgid "Missing"
 msgstr "Brakujące"
 
 #: contribute/dashboard.html.jinja
+msgid "Tasks couldn't load right now. Reload the page to try again."
+msgstr "Nie udało się teraz wczytać zadań. Odśwież stronę, aby spróbować ponownie."
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Twoje ostatnie poprawki"
 
@@ -4380,6 +4388,10 @@ msgstr "Zobacz wszystkie swoje edycje"
 #: contribute/dashboard.html.jinja
 msgid "Fixes you save here show up in this list."
 msgstr "Poprawki zapisane tutaj pojawiają się na tej liście."
+
+#: contribute/dashboard.html.jinja
+msgid "Go further"
+msgstr "Idź dalej"
 
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
@@ -4429,8 +4441,8 @@ msgstr "Zadania Open Library"
 
 #: contribute/landing.html.jinja
 #, python-format
-msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
-msgstr "Open Library obsługuje %(readers)s czytelników miesięcznie w ramach %(books)s skatalogowanych książek, a jej %(mark_start)sOpen Librarianie%(mark_end)s dokonują tysięcy edycji każdego tygodnia."
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sreaders like you%(mark_end)s make thousands of edits every week."
+msgstr "Open Library obsługuje %(readers)s czytelników miesięcznie wśród %(books)s skatalogowanych książek, a jej %(mark_start)sczytelnicy tacy jak ty%(mark_end)s dokonują tysięcy edycji co tydzień."
 
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
@@ -4461,10 +4473,6 @@ msgstr "Każde zadanie to jedna książka i jedno puste pole. Oto kilka przykła
 #, python-format
 msgid "Add %(field)s"
 msgstr "Dodaj %(field)s"
-
-#: contribute/landing.html.jinja
-msgid "Join in"
-msgstr "Dołącz"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -4760,9 +4768,9 @@ msgstr "Biblioteka tworzona przez ludzi, którzy z niej korzystają."
 msgid "A catalog for every book ever published, maintained by readers like you."
 msgstr "Katalog każdej książki, jaka kiedykolwiek została wydana, prowadzony przez czytelników takich jak Ty."
 
-#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
-msgid "Become an Open Librarian"
-msgstr "Zostań Open Librarianem"
+#: home/library_row.html.jinja
+msgid "Start contributing"
+msgstr "Zacznij współtworzyć"
 
 #: home/library_row.html.jinja
 msgid "Editable"
@@ -6918,6 +6926,21 @@ msgstr "Pierwsze wydanie w %s"
 #, python-format
 msgid "Book %s"
 msgstr "Książka %s"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s by %(publishers)s"
+msgstr "To wydanie zostało opublikowane w %(year)s roku przez %(publishers)s"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s"
+msgstr "To wydanie zostało opublikowane w %(year)s roku"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published by %(publishers)s"
+msgstr "To wydanie zostało opublikowane przez %(publishers)s"
 
 #: type/edition/view.html type/work/view.html
 #, fuzzy
@@ -9444,10 +9467,6 @@ msgid "Filipino"
 msgstr "Filipiński"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are open to librarians only, for now"
-msgstr "Na razie zadania są dostępne tylko dla bibliotekarzy"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Data wydania"
 
@@ -9460,20 +9479,40 @@ msgid "All open tasks"
 msgstr "Wszystkie otwarte zadania"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are for Open Librarians. Applying takes a few minutes."
-msgstr "Zadania są przeznaczone dla Open Librarianów. Zgłoszenie zajmuje kilka minut."
+msgid "Ready when you are"
+msgstr "Gotowe, gdy ty będziesz gotowy"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
-msgstr "Zgłoszenie zajmuje kilka minut i wymaga podania nazwy użytkownika Open Library, więc najpierw załóż darmowe konto."
+msgid "Try a task"
+msgstr "Wypróbuj zadanie"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Browse all tasks"
+msgstr "Przeglądaj wszystkie zadania"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Join in"
+msgstr "Dołącz"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Create an account"
 msgstr "Załóż konto"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Log in"
-msgstr "Zaloguj się"
+msgid "Tasks are open to anyone with a free Open Library account."
+msgstr "Zadania są otwarte dla każdego, kto ma darmowe konto Open Library."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Already have one? Log in"
+msgstr "Masz już konto? Zaloguj się"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "Zostań Open Librarianem"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
+msgstr "Robisz tego dużo? Open Librarians otrzymują więcej narzędzi edycyjnych. Złożenie wniosku zajmuje tylko kilka minut."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Book cover"
@@ -9894,6 +9933,10 @@ msgstr "Twój adres e-mail został zweryfikowany. Jesteś teraz zalogowany/a."
 #: openlibrary/plugins/upstream/account.py
 msgid "Notification preferences have been updated successfully."
 msgstr "Preferencje dotyczące powiadomień zostały zaktualizowane."
+
+#: openlibrary/plugins/upstream/addbook.py
+msgid "Invalid Book URL"
+msgstr "Nieprawidłowy adres URL książki"
 
 #: openlibrary/plugins/upstream/borrow.py
 #, fuzzy
@@ -11310,4 +11353,16 @@ msgstr "%(title)s - wyszukiwanie"
 
 #~ msgid "Dozens of ways you can help improve the library"
 #~ msgstr "Dziesiątki sposobów, w jakie możesz pomóc ulepszyć bibliotekę"
+
+#~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+#~ msgstr "Open Library obsługuje %(readers)s czytelników miesięcznie w ramach %(books)s skatalogowanych książek, a jej %(mark_start)sOpen Librarianie%(mark_end)s dokonują tysięcy edycji każdego tygodnia."
+
+#~ msgid "Tasks are open to librarians only, for now"
+#~ msgstr "Na razie zadania są dostępne tylko dla bibliotekarzy"
+
+#~ msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+#~ msgstr "Zadania są przeznaczone dla Open Librarianów. Zgłoszenie zajmuje kilka minut."
+
+#~ msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+#~ msgstr "Zgłoszenie zajmuje kilka minut i wymaga podania nazwy użytkownika Open Library, więc najpierw załóż darmowe konto."
 
