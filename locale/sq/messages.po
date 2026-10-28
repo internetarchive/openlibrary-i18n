@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:23+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: 2026-10-18 21:33+0000\n"
 "Last-Translator: Mek <michael.karpeles@gmail.com>\n"
 "Language: sq\n"
@@ -2015,6 +2015,10 @@ msgstr "<span class=\"login-counts\">0</span> përdorues janë kyçur të paktë
 #: admin/index.html
 msgid "Stats"
 msgstr "Statistikat"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Statistikat e detyrave: kush po redakton dhe sa qëndrojnë redaktimet e detyrave"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4093,6 +4097,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Detyrat nuk mund të ngarkoheshin tani. Rifreskoni faqen për të provuar përsëri."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Nisma aktuale"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Rregullimet tuaja të fundit"
 
@@ -5314,7 +5322,7 @@ msgstr "Shto datën"
 msgid "When did you finish this book?"
 msgstr "Kur e përfunduat këtë libër?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Anashkalo"
 
@@ -6255,6 +6263,30 @@ msgstr "Librat Më të Vlerësuar"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Librat Më të Vlerësuar (Gjithë Kohën)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Statistikat e detyrave"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Çdo numër mbulon ditët deri në numërimin e fundit, kështu që ndryshon pak çdo ditë."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Të gjitha statistikat"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Më të fundit"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 javë më parë"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "90 ditët e fundit"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8118,15 +8150,6 @@ msgstr "Ruaj dhe vazhdo"
 msgid "I couldn't find it"
 msgstr "Nuk e gjeta dot"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Tjetra: një detyrë e rastësishme nga %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Tjetra: një detyrë e rastësishme nga të gjitha detyrat e hapura"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Modifikoi këtë libër"
@@ -8235,7 +8258,7 @@ msgstr "Regjistro gjuhën e tekstit, jo gjuhën e faqes së titullit. Një përk
 msgid "For example English"
 msgstr "Për shembull Anglisht"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Numri i faqeve"
 
@@ -9002,6 +9025,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s librat më të lexuar"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Plotëso çfarë mungon te librat që njerëzit i vendosin më shpesh në raft."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Të gjitha detyrat e hapura"
 
@@ -9578,6 +9615,62 @@ msgstr "E-librat Klasikë të fshehur"
 msgid "%(title)s - search"
 msgstr "%(title)s - kërkim"
 
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Ruajtje detyrash të zhbëra, 28 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Redaktorë, 28 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Redaktorë, 7 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Redaktorë të rinj, 28 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Redaktorë të rinj, 7 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Ruajtje detyrash, 28 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Redaktorë detyrash, 28 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Redaktorë detyrash, 7 ditët e fundit"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Redaktorë"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Llogari të kyçura që ndryshuan një libër, vepër ose autor. Robotët nuk numërohen."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Faqja e detyrave"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Redaktime të ruajtura nga faqja e detyrave."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Masë mbrojtëse"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Ruajtje detyrash vlera e të cilave nuk është më në regjistrim: zhbërë, rikthyer ose ndryshuar nga një redaktim i mëvonshëm."
+
 #~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
 #~ msgstr "Open Library u shërben %(readers)s lexuesve çdo muaj në %(books)s libra të katalogizuar, dhe %(mark_start)sBibliotekarët e Open%(mark_end)s bëjnë mijëra modifikime çdo javë."
 
@@ -9679,4 +9772,10 @@ msgstr "%(title)s - kërkim"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Tjetra: një detyrë e rastësishme nga %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Tjetra: një detyrë e rastësishme nga të gjitha detyrat e hapura"
 
