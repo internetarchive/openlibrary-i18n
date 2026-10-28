@@ -2017,6 +2017,10 @@ msgid "Stats"
 msgstr "Statistika"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Tapşırıq statistikası: kim redaktə edir və Tapşırıq redaktələri nə qədər davamlıdır"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Gün ərzində düzəlişlər"
 
@@ -4093,6 +4097,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Tapşırıqlar indi yüklənə bilmədi. Yenidən cəhd etmək üçün səhifəni yeniləyin."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Cari təşəbbüs"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Son düzəlişləriniz"
 
@@ -5314,7 +5322,7 @@ msgstr "Tarix əlavə et"
 msgid "When did you finish this book?"
 msgstr "Bu kitabı nə vaxt bitirdiniz?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Keç"
 
@@ -6255,6 +6263,30 @@ msgstr "Ən çox qiymət verilmiş kitablar"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Ən çox qiymət verilmiş kitablar (bütün dövr)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Tapşırıq statistikası"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Hər rəqəm son sayıma qədər olan günləri əhatə edir, ona görə də hər gün bir az dəyişir."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Bütün statistika"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Son"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 həftə əvvəl"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Son 90 gün"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8118,15 +8150,6 @@ msgstr "Saxla və növbəti"
 msgid "I couldn't find it"
 msgstr "Tapa bilmədim"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Növbəti: %(filter)s bölməsindən təsadüfi tapşırıq"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Növbəti: bütün açıq tapşırıqlardan təsadüfi biri"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Bu kitabı redaktə etdi"
@@ -8235,7 +8258,7 @@ msgstr "Başlıq səhifəsinin dilini deyil, mətnin dilini qeyd edin. Tərcüm�
 msgid "For example English"
 msgstr "Məsələn, ingilis dili"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Səhifə sayı"
 
@@ -9002,6 +9025,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Ən çox oxunan %(count)s kitab"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "İnsanların rəflərinə ən çox əlavə etdiyi kitablardakı çatışmayan məlumatları tamamlayın."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Bütün açıq tapşırıqlar"
 
@@ -9578,6 +9615,62 @@ msgstr "Klassik elektron kitablar gizlədilib"
 msgid "%(title)s - search"
 msgstr "%(title)s - axtarış"
 
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Ləğv edilmiş tapşırıq yadda saxlamaları, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Redaktorlar, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Redaktorlar, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "İlk dəfə redaktorlar, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "İlk dəfə redaktorlar, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Tapşırıq yadda saxlamaları, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Tapşırıq redaktorları, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Tapşırıq redaktorları, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Redaktorlar"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Kitab, əsər və ya müəllif qeydini dəyişdirən daxil olmuş hesablar. Botlar sayılmır."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Tapşırıqlar səhifəsi"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Tapşırıqlar səhifəsindən yadda saxlanan redaktələr."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Qoruyucu tədbir"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Qiyməti artıq qeyddə olmayan tapşırıq yadda saxlamaları: ləğv edilib, geri qaytarılıb və ya sonrakı redaktə ilə dəyişdirilib."
+
 #~ msgid "Merge these authors?"
 #~ msgstr "Bu müəlliflər birləşdirilsin?"
 
@@ -9756,4 +9849,10 @@ msgstr "%(title)s - axtarış"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Əvvəlcə qeydi açın və bu nəşrlə uyğun olduğunu təsdiqləyin."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Növbəti: %(filter)s bölməsindən təsadüfi tapşırıq"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Növbəti: bütün açıq tapşırıqlardan təsadüfi biri"
 
