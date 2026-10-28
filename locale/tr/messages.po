@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 21:19+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: 2024-03-24 19:29+0100\n"
 "Last-Translator: Erkut <dlkerkut@gmail.com>\n"
 "Language: tr\n"
@@ -2069,6 +2069,10 @@ msgstr "<span class=\"login-counts\">0</span> kullanıcı son 30 gün içinde en
 #: admin/index.html
 msgid "Stats"
 msgstr "İstatistikler"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Görev istatistikleri: kim düzenliyor ve görev düzenlemeleri ne kadar kalıcı"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4196,6 +4200,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Görevler şu anda yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Güncel girişim"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Son düzeltmeleriniz"
 
@@ -5438,7 +5446,7 @@ msgstr "Tarih ekle"
 msgid "When did you finish this book?"
 msgstr "Bu kitabı ne zaman bitirdiniz?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Atla"
 
@@ -6398,6 +6406,30 @@ msgstr "En Çok Değerlendirilen Kitaplar"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "En Çok Değerlendirilen Kitaplar (Tüm Zamanlar)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Görev istatistikleri"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Her sayı, son sayıma kadar olan günleri kapsar, bu yüzden her gün biraz değişir."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Tüm istatistikler"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "En son"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 hafta önce"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Son 90 gün"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8297,15 +8329,6 @@ msgstr "Kaydet ve ileri"
 msgid "I couldn't find it"
 msgstr "Bulamadım"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Sonraki: %(filter)s içinden rastgele bir görev"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Sonraki: tüm açık görevlerden rastgele bir görev"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Bu kitabı düzenledi"
@@ -8414,7 +8437,7 @@ msgstr "Başlık sayfasının dilini değil, metnin dilini kaydedin. Bir çeviri
 msgid "For example English"
 msgstr "Örneğin İngilizce"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Sayfa sayısı"
 
@@ -9196,6 +9219,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "En çok okunan %(count)s kitap"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "İnsanların rafına en çok eklediği kitaplardaki eksik bilgileri tamamlayın."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Tüm açık görevler"
 
@@ -9781,6 +9818,62 @@ msgstr "Klasik e-kitaplar"
 #, python-format
 msgid "%(title)s - search"
 msgstr "Ara - %(title)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Geri alınan görev kayıtları, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editörler, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editörler, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "İlk kez editör olanlar, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "İlk kez editör olanlar, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Görev kayıtları, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Görev editörleri, son 28 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Görev editörleri, son 7 gün"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editörler"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Bir kitap, eser veya yazar kaydını değiştiren oturum açmış hesaplar. Botlar sayılmaz."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Görevler sayfası"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Görevler sayfasından kaydedilen düzenlemeler."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Koruma önlemi"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Değeri artık kayıtta bulunmayan görev kayıtları: geri alınmış, eski haline döndürülmüş veya sonraki bir düzenlemeyle değiştirilmiş."
 
 #~ msgid "%d person waiting"
 #~ msgid_plural "%d people waiting"
@@ -11257,4 +11350,10 @@ msgstr "Ara - %(title)s"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Sonraki: %(filter)s içinden rastgele bir görev"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Sonraki: tüm açık görevlerden rastgele bir görev"
 
