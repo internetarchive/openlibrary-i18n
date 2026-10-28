@@ -3019,6 +3019,10 @@ msgstr "選択した識別子の値を入力してください"
 msgid "Are you sure that's the published date?"
 msgstr "本当にこれが出版日ですか？"
 
+#: books/add.html openlibrary/plugins/upstream/addbook.py
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "http:// または https:// で始まる有効なURLを入力してください"
+
 #: books/add.html
 msgid "Add a book to Open Library"
 msgstr "Open Libraryに本を追加"
@@ -4086,6 +4090,10 @@ msgid "Missing"
 msgstr "不足"
 
 #: contribute/dashboard.html.jinja
+msgid "Tasks couldn't load right now. Reload the page to try again."
+msgstr "タスクを読み込めませんでした。ページを再読み込みしてもう一度お試しください。"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "最近の修正"
 
@@ -4096,6 +4104,10 @@ msgstr "すべての編集を見る"
 #: contribute/dashboard.html.jinja
 msgid "Fixes you save here show up in this list."
 msgstr "ここで保存した修正はこのリストに表示されます。"
+
+#: contribute/dashboard.html.jinja
+msgid "Go further"
+msgstr "さらに進む"
 
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
@@ -4145,8 +4157,8 @@ msgstr "Open Libraryのタスク"
 
 #: contribute/landing.html.jinja
 #, python-format
-msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
-msgstr "Open Libraryは毎月%(readers)s人の読者に%(books)s冊の登録された本を提供しており、%(mark_start)sOpen Librarian%(mark_end)sたちは毎週何千もの編集を行っています。"
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sreaders like you%(mark_end)s make thousands of edits every week."
+msgstr "Open Libraryは毎月%(readers)s人の読者に%(books)s冊の目録化された本を提供しており、%(mark_start)sあなたのような読者%(mark_end)sが毎週何千もの編集を行っています。"
 
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
@@ -4177,10 +4189,6 @@ msgstr "各タスクは1冊の本と1つの空の項目です。以下はほん�
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)sを追加"
-
-#: contribute/landing.html.jinja
-msgid "Join in"
-msgstr "参加する"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -4458,9 +4466,9 @@ msgstr "利用する人々によって作られた図書館。"
 msgid "A catalog for every book ever published, maintained by readers like you."
 msgstr "これまでに出版されたすべての本のカタログを、あなたのような読者が維持しています。"
 
-#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
-msgid "Become an Open Librarian"
-msgstr "Open Librarianになる"
+#: home/library_row.html.jinja
+msgid "Start contributing"
+msgstr "貢献を始める"
 
 #: home/library_row.html.jinja
 msgid "Editable"
@@ -6466,6 +6474,21 @@ msgstr "%sに初出版"
 #, fuzzy, python-format
 msgid "Book %s"
 msgstr ""
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s by %(publishers)s"
+msgstr "この版は%(publishers)sにより%(year)s年に出版されました"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s"
+msgstr "この版は%(year)s年に出版されました"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published by %(publishers)s"
+msgstr "この版は%(publishers)sにより出版されました"
 
 #: type/edition/view.html type/work/view.html
 msgid "Read More"
@@ -8861,10 +8884,6 @@ msgid "Filipino"
 msgstr "フィリピン語"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are open to librarians only, for now"
-msgstr "タスクは今のところ図書館員のみ利用できます"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "出版"
 
@@ -8877,20 +8896,40 @@ msgid "All open tasks"
 msgstr "すべての未完了タスク"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are for Open Librarians. Applying takes a few minutes."
-msgstr "タスクはOpen Librarian向けです。申し込みには数分かかります。"
+msgid "Ready when you are"
+msgstr "準備ができたら"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
-msgstr "申し込みには数分かかり、Open Libraryのユーザー名が必要です。まず無料アカウントを作成してください。"
+msgid "Try a task"
+msgstr "タスクを試す"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Browse all tasks"
+msgstr "すべてのタスクを見る"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Join in"
+msgstr "参加する"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Create an account"
 msgstr "アカウントを作成"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Log in"
-msgstr "ログイン"
+msgid "Tasks are open to anyone with a free Open Library account."
+msgstr "タスクは無料のOpen Libraryアカウントを持つすべての人に開かれています。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Already have one? Log in"
+msgstr "すでにお持ちですか? ログイン"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "Open Librarianになる"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
+msgstr "これをたくさん行っていますか? Open Librarianはさらに多くの編集ツールを利用できます。申し込みはほんの数分で完了します。"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Book cover"
@@ -9294,6 +9333,10 @@ msgstr "メールアドレスが確認されました。ログインしました
 #: openlibrary/plugins/upstream/account.py
 msgid "Notification preferences have been updated successfully."
 msgstr "通知設定が正常に更新されました。"
+
+#: openlibrary/plugins/upstream/addbook.py
+msgid "Invalid Book URL"
+msgstr "無効な書籍のURL"
 
 #: openlibrary/plugins/upstream/borrow.py
 #, fuzzy
@@ -9843,7 +9886,7 @@ msgstr "%(title)s - 検索"
 #~ msgstr ""
 
 #~ msgid "Log in"
-#~ msgstr ""
+#~ msgstr "ログイン"
 
 #~ msgid "Sign up"
 #~ msgstr ""
@@ -10832,4 +10875,16 @@ msgstr "%(title)s - 検索"
 
 #~ msgid "Dozens of ways you can help improve the library"
 #~ msgstr "図書館の改善を助ける多くの方法"
+
+#~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+#~ msgstr "Open Libraryは毎月%(readers)s人の読者に%(books)s冊の登録された本を提供しており、%(mark_start)sOpen Librarian%(mark_end)sたちは毎週何千もの編集を行っています。"
+
+#~ msgid "Tasks are open to librarians only, for now"
+#~ msgstr "タスクは今のところ図書館員のみ利用できます"
+
+#~ msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+#~ msgstr "タスクはOpen Librarian向けです。申し込みには数分かかります。"
+
+#~ msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+#~ msgstr "申し込みには数分かかり、Open Libraryのユーザー名が必要です。まず無料アカウントを作成してください。"
 
