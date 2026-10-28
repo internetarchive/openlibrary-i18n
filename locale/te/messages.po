@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:21+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: te\n"
@@ -2143,6 +2143,10 @@ msgstr "గత 30 రోజులలో <span class=\"login-counts\">0</span> �
 #, fuzzy
 msgid "Stats"
 msgstr "సెట్టింగ్‌లు"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "పనుల గణాంకాలు: ఎవరు సవరిస్తున్నారు, పనుల సవరణలు ఎంత స్థిరంగా ఉంటున్నాయి"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4353,6 +4357,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "పనులు ఇప్పుడు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించడానికి పేజీని రీలోడ్ చేయండి."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "ప్రస్తుత కార్యక్రమం"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "మీ ఇటీవలి సవరణలు"
 
@@ -5640,7 +5648,7 @@ msgstr "తేదీని జోడించండి"
 msgid "When did you finish this book?"
 msgstr "ఈ పుస్తకం గురించి ఏలా వివరిస్తారు?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "దాటవేయి"
 
@@ -6652,6 +6660,30 @@ msgstr "సంబంధిత పుస్తకాలు"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "అత్యంత రేట్ చేయబడిన పుస్తకాలు (అన్ని కాలాలు)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "పనుల గణాంకాలు"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "ప్రతి సంఖ్య తాజా లెక్క వరకు రోజులను కలిగి ఉంటుంది, కాబట్టి ఇది ప్రతిరోజూ కొద్దిగా మారుతుంది."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "అన్ని గణాంకాలు"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "తాజా"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 వారాల క్రితం"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "గత 90 రోజులు"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8622,15 +8654,6 @@ msgstr "సేవ్ చేసి తదుపరికి వెళ్ళండ
 msgid "I couldn't find it"
 msgstr "నేను దీన్ని కనుగొనలేకపోయాను"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "తదుపరి: %(filter)s నుండి యాదృచ్ఛిక పని"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "తదుపరి: అన్ని తెరిచి ఉన్న పనుల నుండి యాదృచ్ఛిక పని"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "ఈ పుస్తకాన్ని సవరించారు"
@@ -8739,7 +8762,7 @@ msgstr "టైటిల్ పేజీ భాషను కాదు, వచన�
 msgid "For example English"
 msgstr "ఉదాహరణకు ఆంగ్లం"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "పేజీల సంఖ్య"
 
@@ -9522,6 +9545,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "అత్యధికంగా చదివిన %(count)s పుస్తకాలు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "ప్రజలు తమ షెల్ఫ్‌లో ఎక్కువగా ఉంచే పుస్తకాల్లో లేని సమాచారాన్ని పూరించండి."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "అన్ని తెరిచి ఉన్న పనులు"
 
@@ -10126,6 +10163,62 @@ msgstr "క్లాసిక్ పుస్తకాలు"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - శోధన"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "రద్దు చేసిన పనుల సేవ్‌లు, గత 28 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "సంపాదకులు, గత 28 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "సంపాదకులు, గత 7 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "మొదటిసారి సంపాదకులు, గత 28 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "మొదటిసారి సంపాదకులు, గత 7 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "పనుల సేవ్‌లు, గత 28 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "పనుల సంపాదకులు, గత 28 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "పనుల సంపాదకులు, గత 7 రోజులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "సంపాదకులు"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన సైన్-ఇన్ ఖాతాలు. బాట్‌లను లెక్కించరు."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "పనుల పేజీ"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "పనుల పేజీ నుండి సేవ్ చేసిన సవరణలు."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "రక్షణ చర్య"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "రికార్డులో ఇక విలువ లేని పనుల సేవ్‌లు: రద్దు చేయబడినవి, తిరిగి మార్చబడినవి లేదా తర్వాతి సవరణ ద్వారా మార్చబడినవి."
 
 #~ msgid "Edit Summary (briefly describe the changes you have made):"
 #~ msgstr "మార్పు సారాంశము (మీరు చేసిన మార్పులను క్లుప్తంగా వివరించండి):"
@@ -11385,4 +11478,10 @@ msgstr "%(title)s - శోధన"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "తదుపరి: %(filter)s నుండి యాదృచ్ఛిక పని"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "తదుపరి: అన్ని తెరిచి ఉన్న పనుల నుండి యాదృచ్ఛిక పని"
 
