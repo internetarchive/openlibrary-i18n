@@ -2112,6 +2112,10 @@ msgid "Stats"
 msgstr "स्थिति"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "कार्य आँकड़े: कौन संपादित कर रहा है, और कार्य संपादन कितने टिकाऊ हैं"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "प्रतिदिन संपादन"
 
@@ -4309,6 +4313,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "कार्य अभी लोड नहीं हो सके। पृष्ठ फिर से लोड करके पुनः प्रयास करें।"
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "वर्तमान पहल"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "आपके हाल के सुधार"
 
@@ -5576,7 +5584,7 @@ msgstr "तारीख जोड़ें"
 msgid "When did you finish this book?"
 msgstr "आपने यह किताब कब पूरी की?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "छोड़ें"
 
@@ -6550,6 +6558,30 @@ msgstr "सबसे ज़्यादा रेटिंग वाली क�
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "सबसे ज़्यादा रेटिंग वाली किताबें (सभी समय)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "कार्य आँकड़े"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "प्रत्येक संख्या नवीनतम गणना तक के दिनों को शामिल करती है, इसलिए यह हर दिन थोड़ा बदलती है।"
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "सभी आँकड़े"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "नवीनतम"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 सप्ताह पहले"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "पिछले 90 दिन"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8480,15 +8512,6 @@ msgstr "सहेजें और आगे बढ़ें"
 msgid "I couldn't find it"
 msgstr "मुझे यह नहीं मिला"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "अगला: %(filter)s से एक रैंडम कार्य"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "अगला: सभी खुले कार्यों में से एक रैंडम कार्य"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "इस किताब में बदलाव किया"
@@ -8597,7 +8620,7 @@ msgstr "पाठ की भाषा दर्ज करें, शीर्ष
 msgid "For example English"
 msgstr "उदाहरण के लिए English"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "पृष्ठों की संख्या"
 
@@ -9385,6 +9408,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "सबसे अधिक पढ़ी गई %(count)s पुस्तकें"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "जिन पुस्तकों को लोग सबसे अधिक शेल्फ पर रखते हैं, उनमें छूटी जानकारी भरें।"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "सभी खुले कार्य"
 
@@ -9990,6 +10027,62 @@ msgstr "क्लासिक ई - बुक्स"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - खोजें"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "पूर्ववत किए गए कार्य सेव, पिछले 28 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "संपादक, पिछले 28 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "संपादक, पिछले 7 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "पहली बार के संपादक, पिछले 28 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "पहली बार के संपादक, पिछले 7 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "कार्य सेव, पिछले 28 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "कार्य संपादक, पिछले 28 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "कार्य संपादक, पिछले 7 दिन"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "संपादक"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "साइन-इन किए गए वे खाते जिन्होंने किसी पुस्तक, कृति या लेखक के रिकॉर्ड को बदला। बॉट्स की गिनती नहीं की जाती।"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "कार्य पृष्ठ"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "कार्य पृष्ठ से सहेजे गए संपादन।"
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "सुरक्षा उपाय"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "कार्य सेव जिनका मान अब रिकॉर्ड में नहीं है: पूर्ववत किए गए, वापस लाए गए, या बाद के संपादन द्वारा बदले गए।"
 
 #~ msgid "Point your camera at a barcode! 📷"
 #~ msgstr "बारकोड पर अपने कैमरे की ओर इशारा करें! 📷"
@@ -11158,4 +11251,10 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "पहले रिकॉर्ड खोलें और पुष्टि करें कि यह इस संस्करण से मेल खाता है।"
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "अगला: %(filter)s से एक रैंडम कार्य"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "अगला: सभी खुले कार्यों में से एक रैंडम कार्य"
 
