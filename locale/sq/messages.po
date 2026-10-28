@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-28 18:58-0400\n"
+"POT-Creation-Date: 2026-10-28 21:23+0000\n"
 "PO-Revision-Date: 2026-10-18 21:33+0000\n"
 "Last-Translator: Mek <michael.karpeles@gmail.com>\n"
 "Language: sq\n"
@@ -4108,6 +4108,10 @@ msgstr "Rregullimet që ruani këtu shfaqen në këtë listë."
 msgid "Go further"
 msgstr "Shko më tej"
 
+#: contribute/done.html.jinja
+msgid "The cover you added"
+msgstr "Kopertina që shtuat"
+
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
 msgstr "Ruajtur"
@@ -5936,7 +5940,7 @@ msgstr "Shfleto raftet virtuale"
 msgid "Reader-curated collections"
 msgstr "Koleksione të kuruara nga lexues"
 
-#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+#: contribute/parts.html.jinja databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
 msgid "Browse"
 msgstr "Shfleto"
 
@@ -8030,6 +8034,31 @@ msgid "And %(count)s more."
 msgstr "Dhe %(count)s të tjerë."
 
 #: contribute/parts.html.jinja
+msgid "Choose the new cover"
+msgstr "Zgjidhni kopertinën e re"
+
+#: contribute/parts.html.jinja
+msgid "Cover from Amazon"
+msgstr "Kopertinë nga Amazon"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Found by ISBN %(isbn)s"
+msgstr "U gjet nga ISBN %(isbn)s"
+
+#: contribute/parts.html.jinja
+msgid "Upload a new image"
+msgstr "Ngarko një imazh të ri"
+
+#: contribute/parts.html.jinja
+msgid "Drop a file here, paste, or browse"
+msgstr "Lëshoni një skedar këtu, ngjiteni, ose shfletoni"
+
+#: contribute/parts.html.jinja
+msgid "JPG, GIF, PNG or WebP, up to 10 MB."
+msgstr "JPG, GIF, PNG ose WebP, deri në 10 MB."
+
+#: contribute/parts.html.jinja
 msgid "That looks like a valid number."
 msgstr "Ai duket si një numër i vlefshëm."
 
@@ -8068,10 +8097,6 @@ msgid "%(value)s, on 1 edition"
 msgid_plural "%(value)s, on %(count)d editions"
 msgstr[0] "%(value)s, në 1 edicion"
 msgstr[1] "%(value)s, në %(count)d edicione"
-
-#: contribute/parts.html.jinja
-msgid "I opened the record and the year and publisher match this edition."
-msgstr "Hapa regjistrimin dhe viti e botuesi përputhen me këtë edicion."
 
 #: contribute/parts.html.jinja
 msgid "Add a comment about your edit"
@@ -8154,6 +8179,42 @@ msgstr "Amazon"
 msgid "Library of Congress"
 msgstr "Library of Congress"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Cover"
+msgstr "Kopertina"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Add a cover"
+msgstr "Shtoni një kopertinë"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Can you find this edition's cover?"
+msgstr "A mund ta gjeni kopertinën e këtij botimi?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up on Google Books, Amazon or Better World Books and save the front cover image. Check that the title, author and publisher on the image match this edition, then upload it here."
+msgstr "Kërkoni ISBN-në në Google Books, Amazon ose Better World Books dhe ruani imazhin e kopertinës së përparme. Kontrolloni që titulli, autori dhe botuesi në imazh të përputhen me këtë botim, pastaj ngarkojeni këtu."
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Better World Books"
+msgstr "Better World Books"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Upload the cover only, flat and in full: no photos of the book on a table, no 3D mockups, no store badges or watermarks."
+msgstr "Ngarkoni vetëm kopertinën, të sheshtë dhe të plotë: pa fotografi të librit mbi tavolinë, pa modele 3D, pa distinktivë dyqanesh ose shenja uji."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+msgstr "Kjo kopertinë i përket një botimi tjetër. Një libër me kapak të butë, një ribotim ose një përkthim zakonisht ka një kopertinë tjetër; kontrolloni botuesin."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
+msgstr "Krijimi i një kopertine vetë. Nëse nuk mund ta gjeni të vërtetën, lëreni për dikë që mundet."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look for anything that doesn't fit this edition, such as “Graphic Novel”, “Movie tie-in” or a title in another language."
+msgstr "Kërkoni për çdo gjë që nuk përshtatet me këtë botim, si “Roman grafik”, “I lidhur me film” ose një titull në një gjuhë tjetër."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Fill in language"
 msgstr "Plotëso gjuhën"
@@ -8231,20 +8292,20 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Cili është numri i Library of Congress i këtij edicioni?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
-msgstr "Kërko këtë ISBN në katalogun e Library of Congress. Hap regjistrimin, viti dhe botuesi i të cilit përputhen me këtë edicion, dhe kopjo numrin e shfaqur si LCCN."
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+msgstr "Kërkoni këtë ISBN në katalogun e Bibliotekës së Kongresit. Hapni regjistrimin, botuesi dhe botimi i të cilit përputhen me këtë, dhe kopjoni numrin e treguar si LCCN. Një libër me kapak të butë ose një shtypje e mëvonshme mund të tregojë një vit tjetër dhe të jetë prapë i njëjti regjistrim."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
 msgstr "Format me vizë dhe të mbushur janë i njëjti numër: 75-425165 dhe 75425165. Ngjit cilindo; Open Library e ruan formën e mbushur."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
-msgstr "Numri i përket një shtypjeje tjetër. Rezultatet e kërkimit udhëhiqen nga më i njohuri, jo nga i yti."
+msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
+msgstr "Ky numër i përket një botimi tjetër: botimi i një botuesi tjetër, një botim i rishikuar, një përkthim ose libri elektronik. Secili ka regjistrimin e vet."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work, which means one of the two records is wrong."
-msgstr "Numri është tashmë në një edicion tjetër të kësaj vepre, çka do të thotë që njëri nga të dy regjistrimet është i gabuar."
+msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+msgstr "Ky numër ndodhet tashmë në një botim tjetër të kësaj vepre. Kjo është e saktë kur bëhet fjalë për kopertinën e fortë, kapakun e butë ose një shtypje të mëvonshme nga i njëjti botues; një botues tjetër ose një botim i rishikuar do të thotë që njëri nga dy regjistrimet është i gabuar."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address instead of the number itself."
@@ -8253,6 +8314,10 @@ msgstr "Duke ngjitur adresën e internetit në vend të vetë numrit."
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
 msgstr "Për shembull 75425165"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened the record and its publisher and edition match this one."
+msgstr "E hapa regjistrimin dhe botuesi dhe botimi i tij përputhen me këtë."
 
 #: openlibrary/contribute/field_guides.py
 msgid "OCLC/WorldCat number"
@@ -8267,8 +8332,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Cili është numri WorldCat (OCLC) i këtij edicioni?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
-msgstr "Kërko këtë ISBN në WorldCat. Hap regjistrimin, viti, botuesi dhe formati i të cilit përputhen me këtë edicion, dhe kopjo numrin e shfaqur si Numri OCLC."
+msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+msgstr "Kërkoni këtë ISBN në WorldCat. Hapni regjistrimin e shtypur, botuesi dhe botimi i të cilit përputhen me këtë, dhe kopjoni numrin e treguar si OCLC Number. Një libër me kapak të butë ose një shtypje e mëvonshme mund të tregojë një vit tjetër dhe të jetë prapë i njëjti regjistrim."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
@@ -8279,8 +8344,12 @@ msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library system
 msgstr "Prefikset ocm, ocn, on dhe (OCoLC) janë mbushje të shtuara nga sistemet bibliotekare, jo pjesë e numrit. ocm00047810608 është 47810608."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
-msgstr "Numri i përket një shtypjeje tjetër, një edicioni klubi librash, ose e-librit në vend të kopjes së shtypur."
+msgid "WorldCat sometimes lists one edition more than once. Any of those numbers is right; OCLC merges them over time."
+msgstr "WorldCat ndonjëherë e liston një botim më shumë se një herë. Secili nga këto numra është i saktë; OCLC i bashkon ato me kalimin e kohës."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different record: the ebook, another publisher's edition, a revised edition, large print or a translation."
+msgstr "Ky numër i përket një regjistrimi tjetër: librit elektronik, botimit të një botuesi tjetër, një botimi të rishikuar, shtypit me shkronja të mëdha ose një përkthimi."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
@@ -8289,6 +8358,10 @@ msgstr "Duke ngjitur adresën e internetit, ose duke lënë prefiksin ocm/ocn."
 #: openlibrary/contribute/field_guides.py
 msgid "Digits only, for example 47810608"
 msgstr "Vetëm shifra, për shembull 47810608"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened a print record and its publisher and edition match this one."
+msgstr "Hapa një regjistrim të shtypur dhe botuesi dhe botimi i tij përputhen me këtë."
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -8310,6 +8383,18 @@ msgstr "Kjo fushë nuk mund të plotësohet këtu."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Plotësoi %(field)s nga Detyrat e Open Library"
+
+#: openlibrary/contribute/save.py
+msgid "Choose an image of the cover."
+msgstr "Zgjidhni një imazh të kopertinës."
+
+#: openlibrary/contribute/save.py
+msgid "We couldn't save the cover just now. Please try again in a minute."
+msgstr "Nuk mundëm ta ruajmë kopertinën tani. Ju lutemi provoni përsëri pas një minute."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't an image Open Library can use. Choose a JPG, GIF, PNG or WebP under 10 MB."
+msgstr "Ai nuk është një imazh që Open Library mund ta përdorë. Zgjidhni një JPG, GIF, PNG ose WebP nën 10 MB."
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8957,10 +9042,6 @@ msgid "Doing a lot of these? Open Librarians get more editing tools. Applying ta
 msgstr "Po i bëni shumë prej këtyre? Open Librarians marrin më shumë mjete redaktimi. Aplikimi zgjat vetëm pak minuta."
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Book cover"
-msgstr "Kopertina e librit"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "Mungon: %(field)s"
@@ -8978,8 +9059,8 @@ msgid "Nothing to fill in here"
 msgstr "Asgjë për të plotësuar këtu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Open the record and confirm it matches this edition first."
-msgstr "Hap regjistrimin dhe konfirmo që përputhet me këtë edicion fillimisht."
+msgid "Check that it matches this edition, and tick the box to say so."
+msgstr "Kontrolloni që përputhet me këtë botim, dhe shënoni kutinë për ta konfirmuar."
 
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Books Read"
@@ -9220,10 +9301,6 @@ msgstr "Ka klasifikim LoC"
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has number of pages"
 msgstr "Ka numër faqesh"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Better World Books"
-msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -9515,4 +9592,91 @@ msgstr "%(title)s - kërkim"
 
 #~ msgid "Log in"
 #~ msgstr "Hyr"
+
+#~ msgid "I opened the record and the year and publisher match this edition."
+#~ msgstr "Hapa regjistrimin dhe viti e botuesi përputhen me këtë edicion."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+#~ msgstr "Kërko këtë ISBN në katalogun e Library of Congress. Hap regjistrimin, viti dhe botuesi i të cilit përputhen me këtë edicion, dhe kopjo numrin e shfaqur si LCCN."
+
+#~ msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+#~ msgstr "Numri i përket një shtypjeje tjetër. Rezultatet e kërkimit udhëhiqen nga më i njohuri, jo nga i yti."
+
+#~ msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+#~ msgstr "Numri është tashmë në një edicion tjetër të kësaj vepre, çka do të thotë që njëri nga të dy regjistrimet është i gabuar."
+
+#~ msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+#~ msgstr "Kërko këtë ISBN në WorldCat. Hap regjistrimin, viti, botuesi dhe formati i të cilit përputhen me këtë edicion, dhe kopjo numrin e shfaqur si Numri OCLC."
+
+#~ msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+#~ msgstr "Numri i përket një shtypjeje tjetër, një edicioni klubi librash, ose e-librit në vend të kopjes së shtypur."
+
+#~ msgid "Book cover"
+#~ msgstr "Kopertina e librit"
+
+#~ msgid "Open the record and confirm it matches this edition first."
+#~ msgstr "Hap regjistrimin dhe konfirmo që përputhet me këtë edicion fillimisht."
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr ""
+
+#~ msgid "Tasks Stats"
+#~ msgstr ""
+
+#~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
+#~ msgstr ""
+
+#~ msgid "All stats"
+#~ msgstr ""
+
+#~ msgid "Latest"
+#~ msgstr ""
+
+#~ msgid "4 weeks earlier"
+#~ msgstr ""
+
+#~ msgid "Last 90 days"
+#~ msgstr ""
+
+#~ msgid "Tasks saves undone, last 28 days"
+#~ msgstr ""
+
+#~ msgid "Editors, last 28 days"
+#~ msgstr ""
+
+#~ msgid "Editors, last 7 days"
+#~ msgstr ""
+
+#~ msgid "First-time editors, last 28 days"
+#~ msgstr ""
+
+#~ msgid "First-time editors, last 7 days"
+#~ msgstr ""
+
+#~ msgid "Tasks saves, last 28 days"
+#~ msgstr ""
+
+#~ msgid "Tasks editors, last 28 days"
+#~ msgstr ""
+
+#~ msgid "Tasks editors, last 7 days"
+#~ msgstr ""
+
+#~ msgid "Editors"
+#~ msgstr ""
+
+#~ msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+#~ msgstr ""
+
+#~ msgid "Tasks page"
+#~ msgstr ""
+
+#~ msgid "Edits saved from the Tasks page."
+#~ msgstr ""
+
+#~ msgid "Guardrail"
+#~ msgstr ""
+
+#~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+#~ msgstr ""
 
