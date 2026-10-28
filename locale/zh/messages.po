@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Open Library VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-28 21:16+0000\n"
+"POT-Creation-Date: 2026-04-28 18:58-0400\n"
 "PO-Revision-Date: 2021-10-01 15:28+0200\n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -2124,6 +2124,10 @@ msgstr "<span class=\"login-counts\">0</span>位读者在过去30天内至少登
 #: admin/index.html
 msgid "Stats"
 msgstr "统计"
+
+#: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -4336,6 +4340,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "任务现在无法加载。请重新加载页面再试一次。"
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "当前计划"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "您最近的修正"
 
@@ -5613,7 +5621,7 @@ msgstr "添加日期"
 msgid "When did you finish this book?"
 msgstr "您会如何描述这本书呢？"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "跳过"
 
@@ -6596,6 +6604,30 @@ msgstr "评分最高的书"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "评分最高的书(全部时间)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "任务统计"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "每个数字涵盖截至最近一次统计的天数，因此每天都会略有变化。"
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "所有统计数据"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "最新"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4周前"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "过去90天"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8534,15 +8566,6 @@ msgstr "保存并前往下一个"
 msgid "I couldn't find it"
 msgstr "我没有找到"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "下一个：来自 %(filter)s 的随机任务"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "下一个：来自所有待办任务的随机任务"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "编辑了这本书"
@@ -8651,7 +8674,7 @@ msgstr "请记录正文的语言，而非扉页上的语言。译本应记录其
 msgid "For example English"
 msgstr "例如英语"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "页数"
 
@@ -9425,6 +9448,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "阅读最多的%(count)s本书"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "补全人们最常收藏的书籍中缺失的信息。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "所有待办任务"
 
@@ -10029,6 +10066,62 @@ msgstr "经典电子书"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - 搜索"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "已撤销的任务保存，最近28天"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "编辑者，最近28天"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "编辑者，最近7天"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "首次编辑者，最近28天"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "首次编辑者，最近7天"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "任务保存，最近28天"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "任务编辑者，最近28天"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "任务编辑者，最近7天"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "编辑者"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "修改过书籍、作品或作者记录的已登录账户。不计入机器人。"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "任务页面"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "从任务页面保存的编辑。"
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "安全机制"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "其值已不再反映在记录中的任务保存：已撤销、已还原或被后续编辑更改。"
 
 #~ msgid "Tips for Reconciling Author Records"
 #~ msgstr "核对作者记录的提示"
@@ -11352,4 +11445,10 @@ msgstr "%(title)s - 搜索"
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
 #~ msgstr ""
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "下一个：来自 %(filter)s 的随机任务"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "下一个：来自所有待办任务的随机任务"
 
