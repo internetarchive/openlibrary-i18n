@@ -2142,6 +2142,10 @@ msgid "Stats"
 msgstr "Статистика"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Статистика задач: кто редактирует и насколько сохраняются правки задач"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Правки в день"
 
@@ -4360,6 +4364,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Не удалось загрузить задачи. Перезагрузите страницу, чтобы попробовать снова."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Текущая инициатива"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Ваши недавние исправления"
 
@@ -5652,7 +5660,7 @@ msgstr "Добавить дату"
 msgid "When did you finish this book?"
 msgstr "Как вы бы описали эту книгу?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Пропустить"
 
@@ -6646,6 +6654,30 @@ msgstr "Самые оцениваемые книги"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Самые оцениваемые книги (за всё время)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Статистика задач"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Каждое число охватывает дни до последнего подсчёта, поэтому оно немного меняется каждый день."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Вся статистика"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Последние"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 недели назад"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Последние 90 дней"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8597,15 +8629,6 @@ msgstr "Сохранить и далее"
 msgid "I couldn't find it"
 msgstr "Не удалось найти"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Далее: случайная задача из %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Далее: случайная задача из всех открытых задач"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Правка книги"
@@ -8714,7 +8737,7 @@ msgstr "Указывайте язык текста, а не язык титул�
 msgid "For example English"
 msgstr "Например, английский"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Количество страниц"
 
@@ -9502,6 +9525,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s самых читаемых книг"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Заполните недостающие данные о книгах, которые чаще всего добавляют на полку."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Все открытые задачи"
 
@@ -10106,6 +10143,62 @@ msgstr "Электронные книги классики"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - поиск"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Отменённые сохранения задач за последние 28 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Редакторы за последние 28 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Редакторы за последние 7 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Новые редакторы за последние 28 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Новые редакторы за последние 7 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Сохранения задач за последние 28 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Редакторы задач за последние 28 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Редакторы задач за последние 7 дней"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Редакторы"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Авторизованные аккаунты, изменившие запись книги, произведения или автора. Боты не учитываются."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Страница задач"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Правки, сохранённые со страницы задач."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Защитный механизм"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Сохранения задач, значение которых больше не отражено в записи: отменено, возвращено или изменено последующей правкой."
 
 #~ msgid "Your Privacy Settings"
 #~ msgstr "Ваши настройки приватности"
@@ -11843,4 +11936,10 @@ msgstr "%(title)s - поиск"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Сначала откройте запись и убедитесь, что она соответствует этому изданию."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Далее: случайная задача из %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Далее: случайная задача из всех открытых задач"
 
