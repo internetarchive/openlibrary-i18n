@@ -4092,6 +4092,10 @@ msgstr "여기서 저장한 수정 내용이 이 목록에 표시됩니다."
 msgid "Go further"
 msgstr "더 나아가기"
 
+#: contribute/done.html.jinja
+msgid "The cover you added"
+msgstr "회원님이 추가한 표지"
+
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
 msgstr "저장됨"
@@ -5899,7 +5903,7 @@ msgstr "가상 서가 둘러보기"
 msgid "Reader-curated collections"
 msgstr "독자가 선별한 컬렉션"
 
-#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+#: contribute/parts.html.jinja databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
 msgid "Browse"
 msgstr "둘러보기"
 
@@ -7982,6 +7986,31 @@ msgid "And %(count)s more."
 msgstr "그 외 %(count)s개 더."
 
 #: contribute/parts.html.jinja
+msgid "Choose the new cover"
+msgstr "새 표지 선택"
+
+#: contribute/parts.html.jinja
+msgid "Cover from Amazon"
+msgstr "Amazon에서 가져온 표지"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Found by ISBN %(isbn)s"
+msgstr "ISBN %(isbn)s(으)로 찾음"
+
+#: contribute/parts.html.jinja
+msgid "Upload a new image"
+msgstr "새 이미지 업로드"
+
+#: contribute/parts.html.jinja
+msgid "Drop a file here, paste, or browse"
+msgstr "여기에 파일을 끌어다 놓거나, 붙여넣거나, 찾아보세요"
+
+#: contribute/parts.html.jinja
+msgid "JPG, GIF, PNG or WebP, up to 10 MB."
+msgstr "JPG, GIF, PNG 또는 WebP, 최대 10MB."
+
+#: contribute/parts.html.jinja
 msgid "That looks like a valid number."
 msgstr "유효한 번호로 보입니다."
 
@@ -8019,10 +8048,6 @@ msgstr "다른 판에서는"
 msgid "%(value)s, on 1 edition"
 msgid_plural "%(value)s, on %(count)d editions"
 msgstr[0] "%(value)s, %(count)d개 판에서"
-
-#: contribute/parts.html.jinja
-msgid "I opened the record and the year and publisher match this edition."
-msgstr "레코드를 열어 확인했으며 연도와 출판사가 이 판과 일치합니다."
 
 #: contribute/parts.html.jinja
 msgid "Add a comment about your edit"
@@ -8105,6 +8130,42 @@ msgstr "Amazon"
 msgid "Library of Congress"
 msgstr "미국 의회도서관"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Cover"
+msgstr "표지"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Add a cover"
+msgstr "표지 추가"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Can you find this edition's cover?"
+msgstr "이 판본의 표지를 찾을 수 있나요?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up on Google Books, Amazon or Better World Books and save the front cover image. Check that the title, author and publisher on the image match this edition, then upload it here."
+msgstr "Google Books, Amazon 또는 Better World Books에서 ISBN을 검색하여 앞표지 이미지를 저장하세요. 이미지의 제목, 저자, 출판사가 이 판본과 일치하는지 확인한 다음 여기에 업로드하세요."
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Better World Books"
+msgstr "Better World Books"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Upload the cover only, flat and in full: no photos of the book on a table, no 3D mockups, no store badges or watermarks."
+msgstr "표지만, 평평하고 전체가 보이도록 업로드하세요. 책상 위에 놓인 책 사진, 3D 목업, 매장 배지나 워터마크는 안 됩니다."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+msgstr "이 표지는 다른 판본의 것입니다. 페이퍼백, 재판본, 번역본은 대개 표지가 다릅니다. 출판사를 확인하세요."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
+msgstr "직접 표지를 만드는 것. 실제 표지를 찾을 수 없다면 찾을 수 있는 다른 사람에게 맡기세요."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look for anything that doesn't fit this edition, such as “Graphic Novel”, “Movie tie-in” or a title in another language."
+msgstr "이 판본에 맞지 않는 것이 있는지 확인하세요. 예를 들어 “Graphic Novel”, “Movie tie-in” 또는 다른 언어로 된 제목 등입니다."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Fill in language"
 msgstr "언어 입력"
@@ -8182,20 +8243,20 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "이 판의 미국 의회도서관 번호는 무엇입니까?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
-msgstr "미국 의회도서관 카탈로그에서 이 ISBN을 검색하세요. 연도와 출판사가 이 판과 일치하는 레코드를 열어 LCCN으로 표시된 번호를 복사하세요."
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+msgstr "이 ISBN을 미국 의회도서관(Library of Congress) 카탈로그에서 검색하세요. 출판사와 판본이 이것과 일치하는 레코드를 열고 LCCN으로 표시된 번호를 복사하세요. 페이퍼백이나 이후 인쇄본은 연도가 다르게 표시될 수 있지만 같은 레코드일 수 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
 msgstr "하이픈이 있는 형식과 채워진(padded) 형식은 같은 번호입니다: 75-425165와 75425165. 둘 중 무엇을 붙여넣어도 되며, Open Library는 채워진 형식으로 저장합니다."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
-msgstr "이 번호는 다른 인쇄본의 것입니다. 검색 결과는 보통 가장 잘 알려진 판을 먼저 보여주며, 여러분이 가진 판이 아닐 수 있습니다."
+msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
+msgstr "이 번호는 다른 판본의 것입니다. 다른 출판사의 것, 개정판, 번역본 또는 전자책일 수 있습니다. 각각 고유한 레코드가 있습니다."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work, which means one of the two records is wrong."
-msgstr "이 번호가 이미 이 작품의 다른 판에 등록되어 있습니다. 즉, 두 레코드 중 하나가 잘못된 것입니다."
+msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+msgstr "이 번호는 이미 이 작품의 다른 판본에 사용되고 있습니다. 같은 출판사의 양장본, 페이퍼백, 또는 이후 인쇄본이라면 정상입니다. 출판사가 다르거나 개정판이라면 두 레코드 중 하나가 잘못된 것입니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address instead of the number itself."
@@ -8204,6 +8265,10 @@ msgstr "번호 자체가 아니라 웹 주소를 붙여넣는 경우입니다."
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
 msgstr "예: 75425165"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened the record and its publisher and edition match this one."
+msgstr "레코드를 열었고 출판사와 판본이 이것과 일치합니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "OCLC/WorldCat number"
@@ -8218,8 +8283,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "이 판의 WorldCat(OCLC) 번호는 무엇입니까?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
-msgstr "WorldCat에서 이 ISBN을 검색하세요. 연도, 출판사, 형식이 이 판과 일치하는 레코드를 열어 OCLC Number로 표시된 번호를 복사하세요."
+msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+msgstr "이 ISBN을 WorldCat에서 검색하세요. 출판사와 판본이 이것과 일치하는 인쇄본 레코드를 열고 OCLC Number로 표시된 번호를 복사하세요. 페이퍼백이나 이후 인쇄본은 연도가 다르게 표시될 수 있지만 같은 레코드일 수 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
@@ -8230,8 +8295,12 @@ msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library system
 msgstr "ocm, ocn, on, (OCoLC) 같은 접두사는 도서관 시스템이 추가한 채움 문자일 뿐, 번호의 일부가 아닙니다. ocm00047810608은 47810608입니다."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
-msgstr "이 번호는 다른 인쇄본, 북클럽판, 또는 인쇄본이 아닌 전자책의 것일 수 있습니다."
+msgid "WorldCat sometimes lists one edition more than once. Any of those numbers is right; OCLC merges them over time."
+msgstr "WorldCat은 때때로 같은 판본을 여러 번 등록합니다. 그 번호들 중 어느 것이든 올바르며, OCLC가 시간이 지나면서 이를 통합합니다."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different record: the ebook, another publisher's edition, a revised edition, large print or a translation."
+msgstr "이 번호는 다른 레코드의 것입니다. 전자책, 다른 출판사의 판본, 개정판, 큰 활자판 또는 번역본일 수 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
@@ -8240,6 +8309,10 @@ msgstr "웹 주소를 붙여넣거나 ocm/ocn 접두사를 그대로 남겨두�
 #: openlibrary/contribute/field_guides.py
 msgid "Digits only, for example 47810608"
 msgstr "숫자만 입력, 예: 47810608"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened a print record and its publisher and edition match this one."
+msgstr "인쇄본 레코드를 열었고 출판사와 판본이 이것과 일치합니다."
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -8261,6 +8334,18 @@ msgstr "이 항목은 여기에서 입력할 수 없습니다."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Open Library Tasks에서 %(field)s 입력됨"
+
+#: openlibrary/contribute/save.py
+msgid "Choose an image of the cover."
+msgstr "표지 이미지를 선택하세요."
+
+#: openlibrary/contribute/save.py
+msgid "We couldn't save the cover just now. Please try again in a minute."
+msgstr "지금은 표지를 저장할 수 없었습니다. 잠시 후 다시 시도해 주세요."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't an image Open Library can use. Choose a JPG, GIF, PNG or WebP under 10 MB."
+msgstr "이는 Open Library에서 사용할 수 있는 이미지가 아닙니다. 10MB 미만의 JPG, GIF, PNG 또는 WebP를 선택하세요."
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8908,10 +8993,6 @@ msgid "Doing a lot of these? Open Librarians get more editing tools. Applying ta
 msgstr "이런 작업을 많이 하시나요? Open Librarian은 더 많은 편집 도구를 사용할 수 있습니다. 신청은 몇 분이면 끝납니다."
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Book cover"
-msgstr "책 표지"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "누락: %(field)s"
@@ -8929,8 +9010,8 @@ msgid "Nothing to fill in here"
 msgstr "여기에 입력할 내용이 없습니다"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Open the record and confirm it matches this edition first."
-msgstr "먼저 레코드를 열어 이 판과 일치하는지 확인하세요."
+msgid "Check that it matches this edition, and tick the box to say so."
+msgstr "이 판본과 일치하는지 확인하고, 확인란에 체크하세요."
 
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Books Read"
@@ -9171,10 +9252,6 @@ msgstr "의회도서관 분류 있음"
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has number of pages"
 msgstr "페이지 수 있음"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Better World Books"
-msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -10531,4 +10608,28 @@ msgstr "%(title)s - 검색"
 
 #~ msgid "Log in"
 #~ msgstr "로그인"
+
+#~ msgid "I opened the record and the year and publisher match this edition."
+#~ msgstr "레코드를 열어 확인했으며 연도와 출판사가 이 판과 일치합니다."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+#~ msgstr "미국 의회도서관 카탈로그에서 이 ISBN을 검색하세요. 연도와 출판사가 이 판과 일치하는 레코드를 열어 LCCN으로 표시된 번호를 복사하세요."
+
+#~ msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+#~ msgstr "이 번호는 다른 인쇄본의 것입니다. 검색 결과는 보통 가장 잘 알려진 판을 먼저 보여주며, 여러분이 가진 판이 아닐 수 있습니다."
+
+#~ msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+#~ msgstr "이 번호가 이미 이 작품의 다른 판에 등록되어 있습니다. 즉, 두 레코드 중 하나가 잘못된 것입니다."
+
+#~ msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+#~ msgstr "WorldCat에서 이 ISBN을 검색하세요. 연도, 출판사, 형식이 이 판과 일치하는 레코드를 열어 OCLC Number로 표시된 번호를 복사하세요."
+
+#~ msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+#~ msgstr "이 번호는 다른 인쇄본, 북클럽판, 또는 인쇄본이 아닌 전자책의 것일 수 있습니다."
+
+#~ msgid "Book cover"
+#~ msgstr "책 표지"
+
+#~ msgid "Open the record and confirm it matches this edition first."
+#~ msgstr "먼저 레코드를 열어 이 판과 일치하는지 확인하세요."
 
