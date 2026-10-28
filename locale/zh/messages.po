@@ -3220,6 +3220,10 @@ msgstr "请选择一个识别符。"
 msgid "Are you sure that's the published date?"
 msgstr "您确定这是出版日期吗？"
 
+#: books/add.html openlibrary/plugins/upstream/addbook.py
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "请输入以 http:// 或 https:// 开头的有效网址"
+
 #: books/add.html
 msgid "Add a book to Open Library"
 msgstr "在开放图书馆添加书籍"
@@ -4328,6 +4332,10 @@ msgid "Missing"
 msgstr "缺失"
 
 #: contribute/dashboard.html.jinja
+msgid "Tasks couldn't load right now. Reload the page to try again."
+msgstr "任务现在无法加载。请重新加载页面再试一次。"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "您最近的修正"
 
@@ -4338,6 +4346,10 @@ msgstr "查看您的所有编辑"
 #: contribute/dashboard.html.jinja
 msgid "Fixes you save here show up in this list."
 msgstr "您在此处保存的修正将显示在此列表中。"
+
+#: contribute/dashboard.html.jinja
+msgid "Go further"
+msgstr "更进一步"
 
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
@@ -4387,8 +4399,8 @@ msgstr "Open Library 任务"
 
 #: contribute/landing.html.jinja
 #, python-format
-msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
-msgstr "Open Library 每月为 %(readers)s 位读者提供服务，馆藏图书达 %(books)s 本，%(mark_start)sOpen Librarians%(mark_end)s 每周进行数千次编辑。"
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sreaders like you%(mark_end)s make thousands of edits every week."
+msgstr "Open Library 每月为 %(readers)s 位读者提供 %(books)s 本已编目的图书，其 %(mark_start)s像您一样的读者%(mark_end)s 每周进行数千次编辑。"
 
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
@@ -4419,10 +4431,6 @@ msgstr "每个任务对应一本书和一个空白字段。以下是一些示例
 #, python-format
 msgid "Add %(field)s"
 msgstr "添加%(field)s"
-
-#: contribute/landing.html.jinja
-msgid "Join in"
-msgstr "加入我们"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -4712,9 +4720,9 @@ msgstr "一个由使用者共同建造的图书馆。"
 msgid "A catalog for every book ever published, maintained by readers like you."
 msgstr "一个收录所有已出版图书的目录，由像您这样的读者共同维护。"
 
-#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
-msgid "Become an Open Librarian"
-msgstr "成为 Open Librarian"
+#: home/library_row.html.jinja
+msgid "Start contributing"
+msgstr "开始贡献"
 
 #: home/library_row.html.jinja
 msgid "Editable"
@@ -6827,6 +6835,21 @@ msgstr "首次出版于%s"
 #, fuzzy, python-format
 msgid "Book %s"
 msgstr ""
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s by %(publishers)s"
+msgstr "此版本于%(year)s年由%(publishers)s出版"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s"
+msgstr "此版本于%(year)s年出版"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published by %(publishers)s"
+msgstr "此版本由%(publishers)s出版"
 
 #: type/edition/view.html type/work/view.html
 #, fuzzy
@@ -9301,10 +9324,6 @@ msgid "Filipino"
 msgstr "菲律宾语"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are open to librarians only, for now"
-msgstr "目前任务仅对图书管理员开放"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "出版日期"
 
@@ -9317,20 +9336,40 @@ msgid "All open tasks"
 msgstr "所有待办任务"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are for Open Librarians. Applying takes a few minutes."
-msgstr "任务仅限 Open Librarians 使用。申请只需几分钟。"
+msgid "Ready when you are"
+msgstr "准备好了就开始"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
-msgstr "申请只需几分钟，并需要提供您的 Open Library 用户名，请先创建一个免费账户。"
+msgid "Try a task"
+msgstr "试试一个任务"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Browse all tasks"
+msgstr "浏览所有任务"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Join in"
+msgstr "加入我们"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Create an account"
 msgstr "创建账户"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Log in"
-msgstr "登录"
+msgid "Tasks are open to anyone with a free Open Library account."
+msgstr "任务对任何拥有免费 Open Library 账户的人开放。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Already have one? Log in"
+msgstr "已经有账户了？登录"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "成为 Open Librarian"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
+msgstr "经常做这些吗？Open Librarians 可获得更多编辑工具。申请只需几分钟。"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Book cover"
@@ -9757,6 +9796,10 @@ msgstr "您的电子邮件已验证。您现在已登录。"
 #: openlibrary/plugins/upstream/account.py
 msgid "Notification preferences have been updated successfully."
 msgstr "通知偏好已成功更新。"
+
+#: openlibrary/plugins/upstream/addbook.py
+msgid "Invalid Book URL"
+msgstr "无效的图书网址"
 
 #: openlibrary/plugins/upstream/borrow.py
 #, fuzzy
@@ -11122,4 +11165,19 @@ msgstr "%(title)s - 搜索"
 
 #~ msgid "Dozens of ways you can help improve the library"
 #~ msgstr "您可以通过多种方式帮忙改善图书馆"
+
+#~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+#~ msgstr "Open Library 每月为 %(readers)s 位读者提供服务，馆藏图书达 %(books)s 本，%(mark_start)sOpen Librarians%(mark_end)s 每周进行数千次编辑。"
+
+#~ msgid "Tasks are open to librarians only, for now"
+#~ msgstr "目前任务仅对图书管理员开放"
+
+#~ msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+#~ msgstr "任务仅限 Open Librarians 使用。申请只需几分钟。"
+
+#~ msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+#~ msgstr "申请只需几分钟，并需要提供您的 Open Library 用户名，请先创建一个免费账户。"
+
+#~ msgid "Log in"
+#~ msgstr "登录"
 
