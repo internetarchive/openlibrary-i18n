@@ -2025,6 +2025,10 @@ msgid "Stats"
 msgstr "পৰিসংখ্যা"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "কামৰ পৰিসংখ্যা: কোনে সম্পাদনা কৰি আছে, আৰু কামৰ সম্পাদনাসমূহ কিমান টিকি থাকে"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "প্ৰতিদিন সম্পাদনা"
 
@@ -4102,6 +4106,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "কাৰ্যসমূহ এতিয়া ল'ড হ'ব নোৱাৰিলে। পুনৰ চেষ্টা কৰিবলৈ পৃষ্ঠাটো ৰিলোড কৰক।"
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "বৰ্তমান উদ্যোগ"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "আপোনাৰ শেহতীয়া সংশোধনসমূহ"
 
@@ -5324,7 +5332,7 @@ msgstr "তাৰিখ যোগ কৰক"
 msgid "When did you finish this book?"
 msgstr "আপুনি এই কিতাপ কেতিয়া শেষ কৰিলে?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "এৰি যাওক"
 
@@ -6265,6 +6273,30 @@ msgstr "সৰ্বাধিক ৰেটিং পোৱা কিতাপ"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "সৰ্বাধিক ৰেটিং পোৱা কিতাপ (সকলো সময়)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "কামৰ পৰিসংখ্যা"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "প্ৰতিটো সংখ্যাই শেহতীয়া গণনালৈকে দিনবোৰ অন্তৰ্ভুক্ত কৰে, সেয়েহে ই প্ৰতিদিনে অলপ সলনি হয়।"
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "সকলো পৰিসংখ্যা"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "শেহতীয়া"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 সপ্তাহ আগত"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "শেষ 90 দিন"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8133,15 +8165,6 @@ msgstr "ছেভ কৰক আৰু পৰৱৰ্তী"
 msgid "I couldn't find it"
 msgstr "মই ইয়াক বিচাৰি নাপালোঁ"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "পৰৱৰ্তী: %(filter)s ৰ পৰা এটা যাদৃচ্ছিক কাম"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "পৰৱৰ্তী: সকলো মুকলি কামৰ পৰা এটা যাদৃচ্ছিক কাম"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "এই কিতাপখন সম্পাদনা কৰিলে"
@@ -8250,7 +8273,7 @@ msgstr "পাঠৰ ভাষা লিপিবদ্ধ কৰক, শিৰ�
 msgid "For example English"
 msgstr "উদাহৰণস্বৰূপে ইংৰাজী"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "পৃষ্ঠাৰ সংখ্যা"
 
@@ -9017,6 +9040,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "আটাইতকৈ বেছি পঢ়া %(count)s খন কিতাপ"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "মানুহে সকলোতকৈ বেছি শ্বেল্ফত ৰখা কিতাপসমূহৰ অনুপস্থিত তথ্য পূৰ কৰক।"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "সকলো মুকলি কাম"
 
@@ -9594,6 +9631,62 @@ msgstr "ক্লাছিক ই-কিতাপ লুকুৱাই ৰখ�
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - সন্ধান"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "বাতিল কৰা কাম সংৰক্ষণ, শেষ 28 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "সম্পাদকসকল, শেষ 28 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "সম্পাদকসকল, শেষ 7 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "প্ৰথমবাৰৰ সম্পাদকসকল, শেষ 28 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "প্ৰথমবাৰৰ সম্পাদকসকল, শেষ 7 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "কাম সংৰক্ষণ, শেষ 28 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "কাম সম্পাদকসকল, শেষ 28 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "কাম সম্পাদকসকল, শেষ 7 দিন"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "সম্পাদকসকল"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "কিতাপ, ৰচনা বা লেখকৰ ৰেকৰ্ড সলনি কৰা ছাইন-ইন কৰা একাউণ্টসমূহ। বটসমূহ গণনা কৰা নহয়।"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "কাম পৃষ্ঠা"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "কাম পৃষ্ঠাৰ পৰা সংৰক্ষণ কৰা সম্পাদনাসমূহ।"
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "সুৰক্ষা ব্যৱস্থা"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "কাম সংৰক্ষণ যাৰ মূল্য আৰু ৰেকৰ্ডত নাই: বাতিল কৰা, পুনৰুদ্ধাৰ কৰা বা পিছৰ সম্পাদনাৰে সলনি কৰা।"
 
 #~ msgid "Design Pattern Library"
 #~ msgstr ""
@@ -10797,4 +10890,10 @@ msgstr "%(title)s - সন্ধান"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "প্ৰথমে ৰেকৰ্ডটো খুলি ই এই সংস্কৰণৰ সৈতে মিল খায় নে নিশ্চিত কৰক।"
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "পৰৱৰ্তী: %(filter)s ৰ পৰা এটা যাদৃচ্ছিক কাম"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "পৰৱৰ্তী: সকলো মুকলি কামৰ পৰা এটা যাদৃচ্ছিক কাম"
 
