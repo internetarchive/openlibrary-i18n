@@ -4324,6 +4324,10 @@ msgstr "यहां सहेजे गए सुधार इस सूची 
 msgid "Go further"
 msgstr "आगे बढ़ें"
 
+#: contribute/done.html.jinja
+msgid "The cover you added"
+msgstr "आपके द्वारा जोड़ा गया कवर"
+
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
 msgstr "सहेजा गया"
@@ -6220,7 +6224,7 @@ msgstr "वर्चुअल अलमारियाँ ब्राउज़ 
 msgid "Reader-curated collections"
 msgstr "पाठकों द्वारा चुने गए संग्रह"
 
-#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+#: contribute/parts.html.jinja databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
 msgid "Browse"
 msgstr "ब्राउज़"
 
@@ -8392,6 +8396,31 @@ msgid "And %(count)s more."
 msgstr "और %(count)s अधिक।"
 
 #: contribute/parts.html.jinja
+msgid "Choose the new cover"
+msgstr "नया कवर चुनें"
+
+#: contribute/parts.html.jinja
+msgid "Cover from Amazon"
+msgstr "Amazon से कवर"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Found by ISBN %(isbn)s"
+msgstr "ISBN %(isbn)s से मिला"
+
+#: contribute/parts.html.jinja
+msgid "Upload a new image"
+msgstr "एक नई छवि अपलोड करें"
+
+#: contribute/parts.html.jinja
+msgid "Drop a file here, paste, or browse"
+msgstr "यहाँ एक फ़ाइल छोड़ें, पेस्ट करें, या ब्राउज़ करें"
+
+#: contribute/parts.html.jinja
+msgid "JPG, GIF, PNG or WebP, up to 10 MB."
+msgstr "JPG, GIF, PNG या WebP, अधिकतम 10 MB।"
+
+#: contribute/parts.html.jinja
 msgid "That looks like a valid number."
 msgstr "यह एक मान्य संख्या लगती है।"
 
@@ -8430,10 +8459,6 @@ msgid "%(value)s, on 1 edition"
 msgid_plural "%(value)s, on %(count)d editions"
 msgstr[0] "%(value)s, 1 संस्करण पर"
 msgstr[1] "%(value)s, %(count)d संस्करणों पर"
-
-#: contribute/parts.html.jinja
-msgid "I opened the record and the year and publisher match this edition."
-msgstr "मैंने रिकॉर्ड खोला और वर्ष व प्रकाशक इस संस्करण से मेल खाते हैं।"
 
 #: contribute/parts.html.jinja
 msgid "Add a comment about your edit"
@@ -8516,6 +8541,42 @@ msgstr "Amazon"
 msgid "Library of Congress"
 msgstr "लाइब्रेरी ऑफ़ कांग्रेस"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Cover"
+msgstr "कवर"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Add a cover"
+msgstr "कवर जोड़ें"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Can you find this edition's cover?"
+msgstr "क्या आप इस संस्करण का कवर ढूँढ सकते हैं?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up on Google Books, Amazon or Better World Books and save the front cover image. Check that the title, author and publisher on the image match this edition, then upload it here."
+msgstr "Google Books, Amazon या Better World Books पर ISBN खोजें और फ्रंट कवर की छवि सहेजें। जाँच लें कि छवि पर दिया गया शीर्षक, लेखक और प्रकाशक इस संस्करण से मेल खाता है, फिर इसे यहाँ अपलोड करें।"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Better World Books"
+msgstr "बेहतर विश्व पुस्तकें"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Upload the cover only, flat and in full: no photos of the book on a table, no 3D mockups, no store badges or watermarks."
+msgstr "केवल कवर अपलोड करें, सपाट और पूरा: मेज़ पर रखी किताब की तस्वीर नहीं, 3D मॉकअप नहीं, स्टोर बैज या वॉटरमार्क नहीं।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+msgstr "यह कवर किसी अन्य संस्करण का है। पेपरबैक, पुनर्मुद्रण या अनुवाद में आमतौर पर अलग कवर होता है; प्रकाशक की जाँच करें।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
+msgstr "खुद एक कवर बनाना। अगर आपको असली कवर नहीं मिल रहा, तो इसे किसी और के लिए छोड़ दें जो इसे ढूँढ सके।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look for anything that doesn't fit this edition, such as “Graphic Novel”, “Movie tie-in” or a title in another language."
+msgstr "ऐसी किसी भी चीज़ को देखें जो इस संस्करण से मेल न खाती हो, जैसे “Graphic Novel”, “Movie tie-in” या किसी अन्य भाषा में शीर्षक।"
+
 #: openlibrary/contribute/field_guides.py
 msgid "Fill in language"
 msgstr "भाषा भरें"
@@ -8593,20 +8654,20 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "इस संस्करण का लाइब्रेरी ऑफ़ कांग्रेस नंबर क्या है?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
-msgstr "इस ISBN के लिए लाइब्रेरी ऑफ़ कांग्रेस की सूची खोजें। वह रिकॉर्ड खोलें जिसका वर्ष और प्रकाशक इस संस्करण से मेल खाता है, और LCCN के रूप में दिखाई गई संख्या कॉपी करें।"
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+msgstr "इस ISBN के लिए Library of Congress कैटलॉग में खोजें। वह रिकॉर्ड खोलें जिसका प्रकाशक और संस्करण इससे मेल खाता हो, और LCCN के रूप में दिखाए गए नंबर को कॉपी करें। पेपरबैक या बाद की छपाई में अलग वर्ष दिख सकता है और फिर भी वह वही रिकॉर्ड हो सकता है।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
 msgstr "हाइफ़न वाला और पैडेड रूप एक ही संख्या है: 75-425165 और 75425165। कोई भी पेस्ट करें; ओपन लाइब्रेरी पैडेड रूप सहेजती है।"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
-msgstr "यह संख्या किसी अन्य छपाई की है। खोज परिणाम सबसे मशहूर छपाई को पहले दिखाते हैं, आपकी छपाई को नहीं।"
+msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
+msgstr "यह नंबर किसी अलग संस्करण का है: किसी अन्य प्रकाशक का, एक संशोधित संस्करण, एक अनुवाद या ई-बुक। हर एक का अपना अलग रिकॉर्ड है।"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work, which means one of the two records is wrong."
-msgstr "यह संख्या इस कृति के किसी अन्य संस्करण पर पहले से मौजूद है, जिसका मतलब है कि दोनों में से एक रिकॉर्ड गलत है।"
+msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+msgstr "यह नंबर पहले से ही इस कृति के किसी अन्य संस्करण पर है। यह सही है जब यह उसी प्रकाशक का हार्डकवर, पेपरबैक या बाद की छपाई हो; एक अलग प्रकाशक या संशोधित संस्करण का मतलब है कि दोनों में से एक रिकॉर्ड गलत है।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address instead of the number itself."
@@ -8615,6 +8676,10 @@ msgstr "संख्या के बजाय वेब पता पेस्�
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
 msgstr "उदाहरण के लिए 75425165"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened the record and its publisher and edition match this one."
+msgstr "मैंने रिकॉर्ड खोला और इसका प्रकाशक और संस्करण इससे मेल खाता है।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "OCLC/WorldCat number"
@@ -8629,8 +8694,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "इस संस्करण का WorldCat (OCLC) नंबर क्या है?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
-msgstr "इस ISBN के लिए WorldCat खोजें। वह रिकॉर्ड खोलें जिसका वर्ष, प्रकाशक और प्रारूप इस संस्करण से मेल खाता है, और OCLC Number के रूप में दिखाई गई संख्या कॉपी करें।"
+msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+msgstr "इस ISBN के लिए WorldCat में खोजें। वह प्रिंट रिकॉर्ड खोलें जिसका प्रकाशक और संस्करण इससे मेल खाता हो, और OCLC Number के रूप में दिखाए गए नंबर को कॉपी करें। पेपरबैक या बाद की छपाई में अलग वर्ष दिख सकता है और फिर भी वह वही रिकॉर्ड हो सकता है।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
@@ -8641,8 +8706,12 @@ msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library system
 msgstr "ocm, ocn, on और (OCoLC) प्रीफ़िक्स पुस्तकालय प्रणालियों द्वारा जोड़ी गई पैडिंग हैं, संख्या का हिस्सा नहीं। ocm00047810608 असल में 47810608 है।"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
-msgstr "यह संख्या किसी अन्य छपाई, बुक क्लब संस्करण, या प्रिंट कॉपी के बजाय ई-बुक की है।"
+msgid "WorldCat sometimes lists one edition more than once. Any of those numbers is right; OCLC merges them over time."
+msgstr "WorldCat कभी-कभी एक संस्करण को एक से अधिक बार सूचीबद्ध करता है। इनमें से कोई भी नंबर सही है; OCLC समय के साथ उन्हें मिला देता है।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different record: the ebook, another publisher's edition, a revised edition, large print or a translation."
+msgstr "यह नंबर किसी अलग रिकॉर्ड का है: ई-बुक, किसी अन्य प्रकाशक का संस्करण, एक संशोधित संस्करण, बड़े अक्षरों वाला प्रिंट या एक अनुवाद।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
@@ -8651,6 +8720,10 @@ msgstr "वेब पता पेस्ट करना, या ocm/ocn प्�
 #: openlibrary/contribute/field_guides.py
 msgid "Digits only, for example 47810608"
 msgstr "केवल अंक, उदाहरण के लिए 47810608"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened a print record and its publisher and edition match this one."
+msgstr "मैंने एक प्रिंट रिकॉर्ड खोला और इसका प्रकाशक और संस्करण इससे मेल खाता है।"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -8672,6 +8745,18 @@ msgstr "यह फ़ील्ड यहां नहीं भरी जा स
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "ओपन लाइब्रेरी कार्यों से %(field)s भरा गया"
+
+#: openlibrary/contribute/save.py
+msgid "Choose an image of the cover."
+msgstr "कवर की एक छवि चुनें।"
+
+#: openlibrary/contribute/save.py
+msgid "We couldn't save the cover just now. Please try again in a minute."
+msgstr "हम अभी कवर को सहेज नहीं सके। कृपया एक मिनट बाद फिर से प्रयास करें।"
+
+#: openlibrary/contribute/save.py
+msgid "That isn't an image Open Library can use. Choose a JPG, GIF, PNG or WebP under 10 MB."
+msgstr "यह ऐसी छवि नहीं है जिसे Open Library उपयोग कर सके। 10 MB से कम का JPG, GIF, PNG या WebP चुनें।"
 
 #: openlibrary/core/bookshelves.py
 #, fuzzy
@@ -9340,10 +9425,6 @@ msgid "Doing a lot of these? Open Librarians get more editing tools. Applying ta
 msgstr "क्या आप इनमें से बहुत कुछ करते हैं? Open Librarians को संपादन के अधिक उपकरण मिलते हैं। आवेदन करने में केवल कुछ मिनट लगते हैं।"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Book cover"
-msgstr "किताब का कवर"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "अनुपलब्ध: %(field)s"
@@ -9361,8 +9442,8 @@ msgid "Nothing to fill in here"
 msgstr "यहां भरने के लिए कुछ नहीं है"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Open the record and confirm it matches this edition first."
-msgstr "पहले रिकॉर्ड खोलें और पुष्टि करें कि यह इस संस्करण से मेल खाता है।"
+msgid "Check that it matches this edition, and tick the box to say so."
+msgstr "जाँच लें कि यह इस संस्करण से मेल खाता है, और इसकी पुष्टि के लिए बॉक्स को चेक करें।"
 
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Books Read"
@@ -9620,10 +9701,6 @@ msgstr "वर्गीकरण"
 #, fuzzy
 msgid "Has number of pages"
 msgstr "पृष्ठों की संख्या"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Better World Books"
-msgstr "बेहतर विश्व पुस्तकें"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -11057,4 +11134,28 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "Log in"
 #~ msgstr "लॉग इन करें"
+
+#~ msgid "I opened the record and the year and publisher match this edition."
+#~ msgstr "मैंने रिकॉर्ड खोला और वर्ष व प्रकाशक इस संस्करण से मेल खाते हैं।"
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+#~ msgstr "इस ISBN के लिए लाइब्रेरी ऑफ़ कांग्रेस की सूची खोजें। वह रिकॉर्ड खोलें जिसका वर्ष और प्रकाशक इस संस्करण से मेल खाता है, और LCCN के रूप में दिखाई गई संख्या कॉपी करें।"
+
+#~ msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+#~ msgstr "यह संख्या किसी अन्य छपाई की है। खोज परिणाम सबसे मशहूर छपाई को पहले दिखाते हैं, आपकी छपाई को नहीं।"
+
+#~ msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+#~ msgstr "यह संख्या इस कृति के किसी अन्य संस्करण पर पहले से मौजूद है, जिसका मतलब है कि दोनों में से एक रिकॉर्ड गलत है।"
+
+#~ msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+#~ msgstr "इस ISBN के लिए WorldCat खोजें। वह रिकॉर्ड खोलें जिसका वर्ष, प्रकाशक और प्रारूप इस संस्करण से मेल खाता है, और OCLC Number के रूप में दिखाई गई संख्या कॉपी करें।"
+
+#~ msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+#~ msgstr "यह संख्या किसी अन्य छपाई, बुक क्लब संस्करण, या प्रिंट कॉपी के बजाय ई-बुक की है।"
+
+#~ msgid "Book cover"
+#~ msgstr "किताब का कवर"
+
+#~ msgid "Open the record and confirm it matches this edition first."
+#~ msgstr "पहले रिकॉर्ड खोलें और पुष्टि करें कि यह इस संस्करण से मेल खाता है।"
 

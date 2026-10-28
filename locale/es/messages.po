@@ -4111,6 +4111,10 @@ msgstr "Las correcciones que guardes aquí aparecerán en esta lista."
 msgid "Go further"
 msgstr "Ir más allá"
 
+#: contribute/done.html.jinja
+msgid "The cover you added"
+msgstr "La portada que añadiste"
+
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
 msgstr "Guardado"
@@ -5939,7 +5943,7 @@ msgstr "Echa un vistazo a las estanterías virtuales"
 msgid "Reader-curated collections"
 msgstr "Colecciones seleccionadas por los lectores"
 
-#: databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
+#: contribute/parts.html.jinja databarWork.html shell/browse_popover.html.jinja shell/header.html.jinja
 msgid "Browse"
 msgstr "Explorar"
 
@@ -8039,6 +8043,31 @@ msgid "And %(count)s more."
 msgstr "Y %(count)s más."
 
 #: contribute/parts.html.jinja
+msgid "Choose the new cover"
+msgstr "Elige la nueva portada"
+
+#: contribute/parts.html.jinja
+msgid "Cover from Amazon"
+msgstr "Portada de Amazon"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "Found by ISBN %(isbn)s"
+msgstr "Encontrada por ISBN %(isbn)s"
+
+#: contribute/parts.html.jinja
+msgid "Upload a new image"
+msgstr "Sube una imagen nueva"
+
+#: contribute/parts.html.jinja
+msgid "Drop a file here, paste, or browse"
+msgstr "Suelta un archivo aquí, pégalo o explora"
+
+#: contribute/parts.html.jinja
+msgid "JPG, GIF, PNG or WebP, up to 10 MB."
+msgstr "JPG, GIF, PNG o WebP, hasta 10 MB."
+
+#: contribute/parts.html.jinja
 msgid "That looks like a valid number."
 msgstr "Eso parece un número válido."
 
@@ -8077,10 +8106,6 @@ msgid "%(value)s, on 1 edition"
 msgid_plural "%(value)s, on %(count)d editions"
 msgstr[0] "%(value)s, en 1 edición"
 msgstr[1] "%(value)s, en %(count)d ediciones"
-
-#: contribute/parts.html.jinja
-msgid "I opened the record and the year and publisher match this edition."
-msgstr "Abrí el registro y el año y la editorial coinciden con esta edición."
 
 #: contribute/parts.html.jinja
 msgid "Add a comment about your edit"
@@ -8163,6 +8188,42 @@ msgstr "Amazon"
 msgid "Library of Congress"
 msgstr "Biblioteca del Congreso"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Cover"
+msgstr "Portada"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Add a cover"
+msgstr "Añadir una portada"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Can you find this edition's cover?"
+msgstr "¿Puedes encontrar la portada de esta edición?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look the ISBN up on Google Books, Amazon or Better World Books and save the front cover image. Check that the title, author and publisher on the image match this edition, then upload it here."
+msgstr "Busca el ISBN en Google Books, Amazon o Better World Books y guarda la imagen de la portada. Comprueba que el título, el autor y la editorial de la imagen coincidan con esta edición y luego súbela aquí."
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/partials.py
+msgid "Better World Books"
+msgstr "Better World Books"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Upload the cover only, flat and in full: no photos of the book on a table, no 3D mockups, no store badges or watermarks."
+msgstr "Sube solo la portada, plana y completa: sin fotos del libro sobre una mesa, sin maquetas 3D, sin distintivos de tiendas ni marcas de agua."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+msgstr "La portada pertenece a otra edición. Una edición de bolsillo, una reedición o una traducción suelen tener una portada distinta; comprueba la editorial."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
+msgstr "Crear una portada tú mismo. Si no puedes encontrar la real, déjaselo a alguien que pueda."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Look for anything that doesn't fit this edition, such as “Graphic Novel”, “Movie tie-in” or a title in another language."
+msgstr "Busca cualquier cosa que no encaje con esta edición, como “Graphic Novel”, “Movie tie-in” o un título en otro idioma."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Fill in language"
 msgstr "Completar el idioma"
@@ -8240,20 +8301,20 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "¿Cuál es el número de la Biblioteca del Congreso de esta edición?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
-msgstr "Busca este ISBN en el catálogo de la Biblioteca del Congreso. Abre el registro cuyo año y editorial coincidan con esta edición, y copia el número que aparece como LCCN."
+msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+msgstr "Busca este ISBN en el catálogo de la Library of Congress. Abre el registro cuya editorial y edición coincidan con esta, y copia el número que aparece como LCCN. Una edición de bolsillo o una impresión posterior puede mostrar un año distinto y seguir siendo el mismo registro."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
 msgstr "Las formas con guion y rellenadas son el mismo número: 75-425165 y 75425165. Pega cualquiera de las dos; Open Library guarda la forma rellenada."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
-msgstr "El número pertenece a una impresión distinta. Los resultados de búsqueda muestran primero la más conocida, no la tuya."
+msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
+msgstr "El número pertenece a una edición distinta: la de otra editorial, una edición revisada, una traducción o el libro electrónico. Cada una tiene su propio registro."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work, which means one of the two records is wrong."
-msgstr "El número ya está en otra edición de esta obra, lo que significa que uno de los dos registros es incorrecto."
+msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+msgstr "El número ya está en otra edición de esta obra. Eso es correcto cuando se trata de la tapa dura, la edición de bolsillo o una impresión posterior de la misma editorial; una editorial distinta o una edición revisada significa que uno de los dos registros está equivocado."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address instead of the number itself."
@@ -8262,6 +8323,10 @@ msgstr "Pegar la dirección web en lugar del número en sí."
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
 msgstr "Por ejemplo, 75425165"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened the record and its publisher and edition match this one."
+msgstr "Abrí el registro y su editorial y edición coinciden con esta."
 
 #: openlibrary/contribute/field_guides.py
 msgid "OCLC/WorldCat number"
@@ -8276,8 +8341,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "¿Cuál es el número de WorldCat (OCLC) de esta edición?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
-msgstr "Busca este ISBN en WorldCat. Abre el registro cuyo año, editorial y formato coincidan con esta edición, y copia el número que aparece como OCLC Number."
+msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+msgstr "Busca este ISBN en WorldCat. Abre el registro impreso cuya editorial y edición coincidan con esta, y copia el número que aparece como OCLC Number. Una edición de bolsillo o una impresión posterior puede mostrar un año distinto y seguir siendo el mismo registro."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
@@ -8288,8 +8353,12 @@ msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library system
 msgstr "Los prefijos ocm, ocn, on y (OCoLC) son relleno añadido por los sistemas bibliotecarios, no forman parte del número. ocm00047810608 es 47810608."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
-msgstr "El número pertenece a una impresión distinta, a una edición de club del libro, o al libro electrónico en lugar de la copia impresa."
+msgid "WorldCat sometimes lists one edition more than once. Any of those numbers is right; OCLC merges them over time."
+msgstr "WorldCat a veces lista una misma edición más de una vez. Cualquiera de esos números es correcto; OCLC los va fusionando con el tiempo."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The number belongs to a different record: the ebook, another publisher's edition, a revised edition, large print or a translation."
+msgstr "El número pertenece a un registro distinto: el libro electrónico, la edición de otra editorial, una edición revisada, una edición en letra grande o una traducción."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Pasting the web address, or leaving the ocm/ocn prefix on."
@@ -8298,6 +8367,10 @@ msgstr "Pegar la dirección web, o dejar puesto el prefijo ocm/ocn."
 #: openlibrary/contribute/field_guides.py
 msgid "Digits only, for example 47810608"
 msgstr "Solo dígitos, por ejemplo 47810608"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I opened a print record and its publisher and edition match this one."
+msgstr "Abrí un registro impreso y su editorial y edición coinciden con esta."
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -8319,6 +8392,18 @@ msgstr "Este campo no se puede completar aquí."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Completó %(field)s desde Tareas de Open Library"
+
+#: openlibrary/contribute/save.py
+msgid "Choose an image of the cover."
+msgstr "Elige una imagen de la portada."
+
+#: openlibrary/contribute/save.py
+msgid "We couldn't save the cover just now. Please try again in a minute."
+msgstr "No pudimos guardar la portada en este momento. Inténtalo de nuevo en un minuto."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't an image Open Library can use. Choose a JPG, GIF, PNG or WebP under 10 MB."
+msgstr "Eso no es una imagen que Open Library pueda usar. Elige un JPG, GIF, PNG o WebP de menos de 10 MB."
 
 #: openlibrary/core/bookshelves.py
 msgid "[Record deleted]"
@@ -8966,10 +9051,6 @@ msgid "Doing a lot of these? Open Librarians get more editing tools. Applying ta
 msgstr "¿Haces muchas de estas? Los Open Librarians obtienen más herramientas de edición. Solicitarlo toma solo unos minutos."
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Book cover"
-msgstr "Portada del libro"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
 msgid "Missing: %(field)s"
 msgstr "Falta: %(field)s"
@@ -8987,8 +9068,8 @@ msgid "Nothing to fill in here"
 msgstr "No hay nada que completar aquí"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Open the record and confirm it matches this edition first."
-msgstr "Abre primero el registro y confirma que coincide con esta edición."
+msgid "Check that it matches this edition, and tick the box to say so."
+msgstr "Comprueba que coincide con esta edición y marca la casilla para confirmarlo."
 
 #: openlibrary/plugins/openlibrary/home.py
 msgid "Books Read"
@@ -9229,10 +9310,6 @@ msgstr "Tiene clasificación LoC"
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "Has number of pages"
 msgstr "Tiene número de páginas"
-
-#: openlibrary/plugins/openlibrary/partials.py
-msgid "Better World Books"
-msgstr "Better World Books"
 
 #: openlibrary/plugins/openlibrary/partials.py
 msgid "Bookshop.org"
@@ -11342,4 +11419,28 @@ msgstr "%(title)s - búsqueda"
 
 #~ msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
 #~ msgstr "Postularse lleva unos minutos y te pedirá tu nombre de usuario de Open Library, así que crea primero una cuenta gratuita."
+
+#~ msgid "I opened the record and the year and publisher match this edition."
+#~ msgstr "Abrí el registro y el año y la editorial coinciden con esta edición."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose year and publisher match this edition, and copy the number shown as LCCN."
+#~ msgstr "Busca este ISBN en el catálogo de la Biblioteca del Congreso. Abre el registro cuyo año y editorial coincidan con esta edición, y copia el número que aparece como LCCN."
+
+#~ msgid "The number belongs to a different printing. Search results lead with the best-known one, not with yours."
+#~ msgstr "El número pertenece a una impresión distinta. Los resultados de búsqueda muestran primero la más conocida, no la tuya."
+
+#~ msgid "The number is already on another edition of this work, which means one of the two records is wrong."
+#~ msgstr "El número ya está en otra edición de esta obra, lo que significa que uno de los dos registros es incorrecto."
+
+#~ msgid "Search WorldCat for this ISBN. Open the record whose year, publisher and format match this edition, and copy the number shown as OCLC Number."
+#~ msgstr "Busca este ISBN en WorldCat. Abre el registro cuyo año, editorial y formato coincidan con esta edición, y copia el número que aparece como OCLC Number."
+
+#~ msgid "The number belongs to a different printing, a book club edition, or the ebook rather than the print copy."
+#~ msgstr "El número pertenece a una impresión distinta, a una edición de club del libro, o al libro electrónico en lugar de la copia impresa."
+
+#~ msgid "Book cover"
+#~ msgstr "Portada del libro"
+
+#~ msgid "Open the record and confirm it matches this edition first."
+#~ msgstr "Abre primero el registro y confirma que coincide con esta edición."
 
