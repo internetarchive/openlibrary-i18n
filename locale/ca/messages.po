@@ -2017,6 +2017,10 @@ msgid "Stats"
 msgstr "Estadístiques"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Estadístiques de tasques: qui edita i com es mantenen les edicions de tasques"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Edicions per dia"
 
@@ -4093,6 +4097,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Les tasques no s'han pogut carregar ara mateix. Torna a carregar la pàgina per tornar-ho a provar."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Iniciativa actual"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Les teves correccions recents"
 
@@ -5314,7 +5322,7 @@ msgstr "Afegeix una data"
 msgid "When did you finish this book?"
 msgstr "Quan vas acabar aquest llibre?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Omet"
 
@@ -6255,6 +6263,30 @@ msgstr "Llibres més valorats"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Llibres més valorats (tot el temps)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Estadístiques de tasques"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Cada número cobreix els dies fins al darrer recompte, per això canvia una mica cada dia."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Totes les estadístiques"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Més recent"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "Fa 4 setmanes"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Últims 90 dies"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8118,15 +8150,6 @@ msgstr "Desa i següent"
 msgid "I couldn't find it"
 msgstr "No ho he trobat"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Següent: una tasca aleatòria de %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Següent: una tasca aleatòria de totes les tasques obertes"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Ha editat aquest llibre"
@@ -8235,7 +8258,7 @@ msgstr "Anota l'idioma del text, no l'idioma de la portadella. Una traducció es
 msgid "For example English"
 msgstr "Per exemple anglès"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Nombre de pàgines"
 
@@ -9002,6 +9025,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Els %(count)s llibres més llegits"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Completa el que falta als llibres que la gent posa més sovint a la prestatgeria."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Totes les tasques obertes"
 
@@ -9578,6 +9615,62 @@ msgstr "Llibres electrònics clàssics ocults"
 msgid "%(title)s - search"
 msgstr "%(title)s - cerca"
 
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Desaments de tasques desfets, últims 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editors, últims 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editors, últims 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Editors per primera vegada, últims 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Editors per primera vegada, últims 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Desaments de tasques, últims 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Editors de tasques, últims 28 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Editors de tasques, últims 7 dies"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editors"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Comptes amb sessió iniciada que han canviat un llibre, obra o autor. Els robots no es compten."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Pàgina de tasques"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Edicions desades des de la pàgina de tasques."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Salvaguarda"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Desaments de tasques el valor dels quals ja no és al registre: desfet, revertit o canviat per una edició posterior."
+
 #~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
 #~ msgstr "Open Library serveix %(readers)s lectors cada mes en %(books)s llibres catalogats, i els seus %(mark_start)sOpen Librarians%(mark_end)s fan milers d'edicions cada setmana."
 
@@ -9616,4 +9709,10 @@ msgstr "%(title)s - cerca"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Obre primer el registre i confirma que coincideix amb aquesta edició."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Següent: una tasca aleatòria de %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Següent: una tasca aleatòria de totes les tasques obertes"
 
