@@ -2125,6 +2125,10 @@ msgid "Stats"
 msgstr "Estatísticas"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Estatísticas de tarefas: quem está editando e como as edições de tarefas se mantêm"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Edições por dia"
 
@@ -4340,6 +4344,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Não foi possível carregar as tarefas agora. Recarregue a página para tentar novamente."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Iniciativa atual"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Suas correções recentes"
 
@@ -5619,7 +5627,7 @@ msgstr "Adicionar data"
 msgid "When did you finish this book?"
 msgstr "Como você descreveria esse livro?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Pular"
 
@@ -6605,6 +6613,30 @@ msgstr "Livros mais avaliados"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Livros mais avaliados (de todo tempos)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Estatísticas de tarefas"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Cada número cobre os dias até a última contagem, por isso muda um pouco todos os dias."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Todas as estatísticas"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Mais recente"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "4 semanas antes"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Últimos 90 dias"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8542,15 +8574,6 @@ msgstr "Salvar e próximo"
 msgid "I couldn't find it"
 msgstr "Não consegui encontrar"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Próxima: uma tarefa aleatória de %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Próxima: uma tarefa aleatória de todas as tarefas abertas"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Editou este livro"
@@ -8659,7 +8682,7 @@ msgstr "Registre o idioma do texto, não o idioma da folha de rosto. Uma traduç
 msgid "For example English"
 msgstr "Por exemplo, inglês"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Número de páginas"
 
@@ -9435,6 +9458,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "Os %(count)s livros mais lidos"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Preencha o que está faltando nos livros que as pessoas mais colocam na estante."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Todas as tarefas abertas"
 
@@ -10040,6 +10077,62 @@ msgstr "eBooks clássicos"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - busca"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Salvamentos de tarefas desfeitos, últimos 28 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editores, últimos 28 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editores, últimos 7 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Editores pela primeira vez, últimos 28 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Editores pela primeira vez, últimos 7 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Salvamentos de tarefas, últimos 28 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Editores de tarefas, últimos 28 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Editores de tarefas, últimos 7 dias"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editores"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Contas conectadas que alteraram um livro, obra ou autor. Bots não são contados."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Página de tarefas"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Edições salvas a partir da página de tarefas."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Proteção"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Salvamentos de tarefas cujo valor não está mais no registro: desfeito, revertido ou alterado por uma edição posterior."
 
 #~ msgid "Your Privacy Settings"
 #~ msgstr "Seus ajustes de privacidade"
@@ -11744,4 +11837,10 @@ msgstr "%(title)s - busca"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Abra o registro e confirme que corresponde a esta edição primeiro."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Próxima: uma tarefa aleatória de %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Próxima: uma tarefa aleatória de todas as tarefas abertas"
 
