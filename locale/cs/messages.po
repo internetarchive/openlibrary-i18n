@@ -2143,6 +2143,10 @@ msgid "Stats"
 msgstr "Nastavení"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Statistiky úkolů: kdo edituje a jak dobře úpravy úkolů vydrží"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Úpravy za den"
 
@@ -4317,6 +4321,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Úkoly se teď nepodařilo načíst. Načtěte stránku znovu a zkuste to znovu."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Aktuální iniciativa"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Vaše nedávné opravy"
 
@@ -5604,7 +5612,7 @@ msgstr "Přidat datum"
 msgid "When did you finish this book?"
 msgstr "Jak by jste popsaly tuto knihu?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Přeskočit"
 
@@ -6615,6 +6623,30 @@ msgstr "O knize"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Nejhodnocenější knihy (celkově)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Statistiky úkolů"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Každé číslo zahrnuje dny až do posledního počítání, takže se každý den trochu mění."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Všechny statistiky"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Nejnovější"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "Před 4 týdny"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Posledních 90 dní"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8601,15 +8633,6 @@ msgstr "Uložit a pokračovat"
 msgid "I couldn't find it"
 msgstr "Nenašel(a) jsem to"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Další: náhodný úkol z %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Další: náhodný úkol ze všech otevřených úkolů"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Upravil(a) tuto knihu"
@@ -8718,7 +8741,7 @@ msgstr "Zaznamenejte jazyk textu, ne jazyk titulní strany. Překlad je v jazyce
 msgid "For example English"
 msgstr "Například angličtina"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Počet stran"
 
@@ -9503,6 +9526,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s nejčtenějších knih"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Doplňte chybějící údaje u knih, které si lidé nejčastěji dávají na poličku."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Všechny otevřené úkoly"
 
@@ -10100,6 +10137,62 @@ msgstr "Klasické e-knihy skryty"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s – vyhledávání"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Vrácené uložené úkoly, posledních 28 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Editoři, posledních 28 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Editoři, posledních 7 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Noví editoři, posledních 28 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Noví editoři, posledních 7 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Uložené úkoly, posledních 28 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Editoři úkolů, posledních 28 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Editoři úkolů, posledních 7 dní"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editoři"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Přihlášené účty, které změnily záznam knihy, díla nebo autora. Roboti se nepočítají."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Stránka úkolů"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Úpravy uložené ze stránky úkolů."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Pojistka"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Uložené úkoly, jejichž hodnota už není v záznamu: vrácena, obnovena nebo změněna pozdější úpravou."
 
 #~ msgid "Edit Summary (briefly describe the changes you have made):"
 #~ msgstr "Shrnutí editace (stručně popište změny které jste provedly):"
@@ -11360,4 +11453,10 @@ msgstr "%(title)s – vyhledávání"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Nejprve otevřete záznam a potvrďte, že odpovídá tomuto vydání."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Další: náhodný úkol z %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Další: náhodný úkol ze všech otevřených úkolů"
 
