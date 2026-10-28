@@ -3187,6 +3187,10 @@ msgstr "कृपया एक पहचानकर्ता चुनें।
 msgid "Are you sure that's the published date?"
 msgstr "আপনি কি নিশ্চিত এটি প্রকাশের তারিখ?"
 
+#: books/add.html openlibrary/plugins/upstream/addbook.py
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "অনুগ্রহ করে http:// অথবা https:// দিয়ে শুরু হওয়া একটি বৈধ URL লিখুন"
+
 #: books/add.html
 msgid "Add a book to Open Library"
 msgstr "ओपन लाइब्रेरी में एक किताब जोड़ें"
@@ -4280,6 +4284,10 @@ msgid "Missing"
 msgstr "অনুপস্থিত"
 
 #: contribute/dashboard.html.jinja
+msgid "Tasks couldn't load right now. Reload the page to try again."
+msgstr "কাজগুলি এখন লোড করা যায়নি। আবার চেষ্টা করতে পৃষ্ঠাটি রিলোড করুন।"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "আপনার সাম্প্রতিক সংশোধন"
 
@@ -4290,6 +4298,10 @@ msgstr "আপনার সব সম্পাদনা দেখুন"
 #: contribute/dashboard.html.jinja
 msgid "Fixes you save here show up in this list."
 msgstr "আপনি এখানে যে সংশোধনগুলো সংরক্ষণ করেন সেগুলো এই তালিকায় দেখা যাবে।"
+
+#: contribute/dashboard.html.jinja
+msgid "Go further"
+msgstr "আরও এগিয়ে যান"
 
 #: contribute/done.html.jinja openlibrary/plugins/openlibrary/contribute.py
 msgid "Saved"
@@ -4339,8 +4351,8 @@ msgstr "Open Library কাজসমূহ"
 
 #: contribute/landing.html.jinja
 #, python-format
-msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
-msgstr "Open Library প্রতি মাসে %(books)s তালিকাভুক্ত বইয়ের মাধ্যমে %(readers)s পাঠককে সেবা দেয়, এবং এর %(mark_start)sOpen Librarian%(mark_end)sরা প্রতি সপ্তাহে হাজার হাজার সম্পাদনা করেন।"
+msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sreaders like you%(mark_end)s make thousands of edits every week."
+msgstr "Open Library প্রতি মাসে %(books)s টি তালিকাভুক্ত বইয়ে %(readers)s জন পাঠককে সেবা দেয়, এবং এর %(mark_start)sআপনার মতো পাঠকেরা%(mark_end)s প্রতি সপ্তাহে হাজার হাজার সম্পাদনা করেন।"
 
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
@@ -4371,10 +4383,6 @@ msgstr "প্রতিটি কাজে একটি বই এবং এক�
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s যোগ করুন"
-
-#: contribute/landing.html.jinja
-msgid "Join in"
-msgstr "যোগ দিন"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -4664,9 +4672,9 @@ msgstr "যারা এটি ব্যবহার করেন তাদে�
 msgid "A catalog for every book ever published, maintained by readers like you."
 msgstr "এ পর্যন্ত প্রকাশিত প্রতিটি বইয়ের একটি ক্যাটালগ, যা আপনার মতো পাঠকদের দ্বারা রক্ষণাবেক্ষণ করা হয়।"
 
-#: home/library_row.html.jinja openlibrary/plugins/openlibrary/contribute.py
-msgid "Become an Open Librarian"
-msgstr "একজন Open Librarian হন"
+#: home/library_row.html.jinja
+msgid "Start contributing"
+msgstr "অবদান রাখা শুরু করুন"
 
 #: home/library_row.html.jinja
 msgid "Editable"
@@ -6753,6 +6761,21 @@ msgstr "पहली बार %s में प्रकाशित किय�
 #, python-format
 msgid "Book %s"
 msgstr "বই %s"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s by %(publishers)s"
+msgstr "সংস্করণটি %(year)s সালে %(publishers)s কর্তৃক প্রকাশিত হয়েছিল"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published in %(year)s"
+msgstr "সংস্করণটি %(year)s সালে প্রকাশিত হয়েছিল"
+
+#: type/edition/view.html type/work/view.html
+#, python-format
+msgid "Edition published by %(publishers)s"
+msgstr "সংস্করণটি %(publishers)s কর্তৃক প্রকাশিত হয়েছিল"
 
 #: type/edition/view.html type/work/view.html
 #, fuzzy
@@ -9208,10 +9231,6 @@ msgid "Filipino"
 msgstr "ফিলিপিনো"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are open to librarians only, for now"
-msgstr "কাজগুলো আপাতত শুধুমাত্র লাইব্রেরিয়ানদের জন্য উন্মুক্ত"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "প্রকাশিত"
 
@@ -9224,20 +9243,40 @@ msgid "All open tasks"
 msgstr "সব খোলা কাজ"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Tasks are for Open Librarians. Applying takes a few minutes."
-msgstr "কাজগুলো Open Librarian-দের জন্য। আবেদন করতে কয়েক মিনিট সময় লাগে।"
+msgid "Ready when you are"
+msgstr "আপনি প্রস্তুত হলেই প্রস্তুত"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
-msgstr "আবেদন করতে কয়েক মিনিট সময় লাগে এবং আপনার Open Library ব্যবহারকারীর নাম জিজ্ঞাসা করা হয়, তাই প্রথমে একটি বিনামূল্যের অ্যাকাউন্ট তৈরি করুন।"
+msgid "Try a task"
+msgstr "একটি কাজ চেষ্টা করুন"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Browse all tasks"
+msgstr "সব কাজ দেখুন"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Join in"
+msgstr "যোগ দিন"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Create an account"
 msgstr "একটি অ্যাকাউন্ট তৈরি করুন"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Log in"
-msgstr "লগ ইন করুন"
+msgid "Tasks are open to anyone with a free Open Library account."
+msgstr "বিনামূল্যের Open Library অ্যাকাউন্ট থাকা যেকোনো ব্যক্তির জন্য কাজগুলি উন্মুক্ত।"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Already have one? Log in"
+msgstr "ইতিমধ্যে একটি আছে? লগইন করুন"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Become an Open Librarian"
+msgstr "একজন Open Librarian হন"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
+msgstr "এগুলোর অনেক করছেন? Open Librarians আরও সম্পাদনা সরঞ্জাম পান। আবেদন করতে মাত্র কয়েক মিনিট লাগে।"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Book cover"
@@ -9664,6 +9703,10 @@ msgstr "আপনার ইমেইল যাচাই করা হয়ে�
 #: openlibrary/plugins/upstream/account.py
 msgid "Notification preferences have been updated successfully."
 msgstr "नोटिफ़िकेशन की प्राथमिकताएँ सफलतापूर्वक अपडेट कर दी गई हैं।"
+
+#: openlibrary/plugins/upstream/addbook.py
+msgid "Invalid Book URL"
+msgstr "অবৈধ বইয়ের URL"
 
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
@@ -11175,4 +11218,19 @@ msgstr "%(title)s - खोजें"
 
 #~ msgid "Dozens of ways you can help improve the library"
 #~ msgstr "लाइब्रेरी को बेहतर बनाने में आप दर्जनों तरीकों से मदद कर सकते हैं"
+
+#~ msgid "Open Library serves %(readers)s readers every month across %(books)s catalogued books, and its %(mark_start)sOpen Librarians%(mark_end)s make thousands of edits every week."
+#~ msgstr "Open Library প্রতি মাসে %(books)s তালিকাভুক্ত বইয়ের মাধ্যমে %(readers)s পাঠককে সেবা দেয়, এবং এর %(mark_start)sOpen Librarian%(mark_end)sরা প্রতি সপ্তাহে হাজার হাজার সম্পাদনা করেন।"
+
+#~ msgid "Tasks are open to librarians only, for now"
+#~ msgstr "কাজগুলো আপাতত শুধুমাত্র লাইব্রেরিয়ানদের জন্য উন্মুক্ত"
+
+#~ msgid "Tasks are for Open Librarians. Applying takes a few minutes."
+#~ msgstr "কাজগুলো Open Librarian-দের জন্য। আবেদন করতে কয়েক মিনিট সময় লাগে।"
+
+#~ msgid "Applying takes a few minutes and asks for your Open Library username, so create a free account first."
+#~ msgstr "আবেদন করতে কয়েক মিনিট সময় লাগে এবং আপনার Open Library ব্যবহারকারীর নাম জিজ্ঞাসা করা হয়, তাই প্রথমে একটি বিনামূল্যের অ্যাকাউন্ট তৈরি করুন।"
+
+#~ msgid "Log in"
+#~ msgstr "লগ ইন করুন"
 
