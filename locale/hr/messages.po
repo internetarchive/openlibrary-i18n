@@ -2035,6 +2035,10 @@ msgid "Stats"
 msgstr "Statistika"
 
 #: admin/index.html
+msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+msgstr "Statistika zadataka: tko uređuje i koliko dobro uređivanja zadataka traju"
+
+#: admin/index.html
 msgid "Edits Per Day"
 msgstr "Uređivanja po danu"
 
@@ -4115,6 +4119,10 @@ msgid "Tasks couldn't load right now. Reload the page to try again."
 msgstr "Zadatke trenutačno nije bilo moguće učitati. Ponovno učitajte stranicu i pokušajte opet."
 
 #: contribute/dashboard.html.jinja
+msgid "Current initiative"
+msgstr "Trenutna inicijativa"
+
+#: contribute/dashboard.html.jinja
 msgid "Your recent fixes"
 msgstr "Vaše nedavne ispravke"
 
@@ -5350,7 +5358,7 @@ msgstr "Dodaj datum"
 msgid "When did you finish this book?"
 msgstr "Kada si završio/la ovu knjigu?"
 
-#: my_books/shelf_button_i18n.html
+#: contribute/parts.html.jinja my_books/shelf_button_i18n.html
 msgid "Skip"
 msgstr "Preskoči"
 
@@ -6301,6 +6309,30 @@ msgstr "Knjige s najviše ocjena"
 #: stats/readinglog.html
 msgid "Most Rated Books (All Time)"
 msgstr "Knjige s najviše ocjena (svo vrijeme)"
+
+#: stats/tasks.html stats/tasks.html.jinja
+msgid "Tasks Stats"
+msgstr "Statistika zadataka"
+
+#: stats/tasks.html.jinja
+msgid "Each number covers the days up to the latest count, so it moves a little every day."
+msgstr "Svaki broj obuhvaća dane do posljednjeg brojanja, pa se svaki dan malo mijenja."
+
+#: stats/tasks.html.jinja
+msgid "All stats"
+msgstr "Sva statistika"
+
+#: stats/tasks.html.jinja
+msgid "Latest"
+msgstr "Najnovije"
+
+#: stats/tasks.html.jinja
+msgid "4 weeks earlier"
+msgstr "Prije 4 tjedna"
+
+#: stats/tasks.html.jinja
+msgid "Last 90 days"
+msgstr "Posljednjih 90 dana"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -8182,15 +8214,6 @@ msgstr "Spremi i dalje"
 msgid "I couldn't find it"
 msgstr "Nisam uspio/la pronaći"
 
-#: contribute/parts.html.jinja
-#, python-format
-msgid "Next: a random task from %(filter)s"
-msgstr "Sljedeće: nasumičan zadatak iz %(filter)s"
-
-#: contribute/parts.html.jinja
-msgid "Next: a random task from all open tasks"
-msgstr "Sljedeće: nasumičan zadatak iz svih otvorenih zadataka"
-
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Uredio/la ovu knjigu"
@@ -8299,7 +8322,7 @@ msgstr "Zabilježite jezik teksta, a ne jezik naslovne stranice. Prijevod je na 
 msgid "For example English"
 msgstr "Na primjer engleski"
 
-#: openlibrary/contribute/field_guides.py
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
 msgid "Page count"
 msgstr "Broj stranica"
 
@@ -9066,6 +9089,20 @@ msgid "OCLC"
 msgstr "OCLC"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "The %(count)s most-read books"
+msgstr "%(count)s najčitanijih knjiga"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(percent)s%%"
+msgstr "%(percent)s%%"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fill in what's missing on the books people shelve most."
+msgstr "Dopunite ono što nedostaje na knjigama koje ljudi najčešće stavljaju na policu."
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
 msgstr "Svi otvoreni zadaci"
 
@@ -9642,6 +9679,62 @@ msgstr "Klasične e-knjige su skrivene"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s – pretraga"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves undone, last 28 days"
+msgstr "Poništena spremanja zadataka, posljednjih 28 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 28 days"
+msgstr "Urednici, posljednjih 28 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors, last 7 days"
+msgstr "Urednici, posljednjih 7 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 28 days"
+msgstr "Novi urednici, posljednjih 28 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "First-time editors, last 7 days"
+msgstr "Novi urednici, posljednjih 7 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves, last 28 days"
+msgstr "Spremanja zadataka, posljednjih 28 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 28 days"
+msgstr "Urednici zadataka, posljednjih 28 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks editors, last 7 days"
+msgstr "Urednici zadataka, posljednjih 7 dana"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Urednici"
+
+#: openlibrary/views/loanstats.py
+msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+msgstr "Prijavljeni računi koji su promijenili zapis knjige, djela ili autora. Botovi se ne broje."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks page"
+msgstr "Stranica zadataka"
+
+#: openlibrary/views/loanstats.py
+msgid "Edits saved from the Tasks page."
+msgstr "Uređivanja spremljena sa stranice zadataka."
+
+#: openlibrary/views/loanstats.py
+msgid "Guardrail"
+msgstr "Zaštitna mjera"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+msgstr "Spremanja zadataka čija vrijednost više nije u zapisu: poništena, vraćena ili promijenjena kasnijim uređivanjem."
 
 #~ msgid "Activation link expiring on <span class=\"time\">%(date)s.</span>"
 #~ msgstr "Poveznica za aktivaciju isteče <span class=\"time\">.%(date)s</span>"
@@ -10899,4 +10992,10 @@ msgstr "%(title)s – pretraga"
 
 #~ msgid "Open the record and confirm it matches this edition first."
 #~ msgstr "Prvo otvorite zapis i potvrdite da se podudara s ovim izdanjem."
+
+#~ msgid "Next: a random task from %(filter)s"
+#~ msgstr "Sljedeće: nasumičan zadatak iz %(filter)s"
+
+#~ msgid "Next: a random task from all open tasks"
+#~ msgstr "Sljedeće: nasumičan zadatak iz svih otvorenih zadataka"
 
