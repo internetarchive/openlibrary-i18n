@@ -481,44 +481,19 @@ def _is_translated(string) -> bool:
     return bool(string)
 
 
-def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
-    """Overlay an incoming catalog's translations onto the base catalog.
+def _overlay_translations(base_cat, incoming_cat) -> dict:
+    """Merge ``incoming_cat``'s non-empty msgstrs into ``base_cat`` in place.
 
-    This is the auto-heal for a CONFLICTING translation PR. The PR branched from
-    an older base; both it and ``base`` have since rewritten
-    ``locale/<lang>/messages.po``, so the files conflict. A line-level rebase
-    cannot resolve this once ``messages.pot`` has moved — and syncing against the
-    committed ``messages.pot`` silently drops strings when that pot lags the
-    catalogs. So instead we take ``base``'s CURRENT catalog as the floor and
-    overlay the contributor's non-empty msgstrs on top:
-
-      - incoming wins wherever it supplies a different, non-empty translation;
-      - a base translation is NEVER dropped (an empty incoming msgstr keeps base);
-      - only msgids already in base are touched (no stray strings / scope creep).
-
-    The result carries base's header and full current string set — template-correct
-    and check-scope-clean — plus the contributor's work. Writes the merged catalog
-    to the working tree and returns a stats dict. Raises if the merge would reduce
-    the translated count: that invariant is what makes it safe to run unattended.
+    Pure catalog operation (no IO) — the core of ``resolve``. Incoming wins
+    wherever it supplies a different, non-empty translation; a base translation is
+    never dropped (an empty incoming msgstr keeps base); only msgids already in
+    base are touched (no stray strings / scope creep). Returns a stats dict and
+    raises SystemExit if the merge would reduce the translated count — the
+    invariant that makes it safe to run unattended.
     """
-    from babel.messages.pofile import read_po
-
-    base_cat = _base_catalog(base, lang)
-    if base_cat is None:
-        # Brand-new language at base: nothing to preserve, take incoming as-is.
-        with open(incoming_po, "rb") as f:
-            base_cat = read_po(f)
-        _write_po(lang, base_cat)
-        n = sum(1 for m in base_cat if m.id and _is_translated(m.string))
-        return {"changed": n, "filled": n, "before": 0, "after": n,
-                "total": sum(1 for m in base_cat if m.id), "new_language": True}
-
-    with open(incoming_po, "rb") as f:
-        incoming = read_po(f)
     incoming_map = {
-        m.id: m.string for m in incoming if m.id and _is_translated(m.string)
+        m.id: m.string for m in incoming_cat if m.id and _is_translated(m.string)
     }
-
     before = sum(1 for m in base_cat if m.id and _is_translated(m.string))
     changed = filled = 0
     for msg in base_cat:
@@ -531,13 +506,41 @@ def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
             msg.string = new
             changed += 1
     after = sum(1 for m in base_cat if m.id and _is_translated(m.string))
-    if after < before:  # the invariant: an unattended merge must never lose work
+    if after < before:
         raise SystemExit(
             f"resolve refused: would drop translations ({before} -> {after})"
         )
-    _write_po(lang, base_cat)
     return {"changed": changed, "filled": filled, "before": before,
             "after": after, "total": sum(1 for m in base_cat if m.id)}
+
+
+def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
+    """Auto-heal a CONFLICTING translation PR by overlaying its translations.
+
+    The PR branched from an older base; both it and ``base`` have since rewritten
+    ``locale/<lang>/messages.po``, so the files conflict. A line-level rebase
+    cannot resolve this once ``messages.pot`` has moved — and syncing against the
+    committed ``messages.pot`` silently drops strings when that pot lags the
+    catalogs. So we take ``base``'s CURRENT catalog as the floor and overlay the
+    contributor's non-empty msgstrs on top (see ``_overlay_translations``). The
+    result carries base's header and full current string set — template-correct
+    and check-scope-clean — plus the contributor's work. Writes to the working
+    tree and returns a stats dict.
+    """
+    from babel.messages.pofile import read_po
+
+    with open(incoming_po, "rb") as f:
+        incoming = read_po(f)
+    base_cat = _base_catalog(base, lang)
+    if base_cat is None:
+        # Brand-new language at base: nothing to preserve, take incoming as-is.
+        _write_po(lang, incoming)
+        n = sum(1 for m in incoming if m.id and _is_translated(m.string))
+        return {"changed": n, "filled": n, "before": 0, "after": n,
+                "total": sum(1 for m in incoming if m.id), "new_language": True}
+    stats = _overlay_translations(base_cat, incoming)
+    _write_po(lang, base_cat)
+    return stats
 
 
 _bake_regression_mod = None

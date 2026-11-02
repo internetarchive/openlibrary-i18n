@@ -27,6 +27,8 @@ _spec.loader.exec_module(_mod)
 BATCH_SIZE = _mod.BATCH_SIZE
 LOCALE_DIR = _mod.LOCALE_DIR
 _apply_to_catalog = _mod._apply_to_catalog
+_overlay_translations = _mod._overlay_translations
+_is_translated = _mod._is_translated
 _fix_format_errors = _mod._fix_format_errors
 _fix_format_type_mismatch = _mod._fix_format_type_mismatch
 _fix_header_fuzzy = _mod._fix_header_fuzzy
@@ -185,6 +187,71 @@ class TestApply:
         cat = _catalog(po)
         _apply_to_catalog(cat, {"Hello": "New"})
         assert cat["Hello"].string == "New"
+
+
+# ---------------------------------------------------------------------------
+# _overlay_translations — the auto-heal core (resolve)
+# ---------------------------------------------------------------------------
+
+class TestOverlayTranslations:
+    """The merge that heals a conflicting PR: overlay incoming's translations
+    onto base, incoming-wins, NEVER losing a base translation or adding a string
+    outside base's template."""
+
+    def test_incoming_wins_when_both_translated(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Old"'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr "New"'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "New"
+        assert stats["changed"] == 1 and stats["filled"] == 0
+
+    def test_incoming_fills_an_empty_base_string(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr ""'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr "Bonjour"'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Bonjour"
+        assert stats["filled"] == 1 and stats["after"] == 1 and stats["before"] == 0
+
+    def test_empty_incoming_never_drops_a_base_translation(self):
+        # The whole safety property: an empty/absent incoming msgstr keeps base's.
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Kept"'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr ""'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Kept"
+        assert stats["changed"] == 0 and stats["after"] == stats["before"] == 1
+
+    def test_incoming_only_msgid_is_ignored_no_scope_creep(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Hola"'))
+        incoming = _catalog(
+            _po('msgid "Hi"\nmsgstr "Hola"', 'msgid "Stray"\nmsgstr "Nope"')
+        )
+        _overlay_translations(base, incoming)
+        assert "Stray" not in base  # base's template is the floor; no new strings
+
+    def test_plurals_overlay_as_a_unit(self):
+        base = _catalog(_po(
+            'msgid "One"\nmsgid_plural "%(n)d"\nmsgstr[0] ""\nmsgstr[1] ""'))
+        incoming = _catalog(_po(
+            'msgid "One"\nmsgid_plural "%(n)d"\nmsgstr[0] "Un"\nmsgstr[1] "%(n)d"'))
+        _overlay_translations(base, incoming)
+        assert base[("One", "%(n)d")].string == ("Un", "%(n)d")
+
+    def test_net_translated_count_never_decreases(self):
+        # Base has 2 translated; incoming would blank one and change another.
+        # The blank must be ignored, so after >= before.
+        base = _catalog(_po(
+            'msgid "A"\nmsgstr "a"', 'msgid "B"\nmsgstr "b"'))
+        incoming = _catalog(_po(
+            'msgid "A"\nmsgstr ""', 'msgid "B"\nmsgstr "b2"'))
+        stats = _overlay_translations(base, incoming)
+        assert stats["after"] >= stats["before"] == 2
+        assert base["A"].string == "a" and base["B"].string == "b2"
+
+    def test_is_translated_handles_plural_tuples(self):
+        assert _is_translated("x") is True
+        assert _is_translated("") is False
+        assert _is_translated(("", "")) is False
+        assert _is_translated(("", "y")) is True
 
 
 # ---------------------------------------------------------------------------
