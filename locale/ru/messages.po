@@ -1868,7 +1868,7 @@ msgstr "Подписки"
 msgid "Followers"
 msgstr "фильтры"
 
-#: ShareModal.html account/view.html type/edition/modal_links.html type/edition/title_and_author.html
+#: ShareModal.html account/view.html stats/tasks.html.jinja type/edition/modal_links.html type/edition/title_and_author.html
 #, fuzzy
 msgid "Share"
 msgstr "Сохранить"
@@ -2161,7 +2161,7 @@ msgstr "Вчера"
 msgid "Last 7 days"
 msgstr "Последние 7 дней"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 28 days"
 msgstr "Последние 28 дней"
 
@@ -5678,12 +5678,12 @@ msgstr "Другая дата"
 msgid "Year"
 msgstr "Поиск"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 #, fuzzy
 msgid "Month"
 msgstr "За этот месяц"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 #, fuzzy
 msgid "Day"
 msgstr "Сегодня"
@@ -6660,24 +6660,139 @@ msgid "Tasks Stats"
 msgstr "Статистика задач"
 
 #: stats/tasks.html.jinja
-msgid "Each number covers the days up to the latest count, so it moves a little every day."
-msgstr "Каждое число охватывает дни до последнего подсчёта, поэтому оно немного меняется каждый день."
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Данные собираются каждый час, поэтому показатели за сегодня пополняются в течение дня."
 
 #: stats/tasks.html.jinja
-msgid "All stats"
-msgstr "Вся статистика"
+msgid "Metrics, last 28 days. Choose one to chart it."
+msgstr "Показатели за последние 28 дней. Выберите один, чтобы построить график."
 
 #: stats/tasks.html.jinja
-msgid "Latest"
-msgstr "Последние"
+#, python-format
+msgid "%(change)s vs previous 28 days"
+msgstr "%(change)s по сравнению с предыдущими 28 днями"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Per day"
+msgstr "За день"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Previous period"
+msgstr "Предыдущий период"
 
 #: stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 недели назад"
+msgid "Date range"
+msgstr "Диапазон дат"
 
 #: stats/tasks.html.jinja
-msgid "Last 90 days"
-msgstr "Последние 90 дней"
+msgid "28 days"
+msgstr "28 дней"
+
+#: stats/tasks.html.jinja
+msgid "90 days"
+msgstr "90 дней"
+
+#: stats/tasks.html.jinja
+msgid "6 months"
+msgstr "6 месяцев"
+
+#: stats/tasks.html.jinja
+msgid "12 months"
+msgstr "12 месяцев"
+
+#: stats/tasks.html.jinja
+msgid "Group by"
+msgstr "Группировать по"
+
+#: stats/tasks.html.jinja
+msgid "Week"
+msgstr "Неделя"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Сравнить с предыдущим периодом"
+
+#: stats/tasks.html.jinja
+msgid "Chart of the chosen metric over the chosen range"
+msgstr "График выбранного показателя за выбранный период"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across the initiative's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Сведения, которых всё ещё не хватает в книгах инициативы; подсчитываются каждую ночь. Сведение, которое никто не смог найти, считается заполненным."
+
+#: stats/tasks.html.jinja
+msgid "of details filled"
+msgstr "сведений заполнено"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "<b>%(done)s of %(count)s</b> books complete"
+msgstr "Готово <b>%(done)s из %(count)s</b> книг"
+
+#: stats/tasks.html.jinja
+msgid "details still open"
+msgstr "сведений всё ещё не заполнено"
+
+#: stats/tasks.html.jinja
+msgid "marked not found"
+msgstr "отмечено как не найдено"
+
+#: stats/tasks.html.jinja
+msgid "Details still open, by day"
+msgstr "Незаполненные сведения, по дням"
+
+#: stats/tasks.html.jinja
+msgid "Saves by field, last 28 days"
+msgstr "Сохранения по полям, последние 28 дней"
+
+#: stats/tasks.html.jinja
+msgid "Which details people are filling in."
+msgstr "Какие сведения заполняют пользователи."
+
+#: stats/tasks.html.jinja
+msgid "Field"
+msgstr "Поле"
+
+#: stats/tasks.html.jinja
+msgid "Saves"
+msgstr "Сохранения"
+
+#: stats/tasks.html.jinja
+msgid "No Tasks saves in the last 28 days."
+msgstr "За последние 28 дней не было сохранений из Задач."
+
+#: stats/tasks.html.jinja
+msgid "Guardrail"
+msgstr "Защитный механизм"
+
+#: stats/tasks.html.jinja
+msgid "Saves whose value is no longer on the record: undone, reverted or changed by a later edit, over the 28 days to each day. The dashed line is the same check on the same fields filled outside Tasks, by people editing a record directly."
+msgstr "Сохранения, значение которых больше не отображается в записи: отменено, откачено или изменено последующей правкой, за 28 дней до каждого дня. Пунктирная линия показывает ту же проверку для тех же полей, заполненных вне Задач, людьми, редактирующими запись напрямую."
+
+#: stats/tasks.html.jinja
+msgid "of Tasks saves undone"
+msgstr "сохранений из Задач отменено"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves: too few to compare yet"
+msgstr "Сохранения из Задач: пока слишком мало для сравнения"
+
+#: stats/tasks.html.jinja
+msgid "of fills outside Tasks undone"
+msgstr "заполнений вне Задач отменено"
+
+#: stats/tasks.html.jinja
+msgid "Fills outside Tasks: too few to compare yet"
+msgstr "Заполнения вне Задач: пока слишком мало для сравнения"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Last 28 days: %(tasks_undone)s of %(tasks)s Tasks saves and %(other_undone)s of %(other)s fills outside Tasks. A share shows once there are %(min)s."
+msgstr "Последние 28 дней: %(tasks_undone)s из %(tasks)s сохранений из Задач и %(other_undone)s из %(other)s заполнений вне Задач отменено. Доля отображается, когда их становится не меньше %(min)s."
+
+#: stats/tasks.html.jinja
+msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
+msgstr "Доля отменённых сохранений из Задач и заполнений вне Задач, по дням"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -10145,60 +10260,90 @@ msgid "%(title)s - search"
 msgstr "%(title)s - поиск"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves undone, last 28 days"
-msgstr "Отменённые сохранения задач за последние 28 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 28 days"
-msgstr "Редакторы за последние 28 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 7 days"
-msgstr "Редакторы за последние 7 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 28 days"
-msgstr "Новые редакторы за последние 28 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 7 days"
-msgstr "Новые редакторы за последние 7 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks saves, last 28 days"
-msgstr "Сохранения задач за последние 28 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 28 days"
-msgstr "Редакторы задач за последние 28 дней"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 7 days"
-msgstr "Редакторы задач за последние 7 дней"
-
-#: openlibrary/views/loanstats.py
 msgid "Editors"
 msgstr "Редакторы"
 
 #: openlibrary/views/loanstats.py
-msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
-msgstr "Авторизованные аккаунты, изменившие запись книги, произведения или автора. Боты не учитываются."
+msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+msgstr "Пользователи, изменившие запись книги, произведения или автора. В представлениях по неделям и месяцам тот, кто редактировал в несколько дней, учитывается один раз."
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks page"
-msgstr "Страница задач"
+msgid "First-time editors"
+msgstr "Новые редакторы"
+
+#: openlibrary/views/loanstats.py
+msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+msgstr "Пользователи, сделавшие свою первую правку именно в этот день. Каждый человек учитывается один раз, в день своей первой правки."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves"
+msgstr "Сохранения из Задач"
 
 #: openlibrary/views/loanstats.py
 msgid "Edits saved from the Tasks page."
 msgstr "Правки, сохранённые со страницы задач."
 
 #: openlibrary/views/loanstats.py
-msgid "Guardrail"
-msgstr "Защитный механизм"
+msgid "Tasks editors"
+msgstr "Редакторы Задач"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
-msgstr "Сохранения задач, значение которых больше не отражено в записи: отменено, возвращено или изменено последующей правкой."
+msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
+msgstr "Пользователи, сохранившие правку со страницы Задач. В представлениях по неделям и месяцам тот, кто сохранял в несколько дней, учитывается один раз."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Most-read %(count)s"
+msgstr "Самые читаемые: %(count)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Per week"
+msgstr "За неделю"
+
+#: openlibrary/views/loanstats.py
+msgid "Per 4 weeks"
+msgstr "За 4 недели"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Previous period: %(count)s"
+msgstr "Предыдущий период: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous period"
+msgstr "%(change)s по сравнению с предыдущим периодом"
+
+#: openlibrary/views/loanstats.py
+msgid "Today so far, updated hourly"
+msgstr "Сегодня (пока), обновляется ежечасно"
+
+#: openlibrary/views/loanstats.py
+msgid "Still in progress"
+msgstr "Ещё выполняется"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(count)s details still open"
+msgstr "%(count)s сведений ещё не заполнено"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Tasks: %(share)s undone, %(undone)s of %(total)s saves"
+msgstr "Задачи: отменено %(share)s, %(undone)s из %(total)s сохранений"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Outside Tasks: %(share)s undone, %(undone)s of %(total)s fills"
+msgstr "Вне Задач: отменено %(share)s, %(undone)s из %(total)s заполнений"
+
+#: openlibrary/views/loanstats.py
+msgid "No counts for this range yet."
+msgstr "Пока нет данных за этот период."
+
+#: openlibrary/views/loanstats.py
+msgid "The charts couldn't load. Reload the page to try again."
+msgstr "Не удалось загрузить графики. Перезагрузите страницу, чтобы повторить попытку."
 
 #~ msgid "Your Privacy Settings"
 #~ msgstr "Ваши настройки приватности"
@@ -11942,4 +12087,52 @@ msgstr "Сохранения задач, значение которых бол�
 
 #~ msgid "Next: a random task from all open tasks"
 #~ msgstr "Далее: случайная задача из всех открытых задач"
+
+#~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
+#~ msgstr "Каждое число охватывает дни до последнего подсчёта, поэтому оно немного меняется каждый день."
+
+#~ msgid "All stats"
+#~ msgstr "Вся статистика"
+
+#~ msgid "Latest"
+#~ msgstr "Последние"
+
+#~ msgid "4 weeks earlier"
+#~ msgstr "4 недели назад"
+
+#~ msgid "Last 90 days"
+#~ msgstr "Последние 90 дней"
+
+#~ msgid "Tasks saves undone, last 28 days"
+#~ msgstr "Отменённые сохранения задач за последние 28 дней"
+
+#~ msgid "Editors, last 28 days"
+#~ msgstr "Редакторы за последние 28 дней"
+
+#~ msgid "Editors, last 7 days"
+#~ msgstr "Редакторы за последние 7 дней"
+
+#~ msgid "First-time editors, last 28 days"
+#~ msgstr "Новые редакторы за последние 28 дней"
+
+#~ msgid "First-time editors, last 7 days"
+#~ msgstr "Новые редакторы за последние 7 дней"
+
+#~ msgid "Tasks saves, last 28 days"
+#~ msgstr "Сохранения задач за последние 28 дней"
+
+#~ msgid "Tasks editors, last 28 days"
+#~ msgstr "Редакторы задач за последние 28 дней"
+
+#~ msgid "Tasks editors, last 7 days"
+#~ msgstr "Редакторы задач за последние 7 дней"
+
+#~ msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+#~ msgstr "Авторизованные аккаунты, изменившие запись книги, произведения или автора. Боты не учитываются."
+
+#~ msgid "Tasks page"
+#~ msgstr "Страница задач"
+
+#~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+#~ msgstr "Сохранения задач, значение которых больше не отражено в записи: отменено, возвращено или изменено последующей правкой."
 
