@@ -14,6 +14,8 @@ Open Library i18n toolbox — ./i18n <command>
   untranslated <lang>    JSON list of untranslated strings.
     [--limit N]
   apply <lang> <json>    Apply {msgid: msgstr} translations file to .po.
+  resolve <lang> <po>    Auto-heal a conflicting PR: overlay an incoming .po's
+    [--base REF]         translations onto the base catalog, losing nothing.
   fix <lang>             Fix HTML attrs and format-string errors in .po.
   validate <lang>        Validate format strings; exits non-zero on error.
   isolate <lang>...      Reset every OTHER language to origin/main, so a commit
@@ -472,6 +474,72 @@ def apply_translations(lang: str, translations: dict) -> int:
     return count
 
 
+def _is_translated(string) -> bool:
+    """True if a msgstr carries any content (handles plural tuples)."""
+    if isinstance(string, (tuple, list)):
+        return any(bool(s) for s in string)
+    return bool(string)
+
+
+def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
+    """Overlay an incoming catalog's translations onto the base catalog.
+
+    This is the auto-heal for a CONFLICTING translation PR. The PR branched from
+    an older base; both it and ``base`` have since rewritten
+    ``locale/<lang>/messages.po``, so the files conflict. A line-level rebase
+    cannot resolve this once ``messages.pot`` has moved — and syncing against the
+    committed ``messages.pot`` silently drops strings when that pot lags the
+    catalogs. So instead we take ``base``'s CURRENT catalog as the floor and
+    overlay the contributor's non-empty msgstrs on top:
+
+      - incoming wins wherever it supplies a different, non-empty translation;
+      - a base translation is NEVER dropped (an empty incoming msgstr keeps base);
+      - only msgids already in base are touched (no stray strings / scope creep).
+
+    The result carries base's header and full current string set — template-correct
+    and check-scope-clean — plus the contributor's work. Writes the merged catalog
+    to the working tree and returns a stats dict. Raises if the merge would reduce
+    the translated count: that invariant is what makes it safe to run unattended.
+    """
+    from babel.messages.pofile import read_po
+
+    base_cat = _base_catalog(base, lang)
+    if base_cat is None:
+        # Brand-new language at base: nothing to preserve, take incoming as-is.
+        with open(incoming_po, "rb") as f:
+            base_cat = read_po(f)
+        _write_po(lang, base_cat)
+        n = sum(1 for m in base_cat if m.id and _is_translated(m.string))
+        return {"changed": n, "filled": n, "before": 0, "after": n,
+                "total": sum(1 for m in base_cat if m.id), "new_language": True}
+
+    with open(incoming_po, "rb") as f:
+        incoming = read_po(f)
+    incoming_map = {
+        m.id: m.string for m in incoming if m.id and _is_translated(m.string)
+    }
+
+    before = sum(1 for m in base_cat if m.id and _is_translated(m.string))
+    changed = filled = 0
+    for msg in base_cat:
+        if not msg.id or msg.id not in incoming_map:
+            continue
+        new = incoming_map[msg.id]
+        if new != msg.string:
+            if not _is_translated(msg.string):
+                filled += 1
+            msg.string = new
+            changed += 1
+    after = sum(1 for m in base_cat if m.id and _is_translated(m.string))
+    if after < before:  # the invariant: an unattended merge must never lose work
+        raise SystemExit(
+            f"resolve refused: would drop translations ({before} -> {after})"
+        )
+    _write_po(lang, base_cat)
+    return {"changed": changed, "filled": filled, "before": before,
+            "after": after, "total": sum(1 for m in base_cat if m.id)}
+
+
 _bake_regression_mod = None
 
 
@@ -721,6 +789,11 @@ def main() -> None:
     p.add_argument("lang")
     p.add_argument("json_file")
 
+    p = sub.add_parser("resolve", help="Auto-heal a conflicting PR: overlay an incoming .po onto the base catalog")
+    p.add_argument("lang")
+    p.add_argument("incoming_po", help="Path to the incoming (contributor/PR) .po")
+    p.add_argument("--base", default="origin/main")
+
     p = sub.add_parser("fix", help="Fix HTML attrs and format-string errors")
     p.add_argument("lang")
 
@@ -765,6 +838,12 @@ def main() -> None:
         translations = json.loads(Path(args.json_file).read_text(encoding="utf-8"))
         count = apply_translations(args.lang, translations)
         print(f"Applied: {count}")
+
+    elif args.cmd == "resolve":
+        stats = resolve(args.lang, args.incoming_po, base=args.base)
+        print(f"{args.lang}: resolved — {stats['changed']} changed "
+              f"({stats['filled']} gaps filled), {stats['after']}/{stats['total']} "
+              f"translated (was {stats['before']}); no translations lost")
 
     elif args.cmd == "fix":
         html, fmt = fix(args.lang)
