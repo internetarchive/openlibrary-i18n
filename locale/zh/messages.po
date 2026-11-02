@@ -1852,7 +1852,7 @@ msgstr "正在关注"
 msgid "Followers"
 msgstr "过滤"
 
-#: ShareModal.html account/view.html type/edition/modal_links.html type/edition/title_and_author.html
+#: ShareModal.html account/view.html stats/tasks.html.jinja type/edition/modal_links.html type/edition/title_and_author.html
 #, fuzzy
 msgid "Share"
 msgstr "保存"
@@ -2145,7 +2145,7 @@ msgstr "昨天"
 msgid "Last 7 days"
 msgstr "过去7天"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 28 days"
 msgstr "过去28天"
 
@@ -5639,12 +5639,12 @@ msgstr "其他日期"
 msgid "Year"
 msgstr "搜索"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 #, fuzzy
 msgid "Month"
 msgstr "这个月"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 #, fuzzy
 msgid "Day"
 msgstr "今日"
@@ -6610,24 +6610,139 @@ msgid "Tasks Stats"
 msgstr "任务统计"
 
 #: stats/tasks.html.jinja
-msgid "Each number covers the days up to the latest count, so it moves a little every day."
-msgstr "每个数字涵盖截至最近一次统计的天数，因此每天都会略有变化。"
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "统计数据每小时收集一次，因此今天的数字会随着时间推移逐步完善。"
 
 #: stats/tasks.html.jinja
-msgid "All stats"
-msgstr "所有统计数据"
+msgid "Metrics, last 28 days. Choose one to chart it."
+msgstr "指标，最近28天。选择一项以绘制图表。"
 
 #: stats/tasks.html.jinja
-msgid "Latest"
-msgstr "最新"
+#, python-format
+msgid "%(change)s vs previous 28 days"
+msgstr "%(change)s（较之前28天）"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Per day"
+msgstr "每天"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Previous period"
+msgstr "上一时段"
 
 #: stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4周前"
+msgid "Date range"
+msgstr "日期范围"
 
 #: stats/tasks.html.jinja
-msgid "Last 90 days"
-msgstr "过去90天"
+msgid "28 days"
+msgstr "28天"
+
+#: stats/tasks.html.jinja
+msgid "90 days"
+msgstr "90天"
+
+#: stats/tasks.html.jinja
+msgid "6 months"
+msgstr "6个月"
+
+#: stats/tasks.html.jinja
+msgid "12 months"
+msgstr "12个月"
+
+#: stats/tasks.html.jinja
+msgid "Group by"
+msgstr "分组方式"
+
+#: stats/tasks.html.jinja
+msgid "Week"
+msgstr "周"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "与上一时段比较"
+
+#: stats/tasks.html.jinja
+msgid "Chart of the chosen metric over the chosen range"
+msgstr "所选指标在所选范围内的图表"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across the initiative's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "该计划所涉书目中仍缺失的详情，每晚统计一次。无人能找到的详情也算作已填写。"
+
+#: stats/tasks.html.jinja
+msgid "of details filled"
+msgstr "详情已填写"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "<b>%(done)s of %(count)s</b> books complete"
+msgstr "<b>%(done)s / %(count)s</b> 本书已完成"
+
+#: stats/tasks.html.jinja
+msgid "details still open"
+msgstr "详情仍未完成"
+
+#: stats/tasks.html.jinja
+msgid "marked not found"
+msgstr "已标记为未找到"
+
+#: stats/tasks.html.jinja
+msgid "Details still open, by day"
+msgstr "仍未完成的详情，按天显示"
+
+#: stats/tasks.html.jinja
+msgid "Saves by field, last 28 days"
+msgstr "按字段统计的保存次数，最近28天"
+
+#: stats/tasks.html.jinja
+msgid "Which details people are filling in."
+msgstr "用户正在填写哪些详情。"
+
+#: stats/tasks.html.jinja
+msgid "Field"
+msgstr "字段"
+
+#: stats/tasks.html.jinja
+msgid "Saves"
+msgstr "保存次数"
+
+#: stats/tasks.html.jinja
+msgid "No Tasks saves in the last 28 days."
+msgstr "最近28天内没有任务保存记录。"
+
+#: stats/tasks.html.jinja
+msgid "Guardrail"
+msgstr "安全机制"
+
+#: stats/tasks.html.jinja
+msgid "Saves whose value is no longer on the record: undone, reverted or changed by a later edit, over the 28 days to each day. The dashed line is the same check on the same fields filled outside Tasks, by people editing a record directly."
+msgstr "保存后其值不再出现在记录中的情况：被撤销、还原或被后续编辑更改，按28天内每天统计。虚线表示对任务之外填写的相同字段进行的相同检查，这些字段是用户直接编辑记录填写的。"
+
+#: stats/tasks.html.jinja
+msgid "of Tasks saves undone"
+msgstr "任务保存被撤销的比例"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves: too few to compare yet"
+msgstr "任务保存次数：数量太少，暂无法比较"
+
+#: stats/tasks.html.jinja
+msgid "of fills outside Tasks undone"
+msgstr "任务之外填写被撤销的比例"
+
+#: stats/tasks.html.jinja
+msgid "Fills outside Tasks: too few to compare yet"
+msgstr "任务之外的填写次数：数量太少，暂无法比较"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Last 28 days: %(tasks_undone)s of %(tasks)s Tasks saves and %(other_undone)s of %(other)s fills outside Tasks. A share shows once there are %(min)s."
+msgstr "最近28天：%(tasks)s 次任务保存中有 %(tasks_undone)s 次被撤销，%(other)s 次任务之外的填写中有 %(other_undone)s 次被撤销。达到 %(min)s 后才会显示比例。"
+
+#: stats/tasks.html.jinja
+msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
+msgstr "任务保存被撤销比例及任务之外填写被撤销比例，按天显示"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -10068,60 +10183,90 @@ msgid "%(title)s - search"
 msgstr "%(title)s - 搜索"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves undone, last 28 days"
-msgstr "已撤销的任务保存，最近28天"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 28 days"
-msgstr "编辑者，最近28天"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 7 days"
-msgstr "编辑者，最近7天"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 28 days"
-msgstr "首次编辑者，最近28天"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 7 days"
-msgstr "首次编辑者，最近7天"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks saves, last 28 days"
-msgstr "任务保存，最近28天"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 28 days"
-msgstr "任务编辑者，最近28天"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 7 days"
-msgstr "任务编辑者，最近7天"
-
-#: openlibrary/views/loanstats.py
 msgid "Editors"
 msgstr "编辑者"
 
 #: openlibrary/views/loanstats.py
-msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
-msgstr "修改过书籍、作品或作者记录的已登录账户。不计入机器人。"
+msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+msgstr "修改过书目、作品或作者记录的用户。在周视图和月视图中，同一人在多天编辑只计一次。"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks page"
-msgstr "任务页面"
+msgid "First-time editors"
+msgstr "首次编辑者"
+
+#: openlibrary/views/loanstats.py
+msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+msgstr "在当天首次进行编辑的用户。每人仅在其首次编辑当天计一次。"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves"
+msgstr "任务保存次数"
 
 #: openlibrary/views/loanstats.py
 msgid "Edits saved from the Tasks page."
 msgstr "从任务页面保存的编辑。"
 
 #: openlibrary/views/loanstats.py
-msgid "Guardrail"
-msgstr "安全机制"
+msgid "Tasks editors"
+msgstr "任务编辑者"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
-msgstr "其值已不再反映在记录中的任务保存：已撤销、已还原或被后续编辑更改。"
+msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
+msgstr "在任务页面保存过编辑的用户。在周视图和月视图中，同一人在多天保存只计一次。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Most-read %(count)s"
+msgstr "阅读最多的 %(count)s 本"
+
+#: openlibrary/views/loanstats.py
+msgid "Per week"
+msgstr "每周"
+
+#: openlibrary/views/loanstats.py
+msgid "Per 4 weeks"
+msgstr "每4周"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Previous period: %(count)s"
+msgstr "上一时段：%(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous period"
+msgstr "%(change)s（较上一时段）"
+
+#: openlibrary/views/loanstats.py
+msgid "Today so far, updated hourly"
+msgstr "今日至今，每小时更新"
+
+#: openlibrary/views/loanstats.py
+msgid "Still in progress"
+msgstr "仍在进行中"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(count)s details still open"
+msgstr "%(count)s 项详情仍未完成"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Tasks: %(share)s undone, %(undone)s of %(total)s saves"
+msgstr "任务：%(share)s 被撤销，%(total)s 次保存中有 %(undone)s 次"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Outside Tasks: %(share)s undone, %(undone)s of %(total)s fills"
+msgstr "任务之外：%(share)s 被撤销，%(total)s 次填写中有 %(undone)s 次"
+
+#: openlibrary/views/loanstats.py
+msgid "No counts for this range yet."
+msgstr "此范围暂无统计数据。"
+
+#: openlibrary/views/loanstats.py
+msgid "The charts couldn't load. Reload the page to try again."
+msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Tips for Reconciling Author Records"
 #~ msgstr "核对作者记录的提示"
@@ -11390,52 +11535,52 @@ msgstr "其值已不再反映在记录中的任务保存：已撤销、已还原
 #~ msgstr ""
 
 #~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
-#~ msgstr ""
+#~ msgstr "每个数字涵盖截至最近一次统计的天数，因此每天都会略有变化。"
 
 #~ msgid "All stats"
-#~ msgstr ""
+#~ msgstr "所有统计数据"
 
 #~ msgid "Latest"
-#~ msgstr ""
+#~ msgstr "最新"
 
 #~ msgid "4 weeks earlier"
-#~ msgstr ""
+#~ msgstr "4周前"
 
 #~ msgid "Last 90 days"
-#~ msgstr ""
+#~ msgstr "过去90天"
 
 #~ msgid "Tasks saves undone, last 28 days"
-#~ msgstr ""
+#~ msgstr "已撤销的任务保存，最近28天"
 
 #~ msgid "Editors, last 28 days"
-#~ msgstr ""
+#~ msgstr "编辑者，最近28天"
 
 #~ msgid "Editors, last 7 days"
-#~ msgstr ""
+#~ msgstr "编辑者，最近7天"
 
 #~ msgid "First-time editors, last 28 days"
-#~ msgstr ""
+#~ msgstr "首次编辑者，最近28天"
 
 #~ msgid "First-time editors, last 7 days"
-#~ msgstr ""
+#~ msgstr "首次编辑者，最近7天"
 
 #~ msgid "Tasks saves, last 28 days"
-#~ msgstr ""
+#~ msgstr "任务保存，最近28天"
 
 #~ msgid "Tasks editors, last 28 days"
-#~ msgstr ""
+#~ msgstr "任务编辑者，最近28天"
 
 #~ msgid "Tasks editors, last 7 days"
-#~ msgstr ""
+#~ msgstr "任务编辑者，最近7天"
 
 #~ msgid "Editors"
 #~ msgstr ""
 
 #~ msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
-#~ msgstr ""
+#~ msgstr "修改过书籍、作品或作者记录的已登录账户。不计入机器人。"
 
 #~ msgid "Tasks page"
-#~ msgstr ""
+#~ msgstr "任务页面"
 
 #~ msgid "Edits saved from the Tasks page."
 #~ msgstr ""
@@ -11444,7 +11589,7 @@ msgstr "其值已不再反映在记录中的任务保存：已撤销、已还原
 #~ msgstr ""
 
 #~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
-#~ msgstr ""
+#~ msgstr "其值已不再反映在记录中的任务保存：已撤销、已还原或被后续编辑更改。"
 
 #~ msgid "Next: a random task from %(filter)s"
 #~ msgstr "下一个：来自 %(filter)s 的随机任务"
