@@ -1834,7 +1834,7 @@ msgstr "Seguendo"
 msgid "Followers"
 msgstr "filtri"
 
-#: ShareModal.html account/view.html type/edition/modal_links.html type/edition/title_and_author.html
+#: ShareModal.html account/view.html stats/tasks.html.jinja type/edition/modal_links.html type/edition/title_and_author.html
 msgid "Share"
 msgstr "Condividi"
 
@@ -2126,7 +2126,7 @@ msgstr "Ieri"
 msgid "Last 7 days"
 msgstr "Ultimi 7 giorni"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 28 days"
 msgstr "Ultimi 28 giorni"
 
@@ -5592,11 +5592,11 @@ msgstr "Altra data"
 msgid "Year"
 msgstr "Anno"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 msgid "Month"
 msgstr "Mese"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 msgid "Day"
 msgstr "Giorno"
 
@@ -6551,24 +6551,139 @@ msgid "Tasks Stats"
 msgstr "Statistiche attività"
 
 #: stats/tasks.html.jinja
-msgid "Each number covers the days up to the latest count, so it moves a little every day."
-msgstr "Ogni numero copre i giorni fino all'ultimo conteggio, quindi cambia leggermente ogni giorno."
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "I conteggi vengono raccolti ogni ora, quindi i dati di oggi si completano man mano che la giornata avanza."
 
 #: stats/tasks.html.jinja
-msgid "All stats"
-msgstr "Tutte le statistiche"
+msgid "Metrics, last 28 days. Choose one to chart it."
+msgstr "Metriche, ultimi 28 giorni. Scegline una per visualizzarla nel grafico."
 
 #: stats/tasks.html.jinja
-msgid "Latest"
-msgstr "Più recente"
+#, python-format
+msgid "%(change)s vs previous 28 days"
+msgstr "%(change)s rispetto ai 28 giorni precedenti"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Per day"
+msgstr "Al giorno"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Previous period"
+msgstr "Periodo precedente"
 
 #: stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 settimane prima"
+msgid "Date range"
+msgstr "Intervallo di date"
 
 #: stats/tasks.html.jinja
-msgid "Last 90 days"
-msgstr "Ultimi 90 giorni"
+msgid "28 days"
+msgstr "28 giorni"
+
+#: stats/tasks.html.jinja
+msgid "90 days"
+msgstr "90 giorni"
+
+#: stats/tasks.html.jinja
+msgid "6 months"
+msgstr "6 mesi"
+
+#: stats/tasks.html.jinja
+msgid "12 months"
+msgstr "12 mesi"
+
+#: stats/tasks.html.jinja
+msgid "Group by"
+msgstr "Raggruppa per"
+
+#: stats/tasks.html.jinja
+msgid "Week"
+msgstr "Settimana"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Confronta con il periodo precedente"
+
+#: stats/tasks.html.jinja
+msgid "Chart of the chosen metric over the chosen range"
+msgstr "Grafico della metrica scelta nell'intervallo selezionato"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across the initiative's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Dettagli ancora mancanti nei libri dell'iniziativa, conteggiati ogni notte. Un dettaglio che nessuno è riuscito a trovare viene conteggiato come completato."
+
+#: stats/tasks.html.jinja
+msgid "of details filled"
+msgstr "dei dettagli completati"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "<b>%(done)s of %(count)s</b> books complete"
+msgstr "<b>%(done)s di %(count)s</b> libri completati"
+
+#: stats/tasks.html.jinja
+msgid "details still open"
+msgstr "dettagli ancora aperti"
+
+#: stats/tasks.html.jinja
+msgid "marked not found"
+msgstr "contrassegnato come non trovato"
+
+#: stats/tasks.html.jinja
+msgid "Details still open, by day"
+msgstr "Dettagli ancora aperti, per giorno"
+
+#: stats/tasks.html.jinja
+msgid "Saves by field, last 28 days"
+msgstr "Salvataggi per campo, ultimi 28 giorni"
+
+#: stats/tasks.html.jinja
+msgid "Which details people are filling in."
+msgstr "Quali dettagli le persone stanno completando."
+
+#: stats/tasks.html.jinja
+msgid "Field"
+msgstr "Campo"
+
+#: stats/tasks.html.jinja
+msgid "Saves"
+msgstr "Salvataggi"
+
+#: stats/tasks.html.jinja
+msgid "No Tasks saves in the last 28 days."
+msgstr "Nessun salvataggio da Attività negli ultimi 28 giorni."
+
+#: stats/tasks.html.jinja
+msgid "Guardrail"
+msgstr "Protezione"
+
+#: stats/tasks.html.jinja
+msgid "Saves whose value is no longer on the record: undone, reverted or changed by a later edit, over the 28 days to each day. The dashed line is the same check on the same fields filled outside Tasks, by people editing a record directly."
+msgstr "Salvataggi il cui valore non è più presente nel record: annullati, ripristinati o modificati da una modifica successiva, nei 28 giorni fino a ciascun giorno. La linea tratteggiata rappresenta lo stesso controllo sugli stessi campi completati al di fuori di Attività, da persone che modificano un record direttamente."
+
+#: stats/tasks.html.jinja
+msgid "of Tasks saves undone"
+msgstr "dei salvataggi di Attività annullati"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves: too few to compare yet"
+msgstr "Salvataggi di Attività: ancora troppo pochi per un confronto"
+
+#: stats/tasks.html.jinja
+msgid "of fills outside Tasks undone"
+msgstr "dei completamenti fuori da Attività annullati"
+
+#: stats/tasks.html.jinja
+msgid "Fills outside Tasks: too few to compare yet"
+msgstr "Completamenti fuori da Attività: ancora troppo pochi per un confronto"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Last 28 days: %(tasks_undone)s of %(tasks)s Tasks saves and %(other_undone)s of %(other)s fills outside Tasks. A share shows once there are %(min)s."
+msgstr "Ultimi 28 giorni: %(tasks_undone)s di %(tasks)s salvataggi di Attività e %(other_undone)s di %(other)s completamenti fuori da Attività. Una percentuale viene mostrata quando ce ne sono almeno %(min)s."
+
+#: stats/tasks.html.jinja
+msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
+msgstr "Percentuale di salvataggi di Attività annullati e di completamenti fuori da Attività, per giorno"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -10005,60 +10120,90 @@ msgid "%(title)s - search"
 msgstr "%(title)s - cerca"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves undone, last 28 days"
-msgstr "Salvataggi di attività annullati, ultimi 28 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 28 days"
-msgstr "Editor, ultimi 28 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 7 days"
-msgstr "Editor, ultimi 7 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 28 days"
-msgstr "Nuovi editor, ultimi 28 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 7 days"
-msgstr "Nuovi editor, ultimi 7 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks saves, last 28 days"
-msgstr "Salvataggi di attività, ultimi 28 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 28 days"
-msgstr "Editor di attività, ultimi 28 giorni"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 7 days"
-msgstr "Editor di attività, ultimi 7 giorni"
-
-#: openlibrary/views/loanstats.py
 msgid "Editors"
 msgstr "Editor"
 
 #: openlibrary/views/loanstats.py
-msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
-msgstr "Account connessi che hanno modificato un libro, un'opera o un autore. I bot non vengono conteggiati."
+msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+msgstr "Persone che hanno modificato un record di libro, opera o autore. Nelle viste settimanali e mensili, chi ha modificato in più giorni viene conteggiato una sola volta."
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks page"
-msgstr "Pagina delle attività"
+msgid "First-time editors"
+msgstr "Editori alla prima modifica"
+
+#: openlibrary/views/loanstats.py
+msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+msgstr "Persone che hanno effettuato la loro primissima modifica in quel giorno. Ogni persona viene conteggiata una sola volta, nel giorno della sua prima modifica."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves"
+msgstr "Salvataggi di Attività"
 
 #: openlibrary/views/loanstats.py
 msgid "Edits saved from the Tasks page."
 msgstr "Modifiche salvate dalla pagina delle attività."
 
 #: openlibrary/views/loanstats.py
-msgid "Guardrail"
-msgstr "Protezione"
+msgid "Tasks editors"
+msgstr "Editori di Attività"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
-msgstr "Salvataggi di attività il cui valore non è più nel record: annullato, ripristinato o modificato da una modifica successiva."
+msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
+msgstr "Persone che hanno salvato una modifica dalla pagina Attività. Nelle viste settimanali e mensili, chi ha salvato in più giorni viene conteggiato una sola volta."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Most-read %(count)s"
+msgstr "%(count)s più letti"
+
+#: openlibrary/views/loanstats.py
+msgid "Per week"
+msgstr "Alla settimana"
+
+#: openlibrary/views/loanstats.py
+msgid "Per 4 weeks"
+msgstr "Ogni 4 settimane"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Previous period: %(count)s"
+msgstr "Periodo precedente: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous period"
+msgstr "%(change)s rispetto al periodo precedente"
+
+#: openlibrary/views/loanstats.py
+msgid "Today so far, updated hourly"
+msgstr "Oggi finora, aggiornato ogni ora"
+
+#: openlibrary/views/loanstats.py
+msgid "Still in progress"
+msgstr "Ancora in corso"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(count)s details still open"
+msgstr "%(count)s dettagli ancora aperti"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Tasks: %(share)s undone, %(undone)s of %(total)s saves"
+msgstr "Attività: %(share)s annullato, %(undone)s di %(total)s salvataggi"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Outside Tasks: %(share)s undone, %(undone)s of %(total)s fills"
+msgstr "Fuori da Attività: %(share)s annullato, %(undone)s di %(total)s completamenti"
+
+#: openlibrary/views/loanstats.py
+msgid "No counts for this range yet."
+msgstr "Nessun conteggio ancora per questo intervallo."
+
+#: openlibrary/views/loanstats.py
+msgid "The charts couldn't load. Reload the page to try again."
+msgstr "Impossibile caricare i grafici. Ricarica la pagina per riprovare."
 
 #~ msgid "Read Text ISBN"
 #~ msgstr "Leggi l'ISBN del testo"
@@ -11222,4 +11367,52 @@ msgstr "Salvataggi di attività il cui valore non è più nel record: annullato,
 
 #~ msgid "Next: a random task from all open tasks"
 #~ msgstr "Prossimo: un'attività casuale tra tutte le attività aperte"
+
+#~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
+#~ msgstr "Ogni numero copre i giorni fino all'ultimo conteggio, quindi cambia leggermente ogni giorno."
+
+#~ msgid "All stats"
+#~ msgstr "Tutte le statistiche"
+
+#~ msgid "Latest"
+#~ msgstr "Più recente"
+
+#~ msgid "4 weeks earlier"
+#~ msgstr "4 settimane prima"
+
+#~ msgid "Last 90 days"
+#~ msgstr "Ultimi 90 giorni"
+
+#~ msgid "Tasks saves undone, last 28 days"
+#~ msgstr "Salvataggi di attività annullati, ultimi 28 giorni"
+
+#~ msgid "Editors, last 28 days"
+#~ msgstr "Editor, ultimi 28 giorni"
+
+#~ msgid "Editors, last 7 days"
+#~ msgstr "Editor, ultimi 7 giorni"
+
+#~ msgid "First-time editors, last 28 days"
+#~ msgstr "Nuovi editor, ultimi 28 giorni"
+
+#~ msgid "First-time editors, last 7 days"
+#~ msgstr "Nuovi editor, ultimi 7 giorni"
+
+#~ msgid "Tasks saves, last 28 days"
+#~ msgstr "Salvataggi di attività, ultimi 28 giorni"
+
+#~ msgid "Tasks editors, last 28 days"
+#~ msgstr "Editor di attività, ultimi 28 giorni"
+
+#~ msgid "Tasks editors, last 7 days"
+#~ msgstr "Editor di attività, ultimi 7 giorni"
+
+#~ msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+#~ msgstr "Account connessi che hanno modificato un libro, un'opera o un autore. I bot non vengono conteggiati."
+
+#~ msgid "Tasks page"
+#~ msgstr "Pagina delle attività"
+
+#~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+#~ msgstr "Salvataggi di attività il cui valore non è più nel record: annullato, ripristinato o modificato da una modifica successiva."
 
