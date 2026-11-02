@@ -1767,7 +1767,7 @@ msgstr "Siguiendo"
 msgid "Followers"
 msgstr "Seguidores"
 
-#: ShareModal.html account/view.html type/edition/modal_links.html type/edition/title_and_author.html
+#: ShareModal.html account/view.html stats/tasks.html.jinja type/edition/modal_links.html type/edition/title_and_author.html
 msgid "Share"
 msgstr "Compartir"
 
@@ -2038,7 +2038,7 @@ msgstr "Ayer"
 msgid "Last 7 days"
 msgstr "Últimos 7 días"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 28 days"
 msgstr "Últimos 28 días"
 
@@ -5342,11 +5342,11 @@ msgstr "Otra fecha"
 msgid "Year"
 msgstr "Año"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 msgid "Month"
 msgstr "Mes"
 
-#: my_books/shelf_button_i18n.html
+#: my_books/shelf_button_i18n.html stats/tasks.html.jinja
 msgid "Day"
 msgstr "Día"
 
@@ -6274,24 +6274,139 @@ msgid "Tasks Stats"
 msgstr "Estadísticas de tareas"
 
 #: stats/tasks.html.jinja
-msgid "Each number covers the days up to the latest count, so it moves a little every day."
-msgstr "Cada número abarca los días hasta el último recuento, por lo que cambia un poco cada día."
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Los recuentos se recopilan cada hora, por lo que las cifras de hoy se van completando a lo largo del día."
 
 #: stats/tasks.html.jinja
-msgid "All stats"
-msgstr "Todas las estadísticas"
+msgid "Metrics, last 28 days. Choose one to chart it."
+msgstr "Métricas, últimos 28 días. Elige una para verla en el gráfico."
 
 #: stats/tasks.html.jinja
-msgid "Latest"
-msgstr "Más reciente"
+#, python-format
+msgid "%(change)s vs previous 28 days"
+msgstr "%(change)s frente a los 28 días anteriores"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Per day"
+msgstr "Por día"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Previous period"
+msgstr "Período anterior"
 
 #: stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "Hace 4 semanas"
+msgid "Date range"
+msgstr "Intervalo de fechas"
 
 #: stats/tasks.html.jinja
-msgid "Last 90 days"
-msgstr "Últimos 90 días"
+msgid "28 days"
+msgstr "28 días"
+
+#: stats/tasks.html.jinja
+msgid "90 days"
+msgstr "90 días"
+
+#: stats/tasks.html.jinja
+msgid "6 months"
+msgstr "6 meses"
+
+#: stats/tasks.html.jinja
+msgid "12 months"
+msgstr "12 meses"
+
+#: stats/tasks.html.jinja
+msgid "Group by"
+msgstr "Agrupar por"
+
+#: stats/tasks.html.jinja
+msgid "Week"
+msgstr "Semana"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Comparar con el período anterior"
+
+#: stats/tasks.html.jinja
+msgid "Chart of the chosen metric over the chosen range"
+msgstr "Gráfico de la métrica elegida durante el intervalo elegido"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across the initiative's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Detalles que aún faltan en los libros de la iniciativa, contados cada noche. Un detalle que nadie pudo encontrar se cuenta como completado."
+
+#: stats/tasks.html.jinja
+msgid "of details filled"
+msgstr "de los detalles completados"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "<b>%(done)s of %(count)s</b> books complete"
+msgstr "<b>%(done)s de %(count)s</b> libros completos"
+
+#: stats/tasks.html.jinja
+msgid "details still open"
+msgstr "detalles aún pendientes"
+
+#: stats/tasks.html.jinja
+msgid "marked not found"
+msgstr "marcados como no encontrados"
+
+#: stats/tasks.html.jinja
+msgid "Details still open, by day"
+msgstr "Detalles aún pendientes, por día"
+
+#: stats/tasks.html.jinja
+msgid "Saves by field, last 28 days"
+msgstr "Guardados por campo, últimos 28 días"
+
+#: stats/tasks.html.jinja
+msgid "Which details people are filling in."
+msgstr "Qué detalles está completando la gente."
+
+#: stats/tasks.html.jinja
+msgid "Field"
+msgstr "Campo"
+
+#: stats/tasks.html.jinja
+msgid "Saves"
+msgstr "Guardados"
+
+#: stats/tasks.html.jinja
+msgid "No Tasks saves in the last 28 days."
+msgstr "No hay guardados de Tareas en los últimos 28 días."
+
+#: stats/tasks.html.jinja
+msgid "Guardrail"
+msgstr "Salvaguarda"
+
+#: stats/tasks.html.jinja
+msgid "Saves whose value is no longer on the record: undone, reverted or changed by a later edit, over the 28 days to each day. The dashed line is the same check on the same fields filled outside Tasks, by people editing a record directly."
+msgstr "Guardados cuyo valor ya no está en el registro: deshechos, revertidos o cambiados por una edición posterior, a lo largo de los 28 días previos a cada día. La línea discontinua es la misma comprobación sobre los mismos campos completados fuera de Tareas, por personas que editan un registro directamente."
+
+#: stats/tasks.html.jinja
+msgid "of Tasks saves undone"
+msgstr "de los guardados de Tareas deshechos"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves: too few to compare yet"
+msgstr "Guardados de Tareas: aún son muy pocos para comparar"
+
+#: stats/tasks.html.jinja
+msgid "of fills outside Tasks undone"
+msgstr "de los rellenos fuera de Tareas deshechos"
+
+#: stats/tasks.html.jinja
+msgid "Fills outside Tasks: too few to compare yet"
+msgstr "Rellenos fuera de Tareas: aún son muy pocos para comparar"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Last 28 days: %(tasks_undone)s of %(tasks)s Tasks saves and %(other_undone)s of %(other)s fills outside Tasks. A share shows once there are %(min)s."
+msgstr "Últimos 28 días: %(tasks_undone)s de %(tasks)s guardados de Tareas y %(other_undone)s de %(other)s rellenos fuera de Tareas. El porcentaje se muestra cuando hay %(min)s."
+
+#: stats/tasks.html.jinja
+msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
+msgstr "Porcentaje de guardados de Tareas deshechos y de rellenos fuera de Tareas, por día"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9625,60 +9740,90 @@ msgid "%(title)s - search"
 msgstr "%(title)s - búsqueda"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves undone, last 28 days"
-msgstr "Guardados de tareas deshechos, últimos 28 días"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 28 days"
-msgstr "Editores, últimos 28 días"
-
-#: openlibrary/views/loanstats.py
-msgid "Editors, last 7 days"
-msgstr "Editores, últimos 7 días"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 28 days"
-msgstr "Editores por primera vez, últimos 28 días"
-
-#: openlibrary/views/loanstats.py
-msgid "First-time editors, last 7 days"
-msgstr "Editores por primera vez, últimos 7 días"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks saves, last 28 days"
-msgstr "Guardados de tareas, últimos 28 días"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 28 days"
-msgstr "Editores de tareas, últimos 28 días"
-
-#: openlibrary/views/loanstats.py
-msgid "Tasks editors, last 7 days"
-msgstr "Editores de tareas, últimos 7 días"
-
-#: openlibrary/views/loanstats.py
 msgid "Editors"
 msgstr "Editores"
 
 #: openlibrary/views/loanstats.py
-msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
-msgstr "Cuentas con sesión iniciada que modificaron un libro, obra o autor. Los bots no se cuentan."
+msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+msgstr "Personas que modificaron un registro de libro, obra o autor. En las vistas de semana y mes, quien editó en varios días cuenta una sola vez."
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks page"
-msgstr "Página de tareas"
+msgid "First-time editors"
+msgstr "Editores por primera vez"
+
+#: openlibrary/views/loanstats.py
+msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+msgstr "Personas que hicieron su primera edición ese día. Cada persona se cuenta una sola vez, el día de su primera edición."
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves"
+msgstr "Guardados de Tareas"
 
 #: openlibrary/views/loanstats.py
 msgid "Edits saved from the Tasks page."
 msgstr "Ediciones guardadas desde la página de tareas."
 
 #: openlibrary/views/loanstats.py
-msgid "Guardrail"
-msgstr "Salvaguarda"
+msgid "Tasks editors"
+msgstr "Editores de Tareas"
 
 #: openlibrary/views/loanstats.py
-msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
-msgstr "Guardados de tareas cuyo valor ya no está en el registro: deshecho, revertido o cambiado por una edición posterior."
+msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
+msgstr "Personas que guardaron una edición desde la página de Tareas. En las vistas de semana y mes, quien guardó en varios días cuenta una sola vez."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Most-read %(count)s"
+msgstr "%(count)s más leídos"
+
+#: openlibrary/views/loanstats.py
+msgid "Per week"
+msgstr "Por semana"
+
+#: openlibrary/views/loanstats.py
+msgid "Per 4 weeks"
+msgstr "Cada 4 semanas"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Previous period: %(count)s"
+msgstr "Período anterior: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous period"
+msgstr "%(change)s frente al período anterior"
+
+#: openlibrary/views/loanstats.py
+msgid "Today so far, updated hourly"
+msgstr "Hoy hasta el momento, actualizado cada hora"
+
+#: openlibrary/views/loanstats.py
+msgid "Still in progress"
+msgstr "Aún en curso"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(count)s details still open"
+msgstr "%(count)s detalles aún pendientes"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Tasks: %(share)s undone, %(undone)s of %(total)s saves"
+msgstr "Tareas: %(share)s deshechos, %(undone)s de %(total)s guardados"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Outside Tasks: %(share)s undone, %(undone)s of %(total)s fills"
+msgstr "Fuera de Tareas: %(share)s deshechos, %(undone)s de %(total)s rellenos"
+
+#: openlibrary/views/loanstats.py
+msgid "No counts for this range yet."
+msgstr "Aún no hay recuentos para este intervalo."
+
+#: openlibrary/views/loanstats.py
+msgid "The charts couldn't load. Reload the page to try again."
+msgstr "Los gráficos no se pudieron cargar. Recarga la página para intentarlo de nuevo."
 
 #~ msgid "What is this?"
 #~ msgstr "¿Qué es esto?"
@@ -11542,4 +11687,52 @@ msgstr "Guardados de tareas cuyo valor ya no está en el registro: deshecho, rev
 
 #~ msgid "Next: a random task from all open tasks"
 #~ msgstr "Siguiente: una tarea al azar de todas las tareas abiertas"
+
+#~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
+#~ msgstr "Cada número abarca los días hasta el último recuento, por lo que cambia un poco cada día."
+
+#~ msgid "All stats"
+#~ msgstr "Todas las estadísticas"
+
+#~ msgid "Latest"
+#~ msgstr "Más reciente"
+
+#~ msgid "4 weeks earlier"
+#~ msgstr "Hace 4 semanas"
+
+#~ msgid "Last 90 days"
+#~ msgstr "Últimos 90 días"
+
+#~ msgid "Tasks saves undone, last 28 days"
+#~ msgstr "Guardados de tareas deshechos, últimos 28 días"
+
+#~ msgid "Editors, last 28 days"
+#~ msgstr "Editores, últimos 28 días"
+
+#~ msgid "Editors, last 7 days"
+#~ msgstr "Editores, últimos 7 días"
+
+#~ msgid "First-time editors, last 28 days"
+#~ msgstr "Editores por primera vez, últimos 28 días"
+
+#~ msgid "First-time editors, last 7 days"
+#~ msgstr "Editores por primera vez, últimos 7 días"
+
+#~ msgid "Tasks saves, last 28 days"
+#~ msgstr "Guardados de tareas, últimos 28 días"
+
+#~ msgid "Tasks editors, last 28 days"
+#~ msgstr "Editores de tareas, últimos 28 días"
+
+#~ msgid "Tasks editors, last 7 days"
+#~ msgstr "Editores de tareas, últimos 7 días"
+
+#~ msgid "Signed-in accounts that changed a book, work or author record. Bots are not counted."
+#~ msgstr "Cuentas con sesión iniciada que modificaron un libro, obra o autor. Los bots no se cuentan."
+
+#~ msgid "Tasks page"
+#~ msgstr "Página de tareas"
+
+#~ msgid "Tasks saves whose value is no longer on the record: undone, reverted or changed by a later edit."
+#~ msgstr "Guardados de tareas cuyo valor ya no está en el registro: deshecho, revertido o cambiado por una edición posterior."
 
