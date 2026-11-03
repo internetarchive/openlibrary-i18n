@@ -23,14 +23,39 @@ name: Weblate translation review
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    # Only translation PRs. This keeps the review agent from firing on unrelated
+    # PRs (e.g. a workflow or script change -- including this file's own PR), which
+    # the blast-radius guard would block from merging anyway but need not pay an
+    # agent run for. A PR that touches locale/** plus other files still triggers;
+    # the guard then blocks the merge on the non-translation files.
+    paths:
+      - 'locale/**'
 
 concurrency:
   group: weblate-review-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  # NOT cancel-in-progress. The enforce job pushes a resolution commit back to the
+  # PR branch and then merges in the same run; cancelling a run mid-merge (which an
+  # hourly Weblate push would do under cancel-in-progress) could orphan a push. The
+  # pipeline is fast (checks run in-job, no 6h watch-hang), so queued runs drain
+  # quickly, and the resolve step is idempotent, so a queued run on an
+  # already-healed PR is a no-op.
+  cancel-in-progress: false
 
 jobs:
   review:
-    if: github.head_ref == 'weblate'
+    # Run on translation PRs that need the untrusted-contributor gate: the recurring
+    # Weblate sync branch, OR any same-repo PR NOT authored by openlibrary-bot (a
+    # staff member pushing a translation branch directly). The bot's own i18n/ai-*
+    # batches are excluded (they have their own gate in translate.yml/reconcile.yml),
+    # as is the auto-heal resolution push ([skip ci] in its commit message skips the
+    # whole run). FORK PRs are deliberately NOT handled here: a `pull_request` from a
+    # fork receives no secrets, so neither the review agent's token nor OL_BOT_PAT is
+    # available — fork coverage needs a `pull_request_target` design (a security
+    # decision, held for Mek). See weblate-review-instructions.md.
+    if: >-
+      github.event.pull_request.head.repo.fork == false &&
+      (github.head_ref == 'weblate' ||
+       github.event.pull_request.user.login != 'openlibrary-bot')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -76,7 +101,11 @@ jobs:
 
   enforce:
     needs: review
-    if: always() && github.head_ref == 'weblate' && needs.review.result != 'skipped'
+    if: >-
+      always() && needs.review.result != 'skipped' &&
+      github.event.pull_request.head.repo.fork == false &&
+      (github.head_ref == 'weblate' ||
+       github.event.pull_request.user.login != 'openlibrary-bot')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -93,6 +122,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - run: pip install babel pytest
 
       - name: Download verdict
         uses: actions/download-artifact@v4
@@ -143,27 +174,97 @@ jobs:
             --verdict-file review-verdict.json \
             --changed-files changed-files.txt
 
-      - name: Merge once the other required checks are green
+      - name: Auto-heal (resolve conflicts + repair CI) then merge
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
         run: |
           set -euo pipefail
-          # The guard (verdict + translation-only) has passed. Merge ONLY after the
-          # OTHER required checks have actually passed, decided by the unit-tested
-          # merge_gate.py (never the review check itself -- that would deadlock).
-          for _ in $(seq 1 20); do
-            gh pr checks "$PR" --watch --interval 30 >/dev/null 2>&1 || true
-            checks="$(gh pr checks "$PR" --json name,bucket 2>/dev/null || echo '[]')"
-            if printf '%s' "$checks" \
-                 | python3 scripts/merge_gate.py --require validate --require "Verify translations deploy cleanly"; then
-              gh pr merge "$PR" --squash --delete-branch \
-                || echo "note: merge of PR #$PR did not complete (already merged, or state changed)"
+          # The guard (agent verdict == safe + diff is translation-only) has passed,
+          # so the content is cleared to land. Everything below is deterministic and
+          # runs no agent.
+          #
+          # Mek's spec: a safe translation PR must not sit. If it conflicts, resolve
+          # it here; if CI would fail, repair it here; then merge -- all hands-free.
+          # We run the SAME checks CI runs (./i18n validate / check-scope / test) in
+          # THIS job rather than pushing and watching external checks, which is what
+          # used to hang on `gh pr checks --watch` until GitHub's 6h timeout.
+          git config user.name  "Open Library Bot"
+          git config user.email "50213894+openlibrary-bot@users.noreply.github.com"
+          git fetch origin "$BASE_REF"
+          chmod +x ./i18n
+
+          # Languages this PR actually touched (empty => nothing to do).
+          mapfile -t LANGS < <(sed -n 's#^locale/\([^/]*\)/messages\.po$#\1#p' changed-files.txt | sort -u)
+          if [ "${#LANGS[@]}" -eq 0 ]; then
+            echo "No locale/*/messages.po in the diff; nothing to merge via auto-heal."
+            exit 0
+          fi
+          echo "Languages: ${LANGS[*]}"
+
+          # Overlay each language's incoming translations onto the CURRENT base
+          # catalog (loses nothing; see `./i18n resolve`), then repair + compile.
+          for lang in "${LANGS[@]}"; do
+            incoming="$(mktemp)"
+            git show "HEAD:locale/$lang/messages.po" > "$incoming"
+            ./i18n resolve "$lang" "$incoming" --base "origin/$BASE_REF"
+            ./i18n fix "$lang" || true          # repair HTML/format/plural defects
+            if ! ./i18n validate "$lang"; then  # if repair could not clear it, hold
+              gh pr comment "$PR" --body "Auto-heal ran but \`$lang\` still has format-string errors \`./i18n fix\` could not repair; leaving this PR open for a human. (Review verdict was \`safe\`; this is a mechanical gate.)"
               exit 0
             fi
-            if printf '%s' "$checks" \
-                 | python3 scripts/merge_gate.py --mode settled --require validate --require "Verify translations deploy cleanly"; then
-              echo "Leaving PR #$PR open: required checks finished but did not all pass."
+            ./i18n compile "$lang"              # openlibrary-i18n tracks .mo
+          done
+
+          # Keep the PR scoped to the languages it translated, then run the same
+          # gates CI runs. If any fail, STOP: leave the PR open with an explanation
+          # rather than merging something red.
+          ./i18n isolate "${LANGS[@]}" --base "origin/$BASE_REF"
+          if ! ./i18n check-scope --base "origin/$BASE_REF"; then
+            gh pr comment "$PR" --body "Auto-heal ran but \`check-scope\` still fails after repair; leaving this PR open for a human. (The review verdict was \`safe\`; this is a mechanical gate, not a content concern.)"
+            exit 0
+          fi
+          for lang in "${LANGS[@]}"; do
+            if ! ./i18n test "$lang"; then
+              gh pr comment "$PR" --body "Auto-heal ran but the \`$lang\` PO tests still fail after repair; leaving this PR open for a human."
+              exit 0
+            fi
+          done
+
+          # In-job preflight passed. If resolution changed the tree, push it back to
+          # the PR branch so the FULL required CI runs on the healed head -- in
+          # particular "Verify translations deploy cleanly" (bake-regression), which
+          # is a baselined check this job does not reproduce. Then merge once the
+          # required checks are actually green.
+          git add -- locale
+          if git diff --cached --quiet; then
+            echo "No changes from resolution (PR was already clean); using existing CI."
+          else
+            git commit -m "i18n: auto-heal translation PR (resolve + repair)"
+            git push origin "HEAD:$HEAD_REF"
+          fi
+
+          # Wait for the OTHER required checks, then merge. We POLL with a hard cap
+          # (never `gh pr checks --watch`, which blocked until GitHub's 6h job
+          # timeout). The required set is decided by the unit-tested merge_gate.py and
+          # never includes this workflow's own checks (that would deadlock). Do NOT
+          # delete the `weblate` branch -- Weblate reuses it.
+          delete_flag="--delete-branch"
+          if [ "$HEAD_REF" = "weblate" ]; then delete_flag=""; fi
+          require=(--require validate --require "Verify translations deploy cleanly")
+          for _ in $(seq 1 30); do          # ~15 min cap (30 x 30s)
+            checks="$(gh pr checks "$PR" --json name,bucket 2>/dev/null || echo '[]')"
+            if printf '%s' "$checks" | python3 scripts/merge_gate.py "${require[@]}"; then
+              gh pr merge "$PR" --squash $delete_flag \
+                || echo "note: merge of PR #$PR did not complete (already merged / state changed)"
+              exit 0
+            fi
+            if printf '%s' "$checks" | python3 scripts/merge_gate.py --mode settled "${require[@]}"; then
+              gh pr comment "$PR" --body "Auto-heal resolved the conflict and pushed the result, but a required check did not pass. Leaving this PR open for a human."
               exit 0
             fi
             echo "Waiting for required checks on PR #$PR to register/complete..."
             sleep 30
           done
-          echo "Required checks did not settle in time; leaving PR #$PR open."
+          gh pr comment "$PR" --body "Auto-heal resolved the conflict and pushed the result; required checks did not settle within the time budget. Leaving this PR open — the next sync (or a re-run) will retry the merge."
+          echo "Required checks did not settle in time; left PR #$PR open."
