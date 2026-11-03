@@ -35,7 +35,10 @@ import sys
 
 # A changed file is a translation catalog iff it matches this exactly. Language
 # dirs are codes like ca, pt_BR, zh_Hans, sr@latin -- letters/digits/_/-/@.
-_CATALOG_RE = re.compile(r"^locale/[A-Za-z0-9_@-]+/messages\.po$")
+# Both the source .po and its compiled .mo count: this repo tracks the .mo, and
+# contributor/fork PRs commit it alongside the .po. The .mo is translation DATA,
+# not executable code, so allowing it does not widen the blast radius to code.
+_CATALOG_RE = re.compile(r"^locale/[A-Za-z0-9_@-]+/messages\.(po|mo)$")
 
 SAFE = "safe"
 

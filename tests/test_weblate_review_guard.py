@@ -54,6 +54,11 @@ def test_translation_catalog_paths_accepted():
     assert guard.non_catalog_files(
         ["locale/pt_BR/messages.po", "locale/zh_Hans/messages.po"]
     ) == []
+    # the compiled .mo is translation data and is tracked/committed by fork PRs
+    assert guard.non_catalog_files(["locale/es/messages.mo"]) == []
+    assert guard.non_catalog_files(
+        ["locale/sc/messages.po", "locale/sc/messages.mo"]
+    ) == []
 
 
 def test_non_catalog_paths_flagged():
