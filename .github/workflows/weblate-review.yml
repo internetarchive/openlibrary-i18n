@@ -1,60 +1,84 @@
 name: Weblate translation review
 
-# Patron translation PRs (head branch `weblate`) get an agentic safety/quality
-# review and, if it passes, auto-merge. Split into two jobs on purpose:
+# Patron/contributor translation PRs get an agentic safety/quality review and, if
+# it passes every mechanical gate, are auto-healed and landed hands-free. The whole
+# point is that a safe translation PR never sits: if it conflicts, we resolve it; if
+# it would regress a live translation or fail a deploy check, we repair it; then we
+# land it and close the PR. Split into two jobs on purpose:
 #
 #   review   runs the agent with READ-ONLY permissions. The translation diff is
-#            attacker-controllable, so a prompt-injected agent must have no power
-#            to act -- in this job its token cannot write, comment, push or merge.
-#            It only reads the diff and writes a verdict file (data).
+#            attacker-controllable, so a prompt-injected agent must have no power to
+#            act -- in this job its token cannot write, comment, push or merge. It
+#            only reads the diff and writes a verdict file (data).
 #
 #   enforce  runs NO agent. It performs every privileged action deterministically,
-#            gated on THREE things, all required:
-#              1. the agent verdict is "safe"           (scripts/weblate_review_guard.py)
-#              2. the diff is translation-only           (scripts/weblate_review_guard.py)
-#              3. the other required checks are green     (scripts/merge_gate.py)
-#            Both scripts are unit-tested. The job FAILS CLOSED: a missing or
-#            malformed verdict parses as "unknown" and never merges.
+#            and it NEVER checks out or executes the PR head -- it reads the head's
+#            .po files as DATA (git show) and runs only this repo's own ./i18n
+#            toolbox from the trusted base checkout. It lands content only when ALL
+#            of these pass (fail-closed -- a missing/garbled verdict reads as unsafe):
+#              1. agent verdict == "safe"              (scripts/weblate_review_guard.py)
+#              2. the diff is translation-only          (scripts/weblate_review_guard.py)
+#              3. resolve + fix + de-regress produce content that:
+#                   - validates, compiles, passes the PO tests and check-scope, AND
+#                   - passes bake-regression IN-JOB (the exact deploy-clean gate),
+#                     so nothing that would regress a live string can land.
 #
-# This is the ONLY automation permitted to merge a `weblate` PR; translate.yml and
-# reconcile.yml are scoped to i18n/ai-* and cannot touch it. See
-# weblate-review-instructions.md for the review criteria.
+# pull_request_target (not pull_request) so FORK PRs are covered too: a fork
+# `pull_request` run gets no secrets, so neither the review agent's token nor the
+# bot PAT would be available. pull_request_target runs in the BASE repo's context
+# with secrets -- SAFE here only because this workflow never runs fork-provided code
+# (see the enforce job's "read as DATA" steps). See weblate-review-instructions.md.
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
+    paths:
+      - 'locale/**'
 
 concurrency:
   group: weblate-review-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  # NOT cancel-in-progress: the enforce job lands a commit and closes the PR; an
+  # hourly Weblate push cancelling a run mid-land could orphan the push. The
+  # pipeline is fast (all gates run in-job, no watch-hang), queued runs drain
+  # quickly, and the heal is idempotent, so a queued run on an already-landed PR is
+  # a no-op.
+  cancel-in-progress: false
 
 jobs:
   review:
-    if: github.head_ref == 'weblate'
+    # Translation PRs that need the untrusted-contributor gate: the recurring
+    # Weblate sync branch, OR any PR NOT authored by openlibrary-bot (a contributor
+    # fork, or a staff member pushing a translation branch). The bot's own i18n/ai-*
+    # batches are excluded -- they have their own gate in translate.yml/reconcile.yml.
+    if: >-
+      github.head_ref == 'weblate' ||
+      github.event.pull_request.user.login != 'openlibrary-bot'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: read
       id-token: write
+    env:
+      PR: ${{ github.event.pull_request.number }}
+      BASE_REF: ${{ github.base_ref }}
     steps:
+      # pull_request_target checks out the BASE (trusted), never the PR head.
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.base_ref }}
           fetch-depth: 0
 
-      - name: Build the translation diff for the agent
+      - name: Build the translation diff for the agent (PR head read as DATA)
         run: |
-          git fetch origin "${{ github.base_ref }}"
-          git diff "origin/${{ github.base_ref }}...HEAD" -- 'locale/*/messages.po' > pr.diff
+          # Fetch the head ref as data only -- we never check it out or run it.
+          git fetch origin "pull/${PR}/head:pr-head"
+          git diff "origin/${BASE_REF}...pr-head" -- 'locale/*/messages.po' > pr.diff
           echo "diff lines: $(wc -l < pr.diff)"
 
       - name: Agentic review (verdict only; read-only job)
         uses: anthropics/claude-code-action@v1
         with:
           prompt: "@weblate-review-instructions.md"
-          # Pinned model id: see translate.yml for why the id is pinned, not left
-          # to the CLI default. The agent only needs to read pr.diff and write
-          # review-verdict.json; this job's read-only token is what actually
-          # confines it, not the permission mode.
           claude_args: "--max-turns 40 --model claude-sonnet-5 --permission-mode acceptEdits"
           show_full_output: true
           claude_code_oauth_token: ${{ secrets.OL_BOT_CLAUDE_OAUTH_TOKEN }}
@@ -76,7 +100,10 @@ jobs:
 
   enforce:
     needs: review
-    if: always() && github.head_ref == 'weblate' && needs.review.result != 'skipped'
+    if: >-
+      always() && needs.review.result != 'skipped' &&
+      (github.head_ref == 'weblate' ||
+       github.event.pull_request.user.login != 'openlibrary-bot')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -84,15 +111,22 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
       PR: ${{ github.event.pull_request.number }}
+      BASE_REF: ${{ github.base_ref }}
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
     steps:
+      # BASE checkout (trusted code). The PR head is fetched as data below, never
+      # checked out -- so secrets are never exposed to fork-provided code.
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.base_ref }}
           fetch-depth: 0
           token: ${{ secrets.OL_BOT_PAT }}
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - run: pip install babel pytest
 
       - name: Download verdict
         uses: actions/download-artifact@v4
@@ -107,10 +141,10 @@ jobs:
           fi
           echo "verdict:"; cat review-verdict.json
 
-      - name: Compute changed files
+      - name: Fetch PR head as DATA and compute changed files
         run: |
-          git fetch origin "${{ github.base_ref }}"
-          git diff --name-only "origin/${{ github.base_ref }}...HEAD" > changed-files.txt
+          git fetch origin "pull/${PR}/head:pr-head"
+          git diff --name-only "origin/${BASE_REF}...pr-head" > changed-files.txt
           echo "changed files:"; cat changed-files.txt
 
       - name: Post review comment
@@ -137,33 +171,102 @@ jobs:
           PY
 
       - name: Enforce verdict + blast-radius gate
-        id: guard
         run: |
           python scripts/weblate_review_guard.py \
             --verdict-file review-verdict.json \
             --changed-files changed-files.txt
 
-      - name: Merge once the other required checks are green
+      - name: Auto-heal (resolve + de-regress), gate deploy-clean, then land + close
         run: |
           set -euo pipefail
-          # The guard (verdict + translation-only) has passed. Merge ONLY after the
-          # OTHER required checks have actually passed, decided by the unit-tested
-          # merge_gate.py (never the review check itself -- that would deadlock).
-          for _ in $(seq 1 20); do
-            gh pr checks "$PR" --watch --interval 30 >/dev/null 2>&1 || true
-            checks="$(gh pr checks "$PR" --json name,bucket 2>/dev/null || echo '[]')"
-            if printf '%s' "$checks" \
-                 | python3 scripts/merge_gate.py --require validate --require "Verify translations deploy cleanly"; then
-              gh pr merge "$PR" --squash --delete-branch \
-                || echo "note: merge of PR #$PR did not complete (already merged, or state changed)"
-              exit 0
-            fi
-            if printf '%s' "$checks" \
-                 | python3 scripts/merge_gate.py --mode settled --require validate --require "Verify translations deploy cleanly"; then
-              echo "Leaving PR #$PR open: required checks finished but did not all pass."
-              exit 0
-            fi
-            echo "Waiting for required checks on PR #$PR to register/complete..."
-            sleep 30
+          # The guard (verdict == safe + translation-only) has passed; the content is
+          # cleared to land IF it survives the mechanical gates below. Everything here
+          # is deterministic and runs no agent. The PR head is only ever read as data
+          # (git show pr-head:...) -- never checked out, never executed.
+          git config user.name  "Open Library Bot"
+          git config user.email "50213894+openlibrary-bot@users.noreply.github.com"
+          git fetch origin "$BASE_REF"
+          chmod +x ./i18n
+
+          mapfile -t LANGS < <(sed -n 's#^locale/\([^/]*\)/messages\.po$#\1#p' changed-files.txt | sort -u)
+          if [ "${#LANGS[@]}" -eq 0 ]; then
+            echo "No locale/*/messages.po in the diff; nothing to land."
+            exit 0
+          fi
+          echo "Languages: ${LANGS[*]}"
+
+          # 1. Overlay each language's incoming translations onto the CURRENT base
+          #    catalog (lossless union; see ./i18n resolve), then repair format/HTML/
+          #    plural defects. Incoming is read as DATA from the head ref.
+          for lang in "${LANGS[@]}"; do
+            incoming="$(mktemp)"
+            git show "pr-head:locale/$lang/messages.po" > "$incoming"
+            ./i18n resolve "$lang" "$incoming" --base "origin/$BASE_REF"
+            ./i18n fix "$lang" || true
           done
-          echo "Required checks did not settle in time; leaving PR #$PR open."
+
+          # 2. Restore any live openlibrary translation this content would otherwise
+          #    drop to English (the bake-regression class ./i18n fix cannot repair).
+          #    Baseline = base branch, so only regressions THIS pr introduces are
+          #    touched; contributor translations are never overwritten.
+          ./i18n bake-regression --ref "origin/$BASE_REF" --json base.json || true
+          ./i18n de-regress "${LANGS[@]}" --openlibrary-ref master --baseline base.json
+
+          # 3. Per-language validate + compile. Hold the PR open on any failure.
+          for lang in "${LANGS[@]}"; do
+            if ! ./i18n validate "$lang"; then
+              gh pr comment "$PR" --body "Auto-heal ran but \`$lang\` still has format-string errors that \`./i18n fix\` could not repair; leaving this PR open for a human. (The review verdict was \`safe\`; this is a mechanical gate.)"
+              exit 0
+            fi
+            ./i18n compile "$lang"
+          done
+
+          # 4. Scope to the touched languages, then the scope + PO-test gates.
+          ./i18n isolate "${LANGS[@]}" --base "origin/$BASE_REF"
+          if ! ./i18n check-scope --base "origin/$BASE_REF"; then
+            gh pr comment "$PR" --body "Auto-heal ran but \`check-scope\` still fails after repair; leaving this PR open for a human."
+            exit 0
+          fi
+          for lang in "${LANGS[@]}"; do
+            if ! ./i18n test "$lang"; then
+              gh pr comment "$PR" --body "Auto-heal ran but the \`$lang\` PO tests still fail after repair; leaving this PR open for a human."
+              exit 0
+            fi
+          done
+
+          # 5. FINAL GATE: the exact deploy-clean check (bake-regression), in-job,
+          #    against the healed working tree. This is the same check CI shows as
+          #    "Verify translations deploy cleanly"; running it here makes the land
+          #    decision authoritative without pushing-and-polling an external check.
+          if ! ./i18n bake-regression --locale-dir locale --openlibrary-ref master --baseline base.json; then
+            gh pr comment "$PR" --body "Auto-heal ran but the translations still would not deploy cleanly after repair; leaving this PR open for a human. (The review verdict was \`safe\`; this is a mechanical gate.)"
+            exit 0
+          fi
+
+          # 6. Land the healed translations on the base branch, crediting the
+          #    contributor as the commit author, and close the PR. We land on base
+          #    (not a merge of the fork head) so one code path serves same-repo and
+          #    fork PRs with only GITHUB_TOKEN/OL_BOT_PAT -- no push to a fork, no
+          #    token in any URL, nothing to leak. Weblate pulls base and rebases, so
+          #    the Weblate branch reconciles cleanly on its next sync.
+          if git diff --quiet -- locale; then
+            echo "Heal produced no change (already current); closing the PR as handled."
+          else
+            author="$(git log -1 --format='%an <%ae>' pr-head)"
+            git add -- locale
+            git commit --author="$author" \
+              -m "i18n: ${LANGS[*]} translations from #${PR} (auto-healed: resolve + de-regress)" \
+              -m "Closes #${PR}"
+            landed=""
+            for _ in 1 2 3; do
+              if git push origin "HEAD:${BASE_REF}"; then landed=1; break; fi
+              git fetch origin "$BASE_REF"
+              git rebase "origin/$BASE_REF" || { git rebase --abort || true; }
+            done
+            if [ -z "$landed" ]; then
+              gh pr comment "$PR" --body "Auto-heal produced clean, deploy-ready translations but could not land them on \`${BASE_REF}\` (the branch moved repeatedly). Leaving this PR open; the next run will retry."
+              exit 1
+            fi
+          fi
+          gh pr comment "$PR" --body "✅ Merged your translation into \`${BASE_REF}\` — it is now part of Open Library. Thank you, @${PR_AUTHOR}! Auto-healed against the current \`${BASE_REF}\`: conflicts resolved and existing live translations preserved, with nothing lost."
+          gh pr close "$PR" || echo "PR #$PR already closed."

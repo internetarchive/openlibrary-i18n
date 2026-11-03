@@ -27,6 +27,8 @@ _spec.loader.exec_module(_mod)
 BATCH_SIZE = _mod.BATCH_SIZE
 LOCALE_DIR = _mod.LOCALE_DIR
 _apply_to_catalog = _mod._apply_to_catalog
+_overlay_translations = _mod._overlay_translations
+_is_translated = _mod._is_translated
 _fix_format_errors = _mod._fix_format_errors
 _fix_format_type_mismatch = _mod._fix_format_type_mismatch
 _fix_header_fuzzy = _mod._fix_header_fuzzy
@@ -37,6 +39,8 @@ _did_translation_work = _mod._did_translation_work
 _as_tuple = _mod._as_tuple
 check_scope = _mod.check_scope
 isolate = _mod.isolate
+_restore_live_in_catalog = _mod._restore_live_in_catalog
+_english_copy_or_empty = _mod._english_copy_or_empty
 _batches_from_counts = _mod._batches_from_counts
 _stats_from_catalog = _mod._stats_from_catalog
 _untranslated_from_catalog = _mod._untranslated_from_catalog
@@ -185,6 +189,159 @@ class TestApply:
         cat = _catalog(po)
         _apply_to_catalog(cat, {"Hello": "New"})
         assert cat["Hello"].string == "New"
+
+
+# ---------------------------------------------------------------------------
+# _overlay_translations — the auto-heal core (resolve)
+# ---------------------------------------------------------------------------
+
+class TestOverlayTranslations:
+    """The merge that heals a conflicting PR: overlay incoming's translations
+    onto base, incoming-wins, NEVER losing a base translation or adding a string
+    outside base's template."""
+
+    def test_incoming_wins_when_both_translated(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Old"'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr "New"'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "New"
+        assert stats["changed"] == 1 and stats["filled"] == 0
+
+    def test_incoming_fills_an_empty_base_string(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr ""'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr "Bonjour"'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Bonjour"
+        assert stats["filled"] == 1 and stats["after"] == 1 and stats["before"] == 0
+
+    def test_empty_incoming_never_drops_a_base_translation(self):
+        # The whole safety property: an empty/absent incoming msgstr keeps base's.
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Kept"'))
+        incoming = _catalog(_po('msgid "Hi"\nmsgstr ""'))
+        stats = _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Kept"
+        assert stats["changed"] == 0 and stats["after"] == stats["before"] == 1
+
+    def test_incoming_only_msgid_is_ignored_no_scope_creep(self):
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Hola"'))
+        incoming = _catalog(
+            _po('msgid "Hi"\nmsgstr "Hola"', 'msgid "Stray"\nmsgstr "Nope"')
+        )
+        _overlay_translations(base, incoming)
+        assert "Stray" not in base  # base's template is the floor; no new strings
+
+    def test_plurals_overlay_as_a_unit(self):
+        base = _catalog(_po(
+            'msgid "One"\nmsgid_plural "%(n)d"\nmsgstr[0] ""\nmsgstr[1] ""'))
+        incoming = _catalog(_po(
+            'msgid "One"\nmsgid_plural "%(n)d"\nmsgstr[0] "Un"\nmsgstr[1] "%(n)d"'))
+        _overlay_translations(base, incoming)
+        assert base[("One", "%(n)d")].string == ("Un", "%(n)d")
+
+    def test_net_translated_count_never_decreases(self):
+        # Base has 2 translated; incoming would blank one and change another.
+        # The blank must be ignored, so after >= before.
+        base = _catalog(_po(
+            'msgid "A"\nmsgstr "a"', 'msgid "B"\nmsgstr "b"'))
+        incoming = _catalog(_po(
+            'msgid "A"\nmsgstr ""', 'msgid "B"\nmsgstr "b2"'))
+        stats = _overlay_translations(base, incoming)
+        assert stats["after"] >= stats["before"] == 2
+        assert base["A"].string == "a" and base["B"].string == "b2"
+
+    def test_overlay_adopts_contributor_clean_review_state(self):
+        # Base's AI translation was fuzzy (stale/uncertain). The contributor
+        # submitted a clean (reviewed) correction. The overlay must adopt the
+        # contributor's review state so the correction goes LIVE (clean entries
+        # compile into the .mo; fuzzy ones do not). Keeping base's fuzzy flag
+        # would systematically land contributor corrections as non-live.
+        base = _catalog(_po('#, fuzzy\nmsgid "Borrows"\nmsgstr "Emprunter"'))
+        incoming = _catalog(_po('msgid "Borrows"\nmsgstr "Emprunts"'))
+        _overlay_translations(base, incoming)
+        assert base["Borrows"].string == "Emprunts"
+        assert not base["Borrows"].fuzzy  # contributor's clean state adopted
+
+    def test_overlay_preserves_contributor_fuzzy_state(self):
+        # Converse: the contributor left their own translation fuzzy (needs
+        # work). Even if base was clean, adopt the contributor's fuzzy state so
+        # we never present their unfinished work as reviewed/live.
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Salut"'))
+        incoming = _catalog(_po('#, fuzzy\nmsgid "Hi"\nmsgstr "Coucou"'))
+        _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Coucou"
+        assert base["Hi"].fuzzy  # contributor's fuzzy state preserved
+
+    def test_is_translated_handles_plural_tuples(self):
+        assert _is_translated("x") is True
+        assert _is_translated("") is False
+        assert _is_translated(("", "")) is False
+        assert _is_translated(("", "y")) is True
+
+
+class TestDeRegress:
+    """de-regress restores openlibrary's LIVE translation wherever baking this
+    catalog would drop a string back to English — the bake-regression gating class
+    that `fix` cannot repair. It must restore empty/english-copy msgstrs and never
+    overwrite a contributor's genuine translation."""
+
+    @staticmethod
+    def _finding(lang, msgid, live, msgctxt=None):
+        return {"kind": "regression", "gating": True, "lang": lang,
+                "msgid": msgid, "msgctxt": msgctxt, "openlibrary_msgstr": live}
+
+    def test_restores_english_copy_to_live(self):
+        # The exact #212 case: sc 'LEADER:' shipped as an english-copy would
+        # regress openlibrary's live 'DIRETORE:' to English. de-regress restores it.
+        cat = _catalog(_po('msgid "LEADER:"\nmsgstr "LEADER:"'))
+        restored, skipped = _restore_live_in_catalog(
+            cat, [self._finding("sc", "LEADER:", "DIRETORE:")])
+        assert restored == 1 and skipped == 0
+        assert cat["LEADER:"].string == "DIRETORE:"
+
+    def test_restores_empty_to_live(self):
+        cat = _catalog(_po('msgid "LibriVox"\nmsgstr ""'))
+        restored, _ = _restore_live_in_catalog(
+            cat, [self._finding("sc", "LibriVox", "Librivox")])
+        assert restored == 1
+        assert cat["LibriVox"].string == "Librivox"
+
+    def test_never_overwrites_a_genuine_translation(self):
+        # The safety invariant: if the catalog already carries a real translation,
+        # de-regress leaves it ALONE even if openlibrary's live value differs. A
+        # contributor's deliberate work is never clobbered. (Mutating the
+        # _english_copy_or_empty guard to always-True makes this test fail — that is
+        # the line it pins.)
+        cat = _catalog(_po('msgid "Hi"\nmsgstr "Salut"'))
+        restored, skipped = _restore_live_in_catalog(
+            cat, [self._finding("fr", "Hi", "Bonjour")])
+        assert restored == 0 and skipped == 1
+        assert cat["Hi"].string == "Salut"  # contributor's translation preserved
+
+    def test_restore_clears_stale_fuzzy_flag(self):
+        cat = _catalog(_po('#, fuzzy\nmsgid "LEADER:"\nmsgstr "LEADER:"'))
+        _restore_live_in_catalog(cat, [self._finding("sc", "LEADER:", "DIRETORE:")])
+        assert cat["LEADER:"].string == "DIRETORE:"
+        assert not cat["LEADER:"].fuzzy
+
+    def test_ignores_non_gating_and_non_regression(self):
+        cat = _catalog(_po('msgid "LEADER:"\nmsgstr "LEADER:"'))
+        findings = [
+            {"kind": "regression", "gating": False, "lang": "sc",
+             "msgid": "LEADER:", "msgctxt": None, "openlibrary_msgstr": "DIRETORE:"},
+            {"kind": "new_locale", "gating": True, "lang": "sc",
+             "msgid": "LEADER:", "msgctxt": None, "openlibrary_msgstr": "DIRETORE:"},
+        ]
+        restored, skipped = _restore_live_in_catalog(cat, findings)
+        assert restored == 0 and skipped == 0
+        assert cat["LEADER:"].string == "LEADER:"  # untouched
+
+    def test_english_copy_or_empty_predicate(self):
+        assert _english_copy_or_empty("", "X") is True
+        assert _english_copy_or_empty("X", "X") is True          # english-copy
+        assert _english_copy_or_empty("traducido", "X") is False  # genuine
+        assert _english_copy_or_empty(("", ""), ("one", "many")) is True
+        assert _english_copy_or_empty(("one", "many"), ("one", "many")) is True
+        assert _english_copy_or_empty(("uno", "muchos"), ("one", "many")) is False
 
 
 # ---------------------------------------------------------------------------

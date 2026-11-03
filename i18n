@@ -14,6 +14,8 @@ Open Library i18n toolbox — ./i18n <command>
   untranslated <lang>    JSON list of untranslated strings.
     [--limit N]
   apply <lang> <json>    Apply {msgid: msgstr} translations file to .po.
+  resolve <lang> <po>    Auto-heal a conflicting PR: overlay an incoming .po's
+    [--base REF]         translations onto the base catalog, losing nothing.
   fix <lang>             Fix HTML attrs and format-string errors in .po.
   validate <lang>        Validate format strings; exits non-zero on error.
   isolate <lang>...      Reset every OTHER language to origin/main, so a commit
@@ -453,6 +455,9 @@ def _read_po(lang: str):
 
 def _write_po(lang: str, catalog) -> None:
     from babel.messages.pofile import write_po
+    # A brand-new language (e.g. one Weblate just added) has no locale/<lang>/ dir
+    # yet; create it so resolve can write the first catalog.
+    (LOCALE_DIR / lang).mkdir(parents=True, exist_ok=True)
     with open(LOCALE_DIR / lang / "messages.po", "wb") as f:
         write_po(f, catalog, width=10000, omit_header=False)
 
@@ -470,6 +475,166 @@ def apply_translations(lang: str, translations: dict) -> int:
     count = _apply_to_catalog(catalog, translations)
     _write_po(lang, catalog)
     return count
+
+
+def _is_translated(string) -> bool:
+    """True if a msgstr carries any content (handles plural tuples)."""
+    if isinstance(string, (tuple, list)):
+        return any(bool(s) for s in string)
+    return bool(string)
+
+
+def _overlay_translations(base_cat, incoming_cat) -> dict:
+    """Merge ``incoming_cat``'s non-empty msgstrs into ``base_cat`` in place.
+
+    Pure catalog operation (no IO) — the core of ``resolve``. Incoming wins
+    wherever it supplies a different, non-empty translation; a base translation is
+    never dropped (an empty incoming msgstr keeps base); only msgids already in
+    base are touched (no stray strings / scope creep). Returns a stats dict and
+    raises SystemExit if the merge would reduce the translated count — the
+    invariant that makes it safe to run unattended.
+    """
+    incoming_map = {
+        m.id: m for m in incoming_cat if m.id and _is_translated(m.string)
+    }
+    before = sum(1 for m in base_cat if m.id and _is_translated(m.string))
+    changed = filled = 0
+    for msg in base_cat:
+        if not msg.id or msg.id not in incoming_map:
+            continue
+        inc = incoming_map[msg.id]
+        new = inc.string
+        if new != msg.string:
+            if not _is_translated(msg.string):
+                filled += 1
+            msg.string = new
+            changed += 1
+        # Adopt the CONTRIBUTOR's review state, not the stale base's. A base AI
+        # translation is often fuzzy (uncertain / source drifted); keeping that
+        # flag would land the contributor's correction as fuzzy — excluded from
+        # the compiled .mo, so never live for patrons even though the contributor
+        # asserted it was done. Conversely, honour a contributor who left their
+        # own work fuzzy. Either way the contributor's own assertion wins.
+        if inc.fuzzy:
+            msg.flags.add('fuzzy')
+        else:
+            msg.flags.discard('fuzzy')
+    after = sum(1 for m in base_cat if m.id and _is_translated(m.string))
+    if after < before:
+        raise SystemExit(
+            f"resolve refused: would drop translations ({before} -> {after})"
+        )
+    return {"changed": changed, "filled": filled, "before": before,
+            "after": after, "total": sum(1 for m in base_cat if m.id)}
+
+
+def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
+    """Auto-heal a CONFLICTING translation PR by overlaying its translations.
+
+    The PR branched from an older base; both it and ``base`` have since rewritten
+    ``locale/<lang>/messages.po``, so the files conflict. A line-level rebase
+    cannot resolve this once ``messages.pot`` has moved — and syncing against the
+    committed ``messages.pot`` silently drops strings when that pot lags the
+    catalogs. So we take ``base``'s CURRENT catalog as the floor and overlay the
+    contributor's non-empty msgstrs on top (see ``_overlay_translations``). The
+    result carries base's header and full current string set — template-correct
+    and check-scope-clean — plus the contributor's work. Writes to the working
+    tree and returns a stats dict.
+    """
+    from babel.messages.pofile import read_po
+
+    with open(incoming_po, "rb") as f:
+        incoming = read_po(f)
+    base_cat = _base_catalog(base, lang)
+    if base_cat is None:
+        # Brand-new language at base: nothing to preserve, take incoming as-is.
+        _write_po(lang, incoming)
+        n = sum(1 for m in incoming if m.id and _is_translated(m.string))
+        return {"changed": n, "filled": n, "before": 0, "after": n,
+                "total": sum(1 for m in incoming if m.id), "new_language": True}
+    stats = _overlay_translations(base_cat, incoming)
+    _write_po(lang, base_cat)
+    return stats
+
+
+def _english_copy_or_empty(string, msgid) -> bool:
+    """True if a msgstr carries no real translation: empty, or a verbatim copy of
+    the English msgid. These are the only msgstrs de-regress will overwrite — it
+    must never clobber a contributor's genuine translation, only restore a live
+    one the catalog would otherwise drop to English."""
+    if not _is_translated(string):
+        return True
+    if isinstance(string, (tuple, list)):
+        ids = msgid if isinstance(msgid, (tuple, list)) else (msgid,)
+        return all((not s) or (s in ids) for s in string)
+    return string == msgid
+
+
+def de_regress(langs: list[str], openlibrary_ref: str = "master",
+               baseline_path: str | None = None) -> dict:
+    """Back-fill openlibrary's LIVE translations wherever baking this catalog would
+    regress a string to English.
+
+    The bake installs this repo's ``locale/<lang>/messages.po`` wholesale, so any
+    msgid openlibrary currently translates but this repo leaves empty or as an
+    english-copy would go back to English on deploy — a real loss the
+    bake-regression check gates on, and one ``fix`` cannot repair (the repair is
+    not a reformat, it is the missing translation, which lives in openlibrary). We
+    restore openlibrary's own live msgstr for exactly those msgids, and ONLY when
+    our side carries no genuine translation (empty / english-copy), so a
+    contributor's real work is never overwritten. Lossless by construction:
+    translated count can only rise. Operates on the working tree. Returns stats.
+    """
+    br = _bake_regression()
+    ol_source = br.OpenlibrarySource(openlibrary_ref)
+    baked_source = br.LocaleDirSource(LOCALE_DIR)
+    baseline = json.loads(Path(baseline_path).read_text()) if baseline_path else None
+    report = br.run(ol_source, baked_source, baseline)
+    # With a baseline, only NEW gating findings are ours to clear; without one,
+    # every gating finding. Either way: only true regressions, only target langs.
+    pool = report["new_findings"] if baseline is not None else report["findings"]
+    want = set(langs) if langs else None
+    fixes: dict[str, list[dict]] = {}
+    for f in pool:
+        if f.get("kind") != "regression" or not f.get("gating"):
+            continue
+        if want is not None and f["lang"] not in want:
+            continue
+        fixes.setdefault(f["lang"], []).append(f)
+
+    restored = skipped = 0
+    for lang, findings in fixes.items():
+        catalog = _read_po(lang)
+        r, s = _restore_live_in_catalog(catalog, findings)
+        restored += r
+        skipped += s
+        _write_po(lang, catalog)
+    return {"restored": restored, "skipped": skipped,
+            "langs": sorted(fixes), "gating_regressions": sum(len(v) for v in fixes.values())}
+
+
+def _restore_live_in_catalog(catalog, findings) -> tuple[int, int]:
+    """Pure core of de-regress (no IO, no network): apply regression findings to a
+    catalog in place. For each finding, if our msgstr is empty/english-copy, replace
+    it with openlibrary's live msgstr; otherwise leave the contributor's work alone.
+    Returns (restored, skipped)."""
+    restored = skipped = 0
+    for f in findings:
+        if f.get("kind") != "regression" or not f.get("gating"):
+            continue
+        msg = catalog.get(f["msgid"], context=f.get("msgctxt"))
+        if msg is None:
+            continue
+        live = f.get("openlibrary_msgstr")
+        if not _is_translated(live):
+            continue
+        if _english_copy_or_empty(msg.string, msg.id):
+            msg.string = tuple(live) if isinstance(live, list) else live
+            msg.flags.discard("fuzzy")
+            restored += 1
+        else:
+            skipped += 1  # a genuine translation the contributor supplied; leave it
+    return restored, skipped
 
 
 _bake_regression_mod = None
@@ -721,6 +886,16 @@ def main() -> None:
     p.add_argument("lang")
     p.add_argument("json_file")
 
+    p = sub.add_parser("resolve", help="Auto-heal a conflicting PR: overlay an incoming .po onto the base catalog")
+    p.add_argument("lang")
+    p.add_argument("incoming_po", help="Path to the incoming (contributor/PR) .po")
+    p.add_argument("--base", default="origin/main")
+
+    p = sub.add_parser("de-regress", help="Restore openlibrary's live translations where the bake would regress to English")
+    p.add_argument("langs", nargs="*", help="Language codes to de-regress; omit for all")
+    p.add_argument("--openlibrary-ref", default="master")
+    p.add_argument("--baseline", default=None, help="A bake-regression --json report; only clear findings NEW vs it")
+
     p = sub.add_parser("fix", help="Fix HTML attrs and format-string errors")
     p.add_argument("lang")
 
@@ -765,6 +940,20 @@ def main() -> None:
         translations = json.loads(Path(args.json_file).read_text(encoding="utf-8"))
         count = apply_translations(args.lang, translations)
         print(f"Applied: {count}")
+
+    elif args.cmd == "resolve":
+        stats = resolve(args.lang, args.incoming_po, base=args.base)
+        print(f"{args.lang}: resolved — {stats['changed']} changed "
+              f"({stats['filled']} gaps filled), {stats['after']}/{stats['total']} "
+              f"translated (was {stats['before']}); no translations lost")
+
+    elif args.cmd == "de-regress":
+        stats = de_regress(args.langs, openlibrary_ref=args.openlibrary_ref,
+                           baseline_path=args.baseline)
+        print(f"de-regress: restored {stats['restored']} live translation(s) "
+              f"across {stats['langs'] or 'no langs'}; "
+              f"{stats['skipped']} genuine translation(s) left untouched; "
+              f"no translations lost")
 
     elif args.cmd == "fix":
         html, fmt = fix(args.lang)
