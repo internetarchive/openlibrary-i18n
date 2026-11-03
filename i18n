@@ -492,19 +492,30 @@ def _overlay_translations(base_cat, incoming_cat) -> dict:
     invariant that makes it safe to run unattended.
     """
     incoming_map = {
-        m.id: m.string for m in incoming_cat if m.id and _is_translated(m.string)
+        m.id: m for m in incoming_cat if m.id and _is_translated(m.string)
     }
     before = sum(1 for m in base_cat if m.id and _is_translated(m.string))
     changed = filled = 0
     for msg in base_cat:
         if not msg.id or msg.id not in incoming_map:
             continue
-        new = incoming_map[msg.id]
+        inc = incoming_map[msg.id]
+        new = inc.string
         if new != msg.string:
             if not _is_translated(msg.string):
                 filled += 1
             msg.string = new
             changed += 1
+        # Adopt the CONTRIBUTOR's review state, not the stale base's. A base AI
+        # translation is often fuzzy (uncertain / source drifted); keeping that
+        # flag would land the contributor's correction as fuzzy — excluded from
+        # the compiled .mo, so never live for patrons even though the contributor
+        # asserted it was done. Conversely, honour a contributor who left their
+        # own work fuzzy. Either way the contributor's own assertion wins.
+        if inc.fuzzy:
+            msg.flags.add('fuzzy')
+        else:
+            msg.flags.discard('fuzzy')
     after = sum(1 for m in base_cat if m.id and _is_translated(m.string))
     if after < before:
         raise SystemExit(

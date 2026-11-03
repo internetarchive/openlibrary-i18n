@@ -247,6 +247,28 @@ class TestOverlayTranslations:
         assert stats["after"] >= stats["before"] == 2
         assert base["A"].string == "a" and base["B"].string == "b2"
 
+    def test_overlay_adopts_contributor_clean_review_state(self):
+        # Base's AI translation was fuzzy (stale/uncertain). The contributor
+        # submitted a clean (reviewed) correction. The overlay must adopt the
+        # contributor's review state so the correction goes LIVE (clean entries
+        # compile into the .mo; fuzzy ones do not). Keeping base's fuzzy flag
+        # would systematically land contributor corrections as non-live.
+        base = _catalog(_po('#, fuzzy\nmsgid "Borrows"\nmsgstr "Emprunter"'))
+        incoming = _catalog(_po('msgid "Borrows"\nmsgstr "Emprunts"'))
+        _overlay_translations(base, incoming)
+        assert base["Borrows"].string == "Emprunts"
+        assert not base["Borrows"].fuzzy  # contributor's clean state adopted
+
+    def test_overlay_preserves_contributor_fuzzy_state(self):
+        # Converse: the contributor left their own translation fuzzy (needs
+        # work). Even if base was clean, adopt the contributor's fuzzy state so
+        # we never present their unfinished work as reviewed/live.
+        base = _catalog(_po('msgid "Hi"\nmsgstr "Salut"'))
+        incoming = _catalog(_po('#, fuzzy\nmsgid "Hi"\nmsgstr "Coucou"'))
+        _overlay_translations(base, incoming)
+        assert base["Hi"].string == "Coucou"
+        assert base["Hi"].fuzzy  # contributor's fuzzy state preserved
+
     def test_is_translated_handles_plural_tuples(self):
         assert _is_translated("x") is True
         assert _is_translated("") is False
