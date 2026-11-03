@@ -554,6 +554,86 @@ def resolve(lang: str, incoming_po: str, base: str = "origin/main") -> dict:
     return stats
 
 
+def _english_copy_or_empty(string, msgid) -> bool:
+    """True if a msgstr carries no real translation: empty, or a verbatim copy of
+    the English msgid. These are the only msgstrs de-regress will overwrite — it
+    must never clobber a contributor's genuine translation, only restore a live
+    one the catalog would otherwise drop to English."""
+    if not _is_translated(string):
+        return True
+    if isinstance(string, (tuple, list)):
+        ids = msgid if isinstance(msgid, (tuple, list)) else (msgid,)
+        return all((not s) or (s in ids) for s in string)
+    return string == msgid
+
+
+def de_regress(langs: list[str], openlibrary_ref: str = "master",
+               baseline_path: str | None = None) -> dict:
+    """Back-fill openlibrary's LIVE translations wherever baking this catalog would
+    regress a string to English.
+
+    The bake installs this repo's ``locale/<lang>/messages.po`` wholesale, so any
+    msgid openlibrary currently translates but this repo leaves empty or as an
+    english-copy would go back to English on deploy — a real loss the
+    bake-regression check gates on, and one ``fix`` cannot repair (the repair is
+    not a reformat, it is the missing translation, which lives in openlibrary). We
+    restore openlibrary's own live msgstr for exactly those msgids, and ONLY when
+    our side carries no genuine translation (empty / english-copy), so a
+    contributor's real work is never overwritten. Lossless by construction:
+    translated count can only rise. Operates on the working tree. Returns stats.
+    """
+    br = _bake_regression()
+    ol_source = br.OpenlibrarySource(openlibrary_ref)
+    baked_source = br.LocaleDirSource(LOCALE_DIR)
+    baseline = json.loads(Path(baseline_path).read_text()) if baseline_path else None
+    report = br.run(ol_source, baked_source, baseline)
+    # With a baseline, only NEW gating findings are ours to clear; without one,
+    # every gating finding. Either way: only true regressions, only target langs.
+    pool = report["new_findings"] if baseline is not None else report["findings"]
+    want = set(langs) if langs else None
+    fixes: dict[str, list[dict]] = {}
+    for f in pool:
+        if f.get("kind") != "regression" or not f.get("gating"):
+            continue
+        if want is not None and f["lang"] not in want:
+            continue
+        fixes.setdefault(f["lang"], []).append(f)
+
+    restored = skipped = 0
+    for lang, findings in fixes.items():
+        catalog = _read_po(lang)
+        r, s = _restore_live_in_catalog(catalog, findings)
+        restored += r
+        skipped += s
+        _write_po(lang, catalog)
+    return {"restored": restored, "skipped": skipped,
+            "langs": sorted(fixes), "gating_regressions": sum(len(v) for v in fixes.values())}
+
+
+def _restore_live_in_catalog(catalog, findings) -> tuple[int, int]:
+    """Pure core of de-regress (no IO, no network): apply regression findings to a
+    catalog in place. For each finding, if our msgstr is empty/english-copy, replace
+    it with openlibrary's live msgstr; otherwise leave the contributor's work alone.
+    Returns (restored, skipped)."""
+    restored = skipped = 0
+    for f in findings:
+        if f.get("kind") != "regression" or not f.get("gating"):
+            continue
+        msg = catalog.get(f["msgid"], context=f.get("msgctxt"))
+        if msg is None:
+            continue
+        live = f.get("openlibrary_msgstr")
+        if not _is_translated(live):
+            continue
+        if _english_copy_or_empty(msg.string, msg.id):
+            msg.string = tuple(live) if isinstance(live, list) else live
+            msg.flags.discard("fuzzy")
+            restored += 1
+        else:
+            skipped += 1  # a genuine translation the contributor supplied; leave it
+    return restored, skipped
+
+
 _bake_regression_mod = None
 
 
@@ -808,6 +888,11 @@ def main() -> None:
     p.add_argument("incoming_po", help="Path to the incoming (contributor/PR) .po")
     p.add_argument("--base", default="origin/main")
 
+    p = sub.add_parser("de-regress", help="Restore openlibrary's live translations where the bake would regress to English")
+    p.add_argument("langs", nargs="*", help="Language codes to de-regress; omit for all")
+    p.add_argument("--openlibrary-ref", default="master")
+    p.add_argument("--baseline", default=None, help="A bake-regression --json report; only clear findings NEW vs it")
+
     p = sub.add_parser("fix", help="Fix HTML attrs and format-string errors")
     p.add_argument("lang")
 
@@ -858,6 +943,14 @@ def main() -> None:
         print(f"{args.lang}: resolved — {stats['changed']} changed "
               f"({stats['filled']} gaps filled), {stats['after']}/{stats['total']} "
               f"translated (was {stats['before']}); no translations lost")
+
+    elif args.cmd == "de-regress":
+        stats = de_regress(args.langs, openlibrary_ref=args.openlibrary_ref,
+                           baseline_path=args.baseline)
+        print(f"de-regress: restored {stats['restored']} live translation(s) "
+              f"across {stats['langs'] or 'no langs'}; "
+              f"{stats['skipped']} genuine translation(s) left untouched; "
+              f"no translations lost")
 
     elif args.cmd == "fix":
         html, fmt = fix(args.lang)
