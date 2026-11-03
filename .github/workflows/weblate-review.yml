@@ -260,30 +260,81 @@ jobs:
             exit 0
           fi
 
-          # 6. Land the healed translations on the base branch, crediting the
-          #    contributor as the commit author, and close the PR. We land on base
-          #    (not a merge of the fork head) so one code path serves same-repo and
-          #    fork PRs with only GITHUB_TOKEN/OL_BOT_PAT -- no push to a fork, no
-          #    token in any URL, nothing to leak. Weblate pulls base and rebases, so
-          #    the Weblate branch reconciles cleanly on its next sync.
-          if git diff --quiet -- locale; then
-            echo "Heal produced no change (already current); closing the PR as handled."
+          # 6. Land the validated content so the result looks like a normal
+          #    contribution wherever GitHub allows it. scripts/land_strategy.py makes
+          #    the decision; this step computes its two inputs and executes the result,
+          #    always falling back to land-on-base if a native merge fails.
+          #
+          #    native_merge  : the contributor's head is already exactly what should
+          #                    land (mergeable, and the heal changed nothing) -> merge
+          #                    the PR head (`gh pr merge`). Shows "Merged"; forks too.
+          #    land_on_base  : the heal had to change the content (conflict or repair),
+          #                    so the head is stale -> commit the healed content to base
+          #                    with `Closes #` and close. GitHub shows "Closed" (we
+          #                    never rewrite a head branch, least of all a fork's), and
+          #                    the comment explains the work landed and why the badge
+          #                    differs. This is also the fallback if a merge fails.
+          author="$(git log -1 --format='%an <%ae>' pr-head)"
+
+          # heal_changed: did the heal alter the TOUCHED-language content vs the PR head?
+          # (Untouched langs were reset to base by `isolate` and need not match the head.)
+          target_po=()
+          for lang in "${LANGS[@]}"; do target_po+=("locale/$lang/messages.po"); done
+          if git diff --quiet pr-head -- "${target_po[@]}"; then
+            heal_changed=false
           else
-            author="$(git log -1 --format='%an <%ae>' pr-head)"
-            git add -- locale
-            git commit --author="$author" \
-              -m "i18n: ${LANGS[*]} translations from #${PR} (auto-healed: resolve + de-regress)" \
-              -m "Closes #${PR}"
-            landed=""
-            for _ in 1 2 3; do
-              if git push origin "HEAD:${BASE_REF}"; then landed=1; break; fi
-              git fetch origin "$BASE_REF"
-              git rebase "origin/$BASE_REF" || { git rebase --abort || true; }
-            done
-            if [ -z "$landed" ]; then
-              gh pr comment "$PR" --body "Auto-heal produced clean, deploy-ready translations but could not land them on \`${BASE_REF}\` (the branch moved repeatedly). Leaving this PR open; the next run will retry."
-              exit 1
+            heal_changed=true
+          fi
+
+          cross_repo="$(gh pr view "$PR" --json isCrossRepository -q .isCrossRepository)"
+          # mergeable is computed async by GitHub; retry a few times out of UNKNOWN.
+          mergeable="UNKNOWN"
+          for _ in 1 2 3 4 5; do
+            mergeable="$(gh pr view "$PR" --json mergeable -q .mergeable)"
+            [ "$mergeable" != "UNKNOWN" ] && break
+            sleep 3
+          done
+
+          strategy="$(python scripts/land_strategy.py \
+            --mergeable "$mergeable" --heal-changed "$heal_changed" --cross-repo "$cross_repo")"
+          echo "land strategy: $strategy (mergeable=$mergeable heal_changed=$heal_changed cross_repo=$cross_repo)"
+
+          landed=""
+          if [ "$strategy" = "native_merge" ]; then
+            # The head is already the validated content; merge it as-is so GitHub shows
+            # "Merged" and credits the contributor. Never delete the branch (the Weblate
+            # branch must persist; a fork's branch is not ours to delete).
+            if gh pr merge "$PR" --squash --delete-branch=false; then
+              gh pr comment "$PR" --body "✅ Merged your translation into \`${BASE_REF}\` — it is now part of Open Library. It applied cleanly to the current \`${BASE_REF}\`, so it merged as-is. Thank you, @${PR_AUTHOR}!"
+              landed=1
+            else
+              echo "native merge failed (raced?); falling back to land-on-base."
             fi
           fi
-          gh pr comment "$PR" --body "✅ Merged your translation into \`${BASE_REF}\` — it is now part of Open Library. Thank you, @${PR_AUTHOR}! Auto-healed against the current \`${BASE_REF}\`: conflicts resolved and existing live translations preserved, with nothing lost."
-          gh pr close "$PR" || echo "PR #$PR already closed."
+
+          if [ -z "$landed" ]; then
+            # land_on_base (or native-merge fallback): commit the validated healed
+            # content to base with Closes# and close. The universal, safe path.
+            if git diff --quiet -- locale && git diff --cached --quiet -- locale; then
+              echo "Heal produced no change (already current); closing the PR as handled."
+              gh pr comment "$PR" --body "✅ Your translation is already fully present in \`${BASE_REF}\` — nothing new to land. Thank you, @${PR_AUTHOR}!"
+            else
+              git add -- locale
+              git commit --author="$author" \
+                -m "i18n: ${LANGS[*]} translations from #${PR} (auto-healed: resolve + de-regress)" \
+                -m "Closes #${PR}"
+              pushed=""
+              for _ in 1 2 3; do
+                if git push origin "HEAD:${BASE_REF}"; then pushed=1; break; fi
+                git fetch origin "$BASE_REF"
+                git rebase "origin/$BASE_REF" || { git rebase --abort || true; }
+              done
+              if [ -z "$pushed" ]; then
+                gh pr comment "$PR" --body "Auto-heal produced clean, deploy-ready translations but could not land them on \`${BASE_REF}\` (the branch moved repeatedly). Leaving this PR open; the next run will retry."
+                exit 1
+              fi
+              sha="$(git rev-parse HEAD)"
+              gh pr comment "$PR" --body "✅ Your translation is now part of Open Library — landed on \`${BASE_REF}\` as commit ${sha}, authored to you, with conflicts resolved and existing live translations preserved. GitHub shows this PR as *closed* rather than *merged* because we rebuilt it against the current \`${BASE_REF}\` (there was no unchanged branch for GitHub to merge), but your work is in \`${BASE_REF}\` in full. Thank you, @${PR_AUTHOR}!"
+            fi
+            gh pr close "$PR" || echo "PR #$PR already closed."
+          fi
