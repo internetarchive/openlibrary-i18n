@@ -1,10 +1,10 @@
 name: Weblate translation review
 
-# Patron/contributor translation PRs get an agentic safety/quality review and, if
-# it passes every mechanical gate, are auto-healed and landed hands-free. The whole
-# point is that a safe translation PR never sits: if it conflicts, we resolve it; if
-# it would regress a live translation or fail a deploy check, we repair it; then we
-# land it and close the PR. Split into two jobs on purpose:
+# Patron/contributor translation PRs get an agentic abuse review and, if they pass
+# every mechanical gate, are auto-healed and landed hands-free. The whole point is
+# that a legitimate translation PR never sits: if it conflicts, we resolve it; if it
+# would regress a live translation or fail a deploy check, we repair it; then we land
+# it and close the PR. Split into two jobs on purpose:
 #
 #   review   runs the agent with READ-ONLY permissions. The translation diff is
 #            attacker-controllable, so a prompt-injected agent must have no power to
@@ -15,9 +15,18 @@ name: Weblate translation review
 #            and it NEVER checks out or executes the PR head -- it reads the head's
 #            .po files as DATA (git show) and runs only this repo's own ./i18n
 #            toolbox from the trusted base checkout. It lands content only when ALL
-#            of these pass (fail-closed -- a missing/garbled verdict reads as unsafe):
-#              1. agent verdict == "safe"              (scripts/weblate_review_guard.py)
-#              2. the diff is translation-only          (scripts/weblate_review_guard.py)
+#            of these pass:
+#              1. the diff is translation-only          (scripts/weblate_review_guard.py)
+#              2. the agent did NOT return "reject"     (scripts/weblate_review_guard.py)
+#                 -- the agent is an ABUSE FILTER, not the merge gate. "safe" and a
+#                    silent/uncertain "unknown" both pass; only a positive "reject"
+#                    (objective abuse the agent could name) blocks. The deterministic
+#                    gates below are the real boundary, and translation-only content
+#                    is bounded and revertible. (A required-"safe" gate was tried and
+#                    failed twice: it emitted no verdict and blocked a clean PR, and
+#                    it false-rejected correct minority-language text -- an LLM is
+#                    neither a reliable emitter nor a fair judge of languages it does
+#                    not speak. See weblate-review-instructions.md and the guard.)
 #              3. resolve + fix + de-regress produce content that:
 #                   - validates, compiles, passes the PO tests and check-scope, AND
 #                   - passes bake-regression IN-JOB (the exact deploy-clean gate),
@@ -186,8 +195,9 @@ jobs:
       - name: Auto-heal (resolve + de-regress), gate deploy-clean, then land + close
         run: |
           set -euo pipefail
-          # The guard (verdict == safe + translation-only) has passed; the content is
-          # cleared to land IF it survives the mechanical gates below. Everything here
+          # The guard (translation-only + the agent did not reject) has passed; the
+          # content is cleared to land IF it survives the mechanical gates below. The
+          # mechanical gates -- not the agent -- are the real boundary. Everything here
           # is deterministic and runs no agent. The PR head is only ever read as data
           # (git show pr-head:...) -- never checked out, never executed.
           git config user.name  "Open Library Bot"
@@ -222,7 +232,7 @@ jobs:
           # 3. Per-language validate + compile. Hold the PR open on any failure.
           for lang in "${LANGS[@]}"; do
             if ! ./i18n validate "$lang"; then
-              gh pr comment "$PR" --body "Auto-heal ran but \`$lang\` still has format-string errors that \`./i18n fix\` could not repair; leaving this PR open for a human. (The review verdict was \`safe\`; this is a mechanical gate.)"
+              gh pr comment "$PR" --body "Auto-heal ran but \`$lang\` still has format-string errors that \`./i18n fix\` could not repair; leaving this PR open for a human. (This is a mechanical gate, independent of the review verdict.)"
               exit 0
             fi
             ./i18n compile "$lang"
@@ -246,7 +256,7 @@ jobs:
           #    "Verify translations deploy cleanly"; running it here makes the land
           #    decision authoritative without pushing-and-polling an external check.
           if ! ./i18n bake-regression --locale-dir locale --openlibrary-ref master --baseline base.json; then
-            gh pr comment "$PR" --body "Auto-heal ran but the translations still would not deploy cleanly after repair; leaving this PR open for a human. (The review verdict was \`safe\`; this is a mechanical gate.)"
+            gh pr comment "$PR" --body "Auto-heal ran but the translations still would not deploy cleanly after repair; leaving this PR open for a human. (This is a mechanical gate, independent of the review verdict.)"
             exit 0
           fi
 
