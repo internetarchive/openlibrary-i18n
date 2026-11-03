@@ -1,10 +1,12 @@
 """Tests for scripts/weblate_review_guard.py.
 
 The guard is the deterministic barrier that makes the agentic reviewer's verdict
-un-abusable: an auto-merge is allowed ONLY when the verdict is exactly "safe" AND
-every changed file is a translation catalog. These tests pin both gates and the
-three-state verdict parsing (safe / reject / unknown), and exercise the CLI the
-workflow invokes.
+un-abusable. The merge boundary is deterministic: an auto-merge is allowed when the
+diff is translation-only AND the agent did not positively identify abuse. Only an
+explicit "reject" blocks on the verdict axis; "safe" and "unknown" (silent /
+uncertain / malformed agent) both pass, because the agent is an abuse filter, not
+the gate. These tests pin the blast-radius gate, the three-state verdict parsing
+(safe / reject / unknown), the reject-only blocking, and the CLI the workflow invokes.
 """
 from __future__ import annotations
 
@@ -82,12 +84,22 @@ def test_safe_and_translation_only_is_allowed():
 def test_reject_blocks_even_if_translation_only():
     allowed, reason = guard.decide("reject", ["locale/ca/messages.po"])
     assert allowed is False
-    assert "not 'safe'" in reason
+    assert "reject" in reason
 
 
-def test_unknown_verdict_blocks():
-    allowed, _ = guard.decide("unknown", ["locale/ca/messages.po"])
-    assert allowed is False
+def test_unknown_verdict_is_allowed_for_translation_only():
+    # A silent / uncertain / malformed agent must NOT block a clean translation-only
+    # PR: the agent is an abuse filter, not the merge gate. Only an explicit reject
+    # blocks. (This is the #212 regression: the agent emitted no parseable verdict,
+    # the old guard failed closed, and a clean PR never healed.)
+    allowed, reason = guard.decide("unknown", ["locale/ca/messages.po"])
+    assert allowed is True
+    assert "reject" not in reason.lower() or "not a reject" in reason.lower()
+
+
+def test_safe_verdict_is_allowed_for_translation_only():
+    allowed, _ = guard.decide("safe", ["locale/ca/messages.po"])
+    assert allowed is True
 
 
 def test_safe_verdict_cannot_override_a_structural_file():
@@ -135,3 +147,21 @@ def test_cli_blocks_injected_structural_change(tmp_path):
 def test_cli_blocks_reject(tmp_path):
     r = _run_cli(tmp_path, '{"verdict": "reject"}', ["locale/ca/messages.po"])
     assert r.returncode == 1
+
+
+def test_cli_allows_unknown_translation_only(tmp_path):
+    # Silent / malformed agent output parses to "unknown" and must still allow a
+    # clean translation-only diff (deterministic gates are the real boundary).
+    r = _run_cli(tmp_path, "not json at all", ["locale/ca/messages.po"])
+    assert r.returncode == 0, r.stderr
+
+
+def test_cli_unknown_still_blocked_by_blast_radius(tmp_path):
+    # unknown verdict does NOT widen the blast-radius gate: a non-catalog file
+    # still blocks regardless of verdict.
+    r = _run_cli(
+        tmp_path, "not json at all",
+        ["locale/ca/messages.po", ".github/workflows/x.yml"],
+    )
+    assert r.returncode == 1
+    assert ".github/workflows/x.yml" in r.stderr
