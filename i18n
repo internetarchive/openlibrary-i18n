@@ -455,6 +455,9 @@ def _read_po(lang: str):
 
 def _write_po(lang: str, catalog) -> None:
     from babel.messages.pofile import write_po
+    # A brand-new language (e.g. one Weblate just added) has no locale/<lang>/ dir
+    # yet; create it so resolve can write the first catalog.
+    (LOCALE_DIR / lang).mkdir(parents=True, exist_ok=True)
     with open(LOCALE_DIR / lang / "messages.po", "wb") as f:
         write_po(f, catalog, width=10000, omit_header=False)
 
