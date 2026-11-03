@@ -57,7 +57,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-      id-token: write
     env:
       PR: ${{ github.event.pull_request.number }}
       BASE_REF: ${{ github.base_ref }}
@@ -82,6 +81,14 @@ jobs:
           claude_args: "--max-turns 40 --model claude-sonnet-5 --permission-mode acceptEdits"
           show_full_output: true
           claude_code_oauth_token: ${{ secrets.OL_BOT_CLAUDE_OAUTH_TOKEN }}
+          # Pass the job's own read-only GITHUB_TOKEN so the action does NOT attempt
+          # the GitHub-App OIDC token exchange (which 401s under pull_request_target).
+          # Read-only by this job's `permissions:` above, so a prompt-injected agent
+          # still cannot write/comment/merge — the two-job split's invariant holds.
+          # (translate.yml passes OL_BOT_PAT here because its agent is trusted and
+          # must open PRs; this review agent reads untrusted input, so it gets the
+          # powerless token instead.)
+          github_token: ${{ github.token }}
 
       - name: Fail closed if the agent produced no verdict
         if: always()
