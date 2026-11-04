@@ -37,13 +37,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # OL_BOT_PAT (not GITHUB_TOKEN) so that an `update-branch` push triggers
+          # OL_BOT_I18N_PAT (not GITHUB_TOKEN) so that an `update-branch` push triggers
           # the pull_request checks the merge gate waits on. Same reason as #151.
-          token: ${{ secrets.OL_BOT_PAT }}
+          token: ${{ secrets.OL_BOT_I18N_PAT }}
 
       - name: Reconcile open i18n/ai-* PRs
         env:
-          GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
+          GH_TOKEN: ${{ secrets.OL_BOT_I18N_PAT }}
         run: |
           set -euo pipefail
           REQUIRE=(--require validate --require "Verify translations deploy cleanly")
