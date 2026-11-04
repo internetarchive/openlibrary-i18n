@@ -977,7 +977,7 @@ msgstr "Yeni bir kitap ekle"
 msgid "Authors"
 msgstr "Yazarlar"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Kitaplar"
 
@@ -1390,18 +1390,6 @@ msgstr "Ödünç alma geçmişinizde kredi bulunamadı."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "Ödünç almak için <a href=\"/search\">bir kitap arayın</a>."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Ödünç alacak bir kitap mı arıyorsunuz? Ekibimizin seçkilerine göz atın:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Sevdiğimiz Kitaplar"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Ya da <a href=\"/collections\">özel koleksiyonlarımıza</a> göz atın."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3610,6 +3598,14 @@ msgid "There's no wrong answer here."
 msgstr "Burada yanlış cevap yoktur."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Kurgu mu, kurgu dışı mı?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Emin değilim"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Konu anahtar kelimeleri?"
 
@@ -4311,6 +4307,11 @@ msgstr "Her görev bir kitap ve bir boş alandan oluşur. İşte birkaç örnek.
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s ekle"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s bu kitap için zaten dolduruldu"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5948,7 +5949,7 @@ msgstr "Yazarları keşfet"
 msgid "Explore subjects"
 msgstr "Konuları keşfet"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Konular"
 
@@ -6493,6 +6494,11 @@ msgstr "Bir tane daha ekleyin mi?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s kitaplarını ara"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Bu sayfada başka eser yok. %(link_start)s1. sayfaya dönün%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7769,6 +7775,11 @@ msgstr "Konu Ara"
 msgid "Manage Subjects"
 msgstr "Konular"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "%(count)s tane daha göster"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Geliştirici Merkezi (Ana Sayfa)"
@@ -8149,6 +8160,10 @@ msgid "How this edit goes wrong"
 msgstr "Bu düzenleme nasıl yanlış gidebilir"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Kaydın belirttiği bilgi"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8174,6 +8189,10 @@ msgstr "Her baskıyı görün"
 #, python-format
 msgid "And %(count)s more."
 msgstr "Ve %(count)s tane daha."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Kaydetmek ve devam etmek için tekrar tıklayın"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8397,6 +8416,30 @@ msgid "For example 320"
 msgstr "Örneğin 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Edebi tür"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Kurgu veya kurgu dışı seçin"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Bu kitap kurgu mu, kurgu dışı mı?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Kitabı biliyorsanız, bildiğinize göre cevap verin. Bilmiyorsanız, araştırın."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Kurgu dışı eserler bir hikaye gibi okunabilir. Gerçeği biraz eğip büken bir anı kitabı yine de kurgu dışıdır: gerçek olarak sunulur."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Antolojiler ve derlemeler içeriklerinin biçimini alır. Romanlar hakkında denemelerden oluşan bir kitap kurgu dışıdır."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Yayıncıyı doldurun"
 
@@ -8520,6 +8563,10 @@ msgstr "Bu alan burada doldurulamaz."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Open Library Görevleri'nden %(field)s dolduruldu"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Seçeneklerden birini seçin."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8927,6 +8974,18 @@ msgstr "%(shelf)s'e taşındı"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Geri al"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Romanlar, öyküler, oyunlar ve şiirler."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Tarih, biyografi, anı, deneme, kılavuz ve referans kitapları."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Gerçek bir hikayeye dayanan bir kitap veya kurguyla kurgu dışını karıştıran bir derleme gibi karar vermesi zor durumlar."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9337,12 +9396,48 @@ msgid "Filipino"
 msgstr "Her şey"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Kurgu veya kurgu dışı"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Kapak eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Dil eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Sayfa sayısı eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Yayıncı eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Tanımlayıcılar eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Kurgu/kurgu dışı bilgisi eksik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Yayınlandı"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "İlk yayınlanma"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Baskılar"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9397,11 +9492,6 @@ msgstr "Open Kütüphanecisi olun"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Bunlardan çok mu yapıyorsunuz? Open Librarians daha fazla düzenleme aracı elde eder. Başvuru sadece birkaç dakika sürer."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Eksik: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9913,10 +10003,6 @@ msgstr "Bu değişiklik otomatik olarak geri alınamadı."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "e-kitap?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "İlk yayınlanma"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11518,4 +11604,16 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Son değişiklik <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Ödünç alacak bir kitap mı arıyorsunuz? Ekibimizin seçkilerine göz atın:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Sevdiğimiz Kitaplar"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Ya da <a href=\"/collections\">özel koleksiyonlarımıza</a> göz atın."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Eksik: %(field)s"
 
