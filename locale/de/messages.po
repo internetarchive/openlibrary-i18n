@@ -989,7 +989,7 @@ msgstr "Neues Buch hinzufügen"
 msgid "Authors"
 msgstr "Autoren"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Bücher"
 
@@ -1410,18 +1410,6 @@ msgstr "Keine Ausleihen in Ihrem Ausleihenverlauf gefunden."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "Ein Buch zur Ausleihe <a href=\"/search\">suchen</a> ."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Suchen Sie ein Buch zum Ausleihen? Schauen Sie sich unsere Empfehlungen an:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Bücher die wir lieben"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Oder schauen Sie sich unsere <a href=\"/collections\">besonderen Sammlungen</a> an."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3674,6 +3662,14 @@ msgid "There's no wrong answer here."
 msgstr "Es gibt hier keine falschen Antworten."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Belletristik oder Sachbuch?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Nicht sicher"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Themen Schlüsselwörter?"
 
@@ -4384,6 +4380,11 @@ msgstr "Jede Aufgabe besteht aus einem Buch und einem leeren Feld. Hier sind nur
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s hinzufügen"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s ist für dieses Buch bereits ausgefüllt"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6056,7 +6057,7 @@ msgstr "Autoren entdecken"
 msgid "Explore subjects"
 msgstr "Themen entdecken"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Themen"
 
@@ -6616,6 +6617,11 @@ msgstr "Weitere hinzufügen?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s-Bücher suchen"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Auf dieser Seite gibt es keine weiteren Werke mehr. %(link_start)sZurück zu Seite 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7925,6 +7931,11 @@ msgstr "Suche nach einem Thema"
 msgid "Manage Subjects"
 msgstr "Benutze Themen"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "%(count)s weitere anzeigen"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Entwicklungszentrum (Home)"
@@ -8306,6 +8317,10 @@ msgid "How this edit goes wrong"
 msgstr "Wie diese Bearbeitung schiefgehen kann"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Was der Datensatz aussagt"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8331,6 +8346,10 @@ msgstr "Jede Ausgabe ansehen"
 #, python-format
 msgid "And %(count)s more."
 msgstr "Und %(count)s weitere."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Erneut klicken, um zu speichern und fortzufahren"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8554,6 +8573,30 @@ msgid "For example 320"
 msgstr "Zum Beispiel 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Literarische Form"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Belletristik oder Sachbuch auswählen"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Ist dieses Buch Belletristik oder ein Sachbuch?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Wenn Sie das Buch kennen, antworten Sie nach Ihrem Wissen. Wenn nicht, recherchieren Sie es."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Sachbücher können sich wie eine Geschichte lesen. Ein Memoir, das die Wahrheit etwas verbiegt, ist dennoch ein Sachbuch: Es wird als Tatsache dargestellt."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Anthologien und Sammlungen nehmen die Form ihres Inhalts an. Ein Buch mit Essays über Romane ist ein Sachbuch."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Verlag ausfüllen"
 
@@ -8677,6 +8720,10 @@ msgstr "Dieses Feld kann hier nicht ausgefüllt werden."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "%(field)s über Open Library Tasks ausgefüllt"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Wählen Sie eine der Optionen aus."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9075,6 +9122,18 @@ msgstr "Verschoben nach %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Rückgängig machen"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Romane, Erzählungen, Theaterstücke und Gedichte."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Geschichte, Biografie, Memoiren, Essays, Ratgeber und Nachschlagewerke."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Schwer zu entscheiden, etwa bei einem Buch, das auf einer wahren Geschichte basiert, oder einer Sammlung, die Belletristik und Sachbuch mischt."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9487,12 +9546,48 @@ msgid "Filipino"
 msgstr "Mailingliste"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Belletristik oder Sachbuch"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Cover fehlt"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Sprache fehlt"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Seitenzahl fehlt"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Verlag fehlt"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Kennungen fehlen"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Angabe Belletristik/Sachbuch fehlt"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Veröffentlicht"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Ersterscheinungsdatum"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Ausgaben"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9547,11 +9642,6 @@ msgstr "Werden Sie Open Librarian"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Machen Sie das öfter? Open Librarians erhalten mehr Bearbeitungswerkzeuge. Die Bewerbung dauert nur wenige Minuten."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Fehlt: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10078,10 +10168,6 @@ msgstr "Diese Änderung konnte nicht automatisch rückgängig gemacht werden."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "E-Book?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Ersterscheinungsdatum"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -12360,4 +12446,16 @@ msgstr "Die Diagramme konnten nicht geladen werden. Laden Sie die Seite neu, um 
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "<span>%(date)s</span> zuletzt aktualisiert"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Suchen Sie ein Buch zum Ausleihen? Schauen Sie sich unsere Empfehlungen an:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Bücher die wir lieben"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Oder schauen Sie sich unsere <a href=\"/collections\">besonderen Sammlungen</a> an."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Fehlt: %(field)s"
 
