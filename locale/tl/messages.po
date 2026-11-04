@@ -951,7 +951,7 @@ msgstr "Magdagdag ng bagong aklat"
 msgid "Authors"
 msgstr "Mga May-Akda"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Mga Aklat"
 
@@ -1361,18 +1361,6 @@ msgstr "Walang natagpuang pautang sa iyong kasaysayan ng panghihiram."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Maghanap ng libro</a> upang manghiram."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Naghahanap ng aklat na hihiramin? Tingnan ang aming mga pili ng staff:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Mga Librong Mahal Namin"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "O, tingnan ang aming <a href=\"/collections\">mga espesyal na koleksyon</a>."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3523,6 +3511,14 @@ msgid "There's no wrong answer here."
 msgstr "Walang maling sagot dito."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Fiction o nonfiction?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Hindi sigurado"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Mga keyword ng paksa?"
 
@@ -4229,6 +4225,11 @@ msgstr "Ang bawat gawain ay isang aklat at isang walang laman na field. Narito a
 #, python-format
 msgid "Add %(field)s"
 msgstr "Magdagdag ng %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "Napunan na ang %(field)s para sa librong ito"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5835,7 +5836,7 @@ msgstr "Galugarin ang mga may-akda"
 msgid "Explore subjects"
 msgstr "Galugarin ang mga paksa"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Mga Paksa"
 
@@ -6376,6 +6377,11 @@ msgstr "Magdagdag ng isa pa?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Maghanap ng mga libro ni %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Wala nang ibang gawa sa pahinang ito. %(link_start)sBumalik sa pahina 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7629,6 +7635,11 @@ msgstr "Maghanap ng Paksa"
 msgid "Manage Subjects"
 msgstr "Pamahalaan ang mga Paksa"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Ipakita ang %(count)s pa"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Sentro ng Developer (Tahanan)"
@@ -8010,6 +8021,10 @@ msgid "How this edit goes wrong"
 msgstr "Paano nagkakamali ang pag-edit na ito"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Ano ang nakasaad sa record"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8035,6 +8050,10 @@ msgstr "Tingnan ang bawat edisyon"
 #, python-format
 msgid "And %(count)s more."
 msgstr "At %(count)s pa."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "I-click ulit para mag-save at magpatuloy"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8258,6 +8277,30 @@ msgid "For example 320"
 msgstr "Halimbawa, 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Anyong pampanitikan"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Pumili ng fiction o nonfiction"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Ang librong ito ba ay fiction o nonfiction?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Kung alam mo ang libro, sumagot base sa iyong nalalaman. Kung hindi, saliksikin muna."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Ang nonfiction ay maaaring basahin na parang kuwento. Ang isang memoir na bahagyang binabago ang katotohanan ay nonfiction pa rin: ipinapakita ito bilang katotohanan."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Ang mga antolohiya at koleksyon ay kumukuha ng anyo ng nilalaman nito. Ang isang librong puno ng sanaysay tungkol sa mga nobela ay nonfiction."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Punan ang publisher"
 
@@ -8381,6 +8424,10 @@ msgstr "Hindi mapupunan ang field na ito dito."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Napunan ang %(field)s mula sa Open Library Tasks"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Pumili ng isa sa mga opsyon."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8777,6 +8824,18 @@ msgstr "Inilipat sa %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "I-undo"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Mga nobela, kuwento, dula, at tula."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Kasaysayan, talambuhay, memoir, sanaysay, gabay, at sanggunian."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Mahirap tukuyin, tulad ng librong batay sa totoong kuwento o koleksyong pinaghalong fiction at nonfiction."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9188,12 +9247,48 @@ msgid "Filipino"
 msgstr "Filipino"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Fiction o nonfiction"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Walang cover"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Walang wika"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Walang bilang ng pahina"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Walang publisher"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Walang identifiers"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Walang impormasyong fiction/nonfiction"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Nailathala"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Unang nailathala"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Mga Edisyon"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9248,11 +9343,6 @@ msgstr "Maging isang Open Librarian"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Madalas mo bang gawin ito? Mas maraming editing tools ang natatanggap ng mga Open Librarian. Ilang minuto lang ang mag-aapply."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Kulang: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9756,10 +9846,6 @@ msgstr "Hindi awtomatikong ma-undo ang pagbabagong ito."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "eBook?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Unang nailathala"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11290,4 +11376,16 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Huling na-modify <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Naghahanap ng aklat na hihiramin? Tingnan ang aming mga pili ng staff:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Mga Librong Mahal Namin"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "O, tingnan ang aming <a href=\"/collections\">mga espesyal na koleksyon</a>."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Kulang: %(field)s"
 
