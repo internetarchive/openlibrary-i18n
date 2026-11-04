@@ -999,7 +999,7 @@ msgstr "添加新书"
 msgid "Authors"
 msgstr "作者"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "书籍"
 
@@ -1426,18 +1426,6 @@ msgstr "在您的借阅历史中未找到借阅记录。"
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">搜索一本书</a>进行借阅。"
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "想借一本书？看看我们的员工精选："
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "我们喜爱的书籍"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "或者，查看我们的<a href=\"/collections\">特别馆藏</a>。"
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3733,6 +3721,14 @@ msgid "There's no wrong answer here."
 msgstr "这个问题没有固定答案。"
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "虚构还是非虚构?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "不确定"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "主题关键词？"
 
@@ -4451,6 +4447,11 @@ msgstr "每个任务对应一本书和一个空白字段。以下是一些示例
 #, python-format
 msgid "Add %(field)s"
 msgstr "添加%(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "此书的%(field)s已填写"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6137,7 +6138,7 @@ msgstr "探索作者"
 msgid "Explore subjects"
 msgstr "探索主题"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "主题"
 
@@ -6689,6 +6690,11 @@ msgstr "要添加另外一个吗？"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "搜索%(author)s的书籍"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "此页面没有更多作品了。%(link_start)s返回第1页%(link_end)s。"
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -8001,6 +8007,11 @@ msgstr "搜索主题"
 msgid "Manage Subjects"
 msgstr "使用主题"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "再显示%(count)s个"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "开发者中心（首页）"
@@ -8384,6 +8395,10 @@ msgid "How this edit goes wrong"
 msgstr "此编辑可能出错的情况"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "记录中的内容"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8409,6 +8424,10 @@ msgstr "查看每个版本"
 #, python-format
 msgid "And %(count)s more."
 msgstr "还有 %(count)s 个。"
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "再次点击以保存并继续"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8632,6 +8651,30 @@ msgid "For example 320"
 msgstr "例如 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "文学体裁"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "选择虚构或非虚构"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "这本书是虚构还是非虚构?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "如果您了解这本书,请根据您所知道的作答。如果不了解,请查证后再答。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "非虚构作品读起来也可以像故事。一本略微扭曲事实的回忆录仍然属于非虚构:它是以事实的形式呈现的。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "选集和文集的体裁取决于其内容的体裁。一本关于小说的随笔集属于非虚构作品。"
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "填写出版社"
 
@@ -8755,6 +8798,10 @@ msgstr "此字段无法在此处填写。"
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "通过 Open Library 任务填写了 %(field)s"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "请选择其中一个选项。"
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9155,6 +9202,18 @@ msgstr "已移至%(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "撤销"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "小说、故事、戏剧和诗歌。"
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "历史、传记、回忆录、随笔、指南和参考书。"
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "难以判断,例如根据真实故事改编的书籍,或虚构与非虚构混合的文集。"
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9566,12 +9625,48 @@ msgid "Filipino"
 msgstr "菲律宾语"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "虚构或非虚构"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "缺少封面"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "缺少语言"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "缺少页数"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "缺少出版社"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "缺少标识符"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "缺少虚构/非虚构信息"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "出版日期"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "首次出版"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "版本"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9626,11 +9721,6 @@ msgstr "成为 Open Librarian"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "经常做这些吗？Open Librarians 可获得更多编辑工具。申请只需几分钟。"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "缺失：%(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10161,10 +10251,6 @@ msgstr "此更改无法自动撤消。"
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "电子书？"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "首次出版"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11613,4 +11699,16 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "最后一次更新于<span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "想借一本书？看看我们的员工精选："
+
+#~ msgid "Books We Love"
+#~ msgstr "我们喜爱的书籍"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "或者，查看我们的<a href=\"/collections\">特别馆藏</a>。"
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "缺失：%(field)s"
 
