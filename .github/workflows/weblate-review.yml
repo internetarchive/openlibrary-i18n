@@ -125,7 +125,7 @@ jobs:
       contents: write
       pull-requests: write
     env:
-      GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
+      GH_TOKEN: ${{ secrets.OL_BOT_I18N_PAT }}
       PR: ${{ github.event.pull_request.number }}
       BASE_REF: ${{ github.base_ref }}
       PR_AUTHOR: ${{ github.event.pull_request.user.login }}
@@ -136,7 +136,7 @@ jobs:
         with:
           ref: ${{ github.base_ref }}
           fetch-depth: 0
-          token: ${{ secrets.OL_BOT_PAT }}
+          token: ${{ secrets.OL_BOT_I18N_PAT }}
 
       - uses: actions/setup-python@v5
         with:
