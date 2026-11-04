@@ -995,7 +995,7 @@ msgstr "Додати нову книгу"
 msgid "Authors"
 msgstr "Автори"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Книги"
 
@@ -1422,18 +1422,6 @@ msgstr "У вашій історії позичень немає позик."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Знайдіть книгу</a> для позичення."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Шукаєте книгу, яку можна позичити? Перегляньте добірку від нашої команди:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Книги, які нам подобаються"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Або перегляньте наші <a href=\"/collections\">спеціальні колекції</a>."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3715,6 +3703,14 @@ msgid "There's no wrong answer here."
 msgstr "Тут немає неправильної відповіді."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Художня чи документальна література?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Не впевнений"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Теми?"
 
@@ -4427,6 +4423,11 @@ msgstr "Кожне завдання — це одна книга і одне п�
 #, python-format
 msgid "Add %(field)s"
 msgstr "Додати %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s вже заповнено для цієї книги"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6113,7 +6114,7 @@ msgstr "Дослідити авторів"
 msgid "Explore subjects"
 msgstr "Дослідити теми"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Теми"
 
@@ -6663,6 +6664,11 @@ msgstr "Додати ще один?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Пошук книг %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "На цій сторінці більше немає творів. %(link_start)sПовернутися на сторінку 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7974,6 +7980,11 @@ msgstr "Шукати тему"
 msgid "Manage Subjects"
 msgstr "Часті теми"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Показати ще %(count)s"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Центр розробника (Головна)"
@@ -8357,6 +8368,10 @@ msgid "How this edit goes wrong"
 msgstr "Як це редагування може піти не так"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Що зазначено в записі"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8384,6 +8399,10 @@ msgstr "Переглянути кожне видання"
 #, python-format
 msgid "And %(count)s more."
 msgstr "І ще %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Натисніть ще раз, щоб зберегти та продовжити"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8608,6 +8627,30 @@ msgid "For example 320"
 msgstr "Наприклад, 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Літературна форма"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Виберіть художню чи документальну літературу"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Ця книга художня чи документальна?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Якщо ви знаєте цю книгу, дайте відповідь на основі своїх знань. Якщо ні, знайдіть інформацію."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Документальна література може читатися як історія. Мемуари, які трохи викривляють правду, усе одно залишаються документальною літературою: вони подаються як факт."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Антології та збірки набувають форми свого вмісту. Книга есеїв про романи — це документальна література."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Вказати видавця"
 
@@ -8731,6 +8774,10 @@ msgstr "Це поле не можна заповнити тут."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Заповнено %(field)s через Open Library Tasks"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Виберіть один із варіантів."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9145,6 +9192,18 @@ msgstr "Переміщено до %(shelf)s"
 msgid "Undo"
 msgstr "Відмінити"
 
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Романи, оповідання, п'єси та вірші."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Історія, біографія, мемуари, есеї, практичні посібники та довідкова література."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Важко визначити, наприклад, для книги, заснованої на реальній історії, або збірки, що поєднує художню та документальну літературу."
+
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
 msgstr "Доступний повністю онлайн (читання / позика)"
@@ -9555,12 +9614,48 @@ msgid "Filipino"
 msgstr "Філіппінська"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Художня чи документальна література"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Відсутня обкладинка"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Відсутня мова"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Відсутня кількість сторінок"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Відсутній видавець"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Відсутні ідентифікатори"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Відсутня інформація про тип літератури"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Опубліковано"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Вперше опубліковано"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Видання"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9615,11 +9710,6 @@ msgstr "Станьте бібліотекарем"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Робите багато такого? Open Librarians отримують більше інструментів редагування. Подання заявки займає лише кілька хвилин."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Відсутнє: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10146,10 +10236,6 @@ msgstr "Цю зміну не вдалося скасувати автомати�
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "Електронна книга?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Вперше опубліковано"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11607,4 +11693,16 @@ msgstr "Не вдалося завантажити графіки. Переза�
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Востаннє оновлено <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Шукаєте книгу, яку можна позичити? Перегляньте добірку від нашої команди:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Книги, які нам подобаються"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Або перегляньте наші <a href=\"/collections\">спеціальні колекції</a>."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Відсутнє: %(field)s"
 
