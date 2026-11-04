@@ -947,7 +947,7 @@ msgstr "Annanghe unu libru nou"
 msgid "Authors"
 msgstr "Autores"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Libros"
 
@@ -1355,18 +1355,6 @@ msgstr "Perunu prèstidu atzapadu in sa lista de prèstidos tua."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Chirca unu libru</a> de pigare in prèstidu."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Ses chirchende unu libru de pigare a imprèstidu? Pòmpia sas seletziones de su personale nostru:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Libros chi amamus"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "O pòmpia·ti sas <a href=\"/collections\">colletziones ispetziales</a> nostras."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3509,6 +3497,14 @@ msgid "There's no wrong answer here."
 msgstr "Non bi sunt rispostas isballiadas inoghe."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Fintzione o non fintzione?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "No seguru"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Paràulas crae de s'argumentu?"
 
@@ -4208,6 +4204,11 @@ msgstr "Cada faina est unu libru e unu campu bòidu. Inoghe b'at petzi carchi es
 #, python-format
 msgid "Add %(field)s"
 msgstr "Agiunghe %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s est giai prenu pro custu libru"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5813,7 +5814,7 @@ msgstr "Esplora sos autores"
 msgid "Explore subjects"
 msgstr "Esplora sos argumentos"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Argumentos"
 
@@ -6351,6 +6352,11 @@ msgstr "Nde boles annànghere un'àtera?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Chirca libros de %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "No b'at prus òperas in custa pàgina. %(link_start)sTorra a sa pàgina 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7594,6 +7600,11 @@ msgstr "Chirca un'argumentu"
 msgid "Manage Subjects"
 msgstr "Manìgia sos argumentos"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Mustra %(count)s de prus"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Tzentru de isvilupu (Pàgina printzipale)"
@@ -7971,6 +7982,10 @@ msgid "How this edit goes wrong"
 msgstr "Comente custa modìfica andat male"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Ite narat su registru"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -7996,6 +8011,10 @@ msgstr "Abbista cada editzione"
 #, python-format
 msgid "And %(count)s more."
 msgstr "E àteros %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Incarca torra pro sarvare e sighire"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8219,6 +8238,30 @@ msgid "For example 320"
 msgstr "A esèmpiu 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Forma literària"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Sceberare fintzione o non fintzione"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Custu libru est de fintzione o non fintzione?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Si connosches su libru, risponde segundu su chi ischis. Si non lu connosches, chirca informatziones."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Sa non fintzione podet lèghere comente una contìgia. Unu memoriale chi tortat unu pagu sa beridade est semper non fintzione: est presentadu comente fatu."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Sas antologias e sas raccoltas leant sa forma de su chi cuntenent. Unu libru de ensàios subra romanzos est non fintzione."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Inserta s'editore"
 
@@ -8342,6 +8385,10 @@ msgstr "Custu campu no si podet prenare inoghe."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Prenadu %(field)s dae sas Fainas de Open Library"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Sceberare una de sas optziones."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8738,6 +8785,18 @@ msgstr "Tramudadu a %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Annulla"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Romanzos, contos, cummèdias e poesias."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Istòria, biografia, memoriales, ensàios, guias pràticas e òperas de riferimentu."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Difìtzile a detzìdere, comente unu libru bàsadu in una istòria bera o una raccolta chi mesturat fintzione e non fintzione."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9144,12 +9203,48 @@ msgid "Filipino"
 msgstr "Filipinu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Fintzione o non fintzione"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Mancat sa cobertina"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Mancat sa limba"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Mancat su nùmeru de pàginas"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Mancat s'editore"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Mancant sos identificadores"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Mancat s'informatzione de fintzione/non fintzione"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Publicadu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Prima publicatzione"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Editziones"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9204,11 +9299,6 @@ msgstr "Faghe·ti unu Bibliotecàriu Abertu"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Nde faghes medas? Sos Bibliotecàrios Abertos tenent àteras ainas pro modificare. Pro si nche propònnere bastant pagos minutos."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Mancat: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9711,10 +9801,6 @@ msgstr "Custa modìfica non si podiat annullare in automàticu."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "Libru eletrònicu?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Prima publicatzione"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11683,4 +11769,16 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Urtìma modìfica: <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Ses chirchende unu libru de pigare a imprèstidu? Pòmpia sas seletziones de su personale nostru:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Libros chi amamus"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "O pòmpia·ti sas <a href=\"/collections\">colletziones ispetziales</a> nostras."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Mancat: %(field)s"
 

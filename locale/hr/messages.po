@@ -953,7 +953,7 @@ msgstr "Dodaj novu knjigu"
 msgid "Authors"
 msgstr "Autori"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Knjige"
 
@@ -1369,18 +1369,6 @@ msgstr "U tvojoj povijesti posuđivanja nisu pronađene posudbe."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Traži knjigu</a> za posudbu."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Tražiš knjigu za posudbu? Pogledaj naš izbor urednika:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Knjige koje volimo"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Ili pogledaj naše <a href=\"/collections\">posebne zbirke</a>."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3531,6 +3519,14 @@ msgid "There's no wrong answer here."
 msgstr "Ovdje nema krivog odgovora."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Beletristika ili publicistika?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Nisam siguran"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Ključne riječi područja?"
 
@@ -4230,6 +4226,11 @@ msgstr "Svaki zadatak je jedna knjiga i jedno prazno polje. Evo nekoliko primjer
 #, python-format
 msgid "Add %(field)s"
 msgstr "Dodaj %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s je već ispunjeno za ovu knjigu"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5853,7 +5854,7 @@ msgstr "Istraži autore"
 msgid "Explore subjects"
 msgstr "Istraži područja"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Područja"
 
@@ -6394,6 +6395,11 @@ msgstr "Dodati jednu drugu?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Traži knjige od %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Na ovoj stranici nema više djela. %(link_start)sNatrag na stranicu 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7651,6 +7657,11 @@ msgstr "Traži područje"
 msgid "Manage Subjects"
 msgstr "Upravljaj predmetima"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Prikaži još %(count)s"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Centar razvoja (početna)"
@@ -8029,6 +8040,10 @@ msgid "How this edit goes wrong"
 msgstr "Kako ova izmjena može biti pogrešna"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Što kaže zapis"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8056,6 +8071,10 @@ msgstr "Pogledajte svako izdanje"
 #, python-format
 msgid "And %(count)s more."
 msgstr "I još %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Klikni ponovno za spremanje i nastavak"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8280,6 +8299,30 @@ msgid "For example 320"
 msgstr "Na primjer 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Književni oblik"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Odaberi beletristiku ili publicistiku"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Je li ova knjiga beletristika ili publicistika?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Ako poznaješ knjigu, odgovori prema onome što znaš. Ako ne, provjeri."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Publicistika se može čitati poput priče. Memoari koji malo izvrću istinu i dalje su publicistika: predstavljeni su kao činjenice."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Antologije i zbirke poprimaju oblik onoga što sadrže. Knjiga eseja o romanima je publicistika."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Popunite izdavača"
 
@@ -8403,6 +8446,10 @@ msgstr "Ovo polje nije moguće popuniti ovdje."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Popunjeno %(field)s putem Open Library zadataka"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Odaberi jednu od opcija."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8802,6 +8849,18 @@ msgstr "Premješteno na %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Poništi"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Romani, priče, drame i pjesme."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Povijest, biografija, memoari, eseji, vodiči i referentna literatura."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Teško je reći, kao kod knjige temeljene na istinitoj priči ili zbirke koja miješa beletristiku i publicistiku."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9208,12 +9267,48 @@ msgid "Filipino"
 msgstr "Filipinski"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Beletristika ili publicistika"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Nedostaje naslovnica"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Nedostaje jezik"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Nedostaje broj stranica"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Nedostaje izdavač"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Nedostaju identifikatori"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Nedostaje podatak beletristika/publicistika"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Objavljeno"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Prvi put izdano"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Izdanja"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9268,11 +9363,6 @@ msgstr "Postani Open Library knjižničar"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Radite puno ovoga? Open Librarians dobivaju više alata za uređivanje. Prijava traje samo nekoliko minuta."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Nedostaje: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9776,10 +9866,6 @@ msgstr "Ovu promjenu nije bilo moguće automatski poništiti."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "E-knjiga?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Prvi put izdano"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11209,4 +11295,16 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Zadnja promjena <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Tražiš knjigu za posudbu? Pogledaj naš izbor urednika:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Knjige koje volimo"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Ili pogledaj naše <a href=\"/collections\">posebne zbirke</a>."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Nedostaje: %(field)s"
 

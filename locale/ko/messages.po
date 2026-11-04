@@ -943,7 +943,7 @@ msgstr "새 책 추가"
 msgid "Authors"
 msgstr "저자"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "책"
 
@@ -1343,18 +1343,6 @@ msgstr "대출 이력에서 대출 기록을 찾을 수 없습니다."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "대출하려면 <a href=\"/search\">책을 검색하세요</a>."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "빌릴 책을 찾고 계신가요? 추천 도서를 확인해보세요:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "추천 도서"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "또는 저희의 <a href=\"/collections\">특별한 콜렉션</a>을 확인해 보세요"
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3493,6 +3481,14 @@ msgid "There's no wrong answer here."
 msgstr "여기에 틀린 답은 없습니다."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "소설인가요, 논픽션인가요?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "잘 모르겠음"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "주제 키워드?"
 
@@ -4192,6 +4188,11 @@ msgstr "각 작업은 책 한 권과 빈 항목 하나로 구성됩니다. 몇 �
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s 추가"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "이 책에는 %(field)s이(가) 이미 입력되어 있습니다"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5779,7 +5780,7 @@ msgstr "저자 탐색"
 msgid "Explore subjects"
 msgstr "subjects 탐색"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "주제"
 
@@ -6316,6 +6317,11 @@ msgstr "추가하시겠어요?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s의 책 검색"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "이 페이지에는 더 이상 작품이 없습니다. %(link_start)s1페이지로 돌아가기%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7552,6 +7558,11 @@ msgstr "주제 검색"
 msgid "Manage Subjects"
 msgstr "주제 관리"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "%(count)s개 더 보기"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "개발자 센터 (홈)"
@@ -7928,6 +7939,10 @@ msgid "How this edit goes wrong"
 msgstr "이 편집이 잘못되는 경우"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "기록 내용"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -7951,6 +7966,10 @@ msgstr "각 판 보기"
 #, python-format
 msgid "And %(count)s more."
 msgstr "그 외 %(count)s개 더."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "저장하고 계속하려면 다시 클릭하세요"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8173,6 +8192,30 @@ msgid "For example 320"
 msgstr "예: 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "문학 형식"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "소설 또는 논픽션 선택"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "이 책은 소설인가요, 논픽션인가요?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "책을 알고 있다면 아는 대로 답하세요. 모른다면 찾아보세요."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "논픽션은 이야기처럼 읽힐 수 있습니다. 사실을 약간 각색한 회고록이라도 사실로 제시된다면 여전히 논픽션입니다."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "선집과 모음집은 그 안에 담긴 내용의 형식을 따릅니다. 소설에 관한 에세이집은 논픽션입니다."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "출판사 입력"
 
@@ -8296,6 +8339,10 @@ msgstr "이 항목은 여기에서 입력할 수 없습니다."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Open Library Tasks에서 %(field)s 입력됨"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "옵션 중 하나를 선택하세요."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8689,6 +8736,18 @@ msgstr "%(shelf)s로 이동됨"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "실행 취소"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "소설, 단편, 희곡, 시."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "역사, 전기, 회고록, 에세이, 실용서, 참고서."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "실화를 바탕으로 한 책이나 소설과 논픽션이 섞인 모음집처럼 판단하기 어려운 경우."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9095,12 +9154,48 @@ msgid "Filipino"
 msgstr "필리핀어"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "소설 또는 논픽션"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "표지 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "언어 정보 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "페이지 수 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "출판사 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "식별자 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "소설/논픽션 정보 없음"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "출판됨"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "초판 발행"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "판본"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9155,11 +9250,6 @@ msgstr "Open Librarian 되기"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "이런 작업을 많이 하시나요? Open Librarian은 더 많은 편집 도구를 사용할 수 있습니다. 신청은 몇 분이면 끝납니다."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "누락: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9663,10 +9753,6 @@ msgstr "이 변경 사항을 자동으로 실행 취소할 수 없습니다."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "전자책?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "초판 발행"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -10942,4 +11028,16 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "<span>%(date)s</span>에 마지막 수정"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "빌릴 책을 찾고 계신가요? 추천 도서를 확인해보세요:"
+
+#~ msgid "Books We Love"
+#~ msgstr "추천 도서"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "또는 저희의 <a href=\"/collections\">특별한 콜렉션</a>을 확인해 보세요"
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "누락: %(field)s"
 

@@ -989,7 +989,7 @@ msgstr "নতুন বই যোগ করুন"
 msgid "Authors"
 msgstr "लेखक"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "पुस्तक"
 
@@ -1409,18 +1409,6 @@ msgstr "আপনার ধার করার ইতিহাসে কোন�
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "ধার করতে <a href=\"/search\">একটি বই খুঁজুন</a>।"
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "ধার করার জন্য বই খুঁজছেন? আমাদের স্টাফ পিক্‌স দেখুন:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "वे किताबें जिन्हें हम पसंद करते हैं"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "অথবা, আমাদের <a href=\"/collections\">বিশেষ সংগ্রহ</a> দেখুন।"
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3692,6 +3680,14 @@ msgid "There's no wrong answer here."
 msgstr "यहाँ कोई गलत जवाब नहीं है।"
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "কল্পকাহিনী নাকি অকল্পকাহিনী?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "নিশ্চিত নই"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "विषय कीवर्ड?"
 
@@ -4403,6 +4399,11 @@ msgstr "প্রতিটি কাজে একটি বই এবং এক�
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s যোগ করুন"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "এই বইয়ের জন্য %(field)s ইতিমধ্যে পূরণ করা হয়েছে"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6074,7 +6075,7 @@ msgstr "लेखकों का जायज़ा लें"
 msgid "Explore subjects"
 msgstr "विषयों का जायज़ा लें"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "विषय"
 
@@ -6620,6 +6621,11 @@ msgstr "एक और जोड़ें?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s-এর বই খুঁজুন"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "এই পৃষ্ঠায় আর কোনো রচনা নেই। %(link_start)sপৃষ্ঠা ১-এ ফিরে যান%(link_end)s।"
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7912,6 +7918,11 @@ msgstr "বিষয় খুঁজুন"
 msgid "Manage Subjects"
 msgstr "বিষয় পরিচালনা করুন"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "আরও %(count)s টি দেখান"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "डेवलपर केंद्र (होम)"
@@ -8291,6 +8302,10 @@ msgid "How this edit goes wrong"
 msgstr "এই সম্পাদনা কীভাবে ভুল হতে পারে"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "রেকর্ডে কী বলা আছে"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8316,6 +8331,10 @@ msgstr "প্রতিটি সংস্করণ দেখুন"
 #, python-format
 msgid "And %(count)s more."
 msgstr "এবং আরও %(count)s টি।"
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "সংরক্ষণ করে চালিয়ে যেতে আবার ক্লিক করুন"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8539,6 +8558,30 @@ msgid "For example 320"
 msgstr "যেমন 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "সাহিত্যিক রূপ"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "কল্পকাহিনী বা অকল্পকাহিনী বেছে নিন"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "এই বইটি কল্পকাহিনী নাকি অকল্পকাহিনী?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "আপনি যদি বইটি জানেন, তবে আপনার জ্ঞান থেকে উত্তর দিন। না জানলে খুঁজে দেখুন।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "অকল্পকাহিনী গল্পের মতো পড়া যেতে পারে। সত্যকে কিছুটা বাঁকিয়ে লেখা স্মৃতিকথাও অকল্পকাহিনী: এটি সত্য হিসেবে উপস্থাপিত হয়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "সংকলন ও সংগ্রহ ভিতরের বিষয়বস্তুর রূপ নেয়। উপন্যাস নিয়ে প্রবন্ধের একটি বই অকল্পকাহিনী।"
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "প্রকাশক পূরণ করুন"
 
@@ -8662,6 +8705,10 @@ msgstr "এই ক্ষেত্রটি এখানে পূরণ কর�
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Open Library Tasks থেকে %(field)s পূরণ করা হয়েছে"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "বিকল্পগুলির মধ্যে একটি বেছে নিন।"
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9061,6 +9108,18 @@ msgstr "%(shelf)s-এ সরানো হয়েছে"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "আনডু করুন"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "উপন্যাস, গল্প, নাটক ও কবিতা।"
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "ইতিহাস, জীবনী, স্মৃতিকথা, প্রবন্ধ, নির্দেশিকা ও প্রসঙ্গ গ্রন্থ।"
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "সিদ্ধান্ত নেওয়া কঠিন, যেমন সত্য ঘটনা অবলম্বনে লেখা বই বা কল্পকাহিনী ও অকল্পকাহিনী মেশানো একটি সংকলন।"
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9473,12 +9532,48 @@ msgid "Filipino"
 msgstr "ফিলিপিনো"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "কল্পকাহিনী বা অকল্পকাহিনী"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "প্রচ্ছদ নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "ভাষা নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "পৃষ্ঠাসংখ্যা নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "প্রকাশক নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "শনাক্তকারী নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "কল্পকাহিনী/অকল্পকাহিনী তথ্য নেই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "প্রকাশিত"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "पहली बार प्रकाशित"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "সংস্করণ"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9533,11 +9628,6 @@ msgstr "একজন Open Librarian হন"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "এগুলোর অনেক করছেন? Open Librarians আরও সম্পাদনা সরঞ্জাম পান। আবেদন করতে মাত্র কয়েক মিনিট লাগে।"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "অনুপস্থিত: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10068,10 +10158,6 @@ msgstr "এই পরিবর্তনটি স্বয়ংক্রিয�
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "ई - बुक?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "पहली बार प्रकाशित"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11651,4 +11737,16 @@ msgstr "লেখচিত্রগুলি লোড করা যায়ন
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "आखिरी बार <span>%(date)s</span> अपडेट किया गया"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "ধার করার জন্য বই খুঁজছেন? আমাদের স্টাফ পিক্‌স দেখুন:"
+
+#~ msgid "Books We Love"
+#~ msgstr "वे किताबें जिन्हें हम पसंद करते हैं"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "অথবা, আমাদের <a href=\"/collections\">বিশেষ সংগ্রহ</a> দেখুন।"
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "অনুপস্থিত: %(field)s"
 

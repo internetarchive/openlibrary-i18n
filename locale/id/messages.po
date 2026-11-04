@@ -961,7 +961,7 @@ msgstr "Tambahkan buku baru"
 msgid "Authors"
 msgstr "Penulis"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "Buku"
 
@@ -1365,18 +1365,6 @@ msgstr "Tidak ada pinjaman yang ditemukan dalam riwayat peminjaman Anda."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Cari buku</a> untuk dipinjam."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Mencari buku untuk dipinjam? Lihat pilihan staf kami:"
-
-#: account/loans.html
-msgid "Books We Love"
-msgstr "Buku yang Kami Sukai"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Atau, lihat <a href=\"/collections\">koleksi khusus</a> kami."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3550,6 +3538,14 @@ msgid "There's no wrong answer here."
 msgstr "Tidak ada jawaban yang salah di sini."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Fiksi atau nonfiksi?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Tidak yakin"
+
+#: books/edit/about.html
 msgid "Subject keywords?"
 msgstr "Kata kunci subjek?"
 
@@ -4253,6 +4249,11 @@ msgstr "Setiap tugas adalah satu buku dan satu kolom kosong. Berikut beberapa co
 #, python-format
 msgid "Add %(field)s"
 msgstr "Tambahkan %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s sudah diisi untuk buku ini"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -5855,7 +5856,7 @@ msgstr "Jelajahi penulis"
 msgid "Explore subjects"
 msgstr "Jelajahi subjek"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Subjek"
 
@@ -6395,6 +6396,11 @@ msgstr "Tambahkan lagi?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Cari buku %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Tidak ada lagi karya di halaman ini. %(link_start)sKembali ke halaman 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 msgid "Places"
@@ -7651,6 +7657,11 @@ msgstr "Cari Subjek"
 msgid "Manage Subjects"
 msgstr "Menggunakan Subjek"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Tampilkan %(count)s lagi"
+
 #: Subnavigation.html
 msgid "Developer Center (Home)"
 msgstr "Pusat Pengembang (Beranda)"
@@ -8031,6 +8042,10 @@ msgid "How this edit goes wrong"
 msgstr "Bagaimana suntingan ini bisa salah"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Apa yang tercatat"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8054,6 +8069,10 @@ msgstr "Lihat setiap edisi"
 #, python-format
 msgid "And %(count)s more."
 msgstr "Dan %(count)s lainnya."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Klik lagi untuk menyimpan dan melanjutkan"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8276,6 +8295,30 @@ msgid "For example 320"
 msgstr "Contohnya 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Bentuk sastra"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Pilih fiksi atau nonfiksi"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Apakah buku ini fiksi atau nonfiksi?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Jika Anda tahu bukunya, jawab berdasarkan apa yang Anda ketahui. Jika tidak, cari tahu dulu."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Nonfiksi bisa dibaca seperti cerita. Memoar yang sedikit melenturkan kebenaran tetap nonfiksi: disajikan sebagai fakta."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Antologi dan kumpulan mengikuti bentuk isinya. Buku esai tentang novel termasuk nonfiksi."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Isi penerbit"
 
@@ -8399,6 +8442,10 @@ msgstr "Bidang ini tidak dapat diisi di sini."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Mengisi %(field)s dari Open Library Tasks"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Pilih salah satu opsi."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -8804,6 +8851,18 @@ msgstr "Dipindahkan ke %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Urungkan"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Novel, cerita pendek, drama, dan puisi."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Sejarah, biografi, memoar, esai, panduan, dan buku referensi."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Sulit dipastikan, seperti buku berdasarkan kisah nyata atau kumpulan yang mencampur fiksi dan nonfiksi."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9211,12 +9270,48 @@ msgid "Filipino"
 msgstr "gagal"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Fiksi atau nonfiksi"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Sampul tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Bahasa tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Jumlah halaman tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Penerbit tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Pengidentifikasi tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Informasi fiksi/nonfiksi tidak ada"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Diterbitkan"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+msgid "First published"
+msgstr "Pertama diterbitkan"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Edisi"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9271,11 +9366,6 @@ msgstr "Menjadi Open Librarian"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Sering melakukan ini? Open Librarians mendapatkan lebih banyak alat penyuntingan. Pendaftarannya hanya butuh beberapa menit."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Hilang: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -9781,10 +9871,6 @@ msgstr "Perubahan ini tidak dapat dibatalkan secara otomatis."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "eBook?"
-
-#: openlibrary/plugins/worksearch/code.py
-msgid "First published"
-msgstr "Pertama diterbitkan"
 
 #: openlibrary/plugins/worksearch/code.py
 msgid "Classic eBooks"
@@ -11458,4 +11544,16 @@ msgstr "Grafik gagal dimuat. Muat ulang halaman untuk mencoba lagi."
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Terakhir diubah <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Mencari buku untuk dipinjam? Lihat pilihan staf kami:"
+
+#~ msgid "Books We Love"
+#~ msgstr "Buku yang Kami Sukai"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Atau, lihat <a href=\"/collections\">koleksi khusus</a> kami."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Hilang: %(field)s"
 

@@ -1002,7 +1002,7 @@ msgstr "Přidat novou knihu"
 msgid "Authors"
 msgstr "Autoři"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 #, fuzzy
 msgid "Books"
 msgstr "Moje knihy"
@@ -1435,19 +1435,6 @@ msgstr "V historii výpůjček nebyly nalezeny žádné výpůjčky."
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "<a href=\"/search\">Vyhledejte knihu</a> k vypůjčení."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "Hledáte knihu k zapůjčení? Podívejte se na naše tipy:"
-
-#: account/loans.html
-#, fuzzy
-msgid "Books We Love"
-msgstr "eKnihy kdekoliv"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "Nebo si prohlédněte naše <a href=\"/collections\">speciální sbírky</a>."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3721,6 +3708,14 @@ msgid "There's no wrong answer here."
 msgstr "Neexistuje špatná odpověď."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "Beletrie, nebo literatura faktu?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "Nevím jistě"
+
+#: books/edit/about.html
 #, fuzzy
 msgid "Subject keywords?"
 msgstr "Témata"
@@ -4432,6 +4427,11 @@ msgstr "Každý úkol je jedna kniha a jedno prázdné pole. Zde je jen několik
 #, python-format
 msgid "Add %(field)s"
 msgstr "Přidat %(field)s"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "%(field)s je u této knihy již vyplněno"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6148,7 +6148,7 @@ msgstr "Prozkoumat autory"
 msgid "Explore subjects"
 msgstr "Prozkoumat témata"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "Témata"
 
@@ -6708,6 +6708,11 @@ msgstr "Přidat dalšího autora?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "Hledat knihy %(author)s"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "Na této stránce již nejsou žádná další díla. %(link_start)sZpět na stránku 1%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 #, fuzzy
@@ -8057,6 +8062,11 @@ msgstr "Hledat téma"
 msgid "Manage Subjects"
 msgstr "Další témata"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "Zobrazit dalších %(count)s"
+
 #: Subnavigation.html
 #, fuzzy
 msgid "Developer Center (Home)"
@@ -8445,6 +8455,10 @@ msgid "How this edit goes wrong"
 msgstr "Jak se tato úprava může pokazit"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "Co uvádí záznam"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8472,6 +8486,10 @@ msgstr "Zobrazit jednotlivá vydání"
 #, python-format
 msgid "And %(count)s more."
 msgstr "A dalších %(count)s."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "Kliknutím znovu uložíte a budete pokračovat"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8696,6 +8714,30 @@ msgid "For example 320"
 msgstr "Například 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "Literární forma"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "Vyberte beletrii, nebo literaturu faktu"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "Je tato kniha beletrie, nebo literatura faktu?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "Pokud knihu znáte, odpovězte podle toho, co víte. Pokud ne, dohledejte si to."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "Literatura faktu se může číst jako příběh. Memoáry, které si trochu pohrávají s pravdou, jsou stále literaturou faktu: jsou prezentovány jako fakta."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "Antologie a sbírky mají podobu toho, co obsahují. Kniha esejů o románech je literatura faktu."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "Doplnit vydavatele"
 
@@ -8819,6 +8861,10 @@ msgstr "Toto pole zde nelze vyplnit."
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "Vyplněno %(field)s z Open Library Tasks"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "Vyberte jednu z možností."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9230,6 +9276,18 @@ msgstr "Přesunuto do %(shelf)s"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Undo"
 msgstr "Vrátit zpět"
+
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "Romány, povídky, divadelní hry a básně."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "Historie, životopisy, memoáry, eseje, návody a referenční literatura."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "Těžko rozhodnout, například u knihy založené na skutečném příběhu nebo sbírky, která mísí beletrii a literaturu faktu."
 
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
@@ -9644,12 +9702,49 @@ msgid "Filipino"
 msgstr "Filipínsky"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Beletrie, nebo literatura faktu"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "Chybí obálka"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "Chybí jazyk"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "Chybí počet stran"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "Chybí vydavatel"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "Chybí identifikátory"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "Chybí údaj beletrie/literatura faktu"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "Vydáno"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+#, fuzzy
+msgid "First published"
+msgstr "Prvně vydáno"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "Vydání"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9704,11 +9799,6 @@ msgstr "Staňte se Open Librarian"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "Děláte jich hodně? Open Librarians získávají více nástrojů pro úpravy. Podání žádosti zabere jen pár minut."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "Chybí: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10229,11 +10319,6 @@ msgstr "Tuto změnu nebylo možné automaticky vrátit zpět."
 #: openlibrary/plugins/worksearch/code.py
 msgid "eBook?"
 msgstr "e-kniha?"
-
-#: openlibrary/plugins/worksearch/code.py
-#, fuzzy
-msgid "First published"
-msgstr "Prvně vydáno"
 
 #: openlibrary/plugins/worksearch/code.py
 #, fuzzy
@@ -11669,4 +11754,16 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "Naposledy upraveno <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "Hledáte knihu k zapůjčení? Podívejte se na naše tipy:"
+
+#~ msgid "Books We Love"
+#~ msgstr "eKnihy kdekoliv"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "Nebo si prohlédněte naše <a href=\"/collections\">speciální sbírky</a>."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "Chybí: %(field)s"
 

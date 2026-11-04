@@ -1008,7 +1008,7 @@ msgstr "కొత్త పుస్తకాన్ని జోడించం�
 msgid "Authors"
 msgstr "రచయితలు"
 
-#: SearchNavigation.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "పుస్తకాలు"
 
@@ -1434,19 +1434,6 @@ msgstr "మీ అరువు చరిత్రలో రుణాలు క�
 #: account/loans.html
 msgid "<a href=\"/search\">Search for a book</a> to borrow."
 msgstr "అరువు తీసుకోవడానికి <a href=\"/search\">పుస్తకాన్ని శోధించండి</a>."
-
-#: account/loans.html
-msgid "Looking for a book to borrow? Check out our staff picks:"
-msgstr "అరువు తీసుకోవడానికి పుస్తకం కోసం చూస్తున్నారా? మా సిబ్బంది ఎంపికలను చూడండి:"
-
-#: account/loans.html
-#, fuzzy
-msgid "Books We Love"
-msgstr "అన్ని చోట్లా ఈ-పుస్తకాలే"
-
-#: account/loans.html
-msgid "Or, check out our <a href=\"/collections\">special collections</a>."
-msgstr "లేదా, మా <a href=\"/collections\">ప్రత్యేక సంకలనాలు</a> చూడండి."
 
 #: account/mybooks.html
 msgid "No books are on this shelf"
@@ -3751,6 +3738,14 @@ msgid "There's no wrong answer here."
 msgstr "దీనికి తప్పు సమాధానం అంటూ ఉండదు."
 
 #: books/edit/about.html
+msgid "Fiction or nonfiction?"
+msgstr "కల్పితమా లేక వాస్తవికతా?"
+
+#: books/edit/about.html openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Not sure"
+msgstr "ఖచ్చితంగా తెలియదు"
+
+#: books/edit/about.html
 #, fuzzy
 msgid "Subject keywords?"
 msgstr "సబ్జక్టులు"
@@ -4468,6 +4463,11 @@ msgstr "ప్రతి పని ఒక పుస్తకం మరియు �
 #, python-format
 msgid "Add %(field)s"
 msgstr "%(field)s జోడించండి"
+
+#: contribute/nothing.html.jinja
+#, python-format
+msgid "%(field)s is already filled in for this book"
+msgstr "ఈ పుస్తకానికి %(field)s ఇప్పటికే నింపబడింది"
 
 #: contribute/nothing.html.jinja
 #, python-format
@@ -6189,7 +6189,7 @@ msgstr "రచయితలను అన్వేషించు"
 msgid "Explore subjects"
 msgstr "విషయాలు అన్వేషించు"
 
-#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
+#: RelatedSubjects.html.jinja SearchNavigation.html.jinja SubjectTags.html openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py shell/footer.html.jinja subjects/notfound.html type/author/view.html type/list/view_body.html
 msgid "Subjects"
 msgstr "సబ్జక్టులు"
 
@@ -6745,6 +6745,11 @@ msgstr "ఇంకొకటి జోడించాలా?"
 #, python-format
 msgid "Search %(author)s books"
 msgstr "%(author)s పుస్తకాలు శోధించండి"
+
+#: type/author/view.html
+#, python-format
+msgid "There are no more works on this page. %(link_start)sBack to page 1%(link_end)s."
+msgstr "ఈ పేజీలో మరిన్ని రచనలు లేవు. %(link_start)sపేజీ 1కి తిరిగి వెళ్ళండి%(link_end)s."
 
 #: RelatedSubjects.html.jinja SubjectTags.html openlibrary/plugins/worksearch/code.py type/author/view.html type/list/view_body.html
 #, fuzzy
@@ -8078,6 +8083,11 @@ msgstr "విషయం కోసం వెతుకు"
 msgid "Manage Subjects"
 msgstr "సబ్జక్టులు"
 
+#: SubjectTags.html
+#, python-format
+msgid "Show %(count)s more"
+msgstr "మరో %(count)s చూపించు"
+
 #: Subnavigation.html
 #, fuzzy
 msgid "Developer Center (Home)"
@@ -8472,6 +8482,10 @@ msgid "How this edit goes wrong"
 msgstr "ఈ సవరణ ఎలా తప్పుగా జరుగుతుంది"
 
 #: contribute/parts.html.jinja
+msgid "What the record says"
+msgstr "రికార్డులో ఏమి ఉంది"
+
+#: contribute/parts.html.jinja
 #, python-format
 msgid "The other edition"
 msgid_plural "The other %(count)d editions"
@@ -8497,6 +8511,10 @@ msgstr "ప్రతి ఎడిషన్‌ను చూడండి"
 #, python-format
 msgid "And %(count)s more."
 msgstr "మరియు %(count)s మరిన్ని."
+
+#: contribute/parts.html.jinja
+msgid "Click again to save and continue"
+msgstr "సేవ్ చేసి కొనసాగించడానికి మళ్ళీ క్లిక్ చేయండి"
 
 #: contribute/parts.html.jinja
 msgid "Choose the new cover"
@@ -8720,6 +8738,30 @@ msgid "For example 320"
 msgstr "ఉదాహరణకు 320"
 
 #: openlibrary/contribute/field_guides.py
+msgid "Literary form"
+msgstr "సాహిత్య రూపం"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Pick fiction or nonfiction"
+msgstr "కల్పితం లేదా వాస్తవికత ఎంచుకోండి"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Is this book fiction or nonfiction?"
+msgstr "ఈ పుస్తకం కల్పితమా లేక వాస్తవికతా?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "If you know the book, answer from what you know. If you don't, look it up."
+msgstr "మీకు పుస్తకం తెలిస్తే, మీకు తెలిసిన దాని ఆధారంగా సమాధానం ఇవ్వండి. తెలియకపోతే, వెతికి చూడండి."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
+msgstr "వాస్తవిక రచనలు కథలా చదవదగినవి కావచ్చు. సత్యాన్ని కొంత మారుస్తూ రాసిన జ్ఞాపకాల గ్రంథం కూడా వాస్తవికతగానే పరిగణించబడుతుంది: ఇది వాస్తవంగా ప్రదర్శించబడుతుంది."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Anthologies and collections take the form of what's inside. A book of essays about novels is nonfiction."
+msgstr "సంకలనాలు మరియు సంగ్రహాలు వాటి లోపలి విషయం రూపాన్ని సంతరించుకుంటాయి. నవలల గురించిన వ్యాసాల పుస్తకం వాస్తవికత."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Fill in publisher"
 msgstr "ప్రచురణకర్తను పూరించండి"
 
@@ -8843,6 +8885,10 @@ msgstr "ఈ ఫీల్డ్‌ను ఇక్కడ పూరించలే
 #, python-format
 msgid "Filled in %(field)s from Open Library Tasks"
 msgstr "ఓపెన్ లైబ్రరీ పనుల నుండి %(field)s పూరించారు"
+
+#: openlibrary/contribute/save.py
+msgid "Choose one of the options."
+msgstr "ఎంపికలలో ఒకదాన్ని ఎంచుకోండి."
 
 #: openlibrary/contribute/save.py
 msgid "Choose an image of the cover."
@@ -9254,6 +9300,18 @@ msgstr "%(shelf)sకు తరలించబడింది"
 msgid "Undo"
 msgstr "వెనక్కి తీసుకో"
 
+#: openlibrary/core/tags.py
+msgid "Novels, stories, plays and poems."
+msgstr "నవలలు, కథలు, నాటకాలు మరియు కవితలు."
+
+#: openlibrary/core/tags.py
+msgid "History, biography, memoir, essays, how-to and reference."
+msgstr "చరిత్ర, జీవిత చరిత్ర, జ్ఞాపకాలు, వ్యాసాలు, మార్గదర్శకాలు మరియు సూచన గ్రంథాలు."
+
+#: openlibrary/core/tags.py
+msgid "Hard to call, like a book based on a true story or a collection that mixes fiction and nonfiction."
+msgstr "నిర్ణయించడం కష్టం, ఉదాహరణకు నిజమైన కథ ఆధారంగా రాసిన పుస్తకం లేదా కల్పితం మరియు వాస్తవికతను కలిపిన సంగ్రహం వంటివి."
+
 #: openlibrary/edition_scorecard.py
 msgid "Can be accessed in full online (read / borrowed)"
 msgstr "ఆన్‌లైన్‌లో పూర్తిగా యాక్సెస్ చేయవచ్చు (చదవడం / అరువు తీసుకోవడం)"
@@ -9663,12 +9721,49 @@ msgid "Filipino"
 msgstr "ఫిలిపినో"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "కల్పితం లేదా వాస్తవికత"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing cover"
+msgstr "కవర్ లేదు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing language"
+msgstr "భాష లేదు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing page count"
+msgstr "పేజీల సంఖ్య లేదు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing publisher"
+msgstr "ప్రచురణకర్త లేదు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing identifiers"
+msgstr "గుర్తింపు సంఖ్యలు లేవు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Missing fiction or nonfiction"
+msgstr "కల్పితం/వాస్తవికత సమాచారం లేదు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
 msgstr "ప్రచురించబడింది"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "OCLC"
 msgstr "OCLC"
+
+#: openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py
+#, fuzzy
+msgid "First published"
+msgstr "ముదటి ప్రచురణ"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Editions"
+msgstr "ముద్రణలు"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -9723,11 +9818,6 @@ msgstr "ఓపెన్ లైబ్రేరియన్ అవ్వండి"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Doing a lot of these? Open Librarians get more editing tools. Applying takes a few minutes."
 msgstr "వీటిని చాలా చేస్తున్నారా? Open Librarians మరిన్ని సవరణ సాధనాలను పొందుతారు. దరఖాస్తు చేయడానికి కొన్ని నిమిషాలు మాత్రమే పడుతుంది."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "Missing: %(field)s"
-msgstr "లోపిస్తున్నది: %(field)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Most needed"
@@ -10254,11 +10344,6 @@ msgstr "ఈ మార్పును స్వయంచాలకంగా రద
 #, fuzzy
 msgid "eBook?"
 msgstr "పుస్తకాలు"
-
-#: openlibrary/plugins/worksearch/code.py
-#, fuzzy
-msgid "First published"
-msgstr "ముదటి ప్రచురణ"
 
 #: openlibrary/plugins/worksearch/code.py
 #, fuzzy
@@ -11646,4 +11731,16 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "Last modified <span>%(date)s</span>"
 #~ msgstr "చివరిగా మార్చిన తేదీ <span>%(date)s</span>"
+
+#~ msgid "Looking for a book to borrow? Check out our staff picks:"
+#~ msgstr "అరువు తీసుకోవడానికి పుస్తకం కోసం చూస్తున్నారా? మా సిబ్బంది ఎంపికలను చూడండి:"
+
+#~ msgid "Books We Love"
+#~ msgstr "అన్ని చోట్లా ఈ-పుస్తకాలే"
+
+#~ msgid "Or, check out our <a href=\"/collections\">special collections</a>."
+#~ msgstr "లేదా, మా <a href=\"/collections\">ప్రత్యేక సంకలనాలు</a> చూడండి."
+
+#~ msgid "Missing: %(field)s"
+#~ msgstr "లోపిస్తున్నది: %(field)s"
 
