@@ -66,11 +66,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Persist OL_BOT_PAT (not the default GITHUB_TOKEN) as the git
+          # Persist OL_BOT_I18N_PAT (not the default GITHUB_TOKEN) as the git
           # credential: a push authed with GITHUB_TOKEN does not trigger the
           # pull_request checks the merge gate waits on, so the bot PR never
           # goes green and nothing self-merges. #151.
-          token: ${{ secrets.OL_BOT_PAT }}
+          token: ${{ secrets.OL_BOT_I18N_PAT }}
 
       - uses: actions/setup-python@v5
         with:
@@ -86,7 +86,7 @@ jobs:
       - name: Translate batch
         uses: anthropics/claude-code-action@v1
         env:
-          GH_TOKEN: ${{ secrets.OL_BOT_PAT }}
+          GH_TOKEN: ${{ secrets.OL_BOT_I18N_PAT }}
         with:
           prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
           # Pin the model. claude-code-action@v1 has no `model` input, so the id
@@ -100,7 +100,7 @@ jobs:
           claude_args: "--max-turns 750 --permission-mode bypassPermissions --model claude-sonnet-5"
           show_full_output: true
           claude_code_oauth_token: ${{ secrets.OL_BOT_CLAUDE_OAUTH_TOKEN }}
-          github_token: ${{ secrets.OL_BOT_PAT }}
+          github_token: ${{ secrets.OL_BOT_I18N_PAT }}
 
       - name: Merge translation PRs that pass required checks
         if: success()
