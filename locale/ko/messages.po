@@ -549,7 +549,7 @@ msgstr "새 책이 추가되었습니다."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library 카탈로그 개선에 참여해 주셔서 감사합니다!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "닫기"
 
@@ -794,23 +794,23 @@ msgid "Logged %(count)i time %(time_unit)s"
 msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(time_unit)s %(count)i회 기록됨"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 msgid "Human Verification"
 msgstr "인간 확인"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "계속하려면 인간임을 확인해 주세요."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "인간임을 확인하세요"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "인증에 실패했습니다. 다시 시도해 주세요."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verifying..."
 msgstr "인증 중..."
 
@@ -4206,16 +4206,6 @@ msgstr "목록이 작성된 이후 다른 사람이 이미 입력했습니다. �
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "목록으로 돌아가기"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)s의 %(field)s 저장됨: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)s의 %(field)s 저장됨"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -7929,6 +7919,20 @@ msgid "Go to edit page"
 msgstr "편집 페이지로 이동"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "방금 저장되었습니다"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s 추가됨: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s 추가됨"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "답변 방법"
 
@@ -8032,8 +8036,8 @@ msgid "No matching language"
 msgstr "일치하는 언어 없음"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "다른 판에서는"
+msgid "Other editions say…"
+msgstr "다른 판에서는…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9207,6 +9211,18 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "사람들이 가장 많이 서가에 추가하는 책의 누락된 정보를 채워주세요."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "<b>%(count)s</b>개의 작업이 남았습니다"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "지금까지 %(count)s명이 도왔습니다"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11057,4 +11073,13 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "Any edition"
 #~ msgstr "모든 판본"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s의 %(field)s 저장됨: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s의 %(field)s 저장됨"
+
+#~ msgid "Other editions say"
+#~ msgstr "다른 판에서는"
 
