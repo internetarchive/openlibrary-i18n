@@ -580,7 +580,7 @@ msgstr "添加了新的书籍。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "非常感谢您完善了这份记录！"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "关闭"
 
@@ -842,25 +842,25 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "已记录 %(count)i 次%(time_unit)s"
 msgstr[1] "已记录 %(count)i 次%(time_unit)s"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 #, fuzzy
 msgid "Human Verification"
 msgstr "电子邮箱验证失败"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "请验证您是人类以继续。"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "验证您是人类"
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verification failed. Please try again."
 msgstr "错误。请重试。"
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verifying..."
 msgstr "编辑中..."
@@ -4465,16 +4465,6 @@ msgstr "自列表生成后，已有人填写了此信息。感谢您的查证。
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "返回列表"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "已为 %(link_start)s%(title)s%(link_end)s 保存 %(field)s：%(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "已为 %(link_start)s%(title)s%(link_end)s 保存 %(field)s"
 
 #: covers/add.html
 #, fuzzy
@@ -8385,6 +8375,20 @@ msgid "Go to edit page"
 msgstr "前往编辑页面"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "刚刚保存"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "已添加%(field)s：%(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "已添加%(field)s"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "如何作答"
 
@@ -8490,8 +8494,8 @@ msgid "No matching language"
 msgstr "没有匹配的语言"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "其他版本记录为"
+msgid "Other editions say…"
+msgstr "其他版本的说明…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9678,6 +9682,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "补全人们最常收藏的书籍中缺失的信息。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "还剩 <b>%(count)s</b> 个任务"
+msgstr[1] "还剩 <b>%(count)s</b> 个任务"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "目前已有 %(count)s 人提供帮助"
+msgstr[1] "目前已有 %(count)s 人提供帮助"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11728,4 +11746,13 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Any edition"
 #~ msgstr "任意版本"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "已为 %(link_start)s%(title)s%(link_end)s 保存 %(field)s：%(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "已为 %(link_start)s%(title)s%(link_end)s 保存 %(field)s"
+
+#~ msgid "Other editions say"
+#~ msgstr "其他版本记录为"
 

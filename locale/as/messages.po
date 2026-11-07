@@ -558,7 +558,7 @@ msgstr "নতুন কিতাপ যোগ কৰা হ'ল।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library কেটালগ উন্নত কৰাৰ বাবে আপোনাক ধন্যবাদ!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "বন্ধ কৰক"
 
@@ -804,23 +804,23 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(count)i বাৰ %(time_unit)s লগ কৰা হৈছে"
 msgstr[1] "%(count)i বাৰ %(time_unit)s লগ কৰা হৈছে"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 msgid "Human Verification"
 msgstr "মানৱ যাচাইকৰণ"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "অনুগ্ৰহ কৰি অব্যাহত ৰাখিবলৈ আপুনি মানুহ বুলি যাচাই কৰক।"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "আপুনি মানুহ বুলি যাচাই কৰক"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "যাচাইকৰণ বিফল হ'ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verifying..."
 msgstr "যাচাই কৰা হৈছে..."
 
@@ -4231,16 +4231,6 @@ msgstr "তালিকাখন বনোৱাৰ পিছত কাৰোব
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "তালিকালৈ উভতি যাওক"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s ছেভ কৰা হৈছে: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s ছেভ কৰা হৈছে"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -7987,6 +7977,20 @@ msgid "Go to edit page"
 msgstr "সম্পাদনা পৃষ্ঠালৈ যাওক"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "মাত্ৰ সংৰক্ষণ কৰা হ'ল"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s যোগ কৰা হ'ল: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s যোগ কৰা হ'ল"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "কেনেকৈ উত্তৰ দিব"
 
@@ -8092,8 +8096,8 @@ msgid "No matching language"
 msgstr "কোনো মিলা ভাষা নাই"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "আন সংস্কৰণসমূহে কয়"
+msgid "Other editions say…"
+msgstr "অন্য সংস্কাৰবোৰে কয়…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9271,6 +9275,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "মানুহে সকলোতকৈ বেছি শ্বেল্ফত ৰখা কিতাপসমূহৰ অনুপস্থিত তথ্য পূৰ কৰক।"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "<b>%(count)s</b>টা কাম বাকী আছে"
+msgstr[1] "<b>%(count)s</b>টা কাম বাকী আছে"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "এতিয়ালৈকে %(count)s জনে সহায় কৰিছে"
+msgstr[1] "এতিয়ালৈকে %(count)s জনে সহায় কৰিছে"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11222,4 +11240,13 @@ msgstr "চাৰ্টসমূহ ল'ড হ'ব নোৱাৰিলে। 
 
 #~ msgid "Any edition"
 #~ msgstr "কোনো সংস্কৰণ"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s ছেভ কৰা হৈছে: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s ৰ বাবে %(field)s ছেভ কৰা হৈছে"
+
+#~ msgid "Other editions say"
+#~ msgstr "আন সংস্কৰণসমূহে কয়"
 

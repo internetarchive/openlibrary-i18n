@@ -550,7 +550,7 @@ msgstr "新しい本が追加されました。"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library カタログを改善していただきありがとうございます！"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "閉じる"
 
@@ -795,23 +795,23 @@ msgid "Logged %(count)i time %(time_unit)s"
 msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(time_unit)sに%(count)i回記録されました"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 msgid "Human Verification"
 msgstr "人間認証"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "続行するには人間であることを確認してください。"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "人間であることを確認"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "確認に失敗しました。もう一度試してください。"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verifying..."
 msgstr "確認中..."
 
@@ -4223,16 +4223,6 @@ msgstr "リストが作成されてから誰かが入力しました。確認し
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "リストに戻る"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)sの%(field)sを保存しました：%(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)sの%(field)sを保存しました"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -7949,6 +7939,20 @@ msgid "Go to edit page"
 msgstr "編集ページへ移動"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "たった今保存しました"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s を追加しました: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s を追加しました"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "回答方法"
 
@@ -8052,8 +8056,8 @@ msgid "No matching language"
 msgstr "一致する言語がありません"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "他の版では"
+msgid "Other editions say…"
+msgstr "他の版の情報…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9239,6 +9243,18 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "人々が最もよく本棚に追加する本の不足情報を入力してください。"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "あと<b>%(count)s</b>件のタスクが残っています"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "これまでに%(count)s人が協力しました"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11421,4 +11437,13 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "Any edition"
 #~ msgstr "任意の版"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)sの%(field)sを保存しました：%(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)sの%(field)sを保存しました"
+
+#~ msgid "Other editions say"
+#~ msgstr "他の版では"
 

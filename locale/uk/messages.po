@@ -574,7 +574,7 @@ msgstr "Додано нову книгу."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Дуже дякуємо за те, що покращили наші дані!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Закрити"
 
@@ -834,25 +834,25 @@ msgstr[0] "Зареєстровано %(count)i раз %(time_unit)s"
 msgstr[1] "Зареєстровано %(count)i рази %(time_unit)s"
 msgstr[2] ""
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 #, fuzzy
 msgid "Human Verification"
 msgstr "Підтвердження поштової адреси провалилося"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "Будь ласка, підтвердіть, що ви людина, щоб продовжити."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "Підтвердіть, що ви людина"
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verification failed. Please try again."
 msgstr "Неправильно. Будь ласка, спробуйте знову."
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verifying..."
 msgstr "Редагування..."
@@ -4441,16 +4441,6 @@ msgstr "Хтось уже заповнив це відтоді, як списо�
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "Назад до списку"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "Збережено %(field)s для %(link_start)s%(title)s%(link_end)s: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "Збережено %(field)s для %(link_start)s%(title)s%(link_end)s"
 
 #: covers/add.html
 #, fuzzy
@@ -8358,6 +8348,20 @@ msgid "Go to edit page"
 msgstr "Перейти на сторінку редагування"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "Щойно збережено"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s додано: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s додано"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "Як відповісти"
 
@@ -8465,8 +8469,8 @@ msgid "No matching language"
 msgstr "Відповідної мови не знайдено"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "Інші видання вказують"
+msgid "Other editions say…"
+msgstr "Інші видання зазначають…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9667,6 +9671,22 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "Заповніть відсутні дані в книгах, які люди найчастіше додають на полицю."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "Залишилося <b>%(count)s</b> завдання"
+msgstr[1] "Залишилося <b>%(count)s</b> завдання"
+msgstr[2] "Залишилося <b>%(count)s</b> завдань"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "Поки що допомогла %(count)s людина"
+msgstr[1] "Поки що допомогли %(count)s людини"
+msgstr[2] "Поки що допомогли %(count)s людей"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11722,4 +11742,13 @@ msgstr "Не вдалося завантажити графіки. Переза�
 
 #~ msgid "Any edition"
 #~ msgstr "Будь-яке видання"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "Збережено %(field)s для %(link_start)s%(title)s%(link_end)s: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "Збережено %(field)s для %(link_start)s%(title)s%(link_end)s"
+
+#~ msgid "Other editions say"
+#~ msgstr "Інші видання вказують"
 

@@ -564,7 +564,7 @@ msgstr "Yeni kitap eklendi."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Kapat"
 
@@ -820,24 +820,24 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(time_unit)s %(count)i kez kaydedildi"
 msgstr[1] "%(time_unit)s %(count)i kez kaydedildi"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 #, fuzzy
 msgid "Human Verification"
 msgstr "Bildirim ayarlarını yönet"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "Devam etmek için insan olduğunuzu doğrulayın."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "İnsan olduğunuzu doğrulayın"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "Doğrulama başarısız oldu. Lütfen tekrar deneyin."
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verifying..."
 msgstr "Her şey"
@@ -4325,16 +4325,6 @@ msgstr "Liste oluşturulduktan sonra biri bunu doldurmuş. Kontrol ettiğiniz i�
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "Listeye dön"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)s için %(field)s kaydedildi: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)s için %(field)s kaydedildi"
 
 #: covers/add.html
 msgid "There are two ways to put an author's image on Open Library."
@@ -8150,6 +8140,20 @@ msgid "Go to edit page"
 msgstr "Düzenleme sayfasına git"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "Az önce kaydedildi"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s eklendi: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s eklendi"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "Nasıl yanıtlanır"
 
@@ -8255,8 +8259,8 @@ msgid "No matching language"
 msgstr "Eşleşen dil yok"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "Diğer baskılar şöyle diyor"
+msgid "Other editions say…"
+msgstr "Diğer baskılar şöyle diyor…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9449,6 +9453,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "İnsanların rafına en çok eklediği kitaplardaki eksik bilgileri tamamlayın."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "<b>%(count)s</b> görev kaldı"
+msgstr[1] "<b>%(count)s</b> görev kaldı"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "Şimdiye kadar %(count)s kişi yardımcı oldu"
+msgstr[1] "Şimdiye kadar %(count)s kişi yardımcı oldu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11633,4 +11651,13 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "Any edition"
 #~ msgstr "Herhangi bir baskı"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s için %(field)s kaydedildi: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s için %(field)s kaydedildi"
+
+#~ msgid "Other editions say"
+#~ msgstr "Diğer baskılar şöyle diyor"
 
