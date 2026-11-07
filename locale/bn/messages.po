@@ -578,7 +578,7 @@ msgstr "नई किताब जोड़ी गई।"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "बंद करें"
 
@@ -837,23 +837,23 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(count)i বার লগ করা হয়েছে %(time_unit)s"
 msgstr[1] "%(count)i বার লগ করা হয়েছে %(time_unit)s"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 msgid "Human Verification"
 msgstr "মানব যাচাইকরণ"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "চালিয়ে যেতে অনুগ্রহ করে যাচাই করুন যে আপনি মানুষ।"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "আপনি মানুষ কিনা যাচাই করুন"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "যাচাইকরণ ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verifying..."
 msgstr "যাচাই করা হচ্ছে..."
 
@@ -4417,16 +4417,6 @@ msgstr "তালিকাটি তৈরি হওয়ার পর থে�
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "তালিকায় ফিরে যান"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)s-এর জন্য %(field)s সংরক্ষণ করা হয়েছে: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)s-এর জন্য %(field)s সংরক্ষণ করা হয়েছে"
 
 #: covers/add.html
 #, fuzzy
@@ -8292,6 +8282,20 @@ msgid "Go to edit page"
 msgstr "সম্পাদনার পাতায় যান"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "এইমাত্র সংরক্ষিত হয়েছে"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s যোগ করা হয়েছে: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s যোগ করা হয়েছে"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "কীভাবে উত্তর দেবেন"
 
@@ -8397,8 +8401,8 @@ msgid "No matching language"
 msgstr "কোনো মিলযুক্ত ভাষা নেই"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "অন্যান্য সংস্করণ অনুযায়ী"
+msgid "Other editions say…"
+msgstr "অন্যান্য সংস্করণ বলছে…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9585,6 +9589,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "মানুষ সবচেয়ে বেশি যেসব বই শেলফে রাখে, সেগুলোর অনুপস্থিত তথ্য পূরণ করুন।"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "<b>%(count)s</b>টি কাজ বাকি আছে"
+msgstr[1] "<b>%(count)s</b>টি কাজ বাকি আছে"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "এ পর্যন্ত %(count)s জন সাহায্য করেছেন"
+msgstr[1] "এ পর্যন্ত %(count)s জন সাহায্য করেছেন"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11766,4 +11784,13 @@ msgstr "লেখচিত্রগুলি লোড করা যায়ন
 
 #~ msgid "Any edition"
 #~ msgstr "কোনো সংস্করণ"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s-এর জন্য %(field)s সংরক্ষণ করা হয়েছে: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s-এর জন্য %(field)s সংরক্ষণ করা হয়েছে"
+
+#~ msgid "Other editions say"
+#~ msgstr "অন্যান্য সংস্করণ অনুযায়ী"
 
