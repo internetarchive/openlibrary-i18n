@@ -579,7 +579,7 @@ msgstr "పుస్తకం చేర్చు"
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Open Library కేటలాగ్‌ను మెరుగుపరచినందుకు ధన్యవాదాలు!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "మూసు"
 
@@ -843,25 +843,25 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "%(time_unit)s లో %(count)i సారి నమోదు చేయబడింది"
 msgstr[1] "%(time_unit)s లో %(count)i సార్లు నమోదు చేయబడింది"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 #, fuzzy
 msgid "Human Verification"
 msgstr "ఈ-మెయిల్ ధ్రువీకరణ విఫలమైంది."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "కొనసాగించడానికి దయచేసి మీరు మానవులని ధృవీకరించండి."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "మీరు మానవులని ధృవీకరించండి"
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verification failed. Please try again."
 msgstr "ధృవీరనా ఈ-మెయిల్ పంపబడినది "
 
-#: verify_human.html
+#: verify_human.html.jinja
 #, fuzzy
 msgid "Verifying..."
 msgstr "సవరిస్తున్నారు..."
@@ -4481,16 +4481,6 @@ msgstr "జాబితా తయారు చేసినప్పటి ను
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "జాబితాకు తిరిగి వెళ్ళండి"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(link_start)s%(title)s%(link_end)s కోసం %(field)s సేవ్ చేయబడింది: %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(link_start)s%(title)s%(link_end)s కోసం %(field)s సేవ్ చేయబడింది"
 
 #: covers/add.html
 #, fuzzy
@@ -8470,6 +8460,20 @@ msgid "Go to edit page"
 msgstr "సవరణ పేజీకి వెళ్ళండి"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "ఇప్పుడే భద్రపరచబడింది"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s జోడించబడింది: %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s జోడించబడింది"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "ఎలా సమాధానం ఇవ్వాలి"
 
@@ -8575,8 +8579,8 @@ msgid "No matching language"
 msgstr "సరిపోలే భాష లేదు"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "ఇతర ఎడిషన్లు చెప్తున్నాయి"
+msgid "Other editions say…"
+msgstr "ఇతర ఎడిషన్‌లు చెబుతున్నాయి…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9773,6 +9777,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "ప్రజలు తమ షెల్ఫ్‌లో ఎక్కువగా ఉంచే పుస్తకాల్లో లేని సమాచారాన్ని పూరించండి."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "<b>%(count)s</b> పని మిగిలి ఉంది"
+msgstr[1] "<b>%(count)s</b> పనులు మిగిలి ఉన్నాయి"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "ఇప్పటివరకు %(count)s వ్యక్తి సహాయం చేశారు"
+msgstr[1] "ఇప్పటివరకు %(count)s మంది సహాయం చేశారు"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -11758,4 +11776,13 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "Any edition"
 #~ msgstr "ఏదైనా సంచిక"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s కోసం %(field)s సేవ్ చేయబడింది: %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(link_start)s%(title)s%(link_end)s కోసం %(field)s సేవ్ చేయబడింది"
+
+#~ msgid "Other editions say"
+#~ msgstr "ఇతర ఎడిషన్లు చెప్తున్నాయి"
 
