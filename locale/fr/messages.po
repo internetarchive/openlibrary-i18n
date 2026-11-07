@@ -554,7 +554,7 @@ msgstr "Nouveau livre ajouté."
 msgid "Thank you for improving the Open Library catalog!"
 msgstr "Merci d’avoir amélioré le catalogue d'Open Library!"
 
-#: ObservationsModal.html account/loans.html contribute/task.html.jinja lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Fermer"
 
@@ -807,23 +807,23 @@ msgid_plural "Logged %(count)i times %(time_unit)s"
 msgstr[0] "Enregistré %(count)i fois %(time_unit)s"
 msgstr[1] "Enregistré %(count)i fois %(time_unit)s"
 
-#: verify_human.html
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py verify_human.html.jinja
 msgid "Human Verification"
 msgstr "Vérification humaine"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Please verify you are human to continue."
 msgstr "Veuillez vérifier que vous êtes humain pour continuer."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verify you are human"
 msgstr "Vérifiez que vous êtes humain"
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verification failed. Please try again."
 msgstr "La vérification a échoué. Veuillez réessayer."
 
-#: verify_human.html
+#: verify_human.html.jinja
 msgid "Verifying..."
 msgstr "Vérification..."
 
@@ -4364,16 +4364,6 @@ msgstr "Quelqu'un l'a déjà renseigné depuis que la liste a été créée. Mer
 #: contribute/nothing.html.jinja contribute/task.html.jinja
 msgid "Back to the list"
 msgstr "Retour à la liste"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
-msgstr "%(field)s enregistré pour %(link_start)s%(title)s%(link_end)s : %(value)s"
-
-#: contribute/task.html.jinja
-#, python-format
-msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
-msgstr "%(field)s enregistré pour %(link_start)s%(title)s%(link_end)s"
 
 #: covers/add.html
 #, fuzzy
@@ -8260,6 +8250,20 @@ msgid "Go to edit page"
 msgstr "Aller à la page de modification"
 
 #: contribute/parts.html.jinja
+msgid "Just saved"
+msgstr "Vient d'être enregistré"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added: %(value)s"
+msgstr "%(field)s ajouté : %(value)s"
+
+#: contribute/parts.html.jinja
+#, python-format
+msgid "%(field)s added"
+msgstr "%(field)s ajouté"
+
+#: contribute/parts.html.jinja
 msgid "How to answer"
 msgstr "Comment répondre"
 
@@ -8365,8 +8369,8 @@ msgid "No matching language"
 msgstr "Aucune langue correspondante"
 
 #: contribute/parts.html.jinja
-msgid "Other editions say"
-msgstr "Les autres éditions indiquent"
+msgid "Other editions say…"
+msgstr "Les autres éditions indiquent…"
 
 #: contribute/parts.html.jinja
 #, python-format
@@ -9554,6 +9558,20 @@ msgstr "%(percent)s%%"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fill in what's missing on the books people shelve most."
 msgstr "Complétez ce qui manque sur les livres les plus souvent ajoutés aux étagères."
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "<b>%(count)s</b> task left"
+msgid_plural "<b>%(count)s</b> tasks left"
+msgstr[0] "Il reste <b>%(count)s</b> tâche"
+msgstr[1] "Il reste <b>%(count)s</b> tâches"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s person has helped so far"
+msgid_plural "%(count)s people have helped so far"
+msgstr[0] "%(count)s personne a aidé jusqu'à présent"
+msgstr[1] "%(count)s personnes ont aidé jusqu'à présent"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "All open tasks"
@@ -12006,4 +12024,13 @@ msgstr "Les graphiques n'ont pas pu se charger. Rechargez la page pour réessaye
 
 #~ msgid "Any edition"
 #~ msgstr "Toute édition"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s: %(value)s"
+#~ msgstr "%(field)s enregistré pour %(link_start)s%(title)s%(link_end)s : %(value)s"
+
+#~ msgid "Saved %(field)s for %(link_start)s%(title)s%(link_end)s"
+#~ msgstr "%(field)s enregistré pour %(link_start)s%(title)s%(link_end)s"
+
+#~ msgid "Other editions say"
+#~ msgstr "Les autres éditions indiquent"
 
