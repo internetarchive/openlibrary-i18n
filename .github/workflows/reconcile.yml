@@ -14,6 +14,10 @@ name: Reconcile translation PRs
 #   - merges any PR whose required checks are all passing;
 #   - refreshes a PR that is behind main (updates its branch) so its checks re-run
 #     against current main — next pass can then merge it;
+#   - re-dispatches a required check that is ABSENT because its run died at startup
+#     (a zero-job "workflow file issue" posts no check), so a transient blip self-
+#     heals instead of leaving the PR in silent limbo (how #230 stranded, 2026-11-09);
+#   - escalates to a human-visible label+comment when that absence persists;
 #   - leaves a genuinely-red PR open and logged, for a human / a re-translation.
 # It never merges anything the live run would not have merged: the bar is identical.
 
@@ -47,14 +51,23 @@ jobs:
         run: |
           set -euo pipefail
           REQUIRE=(--require validate --require "Verify translations deploy cleanly")
+          HELD_LABEL="reconcile: checks absent"
 
-          # number<TAB>mergeStateStatus for every open AI PR.
+          # number<TAB>mergeStateStatus<TAB>headRefName for every open AI PR.
           gh pr list \
             --state open \
             --json number,headRefName,mergeStateStatus \
-            --jq '.[] | select(.headRefName | startswith("i18n/ai-")) | "\(.number)\t\(.mergeStateStatus)"' \
-          | while IFS=$'\t' read -r pr state; do
+            --jq '.[] | select(.headRefName | startswith("i18n/ai-")) | "\(.number)\t\(.mergeStateStatus)\t\(.headRefName)"' \
+          | while IFS=$'\t' read -r pr state head_ref; do
               echo "::group::PR #$pr (mergeStateStatus=$state)"
+
+              # A PR already escalated to a human is HELD until the label is
+              # removed; never retry or merge it automatically in the meantime.
+              if gh pr view "$pr" --json labels -q '.labels[].name' | grep -qxF "$HELD_LABEL"; then
+                echo "PR #$pr is flagged '$HELD_LABEL' — held for a human; skipping."
+                echo "::endgroup::"
+                continue
+              fi
 
               checks="$(gh pr checks "$pr" --json name,bucket 2>/dev/null || echo '[]')"
 
@@ -74,15 +87,61 @@ jobs:
                 continue
               fi
 
-              # Not settled: checks are missing/pending. If the PR is behind main,
-              # refresh it so its checks re-run against current main; otherwise just
-              # wait for the checks already in flight (next scheduled run re-checks).
+              # Not settled: a required check is missing/pending. If the PR is
+              # behind main, refresh it so its checks re-run against current main.
               if [ "$state" = "BEHIND" ]; then
                 echo "PR #$pr is behind main — updating its branch to re-trigger checks."
                 gh pr update-branch "$pr" \
                   || echo "note: could not update PR #$pr (conflict, or nothing to update) — left open."
-              else
-                echo "PR #$pr has checks pending/not yet reported — leaving for the next run."
+                echo "::endgroup::"
+                continue
               fi
+
+              # Not behind: a required check is either genuinely in flight (wait)
+              # or ABSENT because its run died at startup (a zero-job run posts no
+              # check, so the gate above would wait forever). reconcile_rerun.py
+              # decides: re-dispatch a transient startup failure (bounded), escalate
+              # a persistent/unexplained absence to a human, or wait for a live run.
+              meta="$(gh pr view "$pr" --json author,isCrossRepository,createdAt,headRefOid)"
+              author="$(printf '%s' "$meta" | jq -r '.author.login')"
+              cross="$(printf '%s' "$meta" | jq -r '.isCrossRepository')"
+              created="$(printf '%s' "$meta" | jq -r '.createdAt')"
+              head_sha="$(printf '%s' "$meta" | jq -r '.headRefOid')"
+
+              # Old enough that CI should have reported (AI checks finish in minutes).
+              pr_old=false
+              if [ "$(( $(date -u +%s) - $(date -u -d "$created" +%s) ))" -ge 7200 ]; then
+                pr_old=true
+              fi
+
+              # Runs on THIS head SHA only (a branch carries older-SHA runs too).
+              runs="$(gh run list --branch "$head_ref" --limit 50 \
+                        --json databaseId,name,status,conclusion,headSha,attempt \
+                      | jq -c --arg sha "$head_sha" '[.[] | select(.headSha == $sha)]')"
+
+              decision="$(printf '%s' "$checks" | python3 scripts/reconcile_rerun.py \
+                            "${REQUIRE[@]}" --runs <(printf '%s' "$runs") \
+                            --author "$author" --cross-repo "$cross" --pr-old "$pr_old")"
+              verb="${decision%% *}"
+              payload="${decision#"$verb"}"; payload="${payload# }"
+
+              case "$verb" in
+                rerun)
+                  for id in $payload; do
+                    echo "PR #$pr: required check absent from a startup-failed run — re-dispatching run $id."
+                    gh run rerun "$id" || echo "note: could not rerun $id (already rerunning, or gone)."
+                  done
+                  ;;
+                escalate)
+                  echo "PR #$pr: required check(s) absent and not self-healing ($payload) — escalating to a human."
+                  gh label create "$HELD_LABEL" --color B60205 \
+                    --description "A required check never reported; a human should look" 2>/dev/null || true
+                  gh pr edit "$pr" --add-label "$HELD_LABEL" || true
+                  gh pr comment "$pr" --body "⚠️ **reconcile: required check absent.** The check(s) \`${payload}\` have stayed **absent** — the run that posts them keeps failing at startup, or never reported. Auto-merge is **paused** pending a human: re-run the check or re-translate, then remove the \`$HELD_LABEL\` label to let reconcile resume." || true
+                  ;;
+                *)
+                  echo "PR #$pr has checks in flight / not yet reported — leaving for the next run."
+                  ;;
+              esac
               echo "::endgroup::"
             done
