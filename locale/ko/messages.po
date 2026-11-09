@@ -4068,7 +4068,7 @@ msgstr "한 번에 한 권씩, 카탈로그를 만드는 데 도움을 주세요
 msgid "Your edits"
 msgstr "회원님의 편집"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "커뮤니티 프로젝트"
 
@@ -6085,8 +6085,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "선택한 범위 동안의 선택한 지표 차트"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "프로젝트의 책들에서 아직 빠진 세부 정보로, 매일 밤 집계됩니다. 아무도 찾지 못한 세부 정보는 채워진 것으로 간주됩니다."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "각 프로젝트의 책에서 여전히 누락된 세부 정보로, 매일 밤 집계됩니다. 아무도 찾을 수 없었던 세부 정보는 채워진 것으로 집계됩니다."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "커뮤니티 프로젝트. 차트로 볼 프로젝트를 선택하세요."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6106,8 +6110,8 @@ msgid "marked not found"
 msgstr "찾을 수 없음으로 표시됨"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "일별 미완료 세부정보"
+msgid "Details still open on the chosen project, by day"
+msgstr "선택한 프로젝트에서 여전히 열려 있는 세부 정보, 일별"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8359,6 +8363,25 @@ msgstr "숫자만 입력, 예: 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "인쇄본 레코드를 열었고 출판사와 판본이 이것과 일치합니다."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "소설 또는 논픽션"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "가장 많이 서가에 등록된 책 중 %(count)s권이 아직 소설/비소설로 표시되지 않았거나 장르가 없습니다."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "가장 많이 읽힌 책 %(count)s권"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "사람들이 가장 많이 서가에 등록한 판본 %(count)s개입니다. 빠진 표지, 쪽수, 출판사 또는 언어를 채워 주세요."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "목록에서 언어를 선택하세요."
@@ -9189,10 +9212,6 @@ msgid "Filipino"
 msgstr "필리핀어"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "소설 또는 논픽션"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "표지가 없는 책"
 
@@ -9219,21 +9238,6 @@ msgstr "소설/비소설로 표시되지 않은 책"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "장르가 없는 책"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "가장 많이 서가에 등록된 책 중 %(count)s권이 아직 소설/비소설로 표시되지 않았거나 장르가 없습니다."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "가장 많이 읽힌 책 %(count)s권"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "사람들이 가장 많이 서가에 등록한 판본 %(count)s개입니다. 빠진 표지, 쪽수, 출판사 또는 언어를 채워 주세요."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9893,9 +9897,14 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "작업 페이지에서 편집을 저장한 사람입니다. 주간 및 월간 보기에서는 여러 날 저장한 사람도 한 번만 집계됩니다."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b>명이 도왔습니다"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "가장 많이 읽은 %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b>명이 도왔습니다"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11206,4 +11215,13 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "Most needed"
 #~ msgstr "가장 필요함"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "프로젝트의 책들에서 아직 빠진 세부 정보로, 매일 밤 집계됩니다. 아무도 찾지 못한 세부 정보는 채워진 것으로 간주됩니다."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "일별 미완료 세부정보"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "가장 많이 읽은 %(count)s"
 
