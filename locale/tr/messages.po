@@ -4187,7 +4187,7 @@ msgstr "Katalogun oluşturulmasına yardım edin, her seferinde bir kitap."
 msgid "Your edits"
 msgstr "Düzenlemeleriniz"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "Topluluk projeleri"
 
@@ -6262,8 +6262,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "Seçilen metriğin seçilen aralıktaki grafiği"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Projenin kitaplarında hâlâ eksik olan ayrıntılar, her gece sayılır. Kimsenin bulamadığı bir ayrıntı doldurulmuş sayılır."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Her projenin kitaplarında hâlâ eksik olan ayrıntılar, her gece sayılır. Kimsenin bulamadığı bir ayrıntı dolduruldu olarak sayılır."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "Topluluk projeleri. Grafiğini görmek için birini seçin."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6283,8 +6287,8 @@ msgid "marked not found"
 msgstr "bulunamadı olarak işaretlendi"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "Güne göre hâlâ açık olan ayrıntılar"
+msgid "Details still open on the chosen project, by day"
+msgstr "Seçilen projede hâlâ açık olan ayrıntılar, güne göre"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8583,6 +8587,25 @@ msgstr "Yalnızca rakamlar, örneğin 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Basılı bir kayıt açtım ve yayıncısı ile baskısı bununla eşleşiyor."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Kurgu veya kurgu dışı"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "En çok rafa konan kitaplardan %(count)s tanesi henüz kurgu veya kurgu dışı olarak işaretlenmemiş, ya da türü eksik."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "En çok okunan %(count)s kitap"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "İnsanların en çok rafa koyduğu %(count)s baskı. Eksik kapak, sayfa sayısı, yayıncı veya dili doldurun."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "Listeden bir dil seçin."
@@ -9431,10 +9454,6 @@ msgid "Filipino"
 msgstr "Her şey"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Kurgu veya kurgu dışı"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Kapağı olmayan kitaplar"
 
@@ -9461,21 +9480,6 @@ msgstr "Kurgu veya kurgu dışı olarak işaretlenmemiş kitaplar"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Türü olmayan kitaplar"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "En çok rafa konan kitaplardan %(count)s tanesi henüz kurgu veya kurgu dışı olarak işaretlenmemiş, ya da türü eksik."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "En çok okunan %(count)s kitap"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "İnsanların en çok rafa koyduğu %(count)s baskı. Eksik kapak, sayfa sayısı, yayıncı veya dili doldurun."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10146,9 +10150,15 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "Görevler sayfasından bir düzenleme kaydeden kişiler. Hafta ve ay görünümlerinde, birkaç gün kaydeden biri yalnızca bir kez sayılır."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> kişi yardım etti"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "En çok okunan %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> kişi yardım etti"
+msgstr[1] "<b>%(count)s</b> kişi yardım etti"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11786,4 +11796,13 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "Most needed"
 #~ msgstr "En çok ihtiyaç duyulan"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Projenin kitaplarında hâlâ eksik olan ayrıntılar, her gece sayılır. Kimsenin bulamadığı bir ayrıntı doldurulmuş sayılır."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "Güne göre hâlâ açık olan ayrıntılar"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "En çok okunan %(count)s"
 
