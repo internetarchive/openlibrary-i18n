@@ -4275,7 +4275,7 @@ msgstr "ساعد في بناء الفهرس، كتابًا تلو الآخر."
 msgid "Your edits"
 msgstr "تعديلاتك"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "مشاريع المجتمع"
 
@@ -6411,8 +6411,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "رسم بياني للمقياس المختار خلال النطاق الزمني المحدد"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "التفاصيل التي ما زالت ناقصة في كتب المشروع، تُحصى كل ليلة. أي تفصيل تعذّر على الجميع إيجاده يُحتسب مكتملاً."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "التفاصيل التي ما زالت ناقصة في كتب كل مشروع، تُحسب كل ليلة. أي تفصيل لم يتمكن أحد من العثور عليه يُحتسب كمكتمل."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "مشاريع المجتمع. اختر واحدًا لعرضه في الرسم البياني."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6432,8 +6436,8 @@ msgid "marked not found"
 msgstr "مُعلَّم كغير موجود"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "التفاصيل المفتوحة، حسب اليوم"
+msgid "Details still open on the chosen project, by day"
+msgstr "التفاصيل التي ما زالت مفتوحة في المشروع المختار، حسب اليوم"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8777,6 +8781,25 @@ msgstr "أرقام فقط، على سبيل المثال 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "لقد فتحت سجلاً مطبوعًا وتتطابق طبعته وناشره مع هذه الطبعة."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "خيال أو غير خيالي"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "%(count)s من أكثر الكتب حفظًا في الرفوف التي لم تُصنَّف بعد كخيال أو غير خيال، أو ينقصها نوعها الأدبي."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "%(count)s من أكثر الكتب قراءة"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "%(count)s من الطبعات الأكثر حفظًا لدى الناس. أكمل أي غلاف أو عدد صفحات أو ناشر أو لغة ناقصة."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "اختر لغة من القائمة."
@@ -9619,10 +9642,6 @@ msgid "Filipino"
 msgstr "الفلبينية"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "خيال أو غير خيالي"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "كتب بلا غلاف"
 
@@ -9649,21 +9668,6 @@ msgstr "كتب غير مصنّفة كخيال أو غير خيال"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "كتب بلا نوع أدبي"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s من أكثر الكتب حفظًا في الرفوف التي لم تُصنَّف بعد كخيال أو غير خيال، أو ينقصها نوعها الأدبي."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s من أكثر الكتب قراءة"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "%(count)s من الطبعات الأكثر حفظًا لدى الناس. أكمل أي غلاف أو عدد صفحات أو ناشر أو لغة ناقصة."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10350,9 +10354,16 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "الأشخاص الذين حفظوا تعديلاً من صفحة المهام. في طريقتي عرض الأسبوع والشهر، يُحتسب الشخص الذي حفظ في عدة أيام مرة واحدة فقط."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "ساعد <b>—</b> شخص"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "الأكثر قراءة %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "ساعد <b>%(count)s</b> شخص"
+msgstr[1] "ساعد <b>%(count)s</b> أشخاص"
+msgstr[2] ""
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -12100,4 +12111,13 @@ msgstr "تعذّر تحميل الرسوم البيانية. أعد تحميل �
 
 #~ msgid "Most needed"
 #~ msgstr "الأكثر احتياجاً"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "التفاصيل التي ما زالت ناقصة في كتب المشروع، تُحصى كل ليلة. أي تفصيل تعذّر على الجميع إيجاده يُحتسب مكتملاً."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "التفاصيل المفتوحة، حسب اليوم"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "الأكثر قراءة %(count)s"
 
