@@ -145,6 +145,11 @@ def decide(required, checks, runs, *, author, cross_repo, pr_is_old,
 
         if status in LIVE_STATUSES or (status != "completed" and not conclusion):
             waiting.append(f"{name!r} run is live")
+        elif conclusion == "success":
+            # The run that posts this check SUCCEEDED, but the check is not in the
+            # rollup yet -- status-propagation lag, not a real absence. Wait for it
+            # to appear; never escalate a healthy PR over a visibility delay.
+            waiting.append(f"{name!r} run succeeded; check not in rollup yet (lag)")
         elif conclusion in APPROVAL_CONCLUSIONS or not transient_eligible:
             # Fork-approval gate or a non-bot/fork PR: not ours to auto-rerun.
             waiting.append(f"{name!r} needs approval / not transient-eligible")

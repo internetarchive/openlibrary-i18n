@@ -99,6 +99,16 @@ def test_present_pending_bucket_waits():
     assert action == rr.WAIT
 
 
+def test_absent_check_with_a_successful_run_waits_not_escalates():
+    # The run that posts the check SUCCEEDED but the check has not propagated to
+    # the rollup yet (status-propagation lag). A healthy PR must NOT be escalated
+    # over a visibility delay -- even on an old PR.
+    checks = _checks(validate="pass")  # VERIFY absent
+    runs = [_run(VERIFY, conclusion="success")]
+    action, payload, reason = _decide(checks, runs, pr_is_old=True)
+    assert action == rr.WAIT and payload == []
+
+
 # --- safety: never rerun the approval / fork kind ----------------------------
 
 def test_action_required_run_is_never_rerun():
