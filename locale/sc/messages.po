@@ -4084,7 +4084,7 @@ msgstr "Agiuda a costruire su catàlogu, unu libru a sa borta."
 msgid "Your edits"
 msgstr "Is editas tuas"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "Progetos de sa comunidade"
 
@@ -6120,8 +6120,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "Gràficu de sa mètrica isseberada in s'intervallu isseberadu"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Detàllios chi mancant ancora in is libros de su progetu, contados dònnia note. Unu detàlliu chi nemos at pòdidu agatare contat comente cumpletu."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Detàllios galu mancantes in is libros de dogna progetu, contados dogna note. Unu detàlliu chi nemos at pòdidu agatare contat comente prenu."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "Progetos de sa comunidade. Issèbera·nde unu pro lu bìdere in su gràficu."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6141,8 +6145,8 @@ msgid "marked not found"
 msgstr "marcados comente non agatados"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "Detàllios galu abertos, die pro die"
+msgid "Details still open on the chosen project, by day"
+msgstr "Detàllios galu abertos in su progetu seberadu, pro dies"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8405,6 +8409,25 @@ msgstr "Tzifras ebbia, a esèmpiu 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Apo abertu unu registru de sa versione imprentada, e s'editore e s'editzione currispondent a custa."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Fintzione o non fintzione"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "%(count)s de is libros prus archiviados chi no sunt ancora marcados comente fintzione o no fintzione, o chi mancat su gènere."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "%(count)s libros prus lèghidos"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "Is %(count)s editziones chi sa gente archiviat de prus. Cumpleta cuberta, nùmeru de pàginas, editore o limba chi mancant."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "Issèbera una limba dae sa lista."
@@ -9238,10 +9261,6 @@ msgid "Filipino"
 msgstr "Filipinu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Fintzione o non fintzione"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Libros chentza cuberta"
 
@@ -9268,21 +9287,6 @@ msgstr "Libros no marcados comente fintzione o no fintzione"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Libros chentza gènere"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s de is libros prus archiviados chi no sunt ancora marcados comente fintzione o no fintzione, o chi mancat su gènere."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s libros prus lèghidos"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "Is %(count)s editziones chi sa gente archiviat de prus. Cumpleta cuberta, nùmeru de pàginas, editore o limba chi mancant."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9943,9 +9947,15 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "Persones chi ant sarvadu una modìfica dae sa pàgina de sas Fainas. In sas vistas pro chida e pro mese, chie at sarvadu in prus dies est contadu una borta ebbia."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> persones ant agiuadu"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "Sos %(count)s prus lèghidos"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> persona at agiuadu"
+msgstr[1] "<b>%(count)s</b> persones ant agiuadu"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11951,4 +11961,13 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 
 #~ msgid "Most needed"
 #~ msgstr "Prus netzessàriu"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Detàllios chi mancant ancora in is libros de su progetu, contados dònnia note. Unu detàlliu chi nemos at pòdidu agatare contat comente cumpletu."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "Detàllios galu abertos, die pro die"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "Sos %(count)s prus lèghidos"
 
