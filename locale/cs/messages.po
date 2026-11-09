@@ -4307,7 +4307,7 @@ msgstr "Pomozte budovat katalog, jedna kniha po druhé."
 msgid "Your edits"
 msgstr "Vaše úpravy"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "Komunitní projekty"
 
@@ -6471,8 +6471,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "Graf vybrané metriky za zvolené období"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Podrobnosti, které v knihách projektu stále chybí, se počítají každou noc. Podrobnost, kterou nikdo nedokázal najít, se počítá jako vyplněná."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Detaily, které v knihách každého projektu stále chybí, počítané každou noc. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "Komunitní projekty. Vyberte jeden a zobrazte ho v grafu."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6492,8 +6496,8 @@ msgid "marked not found"
 msgstr "označeno jako nenalezeno"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "Zbývající údaje podle dne"
+msgid "Details still open on the chosen project, by day"
+msgstr "Detaily stále otevřené u vybraného projektu, podle dnů"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8879,6 +8883,25 @@ msgstr "Pouze číslice, například 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Otevřel(a) jsem tištěný záznam a jeho nakladatel a vydání odpovídají tomuto."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Beletrie, nebo literatura faktu"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "%(count)s z nejčastěji zařazovaných knih, které ještě nejsou označeny jako beletrie nebo naučná literatura, nebo jim chybí žánr."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "%(count)s nejčtenějších knih"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "%(count)s vydání, která lidé zařazují nejčastěji. Doplňte chybějící obálku, počet stran, vydavatele nebo jazyk."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "Vyberte jazyk ze seznamu."
@@ -9735,10 +9758,6 @@ msgid "Filipino"
 msgstr "Filipínsky"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Beletrie, nebo literatura faktu"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Knihy bez obálky"
 
@@ -9765,21 +9784,6 @@ msgstr "Knihy neoznačené jako beletrie nebo naučná literatura"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Knihy bez žánru"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s z nejčastěji zařazovaných knih, které ještě nejsou označeny jako beletrie nebo naučná literatura, nebo jim chybí žánr."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s nejčtenějších knih"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "%(count)s vydání, která lidé zařazují nejčastěji. Doplňte chybějící obálku, počet stran, vydavatele nebo jazyk."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10464,9 +10468,16 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "Lidé, kteří uložili úpravu ze stránky Úkoly. V týdenním a měsíčním zobrazení se osoba, která ukládala ve více dnech, počítá jen jednou."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> osob pomohlo"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "Nejčtenějších %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> osoba pomohla"
+msgstr[1] "<b>%(count)s</b> osoby pomohly"
+msgstr[2] "<b>%(count)s</b> osob pomohlo"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11938,4 +11949,13 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "Most needed"
 #~ msgstr "Nejvíce potřebné"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Podrobnosti, které v knihách projektu stále chybí, se počítají každou noc. Podrobnost, kterou nikdo nedokázal najít, se počítá jako vyplněná."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "Zbývající údaje podle dne"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "Nejčtenějších %(count)s"
 
