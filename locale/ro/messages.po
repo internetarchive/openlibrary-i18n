@@ -4118,7 +4118,7 @@ msgstr "Ajutați la construirea catalogului, câte o carte pe rând."
 msgid "Your edits"
 msgstr "Editările dumneavoastră"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "Proiecte ale comunității"
 
@@ -6183,8 +6183,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "Grafic al valorii alese pe intervalul ales"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Detalii care încă lipsesc din cărțile proiectului, numărate în fiecare noapte. Un detaliu pe care nimeni nu l-a putut găsi se consideră completat."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Detalii încă lipsă din cărțile fiecărui proiect, numărate în fiecare noapte. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "Proiecte ale comunității. Alege unul pentru a-l reprezenta grafic."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6204,8 +6208,8 @@ msgid "marked not found"
 msgstr "marcat ca negăsit"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "Detalii încă deschise, pe zi"
+msgid "Details still open on the chosen project, by day"
+msgstr "Detalii încă deschise la proiectul ales, pe zile"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8498,6 +8502,25 @@ msgstr "Doar cifre, de exemplu 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Am deschis o înregistrare tipărită, iar editura și ediția acesteia corespund acesteia."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Ficțiune sau non-ficțiune"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "%(count)s dintre cele mai depozitate cărți care încă nu sunt marcate ca ficțiune sau non-ficțiune, sau le lipsește genul."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "%(count)s cele mai citite cărți"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "Cele %(count)s ediții pe care oamenii le depozitează cel mai mult. Completați coperta, numărul de pagini, editura sau limba lipsă."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "Alege o limbă din listă."
@@ -9337,10 +9360,6 @@ msgid "Filipino"
 msgstr "Filipino"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Ficțiune sau non-ficțiune"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Cărți fără copertă"
 
@@ -9367,21 +9386,6 @@ msgstr "Cărți nemarcate ca ficțiune sau non-ficțiune"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Cărți fără gen"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s dintre cele mai depozitate cărți care încă nu sunt marcate ca ficțiune sau non-ficțiune, sau le lipsește genul."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s cele mai citite cărți"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "Cele %(count)s ediții pe care oamenii le depozitează cel mai mult. Completați coperta, numărul de pagini, editura sau limba lipsă."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10049,9 +10053,16 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "Persoane care au salvat o editare din pagina Sarcini. În vizualizările pe săptămână și lună, o persoană care a salvat în mai multe zile este numărată o singură dată."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> persoane au ajutat"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "Cele mai citite %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> persoană a ajutat"
+msgstr[1] "<b>%(count)s</b> persoane au ajutat"
+msgstr[2] "<b>%(count)s</b> de persoane au ajutat"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11442,4 +11453,13 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 
 #~ msgid "Most needed"
 #~ msgstr "Cele mai necesare"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Detalii care încă lipsesc din cărțile proiectului, numărate în fiecare noapte. Un detaliu pe care nimeni nu l-a putut găsi se consideră completat."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "Detalii încă deschise, pe zi"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "Cele mai citite %(count)s"
 

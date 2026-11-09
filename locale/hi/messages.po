@@ -4300,7 +4300,7 @@ msgstr "सूची बनाने में मदद करें, एक �
 msgid "Your edits"
 msgstr "आपके संपादन"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "सामुदायिक परियोजनाएँ"
 
@@ -6414,8 +6414,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "चुनी गई अवधि में चुने गए मीट्रिक का चार्ट"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "परियोजना की किताबों में अभी भी छूटे विवरण, हर रात गिने जाते हैं। जो विवरण कोई नहीं खोज सका, वह भरा हुआ माना जाता है।"
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "हर परियोजना की किताबों में अब भी गायब विवरण, हर रात गिने जाते हैं। जो विवरण कोई नहीं खोज पाया, उसे भरा हुआ माना जाता है।"
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "सामुदायिक परियोजनाएँ। चार्ट में देखने के लिए एक चुनें।"
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6435,8 +6439,8 @@ msgid "marked not found"
 msgstr "नहीं मिला के रूप में चिह्नित"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "अब भी बाकी विवरण, दिन के अनुसार"
+msgid "Details still open on the chosen project, by day"
+msgstr "चुनी गई परियोजना में अब भी खुले विवरण, दिन के अनुसार"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8766,6 +8770,25 @@ msgstr "केवल अंक, उदाहरण के लिए 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "मैंने एक प्रिंट रिकॉर्ड खोला और इसका प्रकाशक और संस्करण इससे मेल खाता है।"
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "कल्पित या अकल्पित"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "सबसे अधिक संग्रहित किताबों में से %(count)s, जो अभी कल्पित या गैर-कल्पित के रूप में चिह्नित नहीं हैं, या जिनकी शैली गायब है।"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "सबसे अधिक पढ़ी गई %(count)s किताबें"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "वे %(count)s संस्करण जिन्हें लोग सबसे अधिक संग्रहित करते हैं। गायब आवरण, पृष्ठ संख्या, प्रकाशक या भाषा भरें।"
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "सूची में से एक भाषा चुनें।"
@@ -9620,10 +9643,6 @@ msgid "Filipino"
 msgstr "फ़िलिपिनो"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "कल्पित या अकल्पित"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "आवरण रहित किताबें"
 
@@ -9650,21 +9669,6 @@ msgstr "कल्पित या गैर-कल्पित के रूप 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "शैली रहित किताबें"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "सबसे अधिक संग्रहित किताबों में से %(count)s, जो अभी कल्पित या गैर-कल्पित के रूप में चिह्नित नहीं हैं, या जिनकी शैली गायब है।"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "सबसे अधिक पढ़ी गई %(count)s किताबें"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "वे %(count)s संस्करण जिन्हें लोग सबसे अधिक संग्रहित करते हैं। गायब आवरण, पृष्ठ संख्या, प्रकाशक या भाषा भरें।"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10355,9 +10359,15 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "वे लोग जिन्होंने कार्य पेज से कोई बदलाव सेव किया। सप्ताह और महीने के दृश्य में, कई दिन सेव करने वाला व्यक्ति एक बार गिना जाता है।"
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> लोगों ने मदद की है"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "सबसे ज़्यादा पढ़ी गई %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> व्यक्ति ने मदद की है"
+msgstr[1] "<b>%(count)s</b> लोगों ने मदद की है"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11735,4 +11745,13 @@ msgstr "चार्ट लोड नहीं हो सके। फिर स
 
 #~ msgid "Most needed"
 #~ msgstr "सबसे ज़्यादा ज़रूरी"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "परियोजना की किताबों में अभी भी छूटे विवरण, हर रात गिने जाते हैं। जो विवरण कोई नहीं खोज सका, वह भरा हुआ माना जाता है।"
+
+#~ msgid "Details still open, by day"
+#~ msgstr "अब भी बाकी विवरण, दिन के अनुसार"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "सबसे ज़्यादा पढ़ी गई %(count)s"
 

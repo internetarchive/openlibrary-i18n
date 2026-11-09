@@ -4105,7 +4105,7 @@ msgstr "Tumulong bumuo ng katalogo, isang libro sa bawat pagkakataon."
 msgid "Your edits"
 msgstr "Ang mga pag-edit mo"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "Mga proyekto ng komunidad"
 
@@ -6145,8 +6145,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "Chart ng napiling sukatan sa loob ng napiling saklaw"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Mga detalyeng kulang pa rin sa mga aklat ng proyekto, binibilang tuwing gabi. Ang detalyeng hindi mahanap ninuman ay ituturing na nasagot na."
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto, binibilang tuwing gabi. Ang detalyeng hindi mahanap ninuman ay binibilang na napunan na."
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "Mga proyekto ng komunidad. Pumili ng isa para i-chart ito."
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6166,8 +6170,8 @@ msgid "marked not found"
 msgstr "minarkahang hindi natagpuan"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "Mga detalyeng bukas pa, ayon sa araw"
+msgid "Details still open on the chosen project, by day"
+msgstr "Mga detalyeng bukas pa rin sa napiling proyekto, kada araw"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8444,6 +8448,25 @@ msgstr "Mga digit lamang, halimbawa 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Nagbukas ako ng talaang naka-print at tumutugma ang publisher at edisyon nito dito."
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Fiction o nonfiction"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "%(count)s sa mga pinakamadalas isiwalat na aklat na hindi pa minarkahang fiction o nonfiction, o kulang ang genre."
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "%(count)s na pinakamadalas basahing aklat"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "Ang %(count)s edisyon na pinakamadalas isiwalat ng mga tao. Punan ang kulang na pabalat, bilang ng pahina, publisher, o wika."
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "Pumili ng wika mula sa listahan."
@@ -9282,10 +9305,6 @@ msgid "Filipino"
 msgstr "Filipino"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Fiction o nonfiction"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Mga aklat na walang pabalat"
 
@@ -9312,21 +9331,6 @@ msgstr "Mga aklat na hindi minarkahang fiction o nonfiction"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Mga aklat na walang genre"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s sa mga pinakamadalas isiwalat na aklat na hindi pa minarkahang fiction o nonfiction, o kulang ang genre."
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s na pinakamadalas basahing aklat"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "Ang %(count)s edisyon na pinakamadalas isiwalat ng mga tao. Punan ang kulang na pabalat, bilang ng pahina, publisher, o wika."
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9989,9 +9993,15 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "Mga taong nag-save ng pag-edit mula sa pahina ng Gawain. Sa tanawing lingguhan at buwanan, ang isang taong nag-save sa ilang araw ay binibilang nang isang beses lang."
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> tao ang tumulong"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "Pinaka-binabasang %(count)s"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> tao ang tumulong"
+msgstr[1] "<b>%(count)s</b> tao ang tumulong"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11558,4 +11568,13 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "Most needed"
 #~ msgstr "Pinaka-kailangan"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Mga detalyeng kulang pa rin sa mga aklat ng proyekto, binibilang tuwing gabi. Ang detalyeng hindi mahanap ninuman ay ituturing na nasagot na."
+
+#~ msgid "Details still open, by day"
+#~ msgstr "Mga detalyeng bukas pa, ayon sa araw"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "Pinaka-binabasang %(count)s"
 

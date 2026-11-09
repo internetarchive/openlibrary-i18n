@@ -4085,7 +4085,7 @@ msgstr "カタログ作りに協力しましょう。一度に一冊ずつ。"
 msgid "Your edits"
 msgstr "あなたの編集"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "コミュニティプロジェクト"
 
@@ -6106,8 +6106,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "選択した期間における選択した指標のグラフ"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "プロジェクトの書籍でまだ不足している項目は、毎晩集計されます。誰も見つけられなかった項目は、埋まったものとして扱われます。"
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "各プロジェクトの本にまだ欠けている詳細情報を、毎晩カウントします。誰も見つけられなかった詳細は、記入済みとして数えられます。"
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "コミュニティプロジェクト。グラフに表示する項目を選択してください。"
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6127,8 +6131,8 @@ msgid "marked not found"
 msgstr "「見つからない」として記録"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "未入力の項目数（日別）"
+msgid "Details still open on the chosen project, by day"
+msgstr "選択したプロジェクトでまだ未対応の詳細情報(日別)"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8379,6 +8383,25 @@ msgstr "数字のみ、例：47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "印刷版のレコードを開き、その出版社と版がこれと一致することを確認しました。"
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "フィクションかノンフィクション"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "最も多く登録されている本のうち%(count)s冊が、まだフィクション・ノンフィクションの区別やジャンルが未設定です。"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "最も読まれている本%(count)s冊"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "人々が最も多く登録している%(count)s件の版です。不足している表紙、ページ数、出版社、言語を入力してください。"
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "リストから言語を選んでください。"
@@ -9221,10 +9244,6 @@ msgid "Filipino"
 msgstr "フィリピン語"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "フィクションかノンフィクション"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "表紙がない本"
 
@@ -9251,21 +9270,6 @@ msgstr "フィクションかノンフィクションか未設定の本"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "ジャンルが未設定の本"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "最も多く登録されている本のうち%(count)s冊が、まだフィクション・ノンフィクションの区別やジャンルが未設定です。"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "最も読まれている本%(count)s冊"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "人々が最も多く登録している%(count)s件の版です。不足している表紙、ページ数、出版社、言語を入力してください。"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9928,9 +9932,14 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "タスクページから編集を保存した人数です。週表示・月表示では、複数日にわたって保存した人も1人として数えます。"
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b>人が協力しました"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "最も読まれている%(count)s件"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b>人が協力しました"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11570,4 +11579,13 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "Most needed"
 #~ msgstr "最も必要とされている"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "プロジェクトの書籍でまだ不足している項目は、毎晩集計されます。誰も見つけられなかった項目は、埋まったものとして扱われます。"
+
+#~ msgid "Details still open, by day"
+#~ msgstr "未入力の項目数（日別）"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "最も読まれている%(count)s件"
 

@@ -4327,7 +4327,7 @@ msgstr "帮助构建目录,一次一本书。"
 msgid "Your edits"
 msgstr "您的编辑"
 
-#: contribute/dashboard.html.jinja
+#: contribute/dashboard.html.jinja stats/tasks.html.jinja
 msgid "Community projects"
 msgstr "社区项目"
 
@@ -6458,8 +6458,12 @@ msgid "Chart of the chosen metric over the chosen range"
 msgstr "所选指标在所选范围内的图表"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "项目书目中仍然缺失的细节,每晚统计一次。任何人都无法找到的细节将被视为已填写。"
+msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+msgstr "每个项目的图书中仍然缺失的详情,每晚统计一次。没有人能找到的详情将被算作已填写。"
+
+#: stats/tasks.html.jinja
+msgid "Community projects. Choose one to chart it."
+msgstr "社区项目。选择一项以绘制图表。"
 
 #: stats/tasks.html.jinja
 msgid "of details filled"
@@ -6479,8 +6483,8 @@ msgid "marked not found"
 msgstr "已标记为未找到"
 
 #: stats/tasks.html.jinja
-msgid "Details still open, by day"
-msgstr "仍未完成的详情，按天显示"
+msgid "Details still open on the chosen project, by day"
+msgstr "所选项目中仍未解决的详情,按天统计"
 
 #: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
@@ -8818,6 +8822,25 @@ msgstr "仅限数字，例如 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "我打开了一条印刷版记录，其出版商和版本与此版本匹配。"
 
+#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "虚构或非虚构"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+msgstr "在收藏最多的书籍中,有 %(count)s 本尚未标注为虚构或非虚构,或者缺少类型。"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "%(count)s most-read books"
+msgstr "最多人阅读的 %(count)s 本书"
+
+#: openlibrary/contribute/initiatives.py
+#, python-format
+msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+msgstr "人们收藏最多的 %(count)s 个版本。补充缺失的封面、页数、出版社或语言。"
+
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
 msgstr "从列表中选择一种语言。"
@@ -9660,10 +9683,6 @@ msgid "Filipino"
 msgstr "菲律宾语"
 
 #: openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "虚构或非虚构"
-
-#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "缺少封面的书籍"
 
@@ -9690,21 +9709,6 @@ msgstr "未标注为虚构或非虚构的书籍"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "缺少类型的书籍"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "在收藏最多的书籍中,有 %(count)s 本尚未标注为虚构或非虚构,或者缺少类型。"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "最多人阅读的 %(count)s 本书"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "人们收藏最多的 %(count)s 个版本。补充缺失的封面、页数、出版社或语言。"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -10394,9 +10398,15 @@ msgid "People who saved an edit from the Tasks page. In week and month views, so
 msgstr "在任务页面保存过编辑的用户。在周视图和月视图中，同一人在多天保存只计一次。"
 
 #: openlibrary/views/loanstats.py
+msgid "<b>—</b> people have helped"
+msgstr "<b>—</b> 人提供了帮助"
+
+#: openlibrary/views/loanstats.py
 #, python-format
-msgid "Most-read %(count)s"
-msgstr "阅读最多的 %(count)s 本"
+msgid "<b>%(count)s</b> person has helped"
+msgid_plural "<b>%(count)s</b> people have helped"
+msgstr[0] "<b>%(count)s</b> 人提供了帮助"
+msgstr[1] "<b>%(count)s</b> 人提供了帮助"
 
 #: openlibrary/views/loanstats.py
 msgid "Per week"
@@ -11881,4 +11891,13 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Most needed"
 #~ msgstr "最急需"
+
+#~ msgid "Details still missing across the project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "项目书目中仍然缺失的细节,每晚统计一次。任何人都无法找到的细节将被视为已填写。"
+
+#~ msgid "Details still open, by day"
+#~ msgstr "仍未完成的详情，按天显示"
+
+#~ msgid "Most-read %(count)s"
+#~ msgstr "阅读最多的 %(count)s 本"
 
