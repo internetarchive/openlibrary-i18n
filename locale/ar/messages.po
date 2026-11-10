@@ -970,7 +970,7 @@ msgstr "تعلم المزيد"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr ""
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "البحث داخل"
@@ -1533,7 +1533,7 @@ msgstr "ملاحظاتي"
 msgid "My Reviews"
 msgstr "مراجعاتي"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "مؤلف غير معروف"
 
@@ -1715,7 +1715,7 @@ msgstr "الكتب التي أضافها الأشخاص الذين يتابعه�
 msgid "Search your reading log"
 msgstr "ابحث في سجل القراءة الخاص بك"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1853,7 +1853,7 @@ msgstr "سجل القراءة"
 msgid "My lists"
 msgstr "قوائمي"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "قوائم"
 
@@ -2181,7 +2181,7 @@ msgstr "إحصاءات المهام: من يُجري التعديلات، وكي
 msgid "Edits Per Day"
 msgstr "تعديلات يومية"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "تعديلات"
 
@@ -2189,7 +2189,7 @@ msgstr "تعديلات"
 msgid "Yesterday"
 msgstr "أمس"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "آخر 7 أيام"
 
@@ -2942,7 +2942,7 @@ msgstr "لم يتم العثور على أي شيء."
 msgid "Search for an Author"
 msgstr "ابحث عن مؤلف"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "بحث"
 
@@ -3638,7 +3638,7 @@ msgstr "هل تعرف أي معرفات لهذه النسخة؟"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "تنطبق هذه المعرّفات على جميع طبعات هذا العمل، مثلاً معرّفات أعمال Wikidata. للمعرّفات الخاصة بالطبعة مثل ISBN أو LCCN، انتقل إلى تبويب الطبعة."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "غلاف: %(title)s"
@@ -4325,7 +4325,7 @@ msgstr "العودة إلى Open Library"
 msgid "Bulk Search (beta)"
 msgstr "البحث في المواضيع"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "المهام"
 
@@ -5050,7 +5050,7 @@ msgstr "القوائم النشطة"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "من <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
@@ -5058,7 +5058,7 @@ msgstr[0] "%(count)d عنصر"
 msgstr[1] "%(count)d عناصر"
 msgstr[2] ""
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "آخر تعديل في %(date)s"
@@ -5152,10 +5152,15 @@ msgstr "لم تقم بإنشاء أي قوائم بعد."
 msgid "Learn how to create your first list."
 msgstr "تعلم كيفية إنشاء قائمتك الأولى."
 
-#: lists/preview.html
-#, fuzzy, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr ""
+#: lists/preview.html.jinja
+#, python-format
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "بواسطة <a href=\"%(key)s\">أنت</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "بواسطة %(name)s"
 
 #: lists/showcase.html
 #, fuzzy, python-format
@@ -5855,16 +5860,11 @@ msgstr "قائمة"
 msgid "Grid"
 msgstr "شبكة"
 
-# | msgid "Search Results"
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "نتائج البحث للقوائم"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "البحث في القوائم"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "لم تتطابق أي <strong>قوائم</strong> مباشرةً مع بحثك"
 
@@ -6411,29 +6411,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "أكثر الكتب تقييماً (منذ البداية)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "إحصاءات المهام"
+msgid "Editing Stats"
+msgstr "إحصاءات التحرير"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "يتم جمع الإحصاءات كل ساعة، لذا تكتمل أرقام اليوم تدريجيًا مع مرور الوقت."
+msgid "Metrics. Choose one to chart it."
+msgstr "المقاييس. اختر واحداً لرسمه بيانياً."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "المقاييس، آخر 28 يومًا. اختر واحدًا لعرضه في الرسم البياني."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s عائدون · %(first_time)s لأول مرة"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s مقارنة بآخر 28 يومًا"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "النطاق"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "كل التحرير"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "عبر المهام"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "الفترة"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "المقارنة بالفترة السابقة"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "لكل يوم"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "الفترة السابقة"
+msgid "4 weeks earlier"
+msgstr "قبل 4 أسابيع"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6473,16 +6494,32 @@ msgid "Month"
 msgstr "الشهر"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "المقارنة بالفترة السابقة"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "رسم بياني للمقياس المختار خلال النطاق الزمني المحدد"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "التفاصيل التي ما زالت ناقصة في كتب كل مشروع، تُحسب كل ليلة. أي تفصيل لم يتمكن أحد من العثور عليه يُحتسب كمكتمل."
+msgid "Share through Tasks"
+msgstr "المشاركة عبر المهام"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "حفظ المهام كنسبة من كل التعديلات، ومحرّرو المهام كنسبة من كل المحرّرين، حسب اليوم."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "من التعديلات"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "من المحرّرين"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "نسبة التعديلات والمحرّرين عبر المهام، حسب اليوم"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "التفاصيل التي لا تزال ناقصة عبر كتب كل مشروع. التفصيل الذي لم يستطع أحد إيجاده يُحتسب كمكتمل."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6561,6 +6598,19 @@ msgstr "آخر 28 يومًا: %(tasks_undone)s من %(tasks)s من عمليات 
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "نسبة عمليات حفظ المهام التي تم التراجع عنها، ونسبة التعبئات خارج المهام، حسب اليوم"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "يتم جمع الإحصاءات كل ساعة، لذا تكتمل أرقام اليوم تدريجيًا مع مرور الوقت."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "يُحتسب تقدّم مشاريع المجتمع كل ليلة."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "تبدأ إجماليات التعديل في %(date)s، لذا تبدأ النطاقات الأطول في منتصف الطريق."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6923,7 +6973,7 @@ msgstr "ترجم من"
 msgid "External Links"
 msgstr "روابط خارجية"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "ترقيم الصفحات"
 
@@ -7090,11 +7140,6 @@ msgstr "استعارة الكتاب"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "DAISY محمي"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "بواسطة %(name)s"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7509,20 +7554,20 @@ msgstr "نسخة"
 msgid "Availability"
 msgstr "التوفر"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "انتقل إلى الصفحة السابقة"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "انتقل إلى الصفحة التالية"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, fuzzy, python-brace-format
 msgid "Go to page {page}"
 msgstr ""
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "الصفحة {page}، الصفحة الحالية"
@@ -7723,7 +7768,7 @@ msgstr[2] ""
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "مستعار من أرشيف الإنترنت: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "مؤشر التحميل"
 
@@ -9607,6 +9652,15 @@ msgstr "التقييم"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "ما مدى قدرة المستخدم على تحديد ما إذا كان هذا الإصدار ذا صلة باحتياجاته قبل الوصول إليه؟"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - بحث في القوائم"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "بحث في القوائم"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -10394,16 +10448,26 @@ msgid "Editors"
 msgstr "المحررون"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "الأشخاص الذين عدّلوا سجل كتاب أو عمل أو مؤلف. في طريقتي عرض الأسبوع والشهر، يُحتسب الشخص الذي عدّل في عدة أيام مرة واحدة فقط."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "الأشخاص الذين غيّروا سجل كتاب أو عمل أو مؤلف، ومن كان ذلك أول تعديل لهم على الإطلاق. تحتسب أدوات عرض الأسبوع والشهر كل شخص مرة واحدة."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "المحررون لأول مرة"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "التعديلات المحفوظة من قبل الأشخاص، لا الروبوتات: للكتب والأعمال والمؤلفين والصفحات الأخرى، وللقوائم، ومن صفحة المهام."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "الأشخاص الذين قاموا بأول تعديل لهم على الإطلاق في ذلك اليوم. يُحتسب كل شخص مرة واحدة، في يوم أول تعديل له."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s لكل محرّر"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "نسبة التعديلات المحفوظة من صفحة المهام."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "من التعديلات · %(share)s من المحرّرين"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10414,12 +10478,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "تعديلات محفوظة من صفحة المهام."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s من كل التعديلات"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "محررو المهام"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "الأشخاص الذين حفظوا تعديلاً من صفحة المهام. في طريقتي عرض الأسبوع والشهر، يُحتسب الشخص الذي حفظ في عدة أيام مرة واحدة فقط."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s من كل المحرّرين"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "الحفظ لكل محرّر مهام"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "حفظ المهام لكل شخص قام بحفظ واحد."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "مقابل ≈ %(count)s تعديل لكل محرّر إجمالاً"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10442,14 +10529,33 @@ msgid "Per 4 weeks"
 msgstr "لكل 4 أسابيع"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "الفترة السابقة: %(count)s"
+msgid "A week earlier"
+msgstr "قبل أسبوع"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s مقارنة بالفترة السابقة"
+msgid "A week earlier: %(count)s"
+msgstr "قبل أسبوع: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "قبل 4 أسابيع: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s مقابل قبل أسبوع"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s مقابل قبل 4 أسابيع"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s مقابل آخر 7 أيام"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10477,6 +10583,23 @@ msgstr "خارج المهام: %(share)s تم التراجع عنه، %(undone)s
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "لا توجد إحصاءات لهذا النطاق حتى الآن."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "عائدون"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "أول تعديل على الإطلاق"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "السجلات والصفحات الأخرى"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "الإجمالي: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -12197,4 +12320,38 @@ msgstr "تعذّر تحميل الرسوم البيانية. أعد تحميل �
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "%(count)s من الطبعات الأكثر حفظًا لدى الناس. أكمل أي غلاف أو عدد صفحات أو ناشر أو لغة ناقصة."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr ""
+
+# | msgid "Search Results"
+#~ msgid "Search results for Lists"
+#~ msgstr "نتائج البحث للقوائم"
+
+#~ msgid "Tasks Stats"
+#~ msgstr "إحصاءات المهام"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "المقاييس، آخر 28 يومًا. اختر واحدًا لعرضه في الرسم البياني."
+
+#~ msgid "Previous period"
+#~ msgstr "الفترة السابقة"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "التفاصيل التي ما زالت ناقصة في كتب كل مشروع، تُحسب كل ليلة. أي تفصيل لم يتمكن أحد من العثور عليه يُحتسب كمكتمل."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "الأشخاص الذين عدّلوا سجل كتاب أو عمل أو مؤلف. في طريقتي عرض الأسبوع والشهر، يُحتسب الشخص الذي عدّل في عدة أيام مرة واحدة فقط."
+
+#~ msgid "First-time editors"
+#~ msgstr "المحررون لأول مرة"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "الأشخاص الذين قاموا بأول تعديل لهم على الإطلاق في ذلك اليوم. يُحتسب كل شخص مرة واحدة، في يوم أول تعديل له."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "الفترة السابقة: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s مقارنة بالفترة السابقة"
 
