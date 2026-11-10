@@ -546,11 +546,7 @@ msgstr "U krijua një regjistrim i ri vepre."
 msgid "Added new book."
 msgstr "U shtua një libër i ri."
 
-#: messages.html
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Faleminderit që përmirësuat katalogun e Open Library!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Mbyll"
 
@@ -5738,6 +5734,14 @@ msgstr "Koleksione të kuruara nga lexues"
 msgid "Browse"
 msgstr "Shfleto"
 
+#: shell/edit_saved.html.jinja
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Faleminderit që përmirësuat katalogun e Open Library!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "Keni një minutë? Ndihmoni me një projekt komunitar."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "Vizioni"
@@ -6845,7 +6849,7 @@ msgstr "Komuniteti"
 msgid "Collection"
 msgstr "Koleksioni"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8409,24 +8413,26 @@ msgstr "Vetëm shifra, për shembull 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Hapa një regjistrim të shtypur dhe botuesi dhe botimi i tij përputhen me këtë."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Trillim ose jotrillim"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "Rendit Raftet"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "Shënoni librat që njerëzit vendosin më shpesh në rafte si letërsi artistike ose joartistike, dhe zgjidhni zhanret e tyre."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "Mbush Boshllëqet"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "Shtoni kopertinat, numrin e faqeve, botuesit dhe gjuhët që mungojnë te librat që njerëzit vendosin më shpesh në rafte."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s nga librat më të rafteve që ende nuk janë shënuar si letërsi artistike ose jo-artistike, ose u mungon zhanri."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s librat më të lexuar"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "%(count)s botimet që njerëzit vendosin më shpesh në raft. Plotëso kopertinën, numrin e faqeve, botuesin ose gjuhën që mungon."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · Filluar më %(date)s"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9261,6 +9267,10 @@ msgid "Filipino"
 msgstr "Filipinisht"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Trillim ose jotrillim"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Libra pa kopertinë"
 
@@ -9287,6 +9297,13 @@ msgstr "Libra të pashënuar si letërsi artistike ose jo-artistike"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Libra pa zhanër"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "Ka mbetur %(count)s detyrë"
+msgstr[1] "Kanë mbetur %(count)s detyra"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9318,13 +9335,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% përfunduar"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "Ka mbetur %(count)s detyrë"
-msgstr[1] "Kanë mbetur %(count)s detyra"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10228,4 +10238,13 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "%(count)s më të lexuarit"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "%(count)s nga librat më të rafteve që ende nuk janë shënuar si letërsi artistike ose jo-artistike, ose u mungon zhanri."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "%(count)s librat më të lexuar"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "%(count)s botimet që njerëzit vendosin më shpesh në raft. Plotëso kopertinën, numrin e faqeve, botuesin ose gjuhën që mungon."
 
