@@ -578,12 +578,7 @@ msgstr "Создана новая запись о работе."
 msgid "Added new book."
 msgstr "Добавлена ​​новая книга."
 
-#: messages.html
-#, fuzzy
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Большое спасибо за улучшение этой записи!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Закрыть"
 
@@ -6105,6 +6100,15 @@ msgstr "Подборки, составленные читателями"
 msgid "Browse"
 msgstr "Искать"
 
+#: shell/edit_saved.html.jinja
+#, fuzzy
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Большое спасибо за улучшение этой записи!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "Есть минутка? Помогите с проектом сообщества."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "Видение"
@@ -7261,7 +7265,7 @@ msgstr "Комментарий"
 msgid "Collection"
 msgstr "Коллекция"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8882,24 +8886,26 @@ msgstr "Только цифры, например 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Я открыл(а) печатную запись, и её издательство и издание соответствуют этому."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Художественная или нехудожественная литература"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "Разобрать полки"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "Отметьте книги, которые люди чаще всего добавляют на полки, как художественную или нехудожественную литературу, и выберите их жанры."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "Заполнить пробелы"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "Добавьте недостающие обложки, количество страниц, издателей и языки к книгам, которые люди чаще всего добавляют на полки."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s из наиболее часто сохраняемых книг, которые ещё не помечены как художественные или нехудожественные, или у которых отсутствует жанр."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s самых читаемых книг"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "%(count)s изданий, которые люди чаще всего сохраняют. Заполните недостающую обложку, количество страниц, издателя или язык."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · Начато %(date)s"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9760,6 +9766,10 @@ msgid "Filipino"
 msgstr "Список рассылки"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Художественная или нехудожественная литература"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Книги без обложки"
 
@@ -9786,6 +9796,14 @@ msgstr "Книги без пометки художественная или н�
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Книги без жанра"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "Осталась %(count)s задача"
+msgstr[1] "Осталось %(count)s задачи"
+msgstr[2] "Осталось %(count)s задач"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9817,14 +9835,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% готово"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "Осталась %(count)s задача"
-msgstr[1] "Осталось %(count)s задачи"
-msgstr[2] "Осталось %(count)s задач"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -12444,4 +12454,13 @@ msgstr "Не удалось загрузить графики. Перезагр�
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "Самые читаемые: %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "%(count)s из наиболее часто сохраняемых книг, которые ещё не помечены как художественные или нехудожественные, или у которых отсутствует жанр."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "%(count)s самых читаемых книг"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "%(count)s изданий, которые люди чаще всего сохраняют. Заполните недостающую обложку, количество страниц, издателя или язык."
 
