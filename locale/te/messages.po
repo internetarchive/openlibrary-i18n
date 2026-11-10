@@ -575,11 +575,7 @@ msgstr "కొత్త రికార్డు సృష్టించు"
 msgid "Added new book."
 msgstr "పుస్తకం చేర్చు"
 
-#: messages.html
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Open Library కేటలాగ్‌ను మెరుగుపరచినందుకు ధన్యవాదాలు!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "మూసు"
 
@@ -6110,6 +6106,14 @@ msgstr "పాఠకులు ఎంపిక చేసిన సేకరణల
 msgid "Browse"
 msgstr "విహరించు"
 
+#: shell/edit_saved.html.jinja
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Open Library కేటలాగ్‌ను మెరుగుపరచినందుకు ధన్యవాదాలు!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "ఒక్క నిమిషం ఉందా? ఒక కమ్యూనిటీ ప్రాజెక్ట్‌కు సహాయం చేయండి."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "దృష్టి"
@@ -7284,7 +7288,7 @@ msgstr "సమాజం"
 msgid "Collection"
 msgstr "సేకరణ"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8907,24 +8911,26 @@ msgstr "అంకెలు మాత్రమే, ఉదాహరణకు 47810
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "నేను ప్రింట్ రికార్డును తెరిచాను మరియు దాని ప్రచురణకర్త మరియు ఎడిషన్ దీనితో సరిపోలుతాయి."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "కల్పితం లేదా వాస్తవికత"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "అరలను సర్దండి"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "ప్రజలు ఎక్కువగా అరల్లో పెట్టే పుస్తకాలను కల్పన లేదా కల్పనేతరంగా గుర్తించండి, మరియు వాటి శైలులను ఎంచుకోండి."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "ఖాళీలను పూరించండి"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "ప్రజలు ఎక్కువగా అరల్లో పెట్టే పుస్తకాలకు లేని అట్టలు, పేజీల సంఖ్య, ప్రచురణకర్తలు మరియు భాషలను జోడించండి."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "అత్యధికంగా భద్రపరచబడిన పుస్తకాలలో %(count)s ఇంకా కల్పిత లేదా కల్పితేతర అని గుర్తించబడలేదు, లేదా వాటికి శైలి లేదు."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "అత్యధికంగా చదివిన %(count)s పుస్తకాలు"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "ప్రజలు అత్యధికంగా భద్రపరచే %(count)s ప్రచురణలు. లేని కవర్, పేజీల సంఖ్య, ప్రచురణకర్త లేదా భాషను పూరించండి."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · %(date)s న ప్రారంభమైంది"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9777,6 +9783,10 @@ msgid "Filipino"
 msgstr "ఫిలిపినో"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "కల్పితం లేదా వాస్తవికత"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "కవర్ లేని పుస్తకాలు"
 
@@ -9803,6 +9813,13 @@ msgstr "కల్పిత లేదా కల్పితేతర అని �
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "శైలి లేని పుస్తకాలు"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "%(count)s పని మిగిలి ఉంది"
+msgstr[1] "%(count)s పనులు మిగిలి ఉన్నాయి"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9835,13 +9852,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% పూర్తయింది"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "%(count)s పని మిగిలి ఉంది"
-msgstr[1] "%(count)s పనులు మిగిలి ఉన్నాయి"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -11930,4 +11940,13 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "ఎక్కువగా చదివిన %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "అత్యధికంగా భద్రపరచబడిన పుస్తకాలలో %(count)s ఇంకా కల్పిత లేదా కల్పితేతర అని గుర్తించబడలేదు, లేదా వాటికి శైలి లేదు."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "అత్యధికంగా చదివిన %(count)s పుస్తకాలు"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "ప్రజలు అత్యధికంగా భద్రపరచే %(count)s ప్రచురణలు. లేని కవర్, పేజీల సంఖ్య, ప్రచురణకర్త లేదా భాషను పూరించండి."
 
