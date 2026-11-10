@@ -975,7 +975,7 @@ msgstr "了解更多"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "在<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "在内部搜索"
@@ -1538,7 +1538,7 @@ msgstr "我的图书笔记"
 msgid "My Reviews"
 msgstr "评价"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "未知作者"
 
@@ -1722,7 +1722,7 @@ msgstr "%(username)s关注的人添加的书籍"
 msgid "Search your reading log"
 msgstr "导出您的阅读日志"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1863,7 +1863,7 @@ msgstr "阅读日志"
 msgid "My lists"
 msgstr "我的清单"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "清单"
 
@@ -2194,7 +2194,7 @@ msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
 msgid "Edits Per Day"
 msgstr "每日编辑数"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "编辑"
 
@@ -2202,7 +2202,7 @@ msgstr "编辑"
 msgid "Yesterday"
 msgstr "昨天"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "过去7天"
 
@@ -2972,7 +2972,7 @@ msgstr "未发现。"
 msgid "Search for an Author"
 msgstr "搜索作者"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "搜索"
 
@@ -3675,7 +3675,7 @@ msgstr "您知道此版本的任何识别符吗？"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "这些标识符适用于此作品的所有版本，例如Wikidata作品标识符。版本特定的标识符请使用版本编辑页面。"
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "%(title)s封面"
@@ -4376,7 +4376,7 @@ msgstr "返回 Open Library"
 msgid "Bulk Search (beta)"
 msgstr "批量搜索（测试版）"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "任务"
 
@@ -5093,14 +5093,14 @@ msgstr "活跃请单"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "来自<a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
 msgstr[0] "%(count)d 个项目"
 msgstr[1] "%(count)d 个项目"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "最后一次修改于%(date)s"
@@ -5194,10 +5194,15 @@ msgstr "您还没有创建任何书单。"
 msgid "Learn how to create your first list."
 msgstr "了解如何创建您的第一个书单。"
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "由<a href=\"%s\">您</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "由<a href=\"%(key)s\">您</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "来自%(name)s"
 
 #: lists/showcase.html
 #, fuzzy, python-format
@@ -5908,16 +5913,12 @@ msgstr "列表"
 msgid "Grid"
 msgstr "网格"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "清单的搜索结果"
-
-#: search/lists.html
+#: search/lists.html.jinja
 #, fuzzy
 msgid "Search Lists"
 msgstr "在内部搜索"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "没有<strong>书单</strong>与您的搜索直接匹配"
 
@@ -6457,29 +6458,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "评分最高的书(全部时间)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "任务统计"
+msgid "Editing Stats"
+msgstr "编辑统计"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "统计数据每小时收集一次，因此今天的数字会随着时间推移逐步完善。"
+msgid "Metrics. Choose one to chart it."
+msgstr "指标。选择一项以绘制图表。"
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "指标，最近28天。选择一项以绘制图表。"
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s 名回访 · %(first_time)s 名首次"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s（较之前28天）"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "范围"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "所有编辑"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "通过任务"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "时间段"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "与上一时段比较"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "每天"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "上一时段"
+msgid "4 weeks earlier"
+msgstr "4 周前"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6520,16 +6542,32 @@ msgid "Month"
 msgstr "这个月"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "与上一时段比较"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "所选指标在所选范围内的图表"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "每个项目的图书中仍然缺失的详情,每晚统计一次。没有人能找到的详情将被算作已填写。"
+msgid "Share through Tasks"
+msgstr "通过任务的占比"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "按天统计，通过任务保存的次数占所有编辑的比例，以及任务编辑者占所有编辑者的比例。"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "编辑占比"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "编辑者占比"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "按天统计的通过任务的编辑和编辑者占比"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "各项目书目中仍缺失的详情。没有人能找到的详情将被视为已填写。"
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6608,6 +6646,19 @@ msgstr "最近28天：%(tasks)s 次任务保存中有 %(tasks_undone)s 次被撤
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "任务保存被撤销比例及任务之外填写被撤销比例，按天显示"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "统计数据每小时收集一次，因此今天的数字会随着时间推移逐步完善。"
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "社区项目的进度每晚统计一次。"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "编辑总数从 %(date)s 开始统计，因此较长的时间范围会从中途开始。"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6970,7 +7021,7 @@ msgstr "翻译自"
 msgid "External Links"
 msgstr "外部链接"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "页码"
 
@@ -7136,11 +7187,6 @@ msgstr "借阅书籍"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "受保护的DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "来自%(name)s"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7556,22 +7602,22 @@ msgstr "版本"
 msgid "Availability"
 msgstr "可获得性"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
 msgid "Go to previous page"
 msgstr "前往这个作者的页面"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
 msgid "Go to next page"
 msgstr "前往这个作者的页面"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "前往第{page}页"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "第{page}页，当前页面"
@@ -7766,7 +7812,7 @@ msgstr[1] "在 %(count)s 本书内搜索"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "从互联网档案馆借阅：%(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "加载指示器"
 
@@ -9647,6 +9693,15 @@ msgstr "评估"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "用户在访问此版本之前能多好地判断它是否符合自己的需求？"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - 列表搜索"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "列表搜索"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -10438,16 +10493,26 @@ msgid "Editors"
 msgstr "编辑者"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "修改过书目、作品或作者记录的用户。在周视图和月视图中，同一人在多天编辑只计一次。"
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "更改过书目、作品或作者记录的人，以及那些首次进行编辑的人。周视图和月视图中每人只统计一次。"
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "首次编辑者"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "由真人（而非机器人）保存的编辑：针对书目、作品、作者及其他页面，针对列表，以及来自任务页面的编辑。"
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "在当天首次进行编辑的用户。每人仅在其首次编辑当天计一次。"
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "约每位编辑者 %(count)s 次"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "从任务页面保存的编辑所占的比例。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "编辑占比 · %(share)s 编辑者占比"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10458,12 +10523,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "从任务页面保存的编辑。"
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "占所有编辑的 %(share)s"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "任务编辑者"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "在任务页面保存过编辑的用户。在周视图和月视图中，同一人在多天保存只计一次。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "占所有编辑者的 %(share)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "每位任务编辑者的保存次数"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "每位至少保存过一次的人通过任务保存的次数。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "相比整体每位编辑者约 %(count)s 次编辑"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10485,14 +10573,33 @@ msgid "Per 4 weeks"
 msgstr "每4周"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "上一时段：%(count)s"
+msgid "A week earlier"
+msgstr "一周前"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s（较上一时段）"
+msgid "A week earlier: %(count)s"
+msgstr "一周前：%(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "4 周前：%(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "相比一周前 %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "相比 4 周前 %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "相比过去 7 天 %(change)s"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10520,6 +10627,23 @@ msgstr "任务之外：%(share)s 被撤销，%(total)s 次填写中有 %(undone)
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "此范围暂无统计数据。"
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "回访"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "首次编辑"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "记录及其他页面"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "总计：%(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -11789,7 +11913,7 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 #~ msgstr ""
 
 #~ msgid "Tasks Stats"
-#~ msgstr ""
+#~ msgstr "任务统计"
 
 #~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
 #~ msgstr "每个数字涵盖截至最近一次统计的天数，因此每天都会略有变化。"
@@ -11977,4 +12101,34 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "人们收藏最多的 %(count)s 个版本。补充缺失的封面、页数、出版社或语言。"
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "由<a href=\"%s\">您</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "清单的搜索结果"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "指标，最近28天。选择一项以绘制图表。"
+
+#~ msgid "Previous period"
+#~ msgstr "上一时段"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "每个项目的图书中仍然缺失的详情,每晚统计一次。没有人能找到的详情将被算作已填写。"
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "修改过书目、作品或作者记录的用户。在周视图和月视图中，同一人在多天编辑只计一次。"
+
+#~ msgid "First-time editors"
+#~ msgstr "首次编辑者"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "在当天首次进行编辑的用户。每人仅在其首次编辑当天计一次。"
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "上一时段：%(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s（较上一时段）"
 
