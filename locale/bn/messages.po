@@ -573,12 +573,7 @@ msgstr "नया कार्य रिकॉर्ड बनाया गय�
 msgid "Added new book."
 msgstr "नई किताब जोड़ी गई।"
 
-#: messages.html
-#, fuzzy
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "बंद करें"
 
@@ -5999,6 +5994,15 @@ msgstr "পাঠক-কিউরেটেড সংকলন"
 msgid "Browse"
 msgstr "ब्राउज़"
 
+#: shell/edit_saved.html.jinja
+#, fuzzy
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "रिकॉर्ड को बेहतर बनाने के लिए बहुत - बहुत धन्यवाद!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "এক মিনিট সময় আছে? একটি সম্প্রদায় প্রকল্পে সাহায্য করুন"
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "सोच"
@@ -7134,7 +7138,7 @@ msgstr "মন্তব্য"
 msgid "Collection"
 msgstr "সংগ্রহ"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8729,24 +8733,26 @@ msgstr "শুধুমাত্র সংখ্যা, যেমন 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "আমি একটি প্রিন্ট রেকর্ড খুলেছি এবং এর প্রকাশক ও সংস্করণ এটির সাথে মিলছে।"
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "কল্পকাহিনী বা অকল্পকাহিনী"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "তাক গুছিয়ে নিন"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "মানুষ সবচেয়ে বেশি তাকে রাখা বইগুলোকে কল্পকাহিনী বা অকল্পকাহিনী হিসেবে চিহ্নিত করুন এবং সেগুলোর ধরন বেছে নিন।"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "ফাঁকগুলো পূরণ করুন"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "মানুষ সবচেয়ে বেশি তাকে রাখা বইগুলোতে অনুপস্থিত প্রচ্ছদ, পৃষ্ঠা সংখ্যা, প্রকাশক এবং ভাষা যোগ করুন।"
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "সবচেয়ে বেশি তাকে রাখা বইগুলোর মধ্যে %(count)s টি এখনও কল্পকাহিনী বা অকল্পকাহিনী হিসেবে চিহ্নিত নয়, বা ধরন নেই।"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "সবচেয়ে বেশি পঠিত %(count)s টি বই"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "মানুষ সবচেয়ে বেশি যে %(count)s টি সংস্করণ তাকে রাখে। অনুপস্থিত প্রচ্ছদ, পৃষ্ঠাসংখ্যা, প্রকাশক বা ভাষা পূরণ করুন।"
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · %(date)s-এ শুরু হয়েছে"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9590,6 +9596,10 @@ msgid "Filipino"
 msgstr "ফিলিপিনো"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "কল্পকাহিনী বা অকল্পকাহিনী"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "প্রচ্ছদহীন বই"
 
@@ -9616,6 +9626,13 @@ msgstr "কল্পকাহিনী বা অকল্পকাহিনী 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "ধরনবিহীন বই"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "%(count)s টি কাজ বাকি"
+msgstr[1] "%(count)s টি কাজ বাকি"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9647,13 +9664,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% সম্পন্ন"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "%(count)s টি কাজ বাকি"
-msgstr[1] "%(count)s টি কাজ বাকি"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -11938,4 +11948,13 @@ msgstr "লেখচিত্রগুলি লোড করা যায়ন
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "সর্বাধিক পঠিত %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "সবচেয়ে বেশি তাকে রাখা বইগুলোর মধ্যে %(count)s টি এখনও কল্পকাহিনী বা অকল্পকাহিনী হিসেবে চিহ্নিত নয়, বা ধরন নেই।"
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "সবচেয়ে বেশি পঠিত %(count)s টি বই"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "মানুষ সবচেয়ে বেশি যে %(count)s টি সংস্করণ তাকে রাখে। অনুপস্থিত প্রচ্ছদ, পৃষ্ঠাসংখ্যা, প্রকাশক বা ভাষা পূরণ করুন।"
 
