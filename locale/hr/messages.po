@@ -547,11 +547,7 @@ msgstr "Stvoren je novi zapis za djelo."
 msgid "Added new book."
 msgstr "Dodana je nova knjiga."
 
-#: messages.html
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Hvala ti ne poboljšavanju kataloga knjižnice Open Library!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Zatvori"
 
@@ -5778,6 +5774,14 @@ msgstr "Zbirke koje su odabrali čitatelji"
 msgid "Browse"
 msgstr "Pregledaj"
 
+#: shell/edit_saved.html.jinja
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Hvala ti ne poboljšavanju kataloga knjižnice Open Library!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "Imate minutu? Pomozite s projektom zajednice."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "Vizija"
@@ -6890,7 +6894,7 @@ msgstr "Zajednica"
 msgid "Collection"
 msgstr "Zbirka"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8470,24 +8474,26 @@ msgstr "Samo brojke, na primjer 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Otvorio sam tiskani zapis i njegov izdavač i izdanje odgovaraju ovome."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Beletristika ili publicistika"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "Posloži Police"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "Označite knjige koje ljudi najčešće stavljaju na police kao fikciju ili publicistiku, i odaberite njihove žanrove."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "Popuni Praznine"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "Dodajte nedostajuće naslovnice, broj stranica, izdavače i jezike knjigama koje ljudi najčešće stavljaju na police."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "%(count)s najčešće pohranjenih knjiga koje još nisu označene kao fikcija ili non-fikcija, ili im nedostaje žanr."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "%(count)s najčitanijih knjiga"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "%(count)s izdanja koja ljudi najčešće pohranjuju. Popunite naslovnicu, broj stranica, izdavača ili jezik koji nedostaje."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · Započeto %(date)s"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9325,6 +9331,10 @@ msgid "Filipino"
 msgstr "Filipinski"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Beletristika ili publicistika"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Knjige bez naslovnice"
 
@@ -9351,6 +9361,14 @@ msgstr "Knjige neoznačene kao fikcija ili non-fikcija"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Knjige bez žanra"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "Preostao je %(count)s zadatak"
+msgstr[1] "Preostala su %(count)s zadatka"
+msgstr[2] "Preostalo je %(count)s zadataka"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9382,14 +9400,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% gotovo"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "Preostao je %(count)s zadatak"
-msgstr[1] "Preostala su %(count)s zadatka"
-msgstr[2] "Preostalo je %(count)s zadataka"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -11501,4 +11511,13 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "Najčitanije: %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "%(count)s najčešće pohranjenih knjiga koje još nisu označene kao fikcija ili non-fikcija, ili im nedostaje žanr."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "%(count)s najčitanijih knjiga"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "%(count)s izdanja koja ljudi najčešće pohranjuju. Popunite naslovnicu, broj stranica, izdavača ili jezik koji nedostaje."
 
