@@ -545,11 +545,7 @@ msgstr "새 작품 기록이 생성되었습니다."
 msgid "Added new book."
 msgstr "새 책이 추가되었습니다."
 
-#: messages.html
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Open Library 카탈로그 개선에 참여해 주셔서 감사합니다!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "닫기"
 
@@ -5704,6 +5700,14 @@ msgstr "독자가 선별한 컬렉션"
 msgid "Browse"
 msgstr "둘러보기"
 
+#: shell/edit_saved.html.jinja
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Open Library 카탈로그 개선에 참여해 주셔서 감사합니다!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "잠깐 시간 되세요? 커뮤니티 프로젝트를 도와주세요."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "비전"
@@ -6812,7 +6816,7 @@ msgstr "커뮤니티"
 msgid "Collection"
 msgstr "컬렉션"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8363,24 +8367,26 @@ msgstr "숫자만 입력, 예: 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "인쇄본 레코드를 열었고 출판사와 판본이 이것과 일치합니다."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "소설 또는 논픽션"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "책장 정리"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "사람들이 가장 많이 책장에 추가한 책을 소설 또는 비소설로 표시하고 장르를 선택해 주세요."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "빈틈 채우기"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "사람들이 가장 많이 책장에 추가한 책에 빠진 표지, 쪽수, 출판사, 언어를 추가해 주세요."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "가장 많이 서가에 등록된 책 중 %(count)s권이 아직 소설/비소설로 표시되지 않았거나 장르가 없습니다."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "가장 많이 읽힌 책 %(count)s권"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "사람들이 가장 많이 서가에 등록한 판본 %(count)s개입니다. 빠진 표지, 쪽수, 출판사 또는 언어를 채워 주세요."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · %(date)s에 시작"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9212,6 +9218,10 @@ msgid "Filipino"
 msgstr "필리핀어"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "소설 또는 논픽션"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "표지가 없는 책"
 
@@ -9238,6 +9248,12 @@ msgstr "소설/비소설로 표시되지 않은 책"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "장르가 없는 책"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "남은 작업 %(count)s개"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9269,12 +9285,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% 완료"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "남은 작업 %(count)s개"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -11224,4 +11234,13 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "가장 많이 읽은 %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "가장 많이 서가에 등록된 책 중 %(count)s권이 아직 소설/비소설로 표시되지 않았거나 장르가 없습니다."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "가장 많이 읽힌 책 %(count)s권"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "사람들이 가장 많이 서가에 등록한 판본 %(count)s개입니다. 빠진 표지, 쪽수, 출판사 또는 언어를 채워 주세요."
 
