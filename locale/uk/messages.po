@@ -967,7 +967,7 @@ msgstr "Дізнатися більше"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "на <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "Шукати всередині"
@@ -1533,7 +1533,7 @@ msgstr "Мої нотатки"
 msgid "My Reviews"
 msgstr "Мої відгуки"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "Невідомий автор"
 
@@ -1715,7 +1715,7 @@ msgstr "Книги, додані людьми, на яких підписани�
 msgid "Search your reading log"
 msgstr "Шукати у вашому читацькому журналі"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1856,7 +1856,7 @@ msgstr "Читацький журнал"
 msgid "My lists"
 msgstr "Мої списки"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Списки"
 
@@ -2184,7 +2184,7 @@ msgstr "Статистика завдань: хто редагує та наск
 msgid "Edits Per Day"
 msgstr "Правок за день"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "Редагування"
 
@@ -2192,7 +2192,7 @@ msgstr "Редагування"
 msgid "Yesterday"
 msgstr "Вчора"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "Останні 7 днів"
 
@@ -2957,7 +2957,7 @@ msgstr "Не знайдено."
 msgid "Search for an Author"
 msgstr "Шукати автора"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Шукати"
 
@@ -3659,7 +3659,7 @@ msgstr "Чи знаєте ви будь-які ідентифікатори дл
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Ці ідентифікатори застосовуються до всіх видань цього твору, наприклад ідентифікатори Wikidata. Для ідентифікаторів конкретних видань, таких як ISBN або LCCN, перейдіть на вкладку видання."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Обкладинка %(title)s"
@@ -4352,7 +4352,7 @@ msgstr "Повернутися до Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Шукати теми"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Завдання"
 
@@ -5075,7 +5075,7 @@ msgstr "Активні списки"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "від <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
@@ -5083,7 +5083,7 @@ msgstr[0] "%(count)d елемент"
 msgstr[1] "%(count)d елементи"
 msgstr[2] "%(count)d елементів"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "Востаннє змінено %(date)s"
@@ -5176,10 +5176,15 @@ msgstr "Ви ще не створили жодного списку."
 msgid "Learn how to create your first list."
 msgstr "Дізнайтеся як створити перший список."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "від <a href=\"%s\">вас</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "від <a href=\"%(key)s\">вас</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "від %(name)s"
 
 #: lists/showcase.html
 #, python-format
@@ -5887,15 +5892,11 @@ msgstr "Список"
 msgid "Grid"
 msgstr "Сітка"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "Результати пошуків для списків"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "Шукати списки"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Жоден <strong>список</strong> не відповідає вашому запиту"
 
@@ -6433,29 +6434,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "Найбільш оцінені книги (за весь час)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "Статистика завдань"
+msgid "Editing Stats"
+msgstr "Статистика редагування"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "Підрахунки збираються щогодини, тому сьогоднішні показники заповнюються протягом дня."
+msgid "Metrics. Choose one to chart it."
+msgstr "Метрики. Виберіть одну, щоб побудувати графік."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "Показники за останні 28 днів. Виберіть один, щоб побудувати графік."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s постійних · %(first_time)s вперше"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s порівняно з попередніми 28 днями"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "Область"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "Усе редагування"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "Через Завдання"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "Період"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Порівняти з попереднім періодом"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "За день"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "Попередній період"
+msgid "4 weeks earlier"
+msgstr "4 тижні тому"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6494,16 +6516,32 @@ msgid "Month"
 msgstr "Місяць"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Порівняти з попереднім періодом"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "Графік вибраного показника за вибраний період"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Деталі, яких досі бракує в книгах кожного проєкту, підраховуються щоночі. Деталь, яку ніхто не зміг знайти, зараховується як заповнена."
+msgid "Share through Tasks"
+msgstr "Частка через Завдання"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "Збереження через Завдання як частка всіх правок, і редактори Завдань як частка всіх редакторів, за днями."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "Від правок"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "Від редакторів"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "Частка правок і редакторів через Завдання, за днями"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "Відомості, яких ще бракує в книгах кожного проєкту. Відомість, яку ніхто не зміг знайти, зараховується як заповнена."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6582,6 +6620,19 @@ msgstr "Останні 28 днів: %(tasks_undone)s з %(tasks)s збереже
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "Частка скасованих збережень через Завдання та заповнень поза Завданнями, по днях"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Підрахунки збираються щогодини, тому сьогоднішні показники заповнюються протягом дня."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "Прогрес проєктів спільноти підраховується щоночі."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "Підрахунок правок починається %(date)s, тому довші періоди починаються з середини."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6939,7 +6990,7 @@ msgstr "Перекладено з"
 msgid "External Links"
 msgstr "Зовнішні посилання"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Нумерація сторінок"
 
@@ -7105,11 +7156,6 @@ msgstr "Позичити книгу"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "Захищений DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "від %(name)s"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7524,20 +7570,20 @@ msgstr "Видання"
 msgid "Availability"
 msgstr "Доступність"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "Перейти до попередньої сторінки"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "Перейти до наступної сторінки"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "Перейти на сторінку {page}"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "Сторінка {page}, поточна сторінка"
@@ -7737,7 +7783,7 @@ msgstr[2] "Пошук усередині %(count)s книг"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Позичено з Internet Archive: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 #, fuzzy
 msgid "Loading indicator"
 msgstr "Історія позик"
@@ -9636,6 +9682,15 @@ msgstr "Оцінювання"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Наскільки добре відвідувач може визначити, чи це видання відповідає його потребам, перш ніж отримати до нього доступ?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s — Пошук списків"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "Пошук списків"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -10425,16 +10480,26 @@ msgid "Editors"
 msgstr "Редактори"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "Люди, які змінили запис книги, твору чи автора. У переглядах за тиждень і місяць той, хто редагував кілька днів, враховується один раз."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "Люди, які змінили запис книги, твору чи автора, а також ті, для кого це була найперша правка. Тижневі та місячні перегляди враховують кожну людину один раз."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "Редактори-новачки"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "Правки, збережені людьми, а не ботами: у книгах, творах, авторах та інших сторінках, у списках і зі сторінки Завдання."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "Люди, які зробили своє перше редагування саме того дня. Кожна людина враховується один раз, у день свого першого редагування."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s на редактора"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "Частка правок, збережених зі сторінки Завдання."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "правок · %(share)s редакторів"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10445,12 +10510,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "Редагування, збережені зі сторінки завдань."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s усіх правок"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "Редактори Завдань"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "Люди, які зберегли редагування зі сторінки Завдань. У переглядах за тиждень і місяць той, хто зберігав кілька днів, враховується один раз."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s усіх редакторів"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "Збереження на редактора Завдань"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "Збереження через Завдання на кожну людину, яка зберегла хоча б одне."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "проти ≈ %(count)s правок на редактора загалом"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10473,14 +10561,33 @@ msgid "Per 4 weeks"
 msgstr "За 4 тижні"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "Попередній період: %(count)s"
+msgid "A week earlier"
+msgstr "Тиждень тому"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s порівняно з попереднім періодом"
+msgid "A week earlier: %(count)s"
+msgstr "Тиждень тому: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "4 тижні тому: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s порівняно з тижнем тому"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s порівняно з 4 тижнями тому"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s порівняно з попередніми 7 днями"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10508,6 +10615,23 @@ msgstr "Поза Завданнями: %(share)s скасовано, %(undone)s 
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "Поки немає даних за цей період."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "Постійні"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "Найперша правка"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "Записи та інші сторінки"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "Усього: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -11786,7 +11910,7 @@ msgstr "Не вдалося завантажити графіки. Переза�
 #~ msgstr ""
 
 #~ msgid "Tasks Stats"
-#~ msgstr ""
+#~ msgstr "Статистика завдань"
 
 #~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
 #~ msgstr "Кожне число охоплює дні до останнього підрахунку, тому воно трохи змінюється щодня."
@@ -11976,4 +12100,34 @@ msgstr "Не вдалося завантажити графіки. Переза�
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "%(count)s видань, які люди найчастіше зберігають. Заповніть відсутню обкладинку, кількість сторінок, видавця або мову."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "від <a href=\"%s\">вас</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "Результати пошуків для списків"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "Показники за останні 28 днів. Виберіть один, щоб побудувати графік."
+
+#~ msgid "Previous period"
+#~ msgstr "Попередній період"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Деталі, яких досі бракує в книгах кожного проєкту, підраховуються щоночі. Деталь, яку ніхто не зміг знайти, зараховується як заповнена."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "Люди, які змінили запис книги, твору чи автора. У переглядах за тиждень і місяць той, хто редагував кілька днів, враховується один раз."
+
+#~ msgid "First-time editors"
+#~ msgstr "Редактори-новачки"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "Люди, які зробили своє перше редагування саме того дня. Кожна людина враховується один раз, у день свого першого редагування."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "Попередній період: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s порівняно з попереднім періодом"
 
