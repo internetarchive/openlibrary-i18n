@@ -559,12 +559,7 @@ msgstr "Yeni iş kaydı oluşturuldu."
 msgid "Added new book."
 msgstr "Yeni kitap eklendi."
 
-#: messages.html
-#, fuzzy
-msgid "Thank you for improving the Open Library catalog!"
-msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
-
-#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html lists/lists.html merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "Kapat"
 
@@ -5873,6 +5868,15 @@ msgstr "Okuyucuların derlediği koleksiyonlar"
 msgid "Browse"
 msgstr "Göz at"
 
+#: shell/edit_saved.html.jinja
+#, fuzzy
+msgid "Thank you for improving the Open Library catalog!"
+msgstr "Bu kaydı geliştirdiğiniz için çok teşekkür ederiz!"
+
+#: shell/edit_saved.html.jinja
+msgid "Got a minute? Help with a community project"
+msgstr "Bir dakikanız var mı? Bir topluluk projesine yardım edin."
+
 #: shell/footer.html.jinja
 msgid "Vision"
 msgstr "Vizyon"
@@ -7001,7 +7005,7 @@ msgstr "Yorum"
 msgid "Collection"
 msgstr "Koleksiyon"
 
-#: type/page/view.html
+#: openlibrary/contribute/initiatives.py type/page/view.html
 #, python-format
 msgid "%(count)s book"
 msgid_plural "%(count)s books"
@@ -8587,24 +8591,26 @@ msgstr "Yalnızca rakamlar, örneğin 47810608"
 msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Basılı bir kayıt açtım ve yayıncısı ile baskısı bununla eşleşiyor."
 
-#: openlibrary/contribute/initiatives.py openlibrary/plugins/openlibrary/contribute.py
-msgid "Fiction or nonfiction"
-msgstr "Kurgu veya kurgu dışı"
+#: openlibrary/contribute/initiatives.py
+msgid "Sort the Stacks"
+msgstr "Rafları Sırala"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Mark the books people shelve most as fiction or nonfiction, and pick their genres."
+msgstr "İnsanların raflarına en çok ekledikleri kitapları kurgu veya kurgu dışı olarak işaretleyin ve türlerini seçin."
+
+#: openlibrary/contribute/initiatives.py
+msgid "Fill the Gaps"
+msgstr "Boşlukları Doldur"
+
+#: openlibrary/contribute/initiatives.py
+msgid "Add missing covers, page counts, publishers and languages to the books people shelve most."
+msgstr "İnsanların raflarına en çok ekledikleri kitaplara eksik kapakları, sayfa sayılarını, yayıncıları ve dilleri ekleyin."
 
 #: openlibrary/contribute/initiatives.py
 #, python-format
-msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
-msgstr "En çok rafa konan kitaplardan %(count)s tanesi henüz kurgu veya kurgu dışı olarak işaretlenmemiş, ya da türü eksik."
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "%(count)s most-read books"
-msgstr "En çok okunan %(count)s kitap"
-
-#: openlibrary/contribute/initiatives.py
-#, python-format
-msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
-msgstr "İnsanların en çok rafa koyduğu %(count)s baskı. Eksik kapak, sayfa sayısı, yayıncı veya dili doldurun."
+msgid "%(books)s · Started %(date)s"
+msgstr "%(books)s · %(date)s tarihinde başlandı"
 
 #: openlibrary/contribute/save.py
 msgid "Pick a language from the list."
@@ -9454,6 +9460,10 @@ msgid "Filipino"
 msgstr "Her şey"
 
 #: openlibrary/plugins/openlibrary/contribute.py
+msgid "Fiction or nonfiction"
+msgstr "Kurgu veya kurgu dışı"
+
+#: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
 msgstr "Kapağı olmayan kitaplar"
 
@@ -9480,6 +9490,13 @@ msgstr "Kurgu veya kurgu dışı olarak işaretlenmemiş kitaplar"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a genre"
 msgstr "Türü olmayan kitaplar"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+#, python-format
+msgid "%(count)s task left"
+msgid_plural "%(count)s tasks left"
+msgstr[0] "%(count)s görev kaldı"
+msgstr[1] "%(count)s görev kaldı"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Published"
@@ -9511,13 +9528,6 @@ msgstr "%(percent)s%%"
 #, python-format
 msgid "%(percent)s%% done"
 msgstr "%(percent)s%% tamamlandı"
-
-#: openlibrary/plugins/openlibrary/contribute.py
-#, python-format
-msgid "%(count)s task left"
-msgid_plural "%(count)s tasks left"
-msgstr[0] "%(count)s görev kaldı"
-msgstr[1] "%(count)s görev kaldı"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -11805,4 +11815,13 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "Most-read %(count)s"
 #~ msgstr "En çok okunan %(count)s"
+
+#~ msgid "%(count)s of the most-shelved books that aren't marked fiction or nonfiction yet, or are missing their genres."
+#~ msgstr "En çok rafa konan kitaplardan %(count)s tanesi henüz kurgu veya kurgu dışı olarak işaretlenmemiş, ya da türü eksik."
+
+#~ msgid "%(count)s most-read books"
+#~ msgstr "En çok okunan %(count)s kitap"
+
+#~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
+#~ msgstr "İnsanların en çok rafa koyduğu %(count)s baskı. Eksik kapak, sayfa sayısı, yayıncı veya dili doldurun."
 
