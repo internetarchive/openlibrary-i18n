@@ -981,7 +981,7 @@ msgstr "మరింత చదవండి"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> లో"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "మరిన్ని శోధనావిధానాలు"
@@ -1549,7 +1549,7 @@ msgstr "నా పుస్తక నోట్స్"
 msgid "My Reviews"
 msgstr "నా పుస్తక సమీక్ష"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 #, fuzzy
 msgid "Unknown author"
 msgstr "<em>తెలియని రచయిత</em> ద్వారా"
@@ -1743,7 +1743,7 @@ msgstr "%(username)s అనుసరించే వ్యక్తులు చ
 msgid "Search your reading log"
 msgstr "మీ చదివిన వివరాలను చూడండి లేదా సవరించండి"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, fuzzy, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1885,7 +1885,7 @@ msgstr "చదివే ప్రదేశం "
 msgid "My lists"
 msgstr "నా జాబితాలు"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "జాబితాలు"
 
@@ -2213,7 +2213,7 @@ msgstr "పనుల గణాంకాలు: ఎవరు సవరిస్�
 msgid "Edits Per Day"
 msgstr "రోజుకు సవరణలు"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 #, fuzzy
 msgid "Edits"
 msgstr "మార్చు"
@@ -2222,7 +2222,7 @@ msgstr "మార్చు"
 msgid "Yesterday"
 msgstr "నిన్న"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "గత 7 రోజులు"
 
@@ -2992,7 +2992,7 @@ msgstr "ఏవీ కనుగొనబడలేదు."
 msgid "Search for an Author"
 msgstr "విషయాల గురించి వెతుకు"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "వెతుకు"
 
@@ -3694,7 +3694,7 @@ msgstr "ఈ ఎడిషన్ కోసం గుర్తింపు సం�
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "ఈ గుర్తింపులు ఈ రచన యొక్క అన్ని ఎడిషన్లకు వర్తిస్తాయి, ఉదాహరణకు Wikidata రచన గుర్తింపులు. ISBN లేదా LCCN వంటి ఎడిషన్-నిర్దిష్ట గుర్తింపులకు, ఎడిషన్ ట్యాబ్‌కు వెళ్ళండి."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "కవర్: %(title)s"
@@ -4393,7 +4393,7 @@ msgstr "ఓపెన్ లైబ్రరీకి తిరిగి వెళ
 msgid "Bulk Search (beta)"
 msgstr "బల్క్ శోధన (బీటా)"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "పనులు"
 
@@ -5116,14 +5116,14 @@ msgstr "జాబితాలో చేర్చండి"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "<a href=\"%(key)s\">%(owner)s</a> నుండి"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, fuzzy, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
 msgstr[0] "%(count)d సవరణ"
 msgstr[1] "%(count)d సవరణలు"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, fuzzy, python-format
 msgid "Last modified %(date)s"
 msgstr "%(date)s న సృష్టించబడింది"
@@ -5222,10 +5222,15 @@ msgstr "మీరు ఇంకా ఏ జాబితాలూ సృష్ట�
 msgid "Learn how to create your first list."
 msgstr "మీ మొదటి జాబితా ఎలా సృష్టించాలో తెలుసుకోండి."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "<a href=\"%s\">మీచే</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "<a href=\"%(key)s\">మీ</a> ద్వారా"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "%(name)s చేత"
 
 #: lists/showcase.html
 #, python-format
@@ -5947,17 +5952,12 @@ msgstr "జాబితా"
 msgid "Grid"
 msgstr "గ్రిడ్"
 
-#: search/lists.html
-#, fuzzy
-msgid "Search results for Lists"
-msgstr "శోధనా ఫలితాలు"
-
-#: search/lists.html
+#: search/lists.html.jinja
 #, fuzzy
 msgid "Search Lists"
 msgstr "శోధనా ఫలితాలు"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "మీ శోధనకు నేరుగా <strong>జాబితాలు</strong> సరిపోలలేదు"
 
@@ -6510,29 +6510,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "అత్యంత రేట్ చేయబడిన పుస్తకాలు (అన్ని కాలాలు)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "పనుల గణాంకాలు"
+msgid "Editing Stats"
+msgstr "సవరణ గణాంకాలు"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "లెక్కలు ప్రతి గంటకు సేకరించబడతాయి, కాబట్టి రోజు గడుస్తున్న కొద్దీ నేటి గణాంకాలు పూర్తవుతూ ఉంటాయి."
+msgid "Metrics. Choose one to chart it."
+msgstr "మెట్రిక్‌లు. చార్ట్ చేయడానికి ఒకదాన్ని ఎంచుకోండి."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "కొలమానాలు, గత 28 రోజులు. చార్ట్‌లో చూపించడానికి ఒకదాన్ని ఎంచుకోండి."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s మళ్లీ వచ్చినవారు · %(first_time)s మొదటిసారి"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "గత 28 రోజులతో పోలిస్తే %(change)s"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "పరిధి"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "అన్ని సవరణలు"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "పనుల ద్వారా"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "కాలవ్యవధి"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "మునుపటి కాలంతో పోల్చండి"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "ఒక్కో రోజుకు"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "మునుపటి కాలం"
+msgid "4 weeks earlier"
+msgstr "4 వారాల క్రితం"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6572,16 +6593,32 @@ msgid "Month"
 msgstr "నెల"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "మునుపటి కాలంతో పోల్చండి"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "ఎంచుకున్న పరిధిలో ఎంచుకున్న కొలమానం యొక్క చార్ట్"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "ప్రతి ప్రాజెక్టు పుస్తకాల్లో ఇప్పటికీ లోపించిన వివరాలు, ప్రతి రాత్రి లెక్కించబడతాయి. ఎవరూ కనుగొనలేని వివరం నింపినట్లుగా లెక్కించబడుతుంది."
+msgid "Share through Tasks"
+msgstr "పనుల ద్వారా వాటా"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "రోజువారీగా, పనుల ద్వారా జరిగిన సేవ్‌లు మొత్తం సవరణలలో వాటాగా, మరియు పనుల సవరణదారులు మొత్తం సవరణదారులలో వాటాగా."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "సవరణలలో"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "సవరణదారులలో"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "రోజువారీగా, పనుల ద్వారా సవరణలు మరియు సవరణదారుల వాటా"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "ప్రతి ప్రాజెక్ట్ పుస్తకాలలో ఇంకా లేని వివరాలు. ఎవరూ కనుగొనలేని వివరం నింపినట్లుగా లెక్కించబడుతుంది."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6660,6 +6697,19 @@ msgstr "గత 28 రోజులు: %(tasks)s పనులు సేవ్‌�
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "రోజువారీగా రద్దు చేయబడిన పనులు సేవ్‌ల శాతం, మరియు పనులు వెలుపల నింపుల శాతం"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "లెక్కలు ప్రతి గంటకు సేకరించబడతాయి, కాబట్టి రోజు గడుస్తున్న కొద్దీ నేటి గణాంకాలు పూర్తవుతూ ఉంటాయి."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "సంఘ ప్రాజెక్టుల పురోగతి ప్రతి రాత్రి లెక్కించబడుతుంది."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "సవరణల మొత్తం %(date)s నుండి మొదలవుతుంది, కాబట్టి ఎక్కువ కాలవ్యవధులు మధ్యలో నుండి మొదలవుతాయి."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -7027,7 +7077,7 @@ msgstr "అనువదించబడింది"
 msgid "External Links"
 msgstr "బాహ్య లింకులు"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "పేజీ వరుస"
 
@@ -7201,11 +7251,6 @@ msgstr "పుస్తకం తిరిగి ఇవ్వండి"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "రక్షిత DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "%(name)s చేత"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7635,21 +7680,21 @@ msgstr "ఎడిషన్"
 msgid "Availability"
 msgstr "అందుబాటులో ఉంది"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
 msgid "Go to previous page"
 msgstr "పైకి వెళ్ళు"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "తదుపరి పేజీకి వెళ్ళు"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "పేజీ {page} కి వెళ్ళు"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "పేజీ {page}, ప్రస్తుత పేజీ"
@@ -7843,7 +7888,7 @@ msgstr[1] "%(count)s పుస్తకాల లోపల శోధించం
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Internet Archive నుండి అరువు తీసుకున్నది: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "లోడింగ్ సూచిక"
 
@@ -9742,6 +9787,15 @@ msgstr "మూల్యాంకనం"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "ఒక వినియోగదారు ఈ ఎడిషన్‌ను యాక్సెస్ చేయడానికి ముందు అది తన అవసరాలకు సంబంధించినదో లేదో ఎంత బాగా నిర్ధారించగలరు?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - జాబితా శోధన"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "జాబితా శోధన"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "శోధనా ఫలితాలు"
@@ -10532,16 +10586,26 @@ msgid "Editors"
 msgstr "సంపాదకులు"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన వ్యక్తులు. వారం మరియు నెల వీక్షణలలో, అనేక రోజులు మార్పులు చేసిన వ్యక్తి ఒకసారి మాత్రమే లెక్కించబడతారు."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన వ్యక్తులు, మరియు వారికి అది మొట్టమొదటి సవరణ అయిన వారు. వారం మరియు నెల వీక్షణలు ప్రతి వ్యక్తిని ఒకసారి లెక్కిస్తాయి."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "మొదటిసారి సంపాదకులు"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "బాట్‌లు కాదు, వ్యక్తులు సేవ్ చేసిన సవరణలు: పుస్తకాలు, రచనలు, రచయితలు మరియు ఇతర పేజీలకు, జాబితాలకు, మరియు పనుల పేజీ నుండి."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "ఆ రోజు తమ జీవితంలో మొదటి మార్పు చేసిన వ్యక్తులు. ప్రతి వ్యక్తి తన మొదటి మార్పు చేసిన రోజున ఒకసారి మాత్రమే లెక్కించబడతారు."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s ప్రతి సవరణదారుకు"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "పనుల పేజీ నుండి సేవ్ చేసిన సవరణల వాటా."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "సవరణలలో · %(share)s సవరణదారులలో"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10552,12 +10616,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "పనుల పేజీ నుండి సేవ్ చేసిన సవరణలు."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "మొత్తం సవరణలలో %(share)s"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "పనులు సంపాదకులు"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "పనులు పేజీ నుండి మార్పును సేవ్ చేసిన వ్యక్తులు. వారం మరియు నెల వీక్షణలలో, అనేక రోజులు సేవ్ చేసిన వ్యక్తి ఒకసారి మాత్రమే లెక్కించబడతారు."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "మొత్తం సవరణదారులలో %(share)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "ప్రతి పనుల సవరణదారుకు సేవ్‌లు"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "కనీసం ఒకటి సేవ్ చేసిన ప్రతి వ్యక్తికి పనుల ద్వారా సేవ్‌లు."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "మొత్తంగా ప్రతి సవరణదారుకు ≈ %(count)s సవరణలతో పోలిస్తే"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10579,14 +10666,33 @@ msgid "Per 4 weeks"
 msgstr "ప్రతి 4 వారాలకు"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "మునుపటి కాలం: %(count)s"
+msgid "A week earlier"
+msgstr "ఒక వారం క్రితం"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "మునుపటి కాలంతో పోలిస్తే %(change)s"
+msgid "A week earlier: %(count)s"
+msgstr "ఒక వారం క్రితం: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "4 వారాల క్రితం: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "ఒక వారం క్రితంతో పోలిస్తే %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "4 వారాల క్రితంతో పోలిస్తే %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "మునుపటి 7 రోజులతో పోలిస్తే %(change)s"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10614,6 +10720,23 @@ msgstr "పనులు వెలుపల: %(share)s రద్దు చేయ�
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "ఈ పరిధికి ఇంకా గణాంకాలు లేవు."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "మళ్లీ వచ్చినవారు"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "మొట్టమొదటి సవరణ"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "రికార్డులు మరియు ఇతర పేజీలు"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "మొత్తం: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -11819,7 +11942,7 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 #~ msgstr ""
 
 #~ msgid "Tasks Stats"
-#~ msgstr ""
+#~ msgstr "పనుల గణాంకాలు"
 
 #~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
 #~ msgstr "ప్రతి సంఖ్య తాజా లెక్క వరకు రోజులను కలిగి ఉంటుంది, కాబట్టి ఇది ప్రతిరోజూ కొద్దిగా మారుతుంది."
@@ -12007,4 +12130,34 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "ప్రజలు అత్యధికంగా భద్రపరచే %(count)s ప్రచురణలు. లేని కవర్, పేజీల సంఖ్య, ప్రచురణకర్త లేదా భాషను పూరించండి."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "<a href=\"%s\">మీచే</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "శోధనా ఫలితాలు"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "కొలమానాలు, గత 28 రోజులు. చార్ట్‌లో చూపించడానికి ఒకదాన్ని ఎంచుకోండి."
+
+#~ msgid "Previous period"
+#~ msgstr "మునుపటి కాలం"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "ప్రతి ప్రాజెక్టు పుస్తకాల్లో ఇప్పటికీ లోపించిన వివరాలు, ప్రతి రాత్రి లెక్కించబడతాయి. ఎవరూ కనుగొనలేని వివరం నింపినట్లుగా లెక్కించబడుతుంది."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన వ్యక్తులు. వారం మరియు నెల వీక్షణలలో, అనేక రోజులు మార్పులు చేసిన వ్యక్తి ఒకసారి మాత్రమే లెక్కించబడతారు."
+
+#~ msgid "First-time editors"
+#~ msgstr "మొదటిసారి సంపాదకులు"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "ఆ రోజు తమ జీవితంలో మొదటి మార్పు చేసిన వ్యక్తులు. ప్రతి వ్యక్తి తన మొదటి మార్పు చేసిన రోజున ఒకసారి మాత్రమే లెక్కించబడతారు."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "మునుపటి కాలం: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "మునుపటి కాలంతో పోలిస్తే %(change)s"
 
