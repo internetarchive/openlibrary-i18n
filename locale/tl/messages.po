@@ -931,7 +931,7 @@ msgstr "Matuto Nang Higit Pa"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr ""
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Tinitingnan ang mga tugma sa Search Inside"
 
@@ -1471,7 +1471,7 @@ msgstr "Aking mga Tala"
 msgid "My Reviews"
 msgstr "Aking mga Pagsusuri"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "Hindi Kilalang may-akda"
 
@@ -1653,7 +1653,7 @@ msgstr "Mga librong idinadagdag ng mga taong sinusuportahan ni %(username)s"
 msgid "Search your reading log"
 msgstr "Maghanap sa iyong reading log"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1789,7 +1789,7 @@ msgstr "Log ng Pagbasa"
 msgid "My lists"
 msgstr "Aking mga listahan"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Mga Listahan"
 
@@ -2097,7 +2097,7 @@ msgstr "Istatistika ng Mga Gawain: sino ang nag-e-edit, at kung gaano katagal na
 msgid "Edits Per Day"
 msgstr "Mga Pag-edit Bawat Araw"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "Mga Pag-edit"
 
@@ -2105,7 +2105,7 @@ msgstr "Mga Pag-edit"
 msgid "Yesterday"
 msgstr "Kahapon"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "Huling 7 araw"
 
@@ -2803,7 +2803,7 @@ msgstr "Walang natagpuan"
 msgid "Search for an Author"
 msgstr "Maghanap ng May-akda"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Maghanap"
 
@@ -3473,7 +3473,7 @@ msgstr "Alam mo ba ang anumang mga identifier para sa trabahong ito?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Ang mga identifier na ito ay nalalapat sa lahat ng edisyon ng trabahong ito, halimbawa ang mga identifier ng wikidata. Para sa mga espesyal na identifier para sa edisyon, tulad ng ISBN o LCCN, pumunta sa tab ng edisyon."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Pabalat ng: %(title)s"
@@ -4155,7 +4155,7 @@ msgstr "Bumalik sa Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Bulk Search (beta)"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Mga Gawain"
 
@@ -4847,14 +4847,14 @@ msgstr "Aktibong Mga Listahan"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "mula sa <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
 msgstr[0] "%(count)d item"
 msgstr[1] "%(count)d mga item"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "Huling binago %(date)s"
@@ -4945,10 +4945,15 @@ msgstr "Wala ka pang nagawang mga listahan."
 msgid "Learn how to create your first list."
 msgstr "Alamin kung paano gumawa ng iyong unang listahan."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "ni <a href=\"%s\">Ikaw</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "ni <a href=\"%(key)s\">Ikaw</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "ni %(name)s"
 
 #: lists/showcase.html
 #, python-format
@@ -5617,15 +5622,11 @@ msgstr "Listahan"
 msgid "Grid"
 msgstr "Grid"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "Mga resulta ng paghahanap para sa Mga Listahan"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "Maghanap ng Mga Listahan"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Walang <strong>mga listahan</strong> na tumugma sa iyong paghahanap"
 
@@ -6146,29 +6147,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "Pinakamaraming Na-rate na Aklat (Lahat ng Oras)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "Istatistika ng Mga Gawain"
+msgid "Editing Stats"
+msgstr "Mga Istatistika ng Pag-eedit"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "Kinokolekta ang mga bilang bawat oras, kaya napupuno ang mga datos ngayong araw habang tumatakbo ang oras."
+msgid "Metrics. Choose one to chart it."
+msgstr "Mga Sukatan. Pumili ng isa para i-chart ito."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "Mga sukatan, nakaraang 28 araw. Pumili ng isa para i-chart ito."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s bumabalik · %(first_time)s unang beses"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s kumpara sa nakaraang 28 araw"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "Saklaw"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "Lahat ng pag-eedit"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "Sa Pamamagitan ng Mga Gawain"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "Panahon"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Ikumpara sa nakaraang panahon"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Bawat araw"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "Nakaraang panahon"
+msgid "4 weeks earlier"
+msgstr "4 linggo bago"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6207,16 +6229,32 @@ msgid "Month"
 msgstr "Buwan"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Ikumpara sa nakaraang panahon"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "Chart ng napiling sukatan sa loob ng napiling saklaw"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto, binibilang tuwing gabi. Ang detalyeng hindi mahanap ninuman ay binibilang na napunan na."
+msgid "Share through Tasks"
+msgstr "Bahagi sa pamamagitan ng Mga Gawain"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "Mga pag-save sa pamamagitan ng Mga Gawain bilang bahagi ng lahat ng pag-edit, at mga editor ng Mga Gawain bilang bahagi ng lahat ng editor, kada araw."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "Ng mga pag-edit"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "Ng mga editor"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "Bahagi ng mga pag-edit at ng mga editor sa pamamagitan ng Mga Gawain, kada araw"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto. Ang detalyeng hindi mahanap ninuman ay itinuturing na napunan na."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6295,6 +6333,19 @@ msgstr "Nakaraang 28 araw: %(tasks_undone)s sa %(tasks)s na pag-save sa Gawain a
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "Bahagdan ng pag-save sa Gawain na na-undo, at ng pagpuno sa labas ng Gawain, ayon sa araw"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Kinokolekta ang mga bilang bawat oras, kaya napupuno ang mga datos ngayong araw habang tumatakbo ang oras."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "Binibilang ang progreso ng mga proyekto ng komunidad tuwing gabi."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "Nagsisimula ang kabuuang bilang ng pag-edit noong %(date)s, kaya ang mas mahahabang saklaw ay nagsisimula sa kalagitnaan."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6647,7 +6698,7 @@ msgstr "Isinalin Mula sa"
 msgid "External Links"
 msgstr "Mga Panlabas na Link"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Pagpapalimbag"
 
@@ -6800,11 +6851,6 @@ msgstr "Humiram ng aklat"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "Naka-protektang DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "ni %(name)s"
 
 #: type/list/exports.html
 msgid "BibTex"
@@ -7198,22 +7244,22 @@ msgstr "Edisyon"
 msgid "Availability"
 msgstr "Availability"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
 msgid "Go to previous page"
 msgstr "Pumunta sa nakaraang bahagi"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 #, fuzzy
 msgid "Go to next page"
 msgstr "Pumunta sa susunod na bahagi"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, fuzzy, python-brace-format
 msgid "Go to page {page}"
 msgstr ""
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "Pahina {page}, kasalukuyang pahina"
@@ -7404,7 +7450,7 @@ msgstr[1] "Maghanap sa loob ng %(count)s na aklat"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Hiram mula sa Internet Archive: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "Tagapagpahiwatig ng Pag-load"
 
@@ -9267,6 +9313,15 @@ msgstr "Pagsusuri"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Gaano kahusay matutukoy ng isang patron kung ang edisyong ito ay may kaugnayan sa kanilang mga pangangailangan bago ito i-access?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - Paghahanap ng listahan"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "Paghahanap ng listahan"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Mga Resulta ng Paghahanap"
@@ -10033,16 +10088,26 @@ msgid "Editors"
 msgstr "Mga editor"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "Mga taong nagbago ng rekord ng aklat, akda, o may-akda. Sa tanawing lingguhan at buwanan, ang isang taong nag-edit sa ilang araw ay binibilang nang isang beses lang."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "Mga taong nagbago ng rekord ng aklat, akda, o may-akda, at ang mga taong ito ang kanilang unang pag-edit. Binibilang ng mga view ng linggo at buwan ang bawat tao nang isang beses."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "Mga unang beses na editor"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "Mga pag-edit na na-save ng mga tao, hindi ng mga bot: sa mga aklat, akda, may-akda, at iba pang pahina, sa mga listahan, at mula sa pahina ng Mga Gawain."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "Mga taong gumawa ng kanilang unang pag-edit sa araw na iyon. Bawat tao ay binibilang nang isang beses, sa araw ng kanilang unang pag-edit."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s kada editor"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "Ang bahagi ng mga pag-edit na na-save mula sa pahina ng Mga Gawain."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "ng mga pag-edit · %(share)s ng mga editor"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10053,12 +10118,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "Mga pag-edit na na-save mula sa pahina ng Mga Gawain."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s ng lahat ng pag-edit"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "Mga editor ng Gawain"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "Mga taong nag-save ng pag-edit mula sa pahina ng Gawain. Sa tanawing lingguhan at buwanan, ang isang taong nag-save sa ilang araw ay binibilang nang isang beses lang."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s ng lahat ng editor"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "Mga pag-save kada editor ng Mga Gawain"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "Mga pag-save sa pamamagitan ng Mga Gawain para sa bawat taong nag-save ng kahit isa."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "laban sa ≈ %(count)s pag-edit kada editor sa kabuuan"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10080,14 +10168,33 @@ msgid "Per 4 weeks"
 msgstr "Bawat 4 na linggo"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "Nakaraang panahon: %(count)s"
+msgid "A week earlier"
+msgstr "Isang linggo bago"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s kumpara sa nakaraang panahon"
+msgid "A week earlier: %(count)s"
+msgstr "Isang linggo bago: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "4 linggo bago: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s laban sa isang linggo bago"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s laban sa 4 linggo bago"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s laban sa nakaraang 7 araw"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10115,6 +10222,23 @@ msgstr "Labas ng Gawain: %(share)s na-undo, %(undone)s sa %(total)s na pagpuno"
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "Wala pang bilang para sa saklaw na ito."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "Bumabalik"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "Unang pag-edit"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "Mga rekord at iba pang pahina"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "Kabuuan: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -11466,7 +11590,7 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 #~ msgstr ""
 
 #~ msgid "Tasks Stats"
-#~ msgstr ""
+#~ msgstr "Istatistika ng Mga Gawain"
 
 #~ msgid "Each number covers the days up to the latest count, so it moves a little every day."
 #~ msgstr "Sinasaklaw ng bawat bilang ang mga araw hanggang sa pinakahuling bilang, kaya nagbabago ito nang kaunti araw-araw."
@@ -11654,4 +11778,34 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "Ang %(count)s edisyon na pinakamadalas isiwalat ng mga tao. Punan ang kulang na pabalat, bilang ng pahina, publisher, o wika."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "ni <a href=\"%s\">Ikaw</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "Mga resulta ng paghahanap para sa Mga Listahan"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "Mga sukatan, nakaraang 28 araw. Pumili ng isa para i-chart ito."
+
+#~ msgid "Previous period"
+#~ msgstr "Nakaraang panahon"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto, binibilang tuwing gabi. Ang detalyeng hindi mahanap ninuman ay binibilang na napunan na."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "Mga taong nagbago ng rekord ng aklat, akda, o may-akda. Sa tanawing lingguhan at buwanan, ang isang taong nag-edit sa ilang araw ay binibilang nang isang beses lang."
+
+#~ msgid "First-time editors"
+#~ msgstr "Mga unang beses na editor"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "Mga taong gumawa ng kanilang unang pag-edit sa araw na iyon. Bawat tao ay binibilang nang isang beses, sa araw ng kanilang unang pag-edit."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "Nakaraang panahon: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s kumpara sa nakaraang panahon"
 
