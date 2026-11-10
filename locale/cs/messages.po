@@ -975,7 +975,7 @@ msgstr "Knihovnický režim"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Kontrola shod v Prohledávání textu"
 
@@ -1550,7 +1550,7 @@ msgstr "Poznámky:"
 msgid "My Reviews"
 msgstr "Můj profil"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 #, fuzzy
 msgid "Unknown author"
 msgstr "Autor"
@@ -1744,7 +1744,7 @@ msgstr "Knihy přidané lidmi, které sleduje %(username)s"
 msgid "Search your reading log"
 msgstr "Zobrazit nebo upravit váš záznam četby"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1887,7 +1887,7 @@ msgstr "Čtenářské záznamy"
 msgid "My lists"
 msgstr "Moje seznamy"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Seznamy"
 
@@ -2211,7 +2211,7 @@ msgstr "Statistiky úkolů: kdo edituje a jak dobře úpravy úkolů vydrží"
 msgid "Edits Per Day"
 msgstr "Úpravy za den"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 #, fuzzy
 msgid "Edits"
 msgstr "Editovat"
@@ -2220,7 +2220,7 @@ msgstr "Editovat"
 msgid "Yesterday"
 msgstr "Včera"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "Posledních 7 dní"
 
@@ -2973,7 +2973,7 @@ msgstr "Nenalezeno"
 msgid "Search for an Author"
 msgstr "Hledat autora"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Hledat"
 
@@ -3664,7 +3664,7 @@ msgstr "Znáte neějaké identifikátory pro tohle vydání"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Tyto identifikátory platí pro všechna vydání tohoto díla, například identifikátory díla Wikidata. Pro identifikátory specifické pro vydání, jako ISBN nebo LCCN, přejděte na záložku vydání."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Obálka: %(title)s"
@@ -4357,7 +4357,7 @@ msgstr "Zpět na Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Hromadné vyhledávání (beta)"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Úkoly"
 
@@ -5082,7 +5082,7 @@ msgstr "Moje seznamy"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "od <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
@@ -5090,7 +5090,7 @@ msgstr[0] "%(count)d položka"
 msgstr[1] "%(count)d položky"
 msgstr[2] "%(count)d položek"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "Naposledy upraveno %(date)s"
@@ -5186,10 +5186,15 @@ msgstr "Ještě jste nevytvořili žádné seznamy."
 msgid "Learn how to create your first list."
 msgstr "Zjistěte, jak vytvořit svůj první seznam."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "od <a href=\"%s\">Vás</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "od <a href=\"%(key)s\">vás</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "od %(name)s"
 
 #: lists/showcase.html
 #, python-format
@@ -5904,17 +5909,12 @@ msgstr "Seznam"
 msgid "Grid"
 msgstr "Mřížka"
 
-#: search/lists.html
-#, fuzzy
-msgid "Search results for Lists"
-msgstr "Výsledky hledání"
-
-#: search/lists.html
+#: search/lists.html.jinja
 #, fuzzy
 msgid "Search Lists"
 msgstr "Výsledky hledání"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Žádné <strong>seznamy</strong> přímo neodpovídají vašemu vyhledávání"
 
@@ -6472,29 +6472,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "Nejhodnocenější knihy (celkově)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "Statistiky úkolů"
+msgid "Editing Stats"
+msgstr "Statistiky úprav"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "Počty se shromažďují každou hodinu, takže dnešní čísla se postupně doplňují v průběhu dne."
+msgid "Metrics. Choose one to chart it."
+msgstr "Metriky. Vyberte jednu pro zobrazení v grafu."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "Metriky za posledních 28 dní. Vyberte jednu a zobrazte ji v grafu."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s vracejících se · %(first_time)s poprvé"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s oproti předchozím 28 dnům"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "Rozsah"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "Všechny úpravy"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "Přes Úkoly"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "Období"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Porovnat s předchozím obdobím"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Za den"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "Předchozí období"
+msgid "4 weeks earlier"
+msgstr "Před 4 týdny"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6533,16 +6554,32 @@ msgid "Month"
 msgstr "Měsíc"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Porovnat s předchozím obdobím"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "Graf vybrané metriky za zvolené období"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Detaily, které v knihách každého projektu stále chybí, počítané každou noc. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
+msgid "Share through Tasks"
+msgstr "Podíl přes Úkoly"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "Uložení přes Úkoly jako podíl všech úprav a editoři Úkolů jako podíl všech editorů, podle dne."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "Z úprav"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "Z editorů"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "Podíl úprav a editorů přes Úkoly, podle dne"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "Detaily, které ještě chybí v knihách každého projektu. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6621,6 +6658,19 @@ msgstr "Posledních 28 dní: %(tasks_undone)s z %(tasks)s uložení z Úkolů a 
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "Podíl vrácených uložení z Úkolů a doplnění mimo Úkoly podle dne"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Počty se shromažďují každou hodinu, takže dnešní čísla se postupně doplňují v průběhu dne."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "Pokrok komunitních projektů se počítá každou noc."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "Celkové počty úprav začínají %(date)s, takže delší rozsahy začínají v polovině."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6993,7 +7043,7 @@ msgstr "Přeloženo z"
 msgid "External Links"
 msgstr "Externí odkazy"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Stránkování"
 
@@ -7166,11 +7216,6 @@ msgstr "Náhodna kniha"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "Chráněné DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "od %(name)s"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7595,20 +7640,20 @@ msgstr "Njvíc vydání"
 msgid "Availability"
 msgstr "Dostupnost"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "Přejít na předchozí stránku"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "Přejít na další stránku"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "Přejít na stránku {page}"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "Stránka {page}, aktuální stránka"
@@ -7812,7 +7857,7 @@ msgstr[2] "Hledat uvnitř %(count)s knih"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Vypůjčeno z Internet Archive: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "Indikátor načítání"
 
@@ -9719,6 +9764,15 @@ msgstr "Hodnocení"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Jak dobře dokáže uživatel posoudit, zda je toto vydání relevantní pro jeho potřeby, ještě než k němu přistoupí?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - Vyhledávání seznamů"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "Vyhledávání seznamů"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Výsledky hledání"
@@ -10508,16 +10562,26 @@ msgid "Editors"
 msgstr "Editoři"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "Lidé, kteří změnili záznam knihy, díla nebo autora. V týdenním a měsíčním zobrazení se osoba, která upravovala ve více dnech, počítá jen jednou."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "Lidé, kteří změnili záznam knihy, díla nebo autora, a ti, pro které to byla vůbec první úprava. Týdenní a měsíční zobrazení počítají každou osobu jednou."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "Editoři poprvé"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "Úpravy uložené lidmi, nikoli roboty: u knih, děl, autorů a dalších stránek, u seznamů a ze stránky Úkoly."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "Lidé, kteří toho dne provedli svou vůbec první úpravu. Každá osoba se počítá jednou, v den své první úpravy."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s na editora"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "Podíl úprav uložených ze stránky Úkoly."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "úprav · %(share)s editorů"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10528,12 +10592,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "Úpravy uložené ze stránky úkolů."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s ze všech úprav"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "Editoři Úkolů"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "Lidé, kteří uložili úpravu ze stránky Úkoly. V týdenním a měsíčním zobrazení se osoba, která ukládala ve více dnech, počítá jen jednou."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s ze všech editorů"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "Uložení na editora Úkolů"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "Uložení přes Úkoly pro každou osobu, která jedno uložila."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "oproti ≈ %(count)s úpravám na editora celkem"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10556,14 +10643,33 @@ msgid "Per 4 weeks"
 msgstr "Za 4 týdny"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "Předchozí období: %(count)s"
+msgid "A week earlier"
+msgstr "Před týdnem"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s oproti předchozímu období"
+msgid "A week earlier: %(count)s"
+msgstr "Před týdnem: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "Před 4 týdny: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s oproti týdnu předtím"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s oproti 4 týdnům předtím"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s oproti předchozím 7 dnům"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10591,6 +10697,23 @@ msgstr "Mimo Úkoly: %(share)s vráceno zpět, %(undone)s z %(total)s doplnění
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "Pro toto období zatím žádné počty."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "Vracející se"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "Vůbec první úprava"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "Záznamy a další stránky"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "Celkem: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -12035,4 +12158,37 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "%(count)s vydání, která lidé zařazují nejčastěji. Doplňte chybějící obálku, počet stran, vydavatele nebo jazyk."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "od <a href=\"%s\">Vás</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "Výsledky hledání"
+
+#~ msgid "Tasks Stats"
+#~ msgstr "Statistiky úkolů"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "Metriky za posledních 28 dní. Vyberte jednu a zobrazte ji v grafu."
+
+#~ msgid "Previous period"
+#~ msgstr "Předchozí období"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Detaily, které v knihách každého projektu stále chybí, počítané každou noc. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "Lidé, kteří změnili záznam knihy, díla nebo autora. V týdenním a měsíčním zobrazení se osoba, která upravovala ve více dnech, počítá jen jednou."
+
+#~ msgid "First-time editors"
+#~ msgstr "Editoři poprvé"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "Lidé, kteří toho dne provedli svou vůbec první úpravu. Každá osoba se počítá jednou, v den své první úpravy."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "Předchozí období: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s oproti předchozímu období"
 

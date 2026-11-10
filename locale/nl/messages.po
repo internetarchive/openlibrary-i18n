@@ -928,7 +928,7 @@ msgstr "Meer informatie"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "op <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Zoekresultaten binnenin controleren"
 
@@ -1466,7 +1466,7 @@ msgstr "Mijn notities"
 msgid "My Reviews"
 msgstr "Mijn recensies"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "Onbekende auteur"
 
@@ -1647,7 +1647,7 @@ msgstr "Boeken toegevoegd door mensen die %(username)s volgt"
 msgid "Search your reading log"
 msgstr "Doorzoek je leeslog"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1781,7 +1781,7 @@ msgstr "Leeslog"
 msgid "My lists"
 msgstr "Mijn lijsten"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Lijsten"
 
@@ -2087,7 +2087,7 @@ msgstr "Taakstatistieken: wie bewerkt er, en hoe houden taakbewerkingen stand"
 msgid "Edits Per Day"
 msgstr "Bewerkingen per dag"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "Bewerkingen"
 
@@ -2095,7 +2095,7 @@ msgstr "Bewerkingen"
 msgid "Yesterday"
 msgstr "Gisteren"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "Laatste 7 dagen"
 
@@ -2792,7 +2792,7 @@ msgstr "Niets gevonden"
 msgid "Search for an Author"
 msgstr "Zoek een auteur"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Zoeken"
 
@@ -3460,7 +3460,7 @@ msgstr "Ken je identificaties voor dit werk?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Deze identificaties gelden voor alle edities van dit werk, bijvoorbeeld Wikidata-werkidentificaties. Ga voor editie-specifieke identificaties, zoals ISBN of LCCN, naar het tabblad editie."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Omslag van: %(title)s"
@@ -4135,7 +4135,7 @@ msgstr "Terug naar Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Bulkzoeken (bèta)"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Taken"
 
@@ -4827,14 +4827,14 @@ msgstr "Actieve lijsten"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "van <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
 msgstr[0] "%(count)d item"
 msgstr[1] "%(count)d items"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "Laatst gewijzigd op %(date)s"
@@ -4925,10 +4925,15 @@ msgstr "Je hebt nog geen lijsten gemaakt."
 msgid "Learn how to create your first list."
 msgstr "Leer hoe je je eerste lijst maakt."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "door <a href=\"%s\">Jou</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "door <a href=\"%(key)s\">jou</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "door %(name)s"
 
 #: lists/showcase.html
 #, python-format
@@ -5597,15 +5602,11 @@ msgstr "Lijst"
 msgid "Grid"
 msgstr "Raster"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "Zoekresultaten voor lijsten"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "Lijsten zoeken"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Geen <strong>lijsten</strong> kwamen direct overeen met je zoekopdracht"
 
@@ -6122,29 +6123,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "Meest beoordeelde boeken (aller tijden)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "Takenstatistieken"
+msgid "Editing Stats"
+msgstr "Bewerkingsstatistieken"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "Tellingen worden elk uur verzameld, dus de cijfers van vandaag vullen zich aan naarmate de dag vordert."
+msgid "Metrics. Choose one to chart it."
+msgstr "Statistieken. Kies er een om te visualiseren."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "Statistieken, laatste 28 dagen. Kies er een om te visualiseren."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s terugkerend · %(first_time)s voor het eerst"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s t.o.v. vorige 28 dagen"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "Bereik"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "Alle bewerkingen"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "Via Taken"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "Periode"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Vergelijken met vorige periode"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Per dag"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "Vorige periode"
+msgid "4 weeks earlier"
+msgstr "4 weken eerder"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6183,16 +6205,32 @@ msgid "Month"
 msgstr "Maand"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Vergelijken met vorige periode"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "Grafiek van de gekozen metriek over het gekozen bereik"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Details die nog ontbreken in de boeken van elk project, elke nacht geteld. Een detail dat niemand kon vinden, telt als ingevuld."
+msgid "Share through Tasks"
+msgstr "Aandeel via Taken"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "Opslagen via Taken als aandeel van alle bewerkingen, en bewerkers via Taken als aandeel van alle bewerkers, per dag."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "Van de bewerkingen"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "Van de bewerkers"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "Aandeel van bewerkingen en bewerkers via Taken, per dag"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "Details die nog ontbreken in de boeken van elk project. Een detail dat niemand kon vinden telt als ingevuld."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6271,6 +6309,19 @@ msgstr "Laatste 28 dagen: %(tasks_undone)s van %(tasks)s Taken-opslagen en %(oth
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "Aandeel ongedaan gemaakte Taken-opslagen, en invullingen buiten Taken, per dag"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Tellingen worden elk uur verzameld, dus de cijfers van vandaag vullen zich aan naarmate de dag vordert."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "De voortgang van gemeenschapsprojecten wordt elke nacht geteld."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "De bewerkingstotalen beginnen op %(date)s, dus langere periodes beginnen halverwege."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6621,7 +6672,7 @@ msgstr "Vertaald uit"
 msgid "External Links"
 msgstr "Externe links"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Paginering"
 
@@ -6774,11 +6825,6 @@ msgstr "Boek lenen"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "Beveiligde DAISY"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "door %(name)s"
 
 #: type/list/exports.html
 msgid "BibTex"
@@ -7167,20 +7213,20 @@ msgstr "Editie"
 msgid "Availability"
 msgstr "Beschikbaarheid"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "Ga naar vorige pagina"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "Ga naar volgende pagina"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "Ga naar pagina {page}"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "Pagina {page}, huidige pagina"
@@ -7371,7 +7417,7 @@ msgstr[1] "Zoek binnenin %(count)s boeken"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Geleend van Internet Archive: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "Laadindicator"
 
@@ -9229,6 +9275,15 @@ msgstr "Evaluatie"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Hoe goed kan een gebruiker bepalen of deze editie relevant is voor hun behoeften voordat ze deze openen?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - Lijsten zoeken"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "Lijsten zoeken"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Zoekresultaten"
@@ -9989,16 +10044,26 @@ msgid "Editors"
 msgstr "Redacteuren"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "Mensen die een boek-, werk- of auteursrecord hebben gewijzigd. In week- en maandweergaven telt iemand die op meerdere dagen heeft bewerkt één keer."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "Mensen die een boek-, werk- of auteursrecord hebben gewijzigd, en degenen voor wie het hun allereerste bewerking was. Week- en maandweergaven tellen elke persoon één keer."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "Nieuwe bewerkers"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "Bewerkingen opgeslagen door mensen, niet door bots: aan boeken, werken, auteurs en andere pagina's, aan lijsten, en vanaf de Taken-pagina."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "Mensen die op die dag hun allereerste bewerking hebben gemaakt. Elke persoon wordt één keer geteld, op de dag van hun eerste bewerking."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s per bewerker"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "Het aandeel bewerkingen opgeslagen vanaf de Taken-pagina."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "van bewerkingen · %(share)s van bewerkers"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10009,12 +10074,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "Bewerkingen opgeslagen vanaf de Takenpagina."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s van alle bewerkingen"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "Taken-bewerkers"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "Mensen die een bewerking hebben opgeslagen vanaf de Takenpagina. In week- en maandweergaven telt iemand die op meerdere dagen heeft opgeslagen één keer."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s van alle bewerkers"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "Opslagen per Taken-bewerker"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "Opslagen via Taken voor elke persoon die er een heeft opgeslagen."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "vs ≈ %(count)s bewerkingen per bewerker in totaal"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10036,14 +10124,33 @@ msgid "Per 4 weeks"
 msgstr "Per 4 weken"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "Vorige periode: %(count)s"
+msgid "A week earlier"
+msgstr "Een week eerder"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s t.o.v. vorige periode"
+msgid "A week earlier: %(count)s"
+msgstr "Een week eerder: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "4 weken eerder: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s t.o.v. een week eerder"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s t.o.v. 4 weken eerder"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s t.o.v. de vorige 7 dagen"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10071,6 +10178,23 @@ msgstr "Buiten Taken: %(share)s ongedaan gemaakt, %(undone)s van %(total)s invul
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "Nog geen tellingen voor dit bereik."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "Terugkerend"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "Allereerste bewerking"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "Records en andere pagina's"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "Totaal: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -10229,4 +10353,37 @@ msgstr "De grafieken konden niet worden geladen. Herlaad de pagina om het opnieu
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "De %(count)s edities die mensen het vaakst plaatsen. Vul de ontbrekende omslag, paginanummer, uitgever of taal in."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "door <a href=\"%s\">Jou</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "Zoekresultaten voor lijsten"
+
+#~ msgid "Tasks Stats"
+#~ msgstr "Takenstatistieken"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "Statistieken, laatste 28 dagen. Kies er een om te visualiseren."
+
+#~ msgid "Previous period"
+#~ msgstr "Vorige periode"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Details die nog ontbreken in de boeken van elk project, elke nacht geteld. Een detail dat niemand kon vinden, telt als ingevuld."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "Mensen die een boek-, werk- of auteursrecord hebben gewijzigd. In week- en maandweergaven telt iemand die op meerdere dagen heeft bewerkt één keer."
+
+#~ msgid "First-time editors"
+#~ msgstr "Nieuwe bewerkers"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "Mensen die op die dag hun allereerste bewerking hebben gemaakt. Elke persoon wordt één keer geteld, op de dag van hun eerste bewerking."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "Vorige periode: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s t.o.v. vorige periode"
 

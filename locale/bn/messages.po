@@ -967,7 +967,7 @@ msgstr "अधिक जानें"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>-এ"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "अंदर खोजें"
@@ -1520,7 +1520,7 @@ msgstr "मेरे नोट्स"
 msgid "My Reviews"
 msgstr "मेरी समीक्षाएँ"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "अज्ञात लेखक"
 
@@ -1702,7 +1702,7 @@ msgstr "%(username)s যাদের অনুসরণ করেন তাদ�
 msgid "Search your reading log"
 msgstr "अपना रीडिंग लॉग खोजें"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1840,7 +1840,7 @@ msgstr "रीडिंग लॉग"
 msgid "My lists"
 msgstr "मेरी लिस्ट"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "सूचियाँ"
 
@@ -2168,7 +2168,7 @@ msgstr "কাজের পরিসংখ্যান: কে সম্পা�
 msgid "Edits Per Day"
 msgstr "প্রতিদিন সম্পাদনা"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "संपादित करता"
 
@@ -2176,7 +2176,7 @@ msgstr "संपादित करता"
 msgid "Yesterday"
 msgstr "গতকাল"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "গত ৭ দিন"
 
@@ -2943,7 +2943,7 @@ msgstr "कुछ नहीं मिला।"
 msgid "Search for an Author"
 msgstr "लेखक खोजें"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "किताबें खोजें"
 
@@ -3641,7 +3641,7 @@ msgstr "क्या आप इस संस्करण के लिए कि
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "এই শনাক্তকারীগুলি এই কাজের সমস্ত সংস্করণে প্রযোজ্য, যেমন Wikidata কাজের শনাক্তকারী। সংস্করণ-নির্দিষ্ট শনাক্তকারী, যেমন ISBN বা LCCN-এর জন্য সংস্করণ ট্যাবে যান।"
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "कवर: %(title)s"
@@ -4328,7 +4328,7 @@ msgstr "Open Library-এ ফিরে যান"
 msgid "Bulk Search (beta)"
 msgstr "विषय खोजें"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "কাজ"
 
@@ -5044,14 +5044,14 @@ msgstr "सक्रिय सूचियाँ"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "<a href=\"%(key)s\">%(owner)s</a> से"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
 msgstr[0] "%(count)d आइटम"
 msgstr[1] "%(count)d आइटम"
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "आखिरी बार %(date)s में बदलाव किया गया"
@@ -5145,10 +5145,15 @@ msgstr "आपने अभी तक कोई लिस्ट नहीं ब
 msgid "Learn how to create your first list."
 msgstr "अपनी पहली लिस्ट बनाने का तरीका जानें।"
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "<a href=\"%s\">আপনার</a> দ্বারা"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "<a href=\"%(key)s\">আপনার</a> দ্বারা"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "%(name)s द्वारा"
 
 #: lists/showcase.html
 #, python-format
@@ -5849,15 +5854,11 @@ msgstr "তালিকা"
 msgid "Grid"
 msgstr "গ্রিড"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "सूचियों के लिए खोज परिणाम"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "खोज सूचियाँ"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "আপনার অনুসন্ধানের সাথে সরাসরি কোনো <strong>তালিকা</strong> মেলেনি"
 
@@ -6390,29 +6391,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "सबसे ज़्यादा रेटिंग वाली किताबें (सभी समय)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "কাজের পরিসংখ্যান"
+msgid "Editing Stats"
+msgstr "সম্পাদনার পরিসংখ্যান"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "প্রতি ঘণ্টায় গণনা সংগ্রহ করা হয়, তাই আজকের পরিসংখ্যান দিন যত এগোয় তত পূর্ণ হতে থাকে।"
+msgid "Metrics. Choose one to chart it."
+msgstr "মেট্রিক্স। চার্ট তৈরি করতে একটি বেছে নিন।"
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "পরিমাপ, গত ২৮ দিনের। লেখচিত্রে দেখাতে একটি বেছে নিন।"
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s জন ফিরে আসা · %(first_time)s জন প্রথমবার"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "আগের ২৮ দিনের তুলনায় %(change)s"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "পরিধি"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "সব সম্পাদনা"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "কাজের মাধ্যমে"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "সময়কাল"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "আগের সময়কালের সাথে তুলনা করুন"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "প্রতিদিন"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "আগের সময়কাল"
+msgid "4 weeks earlier"
+msgstr "৪ সপ্তাহ আগে"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6451,16 +6473,32 @@ msgid "Month"
 msgstr "महीना"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "আগের সময়কালের সাথে তুলনা করুন"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "নির্বাচিত পরিসরে নির্বাচিত পরিমাপের লেখচিত্র"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "প্রতিটি প্রকল্পের বইয়ে এখনও অনুপস্থিত বিবরণ, প্রতি রাতে গণনা করা হয়। কেউ খুঁজে না পাওয়া বিবরণকে পূর্ণ হিসাবে গণনা করা হয়।"
+msgid "Share through Tasks"
+msgstr "কাজের মাধ্যমে অংশ"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "দিন অনুযায়ী, কাজের মাধ্যমে সংরক্ষণ সব সম্পাদনার অংশ হিসেবে, এবং কাজের সম্পাদকরা সব সম্পাদকের অংশ হিসেবে।"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "সম্পাদনার"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "সম্পাদকদের"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "দিন অনুযায়ী, কাজের মাধ্যমে সম্পাদনা ও সম্পাদকদের অংশ"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "প্রতিটি প্রকল্পের বইয়ে এখনও যেসব বিবরণ অনুপস্থিত। যে বিবরণ কেউ খুঁজে পায়নি, সেটি পূরণ হয়েছে বলে গণ্য হয়।"
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6539,6 +6577,19 @@ msgstr "গত ২৮ দিন: %(tasks)s টি কাজের সংরক�
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "দিন অনুযায়ী কাজের বাতিল হওয়া সংরক্ষণ এবং কাজের বাইরের বাতিল হওয়া পূরণের অনুপাত"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "প্রতি ঘণ্টায় গণনা সংগ্রহ করা হয়, তাই আজকের পরিসংখ্যান দিন যত এগোয় তত পূর্ণ হতে থাকে।"
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "কমিউনিটি প্রকল্পের অগ্রগতি প্রতি রাতে গণনা করা হয়।"
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "সম্পাদনার মোট সংখ্যা %(date)s থেকে শুরু হয়, তাই দীর্ঘ সময়সীমা মাঝপথ থেকে শুরু হয়।"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6894,7 +6945,7 @@ msgstr "से अनुवादित"
 msgid "External Links"
 msgstr "5 बाहरी कड़ियाँ"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "पृष्ठांकन"
 
@@ -7056,11 +7107,6 @@ msgstr "उधार लेने की किताब"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "संरक्षित डेज़ी"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "%(name)s द्वारा"
 
 #: type/list/exports.html
 #, fuzzy
@@ -7472,20 +7518,20 @@ msgstr "संस्करण"
 msgid "Availability"
 msgstr "उपलब्धता"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "পূর্ববর্তী পৃষ্ঠায় যান"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "পরবর্তী পৃষ্ঠায় যান"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "{page} পৃষ্ঠায় যান"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "পৃষ্ঠা {page}, বর্তমান পৃষ্ঠা"
@@ -7679,7 +7725,7 @@ msgstr[1] "%(count)s টি বইয়ের ভিতরে অনুসন�
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Internet Archive থেকে ধার করা হয়েছে: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 #, fuzzy
 msgid "Loading indicator"
 msgstr "लोन का इतिहास"
@@ -9553,6 +9599,15 @@ msgstr "মূল্যায়ন"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "একজন ব্যবহারকারী অ্যাক্সেস করার আগে এই সংস্করণটি তাদের প্রয়োজনের সাথে প্রাসঙ্গিক কিনা তা কতটা ভালোভাবে নির্ধারণ করতে পারেন?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - তালিকা অনুসন্ধান"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "তালিকা অনুসন্ধান"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -10344,16 +10399,26 @@ msgid "Editors"
 msgstr "সম্পাদকগণ"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "যারা কোনো বই, রচনা বা লেখকের নথি পরিবর্তন করেছেন। সপ্তাহ ও মাসের দৃশ্যে, কয়েক দিন ধরে সম্পাদনাকারী একজনকে একবারই গণনা করা হয়।"
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "যারা একটি বই, রচনা বা লেখকের রেকর্ড পরিবর্তন করেছেন, এবং যাদের জন্য এটি ছিল তাদের একদম প্রথম সম্পাদনা। সাপ্তাহিক ও মাসিক দৃশ্যে প্রতিটি ব্যক্তিকে একবার গণনা করা হয়।"
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "প্রথমবার সম্পাদনাকারী"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "বট নয়, মানুষের দ্বারা সংরক্ষিত সম্পাদনা: বই, রচনা, লেখক ও অন্যান্য পেজে, তালিকায়, এবং কাজ পেজ থেকে।"
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "যারা সেই দিনে প্রথমবারের মতো সম্পাদনা করেছেন। প্রতিটি ব্যক্তিকে তাঁর প্রথম সম্পাদনার দিনে একবার গণনা করা হয়।"
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s প্রতি সম্পাদকে"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "কাজ পেজ থেকে সংরক্ষিত সম্পাদনার অংশ।"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "সম্পাদনার · %(share)s সম্পাদকদের"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10364,12 +10429,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "কাজের পাতা থেকে সংরক্ষিত সম্পাদনা।"
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "সব সম্পাদনার %(share)s"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "কাজের সম্পাদনাকারী"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "যারা কাজের পাতা থেকে কোনো সম্পাদনা সংরক্ষণ করেছেন। সপ্তাহ ও মাসের দৃশ্যে, কয়েক দিন ধরে সংরক্ষণকারী একজনকে একবারই গণনা করা হয়।"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "সব সম্পাদকের %(share)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "প্রতি কাজ সম্পাদকে সংরক্ষণ"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "যারা অন্তত একটি সংরক্ষণ করেছেন তাদের প্রত্যেকের জন্য কাজের মাধ্যমে সংরক্ষণ।"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "সামগ্রিকভাবে প্রতি সম্পাদকে ≈ %(count)s সম্পাদনার তুলনায়"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10391,14 +10479,33 @@ msgid "Per 4 weeks"
 msgstr "প্রতি ৪ সপ্তাহে"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "আগের সময়কাল: %(count)s"
+msgid "A week earlier"
+msgstr "এক সপ্তাহ আগে"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "আগের সময়কালের তুলনায় %(change)s"
+msgid "A week earlier: %(count)s"
+msgstr "এক সপ্তাহ আগে: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "৪ সপ্তাহ আগে: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "এক সপ্তাহ আগের তুলনায় %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "৪ সপ্তাহ আগের তুলনায় %(change)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "আগের ৭ দিনের তুলনায় %(change)s"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10426,6 +10533,23 @@ msgstr "কাজের বাইরে: %(share)s বাতিল, %(total)s �
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "এই পরিসরের জন্য এখনও কোনো গণনা নেই।"
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "ফিরে আসা"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "একদম প্রথম সম্পাদনা"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "রেকর্ড ও অন্যান্য পেজ"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "মোট: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -12015,4 +12139,37 @@ msgstr "লেখচিত্রগুলি লোড করা যায়ন
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "মানুষ সবচেয়ে বেশি যে %(count)s টি সংস্করণ তাকে রাখে। অনুপস্থিত প্রচ্ছদ, পৃষ্ঠাসংখ্যা, প্রকাশক বা ভাষা পূরণ করুন।"
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "<a href=\"%s\">আপনার</a> দ্বারা"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "सूचियों के लिए खोज परिणाम"
+
+#~ msgid "Tasks Stats"
+#~ msgstr "কাজের পরিসংখ্যান"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "পরিমাপ, গত ২৮ দিনের। লেখচিত্রে দেখাতে একটি বেছে নিন।"
+
+#~ msgid "Previous period"
+#~ msgstr "আগের সময়কাল"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "প্রতিটি প্রকল্পের বইয়ে এখনও অনুপস্থিত বিবরণ, প্রতি রাতে গণনা করা হয়। কেউ খুঁজে না পাওয়া বিবরণকে পূর্ণ হিসাবে গণনা করা হয়।"
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "যারা কোনো বই, রচনা বা লেখকের নথি পরিবর্তন করেছেন। সপ্তাহ ও মাসের দৃশ্যে, কয়েক দিন ধরে সম্পাদনাকারী একজনকে একবারই গণনা করা হয়।"
+
+#~ msgid "First-time editors"
+#~ msgstr "প্রথমবার সম্পাদনাকারী"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "যারা সেই দিনে প্রথমবারের মতো সম্পাদনা করেছেন। প্রতিটি ব্যক্তিকে তাঁর প্রথম সম্পাদনার দিনে একবার গণনা করা হয়।"
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "আগের সময়কাল: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "আগের সময়কালের তুলনায় %(change)s"
 

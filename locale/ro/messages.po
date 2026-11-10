@@ -933,7 +933,7 @@ msgstr "Află mai multe"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "pe <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Se verifică potrivirile Search Inside"
 
@@ -1481,7 +1481,7 @@ msgstr "Notițele mele"
 msgid "My Reviews"
 msgstr "Recenziile mele"
 
-#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html
+#: BookByline.html SearchResultsWork.html account/notes.html account/observations.html lists/preview.html.jinja
 msgid "Unknown author"
 msgstr "Autor necunoscut"
 
@@ -1662,7 +1662,7 @@ msgstr "Cărți adăugate de persoanele urmărite de %(username)s"
 msgid "Search your reading log"
 msgstr "Caută în jurnalul de lectură"
 
-#: account/reading_log.html search/authors.html search/lists.html search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1799,7 +1799,7 @@ msgstr "Jurnal de citire"
 msgid "My lists"
 msgstr "Listele mele"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Liste"
 
@@ -2105,7 +2105,7 @@ msgstr "Statistici sarcini: cine editează și cât de bine rezistă editările 
 msgid "Edits Per Day"
 msgstr "Modificări pe zi"
 
-#: admin/index.html admin/people/index.html
+#: admin/index.html admin/people/index.html openlibrary/views/loanstats.py
 msgid "Edits"
 msgstr "Modificări"
 
@@ -2113,7 +2113,7 @@ msgstr "Modificări"
 msgid "Yesterday"
 msgstr "Ieri"
 
-#: admin/index.html
+#: admin/index.html stats/tasks.html.jinja
 msgid "Last 7 days"
 msgstr "Ultimele 7 zile"
 
@@ -2817,7 +2817,7 @@ msgstr "Niciuna găsită"
 msgid "Search for an Author"
 msgstr "Caută un autor"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Căutare"
 
@@ -3490,7 +3490,7 @@ msgstr "Cunoști vreun identificator pentru această operă?"
 msgid "These identifiers apply to all editions of this work, for example Wikidata work identifiers. For edition-specific identifiers, like ISBN or LCCN, go to the edition tab."
 msgstr "Acești identificatori se aplică tuturor edițiilor acestei opere, de exemplu identificatorii Wikidata. Pentru identificatori specifici ediției, cum ar fi ISBN sau LCCN, mergi la fila ediție."
 
-#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html lists/snippet.html type/work/editions.html
+#: FulltextResultIA.html.jinja IABook.html SearchResultsWork.html books/edition-sort.html jsdef/LazyWorkPreview.html lists/preview.html.jinja lists/snippet.html type/work/editions.html
 #, python-format
 msgid "Cover of: %(title)s"
 msgstr "Copertă pentru: %(title)s"
@@ -4168,7 +4168,7 @@ msgstr "Înapoi la Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Căutare în masă (beta)"
 
-#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/dashboard.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Sarcini"
 
@@ -4871,7 +4871,7 @@ msgstr "Liste active"
 msgid "from <a href=\"%(key)s\">%(owner)s</a>"
 msgstr "de la <a href=\"%(key)s\">%(owner)s</a>"
 
-#: lists/home.html lists/preview.html lists/snippet.html type/list/embed.html type/list/view_body.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html type/list/embed.html type/list/view_body.html
 #, python-format
 msgid "%(count)d item"
 msgid_plural "%(count)d items"
@@ -4879,7 +4879,7 @@ msgstr[0] "%(count)d element"
 msgstr[1] "%(count)d elemente"
 msgstr[2] ""
 
-#: lists/home.html lists/preview.html lists/snippet.html
+#: lists/home.html lists/preview.html.jinja lists/snippet.html
 #, python-format
 msgid "Last modified %(date)s"
 msgstr "Modificat ultima dată %(date)s"
@@ -4972,10 +4972,15 @@ msgstr "Nu ați creat nicio listă încă."
 msgid "Learn how to create your first list."
 msgstr "Aflați cum puteți să creați prima dumneavoastră listă."
 
-#: lists/preview.html
+#: lists/preview.html.jinja
 #, python-format
-msgid "by <a href=\"%s\">You</a>"
-msgstr "de <a href=\"%s\">Tine</a>"
+msgid "by <a href=\"%(key)s\">You</a>"
+msgstr "de <a href=\"%(key)s\">tine</a>"
+
+#: BookByline.html lists/preview.html.jinja type/list/embed.html
+#, python-format
+msgid "by %(name)s"
+msgstr "de %(name)s"
 
 #: lists/showcase.html
 #, python-format
@@ -5653,15 +5658,11 @@ msgstr "Listă"
 msgid "Grid"
 msgstr "Grilă"
 
-#: search/lists.html
-msgid "Search results for Lists"
-msgstr "Rezultatele căutării pentru liste"
-
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "Search Lists"
 msgstr "Căutați liste"
 
-#: search/lists.html
+#: search/lists.html.jinja
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Nicio <strong>listă</strong> nu s-a potrivit direct cu căutarea dvs."
 
@@ -6184,29 +6185,50 @@ msgid "Most Rated Books (All Time)"
 msgstr "Cărți cel mai bine evaluate (toată perioada)"
 
 #: stats/tasks.html stats/tasks.html.jinja
-msgid "Tasks Stats"
-msgstr "Statistici sarcini"
+msgid "Editing Stats"
+msgstr "Statistici de editare"
 
 #: stats/tasks.html.jinja
-msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
-msgstr "Numărătorile sunt adunate în fiecare oră, așa că cifrele de astăzi se completează pe măsură ce trece ziua."
+msgid "Metrics. Choose one to chart it."
+msgstr "Metrici. Alege una pentru a o reprezenta grafic."
 
-#: stats/tasks.html.jinja
-msgid "Metrics, last 28 days. Choose one to chart it."
-msgstr "Valori, ultimele 28 de zile. Alege una pentru a o reprezenta grafic."
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+#, python-format
+msgid "%(returning)s returning · %(first_time)s first-time"
+msgstr "%(returning)s recurenți · %(first_time)s la prima ediție"
 
-#: stats/tasks.html.jinja
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
 #, python-format
 msgid "%(change)s vs previous 28 days"
 msgstr "%(change)s față de precedentele 28 de zile"
+
+#: stats/tasks.html.jinja
+msgid "Scope"
+msgstr "Domeniu"
+
+#: stats/tasks.html.jinja
+msgid "All editing"
+msgstr "Toate editările"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Through Tasks"
+msgstr "Prin Sarcini"
+
+#: stats/tasks.html.jinja
+msgid "Period"
+msgstr "Perioadă"
+
+#: stats/tasks.html.jinja
+msgid "Compare to previous period"
+msgstr "Compară cu perioada anterioară"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Pe zi"
 
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "Previous period"
-msgstr "Perioada anterioară"
+msgid "4 weeks earlier"
+msgstr "Cu 4 săptămâni înainte"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6245,16 +6267,32 @@ msgid "Month"
 msgstr "Lună"
 
 #: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Compară cu perioada anterioară"
-
-#: stats/tasks.html.jinja
 msgid "Chart of the chosen metric over the chosen range"
 msgstr "Grafic al valorii alese pe intervalul ales"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
-msgstr "Detalii încă lipsă din cărțile fiecărui proiect, numărate în fiecare noapte. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
+msgid "Share through Tasks"
+msgstr "Cotă prin Sarcini"
+
+#: stats/tasks.html.jinja
+msgid "Tasks saves as a share of all edits, and Tasks editors as a share of all editors, by day."
+msgstr "Salvările prin Sarcini ca pondere din toate editările, și editorii de Sarcini ca pondere din toți editorii, pe zi."
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of edits"
+msgstr "Din editări"
+
+#: openlibrary/views/loanstats.py stats/tasks.html.jinja
+msgid "Of editors"
+msgstr "Din editori"
+
+#: stats/tasks.html.jinja
+msgid "Share of edits and of editors through Tasks, by day"
+msgstr "Ponderea editărilor și a editorilor prin Sarcini, pe zi"
+
+#: stats/tasks.html.jinja
+msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+msgstr "Detalii încă lipsă din cărțile fiecărui proiect. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
 
 #: stats/tasks.html.jinja
 msgid "Community projects. Choose one to chart it."
@@ -6333,6 +6371,19 @@ msgstr "Ultimele 28 de zile: %(tasks_undone)s din %(tasks)s salvări din Sarcini
 #: stats/tasks.html.jinja
 msgid "Share of Tasks saves undone, and of fills outside Tasks, by day"
 msgstr "Proporția salvărilor din Sarcini anulate și a completărilor în afara Sarcinilor, pe zi"
+
+#: stats/tasks.html.jinja
+msgid "Counts are gathered every hour, so today's figures fill in as the day goes on."
+msgstr "Numărătorile sunt adunate în fiecare oră, așa că cifrele de astăzi se completează pe măsură ce trece ziua."
+
+#: stats/tasks.html.jinja
+msgid "Community project progress is counted nightly."
+msgstr "Progresul proiectelor comunitare este calculat în fiecare noapte."
+
+#: stats/tasks.html.jinja
+#, python-format
+msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+msgstr "Totalurile de editare încep la %(date)s, astfel încât intervalele mai lungi încep la jumătatea drumului."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -6687,7 +6738,7 @@ msgstr "Tradusă din"
 msgid "External Links"
 msgstr "Legături externe"
 
-#: OlPagination.html OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "Paginare"
 
@@ -6845,11 +6896,6 @@ msgstr "Împrumutați cartea"
 #: type/list/embed.html
 msgid "Protected DAISY"
 msgstr "DAISY protejat"
-
-#: BookByline.html type/list/embed.html
-#, python-format
-msgid "by %(name)s"
-msgstr "de %(name)s"
 
 #: type/list/exports.html
 msgid "BibTex"
@@ -7242,20 +7288,20 @@ msgstr "Ediție"
 msgid "Availability"
 msgstr "Disponibilitate"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "Mergeți la pagina anterioară"
 
-#: OlPagination.html OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "Mergeți la pagina următoare"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "Mergeți la pagina {page}"
 
-#: OlPagination.html type/work/editions_datatable.html
+#: OlPagination.html.jinja type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "Pagina {page}, pagina curentă"
@@ -7452,7 +7498,7 @@ msgstr[2] "Caută în interiorul a %(count)s de cărți"
 msgid "Borrowed from Internet Archive: %(title)s"
 msgstr "Împrumutat de la Internet Archive: %(title)s"
 
-#: LoadingIndicator.html
+#: LoadingIndicator.html.jinja
 msgid "Loading indicator"
 msgstr "Indicator de încărcare"
 
@@ -9325,6 +9371,15 @@ msgstr "Evaluare"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Cât de bine poate un utilizator să stabilească dacă această ediție este relevantă pentru nevoile sale înainte de a o accesa?"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - List search"
+msgstr "%(query)s - Căutare liste"
+
+#: openlibrary/fastapi/search.py
+msgid "List search"
+msgstr "Căutare liste"
+
 #: openlibrary/plugins/openlibrary/api.py
 #, fuzzy
 msgid "Search Results"
@@ -10093,16 +10148,26 @@ msgid "Editors"
 msgstr "Editori"
 
 #: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
-msgstr "Persoane care au modificat o înregistrare de carte, operă sau autor. În vizualizările pe săptămână și lună, o persoană care a editat în mai multe zile este numărată o singură dată."
+msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+msgstr "Persoane care au modificat o înregistrare de carte, operă sau autor, și cele pentru care a fost prima editare vreodată. Vizualizările săptămânale și lunare numără fiecare persoană o singură dată."
 
 #: openlibrary/views/loanstats.py
-msgid "First-time editors"
-msgstr "Editori la prima editare"
+msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+msgstr "Editări salvate de persoane, nu de boți: la cărți, opere, autori și alte pagini, la liste, și de pe pagina Sarcini."
 
 #: openlibrary/views/loanstats.py
-msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
-msgstr "Persoane care și-au făcut prima editare vreodată în acea zi. Fiecare persoană este numărată o singură dată, în ziua primei sale editări."
+#, python-format
+msgid "≈ %(count)s per editor"
+msgstr "≈ %(count)s per editor"
+
+#: openlibrary/views/loanstats.py
+msgid "The share of edits saved from the Tasks page."
+msgstr "Ponderea editărilor salvate de pe pagina Sarcini."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "of edits · %(share)s of editors"
+msgstr "din editări · %(share)s din editori"
 
 #: openlibrary/views/loanstats.py
 msgid "Tasks saves"
@@ -10113,12 +10178,35 @@ msgid "Edits saved from the Tasks page."
 msgstr "Editări salvate de pe pagina sarcinilor."
 
 #: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all edits"
+msgstr "%(share)s din toate editările"
+
+#: openlibrary/views/loanstats.py
 msgid "Tasks editors"
 msgstr "Editori din Sarcini"
 
 #: openlibrary/views/loanstats.py
 msgid "People who saved an edit from the Tasks page. In week and month views, someone who saved on several days counts once."
 msgstr "Persoane care au salvat o editare din pagina Sarcini. În vizualizările pe săptămână și lună, o persoană care a salvat în mai multe zile este numărată o singură dată."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of all editors"
+msgstr "%(share)s din toți editorii"
+
+#: openlibrary/views/loanstats.py
+msgid "Saves per Tasks editor"
+msgstr "Salvări per editor de Sarcini"
+
+#: openlibrary/views/loanstats.py
+msgid "Tasks saves for each person who saved one."
+msgstr "Salvări prin Sarcini pentru fiecare persoană care a salvat una."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "vs ≈ %(count)s edits per editor overall"
+msgstr "față de ≈ %(count)s editări per editor în total"
 
 #: openlibrary/views/loanstats.py
 msgid "<b>—</b> people have helped"
@@ -10141,14 +10229,33 @@ msgid "Per 4 weeks"
 msgstr "La 4 săptămâni"
 
 #: openlibrary/views/loanstats.py
-#, python-format
-msgid "Previous period: %(count)s"
-msgstr "Perioada anterioară: %(count)s"
+msgid "A week earlier"
+msgstr "Cu o săptămână înainte"
 
 #: openlibrary/views/loanstats.py
 #, python-format
-msgid "%(change)s vs previous period"
-msgstr "%(change)s față de perioada anterioară"
+msgid "A week earlier: %(count)s"
+msgstr "Cu o săptămână înainte: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "4 weeks earlier: %(count)s"
+msgstr "Cu 4 săptămâni înainte: %(count)s"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs a week earlier"
+msgstr "%(change)s față de o săptămână înainte"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs 4 weeks earlier"
+msgstr "%(change)s față de 4 săptămâni înainte"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(change)s vs previous 7 days"
+msgstr "%(change)s față de ultimele 7 zile"
 
 #: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
@@ -10176,6 +10283,23 @@ msgstr "În afara Sarcinilor: %(share)s anulate, %(undone)s din %(total)s comple
 #: openlibrary/views/loanstats.py
 msgid "No counts for this range yet."
 msgstr "Încă nu există numărători pentru acest interval."
+
+#: openlibrary/views/loanstats.py
+msgid "Returning"
+msgstr "Recurenți"
+
+#: openlibrary/views/loanstats.py
+msgid "First edit ever"
+msgstr "Prima editare vreodată"
+
+#: openlibrary/views/loanstats.py
+msgid "Records and other pages"
+msgstr "Înregistrări și alte pagini"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "Total: %(count)s"
+msgstr "Total: %(count)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
@@ -11539,4 +11663,37 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 
 #~ msgid "The %(count)s editions people shelve most. Fill in any cover, page count, publisher or language they're missing."
 #~ msgstr "Cele %(count)s ediții pe care oamenii le depozitează cel mai mult. Completați coperta, numărul de pagini, editura sau limba lipsă."
+
+#~ msgid "by <a href=\"%s\">You</a>"
+#~ msgstr "de <a href=\"%s\">Tine</a>"
+
+#~ msgid "Search results for Lists"
+#~ msgstr "Rezultatele căutării pentru liste"
+
+#~ msgid "Tasks Stats"
+#~ msgstr "Statistici sarcini"
+
+#~ msgid "Metrics, last 28 days. Choose one to chart it."
+#~ msgstr "Valori, ultimele 28 de zile. Alege una pentru a o reprezenta grafic."
+
+#~ msgid "Previous period"
+#~ msgstr "Perioada anterioară"
+
+#~ msgid "Details still missing across each project's books, counted nightly. A detail nobody could find counts as filled."
+#~ msgstr "Detalii încă lipsă din cărțile fiecărui proiect, numărate în fiecare noapte. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
+
+#~ msgid "People who changed a book, work or author record. In week and month views, someone who edited on several days counts once."
+#~ msgstr "Persoane care au modificat o înregistrare de carte, operă sau autor. În vizualizările pe săptămână și lună, o persoană care a editat în mai multe zile este numărată o singură dată."
+
+#~ msgid "First-time editors"
+#~ msgstr "Editori la prima editare"
+
+#~ msgid "People who made their first edit ever on that day. Each person is counted once, on the day of their first edit."
+#~ msgstr "Persoane care și-au făcut prima editare vreodată în acea zi. Fiecare persoană este numărată o singură dată, în ziua primei sale editări."
+
+#~ msgid "Previous period: %(count)s"
+#~ msgstr "Perioada anterioară: %(count)s"
+
+#~ msgid "%(change)s vs previous period"
+#~ msgstr "%(change)s față de perioada anterioară"
 
