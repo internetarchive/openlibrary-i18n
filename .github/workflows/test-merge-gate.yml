@@ -1,16 +1,22 @@
 name: Test merge gate
 
-# scripts/merge_gate.py is the only thing standing between unreviewed machine
+# The auto-merge decision is the only thing standing between unreviewed machine
 # translations and main (translate.yml merges with it; the repo has no branch
-# protection and allow_auto_merge:false). Nothing else runs its tests, so a
-# regression in it would otherwise ship silently. Run its tests whenever it, or
-# its tests, or this workflow change.
+# protection and allow_auto_merge:false). Two scripts own that decision and
+# nothing else runs their tests, so a regression in either would ship silently:
+#   * scripts/merge_gate.py     -- does every required check pass? (merge / settled)
+#   * scripts/reconcile_rerun.py -- what to do about a required check that is
+#                                   ABSENT because its run died at startup
+#                                   (re-dispatch / escalate / wait).
+# Run their tests whenever either script, its tests, or this workflow changes.
 
 on:
   pull_request:
     paths:
       - "scripts/merge_gate.py"
+      - "scripts/reconcile_rerun.py"
       - "tests/test_merge_gate.py"
+      - "tests/test_reconcile_rerun.py"
       - ".github/workflows/test-merge-gate.yml"
 
 permissions:
@@ -28,5 +34,5 @@ jobs:
 
       - run: pip install pytest
 
-      - name: Run merge-gate tests
-        run: python -m pytest tests/test_merge_gate.py -q
+      - name: Run auto-merge gate tests
+        run: python -m pytest tests/test_merge_gate.py tests/test_reconcile_rerun.py -q
