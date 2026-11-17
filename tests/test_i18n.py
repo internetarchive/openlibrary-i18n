@@ -44,6 +44,7 @@ _english_copy_or_empty = _mod._english_copy_or_empty
 _batches_from_counts = _mod._batches_from_counts
 _stats_from_catalog = _mod._stats_from_catalog
 _untranslated_from_catalog = _mod._untranslated_from_catalog
+_add_missing_from_pot = _mod._add_missing_from_pot
 known_langs = _mod.known_langs
 get_batches = _mod.get_batches
 validate = _mod.validate
@@ -156,6 +157,44 @@ class TestUntranslated:
         )
         entries = _untranslated_from_catalog(_catalog(po), limit=None)
         assert len(entries) == 2
+
+
+class TestMissingFromPot:
+    """msgids in messages.pot but absent from the .po must count as untranslated."""
+
+    POT = _po(
+        'msgid "Have"\nmsgstr ""',
+        'msgid "New"\nmsgstr ""',
+        'msgid "One new"\nmsgid_plural "%(n)d new"\nmsgstr[0] ""\nmsgstr[1] ""',
+    )
+    PO = _po('msgid "Have"\nmsgstr "Hat"')
+
+    def test_add_missing_from_pot(self):
+        cat = _catalog(self.PO)
+        assert _add_missing_from_pot(cat, _catalog(self.POT)) == 2
+        ids = [e["id"] for e in _untranslated_from_catalog(cat)]
+        assert ids == ["New", "One new"]
+        assert _stats_from_catalog(cat, "xx")["untranslated"] == 2
+
+    @pytest.fixture
+    def fake_repo(self, tmp_path, monkeypatch):
+        (tmp_path / "locale" / "xx").mkdir(parents=True)
+        (tmp_path / "locale" / "xx" / "messages.po").write_bytes(self.PO)
+        (tmp_path / "messages.pot").write_bytes(self.POT)
+        monkeypatch.setattr(_mod, "LOCALE_DIR", tmp_path / "locale")
+        monkeypatch.setattr(_mod, "MESSAGES_POT", tmp_path / "messages.pot")
+        return tmp_path
+
+    def test_get_untranslated_and_counts_see_missing(self, fake_repo):
+        assert len(_mod.get_untranslated("xx")) == 2
+        assert _mod.get_counts("xx")["untranslated"] == 2
+
+    def test_apply_adds_missing_entries(self, fake_repo):
+        assert _mod.apply_translations("xx", {"New": "Neu"}) == 1
+        cat = read_po(open(fake_repo / "locale" / "xx" / "messages.po", "rb"))
+        assert cat["New"].string == "Neu"
+        assert cat["Have"].string == "Hat"
+        assert [e["id"] for e in _mod.get_untranslated("xx")] == ["One new"]
 
 
 # ---------------------------------------------------------------------------
