@@ -304,15 +304,27 @@ The workflow handles auto-merge after CI passes.
 
 If you cannot safely preserve all format strings, leave `msgstr` empty.
 
-**Plural forms: never replace a placeholder with a literal number.** A plural
-entry's English looks like `msgid "%(value)s, on 1 edition"` / `msgid_plural
-"%(value)s, on %(count)d editions"`. The singular English happens to contain the
-literal `1`, but every form you *write* is reused by gettext for many counts, so
-each form must carry the **placeholder** — write `…%(count)d…`, never the bare
-digit the English singular shows. Hardcoding `1` (or any number) in a form is the
-exact defect that broke id/ja/ko/ru/uk in #188: it passes `validate` but fails the
-deploy check and strands the whole PR. `./i18n fix` now repairs the obvious case
-and clears the rest, but do not rely on it — keep the placeholder yourself.
+**Plural forms: which forms need the count placeholder.** A plural entry's
+English looks like `msgid "%(value)s, on 1 edition"` / `msgid_plural
+"%(value)s, on %(count)d editions"`. Whether `msgstr[0]` may keep the literal `1`
+depends on the language's plural rule (the `Plural-Forms` header of its `.po`):
+
+- **Form 0 is used only for n=1** (rules like `n != 1`, or `n==1 ? 0 : …`):
+  write `msgstr[0]` to match the **singular** English exactly. A literal `1` is
+  correct, and adding `%(count)d` is wrong: `./i18n fix` clears it as a
+  format mismatch. Today that is as, az, bn, ca, cs, de, es, hi, it, nl, pl, pt,
+  ro, sc, sq, te, tl, tr, zh.
+- **Form 0 is also used for other counts** (`nplurals=1`; fr's `n > 1`, which
+  covers 0; ru/uk/hr, which reuse form 0 for 21, 31, …; ar's current `n > 2`):
+  `msgstr[0]` must carry the **placeholder** — write `…%(count)d…`, never the
+  bare digit. Today that is ar, fr, hr, id, ja, ko, ru, uk.
+- **Every other form** (`msgstr[1]` and up) always carries the placeholder.
+
+If a header doesn't match the lists above, go by the rule itself. Hardcoding a
+number in a form that is reused for other counts is the exact defect that broke
+id/ja/ko/ru/uk in #188: it passes `validate` but fails the deploy check and
+strands the whole PR. `./i18n fix` repairs the obvious case and clears the rest,
+but do not rely on it.
 
 ### HTML markup — preserve structure
 - Never translate tag names (`<a>`, `<strong>`, `<span>`) or attribute keys (`href`, `rel`, `class`)
