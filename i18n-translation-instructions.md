@@ -46,35 +46,32 @@ If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub
 
 ## Step 2: Resume existing work, or create a fresh branch
 
-A previous run may have run out of turns, hit an error, or otherwise stopped mid-batch. **Check for existing in-progress work before starting fresh** — resuming avoids duplicate branches, wasted turns, and orphaned draft PRs.
+A previous attempt at this same batch may have run out of turns, hit an error, or otherwise stopped mid-batch. Resume it if so, otherwise start fresh.
 
-```bash
-# Look for an existing open PR whose branch covers this batch's language(s)
-gh pr list --state open --json number,headRefName,title \
-  --jq '.[] | select(.headRefName | startswith("i18n/ai-"))'
-```
+Your branch name is fixed by your batch and today's date:
 
-**If a matching open PR/branch already exists for one or more languages in your batch:**
-```bash
-git fetch origin
-git checkout <existing-branch-name>
-git pull origin <existing-branch-name>
-PR_NUMBER=<the existing PR number>
-```
-Skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n untranslated` naturally reflects only what's still remaining, since prior progress was already pushed (see Step 4's commit substep).
+- Single language: `i18n/ai-{lang}-YYYYMMDD`
+- Multiple languages: `i18n/ai-batch-YYYYMMDD`
 
-**If no matching PR exists, create fresh:**
-
-Always branch from `origin/main` — never from whatever is currently checked out.
-
-Single language: `i18n/ai-{lang}-YYYYMMDD`
-Multiple languages: `i18n/ai-batch-YYYYMMDD`
+Resume **only** an open PR whose head branch is exactly that name. Never pick a PR by prefix or by which languages it seems to cover. Other agents in this same run have their own branches and PRs, and you must not touch them. Open `i18n/ai-*` PRs from earlier days are not yours to resume either: `reconcile.yml` refreshes them against `main`, merges them once their checks pass, or flags them for a human (#132, #124).
 
 ```bash
 DATE=$(date +%Y%m%d)
-BRANCH="i18n/ai-ro-${DATE}"   # or ai-batch-${DATE} for multiple languages
+BRANCH="i18n/ai-ro-${DATE}"   # or i18n/ai-batch-${DATE} for multiple languages
 git fetch origin
-git checkout -b "$BRANCH" origin/main
+PR_NUMBER=$(gh pr list --state open --head "$BRANCH" --json number --jq '.[0].number // empty')
+```
+
+**If `PR_NUMBER` is set**, resume it:
+```bash
+git checkout -B "$BRANCH" "origin/$BRANCH"
+```
+Skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n untranslated` naturally reflects only what's still remaining, since prior progress was already pushed (see Step 4's commit substep).
+
+**Otherwise**, create the branch fresh from `origin/main`, never from whatever is currently checked out. If a branch with that name is still on the remote without an open PR, it's left over from a closed PR, so add a suffix rather than building on it:
+```bash
+if git rev-parse -q --verify "origin/$BRANCH" >/dev/null; then BRANCH="${BRANCH}-2"; fi
+git checkout -B "$BRANCH" origin/main
 ```
 
 ## Step 3: Open a draft PR immediately
