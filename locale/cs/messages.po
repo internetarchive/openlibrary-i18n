@@ -981,7 +981,7 @@ msgstr "Knihovnický režim"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Kontrola shod v Prohledávání textu"
 
@@ -1442,7 +1442,7 @@ msgstr "Seznamy četby"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Ztratíte své místo ve frontě na <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1745,7 +1745,7 @@ msgstr "Knihy přidané lidmi, které sleduje %(username)s"
 msgid "Search your reading log"
 msgstr "Zobrazit nebo upravit váš záznam četby"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -5141,7 +5141,7 @@ msgstr "Poznámky:"
 msgid "Add another image"
 msgstr "Přidat další obrázek"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Dokončeno"
 
@@ -6492,49 +6492,49 @@ msgstr "Řadit výsledky"
 msgid "Shuffle"
 msgstr "Náhodné pořadí"
 
-#: search/subjects.html
-#, fuzzy
-msgid "Search Subjects"
-msgstr "Výsledky hledání"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Žádná <strong>témata</strong> přímo neodpovídají vašemu vyhledávání"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "time"
 msgstr "Název"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "subject"
 msgstr "Témata"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "place"
 msgstr "Místo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "org"
 msgstr "nebo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "event"
 msgstr "Obnovit"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "person"
 msgstr "Osoba"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "work"
 msgstr ""
+
+#: search/subjects.html.jinja
+#, fuzzy
+msgid "Search Subjects"
+msgstr "Výsledky hledání"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Žádná <strong>témata</strong> přímo neodpovídají vašemu vyhledávání"
 
 #: search/work_search_facets.html.jinja
 #, fuzzy
@@ -7054,20 +7054,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Podíl úprav a editorů přes Úkoly, podle dne"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Detaily, které ještě chybí v knihách každého projektu. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Komunitní projekty. Vyberte jeden a zobrazte ho v grafu."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "z vyplněných údajů · Dokončeno"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "doplněných údajů"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detaily stále otevřené u %(project)s, podle dnů"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -7083,16 +7072,8 @@ msgid "marked not found"
 msgstr "označeno jako nenalezeno"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detaily stále otevřené u vybraného projektu, podle dnů"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Uložení podle pole, posledních 28 dní"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Jaké údaje lidé doplňují."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10467,6 +10448,15 @@ msgstr "%(query)s - Vyhledávání seznamů"
 msgid "List search"
 msgstr "Vyhledávání seznamů"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Vyhledávání témat"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Vyhledávání témat"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Někdo jiný změnil tento projekt, zatímco jste jej měli otevřený. Zkontrolujte jej níže a zkuste to znovu."
@@ -13193,4 +13183,22 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 #~ msgstr[0] "%(value)s, u 1 vydání"
 #~ msgstr[1] "%(value)s, u %(count)d vydání"
 #~ msgstr[2] "%(value)s, u %(count)d vydání"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Detaily, které ještě chybí v knihách každého projektu. Detail, který nikdo nedokázal najít, se počítá jako vyplněný."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Komunitní projekty. Vyberte jeden a zobrazte ho v grafu."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "z vyplněných údajů · Dokončeno"
+
+#~ msgid "of details filled"
+#~ msgstr "doplněných údajů"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detaily stále otevřené u vybraného projektu, podle dnů"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Jaké údaje lidé doplňují."
 

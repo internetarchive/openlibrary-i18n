@@ -942,7 +942,7 @@ msgstr "অধিক জানক"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>-ত"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "চাৰ্চ ইনছাইড মিলসমূহ পৰীক্ষা কৰা হৈছে"
 
@@ -1377,7 +1377,7 @@ msgstr "অপেক্ষা তালিকাৰ পৰা বাহিৰ �
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "আপুনি <strong>%(title)s</strong>ৰ বাবে প্ৰতীক্ষা তালিকাত থকা আপোনাৰ স্থান হেৰুৱাব।"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1656,7 +1656,7 @@ msgstr "%(username)s এ অনুসৰণ কৰা ব্যক্তিস�
 msgid "Search your reading log"
 msgstr "আপোনাৰ পঠন লগ বিচাৰক"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4920,7 +4920,7 @@ msgstr "টোকাসমূহ:"
 msgid "Add another image"
 msgstr "আৰু এটা ছবি যোগ কৰক"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "সম্পন্ন হৈছে"
 
@@ -6190,41 +6190,41 @@ msgstr "ফলাফল ক্ৰমবিন্যাস কৰক"
 msgid "Shuffle"
 msgstr "শ্বাফেল"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "বিষয় সন্ধান কৰক"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "কোনো <strong>বিষয়</strong> সিদ্ধান্তমূলকভাৱে আপোনাৰ সন্ধানৰ সৈতে মিলা নাই"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "সময়"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "বিষয়"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "স্থান"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "সংস্থা"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "ঘটনা"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "ব্যক্তি"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "ৰচনা"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "বিষয় সন্ধান কৰক"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "কোনো <strong>বিষয়</strong> সিদ্ধান্তমূলকভাৱে আপোনাৰ সন্ধানৰ সৈতে মিলা নাই"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6717,20 +6717,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "দিন অনুসৰি, কামৰ জৰিয়তে সম্পাদনা আৰু সম্পাদকৰ অংশ"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "প্ৰতিটো প্ৰকল্পৰ কিতাপত এতিয়াও নথকা বিৱৰণসমূহ। কোনেও বিচাৰি নোপোৱা বিৱৰণ পূৰ কৰা হ'ল বুলি গণ্য কৰা হয়।"
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "সম্প্ৰদায় প্ৰকল্পসমূহ। চাৰ্টত দেখুৱাবলৈ এটা বাছনি কৰক।"
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "বিৱৰণ পূৰণ কৰা হৈছে · সমাপ্ত"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "পূৰণ কৰা বিৱৰণৰ"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)s-ত এতিয়াও মুকলি থকা সবিশেষ, দিনৰ হিচাপে"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6746,16 +6735,8 @@ msgid "marked not found"
 msgstr "পোৱা নগ'ল বুলি চিহ্নিত"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "বাছনি কৰা প্ৰকল্পত এতিয়াও মুকলি থকা সবিশেষ, দিনৰ হিচাপে"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "ক্ষেত্ৰ অনুসৰি সংৰক্ষণ, শেষ 28 দিন"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "মানুহে কি কি বিৱৰণ পূৰণ কৰি আছে।"
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -9997,6 +9978,15 @@ msgstr "%(query)s - তালিকা সন্ধান"
 msgid "List search"
 msgstr "তালিকা সন্ধান"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - বিষয় সন্ধান"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "বিষয় সন্ধান"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "আপুনি এইটো খুলি থকা সময়ত আন কোনোবাই এই প্ৰকল্পটো সলনি কৰিছিল। তলত ইয়াক পৰীক্ষা কৰক, তাৰপিছত পুনৰ চেষ্টা কৰক।"
@@ -12561,4 +12551,22 @@ msgstr "চাৰ্টসমূহ ল'ড হ'ব নোৱাৰিলে। 
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, ১খন সংস্কৰণত"
 #~ msgstr[1] "%(value)s, %(count)d খন সংস্কৰণত"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "প্ৰতিটো প্ৰকল্পৰ কিতাপত এতিয়াও নথকা বিৱৰণসমূহ। কোনেও বিচাৰি নোপোৱা বিৱৰণ পূৰ কৰা হ'ল বুলি গণ্য কৰা হয়।"
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "সম্প্ৰদায় প্ৰকল্পসমূহ। চাৰ্টত দেখুৱাবলৈ এটা বাছনি কৰক।"
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "বিৱৰণ পূৰণ কৰা হৈছে · সমাপ্ত"
+
+#~ msgid "of details filled"
+#~ msgstr "পূৰণ কৰা বিৱৰণৰ"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "বাছনি কৰা প্ৰকল্পত এতিয়াও মুকলি থকা সবিশেষ, দিনৰ হিচাপে"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "মানুহে কি কি বিৱৰণ পূৰণ কৰি আছে।"
 

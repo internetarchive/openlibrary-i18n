@@ -934,7 +934,7 @@ msgstr "Impara de prus"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "in <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Verifichende sas currispondèntzias cun sa Chirca a intro"
 
@@ -1369,7 +1369,7 @@ msgstr "Lassa sa lista de isetu"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "As a pèrdere su postu tuo in fila pro <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1648,7 +1648,7 @@ msgstr "Libros annantos dae gente chi %(username)s sighit"
 msgid "Search your reading log"
 msgstr "Chirca in su registru de letura tuo"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4912,7 +4912,7 @@ msgstr "Notas:"
 msgid "Add another image"
 msgstr "Annanghe un'àtera immàgine"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Acabadu"
 
@@ -6181,41 +6181,41 @@ msgstr "Òrdina sos resurtados"
 msgid "Shuffle"
 msgstr "Ammistura"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Chirca argumentos"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Perunu <strong>argumentu</strong> at tentu una currispondèntzia direta cun sa chirca tua"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "perìodu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "argumentu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "logu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organizatzione"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "eventu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "persone"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "òpera"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Chirca argumentos"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Perunu <strong>argumentu</strong> at tentu una currispondèntzia direta cun sa chirca tua"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6708,20 +6708,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Parte de sas modìficas e de sos editores tramite sas Fainas, pro die"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Detàllios chi mancant galu in sos libros de ogni progetu. Unu detàlliu chi nemos at pòtidu agatare contat comente cumpletadu."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Progetos de sa comunidade. Issèbera·nde unu pro lu bìdere in su gràficu."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "de detàllos pienados · Acabadu"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "de sos detàllios prenados"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detàllios galu abertos in %(project)s, pro dies"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6737,16 +6726,8 @@ msgid "marked not found"
 msgstr "marcados comente non agatados"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detàllios galu abertos in su progetu seberadu, pro dies"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Sarvamentos pro campu, ùrtimas 28 dies"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Sos detàllios chi sas persones sunt prenende."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -9983,6 +9964,15 @@ msgstr "%(query)s - Chirca de listas"
 msgid "List search"
 msgstr "Chirca de listas"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Chirca de argumentos"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Chirca de argumentos"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Un'àtera persone at cambiadu custu progetu mentras chi l'aias abertu. Controlla·lu asuta, a pustis torra a proare."
@@ -13135,4 +13125,22 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, in 1 editzione"
 #~ msgstr[1] "%(value)s, in %(count)d editziones"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Detàllios chi mancant galu in sos libros de ogni progetu. Unu detàlliu chi nemos at pòtidu agatare contat comente cumpletadu."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Progetos de sa comunidade. Issèbera·nde unu pro lu bìdere in su gràficu."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "de detàllos pienados · Acabadu"
+
+#~ msgid "of details filled"
+#~ msgstr "de sos detàllios prenados"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detàllios galu abertos in su progetu seberadu, pro dies"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Sos detàllios chi sas persones sunt prenende."
 

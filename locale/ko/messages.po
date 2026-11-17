@@ -932,7 +932,7 @@ msgstr "더 알아보기"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>에서"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "검색 결과 확인 중"
 
@@ -1361,7 +1361,7 @@ msgstr "대기자 명단 탈퇴"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "<strong>%(title)s</strong>의 대기 목록에서 순서를 잃게 됩니다."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1637,7 +1637,7 @@ msgstr "%(username)s이(가) 팔로우하는 사람들이 추가한 책"
 msgid "Search your reading log"
 msgstr "독서 기록 검색"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4896,7 +4896,7 @@ msgstr "노트:"
 msgid "Add another image"
 msgstr "다른 이미지 추가"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "완료"
 
@@ -6147,41 +6147,41 @@ msgstr "결과 정렬"
 msgid "Shuffle"
 msgstr "무작위"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "주제 검색"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "검색어와 직접 일치하는 <strong>주제</strong>가 없습니다"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "시간"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "주제"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "장소"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "기관"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "사건"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "인물"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "작품"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "주제 검색"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "검색어와 직접 일치하는 <strong>주제</strong>가 없습니다"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6673,20 +6673,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "작업을 통한 편집 및 편집자 비율(날짜별)"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "각 프로젝트의 책에서 아직 부족한 세부정보. 아무도 찾지 못한 세부정보는 채워진 것으로 간주합니다."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "커뮤니티 프로젝트. 차트로 볼 프로젝트를 선택하세요."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "세부 정보 채움 비율 · 완료"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "채워진 세부정보 비율"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)s에서 여전히 열려 있는 세부 정보, 일별"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6702,16 +6691,8 @@ msgid "marked not found"
 msgstr "찾을 수 없음으로 표시됨"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "선택한 프로젝트에서 여전히 열려 있는 세부 정보, 일별"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "최근 28일간 항목별 저장"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "사람들이 채우고 있는 세부정보입니다."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -9933,6 +9914,15 @@ msgstr "%(query)s - 목록 검색"
 msgid "List search"
 msgstr "목록 검색"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - 주제 검색"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "주제 검색"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "회원님이 열어 둔 사이에 다른 사람이 이 프로젝트를 변경했습니다. 아래 내용을 확인한 후 다시 시도하세요."
@@ -12380,4 +12370,22 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 #~ msgid "%(value)s, on 1 edition"
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, %(count)d개 판에서"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "각 프로젝트의 책에서 아직 부족한 세부정보. 아무도 찾지 못한 세부정보는 채워진 것으로 간주합니다."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "커뮤니티 프로젝트. 차트로 볼 프로젝트를 선택하세요."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "세부 정보 채움 비율 · 완료"
+
+#~ msgid "of details filled"
+#~ msgstr "채워진 세부정보 비율"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "선택한 프로젝트에서 여전히 열려 있는 세부 정보, 일별"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "사람들이 채우고 있는 세부정보입니다."
 

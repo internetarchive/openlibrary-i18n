@@ -938,7 +938,7 @@ msgstr "Saznaj više"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Provjera poklapanja pretraživanja unutar"
 
@@ -1379,7 +1379,7 @@ msgstr "Izbriši se iz popisa čekanja"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Izgubit ćete svoje mjesto na listi čekanja za <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1663,7 +1663,7 @@ msgstr "Knjige koje su dodali ljudi %(username)s slijedi"
 msgid "Search your reading log"
 msgstr "Pretraži tvoj dnevnik čitanja"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4934,7 +4934,7 @@ msgstr "Napomene:"
 msgid "Add another image"
 msgstr "Dodaj jednu drugu sliku"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Završeno"
 
@@ -6221,41 +6221,41 @@ msgstr "Razvrstaj rezultate"
 msgid "Shuffle"
 msgstr "Promiješaj"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Traži područja"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Nijedan <strong>predmet</strong> se ne poklapa s tvojom pretragom"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "vrijeme"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "područje"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "mjesto"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organizacija"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "događaj"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "osoba"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "djelo"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Traži područja"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Nijedan <strong>predmet</strong> se ne poklapa s tvojom pretragom"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6751,20 +6751,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Udio uređivanja i urednika putem Zadataka, po danu"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Pojedinosti koje još nedostaju u knjigama svakog projekta. Pojedinost koju nitko nije mogao pronaći broji se kao popunjena."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Projekti zajednice. Odaberite jedan za prikaz na grafikonu."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "podataka popunjeno · Završeno"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "popunjenih detalja"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detalji koji su još uvijek otvoreni za %(project)s, po danima"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6780,16 +6769,8 @@ msgid "marked not found"
 msgstr "označeno kao nepronađeno"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detalji koji su još uvijek otvoreni za odabrani projekt, po danima"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Spremanja po polju, posljednjih 28 dana"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Koje detalje ljudi popunjavaju."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10048,6 +10029,15 @@ msgstr "%(query)s - Pretraga popisa"
 msgid "List search"
 msgstr "Pretraga popisa"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Pretraga područja"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Pretraga područja"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Netko drugi je u međuvremenu promijenio ovaj projekt. Provjeri ga ispod, pa pokušaj ponovno."
@@ -12744,4 +12734,22 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 #~ msgstr[0] "%(value)s, na %(count)d izdanju"
 #~ msgstr[1] "%(value)s, na %(count)d izdanja"
 #~ msgstr[2] "%(value)s, na %(count)d izdanja"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Pojedinosti koje još nedostaju u knjigama svakog projekta. Pojedinost koju nitko nije mogao pronaći broji se kao popunjena."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Projekti zajednice. Odaberite jedan za prikaz na grafikonu."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "podataka popunjeno · Završeno"
+
+#~ msgid "of details filled"
+#~ msgstr "popunjenih detalja"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detalji koji su još uvijek otvoreni za odabrani projekt, po danima"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Koje detalje ljudi popunjavaju."
 

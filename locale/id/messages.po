@@ -946,7 +946,7 @@ msgstr "Pelajari Lebih Lanjut"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "di <a target=\"_blank\" href=\"%(link)s\" rel=\"noopener noreferrer\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Memeriksa kecocokan Pencarian Dalam"
 
@@ -1383,7 +1383,7 @@ msgstr "Keluar dari daftar tunggu"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Anda akan kehilangan posisi Anda dalam daftar tunggu untuk <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1659,7 +1659,7 @@ msgstr "Buku yang ditambahkan oleh orang yang diikuti %(username)s"
 msgid "Search your reading log"
 msgstr "Cari log membaca Anda"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4953,7 +4953,7 @@ msgstr "Catatan:"
 msgid "Add another image"
 msgstr "Tambahkan gambar lain"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Selesai"
 
@@ -6216,41 +6216,41 @@ msgstr "Urutkan hasil"
 msgid "Shuffle"
 msgstr "Acak Ulang"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Cari Subjek"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Tidak ada <strong>subjek</strong> yang langsung cocok dengan pencarian Anda"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "waktu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "subjek"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "tempat"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "org"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "acara"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "orang"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "karya"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Cari Subjek"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Tidak ada <strong>subjek</strong> yang langsung cocok dengan pencarian Anda"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6747,20 +6747,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Pangsa suntingan dan penyunting melalui Tugas, per hari"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Detail yang masih hilang di buku-buku setiap proyek. Detail yang tidak dapat ditemukan siapa pun dihitung sebagai terisi."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Proyek komunitas. Pilih salah satu untuk membuat grafiknya."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "dari detail yang terisi · Selesai"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "dari detail yang terisi"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detail yang masih terbuka pada %(project)s, per hari"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6776,16 +6765,8 @@ msgid "marked not found"
 msgstr "ditandai tidak ditemukan"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detail yang masih terbuka pada proyek yang dipilih, per hari"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Penyimpanan berdasarkan bidang, 28 hari terakhir"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Detail apa saja yang sedang diisi orang."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10043,6 +10024,15 @@ msgstr "%(query)s - Pencarian daftar"
 msgid "List search"
 msgstr "Pencarian daftar"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Pencarian subjek"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Pencarian subjek"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Orang lain mengubah proyek ini saat Anda sedang membukanya. Periksa di bawah, lalu coba lagi."
@@ -12891,4 +12881,22 @@ msgstr "Grafik gagal dimuat. Muat ulang halaman untuk mencoba lagi."
 #~ msgid "%(value)s, on 1 edition"
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, pada %(count)d edisi"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Detail yang masih hilang di buku-buku setiap proyek. Detail yang tidak dapat ditemukan siapa pun dihitung sebagai terisi."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Proyek komunitas. Pilih salah satu untuk membuat grafiknya."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "dari detail yang terisi · Selesai"
+
+#~ msgid "of details filled"
+#~ msgstr "dari detail yang terisi"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detail yang masih terbuka pada proyek yang dipilih, per hari"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Detail apa saja yang sedang diisi orang."
 

@@ -938,7 +938,7 @@ msgstr "Matuto Nang Higit Pa"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr ""
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Tinitingnan ang mga tugma sa Search Inside"
 
@@ -1375,7 +1375,7 @@ msgstr "Umalis sa listahan ng naghihintay"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Mawawala ang iyong pwesto sa waiting list para sa <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1655,7 +1655,7 @@ msgstr "Mga librong idinadagdag ng mga taong sinusuportahan ni %(username)s"
 msgid "Search your reading log"
 msgstr "Maghanap sa iyong reading log"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4932,7 +4932,7 @@ msgstr "Mga Tala:"
 msgid "Add another image"
 msgstr "Magdagdag ng isa pang larawan"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Natapos"
 
@@ -6201,41 +6201,41 @@ msgstr "Ayusin ang mga resulta"
 msgid "Shuffle"
 msgstr "Shuffle"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Maghanap ng mga Paksa"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Walang <strong>mga paksa</strong> na tumugma sa iyong paghahanap"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "oras"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "paksa"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "lugar"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "org"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "kaganapan"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "tao"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "trabaho"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Maghanap ng mga Paksa"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Walang <strong>mga paksa</strong> na tumugma sa iyong paghahanap"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6732,20 +6732,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Bahagi ng mga pag-edit at ng mga editor sa pamamagitan ng Mga Gawain, kada araw"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto. Ang detalyeng hindi mahanap ninuman ay itinuturing na napunan na."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Mga proyekto ng komunidad. Pumili ng isa para i-chart ito."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "ng mga detalyeng napunan · Tapos na"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "ng mga detalyeng napunan"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Mga detalyeng bukas pa rin sa %(project)s, kada araw"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6761,16 +6750,8 @@ msgid "marked not found"
 msgstr "minarkahang hindi natagpuan"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Mga detalyeng bukas pa rin sa napiling proyekto, kada araw"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Mga pag-save ayon sa field, nakaraang 28 araw"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Kung aling mga detalye ang pinupunan ng mga tao."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10021,6 +10002,15 @@ msgstr "%(query)s - Paghahanap ng listahan"
 msgid "List search"
 msgstr "Paghahanap ng listahan"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Paghahanap ng paksa"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Paghahanap ng paksa"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "May ibang nagbago sa proyektong ito habang bukas ito sa iyo. Tingnan ito sa ibaba, pagkatapos ay subukan ulit."
@@ -12741,4 +12731,22 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, sa 1 edisyon"
 #~ msgstr[1] "%(value)s, sa %(count)d na edisyon"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Mga detalyeng kulang pa rin sa mga aklat ng bawat proyekto. Ang detalyeng hindi mahanap ninuman ay itinuturing na napunan na."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Mga proyekto ng komunidad. Pumili ng isa para i-chart ito."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "ng mga detalyeng napunan · Tapos na"
+
+#~ msgid "of details filled"
+#~ msgstr "ng mga detalyeng napunan"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Mga detalyeng bukas pa rin sa napiling proyekto, kada araw"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Kung aling mga detalye ang pinupunan ng mga tao."
 

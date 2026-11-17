@@ -976,7 +976,7 @@ msgstr "अधिक जानें"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> पर"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "अंदर खोजें"
@@ -1429,7 +1429,7 @@ msgstr "प्रतीक्षा सूची छोड़ें"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "आप <strong>%(title)s</strong> की प्रतीक्षा सूची में अपना स्थान खो देंगे।"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1711,7 +1711,7 @@ msgstr "उन लोगों द्वारा जोड़ी गई पु�
 msgid "Search your reading log"
 msgstr "अपना रीडिंग लॉग खोजें"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -5123,7 +5123,7 @@ msgstr "नोट्स:"
 msgid "Add another image"
 msgstr "एक और फ़ोटो जोड़ें"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "पूर्ण"
 
@@ -6445,41 +6445,41 @@ msgstr "परिणामों को क्रमबद्ध करें"
 msgid "Shuffle"
 msgstr "आवाज़ कम करें"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "विषय खोजें"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "आपकी खोज से सीधे कोई <strong>विषय</strong> मेल नहीं खाया"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "समय"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "विषय"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "करें"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "org"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "आयोजन"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "व्यक्ति"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "कार्य"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "विषय खोजें"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "आपकी खोज से सीधे कोई <strong>विषय</strong> मेल नहीं खाया"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6986,20 +6986,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "दिन के हिसाब से, कार्यों के ज़रिए संपादनों और संपादकों का हिस्सा"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "हर प्रोजेक्ट की किताबों में अब भी जो विवरण छूटे हुए हैं। जो विवरण कोई नहीं ढूंढ पाया, उसे भरा हुआ माना जाता है।"
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "सामुदायिक परियोजनाएँ। चार्ट में देखने के लिए एक चुनें।"
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "विवरण भरे गए · पूर्ण"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "भरे गए विवरण में से"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)s में अब भी खुले विवरण, दिन के अनुसार"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -7015,16 +7004,8 @@ msgid "marked not found"
 msgstr "नहीं मिला के रूप में चिह्नित"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "चुनी गई परियोजना में अब भी खुले विवरण, दिन के अनुसार"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "फ़ील्ड के अनुसार सेव, पिछले 28 दिन"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "लोग कौन से विवरण भर रहे हैं।"
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10343,6 +10324,15 @@ msgstr "%(query)s - सूची खोज"
 msgid "List search"
 msgstr "सूची खोज"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - विषय खोज"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "विषय खोज"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "जब आपने यह परियोजना खोल रखी थी, तब किसी और ने इसे बदल दिया। नीचे इसे जांचें, फिर दोबारा कोशिश करें।"
@@ -12904,4 +12894,22 @@ msgstr "चार्ट लोड नहीं हो सके। फिर स
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, 1 संस्करण पर"
 #~ msgstr[1] "%(value)s, %(count)d संस्करणों पर"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "हर प्रोजेक्ट की किताबों में अब भी जो विवरण छूटे हुए हैं। जो विवरण कोई नहीं ढूंढ पाया, उसे भरा हुआ माना जाता है।"
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "सामुदायिक परियोजनाएँ। चार्ट में देखने के लिए एक चुनें।"
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "विवरण भरे गए · पूर्ण"
+
+#~ msgid "of details filled"
+#~ msgstr "भरे गए विवरण में से"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "चुनी गई परियोजना में अब भी खुले विवरण, दिन के अनुसार"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "लोग कौन से विवरण भर रहे हैं।"
 

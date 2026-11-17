@@ -958,7 +958,7 @@ msgstr "Daha fazla bilgi"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> üzerinde"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "İçeride Arama eşleşmeleri kontrol ediliyor"
 
@@ -1402,7 +1402,7 @@ msgstr "Bekleme listesinden ayrıl"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "<strong>%(title)s</strong> için bekleme listesindeki yerinizi kaybedeceksiniz."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1682,7 +1682,7 @@ msgstr "%(username)s'in takip ettiği kişilerin eklediği kitaplar"
 msgid "Search your reading log"
 msgstr "Okuma günlüğünüzde arayın"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -5010,7 +5010,7 @@ msgstr "Notlar:"
 msgid "Add another image"
 msgstr "Başka bir görsel ekle"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Tamamlandı"
 
@@ -5352,36 +5352,36 @@ msgstr "<a href=\"%(href)s\">%(name)s</a> / Listeler"
 #, python-format
 msgid "This author is on <strong>%(count)s list</strong>."
 msgid_plural "This author is on <strong>%(count)s lists</strong>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu yazar <strong>%(count)s listede</strong>."
+msgstr[1] "Bu yazar <strong>%(count)s listede</strong>."
 
 #: lists/header.html
 #, python-format
 msgid "This edition is on <strong>%(count)s list</strong>."
 msgid_plural "This edition is on <strong>%(count)s lists</strong>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu baskı <strong>%(count)s listede</strong>."
+msgstr[1] "Bu baskı <strong>%(count)s listede</strong>."
 
 #: lists/header.html
 #, python-format
 msgid "This work is on <strong>%(count)s list</strong>."
 msgid_plural "This work is on <strong>%(count)s lists</strong>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu eser <strong>%(count)s listede</strong>."
+msgstr[1] "Bu eser <strong>%(count)s listede</strong>."
 
 #: lists/header.html
 #, python-format
 msgid "%(name)s has %(count)s list."
 msgid_plural "%(name)s has %(count)s lists."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(name)s %(count)s listeye sahip."
+msgstr[1] "%(name)s %(count)s listeye sahip."
 
 #: lists/header.html
 #, python-format
 msgid "This subject is on <strong>%(count)s list</strong>."
 msgid_plural "This subject is on <strong>%(count)s lists</strong>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu konu <strong>%(count)s listede</strong>."
+msgstr[1] "Bu konu <strong>%(count)s listede</strong>."
 
 #: lists/header.html
 msgid "Hm. Can't find it."
@@ -6048,15 +6048,15 @@ msgstr "%(page_type)s, birincil %(record_type)s kaydıyla birleştirildi."
 #, python-format
 msgid "%(who)s merged %(count)d duplicate of %(master)s"
 msgid_plural "%(who)s merged %(count)d duplicates of %(master)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(who)s, %(master)s'ın %(count)d kopyasını birleştirdi"
+msgstr[1] "%(who)s, %(master)s'ın %(count)d kopyasını birleştirdi"
 
 #: recentchanges/merge/message.html
 #, python-format
 msgid "%(count)d duplicate of %(master)s was merged anonymously"
 msgid_plural "%(count)d duplicates of %(master)s were merged anonymously"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(master)s'ın %(count)d kopyası anonim olarak birleştirildi"
+msgstr[1] "%(master)s'ın %(count)d kopyası anonim olarak birleştirildi"
 
 #: recentchanges/merge/view.html
 msgid "This merge has been undone."
@@ -6308,41 +6308,41 @@ msgstr "Sonuçları sırala"
 msgid "Shuffle"
 msgstr "Karıştır"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Konuları Ara"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Aramanızla doğrudan eşleşen <strong>konu</strong> bulunamadı"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "zaman"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "konu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "yer"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "kuruluş"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "etkinlik"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "kişi"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "eser"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Konuları Ara"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Aramanızla doğrudan eşleşen <strong>konu</strong> bulunamadı"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6845,20 +6845,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Görevler üzerinden düzenleme ve editör payı, güne göre"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Her projenin kitaplarında hâlâ eksik olan ayrıntılar. Kimsenin bulamadığı bir ayrıntı doldurulmuş sayılır."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Topluluk projeleri. Grafiğini görmek için birini seçin."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "bilgi dolduruldu · Tamamlandı"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "doldurulan ayrıntı"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)s'de hâlâ açık olan ayrıntılar, güne göre"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6874,16 +6863,8 @@ msgid "marked not found"
 msgstr "bulunamadı olarak işaretlendi"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Seçilen projede hâlâ açık olan ayrıntılar, güne göre"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Alana göre kayıtlar, son 28 gün"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "İnsanların hangi ayrıntıları doldurduğu."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -8830,8 +8811,8 @@ msgstr "Diğer baskılar şöyle diyor…"
 #, python-format
 msgid "%(value)s, on %(count)d edition"
 msgid_plural "%(value)s, on %(count)d editions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(value)s, %(count)d baskıda"
+msgstr[1] "%(value)s, %(count)d baskıda"
 
 #: contribute/parts.html.jinja
 msgid "Add a comment about your edit"
@@ -10167,6 +10148,15 @@ msgstr "%(query)s - Liste arama"
 #: openlibrary/fastapi/search.py
 msgid "List search"
 msgstr "Liste arama"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Konu arama"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Konu arama"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -12964,4 +12954,22 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, 1 baskıda"
 #~ msgstr[1] "%(value)s, %(count)d baskıda"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Her projenin kitaplarında hâlâ eksik olan ayrıntılar. Kimsenin bulamadığı bir ayrıntı doldurulmuş sayılır."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Topluluk projeleri. Grafiğini görmek için birini seçin."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "bilgi dolduruldu · Tamamlandı"
+
+#~ msgid "of details filled"
+#~ msgstr "doldurulan ayrıntı"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Seçilen projede hâlâ açık olan ayrıntılar, güne göre"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "İnsanların hangi ayrıntıları doldurduğu."
 
