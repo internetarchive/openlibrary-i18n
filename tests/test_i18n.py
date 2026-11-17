@@ -656,6 +656,7 @@ def _init_locale_repo(tmp_path: Path, langs: dict[str, bytes]) -> tuple[Path, st
     """A throwaway git repo with locale/<lang>/messages.po committed as the base.
     Returns (root, base_sha). The scope guard runs its real git plumbing against it."""
     (tmp_path / "locale").mkdir()
+    (tmp_path / "messages.pot").write_bytes(_po('msgid "A"\nmsgstr ""'))
     for lang, po in langs.items():
         d = tmp_path / "locale" / lang
         d.mkdir()
@@ -724,6 +725,24 @@ class TestScopeGuardIntegration:
         de = (root / "locale" / "de" / "messages.po").read_bytes()
         assert b"STRAY" not in it and b"vecchio" in it  # it reset to base
         assert b"neu" in de  # de (the batch) kept
+
+    def test_fails_when_a_translation_pr_changes_the_pot(self, tmp_path, monkeypatch, capsys):
+        root, sha = self._setup(tmp_path, monkeypatch, {"de": _po('msgid "A"\nmsgstr "alt"')})
+        (root / "locale" / "de" / "messages.po").write_bytes(_po('msgid "A"\nmsgstr "neu"'))
+        (root / "messages.pot").write_bytes(_po('msgid "A"\nmsgstr ""', 'msgid "B"\nmsgstr ""'))
+        assert check_scope(ref=sha) == 1
+        assert "messages.pot" in capsys.readouterr().out
+
+    def test_allows_a_pot_only_change(self, tmp_path, monkeypatch):
+        root, sha = self._setup(tmp_path, monkeypatch, {"de": _po('msgid "A"\nmsgstr "alt"')})
+        (root / "messages.pot").write_bytes(_po('msgid "A"\nmsgstr ""', 'msgid "B"\nmsgstr ""'))
+        assert check_scope(ref=sha) == 0
+
+    def test_isolate_resets_the_pot(self, tmp_path, monkeypatch):
+        root, sha = self._setup(tmp_path, monkeypatch, {"de": _po('msgid "A"\nmsgstr "alt"')})
+        (root / "messages.pot").write_bytes(_po('msgid "A"\nmsgstr ""', 'msgid "NEW"\nmsgstr ""'))
+        isolate(["de"], base=sha)
+        assert b"NEW" not in (root / "messages.pot").read_bytes()
 
     def test_flags_a_stray_even_when_main_advanced_it_meanwhile(self, tmp_path, monkeypatch, capsys):
         """The exact #188 shape: while the batch PR is open, another PR merges to

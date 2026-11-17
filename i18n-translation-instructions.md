@@ -211,7 +211,7 @@ batch became un-mergeable. If you are ever unsure what is staged, reset every
 other language back to main first:
 
 ```bash
-./i18n isolate <all your batch languages>   # resets locale/<other-langs> to origin/main
+./i18n isolate <all your batch languages>   # resets messages.pot and locale/<other-langs> to origin/main
 git add locale/{lang}/messages.po locale/{lang}/messages.mo
 git commit -m "i18n({lang}): batch {N} — AI translations (claude-sonnet-5)"
 git push origin "$BRANCH"
@@ -219,7 +219,7 @@ git push origin "$BRANCH"
 
 `validate-pr.yml` runs `./i18n check-scope` as a **required** check: if any changed
 language did no real translation work (a stray from a broad sync), the PR goes red
-and will not merge. Run `./i18n check-scope` yourself before marking ready to catch
+and will not merge. It also fails if the PR changes `messages.pot` (`sync-pot.yml` commits that to main). Run `./i18n check-scope` yourself before marking ready to catch
 it early. Push right after every commit, not just at the end of the run. This step is only reached after `validate` and `test` have both exited 0, so it's always pushing already-verified work. If the run gets cut off later (turn limit, error), everything up to this point survives on the remote branch — Step 2's resume check picks it up next time instead of losing it.
 
 **Re-loop if `fix` cleared entries.** After `fix`, re-run `untranslated` — if `fix` cleared N entries they become untranslated again and need another translate→apply→fix→validate→test cycle. Repeat until both `untranslated` returns `[]` AND `validate` exits 0.
