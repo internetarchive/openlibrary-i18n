@@ -59,9 +59,11 @@ jobs:
     # Weblate sync branch, OR any PR NOT authored by openlibrary-bot (a contributor
     # fork, or a staff member pushing a translation branch). The bot's own i18n/ai-*
     # batches are excluded -- they have their own gate in translate.yml/reconcile.yml.
+    # Skip PRs labelled `no-automation` so maintainers can merge them by hand.
     if: >-
-      github.head_ref == 'weblate' ||
-      github.event.pull_request.user.login != 'openlibrary-bot'
+      !contains(github.event.pull_request.labels.*.name, 'no-automation') &&
+      (github.head_ref == 'weblate' ||
+       github.event.pull_request.user.login != 'openlibrary-bot')
     runs-on: ubuntu-latest
     permissions:
       contents: read
