@@ -1,0 +1,47 @@
+name: Sync messages.pot
+
+# Keep main's messages.pot equal to openlibrary master's. translate.yml downloads
+# a fresh copy each run but its PRs commit only locale/<lang>/ files, so main's
+# copy fell behind (#157); Weblate reads it as the English source. This commits
+# it alone, straight to main: a copy of the source catalog, not a translation,
+# so it skips the translation merge gate.
+
+on:
+  repository_dispatch:
+    types: [openlibrary-pot-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-pot
+  cancel-in-progress: false
+
+jobs:
+  sync-pot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.OL_BOT_I18N_PAT }}
+
+      - name: Commit messages.pot to main if it changed
+        run: |
+          git config user.name  "Open Library Bot"
+          git config user.email "50213894+openlibrary-bot@users.noreply.github.com"
+          # Retry from a fresh main if another commit lands between fetch and push.
+          for _ in 1 2 3; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            ./i18n pull
+            if git diff --quiet -- messages.pot; then
+              echo "messages.pot already matches openlibrary master."
+              exit 0
+            fi
+            git commit -q -m "messages.pot: sync to openlibrary master" -- messages.pot
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo "Could not push after 3 attempts." >&2
+          exit 1
