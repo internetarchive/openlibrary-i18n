@@ -5954,7 +5954,7 @@ msgstr "%(count)dレコードが変更されました。"
 msgid "All fields"
 msgstr "すべてのフィールド"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8606,6 +8606,20 @@ msgid "No matching language"
 msgstr "一致する言語がありません"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "他%(count)d件。"
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "この版が本当に同じISBNを持っている場合は、もう一度保存してください。"
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "スキャンを見る"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "他の版の情報…"
 
@@ -8712,10 +8726,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "表紙のみを、平らで全体が写るようにアップロードしてください。机の上に置いた本の写真、3Dモックアップ、店舗のバッジや透かしは不可です。"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "この表紙は別の版のものです。ペーパーバック版、再版、翻訳版は通常異なる表紙を持ちます。出版社を確認してください。"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "自分で表紙を作成すること。本物が見つからない場合は、見つけられる誰かに任せてください。"
 
@@ -8756,14 +8766,8 @@ msgid "How many pages does this edition have?"
 msgstr "この版は何ページありますか？"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google ブックスではページ数が「Length」として表示されます。WorldCatではレコードの説明欄に記載されていますが、サインインしないと表示されない場合もあります。Amazonの印刷ページ数（print length）はすべてのページを数えていることが多いため、数値を見つけるためではなく確認するために使ってください。\n"
-"\n"
-"そのレコードが別の刷りではなく、この版のものであることを確認してください。"
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Booksはページ数をLengthとして表示します。WorldCatではレコードの説明に記載されており、サインイン後にしか表示されないこともあります。Amazonのprint lengthはしばしば全ページを数えているため、数値を見つけるためではなく確認するために使ってください。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8786,8 +8790,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "この本はフィクションですか、ノンフィクションですか?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "本を知っている場合は、知っている内容に基づいて回答してください。知らない場合は調べてください。"
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google BooksはFiction/Fantasyのようなカテゴリーを、WorldCatはFictionやBiographyのようなジャンルを表示します。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8824,10 +8828,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "ジャンルの中には舞台設定を表すもの(ファンタジー、歴史)、筋立ての形を表すもの(ミステリー、ロマンス)、トーンを表すもの(ユーモア)があります。1冊の本は各種類から多くても1つずつ、通常は全体で1つか2つだけ持ちます。"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "本に含まれるすべての要素ではなく、どう売られているかで判断してください。恋愛要素のあるファンタジーはあくまでファンタジーであり、ファンタジーの舞台設定の恋愛物語はロマンスです。"
 
@@ -8859,6 +8859,58 @@ msgstr "Open Libraryでは親会社ではなく、本に印刷されているイ
 msgid "Publisher as printed"
 msgstr "印刷されている出版社名"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "出版日"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "出版日を入力"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "この版はいつ出版されましたか？"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "奥付のページに年が記載されており、出版社の近くにあることが多いです。本にスキャンがあれば、まずそこを確認してください。Google BooksではPublishedとして、WorldCatではDateとして、Library of Congressのレコードでは Published の行の一部として記載されています。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "この版が出た年、または目録に完全な日付があればそれを入力してください（例：2005年3月）。同じ版の後の刷でも版の年はそのまま保持されます。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "例：2005年または2005年3月"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "ISBNを入力"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "この版のISBNは何ですか？"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBNは奥付のページと裏表紙の、バーコードの上に印刷されています。本にスキャンがあれば、まずそこを確認してください。本が手元にない場合は、WorldCatやGoogle Booksでタイトルと著者から検索し、出版社・年・形態がこの版と一致するレコードを開いて、そこに記載されたISBNをコピーしてください。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10とISBN-13が同じ版を示すことがあります：0140449264と9780140449266。ハイフンの有無にかかわらず、どちらかを貼り付けてください。1970年以前の本にはISBNがありません。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "このISBNは本の別の形態のものです。ハードカバー、ペーパーバック、電子書籍、オーディオブックにはそれぞれ独自のISBNがあります。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "例：9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "出版社・年・形態がこの版と一致することを確認しました。"
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "米国議会図書館番号（LCCN）"
@@ -8872,8 +8924,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "この版の米国議会図書館番号は何ですか？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "このISBNを米国議会図書館(Library of Congress)のカタログで検索してください。出版社と版がこれと一致するレコードを開き、LCCNとして表示されている番号をコピーしてください。ペーパーバック版や後の刷りでは年が異なって表示されることがありますが、同じレコードである場合があります。"
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "このISBNでLibrary of Congressの目録を検索し、一致するレコードを開いて、LCCNとして表示されている番号をコピーしてください。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8882,14 +8934,6 @@ msgstr "ハイフン付きとパディングされた形式は同じ番号です
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "この番号は別の版のものです:別の出版社のもの、改訂版、翻訳版、または電子書籍です。それぞれに独自のレコードがあります。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "この番号はすでにこの作品の別の版に使われています。同じ出版社のハードカバー、ペーパーバック、または後の刷りであれば問題ありません。出版社が異なる場合や改訂版の場合は、どちらかのレコードが誤っていることになります。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "番号そのものではなく、ウェブアドレスを貼り付けている。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -8912,12 +8956,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "この版のWorldCat（OCLC）番号は何ですか？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "このISBNをWorldCatで検索してください。出版社と版がこれと一致する印刷版のレコードを開き、OCLC Numberとして表示されている番号をコピーしてください。ペーパーバック版や後の刷りでは年が異なって表示されることがありますが、同じレコードである場合があります。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "OCLC番号は、世界中の図書館が目録に登録された一つの版を参照するために使う番号です。新しいレコードが登録された際に、Open Libraryがこの本の重複を見つけるために使う数少ない項目の一つです。"
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "このISBNでWorldCatを検索し、一致する印刷版のレコードを開いて、OCLC Numberとして表示されている番号をコピーしてください。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -8944,16 +8984,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "印刷版のレコードを開き、その出版社と版がこれと一致することを確認しました。"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "この版には米国議会図書館番号があります。そのレコードには言語が記載されており、タイトルページに印刷されたとおりの出版社名が記載されています。"
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "この版にはLibrary of Congressのレコードがあり、言語と出版社が印刷通りに記載されています。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "米国議会図書館のレコード"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "この本はSF・ファンタジーであり、ISFDBでよく扱われています。各刷りが個別に掲載されており、「verified」と記載されたレコードは実物と照合済みです。"
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDBはSFとファンタジーを刷ごとに記録しています。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9198,6 +9238,22 @@ msgstr "リストから言語を選んでください。"
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "ページ数を整数で入力してください。"
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "このISBNはすでに別の版に登録されています。比較してみてください。同じ本であれば、このレコードはおそらく重複です。"
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "それは有効なISBNではありません。桁数を確認してください。ISBNは10桁または13桁で、最後の1桁はチェックデジットです。"
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "年を含めた日付を入力してください（例：2005年または2005年3月）。"
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "その年は正しくないようです。この版が出た年を入力してください。"
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10131,6 +10187,14 @@ msgstr "ページ数が未設定の本"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "出版社が未設定の本"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "出版日がない本"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "ISBNがない本"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12751,4 +12815,43 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "どの項目が入力されているか。"
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "この表紙は別の版のものです。ペーパーバック版、再版、翻訳版は通常異なる表紙を持ちます。出版社を確認してください。"
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google ブックスではページ数が「Length」として表示されます。WorldCatではレコードの説明欄に記載されていますが、サインインしないと表示されない場合もあります。Amazonの印刷ページ数（print length）はすべてのページを数えていることが多いため、数値を見つけるためではなく確認するために使ってください。\n"
+#~ "\n"
+#~ "そのレコードが別の刷りではなく、この版のものであることを確認してください。"
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "本を知っている場合は、知っている内容に基づいて回答してください。知らない場合は調べてください。"
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "ジャンルの中には舞台設定を表すもの(ファンタジー、歴史)、筋立ての形を表すもの(ミステリー、ロマンス)、トーンを表すもの(ユーモア)があります。1冊の本は各種類から多くても1つずつ、通常は全体で1つか2つだけ持ちます。"
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "このISBNを米国議会図書館(Library of Congress)のカタログで検索してください。出版社と版がこれと一致するレコードを開き、LCCNとして表示されている番号をコピーしてください。ペーパーバック版や後の刷りでは年が異なって表示されることがありますが、同じレコードである場合があります。"
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "この番号はすでにこの作品の別の版に使われています。同じ出版社のハードカバー、ペーパーバック、または後の刷りであれば問題ありません。出版社が異なる場合や改訂版の場合は、どちらかのレコードが誤っていることになります。"
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "番号そのものではなく、ウェブアドレスを貼り付けている。"
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "このISBNをWorldCatで検索してください。出版社と版がこれと一致する印刷版のレコードを開き、OCLC Numberとして表示されている番号をコピーしてください。ペーパーバック版や後の刷りでは年が異なって表示されることがありますが、同じレコードである場合があります。"
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "OCLC番号は、世界中の図書館が目録に登録された一つの版を参照するために使う番号です。新しいレコードが登録された際に、Open Libraryがこの本の重複を見つけるために使う数少ない項目の一つです。"
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "この版には米国議会図書館番号があります。そのレコードには言語が記載されており、タイトルページに印刷されたとおりの出版社名が記載されています。"
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "この本はSF・ファンタジーであり、ISFDBでよく扱われています。各刷りが個別に掲載されており、「verified」と記載されたレコードは実物と照合済みです。"
 
