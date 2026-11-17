@@ -119,13 +119,14 @@ def _base_catalog(base: str, lang: str):
 
 
 def isolate(batch: list[str], base: str = "origin/main") -> None:
-    """Reset every language NOT in `batch` back to `base`, so a commit cannot carry
-    a language that belongs to another PR. Run this before `git add` / commit."""
+    """Reset every language NOT in `batch`, and messages.pot, back to `base`, so a
+    commit cannot carry a language that belongs to another PR or a pot snapshot
+    (sync-pot.yml commits the pot). Run this before `git add` / commit."""
     keep = set(batch)
     strays = [f"locale/{lang}" for lang in known_langs() if lang not in keep]
-    if strays:
-        _git("checkout", base, "--", *strays)
-    print(f"isolate: kept {sorted(keep)}; reset {len(strays)} other language(s) to {base}")
+    _git("checkout", base, "--", "messages.pot", *strays)
+    print(f"isolate: kept {sorted(keep)}; reset messages.pot and "
+          f"{len(strays)} other language(s) to {base}")
 
 
 def _merge_base(ref: str) -> str:
@@ -160,6 +161,13 @@ def check_scope(ref: str = "origin/main") -> int:
         print("These belong to another PR or are re-sync noise. Reset them with:")
         print(f"  ./i18n isolate <your batch langs>   # or")
         print(f"  git checkout {base} -- " + " ".join(f"locale/{s}" for s in strays))
+        return 1
+    # A translation PR carrying a pot snapshot collides with other PRs and with
+    # sync-pot.yml, which keeps main's pot current (#157). Pot-only PRs are fine.
+    if _changed_langs_since(base) and _git("diff", "--quiet", base, "--", "messages.pot").returncode:
+        print("error: messages.pot changed in a translation PR. sync-pot.yml keeps it "
+              "current on main. Reset it with:")
+        print(f"  git checkout {base} -- messages.pot")
         return 1
     print(f"scope OK: every changed language did real translation work "
           f"({len(_changed_langs_since(base))} changed)")
