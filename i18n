@@ -44,6 +44,10 @@ LOCALE_DIR = REPO_ROOT / "locale"
 MESSAGES_POT = REPO_ROOT / "messages.pot"
 TESTS_DIR = REPO_ROOT / "tests"
 BATCH_SIZE = 75
+# Every writer of a .po uses this width, so files are never rewrapped: long
+# lines stay on one line, matching messages.pot from openlibrary. pybabel's
+# default is 76, which turned each sync into a whole-file diff (#44).
+PO_WIDTH = 10000
 
 OL_MESSAGES_POT_URL = (
     "https://raw.githubusercontent.com/internetarchive/openlibrary"
@@ -486,7 +490,7 @@ def _write_po(lang: str, catalog) -> None:
     # yet; create it so resolve can write the first catalog.
     (LOCALE_DIR / lang).mkdir(parents=True, exist_ok=True)
     with open(LOCALE_DIR / lang / "messages.po", "wb") as f:
-        write_po(f, catalog, width=10000, omit_header=False)
+        write_po(f, catalog, width=PO_WIDTH, omit_header=False)
 
 
 def _read_po_with_pot(lang: str):
@@ -846,7 +850,8 @@ def sync(lang: str) -> None:
          "--input-file", str(MESSAGES_POT),
          "--output-file", str(LOCALE_DIR / lang / "messages.po"),
          "--locale", lang,
-         "--no-fuzzy-matching"],
+         "--no-fuzzy-matching",
+         "--width", str(PO_WIDTH)],
         check=True, cwd=REPO_ROOT,
         stderr=subprocess.DEVNULL,
     )
@@ -858,7 +863,7 @@ def sync(lang: str) -> None:
         catalog = read_po(f)
     if _fix_header_fuzzy(catalog):
         with open(po_path, "wb") as f:
-            write_po(f, catalog, width=10000, omit_header=False)
+            write_po(f, catalog, width=PO_WIDTH, omit_header=False)
 
 
 def compile_po(lang: str) -> None:

@@ -1185,26 +1185,56 @@ class TestCLI:
         r = _cli("validate", lang)
         assert r.returncode == 0, r.stderr
 
-    def test_sync_suppresses_pybabel_stderr(self, tmp_path):
-        """sync must suppress pybabel's 'updating catalog...' noise on stderr.
+    @staticmethod
+    def _sync_in_tmp(tmp_path, lang, pot: bytes | None = None, po: bytes | None = None):
+        """Run `./i18n sync lang` on a copy of the repo layout, never the real files.
 
-        sync rewrites the .po in place, so run it on a copy of the repo layout.
-        Running it on the real locale/ reformatted a checked-in file on every
-        test run (#44).
+        sync rewrites the .po in place; running it on the real locale/ reformatted
+        a checked-in file on every test run (#44). Defaults to copies of the real
+        messages.pot and .po; pass pot/po bytes to use a fixture instead.
         """
         import shutil
-        lang = known_langs()[0]
         shutil.copy2(_ROOT / "i18n", tmp_path / "i18n")
-        shutil.copy2(_ROOT / "messages.pot", tmp_path / "messages.pot")
         (tmp_path / "locale" / lang).mkdir(parents=True)
-        shutil.copy2(LOCALE_DIR / lang / "messages.po", tmp_path / "locale" / lang / "messages.po")
+        pot_path, po_path = tmp_path / "messages.pot", tmp_path / "locale" / lang / "messages.po"
+        if pot is None:
+            shutil.copy2(_ROOT / "messages.pot", pot_path)
+        else:
+            pot_path.write_bytes(pot)
+        if po is None:
+            shutil.copy2(LOCALE_DIR / lang / "messages.po", po_path)
+        else:
+            po_path.write_bytes(po)
         r = subprocess.run(
             [sys.executable, str(tmp_path / "i18n"), "sync", lang],
             capture_output=True, text=True, cwd=tmp_path,
         )
+        return r, po_path
+
+    def test_sync_suppresses_pybabel_stderr(self, tmp_path):
+        """sync must suppress pybabel's 'updating catalog...' noise on stderr."""
+        r, _ = self._sync_in_tmp(tmp_path, known_langs()[0])
         assert r.returncode == 0, r.stderr
         # pybabel writes "updating catalog..." to stderr; we suppress it with DEVNULL
         assert "updating catalog" not in r.stderr
+
+    def test_sync_does_not_rewrap_long_lines(self, tmp_path):
+        """sync keeps long msgids, msgstrs and comments on one line, like messages.pot (#44).
+
+        pybabel update wraps at 76 by default, which turned every sync into a
+        whole-file diff.
+        """
+        long_comment = "Translator note " + "that goes on " * 10 + "and on."
+        long_id = "A source string " + "that is much longer " * 5 + "than 76 columns."
+        long_str = "Eine Übersetzung " + "die viel länger ist " * 5 + "als 76 Spalten."
+        pot = _po(f'#. {long_comment}\n#: some/template.html\nmsgid "{long_id}"\nmsgstr ""')
+        po = _po(f'#: some/template.html\nmsgid "{long_id}"\nmsgstr "{long_str}"')
+        r, po_path = self._sync_in_tmp(tmp_path, "de", pot=pot, po=po)
+        assert r.returncode == 0, r.stderr
+        text = po_path.read_text(encoding="utf-8")
+        assert f"#. {long_comment}\n" in text
+        assert f'msgid "{long_id}"\n' in text
+        assert f'msgstr "{long_str}"\n' in text
 
 
 # ---------------------------------------------------------------------------
