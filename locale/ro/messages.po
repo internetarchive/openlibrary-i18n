@@ -858,7 +858,7 @@ msgstr "Citit"
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
 #: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
 msgid "Stopped Reading"
-msgstr ""
+msgstr "Am renunțat la citit"
 
 #: trending.html
 #, python-format
@@ -939,7 +939,7 @@ msgstr "Află mai multe"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "pe <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Se verifică potrivirile Search Inside"
 
@@ -1380,7 +1380,7 @@ msgstr "Ieșiți din lista de așteptare"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Îți vei pierde locul în lista de așteptare pentru <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1663,7 +1663,7 @@ msgstr "Cărți adăugate de persoanele urmărite de %(username)s"
 msgid "Search your reading log"
 msgstr "Caută în jurnalul de lectură"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -2335,7 +2335,7 @@ msgstr "Defalcare după autoritate calificatoare"
 
 #: admin/pd_dashboard.html
 msgid "PDA"
-msgstr ""
+msgstr "PDA"
 
 #: admin/pd_dashboard.html
 #, fuzzy
@@ -4942,7 +4942,7 @@ msgstr "Note:"
 msgid "Add another image"
 msgstr "Adaugă altă imagine"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Terminat"
 
@@ -6235,41 +6235,41 @@ msgstr "Sortează rezultatele"
 msgid "Shuffle"
 msgstr "Amestecat"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Căutați subiecte"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Niciun <strong>subiect</strong> nu s-a potrivit direct cu căutarea dvs."
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "timp"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "subiect"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "locație"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organizație"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "eveniment"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "persoană"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "muncă"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Căutați subiecte"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Niciun <strong>subiect</strong> nu s-a potrivit direct cu căutarea dvs."
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6767,20 +6767,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Ponderea editărilor și a editorilor prin Sarcini, pe zi"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Detalii încă lipsă din cărțile fiecărui proiect. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Proiecte ale comunității. Alege unul pentru a-l reprezenta grafic."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "din detalii completate · Finalizat"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "din detalii completate"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detalii încă deschise la %(project)s, pe zile"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6796,16 +6785,8 @@ msgid "marked not found"
 msgstr "marcat ca negăsit"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detalii încă deschise la proiectul ales, pe zile"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Salvări pe câmp, ultimele 28 de zile"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Ce detalii completează oamenii."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10077,6 +10058,15 @@ msgstr "%(query)s - Căutare liste"
 msgid "List search"
 msgstr "Căutare liste"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Căutare subiecte"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Căutare subiecte"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Altcineva a modificat acest proiect cât timp îl aveai deschis. Verifică mai jos, apoi încearcă din nou."
@@ -12638,4 +12628,22 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 #~ msgstr[0] "%(value)s, pe 1 ediție"
 #~ msgstr[1] "%(value)s, pe %(count)d ediții"
 #~ msgstr[2] "%(value)s, pe %(count)d de ediții"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Detalii încă lipsă din cărțile fiecărui proiect. Un detaliu pe care nimeni nu l-a putut găsi contează ca fiind completat."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Proiecte ale comunității. Alege unul pentru a-l reprezenta grafic."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "din detalii completate · Finalizat"
+
+#~ msgid "of details filled"
+#~ msgstr "din detalii completate"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detalii încă deschise la proiectul ales, pe zile"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Ce detalii completează oamenii."
 
