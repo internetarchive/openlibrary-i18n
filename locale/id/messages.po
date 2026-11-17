@@ -6003,7 +6003,7 @@ msgstr ""
 msgid "All fields"
 msgstr "Semua bidang"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8685,6 +8685,20 @@ msgid "No matching language"
 msgstr "Tidak ada bahasa yang cocok"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "Dan %(count)d lagi."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Jika edisi ini benar-benar memiliki ISBN yang sama, simpan lagi."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Lihat hasil pindai"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Edisi lain menyebutkan…"
 
@@ -8791,10 +8805,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Unggah hanya sampulnya, rata dan utuh: tanpa foto buku di atas meja, tanpa tiruan 3D, tanpa lencana toko atau tanda air."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Sampul ini milik edisi lain. Edisi sampul lunak, cetak ulang, atau terjemahan biasanya memiliki sampul yang berbeda; periksa penerbitnya."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Membuat sampul sendiri. Jika Anda tidak dapat menemukan yang asli, biarkan untuk orang lain yang bisa menemukannya."
 
@@ -8835,14 +8845,8 @@ msgid "How many pages does this edition have?"
 msgstr "Berapa banyak halaman yang dimiliki edisi ini?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books mencantumkan jumlah halaman sebagai Length. WorldCat mencantumkannya di deskripsi catatan, terkadang hanya setelah Anda masuk. Panjang cetak di Amazon sering menghitung setiap halaman, jadi gunakan itu untuk memeriksa suatu angka, bukan untuk menemukannya.\n"
-"\n"
-"Pastikan catatan tersebut untuk edisi ini, bukan cetakan lain."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books mencantumkan jumlah halaman sebagai Length. WorldCat mencantumkannya di deskripsi catatan, terkadang hanya setelah masuk akun. Print length di Amazon sering menghitung setiap halaman, jadi gunakan untuk memeriksa angka, bukan untuk menemukannya."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8865,8 +8869,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Apakah buku ini fiksi atau nonfiksi?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Jika Anda tahu bukunya, jawab berdasarkan apa yang Anda ketahui. Jika tidak, cari tahu dulu."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books mencantumkan kategori seperti Fiction/Fantasy, dan WorldCat mencantumkan genre seperti Fiction atau Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8903,10 +8907,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Sebagian genre adalah latar (fantasi, sejarah), sebagian adalah bentuk alur (misteri, romansa), dan sebagian adalah nada (humor). Sebuah buku mengambil paling banyak satu dari tiap jenis, dan biasanya hanya satu atau dua secara keseluruhan."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Ikuti bagaimana buku itu dipasarkan, bukan setiap elemen di dalamnya. Fantasi dengan kisah cinta tetaplah fantasi; kisah cinta dalam latar fantasi adalah romansa."
 
@@ -8938,6 +8938,58 @@ msgstr "Open Library mencatat imprint yang dicetak pada buku, bukan perusahaan i
 msgid "Publisher as printed"
 msgstr "Penerbit sebagaimana tercetak"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Tanggal terbit"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Isi tanggal terbit"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Kapan edisi ini diterbitkan?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Halaman hak cipta mencantumkan tahun, sering di dekat penerbit; jika buku memiliki hasil pindai, lihat di sana terlebih dahulu. Google Books mencantumkannya sebagai Published, WorldCat sebagai Date, dan catatan Library of Congress sebagai bagian dari baris Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Masukkan tahun terbitnya edisi ini, atau tanggal lengkap jika katalog mencantumkannya, misalnya Maret 2005. Cetakan selanjutnya dari edisi yang sama tetap menggunakan tahun edisi tersebut."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Misalnya 2005 atau Maret 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Isi ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Berapa ISBN edisi ini?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN tercetak di halaman hak cipta dan di sampul belakang, di atas barcode; jika buku memiliki hasil pindai, lihat di sana terlebih dahulu. Tanpa buku di tangan, cari di WorldCat atau Google Books berdasarkan judul dan penulis, buka catatan yang penerbit, tahun, dan formatnya cocok dengan edisi ini, lalu salin ISBN yang tercantum."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10 dan ISBN-13 dapat menunjukkan edisi yang sama: 0140449264 dan 9780140449266. Tempelkan salah satunya, dengan atau tanpa tanda hubung. Buku sebelum tahun 1970 tidak memilikinya."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "ISBN ini milik format buku yang lain: edisi sampul keras, sampul lunak, buku elektronik, dan buku audio masing-masing memiliki ISBN sendiri."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Misalnya 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Saya telah memeriksa bahwa penerbit, tahun, dan formatnya cocok dengan edisi ini."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Nomor Library of Congress (LCCN)"
@@ -8951,8 +9003,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Berapa nomor Library of Congress edisi ini?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Cari ISBN ini di katalog Library of Congress. Buka entri yang penerbit dan edisinya sesuai dengan ini, lalu salin nomor yang tertera sebagai LCCN. Edisi sampul lunak atau cetakan berikutnya bisa menunjukkan tahun yang berbeda namun tetap merupakan entri yang sama."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Cari ISBN ini di katalog Library of Congress, buka catatan yang cocok, dan salin nomor yang tercantum sebagai LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8961,14 +9013,6 @@ msgstr "Bentuk dengan tanda hubung dan bentuk yang dipadatkan adalah nomor yang 
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Nomor ini milik edisi yang berbeda: penerbit lain, edisi revisi, terjemahan, atau buku elektronik. Masing-masing memiliki entrinya sendiri."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Nomor ini sudah ada pada edisi lain dari karya ini. Hal itu benar jika merupakan edisi sampul keras, sampul lunak, atau cetakan berikutnya dari penerbit yang sama; penerbit yang berbeda atau edisi revisi berarti salah satu dari kedua entri tersebut salah."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Menempel alamat web, bukan nomornya sendiri."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -8991,12 +9035,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Berapa nomor WorldCat (OCLC) edisi ini?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Cari ISBN ini di WorldCat. Buka entri cetak yang penerbit dan edisinya sesuai dengan ini, lalu salin nomor yang tertera sebagai OCLC Number. Edisi sampul lunak atau cetakan berikutnya bisa menunjukkan tahun yang berbeda namun tetap merupakan entri yang sama."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Nomor OCLC adalah cara perpustakaan di seluruh dunia merujuk pada satu edisi yang dikatalogkan. Ini adalah salah satu dari sedikit bidang yang digunakan Open Library untuk menemukan duplikat buku ini ketika rekaman baru masuk."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Cari ISBN ini di WorldCat, buka catatan cetak yang cocok, dan salin nomor yang tercantum sebagai OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9023,16 +9063,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Saya membuka entri cetak dan penerbit serta edisinya sesuai dengan ini."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "Edisi ini memiliki nomor Library of Congress. Catatannya menyatakan bahasa dan mencantumkan penerbit seperti yang tercetak pada halaman judul."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "Edisi ini memiliki catatan di Library of Congress, yang mencantumkan bahasa dan penerbit sesuai yang tercetak."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Catatan Library of Congress"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Buku ini adalah fiksi ilmiah atau fantasi, yang dicakup dengan baik oleh ISFDB. ISFDB mencantumkan setiap cetakan secara terpisah, dan catatan yang ditandai sebagai verified telah diperiksa terhadap salinan fisik."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB mencakup fiksi ilmiah dan fantasi cetakan demi cetakan."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9277,6 +9317,22 @@ msgstr "Pilih bahasa dari daftar."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Masukkan jumlah halaman sebagai bilangan bulat."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "ISBN ini sudah terdaftar pada edisi lain. Bandingkan keduanya: jika buku yang sama, catatan ini kemungkinan duplikat."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Itu bukan ISBN yang valid. Periksa angkanya: ISBN memiliki 10 atau 13 digit, dan digit terakhir adalah digit pemeriksa."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Masukkan tanggal beserta tahunnya, misalnya 2005 atau Maret 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Tahun itu tampaknya tidak tepat. Masukkan tahun terbitnya edisi ini."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10211,6 +10267,14 @@ msgstr "Buku tanpa jumlah halaman"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Buku tanpa penerbit"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Buku tanpa tanggal terbit"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Buku tanpa ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12899,4 +12963,43 @@ msgstr "Grafik gagal dimuat. Muat ulang halaman untuk mencoba lagi."
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Detail apa saja yang sedang diisi orang."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Sampul ini milik edisi lain. Edisi sampul lunak, cetak ulang, atau terjemahan biasanya memiliki sampul yang berbeda; periksa penerbitnya."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books mencantumkan jumlah halaman sebagai Length. WorldCat mencantumkannya di deskripsi catatan, terkadang hanya setelah Anda masuk. Panjang cetak di Amazon sering menghitung setiap halaman, jadi gunakan itu untuk memeriksa suatu angka, bukan untuk menemukannya.\n"
+#~ "\n"
+#~ "Pastikan catatan tersebut untuk edisi ini, bukan cetakan lain."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Jika Anda tahu bukunya, jawab berdasarkan apa yang Anda ketahui. Jika tidak, cari tahu dulu."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Sebagian genre adalah latar (fantasi, sejarah), sebagian adalah bentuk alur (misteri, romansa), dan sebagian adalah nada (humor). Sebuah buku mengambil paling banyak satu dari tiap jenis, dan biasanya hanya satu atau dua secara keseluruhan."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Cari ISBN ini di katalog Library of Congress. Buka entri yang penerbit dan edisinya sesuai dengan ini, lalu salin nomor yang tertera sebagai LCCN. Edisi sampul lunak atau cetakan berikutnya bisa menunjukkan tahun yang berbeda namun tetap merupakan entri yang sama."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Nomor ini sudah ada pada edisi lain dari karya ini. Hal itu benar jika merupakan edisi sampul keras, sampul lunak, atau cetakan berikutnya dari penerbit yang sama; penerbit yang berbeda atau edisi revisi berarti salah satu dari kedua entri tersebut salah."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Menempel alamat web, bukan nomornya sendiri."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Cari ISBN ini di WorldCat. Buka entri cetak yang penerbit dan edisinya sesuai dengan ini, lalu salin nomor yang tertera sebagai OCLC Number. Edisi sampul lunak atau cetakan berikutnya bisa menunjukkan tahun yang berbeda namun tetap merupakan entri yang sama."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Nomor OCLC adalah cara perpustakaan di seluruh dunia merujuk pada satu edisi yang dikatalogkan. Ini adalah salah satu dari sedikit bidang yang digunakan Open Library untuk menemukan duplikat buku ini ketika rekaman baru masuk."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "Edisi ini memiliki nomor Library of Congress. Catatannya menyatakan bahasa dan mencantumkan penerbit seperti yang tercetak pada halaman judul."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Buku ini adalah fiksi ilmiah atau fantasi, yang dicakup dengan baik oleh ISFDB. ISFDB mencantumkan setiap cetakan secara terpisah, dan catatan yang ditandai sebagai verified telah diperiksa terhadap salinan fisik."
 
