@@ -5986,7 +5986,7 @@ msgstr "%(count)d mga tala ang gumawa."
 msgid "All fields"
 msgstr "Lahat ng field"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8670,6 +8670,21 @@ msgid "No matching language"
 msgstr "Walang tugmang wika"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "At 1 pa."
+msgstr[1] "At %(count)d pa."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Kung talagang pareho ang ISBN ng edisyong ito, i-save ulit."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Tingnan ang scan"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Sinasabi ng ibang edisyon…"
 
@@ -8777,10 +8792,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "I-upload lamang ang pabalat, patag at buo: walang litrato ng aklat sa ibabaw ng mesa, walang 3D mockup, walang badge ng tindahan o watermark."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Ang pabalat na ito ay sa ibang edisyon. Karaniwang may ibang pabalat ang paperback, muling paglabas, o salin; tingnan ang publisher."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Paggawa ng sarili mong pabalat. Kung hindi mo mahanap ang tunay na pabalat, iwan na lang ito para sa taong makakahanap nito."
 
@@ -8821,14 +8832,8 @@ msgid "How many pages does this edition have?"
 msgstr "Ilang pahina mayroon ang edisyong ito?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Inilista ng Google Books ang bilang ng pahina bilang Length. Nasa paglalarawan ito ng record sa WorldCat, minsan pagkatapos lang mag-sign in. Ang print length sa Amazon ay kadalasang binibilang ang bawat pahina, kaya gamitin ito para suriin ang isang numero sa halip na maghanap ng isa.\n"
-"\n"
-"Tiyaking ang record ay para sa edisyong ito, hindi ibang pag-print."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Inililista ng Google Books ang bilang ng pahina bilang Length. Nasa paglalarawan ng record ito sa WorldCat, kung minsan pagkatapos lang mag-sign in. Kadalasang binibilang ng print length sa Amazon ang bawat pahina, kaya gamitin ito para tingnan ang isang numero sa halip na hanapin ang isa."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8851,8 +8856,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Ang librong ito ba ay fiction o nonfiction?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Kung alam mo ang libro, sumagot base sa iyong nalalaman. Kung hindi, saliksikin muna."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Inililista ng Google Books ang mga kategorya tulad ng Fiction/Fantasy, at inililista ng WorldCat ang mga genre tulad ng Fiction o Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8889,10 +8894,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Ang ilang genre ay mga setting (fantasy, makasaysayan), ang ilan ay mga hugis ng plot (misteryo, romansa), at ang ilan ay mga tono (katatawanan). Kadalasan isa lamang o dalawa ang kinukuha ng isang aklat sa kabuuan, at hindi hihigit sa isa bawat uri."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Sundin kung ano ang ibinebenta ng aklat, hindi ang bawat elemento nito. Ang fantasy na may kwentong pag-ibig ay fantasy pa rin; ang kwentong pag-ibig sa isang fantasy setting ay romansa."
 
@@ -8924,6 +8925,58 @@ msgstr "Itinatala ng Open Library ang imprint na nakalimbag sa aklat, hindi ang 
 msgid "Publisher as printed"
 msgstr "Publisher ayon sa nakalimbag"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Petsa ng paglalathala"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Punan ang petsa ng paglalathala"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Kailan nilathala ang edisyong ito?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Ibinibigay ng pahina ng copyright ang taon, kadalasan katabi ng publisher; kung may scan ang aklat, tingnan muna doon. Inililista ito ng Google Books bilang Published, ng WorldCat bilang Date, at ng record ng Library of Congress bilang bahagi ng linyang Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Ilagay ang taon kung kailan lumabas ang edisyong ito, o ang buong petsa kung may ibinigay ang isang katalogo, tulad ng Marso 2005. Pinapanatili ng mas huling pag-print ng parehong edisyon ang taon ng edisyon."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Halimbawa 2005 o Marso 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Punan ang ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Ano ang ISBN ng edisyong ito?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "Nakaprinta ang ISBN sa pahina ng copyright at sa likod ng pabalat, sa itaas ng barcode; kung may scan ang aklat, tingnan muna doon. Kung wala ang aklat, maghanap sa WorldCat o Google Books ayon sa pamagat at may-akda, buksan ang record na ang publisher, taon, at format ay tumutugma sa edisyong ito, at kopyahin ang ISBN na nakalista."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "Maaaring tukuyin ng ISBN-10 at ISBN-13 ang parehong edisyon: 0140449264 at 9780140449266. I-paste ang alinman sa dalawa, may gitling man o wala. Walang ISBN ang mga aklat bago ang 1970."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "Ang ISBN na ito ay para sa ibang format ng aklat: may sariling ISBN ang hardcover, paperback, ebook, at audiobook."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Halimbawa 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Nasuri ko na tumutugma ang publisher, taon, at format sa edisyong ito."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Numero ng Library of Congress (LCCN)"
@@ -8937,8 +8990,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Ano ang numero ng Library of Congress ng edisyong ito?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Hanapin ang ISBN na ito sa katalogo ng Library of Congress. Buksan ang talaan kung saan tumutugma ang publisher at edisyon dito, at kopyahin ang numerong ipinapakita bilang LCCN. Maaaring may ibang taon ang paperback o kasunod na pag-print pero pareho pa rin ang talaan."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Hanapin ang ISBN na ito sa katalogo ng Library of Congress, buksan ang tumutugmang record, at kopyahin ang numerong nakalista bilang LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8947,14 +9000,6 @@ msgstr "Magkatulad na numero ang hyphenated at padded na anyo: 75-425165 at 7542
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Ang numerong ito ay sa ibang edisyon: edisyon ng ibang publisher, binagong edisyon, salin, o ebook. May sarili itong talaan ang bawat isa."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Nasa ibang edisyon na ng akdang ito ang numero. Tama ito kung ito ang hardcover, paperback, o kasunod na pag-print mula sa parehong publisher; ang ibang publisher o binagong edisyon ay nangangahulugang mali ang isa sa dalawang talaan."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Ang pag-paste ng web address sa halip na ang numero mismo."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -8977,12 +9022,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Ano ang numero ng WorldCat (OCLC) ng edisyong ito?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Hanapin ang ISBN na ito sa WorldCat. Buksan ang talaang naka-print kung saan tumutugma ang publisher at edisyon dito, at kopyahin ang numerong ipinapakita bilang OCLC Number. Maaaring may ibang taon ang paperback o kasunod na pag-print pero pareho pa rin ang talaan."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Ang numero ng OCLC ang ginagamit ng mga aklatan sa buong mundo para tukuyin ang isang nakatalang edisyon. Isa ito sa iilang field na ginagamit ng Open Library para mahanap ang mga duplicate ng aklat na ito kapag may bagong dumarating na record."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Hanapin ang ISBN na ito sa WorldCat, buksan ang tumutugmang print record, at kopyahin ang numerong nakalista bilang OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9009,16 +9050,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Nagbukas ako ng talaang naka-print at tumutugma ang publisher at edisyon nito dito."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "May Library of Congress number ang edisyong ito. Sinasabi ng record nito ang wika at ibinibigay ang publisher gaya ng nakalimbag sa title page."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "May record ang edisyong ito sa Library of Congress, na nagbibigay ng wika at publisher gaya ng nakaprinta."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Library of Congress record"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Science fiction o fantasy ang librong ito, na mahusay na sinasaklaw ng ISFDB. Inilista nito ang bawat pag-print nang hiwalay, at ang record na minarkahang verified ay sinuri laban sa pisikal na kopya."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "Sinasaklaw ng ISFDB ang science fiction at fantasy, printing kada printing."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9264,6 +9305,22 @@ msgstr "Pumili ng wika mula sa listahan."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Ilagay ang bilang ng pahina bilang buong numero."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Nasa ibang edisyon na ang ISBN na ito. Ikumpara ang mga ito: kung parehong aklat, malamang duplicate ang record na ito."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Hindi iyan valid na ISBN. Suriin ang mga numero: may 10 o 13 digit ang ISBN, at check digit ang huli."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Ilagay ang petsa kasama ang taon, halimbawa 2005 o Marso 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Mukhang mali ang taong iyan. Ilagay ang taon kung kailan lumabas ang edisyong ito."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10194,6 +10251,14 @@ msgstr "Mga aklat na walang bilang ng pahina"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Mga aklat na walang publisher"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Mga aklat na walang petsa ng paglalathala"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Mga aklat na walang ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12749,4 +12814,43 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Kung aling mga detalye ang pinupunan ng mga tao."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Ang pabalat na ito ay sa ibang edisyon. Karaniwang may ibang pabalat ang paperback, muling paglabas, o salin; tingnan ang publisher."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Inilista ng Google Books ang bilang ng pahina bilang Length. Nasa paglalarawan ito ng record sa WorldCat, minsan pagkatapos lang mag-sign in. Ang print length sa Amazon ay kadalasang binibilang ang bawat pahina, kaya gamitin ito para suriin ang isang numero sa halip na maghanap ng isa.\n"
+#~ "\n"
+#~ "Tiyaking ang record ay para sa edisyong ito, hindi ibang pag-print."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Kung alam mo ang libro, sumagot base sa iyong nalalaman. Kung hindi, saliksikin muna."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Ang ilang genre ay mga setting (fantasy, makasaysayan), ang ilan ay mga hugis ng plot (misteryo, romansa), at ang ilan ay mga tono (katatawanan). Kadalasan isa lamang o dalawa ang kinukuha ng isang aklat sa kabuuan, at hindi hihigit sa isa bawat uri."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Hanapin ang ISBN na ito sa katalogo ng Library of Congress. Buksan ang talaan kung saan tumutugma ang publisher at edisyon dito, at kopyahin ang numerong ipinapakita bilang LCCN. Maaaring may ibang taon ang paperback o kasunod na pag-print pero pareho pa rin ang talaan."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Nasa ibang edisyon na ng akdang ito ang numero. Tama ito kung ito ang hardcover, paperback, o kasunod na pag-print mula sa parehong publisher; ang ibang publisher o binagong edisyon ay nangangahulugang mali ang isa sa dalawang talaan."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Ang pag-paste ng web address sa halip na ang numero mismo."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Hanapin ang ISBN na ito sa WorldCat. Buksan ang talaang naka-print kung saan tumutugma ang publisher at edisyon dito, at kopyahin ang numerong ipinapakita bilang OCLC Number. Maaaring may ibang taon ang paperback o kasunod na pag-print pero pareho pa rin ang talaan."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Ang numero ng OCLC ang ginagamit ng mga aklatan sa buong mundo para tukuyin ang isang nakatalang edisyon. Isa ito sa iilang field na ginagamit ng Open Library para mahanap ang mga duplicate ng aklat na ito kapag may bagong dumarating na record."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "May Library of Congress number ang edisyong ito. Sinasabi ng record nito ang wika at ibinibigay ang publisher gaya ng nakalimbag sa title page."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Science fiction o fantasy ang librong ito, na mahusay na sinasaklaw ng ISFDB. Inilista nito ang bawat pag-print nang hiwalay, at ang record na minarkahang verified ay sinuri laban sa pisikal na kopya."
 
