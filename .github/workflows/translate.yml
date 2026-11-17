@@ -16,6 +16,13 @@ permissions:
   issues: write
   id-token: write
 
+# Two dispatches seconds apart used to run side by side, compute the same
+# date-based branch name and translate the same languages into it (#209).
+# Queue the second run behind the first instead.
+concurrency:
+  group: translate
+  cancel-in-progress: false
+
 jobs:
   plan:
     runs-on: ubuntu-latest
