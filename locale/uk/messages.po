@@ -6234,7 +6234,7 @@ msgstr "%(count)d запис змінено."
 msgid "All fields"
 msgstr "Усі поля"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8998,6 +8998,22 @@ msgid "No matching language"
 msgstr "Відповідної мови не знайдено"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "І ще %(count)d."
+msgstr[1] "І ще %(count)d."
+msgstr[2] "І ще %(count)d."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Якщо це видання справді має такий самий ISBN, збережіть ще раз."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Переглянути скан"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Інші видання зазначають…"
 
@@ -9106,10 +9122,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Завантажуйте лише обкладинку, плоску і повністю: без фотографій книги на столі, без 3D-макетів, без логотипів магазинів чи водяних знаків."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Ця обкладинка належить іншому виданню. Видання в м'якій обкладинці, перевидання або переклад зазвичай мають іншу обкладинку; перевірте видавця."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Створення обкладинки самостійно. Якщо ви не можете знайти справжню, залиште це тому, хто зможе."
 
@@ -9150,14 +9162,8 @@ msgid "How many pages does this edition have?"
 msgstr "Скільки сторінок у цьому виданні?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books вказує кількість сторінок у полі «Length» (Довжина). WorldCat має це в описі запису, іноді лише після входу в обліковий запис. Поле «print length» на Amazon часто враховує кожну сторінку, тому використовуйте це значення, щоб перевірити число, а не щоб його знайти.\n"
-"\n"
-"Переконайтеся, що запис стосується саме цього видання, а не іншого накладу."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books вказує кількість сторінок як Length. WorldCat має це в описі запису, іноді лише після входу в акаунт. Print length на Amazon часто рахує кожну сторінку, тож використовуйте його радше для перевірки числа, ніж для його пошуку."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -9180,8 +9186,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Ця книга художня чи документальна?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Якщо ви знаєте цю книгу, дайте відповідь на основі своїх знань. Якщо ні, знайдіть інформацію."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books вказує категорії на кшталт Fiction/Fantasy, а WorldCat вказує жанри на кшталт Fiction або Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -9218,10 +9224,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Деякі жанри — це обстановка (фентезі, історичний), деякі — форма сюжету (детектив, романтика), а деякі — тон (гумор). Книга отримує не більше одного з кожної категорії, зазвичай загалом лише один або два."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Орієнтуйтеся на те, як книга позиціонується під час продажу, а не на кожен елемент у ній. Фентезі з love story залишається фентезі; love story у фентезійному світі — це романтика."
 
@@ -9253,6 +9255,58 @@ msgstr "Open Library фіксує імпринт, надрукований на 
 msgid "Publisher as printed"
 msgstr "Видавець, як надруковано"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Дата публікації"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Заповнити дату публікації"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Коли було опубліковано це видання?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Сторінка з копірайтом вказує рік, часто поруч із видавцем; якщо книга має скан, перегляньте спершу там. Google Books вказує його як Published, WorldCat — як Date, а запис Library of Congress — як частину рядка Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Вкажіть рік виходу цього видання, або повну дату, якщо її вказує каталог, наприклад березень 2005. Пізніший наклад того самого видання зберігає рік видання."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Наприклад 2005 або березень 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Заповнити ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Який ISBN цього видання?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN надруковано на сторінці з копірайтом і на задній обкладинці, над штрихкодом; якщо книга має скан, перегляньте спершу там. Без книги під рукою знайдіть на WorldCat або Google Books за назвою й автором, відкрийте запис, у якого видавець, рік і формат збігаються з цим виданням, і скопіюйте вказаний там ISBN."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10 та ISBN-13 можуть позначати те саме видання: 0140449264 і 9780140449266. Вставте будь-яке з них, з дефісами або без. У книг до 1970 року ISBN немає."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "Цей ISBN належить іншому формату книги: видання в твердій обкладинці, у м'якій обкладинці, електронна книга й аудіокнига мають кожен свій власний."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Наприклад 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Я перевірив, що видавець, рік і формат збігаються з цим виданням."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Номер Бібліотеки Конгресу (LCCN)"
@@ -9266,8 +9320,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Який номер Бібліотеки Конгресу має це видання?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Знайдіть цей ISBN у каталозі Бібліотеки Конгресу. Відкрийте запис, видавець і видання якого відповідають цьому, і скопіюйте номер, позначений як LCCN. Видання в м'якій обкладинці або пізніший наклад можуть мати інший рік і все одно бути тим самим записом."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Знайдіть цей ISBN у каталозі Library of Congress, відкрийте відповідний запис і скопіюйте номер, вказаний як LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -9276,14 +9330,6 @@ msgstr "Форми з дефісом і без нього — те саме чи
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Цей номер належить іншому виданню: іншого видавця, переробленому виданню, перекладу або електронній книзі. Кожне з них має власний запис."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Цей номер уже є на іншому виданні цього твору. Це правильно, якщо йдеться про видання в твердій обкладинці, в м'якій обкладинці або пізніший наклад того самого видавця; інший видавець або перероблене видання означає, що один із двох записів помилковий."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Вставлення веб-адреси замість самого числа."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -9306,12 +9352,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Який номер WorldCat (OCLC) має це видання?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Знайдіть цей ISBN у WorldCat. Відкрийте друкований запис, видавець і видання якого відповідають цьому, і скопіюйте номер, позначений як OCLC Number. Видання в м'якій обкладинці або пізніший наклад можуть мати інший рік і все одно бути тим самим записом."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Номер OCLC — це спосіб, яким бібліотеки всього світу позначають одне каталогизоване видання. Це одне з небагатьох полів, які Open Library використовує для пошуку дублікатів цієї книги, коли надходять нові записи."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Знайдіть цей ISBN на WorldCat, відкрийте відповідний запис друкованого видання і скопіюйте номер, вказаний як OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9338,16 +9380,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Я відкрив(ла) друкований запис, і його видавець та видання відповідають цьому."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "У цього видання є номер Бібліотеки Конгресу. У його записі вказано мову та видавця так, як надруковано на титульній сторінці."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "Це видання має запис у Library of Congress, який вказує мову і видавця так, як надруковано."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Запис Бібліотеки Конгресу"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Ця книга — наукова фантастика або фентезі, які добре охоплює ISFDB. Там кожен наклад вказано окремо, а запис, позначений як verified (перевірено), звірено з фізичним примірником."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB охоплює наукову фантастику та фентезі наклад за накладом."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9594,6 +9636,22 @@ msgstr "Оберіть мову зі списку."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Введіть кількість сторінок як ціле число."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Цей ISBN уже вказано в іншого видання. Порівняйте їх: якщо це та сама книга, цей запис, імовірно, дублікат."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Це недійсний ISBN. Перевірте цифри: ISBN має 10 або 13 знаків, а остання — контрольна цифра."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Вкажіть дату разом із роком, наприклад 2005 або березень 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Цей рік виглядає неправильним. Вкажіть рік виходу цього видання."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10542,6 +10600,14 @@ msgstr "Книги без кількості сторінок"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Книги без видавця"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Книги без дати публікації"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Книги без ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -13125,4 +13191,43 @@ msgstr "Не вдалося завантажити графіки. Переза�
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Які деталі заповнюють люди."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Ця обкладинка належить іншому виданню. Видання в м'якій обкладинці, перевидання або переклад зазвичай мають іншу обкладинку; перевірте видавця."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books вказує кількість сторінок у полі «Length» (Довжина). WorldCat має це в описі запису, іноді лише після входу в обліковий запис. Поле «print length» на Amazon часто враховує кожну сторінку, тому використовуйте це значення, щоб перевірити число, а не щоб його знайти.\n"
+#~ "\n"
+#~ "Переконайтеся, що запис стосується саме цього видання, а не іншого накладу."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Якщо ви знаєте цю книгу, дайте відповідь на основі своїх знань. Якщо ні, знайдіть інформацію."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Деякі жанри — це обстановка (фентезі, історичний), деякі — форма сюжету (детектив, романтика), а деякі — тон (гумор). Книга отримує не більше одного з кожної категорії, зазвичай загалом лише один або два."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Знайдіть цей ISBN у каталозі Бібліотеки Конгресу. Відкрийте запис, видавець і видання якого відповідають цьому, і скопіюйте номер, позначений як LCCN. Видання в м'якій обкладинці або пізніший наклад можуть мати інший рік і все одно бути тим самим записом."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Цей номер уже є на іншому виданні цього твору. Це правильно, якщо йдеться про видання в твердій обкладинці, в м'якій обкладинці або пізніший наклад того самого видавця; інший видавець або перероблене видання означає, що один із двох записів помилковий."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Вставлення веб-адреси замість самого числа."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Знайдіть цей ISBN у WorldCat. Відкрийте друкований запис, видавець і видання якого відповідають цьому, і скопіюйте номер, позначений як OCLC Number. Видання в м'якій обкладинці або пізніший наклад можуть мати інший рік і все одно бути тим самим записом."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Номер OCLC — це спосіб, яким бібліотеки всього світу позначають одне каталогизоване видання. Це одне з небагатьох полів, які Open Library використовує для пошуку дублікатів цієї книги, коли надходять нові записи."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "У цього видання є номер Бібліотеки Конгресу. У його записі вказано мову та видавця так, як надруковано на титульній сторінці."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Ця книга — наукова фантастика або фентезі, які добре охоплює ISFDB. Там кожен наклад вказано окремо, а запис, позначений як verified (перевірено), звірено з фізичним примірником."
 

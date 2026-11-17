@@ -6004,7 +6004,7 @@ msgstr "%(count)d zapisa promijenjeno."
 msgid "All fields"
 msgstr "Sva polja"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8692,6 +8692,22 @@ msgid "No matching language"
 msgstr "Nema podudarajućeg jezika"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "I još %(count)d."
+msgstr[1] "I još %(count)d."
+msgstr[2] "I još %(count)d."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Ako ovo izdanje doista ima isti ISBN, spremite ponovno."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Pogledaj sken"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Druga izdanja kažu…"
 
@@ -8800,10 +8816,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Prenesi samo naslovnicu, ravnu i cijelu: bez fotografija knjige na stolu, bez 3D maketa, bez oznaka trgovina ili vodenih žigova."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Naslovnica pripada drugom izdanju. Meki uvez, ponovno izdanje ili prijevod obično imaju drugačiju naslovnicu; provjeri izdavača."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Izrada vlastite naslovnice. Ako ne možeš pronaći pravu, prepusti to nekome tko može."
 
@@ -8844,14 +8856,8 @@ msgid "How many pages does this edition have?"
 msgstr "Koliko stranica ima ovo izdanje?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books navodi broj stranica kao Length. WorldCat ga ima u opisu zapisa, ponekad tek nakon prijave. Amazonov print length često broji svaku stranicu, pa ga koristi za provjeru broja, a ne za njegovo pronalaženje.\n"
-"\n"
-"Provjeri da je zapis za ovo izdanje, a ne za neki drugi otisak."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books navodi broj stranica kao Length. WorldCat ga ima u opisu zapisa, ponekad tek nakon prijave. Amazonov print length često broji svaku stranicu, pa ga koristite više za provjeru broja nego za njegovo pronalaženje."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8874,8 +8880,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Je li ova knjiga beletristika ili publicistika?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Ako poznaješ knjigu, odgovori prema onome što znaš. Ako ne, provjeri."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books navodi kategorije poput Fiction/Fantasy, a WorldCat navodi žanrove poput Fiction ili Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8912,10 +8918,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Neki žanrovi su okruženja (fantastika, povijesno), neki su oblici radnje (misterij, romansa), a neki su tonovi (humor). Knjiga uzima najviše jedan od svake vrste, obično ukupno samo jedan ili dva."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Ravnajte se prema tome kako se knjiga prodaje, a ne prema svakom elementu u njoj. Fantastika s ljubavnom pričom i dalje je fantastika; ljubavna priča u fantastičnom okruženju je romansa."
 
@@ -8947,6 +8949,58 @@ msgstr "Open Library bilježi izdavača otisnutog na knjizi, a ne matičnu kompa
 msgid "Publisher as printed"
 msgstr "Izdavač kako je otisnuto"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Datum izdavanja"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Popunite datum izdavanja"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Kada je ovo izdanje objavljeno?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Stranica s autorskim pravima navodi godinu, često uz izdavača; ako knjiga ima sken, pogledajte prvo tamo. Google Books je navodi kao Published, WorldCat kao Date, a zapis Library of Congress kao dio retka Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Unesite godinu u kojoj je ovo izdanje izašlo, ili puni datum ako ga katalog navodi, primjerice ožujak 2005. Kasniji otisak istog izdanja zadržava godinu izdanja."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Na primjer 2005. ili ožujak 2005."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Popunite ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Koji je ISBN ovog izdanja?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN je otisnut na stranici s autorskim pravima i na stražnjoj korici, iznad crtičnog koda; ako knjiga ima sken, pogledajte prvo tamo. Bez knjige pri ruci, pretražite WorldCat ili Google Books po naslovu i autoru, otvorite zapis čiji se izdavač, godina i format podudaraju s ovim izdanjem, i kopirajte navedeni ISBN."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10 i ISBN-13 mogu označavati isto izdanje: 0140449264 i 9780140449266. Zalijepite bilo koji od njih, s crticama ili bez njih. Knjige prije 1970. ga nemaju."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "ISBN pripada drugom formatu knjige: tvrdi uvez, meki uvez, e-knjiga i audioknjiga svaki imaju svoj vlastiti."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Na primjer 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Provjerio sam da se izdavač, godina i format podudaraju s ovim izdanjem."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Broj Kongresne knjižnice (LCCN)"
@@ -8960,8 +9014,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Koji je LCCN broj ovog izdanja?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Potraži ovaj ISBN u katalogu Kongresne knjižnice. Otvori zapis čiji izdavač i izdanje odgovaraju ovome, i kopiraj broj prikazan kao LCCN. Meki uvez ili kasnije izdanje mogu prikazivati drugu godinu, a ipak biti isti zapis."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Potražite ovaj ISBN u katalogu Library of Congress, otvorite odgovarajući zapis i kopirajte broj naveden kao LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8970,14 +9024,6 @@ msgstr "Oblici s crticom i bez nje isti su broj: 75-425165 i 75425165. Zalijepit
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Broj pripada drugom izdanju: drugog izdavača, izmijenjenom izdanju, prijevodu ili e-knjizi. Svaki od njih ima vlastiti zapis."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Broj se već nalazi na drugom izdanju ovog djela. To je ispravno ako je riječ o tvrdom uvezu, mekom uvezu ili kasnijem izdanju istog izdavača; drugi izdavač ili izmijenjeno izdanje znači da je jedan od dva zapisa pogrešan."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Lijepljenje web adrese umjesto samog broja."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -9000,12 +9046,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Koji je WorldCat (OCLC) broj ovog izdanja?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Potraži ovaj ISBN na WorldCatu. Otvori tiskani zapis čiji izdavač i izdanje odgovaraju ovome, i kopiraj broj prikazan kao OCLC Number. Meki uvez ili kasnije izdanje mogu prikazivati drugu godinu, a ipak biti isti zapis."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "OCLC broj način je na koji knjižnice diljem svijeta upućuju na jedno katalogizirano izdanje. To je jedno od rijetkih polja koje Open Library koristi za pronalaženje duplikata ove knjige kada stignu novi zapisi."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Potražite ovaj ISBN na WorldCat-u, otvorite odgovarajući tiskani zapis i kopirajte broj naveden kao OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9032,16 +9074,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Otvorio sam tiskani zapis i njegov izdavač i izdanje odgovaraju ovome."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "Ovo izdanje ima broj Kongresne knjižnice. Njegov zapis navodi jezik i izdavača onako kako je otisnut na naslovnoj stranici."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "Ovo izdanje ima zapis u Library of Congress, koji navodi jezik i izdavača kako je otisnuto."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Zapis Kongresne knjižnice"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Ova knjiga je znanstvena fantastika ili fantasy, što ISFDB dobro pokriva. Svaki otisak navodi zasebno, a zapis označen kao provjeren uspoređen je s fizičkim primjerkom."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB obrađuje znanstvenu fantastiku i fantasy, izdanje po izdanje."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9288,6 +9330,22 @@ msgstr "Odaberite jezik s popisa."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Unesite broj stranica kao cijeli broj."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Ovaj ISBN već je na drugom izdanju. Usporedite ih: ako je riječ o istoj knjizi, ovaj je zapis vjerojatno duplikat."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "To nije valjani ISBN. Provjerite znamenke: ISBN ima 10 ili 13, a posljednja je kontrolna znamenka."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Unesite datum zajedno s godinom, na primjer 2005. ili ožujak 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Ta godina ne izgleda ispravno. Unesite godinu u kojoj je ovo izdanje izašlo."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10217,6 +10275,14 @@ msgstr "Knjige bez broja stranica"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Knjige bez izdavača"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Knjige bez datuma izdavanja"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Knjige bez ISBN-a"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12752,4 +12818,43 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Koje detalje ljudi popunjavaju."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Naslovnica pripada drugom izdanju. Meki uvez, ponovno izdanje ili prijevod obično imaju drugačiju naslovnicu; provjeri izdavača."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books navodi broj stranica kao Length. WorldCat ga ima u opisu zapisa, ponekad tek nakon prijave. Amazonov print length često broji svaku stranicu, pa ga koristi za provjeru broja, a ne za njegovo pronalaženje.\n"
+#~ "\n"
+#~ "Provjeri da je zapis za ovo izdanje, a ne za neki drugi otisak."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Ako poznaješ knjigu, odgovori prema onome što znaš. Ako ne, provjeri."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Neki žanrovi su okruženja (fantastika, povijesno), neki su oblici radnje (misterij, romansa), a neki su tonovi (humor). Knjiga uzima najviše jedan od svake vrste, obično ukupno samo jedan ili dva."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Potraži ovaj ISBN u katalogu Kongresne knjižnice. Otvori zapis čiji izdavač i izdanje odgovaraju ovome, i kopiraj broj prikazan kao LCCN. Meki uvez ili kasnije izdanje mogu prikazivati drugu godinu, a ipak biti isti zapis."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Broj se već nalazi na drugom izdanju ovog djela. To je ispravno ako je riječ o tvrdom uvezu, mekom uvezu ili kasnijem izdanju istog izdavača; drugi izdavač ili izmijenjeno izdanje znači da je jedan od dva zapisa pogrešan."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Lijepljenje web adrese umjesto samog broja."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Potraži ovaj ISBN na WorldCatu. Otvori tiskani zapis čiji izdavač i izdanje odgovaraju ovome, i kopiraj broj prikazan kao OCLC Number. Meki uvez ili kasnije izdanje mogu prikazivati drugu godinu, a ipak biti isti zapis."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "OCLC broj način je na koji knjižnice diljem svijeta upućuju na jedno katalogizirano izdanje. To je jedno od rijetkih polja koje Open Library koristi za pronalaženje duplikata ove knjige kada stignu novi zapisi."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "Ovo izdanje ima broj Kongresne knjižnice. Njegov zapis navodi jezik i izdavača onako kako je otisnut na naslovnoj stranici."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Ova knjiga je znanstvena fantastika ili fantasy, što ISFDB dobro pokriva. Svaki otisak navodi zasebno, a zapis označen kao provjeren uspoređen je s fizičkim primjerkom."
 

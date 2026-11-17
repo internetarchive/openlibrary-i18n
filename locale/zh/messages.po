@@ -6234,7 +6234,7 @@ msgstr "已修改%(count)d条记录。"
 msgid "All fields"
 msgstr "所有字段"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8985,6 +8985,20 @@ msgid "No matching language"
 msgstr "没有匹配的语言"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "还有%(count)d个。"
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "如果此版本确实有相同的ISBN，请再次保存。"
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "查看扫描件"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "其他版本的说明…"
 
@@ -9091,10 +9105,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "只需上传封面本身，平整完整：不要拍摄放在桌上的书籍照片，不要使用 3D 效果图，不要带有商店徽标或水印。"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "该封面属于另一个版本。平装本、再版或译本通常有不同的封面；请核实出版商。"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "自己制作封面。如果找不到真实的封面，请把它留给能找到的人。"
 
@@ -9135,14 +9145,8 @@ msgid "How many pages does this edition have?"
 msgstr "此版本共有多少页？"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google图书将页数列为Length(长度)。WorldCat会在记录的描述中列出页数,有时需要登录后才能看到。Amazon的印刷页数通常会计入每一页,因此最好用它来核对数字,而不是用来查找数字。\n"
-"\n"
-"请确认该记录对应的是这个版本,而不是其他印刷版次。"
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books 将页数列为 Length。WorldCat 将其列在记录的描述中，有时需要登录后才能看到。Amazon 的 print length 通常计算每一页，因此请用它来核对数字，而不是用来查找数字。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -9165,8 +9169,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "这本书是虚构还是非虚构?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "如果您了解这本书,请根据您所知道的作答。如果不了解,请查证后再答。"
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books 列出 Fiction/Fantasy 等分类，而 WorldCat 列出 Fiction 或 Biography 等类型标题。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -9203,10 +9207,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "有些类型是背景设定(奇幻、历史),有些是情节形式(悬疑、言情),还有些是基调(幽默)。一本书每种最多只取一个,通常总共只有一两个。"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "依据这本书是作为什么来销售的,而不是书中出现的每个元素。带有爱情故事的奇幻作品仍然是奇幻;奇幻背景下的爱情故事则是言情。"
 
@@ -9238,6 +9238,58 @@ msgstr "Open Library 记录的是印在图书上的出版名，而非母公司�
 msgid "Publisher as printed"
 msgstr "印刷的出版社名称"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "出版日期"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "填写出版日期"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "此版本是什么时候出版的？"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "版权页给出年份，通常在出版社旁边；如果这本书有扫描件，请先看那里。Google Books 将其列为 Published，WorldCat 列为 Date，而 Library of Congress 的记录将其作为 Published 行的一部分。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "输入此版本出版的年份，如果目录提供了完整日期，请输入完整日期，例如2005年3月。同一版本的后续印次仍保留该版本的年份。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "例如2005年或2005年3月"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "填写 ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "此版本的 ISBN 是什么？"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN 印在版权页和封底条形码上方；如果这本书有扫描件，请先看那里。如果手头没有这本书，可以按书名和作者在 WorldCat 或 Google Books 中搜索，打开出版社、年份和版式与此版本相符的记录，并复制其中列出的 ISBN。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10 和 ISBN-13 可以表示同一版本：0140449264 和 9780140449266。粘贴其中任意一个即可，带不带连字符均可。1970年之前出版的书没有 ISBN。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "此 ISBN 属于该书的另一种版式：精装本、平装本、电子书和有声书各自拥有自己的 ISBN。"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "例如9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "我已核实出版社、年份和版式与此版本相符。"
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "美国国会图书馆编号（LCCN）"
@@ -9251,8 +9303,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "此版本的美国国会图书馆编号是什么？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "在美国国会图书馆目录中查找此 ISBN。打开出版商和版本与此版本匹配的记录，并复制标为 LCCN 的编号。平装本或后续印次可能显示不同的年份，但仍可能是同一条记录。"
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "在 Library of Congress 目录中搜索此 ISBN，打开匹配的记录，并复制显示为 LCCN 的编号。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -9261,14 +9313,6 @@ msgstr "带连字符的形式和补零后的形式是同一个编号：75-425165
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "该编号属于另一个版本：其他出版商的版本、修订版、译本或电子书。每个版本都有自己的记录。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "该编号已用于此作品的另一个版本。如果是同一出版商的精装本、平装本或后续印次，这是正确的；如果出版商不同或是修订版，则说明其中一条记录有误。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "粘贴了网址，而不是编号本身。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -9291,12 +9335,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "此版本的 WorldCat（OCLC）编号是什么？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "在 WorldCat 上查找此 ISBN。打开出版商和版本与此版本匹配的印刷版记录，并复制标为 OCLC Number 的编号。平装本或后续印次可能显示不同的年份，但仍可能是同一条记录。"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "OCLC 编号是全球图书馆用来标识同一已编目版本的方式。这是 Open Library 在新记录出现时用来查找此书重复项的少数几个字段之一。"
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "在 WorldCat 中搜索此 ISBN，打开匹配的印刷版记录，并复制显示为 OCLC Number 的编号。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9323,16 +9363,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "我打开了一条印刷版记录，其出版商和版本与此版本匹配。"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "这个版本有美国国会图书馆编号。其记录中注明了语言,并给出了扉页上印刷的出版商名称。"
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "此版本在 Library of Congress 有记录，其中按印刷内容列出了语言和出版社。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "美国国会图书馆记录"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "这本书属于科幻或奇幻类型,ISFDB对这类书籍的收录很全面。它会单独列出每一次印刷版次,标记为已核实的记录都是对照实体书核对过的。"
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB 按每次印刷逐一收录科幻和奇幻作品。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9577,6 +9617,22 @@ msgstr "从列表中选择一种语言。"
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "请输入整数形式的页数。"
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "此 ISBN 已经出现在另一个版本上。比较一下：如果是同一本书，这条记录很可能是重复的。"
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "这不是有效的 ISBN。请检查数字：ISBN 应为10位或13位，最后一位是校验位。"
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "请输入包含年份的日期，例如2005年或2005年3月。"
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "这个年份似乎不对。请输入此版本出版的年份。"
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10507,6 +10563,14 @@ msgstr "缺少页数的书籍"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "缺少出版社的书籍"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "缺少出版日期的书籍"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "缺少 ISBN 的书籍"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -13046,4 +13110,43 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "用户正在填写哪些详情。"
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "该封面属于另一个版本。平装本、再版或译本通常有不同的封面；请核实出版商。"
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google图书将页数列为Length(长度)。WorldCat会在记录的描述中列出页数,有时需要登录后才能看到。Amazon的印刷页数通常会计入每一页,因此最好用它来核对数字,而不是用来查找数字。\n"
+#~ "\n"
+#~ "请确认该记录对应的是这个版本,而不是其他印刷版次。"
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "如果您了解这本书,请根据您所知道的作答。如果不了解,请查证后再答。"
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "有些类型是背景设定(奇幻、历史),有些是情节形式(悬疑、言情),还有些是基调(幽默)。一本书每种最多只取一个,通常总共只有一两个。"
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "在美国国会图书馆目录中查找此 ISBN。打开出版商和版本与此版本匹配的记录，并复制标为 LCCN 的编号。平装本或后续印次可能显示不同的年份，但仍可能是同一条记录。"
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "该编号已用于此作品的另一个版本。如果是同一出版商的精装本、平装本或后续印次，这是正确的；如果出版商不同或是修订版，则说明其中一条记录有误。"
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "粘贴了网址，而不是编号本身。"
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "在 WorldCat 上查找此 ISBN。打开出版商和版本与此版本匹配的印刷版记录，并复制标为 OCLC Number 的编号。平装本或后续印次可能显示不同的年份，但仍可能是同一条记录。"
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "OCLC 编号是全球图书馆用来标识同一已编目版本的方式。这是 Open Library 在新记录出现时用来查找此书重复项的少数几个字段之一。"
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "这个版本有美国国会图书馆编号。其记录中注明了语言,并给出了扉页上印刷的出版商名称。"
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "这本书属于科幻或奇幻类型,ISFDB对这类书籍的收录很全面。它会单独列出每一次印刷版次,标记为已核实的记录都是对照实体书核对过的。"
 

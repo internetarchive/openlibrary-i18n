@@ -5975,7 +5975,7 @@ msgstr "%(count)d ৰেকৰ্ড পৰিৱৰ্তন কৰা হৈ�
 msgid "All fields"
 msgstr "সকলো ক্ষেত্ৰ"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8646,6 +8646,21 @@ msgid "No matching language"
 msgstr "কোনো মিলা ভাষা নাই"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "আৰু ১টা অধিক।"
+msgstr[1] "আৰু %(count)d টা অধিক।"
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "যদি এই সংস্কৰণৰ সঁচাকৈয়ে একেটা ISBN আছে, পুনৰ ছেভ কৰক।"
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "স্কেন চাওক"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "অন্য সংস্কাৰবোৰে কয়…"
 
@@ -8753,10 +8768,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "কেৱল মুখপত্ৰখনহে আপল'ড কৰক, সমতল আৰু সম্পূৰ্ণ: টেবুলত থকা কিতাপৰ ফটো নহ'ব, 3D ম'কআপ নহ'ব, ষ্ট'ৰৰ বেজ বা ৱাটাৰমাৰ্ক নহ'ব।"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "মুখপত্ৰখন আন এটা সংস্কৰণৰ। পেপাৰবেক, পুনৰ প্ৰকাশ বা অনুবাদৰ সাধাৰণতে বেলেগ মুখপত্ৰ থাকে; প্ৰকাশকজন পৰীক্ষা কৰক।"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "নিজে এখন মুখপত্ৰ বনোৱা। যদি আপুনি আচল খনটো বিচাৰি নাপায়, তেন্তে ই বিচাৰি পোৱা কাৰোবাৰ বাবে এৰি দিয়ক।"
 
@@ -8797,14 +8808,8 @@ msgid "How many pages does this edition have?"
 msgstr "এই সংস্কৰণত কিমান পৃষ্ঠা আছে?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books এ পৃষ্ঠা সংখ্যাক Length হিচাপে তালিকাভুক্ত কৰে। WorldCat ত ই ৰেকৰ্ডৰ বিৱৰণত থাকে, কেতিয়াবা কেৱল ছাইন ইন কৰাৰ পিছতহে। Amazon ৰ প্ৰিণ্ট লেংথে প্ৰায়ে প্ৰতিটো পৃষ্ঠা গণনা কৰে, সেয়েহে ইয়াক এটা সংখ্যা বিচাৰিবলৈ নহয়, পৰীক্ষা কৰিবলৈহে ব্যৱহাৰ কৰক।\n"
-"\n"
-"নিশ্চিত কৰক যে ৰেকৰ্ডটো এই সংস্কৰণৰ বাবে, আন কোনো ছপাৰ বাবে নহয়।"
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books এ পৃষ্ঠাৰ সংখ্যা Length হিচাপে দেখুৱায়। WorldCat ত ই অভিলেখৰ বিৱৰণত থাকে, কেতিয়াবা চাইন ইন কৰাৰ পিছতহে। Amazon ৰ print length এ সঘনাই প্ৰতিটো পৃষ্ঠা গণনা কৰে, সেয়েহে ইয়াক এটা সংখ্যা বিচৰাতকৈ পৰীক্ষা কৰাৰ বাবে ব্যৱহাৰ কৰক।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8827,8 +8832,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "এই কিতাপখন কাল্পনিক নে অকাল্পনিক?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "যদি আপুনি কিতাপখনৰ বিষয়ে জানে, নিজৰ জ্ঞানৰ পৰা উত্তৰ দিয়ক। যদি নাজানে, বিচাৰি চাওক।"
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books এ Fiction/Fantasy ৰ দৰে শ্ৰেণী দেখুৱায়, আৰু WorldCat এ Fiction বা Biography ৰ দৰে ধৰণ দেখুৱায়।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8865,10 +8870,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "কিছুমান শ্ৰেণী পটভূমি (কাল্পনিক, ঐতিহাসিক), কিছুমান কাহিনীৰ আকৃতি (ৰহস্য, প্ৰেম) আৰু কিছুমান সুৰ (হাস্যৰস)। এখন কিতাপে প্ৰতিটোৰ পৰা সৰ্বাধিক এটাকৈ লয়, আৰু সাধাৰণতে মুঠ এটা বা দুটামাত্ৰ।"
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "কিতাপখন কি হিচাপে বিক্ৰী হয় তাৰ ওপৰত নিৰ্ভৰ কৰক, ইয়াৰ ভিতৰৰ প্ৰতিটো উপাদানৰ ওপৰত নহয়। প্ৰেমৰ কাহিনীসহ এটা কাল্পনিক কিতাপ কাল্পনিকেই থাকে; কাল্পনিক পটভূমিত থকা এটা প্ৰেমৰ কাহিনী প্ৰেমৰ কাহিনী হয়।"
 
@@ -8900,6 +8901,58 @@ msgstr "Open Library এ কিতাপখনত ছপা ইম্প্ৰ�
 msgid "Publisher as printed"
 msgstr "ছপা অনুসৰি প্ৰকাশক"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "প্ৰকাশৰ তাৰিখ"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "প্ৰকাশৰ তাৰিখ পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "এই সংস্কৰণ কেতিয়া প্ৰকাশ পাইছিল?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "কপিৰাইট পৃষ্ঠাই বছৰটো দিয়ে, সঘনাই প্ৰকাশকৰ কাষত; কিতাপখনৰ স্কেন থাকিলে, প্ৰথমে সেইখিনি চাওক। Google Books এ ইয়াক Published হিচাপে, WorldCat এ Date হিচাপে, আৰু Library of Congress ৰ অভিলেখে Published শাৰীৰ অংশ হিচাপে দেখুৱায়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "এই সংস্কৰণ উলিওৱা বছৰটো, বা কোনো তালিকাই সম্পূৰ্ণ তাৰিখ দিলে সেয়া লিখক, যেনে মাৰ্চ ২০০৫। একে সংস্কৰণৰ পিছৰ ছপাই সংস্কৰণৰ বছৰটো ৰাখি থয়।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "উদাহৰণস্বৰূপে ২০০৫ বা মাৰ্চ ২০০৫"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "ISBN পূৰণ কৰক"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "এই সংস্কৰণৰ ISBN কি?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN কপিৰাইট পৃষ্ঠাত আৰু পিছফালৰ আৱৰণত, বাৰকোডৰ ওপৰত ছপা থাকে; কিতাপখনৰ স্কেন থাকিলে, প্ৰথমে সেইখিনি চাওক। কিতাপখন হাতত নথকাকৈ, WorldCat বা Google Books ত শিৰোনাম আৰু লেখকেৰে বিচাৰক, যিটো অভিলেখৰ প্ৰকাশক, বছৰ আৰু ফৰ্মেট এই সংস্কৰণৰ সৈতে মিলে সেইটো খোলক, আৰু তাত দেখুওৱা ISBN কপি কৰক।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "এটা ISBN-10 আৰু এটা ISBN-13 এ একেটা সংস্কৰণকে বুজাব পাৰে: 0140449264 আৰু 9780140449266। হাইফেনসহ বা নোহোৱাকৈ, যিকোনো এটা পেষ্ট কৰক। ১৯৭০ চনৰ আগৰ কিতাপবোৰত ই নাথাকে।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "এই ISBN কিতাপখনৰ আন এটা ফৰ্মেটৰ: হাৰ্ডকভাৰ, পেপাৰবেক, ই-বুক আৰু অডিঅ'বুকৰ প্ৰতিটোৰে নিজা ISBN থাকে।"
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "উদাহৰণস্বৰূপে 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "মই পৰীক্ষা কৰিছো যে প্ৰকাশক, বছৰ আৰু ফৰ্মেট এই সংস্কৰণৰ সৈতে মিলে।"
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Library of Congress নম্বৰ (LCCN)"
@@ -8913,8 +8966,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "এই সংস্কৰণৰ Library of Congress নম্বৰ কি?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "এই ISBN ৰ বাবে Library of Congress কেটালগত সন্ধান কৰক। যিটো অভিলেখৰ প্ৰকাশক আৰু সংস্কৰণ ইয়াৰ সৈতে মিল খায় সেইটো খোলক, আৰু LCCN হিচাপে দেখুওৱা নম্বৰটো প্ৰতিলিপি কৰক। এটা পেপাৰবেক বা পিছৰ এটা প্ৰিণ্টিঙত বেলেগ বছৰ দেখুৱাব পাৰে আৰু তথাপিও একেই অভিলেখ হ'ব পাৰে।"
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "এই ISBN ৰ বাবে Library of Congress ৰ তালিকাত বিচাৰক, মিলি যোৱা অভিলেখটো খোলক, আৰু LCCN হিচাপে দেখুওৱা নম্বৰটো কপি কৰক।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8923,14 +8976,6 @@ msgstr "হাইফেনযুক্ত আৰু পেডেড ৰূপ �
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "নম্বৰটো এটা বেলেগ সংস্কৰণৰ: আন এজন প্ৰকাশকৰ, এটা সংশোধিত সংস্কৰণ, এটা অনুবাদ বা ই-বুক। প্ৰতিটোৰে নিজৰ অভিলেখ আছে।"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "নম্বৰটো ইতিমধ্যে এই কামৰ আন এটা সংস্কৰণত আছে। ই হাৰ্ডকভাৰ, পেপাৰবেক বা একে প্ৰকাশকৰ পিছৰ এটা প্ৰিণ্টিং হ'লে সঠিক; এজন বেলেগ প্ৰকাশক বা এটা সংশোধিত সংস্কৰণ হ'লে বুজায় যে দুয়োটা অভিলেখৰ এটা ভুল।"
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "সংখ্যাটোৰ পৰিৱৰ্তে ৱেব ঠিকনা পেষ্ট কৰা।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -8953,12 +8998,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "এই সংস্কৰণৰ WorldCat (OCLC) নম্বৰ কি?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "এই ISBN ৰ বাবে WorldCat ত সন্ধান কৰক। যিটো প্ৰিণ্ট অভিলেখৰ প্ৰকাশক আৰু সংস্কৰণ ইয়াৰ সৈতে মিল খায় সেইটো খোলক, আৰু OCLC Number হিচাপে দেখুওৱা নম্বৰটো প্ৰতিলিপি কৰক। এটা পেপাৰবেক বা পিছৰ এটা প্ৰিণ্টিঙত বেলেগ বছৰ দেখুৱাব পাৰে আৰু তথাপিও একেই অভিলেখ হ'ব পাৰে।"
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "OCLC নম্বৰটো হৈছে বিশ্বজুৰি পুস্তকালয়সমূহে এটা কেটেলগবদ্ধ সংস্কৰণক কেনেকৈ উল্লেখ কৰে তাৰ পদ্ধতি। নতুন ৰেকৰ্ড অহাৰ সময়ত এই কিতাপৰ প্ৰতিলিপি বিচাৰিবলৈ Open Library এ ব্যৱহাৰ কৰা কেইটামান ফীল্ডৰ এটা ই।"
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "এই ISBN ৰ বাবে WorldCat ত বিচাৰক, মিলি যোৱা ছপা অভিলেখটো খোলক, আৰু OCLC Number হিচাপে দেখুওৱা নম্বৰটো কপি কৰক।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -8985,16 +9026,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "মই এটা প্ৰিণ্ট অভিলেখ খুলিলোঁ আৰু ইয়াৰ প্ৰকাশক আৰু সংস্কৰণ ইয়াৰ সৈতে মিল খায়।"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "এই সংস্কৰণটোৰ এটা Library of Congress নম্বৰ আছে। ইয়াৰ ৰেকৰ্ডত ভাষাটো কোৱা হৈছে আৰু শিৰোনাম পৃষ্ঠাত ছপা থকাৰ দৰে প্ৰকাশকৰ নাম দিয়া হৈছে।"
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "এই সংস্কৰণৰ Library of Congress ত এটা অভিলেখ আছে, যিয়ে ভাষা আৰু প্ৰকাশকক ছপা অনুসৰি দেখুৱায়।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Library of Congress ৰেকৰ্ড"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "এই কিতাপখন বিজ্ঞান কল্পকাহিনী বা কল্পনা, যিটো ISFDB এ ভালদৰে সামৰি লয়। ই প্ৰতিটো ছপা নিজাকৈ তালিকাভুক্ত কৰে, আৰু সত্যাপিত হিচাপে চিহ্নিত এটা ৰেকৰ্ড এটা ভৌতিক প্ৰতিলিপিৰ সৈতে পৰীক্ষা কৰা হৈছিল।"
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB এ বিজ্ঞান কল্পকাহিনী আৰু ফেণ্টাছি ছপা অনুসৰি ছপা লৈ অন্তৰ্ভুক্ত কৰে।"
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9240,6 +9281,22 @@ msgstr "তালিকাৰ পৰা এটা ভাষা বাছনি �
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "পৃষ্ঠাৰ সংখ্যা এটা পূৰ্ণ সংখ্যা হিচাপে দিয়ক।"
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "এই ISBN ইতিমধ্যে আন এটা সংস্কৰণত আছে। দুয়োটা তুলনা কৰক: যদি একেটা কিতাপ, তেন্তে এই অভিলেখটো সম্ভৱতঃ এটা প্ৰতিলিপি।"
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "এইটো এটা বৈধ ISBN নহয়। সংখ্যাবোৰ পৰীক্ষা কৰক: এটা ISBN ত ১০ বা ১৩টা থাকে, আৰু শেষটো এটা পৰীক্ষা সংখ্যা।"
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "বছৰটোসহ তাৰিখ লিখক, উদাহৰণস্বৰূপে ২০০৫ বা মাৰ্চ ২০০৫।"
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "এই বছৰটো শুদ্ধ যেন লগা নাই। এই সংস্কৰণ উলিওৱা বছৰটো লিখক।"
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10165,6 +10222,14 @@ msgstr "পৃষ্ঠা সংখ্যা নথকা কিতাপ"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "প্ৰকাশক নথকা কিতাপ"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "প্ৰকাশৰ তাৰিখ নথকা কিতাপ"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "ISBN নথকা কিতাপ"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12569,4 +12634,43 @@ msgstr "চাৰ্টসমূহ ল'ড হ'ব নোৱাৰিলে। 
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "মানুহে কি কি বিৱৰণ পূৰণ কৰি আছে।"
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "মুখপত্ৰখন আন এটা সংস্কৰণৰ। পেপাৰবেক, পুনৰ প্ৰকাশ বা অনুবাদৰ সাধাৰণতে বেলেগ মুখপত্ৰ থাকে; প্ৰকাশকজন পৰীক্ষা কৰক।"
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books এ পৃষ্ঠা সংখ্যাক Length হিচাপে তালিকাভুক্ত কৰে। WorldCat ত ই ৰেকৰ্ডৰ বিৱৰণত থাকে, কেতিয়াবা কেৱল ছাইন ইন কৰাৰ পিছতহে। Amazon ৰ প্ৰিণ্ট লেংথে প্ৰায়ে প্ৰতিটো পৃষ্ঠা গণনা কৰে, সেয়েহে ইয়াক এটা সংখ্যা বিচাৰিবলৈ নহয়, পৰীক্ষা কৰিবলৈহে ব্যৱহাৰ কৰক।\n"
+#~ "\n"
+#~ "নিশ্চিত কৰক যে ৰেকৰ্ডটো এই সংস্কৰণৰ বাবে, আন কোনো ছপাৰ বাবে নহয়।"
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "যদি আপুনি কিতাপখনৰ বিষয়ে জানে, নিজৰ জ্ঞানৰ পৰা উত্তৰ দিয়ক। যদি নাজানে, বিচাৰি চাওক।"
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "কিছুমান শ্ৰেণী পটভূমি (কাল্পনিক, ঐতিহাসিক), কিছুমান কাহিনীৰ আকৃতি (ৰহস্য, প্ৰেম) আৰু কিছুমান সুৰ (হাস্যৰস)। এখন কিতাপে প্ৰতিটোৰ পৰা সৰ্বাধিক এটাকৈ লয়, আৰু সাধাৰণতে মুঠ এটা বা দুটামাত্ৰ।"
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "এই ISBN ৰ বাবে Library of Congress কেটালগত সন্ধান কৰক। যিটো অভিলেখৰ প্ৰকাশক আৰু সংস্কৰণ ইয়াৰ সৈতে মিল খায় সেইটো খোলক, আৰু LCCN হিচাপে দেখুওৱা নম্বৰটো প্ৰতিলিপি কৰক। এটা পেপাৰবেক বা পিছৰ এটা প্ৰিণ্টিঙত বেলেগ বছৰ দেখুৱাব পাৰে আৰু তথাপিও একেই অভিলেখ হ'ব পাৰে।"
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "নম্বৰটো ইতিমধ্যে এই কামৰ আন এটা সংস্কৰণত আছে। ই হাৰ্ডকভাৰ, পেপাৰবেক বা একে প্ৰকাশকৰ পিছৰ এটা প্ৰিণ্টিং হ'লে সঠিক; এজন বেলেগ প্ৰকাশক বা এটা সংশোধিত সংস্কৰণ হ'লে বুজায় যে দুয়োটা অভিলেখৰ এটা ভুল।"
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "সংখ্যাটোৰ পৰিৱৰ্তে ৱেব ঠিকনা পেষ্ট কৰা।"
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "এই ISBN ৰ বাবে WorldCat ত সন্ধান কৰক। যিটো প্ৰিণ্ট অভিলেখৰ প্ৰকাশক আৰু সংস্কৰণ ইয়াৰ সৈতে মিল খায় সেইটো খোলক, আৰু OCLC Number হিচাপে দেখুওৱা নম্বৰটো প্ৰতিলিপি কৰক। এটা পেপাৰবেক বা পিছৰ এটা প্ৰিণ্টিঙত বেলেগ বছৰ দেখুৱাব পাৰে আৰু তথাপিও একেই অভিলেখ হ'ব পাৰে।"
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "OCLC নম্বৰটো হৈছে বিশ্বজুৰি পুস্তকালয়সমূহে এটা কেটেলগবদ্ধ সংস্কৰণক কেনেকৈ উল্লেখ কৰে তাৰ পদ্ধতি। নতুন ৰেকৰ্ড অহাৰ সময়ত এই কিতাপৰ প্ৰতিলিপি বিচাৰিবলৈ Open Library এ ব্যৱহাৰ কৰা কেইটামান ফীল্ডৰ এটা ই।"
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "এই সংস্কৰণটোৰ এটা Library of Congress নম্বৰ আছে। ইয়াৰ ৰেকৰ্ডত ভাষাটো কোৱা হৈছে আৰু শিৰোনাম পৃষ্ঠাত ছপা থকাৰ দৰে প্ৰকাশকৰ নাম দিয়া হৈছে।"
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "এই কিতাপখন বিজ্ঞান কল্পকাহিনী বা কল্পনা, যিটো ISFDB এ ভালদৰে সামৰি লয়। ই প্ৰতিটো ছপা নিজাকৈ তালিকাভুক্ত কৰে, আৰু সত্যাপিত হিচাপে চিহ্নিত এটা ৰেকৰ্ড এটা ভৌতিক প্ৰতিলিপিৰ সৈতে পৰীক্ষা কৰা হৈছিল।"
 
