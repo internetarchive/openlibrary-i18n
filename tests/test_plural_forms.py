@@ -27,9 +27,9 @@ LOCALE_DIR = Path(__file__).parent.parent / "locale"
 # Same %-specifier grammar the toolbox's format checks use.
 _PLACEHOLDER = re.compile(r"%\((\w+)\)[sdifruoxXeEgGc]|(?<!%)(%[sdifruoxXeEgGc])")
 
-# Locales that still carry empty reachable plural forms, left for a follow-up.
+# Locales that still carry empty reachable plural forms (none since #102).
 # strict: filling one turns its xfail into a failure until it is removed here.
-KNOWN_EMPTY_FORMS = {"cs", "hr", "ro", "ru", "uk"}
+KNOWN_EMPTY_FORMS: set[str] = set()
 
 # Locales whose form 0 still hardcodes "1"/"one" while also covering other n,
 # left for the same follow-up. The entries that would regress against

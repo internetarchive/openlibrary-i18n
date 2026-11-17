@@ -1251,3 +1251,68 @@ class TestValidateSysPath:
             "validate() permanently modified sys.path via sys.path.insert(); "
             "use importlib instead"
         )
+
+
+# ---------------------------------------------------------------------------
+# Partially-filled plurals with a reachable empty form (#102)
+# ---------------------------------------------------------------------------
+
+_RU_HEADER = (
+    b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+    b'"Language: ru\\n"\n'
+    b'"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : '
+    b'n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n"\n\n'
+)
+_JA_HEADER = (
+    b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+    b'"Language: ja\\n"\n"Plural-Forms: nplurals=1; plural=0;\\n"\n\n'
+)
+_PLURAL_PARTIAL = (
+    b'msgid "%(n)d book"\nmsgid_plural "%(n)d books"\n'
+    b'msgstr[0] "%(n)d kniga"\nmsgstr[1] "%(n)d knigi"\nmsgstr[2] ""\n'
+)
+
+
+class TestPartialPlurals:
+    def test_reachable_empty_form_is_untranslated(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        assert [e["id"] for e in _untranslated_from_catalog(cat)] == ["%(n)d book"]
+        stats = _stats_from_catalog(cat, "ru")
+        assert (stats["untranslated"], stats["translated"]) == (1, 0)
+
+    def test_fully_filled_plural_is_translated(self):
+        po = _PLURAL_PARTIAL.replace(b'msgstr[2] ""', b'msgstr[2] "%(n)d knig"')
+        cat = _catalog(_RU_HEADER + po)
+        assert _untranslated_from_catalog(cat) == []
+        assert _stats_from_catalog(cat, "ru")["translated"] == 1
+
+    def test_empty_unreachable_form_is_not_untranslated(self):
+        # nplurals=1: only form 0 is ever selected, so an empty form 1 is harmless.
+        po = (
+            b'msgid "%(n)d book"\nmsgid_plural "%(n)d books"\n'
+            b'msgstr[0] "%(n)d hon"\nmsgstr[1] ""\n'
+        )
+        cat = _catalog(_JA_HEADER + po)
+        assert _untranslated_from_catalog(cat) == []
+        assert _stats_from_catalog(cat, "ja")["untranslated"] == 0
+
+    def test_apply_fills_all_forms(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        forms = ["%(n)d kniga", "%(n)d knigi", "%(n)d knig"]
+        assert _apply_to_catalog(cat, {"%(n)d book": forms}) == 1
+        assert cat["%(n)d book"].string == tuple(forms)
+        assert _untranslated_from_catalog(cat) == []
+
+    def test_plural_entry_reports_nplurals(self):
+        # The translating agent needs the form count: ru has 3, and a 2-form
+        # answer would leave a reachable form empty, so the entry never leaves
+        # `untranslated` and the agent's loop never ends.
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        [entry] = _untranslated_from_catalog(cat)
+        assert entry["nplurals"] == 3
+        assert _untranslated_from_catalog(_catalog(_po('msgid "Hi"\nmsgstr ""'))) == [{"id": "Hi"}]
+
+    def test_two_forms_for_a_three_form_locale_stays_untranslated(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        _apply_to_catalog(cat, {"%(n)d book": ["%(n)d kniga", "%(n)d knigi"]})
+        assert [e["id"] for e in _untranslated_from_catalog(cat)] == ["%(n)d book"]

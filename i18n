@@ -182,17 +182,43 @@ def check_scope(ref: str = "origin/main") -> int:
 # Catalog-level pure functions (no filesystem — fully testable)
 # ---------------------------------------------------------------------------
 
+def _reachable_plural_forms(catalog) -> set[int]:
+    """Plural form indexes the catalog's own rule selects for some n in 0..999.
+
+    Same window and rule as tests/test_plural_forms.py. Empty set if the rule
+    cannot be evaluated (callers then fall back to "any form filled").
+    """
+    try:
+        rule = gettext.c2py(catalog.plural_expr)
+        return {rule(n) for n in range(1000)}
+    except (ValueError, ArithmeticError):
+        return set()
+
+
+def _entry_translated(msg, reachable: set[int]) -> bool:
+    """Is a non-fuzzy entry translated? A plural needs every reachable form
+    filled: Babel shows English for an empty form the rule selects (#102)."""
+    if not msg.string:
+        return False
+    if isinstance(msg.string, str):
+        return True
+    forms = list(msg.string)
+    if not any(forms):
+        return False
+    forms += [""] * (max(reachable, default=-1) + 1 - len(forms))
+    return all(forms[i] for i in reachable)
+
+
 def _stats_from_catalog(catalog, lang: str) -> dict:
     total = fuzzy = translated = 0
+    reachable = _reachable_plural_forms(catalog)
     for msg in catalog:
         if not msg.id:
             continue
         total += 1
         if msg.fuzzy:
             fuzzy += 1
-        elif isinstance(msg.string, str) and msg.string:
-            translated += 1
-        elif isinstance(msg.string, (list, tuple)) and any(msg.string):
+        elif _entry_translated(msg, reachable):
             translated += 1
     untranslated = total - translated - fuzzy
     return {
@@ -207,15 +233,16 @@ def _stats_from_catalog(catalog, lang: str) -> dict:
 
 def _untranslated_from_catalog(catalog, limit: int | None = None) -> list[dict]:
     entries = []
+    reachable = _reachable_plural_forms(catalog)
     for msg in catalog:
         if not msg.id or msg.fuzzy:
             continue
-        if isinstance(msg.string, str) and msg.string:
+        if _entry_translated(msg, reachable):
             continue
-        if isinstance(msg.string, (list, tuple)) and any(msg.string):
-            continue
+        # A plural needs exactly `nplurals` forms (3 for ru/uk/cs/hr/ro); with
+        # fewer, a reachable form stays empty and the entry keeps coming back.
         entry = (
-            {"id": msg.id[0], "id_plural": msg.id[1]}
+            {"id": msg.id[0], "id_plural": msg.id[1], "nplurals": catalog.num_plurals}
             if isinstance(msg.id, tuple)
             else {"id": msg.id}
         )
