@@ -31,13 +31,14 @@ openlibrary-i18n/
     test_i18n.py                    # tests for the ./i18n toolbox
   .github/workflows/
     translate.yml                   # AI translation run
+    sync-pot.yml                    # commits messages.pot from openlibrary master
     validate-pr.yml                 # runs the checks on PRs
 ```
 
 ## How translations work
 
 1. English strings are extracted into `openlibrary/i18n/messages.pot` in the [main repository](https://github.com/internetarchive/openlibrary) by its `generate-pot` pre-commit hook.
-2. When that file changes on `master`, the main repository's `trigger-i18n.yml` sends a `repository_dispatch` event here.
+2. When that file changes on `master`, the main repository's `trigger-i18n.yml` sends a `repository_dispatch` event here. `sync-pot.yml` then commits the new `messages.pot` straight to `main`.
 3. `translate.yml` runs on that event (or on a manual `workflow_dispatch`; it has no schedule). It downloads the new `messages.pot`, updates every `locale/<lang>/messages.po` from it (`./i18n pull --sync`), and then an AI translation step, following `i18n-translation-instructions.md`, fills untranslated strings and opens a PR per batch of languages. The workflow then merges those PRs itself.
 4. `validate-pr.yml` runs `tests/test_po_files.py` and the format-string validators on PRs that touch `locale/` or `messages.pot`, and reports the result on the PR. It is meant to check only the languages a PR changes, but today it checks every locale: changed-language detection fails in the shallow checkout (`no merge base`), and both steps fall back to the full suite. See #106, which also covers a second bug that the fallback currently hides. **`main` has no branch protection, so a failing check does not prevent a merge.** Review is what catches a bad translation.
 
