@@ -6017,7 +6017,7 @@ msgstr "%(count)d înregistrări modificate."
 msgid "All fields"
 msgstr "Toate câmpurile"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8720,6 +8720,22 @@ msgid "No matching language"
 msgstr "Nicio limbă potrivită"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "Și încă 1."
+msgstr[1] "Și încă %(count)d."
+msgstr[2] "Și încă %(count)d."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Dacă această ediție chiar are același ISBN, salvează din nou."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Vezi scanarea"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Alte ediții menționează…"
 
@@ -8828,10 +8844,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Încărcați doar coperta, plată și completă: fără fotografii ale cărții așezate pe o masă, fără machete 3D, fără insigne de magazin sau filigrane."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Coperta aparține unei alte ediții. O ediție broșată, o reeditare sau o traducere au de obicei o copertă diferită; verificați editura."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Crearea unei coperte proprii. Dacă nu puteți găsi coperta reală, lăsați-o pentru cineva care o poate găsi."
 
@@ -8872,14 +8884,8 @@ msgid "How many pages does this edition have?"
 msgstr "Câte pagini are această ediție?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books listează numărul de pagini ca Length. WorldCat îl are în descrierea înregistrării, uneori doar după autentificare. Lungimea tipărită de pe Amazon numără adesea fiecare pagină, așa că folosește-o pentru a verifica un număr, nu pentru a-l găsi.\n"
-"\n"
-"Asigură-te că înregistrarea este pentru această ediție, nu pentru o altă tipărire."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books indică numărul de pagini ca Length. WorldCat îl are în descrierea înregistrării, uneori doar după autentificare. Print length-ul de la Amazon numără adesea fiecare pagină, așa că folosește-l mai degrabă pentru a verifica un număr decât pentru a-l găsi."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8902,8 +8908,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Această carte este ficțiune sau non-ficțiune?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Dacă cunoști cartea, răspunde pe baza a ceea ce știi. Dacă nu, caută informații."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books indică categorii precum Ficțiune/Fantasy, iar WorldCat indică genuri precum Ficțiune sau Biografie."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8940,10 +8946,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Unele genuri sunt cadre (fantezie, istoric), unele sunt forme de intrigă (mister, romantism), iar unele sunt tonuri (umor). O carte primește cel mult unul din fiecare categorie, de obicei doar unul sau două în total."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Ghidați-vă după felul în care este vândută cartea, nu după fiecare element din ea. O fantezie cu o poveste de dragoste rămâne fantezie; o poveste de dragoste într-un cadru fantastic este romantism."
 
@@ -8975,6 +8977,58 @@ msgstr "Open Library înregistrează amprenta editorială tipărită pe carte, n
 msgid "Publisher as printed"
 msgstr "Editura așa cum este tipărită"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Data publicării"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Completează data publicării"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Când a fost publicată această ediție?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Pagina de copyright indică anul, adesea lângă editură; dacă ediția are o scanare, caută acolo mai întâi. Google Books îl indică drept Published, WorldCat drept Date, iar înregistrarea Library of Congress ca parte din linia Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Introdu anul în care a apărut această ediție, sau data completă dacă un catalog oferă una, de exemplu martie 2005. O tipărire ulterioară a aceleiași ediții păstrează anul ediției."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "De exemplu 2005 sau martie 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Completează ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Care este ISBN-ul acestei ediții?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN-ul este tipărit pe pagina de copyright și pe coperta din spate, deasupra codului de bare; dacă ediția are o scanare, caută acolo mai întâi. Fără cartea la îndemână, caută pe WorldCat sau Google Books după titlu și autor, deschide înregistrarea a cărei editură, an și format corespund acestei ediții și copiază ISBN-ul indicat."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "Un ISBN-10 și un ISBN-13 pot desemna aceeași ediție: 0140449264 și 9780140449266. Lipește oricare dintre ele, cu sau fără cratime. Cărțile dinainte de 1970 nu au unul."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "ISBN-ul aparține altui format al cărții: ediția cartonată, broșată, cartea electronică și audiocartea au fiecare propriul ISBN."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "De exemplu 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Am verificat că editura, anul și formatul corespund acestei ediții."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Numărul Library of Congress (LCCN)"
@@ -8988,8 +9042,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Care este numărul Library of Congress al acestei ediții?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Căutați acest ISBN în catalogul Library of Congress. Deschideți înregistrarea a cărei editură și ediție corespund acesteia și copiați numărul afișat ca LCCN. O ediție broșată sau o tipărire ulterioară poate afișa un an diferit și totuși să fie aceeași înregistrare."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Caută acest ISBN în catalogul Library of Congress, deschide înregistrarea corespunzătoare și copiază numărul indicat drept LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8998,14 +9052,6 @@ msgstr "Formele cu cratimă și cele completate cu zerouri reprezintă același 
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Numărul aparține unei ediții diferite: a unei alte edituri, o ediție revizuită, o traducere sau cartea electronică. Fiecare are propria sa înregistrare."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Numărul se află deja pe o altă ediție a acestei opere. Acest lucru este corect atunci când este vorba despre ediția cartonată, broșată sau o tipărire ulterioară a aceleiași edituri; o editură diferită sau o ediție revizuită înseamnă că una dintre cele două înregistrări este greșită."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Inserarea adresei web în loc de numărul propriu-zis."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -9028,12 +9074,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Care este numărul WorldCat (OCLC) al acestei ediții?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Căutați acest ISBN pe WorldCat. Deschideți înregistrarea tipărită a cărei editură și ediție corespund acesteia și copiați numărul afișat ca OCLC Number. O ediție broșată sau o tipărire ulterioară poate afișa un an diferit și totuși să fie aceeași înregistrare."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Numărul OCLC este modul în care bibliotecile din întreaga lume se referă la o ediție catalogată. Este unul dintre puținele câmpuri pe care Open Library le folosește pentru a găsi duplicate ale acestei cărți atunci când apar înregistrări noi."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Caută acest ISBN pe WorldCat, deschide înregistrarea tipărită corespunzătoare și copiază numărul indicat drept OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9060,16 +9102,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Am deschis o înregistrare tipărită, iar editura și ediția acesteia corespund acesteia."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "Această ediție are un număr Library of Congress. Înregistrarea sa indică limba și oferă editura așa cum este tipărită pe pagina de titlu."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "Această ediție are o înregistrare la Library of Congress, care indică limba și editura așa cum este tipărită."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Înregistrare Library of Congress"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Această carte este science fiction sau fantasy, domenii bine acoperite de ISFDB. Acesta listează fiecare tipărire separat, iar o înregistrare marcată ca verificată a fost confirmată cu un exemplar fizic."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB acoperă science fiction și fantasy tipărire cu tipărire."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9316,6 +9358,22 @@ msgstr "Alege o limbă din listă."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Introdu numărul de pagini ca număr întreg."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Acest ISBN există deja la o altă ediție. Compară-le: dacă este aceeași carte, această înregistrare este probabil un duplicat."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Acesta nu este un ISBN valid. Verifică cifrele: un ISBN are 10 sau 13, iar ultima este o cifră de control."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Introdu data împreună cu anul, de exemplu 2005 sau martie 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Anul acesta nu pare corect. Introdu anul în care a apărut această ediție."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10248,6 +10306,14 @@ msgstr "Cărți fără număr de pagini"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Cărți fără editură"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Cărți fără dată de publicare"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Cărți fără ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -12646,4 +12712,43 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Ce detalii completează oamenii."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Coperta aparține unei alte ediții. O ediție broșată, o reeditare sau o traducere au de obicei o copertă diferită; verificați editura."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books listează numărul de pagini ca Length. WorldCat îl are în descrierea înregistrării, uneori doar după autentificare. Lungimea tipărită de pe Amazon numără adesea fiecare pagină, așa că folosește-o pentru a verifica un număr, nu pentru a-l găsi.\n"
+#~ "\n"
+#~ "Asigură-te că înregistrarea este pentru această ediție, nu pentru o altă tipărire."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Dacă cunoști cartea, răspunde pe baza a ceea ce știi. Dacă nu, caută informații."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Unele genuri sunt cadre (fantezie, istoric), unele sunt forme de intrigă (mister, romantism), iar unele sunt tonuri (umor). O carte primește cel mult unul din fiecare categorie, de obicei doar unul sau două în total."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Căutați acest ISBN în catalogul Library of Congress. Deschideți înregistrarea a cărei editură și ediție corespund acesteia și copiați numărul afișat ca LCCN. O ediție broșată sau o tipărire ulterioară poate afișa un an diferit și totuși să fie aceeași înregistrare."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Numărul se află deja pe o altă ediție a acestei opere. Acest lucru este corect atunci când este vorba despre ediția cartonată, broșată sau o tipărire ulterioară a aceleiași edituri; o editură diferită sau o ediție revizuită înseamnă că una dintre cele două înregistrări este greșită."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Inserarea adresei web în loc de numărul propriu-zis."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Căutați acest ISBN pe WorldCat. Deschideți înregistrarea tipărită a cărei editură și ediție corespund acesteia și copiați numărul afișat ca OCLC Number. O ediție broșată sau o tipărire ulterioară poate afișa un an diferit și totuși să fie aceeași înregistrare."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Numărul OCLC este modul în care bibliotecile din întreaga lume se referă la o ediție catalogată. Este unul dintre puținele câmpuri pe care Open Library le folosește pentru a găsi duplicate ale acestei cărți atunci când apar înregistrări noi."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "Această ediție are un număr Library of Congress. Înregistrarea sa indică limba și oferă editura așa cum este tipărită pe pagina de titlu."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Această carte este science fiction sau fantasy, domenii bine acoperite de ISFDB. Acesta listează fiecare tipărire separat, iar o înregistrare marcată ca verificată a fost confirmată cu un exemplar fizic."
 
