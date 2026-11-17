@@ -986,7 +986,7 @@ msgstr "Узнать больше"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "на <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "Искать внутри"
@@ -1449,7 +1449,7 @@ msgstr "Покинуть список ожидания"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Вы потеряете своё место в очереди на <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, fuzzy, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1735,7 +1735,7 @@ msgstr "Книги, добавленные людьми, на которых п�
 msgid "Search your reading log"
 msgstr "Экспортировать ваш журнал чтения"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -5174,7 +5174,7 @@ msgstr "Заметки:"
 msgid "Add another image"
 msgstr "Добавить ещё одно изображение"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Завершено"
 
@@ -6527,42 +6527,42 @@ msgstr "Сортировать результаты"
 msgid "Shuffle"
 msgstr "Перемешать"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
+msgid "time"
+msgstr "время"
+
+#: search/subjects.html.jinja
+msgid "subject"
+msgstr "рубрика"
+
+#: search/subjects.html.jinja
+msgid "place"
+msgstr "место"
+
+#: search/subjects.html.jinja
+msgid "org"
+msgstr "организация"
+
+#: search/subjects.html.jinja
+msgid "event"
+msgstr "событие"
+
+#: search/subjects.html.jinja
+msgid "person"
+msgstr "человек"
+
+#: search/subjects.html.jinja
+msgid "work"
+msgstr "работа"
+
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "Search Subjects"
 msgstr "Исследовать рубрики"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "No <strong>subjects</strong> directly matched your search"
 msgstr "Нет <strong>тем</strong>, напрямую соответствующих вашему запросу"
-
-#: search/subjects.html
-msgid "time"
-msgstr "время"
-
-#: search/subjects.html
-msgid "subject"
-msgstr "рубрика"
-
-#: search/subjects.html
-msgid "place"
-msgstr "место"
-
-#: search/subjects.html
-msgid "org"
-msgstr "организация"
-
-#: search/subjects.html
-msgid "event"
-msgstr "событие"
-
-#: search/subjects.html
-msgid "person"
-msgstr "человек"
-
-#: search/subjects.html
-msgid "work"
-msgstr "работа"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -7077,20 +7077,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Доля правок и редакторов через Задачи, по дням"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Сведения, которых всё ещё не хватает в книгах каждого проекта. Сведение, которое никто не смог найти, считается заполненным."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Проекты сообщества. Выберите один, чтобы построить график."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "параметров заполнено · Завершено"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "сведений заполнено"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Сведения, всё ещё открытые в %(project)s, по дням"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -7106,16 +7095,8 @@ msgid "marked not found"
 msgstr "отмечено как не найдено"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Сведения, всё ещё открытые в выбранном проекте, по дням"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Сохранения по полям, последние 28 дней"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Какие сведения заполняют пользователи."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10461,6 +10442,15 @@ msgstr "%(query)s — Поиск списков"
 msgid "List search"
 msgstr "Поиск списков"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s — Поиск рубрик"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Поиск рубрик"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Кто-то другой изменил этот проект, пока он был у вас открыт. Проверьте его ниже и попробуйте снова."
@@ -13669,4 +13659,22 @@ msgstr "Не удалось загрузить графики. Перезагр�
 #~ msgstr[0] "%(value)s, в %(count)d издании"
 #~ msgstr[1] "%(value)s, в %(count)d изданиях"
 #~ msgstr[2] "%(value)s, в %(count)d изданиях"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Сведения, которых всё ещё не хватает в книгах каждого проекта. Сведение, которое никто не смог найти, считается заполненным."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Проекты сообщества. Выберите один, чтобы построить график."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "параметров заполнено · Завершено"
+
+#~ msgid "of details filled"
+#~ msgstr "сведений заполнено"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Сведения, всё ещё открытые в выбранном проекте, по дням"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Какие сведения заполняют пользователи."
 
