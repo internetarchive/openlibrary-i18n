@@ -6301,7 +6301,7 @@ msgstr "%(count)d запись изменена."
 msgid "All fields"
 msgstr "Все поля"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -9086,6 +9086,22 @@ msgid "No matching language"
 msgstr "Подходящий язык не найден"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "И ещё %(count)d."
+msgstr[1] "И ещё %(count)d."
+msgstr[2] "И ещё %(count)d."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Если у этого издания действительно такой же ISBN, сохраните ещё раз."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Посмотреть скан"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Другие издания указывают…"
 
@@ -9194,10 +9210,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Загружайте только обложку, плоскую и целиком: без фотографий книги на столе, без 3D-макетов, без значков магазинов и водяных знаков."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Эта обложка принадлежит другому изданию. У изданий в мягкой обложке, переизданий или переводов обычно другая обложка; проверьте издательство."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Создание обложки самостоятельно. Если вы не можете найти настоящую, оставьте это тому, кто сможет её найти."
 
@@ -9238,14 +9250,8 @@ msgid "How many pages does this edition have?"
 msgstr "Сколько страниц в этом издании?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books указывает количество страниц как Length. У WorldCat это есть в описании записи, иногда только после входа в систему. Amazon часто считает каждую страницу в показателе print length, поэтому используйте его, чтобы проверить число, а не чтобы его найти.\n"
-"\n"
-"Убедитесь, что запись относится именно к этому изданию, а не к другому тиражу."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books указывает количество страниц как Length. WorldCat указывает его в описании записи, иногда только после входа в аккаунт. Print length на Amazon часто считает каждую страницу, поэтому используйте его скорее для проверки числа, чем для его поиска."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -9268,8 +9274,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Это художественная или нехудожественная книга?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Если вы знаете эту книгу, ответьте исходя из своих знаний. Если нет, найдите информацию."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books указывает категории вроде Fiction/Fantasy, а WorldCat указывает жанры вроде Fiction или Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -9306,10 +9312,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Некоторые жанры — это обстановка (фэнтези, исторический), некоторые — форма сюжета (детектив, романтика), а некоторые — тон (юмор). Книга получает не более одного из каждой категории, обычно всего один или два в целом."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Ориентируйтесь на то, как книга позиционируется при продаже, а не на каждый элемент в ней. Фэнтези с любовной историей остаётся фэнтези; любовная история в фэнтезийном мире — это романтика."
 
@@ -9341,6 +9343,58 @@ msgstr "Open Library фиксирует импринт, напечатанный
 msgid "Publisher as printed"
 msgstr "Издатель в том виде, как напечатано"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Дата публикации"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Заполнить дату публикации"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Когда было опубликовано это издание?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Страница с копирайтом указывает год, часто рядом с издателем; если у книги есть скан, посмотрите сначала там. Google Books указывает его как Published, WorldCat — как Date, а запись Library of Congress — как часть строки Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Укажите год выхода этого издания, или полную дату, если её указывает каталог, например март 2005. Более поздний тираж того же издания сохраняет год издания."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Например 2005 или март 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Заполнить ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Какой ISBN у этого издания?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN напечатан на странице с копирайтом и на задней обложке, над штрихкодом; если у книги есть скан, посмотрите сначала там. Без книги под рукой найдите на WorldCat или Google Books по названию и автору, откройте запись, у которой издатель, год и формат совпадают с этим изданием, и скопируйте указанный там ISBN."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "ISBN-10 и ISBN-13 могут обозначать одно и то же издание: 0140449264 и 9780140449266. Вставьте любой из них, с дефисами или без. У книг до 1970 года ISBN нет."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "Этот ISBN относится к другому формату книги: у издания в твёрдой обложке, в мягкой обложке, электронной книги и аудиокниги у каждого свой собственный."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Например 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Я проверил, что издатель, год и формат совпадают с этим изданием."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Номер Библиотеки Конгресса (LCCN)"
@@ -9354,8 +9408,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Какой номер Библиотеки Конгресса у этого издания?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Найдите этот ISBN в каталоге Библиотеки Конгресса. Откройте запись, издательство и издание которой соответствуют этому, и скопируйте номер, указанный как LCCN. В издании в мягкой обложке или более позднем тираже может быть указан другой год, но это всё равно может быть той же записью."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Найдите этот ISBN в каталоге Library of Congress, откройте подходящую запись и скопируйте номер, указанный как LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -9364,14 +9418,6 @@ msgstr "Формы с дефисом и без него — один и тот �
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Этот номер принадлежит другому изданию: другого издательства, переработанному изданию, переводу или электронной книге. У каждого своя собственная запись."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Этот номер уже есть на другом издании этого произведения. Это нормально, если это издание в твёрдом переплёте, мягкой обложке или более поздний тираж того же издательства; другое издательство или переработанное издание означает, что одна из двух записей неверна."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Вставлен веб-адрес вместо самого номера."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -9394,12 +9440,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Какой номер WorldCat (OCLC) у этого издания?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Найдите этот ISBN в WorldCat. Откройте печатную запись, издательство и издание которой соответствуют этому, и скопируйте номер, указанный как OCLC Number. В издании в мягкой обложке или более позднем тираже может быть указан другой год, но это всё равно может быть той же записью."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Номер OCLC — это то, как библиотеки по всему миру ссылаются на одно каталогизированное издание. Это одно из немногих полей, по которым Open Library ищет дубликаты этой книги при поступлении новых записей."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Найдите этот ISBN на WorldCat, откройте подходящую запись печатного издания и скопируйте номер, указанный как OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -9426,16 +9468,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Я открыл(а) печатную запись, и её издательство и издание соответствуют этому."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "У этого издания есть номер Библиотеки Конгресса. В его записи указан язык и издатель, как напечатано на титульном листе."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "У этого издания есть запись в Library of Congress, которая указывает язык и издателя так, как напечатано."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Запись Библиотеки Конгресса"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Эта книга — научная фантастика или фэнтези, которую хорошо охватывает ISFDB. Там каждый тираж указан отдельно, а запись с пометкой «verified» означает, что её сверили с печатным экземпляром."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB охватывает научную фантастику и фэнтези тираж за тиражом."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9682,6 +9724,22 @@ msgstr "Выберите язык из списка."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Введите количество страниц целым числом."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Этот ISBN уже указан у другого издания. Сравните их: если это одна и та же книга, эта запись, вероятно, дубликат."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Это не действительный ISBN. Проверьте цифры: в ISBN 10 или 13 знаков, и последний — контрольная цифра."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Укажите дату вместе с годом, например 2005 или март 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Этот год выглядит неверным. Укажите год выхода этого издания."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10634,6 +10692,14 @@ msgstr "Книги без количества страниц"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Книги без издателя"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Книги без даты публикации"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Книги без ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -13677,4 +13743,43 @@ msgstr "Не удалось загрузить графики. Перезагр�
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Какие сведения заполняют пользователи."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Эта обложка принадлежит другому изданию. У изданий в мягкой обложке, переизданий или переводов обычно другая обложка; проверьте издательство."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books указывает количество страниц как Length. У WorldCat это есть в описании записи, иногда только после входа в систему. Amazon часто считает каждую страницу в показателе print length, поэтому используйте его, чтобы проверить число, а не чтобы его найти.\n"
+#~ "\n"
+#~ "Убедитесь, что запись относится именно к этому изданию, а не к другому тиражу."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Если вы знаете эту книгу, ответьте исходя из своих знаний. Если нет, найдите информацию."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Некоторые жанры — это обстановка (фэнтези, исторический), некоторые — форма сюжета (детектив, романтика), а некоторые — тон (юмор). Книга получает не более одного из каждой категории, обычно всего один или два в целом."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Найдите этот ISBN в каталоге Библиотеки Конгресса. Откройте запись, издательство и издание которой соответствуют этому, и скопируйте номер, указанный как LCCN. В издании в мягкой обложке или более позднем тираже может быть указан другой год, но это всё равно может быть той же записью."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Этот номер уже есть на другом издании этого произведения. Это нормально, если это издание в твёрдом переплёте, мягкой обложке или более поздний тираж того же издательства; другое издательство или переработанное издание означает, что одна из двух записей неверна."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Вставлен веб-адрес вместо самого номера."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Найдите этот ISBN в WorldCat. Откройте печатную запись, издательство и издание которой соответствуют этому, и скопируйте номер, указанный как OCLC Number. В издании в мягкой обложке или более позднем тираже может быть указан другой год, но это всё равно может быть той же записью."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Номер OCLC — это то, как библиотеки по всему миру ссылаются на одно каталогизированное издание. Это одно из немногих полей, по которым Open Library ищет дубликаты этой книги при поступлении новых записей."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "У этого издания есть номер Библиотеки Конгресса. В его записи указан язык и издатель, как напечатано на титульном листе."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Эта книга — научная фантастика или фэнтези, которую хорошо охватывает ISFDB. Там каждый тираж указан отдельно, а запись с пометкой «verified» означает, что её сверили с печатным экземпляром."
 
