@@ -5966,7 +5966,7 @@ msgstr "%(count)d registros modificados."
 msgid "All fields"
 msgstr "Totu sos campos"
 
-#: openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8632,6 +8632,21 @@ msgid "No matching language"
 msgstr "Peruna limba chi currispondat"
 
 #: contribute/parts.html.jinja
+#, python-format
+msgid "And 1 more."
+msgid_plural "And %(count)d more."
+msgstr[0] "E àteru 1."
+msgstr[1] "E àteros %(count)d."
+
+#: contribute/parts.html.jinja
+msgid "If this edition really has the same ISBN, save again."
+msgstr "Si custa editzione tenet aberu su matessi ISBN, sarva torra."
+
+#: contribute/parts.html.jinja
+msgid "View scan"
+msgstr "Castia sa iscansione"
+
+#: contribute/parts.html.jinja
 msgid "Other editions say…"
 msgstr "Àteras editziones narant…"
 
@@ -8739,10 +8754,6 @@ msgid "Upload the cover only, flat and in full: no photos of the book on a table
 msgstr "Càrriga petzi sa cobertedda, in pianu e intrea: peruna fotografia de su libru subra de una mesa, peruna simulatzione in 3D, perunu sinnu de butegas o filigrana."
 
 #: openlibrary/contribute/field_guides.py
-msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
-msgstr "Sa cobertedda est de un'àtera editzione. Una brossura, una ristampa o una tradutzione de sòlitu tenet una cobertedda diferente; controlla s'editore."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Making a cover yourself. If you can't find the real one, leave it for someone who can."
 msgstr "Creende una cobertedda tue matessi. Si non podes agatare sa vera, lassa·la a chie la podet agatare."
 
@@ -8783,14 +8794,8 @@ msgid "How many pages does this edition have?"
 msgstr "Cantas pàginas tenet custa editzione?"
 
 #: openlibrary/contribute/field_guides.py
-msgid ""
-"Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
-"\n"
-"Make sure the record is for this edition, not another printing."
-msgstr ""
-"Google Books elencat su nùmeru de pàginas comente Length. WorldCat lu tenet in sa descritzione de su registru, a bias petzi a pustis de ti registrare. Su print length de Amazon de sòlitu contat dònnia pàgina, duncas impreal·lu pro controllare unu nùmeru prus a prestu che pro l'agatare.\n"
-"\n"
-"Assegura·ti chi su registru siat pro custa editzione, non pro un'àtera imprenta."
+msgid "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one."
+msgstr "Google Books ammustrat su nùmeru de pàginas comente Length. WorldCat lu tenet in sa descritzione de s'archìviu, a bortas isceti a pustis de aer intradu. Su print length de Amazon ispissu contat dònnia pàgina, duncas impitadèlu prus pro controllare unu nùmeru chi non pro lu agatare."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
@@ -8813,8 +8818,8 @@ msgid "Is this book fiction or nonfiction?"
 msgstr "Custu libru est de fintzione o non fintzione?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "If you know the book, answer from what you know. If you don't, look it up."
-msgstr "Si connosches su libru, risponde segundu su chi ischis. Si no lu connosches, chirca·lu."
+msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
+msgstr "Google Books ammustrat categorias comente Fiction/Fantasy, e WorldCat ammustrat genereres comente Fiction o Biography."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8851,10 +8856,6 @@ msgid "Goodreads"
 msgstr "Goodreads"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
-msgstr "Calincunu gènere est un'ambientatzione (fantasia, istòricu), calincunu est una forma de trama (mistériu, romance), e calincunu est unu tonu (umore). Unu libru tenet a su prus unu pro genia, de ordinàriu feti unu o duos in totu."
-
-#: openlibrary/contribute/field_guides.py
 msgid "Go by what the book is sold as, not every element in it. A fantasy with a love story is fantasy; a love story in a fantasy setting is romance."
 msgstr "Sighi su chi su libru est bèndidu comente, no dònnia elementu chi b'est intro. Una fantasia cun una istòria de amore est sèmpere fantasia; una istòria de amore in un'ambientatzione fantàstica est romance."
 
@@ -8886,6 +8887,58 @@ msgstr "Open Library registrat su marcu editoriale imprentadu in su libru, non s
 msgid "Publisher as printed"
 msgstr "Editore comente est imprentadu"
 
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py
+msgid "Publish date"
+msgstr "Data de publicatzione"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in publish date"
+msgstr "Inserta sa data de publicatzione"
+
+#: openlibrary/contribute/field_guides.py
+msgid "When was this edition published?"
+msgstr "Cando est istada publicada custa editzione?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Sa pàgina de copyright dat s'annu, ispissu acanta de s'editore; si su libru tenet una iscansione, castia innìe pro primu. Google Books lu ammustrat comente Published, WorldCat comente Date, e s'archìviu de sa Library of Congress comente parte de sa riga Published."
+
+#: openlibrary/contribute/field_guides.py
+msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
+msgstr "Inserta s'annu in su cale est essida custa editzione, o sa data intrea si unu catàlogu nde dat una, comente martzu de su 2005. Un'imprenta posteriore de sa matessi editzione mantenet s'annu de s'editzione."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 2005 or March 2005"
+msgstr "Pro esèmpiu 2005 o martzu de su 2005"
+
+#: openlibrary/contribute/field_guides.py
+msgid "Fill in ISBN"
+msgstr "Inserta s'ISBN"
+
+#: openlibrary/contribute/field_guides.py
+msgid "What is this edition's ISBN?"
+msgstr "Cale est s'ISBN de custa editzione?"
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "S'ISBN est imprentadu in sa pàgina de copyright e in sa parte posteriore de sa coberta, in artu de su barcode; si su libru tenet una iscansione, castia innìe pro primu. Chentza su libru a manu, chirca in WorldCat o in Google Books pro tìtulu e autore, aberi s'archìviu chi tenet editore, annu e formadu chi cuncordant cun custa editzione, e còpia s'ISBN ammustradu."
+
+#: openlibrary/contribute/field_guides.py
+msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
+msgstr "Un'ISBN-10 e un'ISBN-13 podent nominare sa matessi editzione: 0140449264 e 9780140449266. Incolla unu de is duos, cun o chentza ratza. Sos libros de antis de su 1970 non nde tenent."
+
+#: openlibrary/contribute/field_guides.py
+msgid "The ISBN belongs to another format of the book: a hardcover, paperback, ebook and audiobook each have their own."
+msgstr "S'ISBN pertenet a un'àteru formadu de su libru: una copertina rìgida, una brossura, un'ebook e un'audiolibru tenent dònnia unu su suo."
+
+#: openlibrary/contribute/field_guides.py
+msgid "For example 9780140449266"
+msgstr "Pro esèmpiu 9780140449266"
+
+#: openlibrary/contribute/field_guides.py
+msgid "I checked that the publisher, year and format match this edition."
+msgstr "Apo controlladu chi editore, annu e formadu cuncordant cun custa editzione."
+
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress number (LCCN)"
 msgstr "Nùmeru de sa Library of Congress (LCCN)"
@@ -8899,8 +8952,8 @@ msgid "What is this edition's Library of Congress number?"
 msgstr "Cale est su nùmeru de sa Library of Congress de custa editzione?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
-msgstr "Chirca custu ISBN in su catàlogu de sa Library of Congress. Aberi su registru cun s'editore e s'editzione chi currispondent a custa, e còpia su nùmeru mustradu comente LCCN. Una brossura o un'imprentada posteriore podet mustrare un'annu diferente e èssere su matessi registru."
+msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
+msgstr "Chirca custu ISBN in su catàlogu de sa Library of Congress, aberi s'archìviu chi cuncordat e còpia su nùmeru ammustradu comente LCCN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -8909,14 +8962,6 @@ msgstr "Sas formas cun tratigheddu e cun zeros in antis sunt su matessi nùmeru:
 #: openlibrary/contribute/field_guides.py
 msgid "The number belongs to a different edition: another publisher's, a revised edition, a translation or the ebook. Each has its own record."
 msgstr "Su nùmeru pertocat a un'editzione diferente: a cussa de un'àteru editore, a un'editzione revisionada, a una tradutzione o a sa versione digitale. Cada una tenet su registru suo."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
-msgstr "Su nùmeru est giai in un'àtera editzione de custa òpera. Est giustu si est sa coberta tosta, sa brossura o un'imprentada posteriore de su matessi editore; un'editore diferente o un'editzione revisionada bolet nàrrere chi unu de sos duos registros est isballiadu."
-
-#: openlibrary/contribute/field_guides.py
-msgid "Pasting the web address instead of the number itself."
-msgstr "Incollende s'indiritzu web in logu de su nùmeru."
 
 #: openlibrary/contribute/field_guides.py
 msgid "For example 75425165"
@@ -8939,12 +8984,8 @@ msgid "What is this edition's WorldCat (OCLC) number?"
 msgstr "Cale est su nùmeru WorldCat (OCLC) de custa editzione?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
-msgstr "Chirca custu ISBN in WorldCat. Aberi su registru de sa versione imprentada cun s'editore e s'editzione chi currispondent a custa, e còpia su nùmeru mustradu comente OCLC Number. Una brossura o un'imprentada posteriore podet mustrare un'annu diferente e èssere su matessi registru."
-
-#: openlibrary/contribute/field_guides.py
-msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
-msgstr "Su nùmeru OCLC est comente sas bibliotecas de totu su mundu si riferint a un'editzione catalogada. Est unu de sos pagu campos chi Open Library impreat pro agatare duplicados de custu libru cando arribant registros noos."
+msgid "Search WorldCat for this ISBN, open the matching print record and copy the number shown as OCLC Number."
+msgstr "Chirca custu ISBN in WorldCat, aberi s'archìviu imprentadu chi cuncordat e còpia su nùmeru ammustradu comente OCLC Number."
 
 #: openlibrary/contribute/field_guides.py
 msgid "The prefixes ocm, ocn, on and (OCoLC) are padding added by library systems, not part of the number. ocm00047810608 is 47810608."
@@ -8971,16 +9012,16 @@ msgid "I opened a print record and its publisher and edition match this one."
 msgstr "Apo abertu unu registru de sa versione imprentada, e s'editore e s'editzione currispondent a custa."
 
 #: openlibrary/contribute/field_guides.py
-msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
-msgstr "Custa editzione tenet unu nùmeru de sa Library of Congress. Su registru suo narat sa limba e dat s'editore comente imprentadu in sa pàgina de tìtulu."
+msgid "This edition has a Library of Congress record, which gives the language and the publisher as printed."
+msgstr "Custa editzione tenet un'archìviu in sa Library of Congress, chi dat sa limba e s'editore comente imprentadu."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Library of Congress record"
 msgstr "Registru de sa Library of Congress"
 
 #: openlibrary/contribute/field_guides.py
-msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
-msgstr "Custu libru est fantascièntzia o fantasy, chi ISFDB tratat bene. Elencat dònnia imprenta a sa sola, e unu registru marcadu comente verificadu est istadu controlladu cun una còpia fìsica."
+msgid "ISFDB covers science fiction and fantasy printing by printing."
+msgstr "ISFDB cobertat sa science fiction e su fantasy, imprenta pro imprenta."
 
 #: openlibrary/contribute/field_guides.py
 msgid "ISFDB"
@@ -9226,6 +9267,22 @@ msgstr "Issèbera una limba dae sa lista."
 #: openlibrary/contribute/save.py
 msgid "Enter the page count as a whole number."
 msgstr "Inserta su nùmeru de pàginas comente nùmeru intreu."
+
+#: openlibrary/contribute/save.py
+msgid "This ISBN is already on another edition. Compare them: if they're the same book, this record is probably a duplicate."
+msgstr "Custu ISBN est giai in un'àtera editzione. Cumpara•las: si est su matessi libru, custu archìviu est probabilmente unu duplicadu."
+
+#: openlibrary/contribute/save.py
+msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the last one is a check digit."
+msgstr "Custu non est un'ISBN vàlidu. Controlla sas chifras: un'ISBN nde tenet 10 o 13, e s'ùltima est una chifra de controllu."
+
+#: openlibrary/contribute/save.py
+msgid "Enter the date with its year, for example 2005 or March 2005."
+msgstr "Inserta sa data cun s'annu, pro esèmpiu 2005 o martzu de su 2005."
+
+#: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Cuss'annu non paret giustu. Inserta s'annu in su cale est essida custa editzione."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -10151,6 +10208,14 @@ msgstr "Libros chentza nùmeru de pàginas"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a publisher"
 msgstr "Libros chentza editore"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing a publish date"
+msgstr "Libros chentza data de publicatzione"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Books missing an ISBN"
+msgstr "Libros chentza ISBN"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing identifiers"
@@ -13143,4 +13208,43 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 
 #~ msgid "Which details people are filling in."
 #~ msgstr "Sos detàllios chi sas persones sunt prenende."
+
+#~ msgid "The cover belongs to another edition. A paperback, a reissue or a translation usually has a different cover; check the publisher."
+#~ msgstr "Sa cobertedda est de un'àtera editzione. Una brossura, una ristampa o una tradutzione de sòlitu tenet una cobertedda diferente; controlla s'editore."
+
+#~ msgid ""
+#~ "Google Books lists the page count as Length. WorldCat has it in the record's description, sometimes only after you sign in. Amazon's print length often counts every page, so use it to check a number rather than to find one.\n"
+#~ "\n"
+#~ "Make sure the record is for this edition, not another printing."
+#~ msgstr ""
+#~ "Google Books elencat su nùmeru de pàginas comente Length. WorldCat lu tenet in sa descritzione de su registru, a bias petzi a pustis de ti registrare. Su print length de Amazon de sòlitu contat dònnia pàgina, duncas impreal·lu pro controllare unu nùmeru prus a prestu che pro l'agatare.\n"
+#~ "\n"
+#~ "Assegura·ti chi su registru siat pro custa editzione, non pro un'àtera imprenta."
+
+#~ msgid "If you know the book, answer from what you know. If you don't, look it up."
+#~ msgstr "Si connosches su libru, risponde segundu su chi ischis. Si no lu connosches, chirca·lu."
+
+#~ msgid "Some genres are settings (fantasy, historical), some are plot shapes (mystery, romance) and some are tones (humor). A book takes at most one of each, and usually just one or two in all."
+#~ msgstr "Calincunu gènere est un'ambientatzione (fantasia, istòricu), calincunu est una forma de trama (mistériu, romance), e calincunu est unu tonu (umore). Unu libru tenet a su prus unu pro genia, de ordinàriu feti unu o duos in totu."
+
+#~ msgid "Search the Library of Congress catalog for this ISBN. Open the record whose publisher and edition match this one, and copy the number shown as LCCN. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Chirca custu ISBN in su catàlogu de sa Library of Congress. Aberi su registru cun s'editore e s'editzione chi currispondent a custa, e còpia su nùmeru mustradu comente LCCN. Una brossura o un'imprentada posteriore podet mustrare un'annu diferente e èssere su matessi registru."
+
+#~ msgid "The number is already on another edition of this work. That's right when it's the hardcover, paperback or a later printing from the same publisher; a different publisher or a revised edition means one of the two records is wrong."
+#~ msgstr "Su nùmeru est giai in un'àtera editzione de custa òpera. Est giustu si est sa coberta tosta, sa brossura o un'imprentada posteriore de su matessi editore; un'editore diferente o un'editzione revisionada bolet nàrrere chi unu de sos duos registros est isballiadu."
+
+#~ msgid "Pasting the web address instead of the number itself."
+#~ msgstr "Incollende s'indiritzu web in logu de su nùmeru."
+
+#~ msgid "Search WorldCat for this ISBN. Open the print record whose publisher and edition match this one, and copy the number shown as OCLC Number. A paperback or later printing can show a different year and still be the same record."
+#~ msgstr "Chirca custu ISBN in WorldCat. Aberi su registru de sa versione imprentada cun s'editore e s'editzione chi currispondent a custa, e còpia su nùmeru mustradu comente OCLC Number. Una brossura o un'imprentada posteriore podet mustrare un'annu diferente e èssere su matessi registru."
+
+#~ msgid "The OCLC number is how libraries the world over refer to one catalogued edition. It is one of the few fields Open Library uses to find duplicates of this book when new records arrive."
+#~ msgstr "Su nùmeru OCLC est comente sas bibliotecas de totu su mundu si riferint a un'editzione catalogada. Est unu de sos pagu campos chi Open Library impreat pro agatare duplicados de custu libru cando arribant registros noos."
+
+#~ msgid "This edition has a Library of Congress number. Its record states the language and gives the publisher as printed on the title page."
+#~ msgstr "Custa editzione tenet unu nùmeru de sa Library of Congress. Su registru suo narat sa limba e dat s'editore comente imprentadu in sa pàgina de tìtulu."
+
+#~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
+#~ msgstr "Custu libru est fantascièntzia o fantasy, chi ISFDB tratat bene. Elencat dònnia imprenta a sa sola, e unu registru marcadu comente verificadu est istadu controlladu cun una còpia fìsica."
 
