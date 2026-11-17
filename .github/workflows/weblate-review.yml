@@ -276,15 +276,16 @@ jobs:
           #                    differs. This is also the fallback if a merge fails.
           author="$(git log -1 --format='%an <%ae>' pr-head)"
 
-          # heal_changed: did the heal alter the TOUCHED-language content vs the PR head?
-          # (Untouched langs were reset to base by `isolate` and need not match the head.)
-          target_po=()
-          for lang in "${LANGS[@]}"; do target_po+=("locale/$lang/messages.po"); done
-          if git diff --quiet pr-head -- "${target_po[@]}"; then
-            heal_changed=false
-          else
-            heal_changed=true
-          fi
+          # heal_changed: did the heal alter the touched langs' translations vs the PR
+          # head? Compared by content, not bytes: Weblate rewrites the PO header on every
+          # commit and the heal keeps base's, so a byte diff made every Weblate PR land
+          # on base. (If git show fails, the file is empty and counts as changed.)
+          heal_changed=false
+          for lang in "${LANGS[@]}"; do
+            if ! python scripts/po_same_content.py <(git show "pr-head:locale/$lang/messages.po") "locale/$lang/messages.po"; then
+              heal_changed=true
+            fi
+          done
 
           cross_repo="$(gh pr view "$PR" --json isCrossRepository -q .isCrossRepository)"
           # mergeable is computed async by GitHub; retry a few times out of UNKNOWN.
@@ -304,7 +305,9 @@ jobs:
             # The head is already the validated content; merge it as-is so GitHub shows
             # "Merged" and credits the contributor. Never delete the branch (the Weblate
             # branch must persist; a fork's branch is not ours to delete).
-            if gh pr merge "$PR" --squash --delete-branch=false; then
+            # --merge, not --squash: base must contain Weblate's exact commits so its
+            # next pull is clean.
+            if gh pr merge "$PR" --merge --delete-branch=false; then
               gh pr comment "$PR" --body "✅ Merged your translation into \`${BASE_REF}\` — it is now part of Open Library. It applied cleanly to the current \`${BASE_REF}\`, so it merged as-is. Thank you, @${PR_AUTHOR}!"
               landed=1
             else
