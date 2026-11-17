@@ -981,7 +981,7 @@ msgstr "Knihovnický režim"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Kontrola shod v Prohledávání textu"
 
@@ -1442,7 +1442,7 @@ msgstr "Seznamy četby"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Ztratíte své místo ve frontě na <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1745,7 +1745,7 @@ msgstr "Knihy přidané lidmi, které sleduje %(username)s"
 msgid "Search your reading log"
 msgstr "Zobrazit nebo upravit váš záznam četby"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -6492,49 +6492,49 @@ msgstr "Řadit výsledky"
 msgid "Shuffle"
 msgstr "Náhodné pořadí"
 
-#: search/subjects.html
-#, fuzzy
-msgid "Search Subjects"
-msgstr "Výsledky hledání"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Žádná <strong>témata</strong> přímo neodpovídají vašemu vyhledávání"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "time"
 msgstr "Název"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "subject"
 msgstr "Témata"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "place"
 msgstr "Místo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "org"
 msgstr "nebo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "event"
 msgstr "Obnovit"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "person"
 msgstr "Osoba"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "work"
 msgstr ""
+
+#: search/subjects.html.jinja
+#, fuzzy
+msgid "Search Subjects"
+msgstr "Výsledky hledání"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Žádná <strong>témata</strong> přímo neodpovídají vašemu vyhledávání"
 
 #: search/work_search_facets.html.jinja
 #, fuzzy
@@ -10466,6 +10466,15 @@ msgstr "%(query)s - Vyhledávání seznamů"
 #: openlibrary/fastapi/search.py
 msgid "List search"
 msgstr "Vyhledávání seznamů"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr ""
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr ""
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."

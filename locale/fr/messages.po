@@ -944,7 +944,7 @@ msgstr "En savoir plus"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "sur <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "Vérification des correspondances dans le contenu"
@@ -1385,7 +1385,7 @@ msgstr "Quitter la liste d'attente"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Vous perdrez votre place dans la file d'attente pour <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1664,7 +1664,7 @@ msgstr "Livres ajoutés par les personnes que suit %(username)s"
 msgid "Search your reading log"
 msgstr "Rechercher votre journal de lecture"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -6372,41 +6372,41 @@ msgstr "Trier les résultats"
 msgid "Shuffle"
 msgstr "Mélanger"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Rechercher les thèmes"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Aucun <strong>sujet</strong> ne correspond directement à votre recherche"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "période"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "thème"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "lieu"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organisation"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "événement"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "personne"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "œuvre"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Rechercher les thèmes"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Aucun <strong>sujet</strong> ne correspond directement à votre recherche"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -10257,6 +10257,15 @@ msgstr "%(query)s - Recherche de listes"
 #: openlibrary/fastapi/search.py
 msgid "List search"
 msgstr "Recherche de listes"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr ""
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr ""
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
