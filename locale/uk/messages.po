@@ -244,7 +244,7 @@ msgstr "Статус"
 
 #: batch_import_view.html
 msgid "Approve"
-msgstr ""
+msgstr "Схвалити"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -764,7 +764,7 @@ msgstr "Неправильні MARC дані."
 
 #: showia.html showmarc.html
 msgid "LEADER:"
-msgstr ""
+msgstr "LEADER:"
 
 #: showmarc.html
 #, fuzzy
@@ -886,7 +886,7 @@ msgstr "Читати"
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
 #: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
 msgid "Stopped Reading"
-msgstr ""
+msgstr "Читання припинено"
 
 #: trending.html
 #, python-format
@@ -969,7 +969,7 @@ msgstr "Дізнатися більше"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "на <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "Шукати всередині"
@@ -1426,7 +1426,7 @@ msgstr "Покинути чергу очікування"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Ви втратите своє місце в черзі на <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1712,7 +1712,7 @@ msgstr "Книги, додані людьми, на яких підписани�
 msgid "Search your reading log"
 msgstr "Шукати у вашому читацькому журналі"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -2090,7 +2090,7 @@ msgstr "<strong>Поточна швидкість імпорту:</strong> %(num
 
 #: admin/imports.html
 msgid "ETA:"
-msgstr ""
+msgstr "Приблизний час завершення:"
 
 #: admin/imports.html
 msgid "Summary By Date"
@@ -2428,7 +2428,7 @@ msgstr "Розбивка за відповідним органом"
 
 #: admin/pd_dashboard.html
 msgid "PDA"
-msgstr ""
+msgstr "PDA"
 
 #: admin/pd_dashboard.html
 #, fuzzy
@@ -5122,7 +5122,7 @@ msgstr "Нотатки:"
 msgid "Add another image"
 msgstr "Додати ще одне зображення"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Завершено"
 
@@ -6458,41 +6458,41 @@ msgstr "Сортувати результати"
 msgid "Shuffle"
 msgstr "Перемішати"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Шукати теми"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Жодна <strong>тема</strong> не відповідає вашому запиту"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "час"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "тема"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "місце"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "org"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "подія"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "людина"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "робота"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Шукати теми"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Жодна <strong>тема</strong> не відповідає вашому запиту"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -7000,20 +7000,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Частка правок і редакторів через Завдання, за днями"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Відомості, яких ще бракує в книгах кожного проєкту. Відомість, яку ніхто не зміг знайти, зараховується як заповнена."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Проєкти спільноти. Виберіть один, щоб побудувати графік."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "заповнених деталей · Завершено"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "заповнених деталей"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Деталі, які досі відкриті у %(project)s, за днями"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -7029,16 +7018,8 @@ msgid "marked not found"
 msgstr "позначено як не знайдено"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Деталі, які досі відкриті у вибраному проєкті, за днями"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Збереження за полем, останні 28 днів"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Які деталі заповнюють люди."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10370,6 +10351,15 @@ msgstr "%(query)s — Пошук списків"
 msgid "List search"
 msgstr "Пошук списків"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s — Пошук тем"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Пошук тем"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Хтось інший змінив цей проєкт, поки він був у вас відкритий. Перевірте його нижче і спробуйте ще раз."
@@ -13117,4 +13107,22 @@ msgstr "Не вдалося завантажити графіки. Переза�
 #~ msgstr[0] "%(value)s, на %(count)d виданні"
 #~ msgstr[1] "%(value)s, на %(count)d виданнях"
 #~ msgstr[2] "%(value)s, на %(count)d виданнях"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Відомості, яких ще бракує в книгах кожного проєкту. Відомість, яку ніхто не зміг знайти, зараховується як заповнена."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Проєкти спільноти. Виберіть один, щоб побудувати графік."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "заповнених деталей · Завершено"
+
+#~ msgid "of details filled"
+#~ msgstr "заповнених деталей"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Деталі, які досі відкриті у вибраному проєкті, за днями"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Які деталі заповнюють люди."
 
