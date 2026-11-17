@@ -1302,3 +1302,17 @@ class TestPartialPlurals:
         assert _apply_to_catalog(cat, {"%(n)d book": forms}) == 1
         assert cat["%(n)d book"].string == tuple(forms)
         assert _untranslated_from_catalog(cat) == []
+
+    def test_plural_entry_reports_nplurals(self):
+        # The translating agent needs the form count: ru has 3, and a 2-form
+        # answer would leave a reachable form empty, so the entry never leaves
+        # `untranslated` and the agent's loop never ends.
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        [entry] = _untranslated_from_catalog(cat)
+        assert entry["nplurals"] == 3
+        assert _untranslated_from_catalog(_catalog(_po('msgid "Hi"\nmsgstr ""'))) == [{"id": "Hi"}]
+
+    def test_two_forms_for_a_three_form_locale_stays_untranslated(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        _apply_to_catalog(cat, {"%(n)d book": ["%(n)d kniga", "%(n)d knigi"]})
+        assert [e["id"] for e in _untranslated_from_catalog(cat)] == ["%(n)d book"]

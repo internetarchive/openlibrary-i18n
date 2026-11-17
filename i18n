@@ -239,8 +239,10 @@ def _untranslated_from_catalog(catalog, limit: int | None = None) -> list[dict]:
             continue
         if _entry_translated(msg, reachable):
             continue
+        # A plural needs exactly `nplurals` forms (3 for ru/uk/cs/hr/ro); with
+        # fewer, a reachable form stays empty and the entry keeps coming back.
         entry = (
-            {"id": msg.id[0], "id_plural": msg.id[1]}
+            {"id": msg.id[0], "id_plural": msg.id[1], "nplurals": catalog.num_plurals}
             if isinstance(msg.id, tuple)
             else {"id": msg.id}
         )

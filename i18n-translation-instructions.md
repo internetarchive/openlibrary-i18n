@@ -121,7 +121,7 @@ Loop until no untranslated strings remain for that language:
 
 ### Per batch of ≤75 strings:
 
-**1. Translate.** Each entry from `untranslated` has `"id"` and optionally `"id_plural"`. Produce a `{msgid: msgstr}` dict. Plural entries: `msgstr` is a list `["singular", "plural"]`.
+**1. Translate.** Each entry from `untranslated` has `"id"` and optionally `"id_plural"`. Produce a `{msgid: msgstr}` dict. Plural entries also have `"nplurals"`: `msgstr` is a list of exactly that many forms, in the order of the language's `Plural-Forms` rule (e.g. `nplurals: 3` for ru → `["… 1 книга", "… 2 книги", "… 5 книг"]`; `nplurals: 1` for ja → one form). Giving fewer forms leaves one empty, and the entry stays in `untranslated`.
 
 **2. Write to JSON — never use bash heredocs (shell quoting corrupts Unicode):**
 
