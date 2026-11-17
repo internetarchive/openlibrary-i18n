@@ -221,6 +221,25 @@ def _untranslated_from_catalog(catalog, limit: int | None = None) -> list[dict]:
     return entries
 
 
+def _add_missing_from_pot(catalog, pot) -> int:
+    """Add msgids present in pot but absent from catalog as empty entries.
+
+    A .po that fell behind messages.pot has no entry at all for new msgids, so
+    they would never show up as untranslated. Returns how many were added.
+    """
+    added = 0
+    for msg in pot:
+        if not msg.id or msg.id in catalog:
+            continue
+        catalog.add(
+            msg.id, None,
+            locations=msg.locations, flags=msg.flags,
+            auto_comments=msg.auto_comments, context=msg.context,
+        )
+        added += 1
+    return added
+
+
 def _apply_to_catalog(catalog, translations: dict) -> int:
     count = 0
     for msg in catalog:
@@ -470,16 +489,26 @@ def _write_po(lang: str, catalog) -> None:
         write_po(f, catalog, width=10000, omit_header=False)
 
 
+def _read_po_with_pot(lang: str):
+    """Read the .po, plus empty entries for msgids only messages.pot has."""
+    from babel.messages.pofile import read_po
+    catalog = _read_po(lang)
+    if MESSAGES_POT.exists():
+        with open(MESSAGES_POT, "rb") as f:
+            _add_missing_from_pot(catalog, read_po(f))
+    return catalog
+
+
 def get_counts(lang: str) -> dict:
-    return _stats_from_catalog(_read_po(lang), lang)
+    return _stats_from_catalog(_read_po_with_pot(lang), lang)
 
 
 def get_untranslated(lang: str, limit: int | None = None) -> list[dict]:
-    return _untranslated_from_catalog(_read_po(lang), limit)
+    return _untranslated_from_catalog(_read_po_with_pot(lang), limit)
 
 
 def apply_translations(lang: str, translations: dict) -> int:
-    catalog = _read_po(lang)
+    catalog = _read_po_with_pot(lang)
     count = _apply_to_catalog(catalog, translations)
     _write_po(lang, catalog)
     return count
