@@ -247,7 +247,7 @@ msgstr "Stato"
 
 #: batch_import_view.html
 msgid "Approve"
-msgstr ""
+msgstr "Approva"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -278,7 +278,7 @@ msgstr "Data"
 
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
-msgstr ""
+msgstr "Chiave OL"
 
 #: batch_import_view.html
 #, fuzzy
@@ -767,7 +767,7 @@ msgstr "Voce MARC invalida."
 
 #: showia.html showmarc.html
 msgid "LEADER:"
-msgstr ""
+msgstr "LEADER:"
 
 #: showmarc.html
 #, fuzzy
@@ -890,7 +890,7 @@ msgstr "Leggi"
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
 #: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
 msgid "Stopped Reading"
-msgstr ""
+msgstr "Lettura interrotta"
 
 #: trending.html
 #, python-format
@@ -972,7 +972,7 @@ msgstr "Scopri di più"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "su <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "Cerca all'interno"
@@ -1421,7 +1421,7 @@ msgstr "Lascia la lista d'attesa"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Perderai il tuo posto in lista d'attesa per <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1702,7 +1702,7 @@ msgstr "Libri aggiunti da persone che %(username)s segue"
 msgid "Search your reading log"
 msgstr "Cerca nella tua cronologia di lettura"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -2079,7 +2079,7 @@ msgstr "<strong>Tasso di importazione attuale:</strong> %(num)d importazioni/ora
 
 #: admin/imports.html
 msgid "ETA:"
-msgstr ""
+msgstr "Tempo stimato:"
 
 #: admin/imports.html
 msgid "Summary By Date"
@@ -2419,7 +2419,7 @@ msgstr "Distribuzione per autorità idonea"
 
 #: admin/pd_dashboard.html
 msgid "PDA"
-msgstr ""
+msgstr "PDA"
 
 #: admin/pd_dashboard.html
 #, fuzzy
@@ -5116,7 +5116,7 @@ msgstr "Note:"
 msgid "Add another image"
 msgstr "Aggiungi un'altra immagine"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Finito"
 
@@ -6428,41 +6428,41 @@ msgstr "Ordina risultati"
 msgid "Shuffle"
 msgstr "Mescola"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Cerca argomento"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Nessun <strong>soggetto</strong> corrisponde direttamente alla tua ricerca"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "tempo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "argomento"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "luogo"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organizzazione"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "evento"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "persona"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "opera"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Cerca argomento"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Nessun <strong>soggetto</strong> corrisponde direttamente alla tua ricerca"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6969,20 +6969,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Quota di modifiche e di redattori tramite Attività, per giorno"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Dettagli ancora mancanti nei libri di ciascun progetto. Un dettaglio che nessuno è riuscito a trovare conta come completato."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Progetti della community. Scegline uno per visualizzarlo nel grafico."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "dei dettagli compilati · Completato"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "dei dettagli completati"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Dettagli ancora aperti in %(project)s, per giorno"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6998,16 +6987,8 @@ msgid "marked not found"
 msgstr "contrassegnato come non trovato"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Dettagli ancora aperti nel progetto scelto, per giorno"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Salvataggi per campo, ultimi 28 giorni"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Quali dettagli le persone stanno completando."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10314,6 +10295,15 @@ msgstr "%(query)s - Ricerca di liste"
 msgid "List search"
 msgstr "Ricerca di liste"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Ricerca di argomenti"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Ricerca di argomenti"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Qualcun altro ha modificato questo progetto mentre lo avevi aperto. Controllalo qui sotto, poi riprova."
@@ -12928,4 +12918,22 @@ msgstr "Impossibile caricare i grafici. Ricarica la pagina per riprovare."
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, su 1 edizione"
 #~ msgstr[1] "%(value)s, su %(count)d edizioni"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Dettagli ancora mancanti nei libri di ciascun progetto. Un dettaglio che nessuno è riuscito a trovare conta come completato."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Progetti della community. Scegline uno per visualizzarlo nel grafico."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "dei dettagli compilati · Completato"
+
+#~ msgid "of details filled"
+#~ msgstr "dei dettagli completati"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Dettagli ancora aperti nel progetto scelto, per giorno"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Quali dettagli le persone stanno completando."
 
