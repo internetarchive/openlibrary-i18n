@@ -934,7 +934,7 @@ msgstr "Més informació"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "a <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Comprovant les coincidències de Cerca interior"
 
@@ -1369,7 +1369,7 @@ msgstr "Surt de la llista d'espera"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Perdràs el teu lloc a la cua per <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1648,7 +1648,7 @@ msgstr "Llibres afegits per persones que segueix %(username)s"
 msgid "Search your reading log"
 msgstr "Cerca al teu registre de lectura"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4912,7 +4912,7 @@ msgstr "Notes:"
 msgid "Add another image"
 msgstr "Afegeix una altra imatge"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "Acabat"
 
@@ -6181,41 +6181,41 @@ msgstr "Ordena els resultats"
 msgid "Shuffle"
 msgstr "Barreja"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "Cerca temes"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "Cap <strong>tema</strong> coincideix directament amb la teva cerca"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "temps"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "tema"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "lloc"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "organització"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "esdeveniment"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "persona"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "obra"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "Cerca temes"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "Cap <strong>tema</strong> coincideix directament amb la teva cerca"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6708,20 +6708,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "Quota d’edicions i d’editors a través de Tasques, per dia"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "Detalls que encara falten en els llibres de cada projecte. Un detall que ningú ha pogut trobar compta com a emplenat."
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "Projectes de la comunitat. Trieu-ne un per representar-lo en un gràfic."
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "de dades omplertes · Acabat"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "de dades emplenades"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "Detalls encara oberts en %(project)s, per dia"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6737,16 +6726,8 @@ msgid "marked not found"
 msgstr "marcades com a no trobades"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "Detalls encara oberts en el projecte triat, per dia"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "Desaments per camp, últims 28 dies"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "Quines dades està emplenant la gent."
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -9983,6 +9964,15 @@ msgstr "%(query)s - Cerca de llistes"
 msgid "List search"
 msgstr "Cerca de llistes"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - Cerca de temes"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "Cerca de temes"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Algú altre ha canviat aquest projecte mentre el tenies obert. Revisa'l a sota i torna-ho a provar."
@@ -11381,4 +11371,22 @@ msgstr "Els gràfics no s'han pogut carregar. Torneu a carregar la pàgina per t
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s, en 1 edició"
 #~ msgstr[1] "%(value)s, en %(count)d edicions"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "Detalls que encara falten en els llibres de cada projecte. Un detall que ningú ha pogut trobar compta com a emplenat."
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "Projectes de la comunitat. Trieu-ne un per representar-lo en un gràfic."
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "de dades omplertes · Acabat"
+
+#~ msgid "of details filled"
+#~ msgstr "de dades emplenades"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "Detalls encara oberts en el projecte triat, per dia"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "Quines dades està emplenant la gent."
 
