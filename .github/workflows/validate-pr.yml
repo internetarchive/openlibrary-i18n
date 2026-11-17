@@ -7,8 +7,8 @@ on:
       - "messages.pot"
       - "i18n"
       - "tests/test_i18n.py"
-      - "scripts/pytest_k_expr.py"
-      - "tests/test_pytest_k_expr.py"
+      - "tests/conftest.py"
+      - "tests/test_locale_option.py"
       - "scripts/po_same_content.py"
       - "tests/test_po_same_content.py"
 
@@ -50,19 +50,17 @@ jobs:
       - name: Run test_po_files (HTML structure)
         run: |
           # Only test the languages this PR changed, so a PR is never failed for a
-          # language it did not touch. scripts/pytest_k_expr.py builds the -k
-          # expression and is unit-tested (tests/test_pytest_k_expr.py). Keeping it
-          # out of inline shell is what stops the old `paste -sd ' or '` class of
-          # bug (an invalid -k on any multi-language PR) from silently returning.
-          # $LANGS unquoted so each code is its own argv.
+          # language it did not touch. --locale (tests/conftest.py, tested in
+          # tests/test_locale_option.py) filters on each test's locale parameter;
+          # the old `-k` substring match also hit msgid text and ran nearly every
+          # language for codes like tr and es (#302).
           LANGS="${{ steps.changed-langs.outputs.langs }}"
-          K_EXPR=$(python scripts/pytest_k_expr.py $LANGS)
-          if [ -z "$K_EXPR" ]; then
+          if [ -z "${LANGS// }" ]; then
             echo "No locale changes detected — running full suite"
             python -m pytest tests/test_po_files.py -q
           else
-            echo "Testing languages: $K_EXPR"
-            python -m pytest tests/test_po_files.py -k "$K_EXPR" -q
+            echo "Testing languages: $LANGS"
+            python -m pytest tests/test_po_files.py --locale "$LANGS" -q
           fi
 
       # Every locale, not the changed-languages list: plural and placeholder
@@ -70,7 +68,7 @@ jobs:
       # temp copy (#44), so nothing here touches a real locale file.
       - name: Run plural-form and toolbox tests
         run: |
-          python -m pytest tests/test_plural_forms.py tests/test_i18n.py tests/test_pytest_k_expr.py \
+          python -m pytest tests/test_plural_forms.py tests/test_i18n.py tests/test_locale_option.py \
             tests/test_po_same_content.py -q
 
       - name: Validate format strings

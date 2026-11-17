@@ -878,9 +878,12 @@ def compile_po(lang: str) -> None:
 
 
 def run_tests(lang: str) -> None:
-    print(f"→ pytest tests/test_po_files.py -k {lang}")
+    # --locale (tests/conftest.py) filters on the test's locale parameter. A
+    # `-k {lang}` substring match also hit msgid text ("tr" in <strong>), so it
+    # ran nearly every language (#302).
+    print(f"→ pytest tests/test_po_files.py --locale {lang}")
     subprocess.run(
-        [sys.executable, "-m", "pytest", "tests/test_po_files.py", "-k", lang, "-q"],
+        [sys.executable, "-m", "pytest", "tests/test_po_files.py", "--locale", lang, "-q"],
         check=True, cwd=REPO_ROOT,
     )
 
