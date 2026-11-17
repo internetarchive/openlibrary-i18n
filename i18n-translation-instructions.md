@@ -42,7 +42,7 @@ OPEN=$(gh pr list --state open --json headRefName \
 echo "Open i18n PRs: $OPEN"
 ```
 
-If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue explaining the backlog and stop.
+If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue with `--label tooling` explaining the backlog and stop.
 
 ## Step 2: Resume existing work, or create a fresh branch
 
@@ -169,7 +169,7 @@ If it fails: fix the failing entry, re-run.
 
 ```bash
 gh issue list --repo internetarchive/openlibrary-i18n --search "keyword" --json number,title --jq '.[] | "#\(.number) \(.title)"'
-gh issue create --repo internetarchive/openlibrary-i18n --title "..." --body "..."
+gh issue create --repo internetarchive/openlibrary-i18n --label <label> --title "..." --body "..."
 ```
 
 File an issue when you encounter:
@@ -177,6 +177,11 @@ File an issue when you encounter:
 - A tooling gap (e.g. `./i18n fix` didn't catch a class of error it should have)
 - A recurring pattern across languages that suggests a systemic problem
 - An improvement idea for these instructions or the pipeline
+
+Give every issue exactly one of these labels with `--label`:
+- `translation`: wrong or missing text in a locale's `.po` file, e.g. a recurring mistranslation, text in the wrong language, broken plural forms or format strings in existing translations
+- `tooling`: the `./i18n` toolbox, tests, CI workflows, or these instructions
+- `upstream`: a bug in the English source strings (`messages.pot`); the fix belongs in `internetarchive/openlibrary`
 
 Do **not** file an issue for:
 - Normal translation work (skipped entries, cleared format errors) — those go in the PR comment only
@@ -186,6 +191,7 @@ Do **not** file an issue for:
 
 ```bash
 gh issue create --repo internetarchive/openlibrary-i18n \
+  --label tooling \
   --title "i18n pipeline: <short description>" \
   --body "## What happened
 <describe the blocker exactly>
