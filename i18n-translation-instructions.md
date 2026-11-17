@@ -310,11 +310,15 @@ depends on the language's plural rule (the `Plural-Forms` header of its `.po`):
   write `msgstr[0]` to match the **singular** English exactly. A literal `1` is
   correct, and adding `%(count)d` is wrong: `./i18n fix` clears it as a
   format mismatch. Today that is as, az, bn, ca, cs, de, es, hi, it, nl, pl, pt,
-  ro, sc, sq, te, tl, tr, zh.
+  ro, sc, sq, te, tl, tr.
 - **Form 0 is also used for other counts** (`nplurals=1`; fr's `n > 1`, which
-  covers 0; ru/uk/hr, which reuse form 0 for 21, 31, …; ar's current `n > 2`):
-  `msgstr[0]` must carry the **placeholder** — write `…%(count)d…`, never the
-  bare digit. Today that is ar, fr, hr, id, ja, ko, ru, uk.
+  covers 0; ru/uk/hr, which reuse form 0 for 21, 31, …; ar, whose form 0 is
+  n=0): `msgstr[0]` must carry the **placeholder** — write `…%(count)d…`, never
+  the bare digit. Today that is ar, fr, hr, id, ja, ko, ru, uk, zh.
+- **ar has 6 forms** (CLDR): `msgstr[0]` n=0, `[1]` n=1, `[2]` n=2, `[3]`
+  n%100 = 3–10, `[4]` n%100 = 11–99, `[5]` the rest (100, 101, 102, …). Give
+  all six, and keep the count placeholder in every one (including the zero and
+  dual forms): `./i18n fix` clears a form that drops the singular's placeholders.
 - **Every other form** (`msgstr[1]` and up) always carries the placeholder.
 
 If a header doesn't match the lists above, go by the rule itself. Hardcoding a
