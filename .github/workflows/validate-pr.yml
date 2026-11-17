@@ -7,6 +7,8 @@ on:
       - "messages.pot"
       - "scripts/pytest_k_expr.py"
       - "tests/test_pytest_k_expr.py"
+      - "scripts/po_same_content.py"
+      - "tests/test_po_same_content.py"
 
 jobs:
   validate:
@@ -66,7 +68,8 @@ jobs:
       # real locale file, so it is left out.
       - name: Run plural-form and toolbox tests
         run: |
-          python -m pytest tests/test_plural_forms.py tests/test_i18n.py tests/test_pytest_k_expr.py -q \
+          python -m pytest tests/test_plural_forms.py tests/test_i18n.py tests/test_pytest_k_expr.py \
+            tests/test_po_same_content.py -q \
             --deselect tests/test_i18n.py::TestCLI::test_sync_suppresses_pybabel_stderr
 
       - name: Validate format strings
