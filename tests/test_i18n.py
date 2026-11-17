@@ -1185,10 +1185,23 @@ class TestCLI:
         r = _cli("validate", lang)
         assert r.returncode == 0, r.stderr
 
-    def test_sync_suppresses_pybabel_stderr(self):
-        """sync must suppress pybabel's 'updating catalog...' noise on stderr."""
+    def test_sync_suppresses_pybabel_stderr(self, tmp_path):
+        """sync must suppress pybabel's 'updating catalog...' noise on stderr.
+
+        sync rewrites the .po in place, so run it on a copy of the repo layout.
+        Running it on the real locale/ reformatted a checked-in file on every
+        test run (#44).
+        """
+        import shutil
         lang = known_langs()[0]
-        r = _cli("sync", lang)
+        shutil.copy2(_ROOT / "i18n", tmp_path / "i18n")
+        shutil.copy2(_ROOT / "messages.pot", tmp_path / "messages.pot")
+        (tmp_path / "locale" / lang).mkdir(parents=True)
+        shutil.copy2(LOCALE_DIR / lang / "messages.po", tmp_path / "locale" / lang / "messages.po")
+        r = subprocess.run(
+            [sys.executable, str(tmp_path / "i18n"), "sync", lang],
+            capture_output=True, text=True, cwd=tmp_path,
+        )
         assert r.returncode == 0, r.stderr
         # pybabel writes "updating catalog..." to stderr; we suppress it with DEVNULL
         assert "updating catalog" not in r.stderr
