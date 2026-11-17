@@ -933,7 +933,7 @@ msgstr "詳細を見る"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>で"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "検索内の一致を確認中"
 
@@ -1369,7 +1369,7 @@ msgstr "順番待ちリストから離脱"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "<strong>%(title)s</strong>の順番待ちリストの位置を失います。"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1645,7 +1645,7 @@ msgstr "%(username)sがフォローしている人が追加した本"
 msgid "Search your reading log"
 msgstr "読書記録を検索"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -4912,7 +4912,7 @@ msgstr "ノート："
 msgid "Add another image"
 msgstr "別の画像を追加"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "完了"
 
@@ -6167,41 +6167,41 @@ msgstr "結果を並び替え"
 msgid "Shuffle"
 msgstr "シャッフル"
 
-#: search/subjects.html
-msgid "Search Subjects"
-msgstr "サブジェクトを検索"
-
-#: search/subjects.html
-msgid "No <strong>subjects</strong> directly matched your search"
-msgstr "検索に直接一致する<strong>サブジェクト</strong>は見つかりませんでした"
-
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "time"
 msgstr "時代"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "subject"
 msgstr "サブジェクト"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "place"
 msgstr "場所"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "org"
 msgstr "組織"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "event"
 msgstr "イベント"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "person"
 msgstr "人物"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "work"
 msgstr "作品"
+
+#: search/subjects.html.jinja
+msgid "Search Subjects"
+msgstr "サブジェクトを検索"
+
+#: search/subjects.html.jinja
+msgid "No <strong>subjects</strong> directly matched your search"
+msgstr "検索に直接一致する<strong>サブジェクト</strong>は見つかりませんでした"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -6693,20 +6693,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "タスク経由の編集と編集者の割合(日別)"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "各プロジェクトの書籍でまだ不足している詳細情報。誰も見つけられなかった詳細情報は、入力済みとして扱われます。"
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "コミュニティプロジェクト。グラフに表示する項目を選択してください。"
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "詳細入力済み · 終了"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "件の項目が入力済み"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)sでまだ未対応の詳細情報(日別)"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -6722,16 +6711,8 @@ msgid "marked not found"
 msgstr "「見つからない」として記録"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "選択したプロジェクトでまだ未対応の詳細情報(日別)"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "項目別の保存件数（過去28日間）"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "どの項目が入力されているか。"
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -9964,6 +9945,15 @@ msgstr "%(query)s - リスト検索"
 msgid "List search"
 msgstr "リスト検索"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - サブジェクト検索"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "サブジェクト検索"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "このプロジェクトを開いている間に、他の人が変更を加えました。以下の内容を確認してから、もう一度お試しください。"
@@ -12743,4 +12733,22 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 #~ msgid "%(value)s, on 1 edition"
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s（%(count)d件の版より）"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "各プロジェクトの書籍でまだ不足している詳細情報。誰も見つけられなかった詳細情報は、入力済みとして扱われます。"
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "コミュニティプロジェクト。グラフに表示する項目を選択してください。"
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "詳細入力済み · 終了"
+
+#~ msgid "of details filled"
+#~ msgstr "件の項目が入力済み"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "選択したプロジェクトでまだ未対応の詳細情報(日別)"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "どの項目が入力されているか。"
 
