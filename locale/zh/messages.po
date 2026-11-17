@@ -978,7 +978,7 @@ msgstr "了解更多"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "在<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html work_search.html
+#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
 #, fuzzy
 msgid "Checking Search Inside matches"
 msgstr "在内部搜索"
@@ -1428,7 +1428,7 @@ msgstr "离开等候名单"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "您将失去在<strong>%(title)s</strong>等候名单中的位置。"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1710,7 +1710,7 @@ msgstr "%(username)s关注的人添加的书籍"
 msgid "Search your reading log"
 msgstr "导出您的阅读日志"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html
+#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -5140,7 +5140,7 @@ msgstr "说明:"
 msgid "Add another image"
 msgstr "添加另一张图片"
 
-#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py
+#: covers/saved.html openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Finished"
 msgstr "完成"
 
@@ -6456,42 +6456,42 @@ msgstr "对结果排序"
 msgid "Shuffle"
 msgstr "随机混杂"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
+msgid "time"
+msgstr "时间"
+
+#: search/subjects.html.jinja
+msgid "subject"
+msgstr "主题"
+
+#: search/subjects.html.jinja
+msgid "place"
+msgstr "地点"
+
+#: search/subjects.html.jinja
+msgid "org"
+msgstr "组织"
+
+#: search/subjects.html.jinja
+msgid "event"
+msgstr "事件"
+
+#: search/subjects.html.jinja
+msgid "person"
+msgstr "人物"
+
+#: search/subjects.html.jinja
+msgid "work"
+msgstr "工作"
+
+#: search/subjects.html.jinja
 #, fuzzy
 msgid "Search Subjects"
 msgstr "探索主题"
 
-#: search/subjects.html
+#: search/subjects.html.jinja
 msgid "No <strong>subjects</strong> directly matched your search"
 msgstr "没有<strong>主题</strong>与您的搜索直接匹配"
-
-#: search/subjects.html
-msgid "time"
-msgstr "时间"
-
-#: search/subjects.html
-msgid "subject"
-msgstr "主题"
-
-#: search/subjects.html
-msgid "place"
-msgstr "地点"
-
-#: search/subjects.html
-msgid "org"
-msgstr "组织"
-
-#: search/subjects.html
-msgid "event"
-msgstr "事件"
-
-#: search/subjects.html
-msgid "person"
-msgstr "人物"
-
-#: search/subjects.html
-msgid "work"
-msgstr "工作"
 
 #: search/work_search_facets.html.jinja
 msgid "Zoom In"
@@ -7001,20 +7001,9 @@ msgid "Share of edits and of editors through Tasks, by day"
 msgstr "按天统计的通过任务的编辑和编辑者占比"
 
 #: stats/tasks.html.jinja
-msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
-msgstr "各项目书目中仍缺失的详情。没有人能找到的详情将被视为已填写。"
-
-#: stats/tasks.html.jinja
-msgid "Community projects. Choose one to chart it."
-msgstr "社区项目。选择一项以绘制图表。"
-
-#: stats/tasks.html.jinja
-msgid "of details filled · Finished"
-msgstr "已填写详细信息 · 已完成"
-
-#: stats/tasks.html.jinja
-msgid "of details filled"
-msgstr "详情已填写"
+#, python-format
+msgid "Details still open on %(project)s, by day"
+msgstr "%(project)s中仍未解决的详情,按天统计"
 
 #: stats/tasks.html.jinja
 #, python-format
@@ -7030,16 +7019,8 @@ msgid "marked not found"
 msgstr "已标记为未找到"
 
 #: stats/tasks.html.jinja
-msgid "Details still open on the chosen project, by day"
-msgstr "所选项目中仍未解决的详情,按天统计"
-
-#: stats/tasks.html.jinja
 msgid "Saves by field, last 28 days"
 msgstr "按字段统计的保存次数，最近28天"
-
-#: stats/tasks.html.jinja
-msgid "Which details people are filling in."
-msgstr "用户正在填写哪些详情。"
 
 #: stats/tasks.html.jinja
 msgid "Field"
@@ -10337,6 +10318,15 @@ msgstr "%(query)s - 列表搜索"
 msgid "List search"
 msgstr "列表搜索"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Subject search"
+msgstr "%(query)s - 主题搜索"
+
+#: openlibrary/fastapi/search.py
+msgid "Subject search"
+msgstr "主题搜索"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "在您打开此项目期间，其他人对其进行了更改。请在下方查看后重试。"
@@ -13038,4 +13028,22 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 #~ msgid "%(value)s, on 1 edition"
 #~ msgid_plural "%(value)s, on %(count)d editions"
 #~ msgstr[0] "%(value)s，见于 %(count)d 个版本"
+
+#~ msgid "Details still missing across each project's books. A detail nobody could find counts as filled."
+#~ msgstr "各项目书目中仍缺失的详情。没有人能找到的详情将被视为已填写。"
+
+#~ msgid "Community projects. Choose one to chart it."
+#~ msgstr "社区项目。选择一项以绘制图表。"
+
+#~ msgid "of details filled · Finished"
+#~ msgstr "已填写详细信息 · 已完成"
+
+#~ msgid "of details filled"
+#~ msgstr "详情已填写"
+
+#~ msgid "Details still open on the chosen project, by day"
+#~ msgstr "所选项目中仍未解决的详情,按天统计"
+
+#~ msgid "Which details people are filling in."
+#~ msgstr "用户正在填写哪些详情。"
 
