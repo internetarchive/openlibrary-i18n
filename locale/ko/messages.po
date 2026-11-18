@@ -4079,6 +4079,14 @@ msgstr "Open Library로 돌아가기"
 msgid "Bulk Search (beta)"
 msgstr "Bulk 검색 (beta)"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "도움이 필요합니다"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "목록을 준비하는 중…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "작업"
@@ -4107,9 +4115,9 @@ msgstr "회원님의 편집"
 msgid "Community projects"
 msgstr "커뮤니티 프로젝트"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "목록을 준비하는 중…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "완료"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -8723,6 +8731,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "먼저 이 페이지의 제목, 부제, 출판사를 확인하세요. 그런 다음 ISBN을 조회하면 WorldCat에서 언어를 확인할 수 있고, 번역판인 경우 Google Books에 “Translated by” 항목이 표시됩니다."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "%(link_start)s스캔본%(link_end)s에는 본문 자체가 나와 있으며, 번역서라면 표제지에 번역자 이름이 표시됩니다."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "같은 작품의 판들은 보통 같은 언어를 사용하지만 번역본은 다릅니다. 이 판 자체의 텍스트를 확인하세요."
 
@@ -8751,6 +8764,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "Google Books는 쪽수를 Length로 표시합니다. WorldCat은 이를 레코드 설명에 담고 있으며, 때로는 로그인한 후에야 보입니다. Amazon의 print length는 흔히 모든 페이지를 포함해 계산하므로, 숫자를 찾기보다는 확인하는 용도로 사용하세요."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "%(link_start)s스캔본%(link_end)s에는 모든 페이지가 들어 있습니다. 본문의 끝으로 가서 마지막 번호가 매겨진 페이지를 사용하세요."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "카탈로그마다 서문 등의 페이지 계산 방식이 달라서 몇 페이지 정도 차이 나는 숫자는 같은 것으로 봅니다. 본문의 마지막 번호가 매겨진 페이지를 사용하세요."
 
@@ -8773,6 +8791,11 @@ msgstr "이 책은 소설인가요, 논픽션인가요?"
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "Google Books는 Fiction/Fantasy 같은 카테고리를 표시하고, WorldCat은 Fiction이나 Biography 같은 장르를 표시합니다."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "%(link_start)s스캔본%(link_end)s에는 뒤표지와 책 날개가 나와 있으며, 보통 그곳에 어떤 종류의 책인지가 적혀 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8833,6 +8856,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "임프린트(imprint)는 표제지와 책등에 인쇄되어 있습니다. 미국 의회도서관은 표제지에서 그대로 가져오며, WorldCat에서는 Publisher 항목에 표시됩니다. Google Books는 대신 모회사명을 표시하는 경우가 많습니다."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "%(link_start)s스캔본%(link_end)s에는 표제지가 나와 있습니다. 거기 인쇄된 그대로 출판사 정보(imprint)를 옮겨 적으세요."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "Open Library는 모회사가 아니라 책에 인쇄된 임프린트를 기록합니다. Penguin Random House가 아니라 Anchor Books처럼요."
 
@@ -8853,8 +8881,13 @@ msgid "When was this edition published?"
 msgstr "이 판은 언제 출판되었습니까?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "판권 페이지에 연도가 나와 있으며, 보통 출판사 옆에 있습니다. 책에 스캔이 있다면 먼저 그곳을 확인하세요. Google Books는 이를 Published로, WorldCat은 Date로, Library of Congress 레코드는 Published 줄의 일부로 표시합니다."
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "판권 페이지에 연도가 나와 있으며, 보통 출판사 옆에 있습니다. Google Books는 이를 Published로, WorldCat은 Date로, Library of Congress 레코드는 Published 줄의 일부로 표시합니다."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "%(link_start)s스캔본%(link_end)s에는 판권 페이지가 나와 있으며, 이 판이 출판된 연도가 적혀 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -8873,8 +8906,13 @@ msgid "What is this edition's ISBN?"
 msgstr "이 판의 ISBN은 무엇입니까?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "ISBN은 판권 페이지와 뒤표지의 바코드 위에 인쇄되어 있습니다. 책에 스캔이 있다면 먼저 그곳을 확인하세요. 책이 수중에 없다면 WorldCat이나 Google Books에서 제목과 저자로 검색하여 출판사, 연도, 형태가 이 판과 일치하는 레코드를 열고, 거기에 표시된 ISBN을 복사하세요."
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN은 판권 페이지와 뒤표지의 바코드 위에 인쇄되어 있습니다. 책이 수중에 없다면 WorldCat이나 Google Books에서 제목과 저자로 검색하여 출판사, 연도, 형태가 이 판과 일치하는 레코드를 열고, 거기에 표시된 ISBN을 복사하세요."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "%(link_start)s스캔본%(link_end)s에는 판권 페이지와 뒤표지가 나와 있으며, 거기에 ISBN이 인쇄되어 있습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -8907,6 +8945,11 @@ msgstr "이 판의 미국 의회도서관 번호는 무엇입니까?"
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "이 ISBN으로 Library of Congress 목록을 검색하여 일치하는 레코드를 열고, LCCN으로 표시된 번호를 복사하세요."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "%(link_start)s스캔본%(link_end)s에는 판권 페이지가 나와 있습니다. 1970년대 이후의 책들은 그곳 목록 정보에 LCCN을 함께 인쇄하는 경우가 많습니다."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11019,14 +11062,6 @@ msgstr "합계: %(count)s"
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 다시 시도하세요."
 
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "도움이 필요합니다"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "완료"
-
 #~ msgid "Activation link expiring on <span class=\"time\">%(date)s.</span>"
 #~ msgstr "활성화 링크 만료 예정: <span class=\"time\">%(date)s.</span>"
 
@@ -12499,4 +12534,10 @@ msgstr "완료"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "이 책은 공상과학(SF)이나 판타지 장르이며, ISFDB가 이 분야를 잘 다룹니다. 각 인쇄본을 따로 목록에 올리며, verified로 표시된 레코드는 실물과 대조하여 확인된 것입니다."
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "판권 페이지에 연도가 나와 있으며, 보통 출판사 옆에 있습니다. 책에 스캔이 있다면 먼저 그곳을 확인하세요. Google Books는 이를 Published로, WorldCat은 Date로, Library of Congress 레코드는 Published 줄의 일부로 표시합니다."
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "ISBN은 판권 페이지와 뒤표지의 바코드 위에 인쇄되어 있습니다. 책에 스캔이 있다면 먼저 그곳을 확인하세요. 책이 수중에 없다면 WorldCat이나 Google Books에서 제목과 저자로 검색하여 출판사, 연도, 형태가 이 판과 일치하는 레코드를 열고, 거기에 표시된 ISBN을 복사하세요."
 

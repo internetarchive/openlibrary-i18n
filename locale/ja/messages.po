@@ -4095,6 +4095,14 @@ msgstr "Open Libraryに戻る"
 msgid "Bulk Search (beta)"
 msgstr "一括検索（ベータ）"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "サポートが必要です"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "リストを準備しています…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "タスク"
@@ -4123,9 +4131,9 @@ msgstr "あなたの編集"
 msgid "Community projects"
 msgstr "コミュニティプロジェクト"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "リストを準備しています…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "完了"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -8742,6 +8750,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "まずこのページのタイトル、サブタイトル、出版社を確認してください。次にISBNを調べます。WorldCatには言語が記載されており、Google ブックスでは翻訳版の場合に「Translated by」という行が表示されます。"
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "%(link_start)sスキャン%(link_end)sには本文そのものが写っており、翻訳書であれば扉ページに翻訳者名が記載されています。"
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "通常、同じ作品の版は言語を共有しますが、翻訳版は異なります。この版自体の本文を確認してください。"
 
@@ -8770,6 +8783,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "Google Booksはページ数をLengthとして表示します。WorldCatではレコードの説明に記載されており、サインイン後にしか表示されないこともあります。Amazonのprint lengthはしばしば全ページを数えているため、数値を見つけるためではなく確認するために使ってください。"
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "%(link_start)sスキャン%(link_end)sにはすべてのページがあります。本文の最後まで進み、最後のページ番号を使ってください。"
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "カタログによって前付けの数え方が異なるため、数ページ程度の差は同じページ数とみなされます。本文の最後の番号付きページを使用してください。"
 
@@ -8792,6 +8810,11 @@ msgstr "この本はフィクションですか、ノンフィクションです
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "Google BooksはFiction/Fantasyのようなカテゴリーを、WorldCatはFictionやBiographyのようなジャンルを表示します。"
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "%(link_start)sスキャン%(link_end)sには裏表紙やカバーの折り返しが写っており、そこには通常どんな種類の本かが書かれています。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8852,6 +8875,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "インプリント（出版社名）はタイトルページと背表紙に印刷されています。米国議会図書館はタイトルページからそれを転記しており、WorldCatでは「Publisher」の項目に記載されています。Google ブックスでは親会社の名前が表示されることがよくあります。"
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "%(link_start)sスキャン%(link_end)sには扉ページが写っています。そこに印刷されているとおりに奥付の出版社名（imprint）を写してください。"
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "Open Libraryでは親会社ではなく、本に印刷されているインプリント名を記録します。Penguin Random HouseではなくAnchor Booksのように。"
 
@@ -8872,8 +8900,13 @@ msgid "When was this edition published?"
 msgstr "この版はいつ出版されましたか？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "奥付のページに年が記載されており、出版社の近くにあることが多いです。本にスキャンがあれば、まずそこを確認してください。Google BooksではPublishedとして、WorldCatではDateとして、Library of Congressのレコードでは Published の行の一部として記載されています。"
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "奥付のページに年が記載されており、出版社の近くにあることが多いです。Google BooksではPublishedとして、WorldCatではDateとして、Library of Congressのレコードでは Published の行の一部として記載されています。"
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "%(link_start)sスキャン%(link_end)sには奥付のページが写っており、この版が出版された年が記載されています。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -8892,8 +8925,13 @@ msgid "What is this edition's ISBN?"
 msgstr "この版のISBNは何ですか？"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "ISBNは奥付のページと裏表紙の、バーコードの上に印刷されています。本にスキャンがあれば、まずそこを確認してください。本が手元にない場合は、WorldCatやGoogle Booksでタイトルと著者から検索し、出版社・年・形態がこの版と一致するレコードを開いて、そこに記載されたISBNをコピーしてください。"
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBNは奥付のページと裏表紙の、バーコードの上に印刷されています。本が手元にない場合は、WorldCatやGoogle Booksでタイトルと著者から検索し、出版社・年・形態がこの版と一致するレコードを開いて、そこに記載されたISBNをコピーしてください。"
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "%(link_start)sスキャン%(link_end)sには奥付のページと裏表紙が写っており、そこにISBNが印刷されています。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -8926,6 +8964,11 @@ msgstr "この版の米国議会図書館番号は何ですか？"
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "このISBNでLibrary of Congressの目録を検索し、一致するレコードを開いて、LCCNとして表示されている番号をコピーしてください。"
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "%(link_start)sスキャン%(link_end)sには奥付のページが写っています。1970年代以降の本では、そこの目録情報にLCCNが記載されていることがよくあります。"
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11053,14 +11096,6 @@ msgstr "合計:%(count)s"
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "グラフを読み込めませんでした。ページを再読み込みして再度お試しください。"
 
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "サポートが必要です"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "完了"
-
 #~ msgid "We've sent the verification email to %(email)s. You'll need to read that and click on the verification link to verify your email."
 #~ msgstr ""
 
@@ -12862,4 +12897,10 @@ msgstr "完了"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "この本はSF・ファンタジーであり、ISFDBでよく扱われています。各刷りが個別に掲載されており、「verified」と記載されたレコードは実物と照合済みです。"
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "奥付のページに年が記載されており、出版社の近くにあることが多いです。本にスキャンがあれば、まずそこを確認してください。Google BooksではPublishedとして、WorldCatではDateとして、Library of Congressのレコードでは Published の行の一部として記載されています。"
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "ISBNは奥付のページと裏表紙の、バーコードの上に印刷されています。本にスキャンがあれば、まずそこを確認してください。本が手元にない場合は、WorldCatやGoogle Booksでタイトルと著者から検索し、出版社・年・形態がこの版と一致するレコードを開いて、そこに記載されたISBNをコピーしてください。"
 
