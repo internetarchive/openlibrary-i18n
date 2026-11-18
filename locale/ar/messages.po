@@ -4323,6 +4323,14 @@ msgstr "العودة إلى Open Library"
 msgid "Bulk Search (beta)"
 msgstr "البحث في المواضيع"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "يلزم المساعدة"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "جارٍ تجهيز القائمة…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "المهام"
@@ -4351,9 +4359,9 @@ msgstr "تعديلاتك"
 msgid "Community projects"
 msgstr "مشاريع المجتمع"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "جارٍ تجهيز القائمة…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "مكتمل"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -9279,6 +9287,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "ابدأ بالعنوان والعنوان الفرعي والناشر في هذه الصفحة. ثم ابحث عن رقم ISBN: يذكر WorldCat اللغة، ويعرض Google Books سطر “ترجمة” عندما تكون الطبعة ترجمة."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s النص نفسه، وتذكر الترجمة اسم مترجمها على صفحة العنوان."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "عادةً ما تشترك طبعات العمل الواحد في اللغة نفسها، لكن الترجمة لا تفعل ذلك. تحقق من نص هذه الطبعة بنفسها."
 
@@ -9307,6 +9320,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "يُدرج Google Books عدد الصفحات باسم Length. يُدرجه WorldCat في وصف التسجيلة، وأحيانًا لا يظهر إلا بعد تسجيل الدخول. غالبًا ما يحسب print length في أمازون كل صفحة، لذا استخدمه للتحقق من رقم لا للعثور عليه."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "يحتوي %(link_start)sالمسح الضوئي%(link_end)s على كل الصفحات. اذهب إلى نهاية النص الأساسي واستخدم آخر صفحة مرقّمة."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "تحتسب الفهارس المقدمة بطرق مختلفة، لذا فالأرقام المتقاربة ببضع صفحات تُعد العدد نفسه. استخدم آخر صفحة مرقّمة من النص الأساسي."
 
@@ -9329,6 +9347,11 @@ msgstr "هل هذا الكتاب خيالي أم غير خيالي؟"
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "يُدرج Google Books تصنيفات مثل Fiction/Fantasy، ويُدرج WorldCat عناوين نوعية مثل Fiction أو Biography."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s الغلاف الخلفي وأي ألسنة للغلاف، والتي عادةً ما تذكر نوع الكتاب."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -9389,6 +9412,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "تُطبع بصمة الناشر (imprint) على صفحة العنوان وعلى الكعب. تنسخها مكتبة الكونغرس من صفحة العنوان، ويذكرها WorldCat تحت اسم الناشر. أما Google Books فغالبًا ما يذكر اسم الشركة الأم بدلًا من ذلك."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s صفحة العنوان. انسخ بصمة الناشر (imprint) كما هي مطبوعة هناك."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "تُسجّل Open Library بصمة الناشر المطبوعة على الكتاب، لا الشركة الأم. مثل Anchor Books، لا Penguin Random House."
 
@@ -9409,8 +9437,13 @@ msgid "When was this edition published?"
 msgstr "متى نُشرت هذه الطبعة؟"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "تذكر صفحة حقوق النشر السنة، وغالبًا بجانب الناشر؛ إذا كان للكتاب مسح ضوئي، فانظر هناك أولاً. يُدرجها Google Books باسم Published، وWorldCat باسم Date، وتسجيلة Library of Congress كجزء من سطر Published."
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "تذكر صفحة حقوق النشر السنة، وغالبًا بجانب الناشر. يُدرجها Google Books باسم Published، وWorldCat باسم Date، وتسجيلة Library of Congress كجزء من سطر Published."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s صفحة حقوق النشر، التي تذكر سنة صدور هذه الطبعة."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -9429,8 +9462,13 @@ msgid "What is this edition's ISBN?"
 msgstr "ما رقم ISBN لهذه الطبعة؟"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "يُطبع رقم ISBN على صفحة حقوق النشر وعلى الغلاف الخلفي، فوق الباركود؛ إذا كان للكتاب مسح ضوئي، فانظر هناك أولاً. إن لم يكن الكتاب متوفرًا لديك، فابحث في WorldCat أو Google Books بالعنوان والمؤلف، وافتح التسجيلة التي يتطابق ناشرها وسنتها وصيغتها مع هذه الطبعة، وانسخ رقم ISBN المذكور فيها."
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "يُطبع رقم ISBN على صفحة حقوق النشر وعلى الغلاف الخلفي، فوق الباركود. إن لم يكن الكتاب متوفرًا لديك، فابحث في WorldCat أو Google Books بالعنوان والمؤلف، وافتح التسجيلة التي يتطابق ناشرها وسنتها وصيغتها مع هذه الطبعة، وانسخ رقم ISBN المذكور فيها."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s صفحة حقوق النشر والغلاف الخلفي، حيث يُطبع رقم ISBN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -9463,6 +9501,11 @@ msgstr "ما رقم مكتبة الكونغرس لهذه الطبعة؟"
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "ابحث عن رقم ISBN هذا في فهرس Library of Congress، وافتح التسجيلة المطابقة، وانسخ الرقم المذكور باسم LCCN."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "يُظهر %(link_start)sالمسح الضوئي%(link_end)s صفحة حقوق النشر. غالبًا ما تطبع الكتب الصادرة منذ سبعينيات القرن الماضي رقم LCCN هناك، ضمن بيانات الفهرسة."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11654,14 +11697,6 @@ msgstr "الإجمالي: %(count)s"
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "تعذّر تحميل الرسوم البيانية. أعد تحميل الصفحة للمحاولة مرة أخرى."
 
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "يلزم المساعدة"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "مكتمل"
-
 #~ msgid "Read Text ISBN"
 #~ msgstr "قراءة نص ISBN"
 
@@ -13711,4 +13746,10 @@ msgstr "مكتمل"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "هذا الكتاب من الخيال العلمي أو الفانتازيا، وهو مجال يغطيه ISFDB جيدًا. يُدرج كل طبعة على حدة، والسجل الذي يحمل علامة \"تم التحقق منه\" جرى فحصه مقارنةً بنسخة ورقية."
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "تذكر صفحة حقوق النشر السنة، وغالبًا بجانب الناشر؛ إذا كان للكتاب مسح ضوئي، فانظر هناك أولاً. يُدرجها Google Books باسم Published، وWorldCat باسم Date، وتسجيلة Library of Congress كجزء من سطر Published."
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "يُطبع رقم ISBN على صفحة حقوق النشر وعلى الغلاف الخلفي، فوق الباركود؛ إذا كان للكتاب مسح ضوئي، فانظر هناك أولاً. إن لم يكن الكتاب متوفرًا لديك، فابحث في WorldCat أو Google Books بالعنوان والمؤلف، وافتح التسجيلة التي يتطابق ناشرها وسنتها وصيغتها مع هذه الطبعة، وانسخ رقم ISBN المذكور فيها."
 
