@@ -4117,6 +4117,14 @@ msgstr "Natrag na Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Skupna pretraga (beta)"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "Potrebna pomoć"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "Priprema popisa…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Zadaci"
@@ -4145,9 +4153,9 @@ msgstr "Vaše izmjene"
 msgid "Community projects"
 msgstr "Projekti zajednice"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "Priprema popisa…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "Završeno"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -8832,6 +8840,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "Počni s naslovom, podnaslovom i izdavačem na ovoj stranici. Zatim potraži ISBN: WorldCat navodi jezik, a Google Books prikazuje redak „Translated by” kada je izdanje prijevod."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "%(link_start)sSken%(link_end)s prikazuje sam tekst, a prijevod na naslovnoj stranici navodi ime prevoditelja."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "Izdanja djela obično dijele isti jezik, ali prijevod neće. Provjerite tekst ovog izdanja."
 
@@ -8860,6 +8873,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "Google Books navodi broj stranica kao Length. WorldCat ga ima u opisu zapisa, ponekad tek nakon prijave. Amazonov print length često broji svaku stranicu, pa ga koristite više za provjeru broja nego za njegovo pronalaženje."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "%(link_start)sSken%(link_end)s sadrži svaku stranicu. Idite do kraja glavnog teksta i koristite posljednju numeriranu stranicu."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "Katalozi različito broje uvodne stranice, pa se brojevi koji se razlikuju za nekoliko stranica smatraju istim brojem. Koristite zadnju numeriranu stranicu glavnog teksta."
 
@@ -8882,6 +8900,11 @@ msgstr "Je li ova knjiga beletristika ili publicistika?"
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "Google Books navodi kategorije poput Fiction/Fantasy, a WorldCat navodi žanrove poput Fiction ili Biography."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "%(link_start)sSken%(link_end)s prikazuje stražnju koricu i eventualne klapne ovitka, koje obično navode o kojoj je vrsti knjige riječ."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8942,6 +8965,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "Impresum je otisnut na naslovnoj stranici i hrptu knjige. Kongresna knjižnica preuzima ga s naslovne stranice, a WorldCat ga navodi pod Publisher. Google Books često umjesto toga navodi matičnu tvrtku."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "%(link_start)sSken%(link_end)s prikazuje naslovnu stranicu. Prepišite impresum (imprint) točno onako kako je ondje otisnut."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "Open Library bilježi izdavača otisnutog na knjizi, a ne matičnu kompaniju. Anchor Books, a ne Penguin Random House."
 
@@ -8962,8 +8990,13 @@ msgid "When was this edition published?"
 msgstr "Kada je ovo izdanje objavljeno?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "Stranica s autorskim pravima navodi godinu, često uz izdavača; ako knjiga ima sken, pogledajte prvo tamo. Google Books je navodi kao Published, WorldCat kao Date, a zapis Library of Congress kao dio retka Published."
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Stranica s autorskim pravima navodi godinu, često uz izdavača. Google Books je navodi kao Published, WorldCat kao Date, a zapis Library of Congress kao dio retka Published."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "%(link_start)sSken%(link_end)s prikazuje stranicu s autorskim pravima, koja navodi godinu izdavanja ovog izdanja."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -8982,8 +9015,13 @@ msgid "What is this edition's ISBN?"
 msgstr "Koji je ISBN ovog izdanja?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "ISBN je otisnut na stranici s autorskim pravima i na stražnjoj korici, iznad crtičnog koda; ako knjiga ima sken, pogledajte prvo tamo. Bez knjige pri ruci, pretražite WorldCat ili Google Books po naslovu i autoru, otvorite zapis čiji se izdavač, godina i format podudaraju s ovim izdanjem, i kopirajte navedeni ISBN."
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN je otisnut na stranici s autorskim pravima i na stražnjoj korici, iznad crtičnog koda. Bez knjige pri ruci, pretražite WorldCat ili Google Books po naslovu i autoru, otvorite zapis čiji se izdavač, godina i format podudaraju s ovim izdanjem, i kopirajte navedeni ISBN."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "%(link_start)sSken%(link_end)s prikazuje stranicu s autorskim pravima i stražnju koricu, gdje je otisnut ISBN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -9016,6 +9054,11 @@ msgstr "Koji je LCCN broj ovog izdanja?"
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "Potražite ovaj ISBN u katalogu Library of Congress, otvorite odgovarajući zapis i kopirajte broj naveden kao LCCN."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "%(link_start)sSken%(link_end)s prikazuje stranicu s autorskim pravima. Knjige od 1970-ih nadalje ondje često otiskuju LCCN, u katalogizacijskim podacima."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11148,14 +11191,6 @@ msgstr "Ukupno: %(count)s"
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi pokušaj."
 
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "Potrebna pomoć"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "Završeno"
-
 #~ msgid "Activation link expiring on <span class=\"time\">%(date)s.</span>"
 #~ msgstr "Poveznica za aktivaciju isteče <span class=\"time\">.%(date)s</span>"
 
@@ -12865,4 +12900,10 @@ msgstr "Završeno"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "Ova knjiga je znanstvena fantastika ili fantasy, što ISFDB dobro pokriva. Svaki otisak navodi zasebno, a zapis označen kao provjeren uspoređen je s fizičkim primjerkom."
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "Stranica s autorskim pravima navodi godinu, često uz izdavača; ako knjiga ima sken, pogledajte prvo tamo. Google Books je navodi kao Published, WorldCat kao Date, a zapis Library of Congress kao dio retka Published."
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "ISBN je otisnut na stranici s autorskim pravima i na stražnjoj korici, iznad crtičnog koda; ako knjiga ima sken, pogledajte prvo tamo. Bez knjige pri ruci, pretražite WorldCat ili Google Books po naslovu i autoru, otvorite zapis čiji se izdavač, godina i format podudaraju s ovim izdanjem, i kopirajte navedeni ISBN."
 
