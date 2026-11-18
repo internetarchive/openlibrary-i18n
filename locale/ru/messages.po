@@ -4347,6 +4347,14 @@ msgstr "Назад в Open Library"
 msgid "Bulk Search (beta)"
 msgstr "Массовый поиск (бета)"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "Нужна помощь"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "Подготовка списка…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Задачи"
@@ -4375,9 +4383,9 @@ msgstr "Ваши правки"
 msgid "Community projects"
 msgstr "Проекты сообщества"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "Подготовка списка…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "Завершено"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -9226,6 +9234,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "Начните с названия, подзаголовка и издателя на этой странице. Затем проверьте по ISBN: WorldCat указывает язык, а Google Books показывает строку «Translated by» («Перевод»), если издание является переводом."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "%(link_start)sСкан%(link_end)s показывает сам текст, а в переводном издании на титульном листе указано имя переводчика."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "Издания одного произведения обычно на одном языке, но перевод — исключение. Проверьте текст именно этого издания."
 
@@ -9254,6 +9267,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "Google Books указывает количество страниц как Length. WorldCat указывает его в описании записи, иногда только после входа в аккаунт. Print length на Amazon часто считает каждую страницу, поэтому используйте его скорее для проверки числа, чем для его поиска."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "%(link_start)sСкан%(link_end)s содержит все страницы. Перейдите к концу основного текста и используйте последнюю пронумерованную страницу."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "Каталоги по-разному учитывают вступительные страницы, поэтому числа, отличающиеся на несколько страниц, считаются одинаковыми. Используйте номер последней пронумерованной страницы основного текста."
 
@@ -9276,6 +9294,11 @@ msgstr "Это художественная или нехудожественн�
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "Google Books указывает категории вроде Fiction/Fantasy, а WorldCat указывает жанры вроде Fiction или Biography."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "%(link_start)sСкан%(link_end)s показывает заднюю обложку и клапаны суперобложки, если они есть, — там обычно указан жанр книги."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -9336,6 +9359,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "Данные об импринте напечатаны на титульном листе и корешке книги. Библиотека Конгресса копирует их с титульного листа, а WorldCat указывает их под Publisher. Google Books часто вместо этого указывает материнскую компанию."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "%(link_start)sСкан%(link_end)s показывает титульный лист. Скопируйте сведения об издателе (imprint) точно так, как они напечатаны там."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "Open Library фиксирует импринт, напечатанный на книге, а не материнскую компанию. Anchor Books, а не Penguin Random House."
 
@@ -9356,8 +9384,13 @@ msgid "When was this edition published?"
 msgstr "Когда было опубликовано это издание?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "Страница с копирайтом указывает год, часто рядом с издателем; если у книги есть скан, посмотрите сначала там. Google Books указывает его как Published, WorldCat — как Date, а запись Library of Congress — как часть строки Published."
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Страница с копирайтом указывает год, часто рядом с издателем. Google Books указывает его как Published, WorldCat — как Date, а запись Library of Congress — как часть строки Published."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "%(link_start)sСкан%(link_end)s показывает страницу с копирайтом, где указан год выхода этого издания."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -9376,8 +9409,13 @@ msgid "What is this edition's ISBN?"
 msgstr "Какой ISBN у этого издания?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "ISBN напечатан на странице с копирайтом и на задней обложке, над штрихкодом; если у книги есть скан, посмотрите сначала там. Без книги под рукой найдите на WorldCat или Google Books по названию и автору, откройте запись, у которой издатель, год и формат совпадают с этим изданием, и скопируйте указанный там ISBN."
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN напечатан на странице с копирайтом и на задней обложке, над штрихкодом. Без книги под рукой найдите на WorldCat или Google Books по названию и автору, откройте запись, у которой издатель, год и формат совпадают с этим изданием, и скопируйте указанный там ISBN."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "%(link_start)sСкан%(link_end)s показывает страницу с копирайтом и заднюю обложку, где напечатан ISBN."
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -9410,6 +9448,11 @@ msgstr "Какой номер Библиотеки Конгресса у это�
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "Найдите этот ISBN в каталоге Library of Congress, откройте подходящую запись и скопируйте номер, указанный как LCCN."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "%(link_start)sСкан%(link_end)s показывает страницу с копирайтом. В книгах начиная с 1970-х годов там часто указывают LCCN, в каталожных данных."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11592,14 +11635,6 @@ msgstr "Всего: %(count)s"
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "Не удалось загрузить графики. Перезагрузите страницу, чтобы повторить попытку."
-
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "Нужна помощь"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "Завершено"
 
 #~ msgid "Your Privacy Settings"
 #~ msgstr "Ваши настройки приватности"
@@ -13790,4 +13825,10 @@ msgstr "Завершено"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "Эта книга — научная фантастика или фэнтези, которую хорошо охватывает ISFDB. Там каждый тираж указан отдельно, а запись с пометкой «verified» означает, что её сверили с печатным экземпляром."
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "Страница с копирайтом указывает год, часто рядом с издателем; если у книги есть скан, посмотрите сначала там. Google Books указывает его как Published, WorldCat — как Date, а запись Library of Congress — как часть строки Published."
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "ISBN напечатан на странице с копирайтом и на задней обложке, над штрихкодом; если у книги есть скан, посмотрите сначала там. Без книги под рукой найдите на WorldCat или Google Books по названию и автору, откройте запись, у которой издатель, год и формат совпадают с этим изданием, и скопируйте указанный там ISBN."
 
