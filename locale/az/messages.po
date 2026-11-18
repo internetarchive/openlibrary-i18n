@@ -4095,6 +4095,14 @@ msgstr "Open Library-ə qayıt"
 msgid "Bulk Search (beta)"
 msgstr "Kütləvi axtarış (beta)"
 
+#: contribute/dashboard.html.jinja
+msgid "Help needed"
+msgstr "Kömək lazımdır"
+
+#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
+msgid "Getting the list ready…"
+msgstr "Siyahı hazırlanır…"
+
 #: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 msgid "Tasks"
 msgstr "Tapşırıqlar"
@@ -4123,9 +4131,9 @@ msgstr "Sizin düzəlişləriniz"
 msgid "Community projects"
 msgstr "İcma layihələri"
 
-#: contribute/admin/parts.html.jinja contribute/dashboard.html.jinja
-msgid "Getting the list ready…"
-msgstr "Siyahı hazırlanır…"
+#: contribute/dashboard.html.jinja
+msgid "Completed"
+msgstr "Tamamlandı"
 
 #: contribute/dashboard.html.jinja
 msgid "Go further"
@@ -8770,6 +8778,11 @@ msgid "Start with the title, subtitle and publisher on this page. Then look the 
 msgstr "Bu səhifədəki başlıq, alt başlıq və nəşriyyatdan başlayın. Sonra ISBN-i axtarın: WorldCat dili göstərir, Google Books isə nəşr tərcümə olduqda “Translated by” sətrini göstərir."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the text itself, and a translation names its translator on the title page."
+msgstr "%(link_start)sSkan%(link_end)s mətnin özünü göstərir, tərcümə isə tərcüməçisinin adını titul səhifəsində göstərir."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Editions of a work usually share a language, but a translation won't. Check this edition's own text."
 msgstr "Bir əsərin nəşrləri adətən eyni dili paylaşır, lakin tərcümə fərqli olacaq. Bu nəşrin öz mətnini yoxlayın."
 
@@ -8798,6 +8811,11 @@ msgid "Google Books lists the page count as Length. WorldCat has it in the recor
 msgstr "Google Books səhifə sayını Length kimi göstərir. WorldCat onu qeydin təsvirində verir, bəzən yalnız hesaba daxil olduqdan sonra. Amazon-un print length göstəricisi çox vaxt hər səhifəni sayır, buna görə onu bir rəqəmi tapmaq üçün deyil, yoxlamaq üçün istifadə edin."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s has every page. Go to the end of the main text and use the last numbered page."
+msgstr "%(link_start)sSkan%(link_end)sda bütün səhifələr var. Əsas mətnin sonuna keçin və son nömrələnmiş səhifədən istifadə edin."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Catalogs count front matter differently, so numbers within a few pages of each other are the same count. Use the last numbered page of the main text."
 msgstr "Kataloqlar ilkin vərəqləri fərqli hesablayır, ona görə bir neçə səhifə fərqli olan rəqəmlər eyni sayıla bilər. Əsas mətnin son nömrələnmiş səhifəsini istifadə edin."
 
@@ -8820,6 +8838,11 @@ msgstr "Bu kitab bədii yoxsa bədii olmayandır?"
 #: openlibrary/contribute/field_guides.py
 msgid "Google Books lists Categories such as Fiction / Fantasy, and WorldCat lists Genre headings such as Fiction or Biography."
 msgstr "Google Books Fiction/Fantasy kimi kateqoriyalar göstərir, WorldCat isə Fiction və ya Biography kimi janr başlıqları göstərir."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the back cover and any jacket flaps, which usually say what kind of book it is."
+msgstr "%(link_start)sSkan%(link_end)sda arxa qapaq və qapaq qatları göstərilir, bunlar adətən kitabın növünü bildirir."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Nonfiction can read like a story. A memoir that bends the truth is still nonfiction: it is presented as fact."
@@ -8880,6 +8903,11 @@ msgid "The imprint is printed on the title page and the spine. The Library of Co
 msgstr "İmprint başlıq səhifəsində və kitabın onurğasında çap olunur. Library of Congress onu başlıq səhifəsindən köçürür, WorldCat isə onu Publisher altında göstərir. Google Books isə çox vaxt əvəzinə ana şirkəti adlandırır."
 
 #: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the title page. Copy the imprint as it's printed there."
+msgstr "%(link_start)sSkan%(link_end)sda titul səhifəsi göstərilir. Naşir məlumatını (imprint) orada necə çap olunubsa, elə köçürün."
+
+#: openlibrary/contribute/field_guides.py
 msgid "Open Library records the imprint printed on the book, not the parent company. Anchor Books, not Penguin Random House."
 msgstr "Open Library kitabda çap olunan nəşriyyat adını qeyd edir, ana şirkəti yox. Penguin Random House yox, Anchor Books."
 
@@ -8900,8 +8928,13 @@ msgid "When was this edition published?"
 msgstr "Bu nəşr nə vaxt nəşr olunub?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
-msgstr "Müəllif hüquqları səhifəsi ili göstərir, çox vaxt naşirin yanında; kitabın skanı varsa, əvvəlcə ora baxın. Google Books onu Published kimi, WorldCat Date kimi, Library of Congress qeydi isə Published sətrinin bir hissəsi kimi göstərir."
+msgid "The copyright page gives the year, often next to the publisher. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+msgstr "Müəllif hüquqları səhifəsi ili göstərir, çox vaxt naşirin yanında. Google Books onu Published kimi, WorldCat Date kimi, Library of Congress qeydi isə Published sətrinin bir hissəsi kimi göstərir."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page, which gives the year this edition came out."
+msgstr "%(link_start)sSkan%(link_end)sda müəllif hüquqları səhifəsi göstərilir, bu da nəşrin çıxdığı ili bildirir."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Enter the year this edition came out, or the full date if a catalog gives one, such as March 2005. A later printing of the same edition keeps the edition's year."
@@ -8920,8 +8953,13 @@ msgid "What is this edition's ISBN?"
 msgstr "Bu nəşrin ISBN-i nədir?"
 
 #: openlibrary/contribute/field_guides.py
-msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
-msgstr "ISBN müəllif hüquqları səhifəsində və arxa qapaqda, ştrix-kodun üstündə çap olunur; kitabın skanı varsa, əvvəlcə ora baxın. Kitab əlinizdə olmadan, WorldCat və ya Google Books-da başlıq və müəllifə görə axtarın, naşiri, ili və formatı bu nəşrlə uyğun gələn qeydi açın və orada göstərilən ISBN-i köçürün."
+msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+msgstr "ISBN müəllif hüquqları səhifəsində və arxa qapaqda, ştrix-kodun üstündə çap olunur. Kitab əlinizdə olmadan, WorldCat və ya Google Books-da başlıq və müəllifə görə axtarın, naşiri, ili və formatı bu nəşrlə uyğun gələn qeydi açın və orada göstərilən ISBN-i köçürün."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page and the back cover, where the ISBN is printed."
+msgstr "%(link_start)sSkan%(link_end)sda müəllif hüquqları səhifəsi və arxa qapaq göstərilir, ISBN orada çap olunur."
 
 #: openlibrary/contribute/field_guides.py
 msgid "An ISBN-10 and an ISBN-13 can name the same edition: 0140449264 and 9780140449266. Paste either, with or without hyphens. Books from before 1970 don't have one."
@@ -8954,6 +8992,11 @@ msgstr "Bu nəşrin Konqres Kitabxanası nömrəsi nədir?"
 #: openlibrary/contribute/field_guides.py
 msgid "Search the Library of Congress catalog for this ISBN, open the matching record and copy the number shown as LCCN."
 msgstr "Bu ISBN-i Library of Congress kataloqunda axtarın, uyğun qeydi açın və LCCN kimi göstərilən nömrəni köçürün."
+
+#: openlibrary/contribute/field_guides.py
+#, python-format
+msgid "%(link_start)sThe scan%(link_end)s shows the copyright page. Books from the 1970s on often print the LCCN there, in the cataloging data."
+msgstr "%(link_start)sSkan%(link_end)sda müəllif hüquqları səhifəsi göstərilir. 1970-ci illərdən bəri kitablar çox vaxt LCCN-i orada, kataloq məlumatlarında çap edir."
 
 #: openlibrary/contribute/field_guides.py
 msgid "Hyphenated and padded forms are the same number: 75-425165 and 75425165. Paste either; Open Library stores the padded form."
@@ -11075,14 +11118,6 @@ msgstr "Cəmi: %(count)s"
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "Qrafiklər yüklənə bilmədi. Yenidən cəhd etmək üçün səhifəni yeniləyin."
 
-#: contribute/dashboard.html.jinja
-msgid "Help needed"
-msgstr "Kömək lazımdır"
-
-#: contribute/dashboard.html.jinja
-msgid "Completed"
-msgstr "Tamamlandı"
-
 #~ msgid "Merge these authors?"
 #~ msgstr "Bu müəlliflər birləşdirilsin?"
 
@@ -11704,4 +11739,10 @@ msgstr "Tamamlandı"
 
 #~ msgid "This book is science fiction or fantasy, which ISFDB covers well. It lists each printing on its own, and a record marked as verified was checked against a physical copy."
 #~ msgstr "Bu kitab elmi fantastika və ya fantaziya janrındadır, bunu ISFDB yaxşı əhatə edir. O, hər çapı ayrıca göstərir və təsdiqlənmiş kimi işarələnmiş qeyd fiziki nüsxə ilə yoxlanılıb."
+
+#~ msgid "The copyright page gives the year, often next to the publisher; when the book has a scan, look there first. Google Books lists it as Published, WorldCat as Date, and the Library of Congress record as part of the Published line."
+#~ msgstr "Müəllif hüquqları səhifəsi ili göstərir, çox vaxt naşirin yanında; kitabın skanı varsa, əvvəlcə ora baxın. Google Books onu Published kimi, WorldCat Date kimi, Library of Congress qeydi isə Published sətrinin bir hissəsi kimi göstərir."
+
+#~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
+#~ msgstr "ISBN müəllif hüquqları səhifəsində və arxa qapaqda, ştrix-kodun üstündə çap olunur; kitabın skanı varsa, əvvəlcə ora baxın. Kitab əlinizdə olmadan, WorldCat və ya Google Books-da başlıq və müəllifə görə axtarın, naşiri, ili və formatı bu nəşrlə uyğun gələn qeydi açın və orada göstərilən ISBN-i köçürün."
 
