@@ -173,6 +173,14 @@ msgstr "Nisu stavljene u red čekanja jer su već prisutni u redu čekanja:"
 msgid "View Batch Status"
 msgstr "Pogledaj stanje skupa"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s stavka"
+msgstr[1] "%(count)s stavke"
+msgstr[2] "%(count)s stavki"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Stanje:"
@@ -185,29 +193,21 @@ msgstr "Sve"
 msgid "Default sort: date added, newest first."
 msgstr "Zadano razvrstavanje: datum dodavanja, najnovije prvo."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ime"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Vrijeme dodavanja"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Stanje"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Podnositelj"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Komentari"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Vrijeme dodavanja"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Stanje"
 
 #: batch_import_view.html
 #, python-format
@@ -217,18 +217,6 @@ msgstr "Serija #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Svi skupni uvozi"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Ime skupa:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Podnositelj:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Vrijeme slanja:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -269,6 +257,10 @@ msgstr "Podaci"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL ključ"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Komentari"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1799,7 +1791,7 @@ msgstr "Dnevnik čitanja"
 msgid "My lists"
 msgstr "Moji popisi"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Popisi"
 
@@ -4528,7 +4520,7 @@ msgstr "Skriveno"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Cilj dosegnut"
 
@@ -6665,11 +6657,6 @@ msgstr "Metrike. Odaberi jednu za prikaz na grafikonu."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s koji se vraćaju · %(first_time)s prvi put"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s u odnosu na prethodnih 28 dana"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Opseg"
@@ -6686,17 +6673,9 @@ msgstr "Putem Zadataka"
 msgid "Period"
 msgstr "Razdoblje"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Usporedi s prethodnim razdobljem"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Po danu"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "Prije 4 tjedna"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6834,9 +6813,8 @@ msgid "Community project progress is counted nightly."
 msgstr "Napredak projekata zajednice broji se svake noći."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Ukupni broj uređivanja počinje %(date)s, pa duži rasponi počinju na pola puta."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Ukupni brojevi uređivanja i urednika počinju od dana kada su prvi put izbrojani, pa dulji rasponi mogu započeti usred razdoblja."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9185,7 +9163,7 @@ msgstr "Od %(start)s"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s do %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Cilj: %(percent)s%%"
@@ -9717,14 +9695,6 @@ msgstr "Nijedan popis se ne podudara."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Učitavanje popisa…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s stavka"
-msgstr[1] "%(count)s stavke"
-msgstr[2] "%(count)s stavki"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -11025,21 +10995,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s – pretraga"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Urednici"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Osobe koje su promijenile zapis knjige, djela ili autora, te one kojima je to bilo prvo uređivanje ikad. Tjedni i mjesečni prikazi broje svaku osobu jednom."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Uređivanja spremljena od strane ljudi, ne botova: na knjigama, djelima, autorima i drugim stranicama, na popisima, i sa stranice Zadaci."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Promjene koje su spremili ljudi, a ne botovi, na izdanjima i djelima, sa stranice Zadaci ili bilo gdje drugdje."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s po uredniku"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Urednici"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Osobe koje su promijenile izdanje ili djelo, te one kojima je to bila prva takva promjena ikada. Tjedni i mjesečni prikazi broje svaku osobu jednom."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Novi urednici"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Osobe čija prva promjena izdanja ili djela ikada pada u ovo razdoblje, bez obzira gdje su je napravile."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "%(share)s urednika"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11110,35 +11093,6 @@ msgid "Per 4 weeks"
 msgstr "Po 4 tjedna"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Prije tjedan dana"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Prije tjedan dana: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "Prije 4 tjedna: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s naspram prije tjedan dana"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s naspram prije 4 tjedna"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s naspram prethodnih 7 dana"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Danas do sada, ažurira se svaki sat"
 
@@ -11174,8 +11128,8 @@ msgid "First edit ever"
 msgstr "Prvo uređivanje ikad"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Zapisi i druge stranice"
+msgid "Outside Tasks"
+msgstr "Izvan Zadataka"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12901,4 +12855,52 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN je otisnut na stranici s autorskim pravima i na stražnjoj korici, iznad crtičnog koda; ako knjiga ima sken, pogledajte prvo tamo. Bez knjige pri ruci, pretražite WorldCat ili Google Books po naslovu i autoru, otvorite zapis čiji se izdavač, godina i format podudaraju s ovim izdanjem, i kopirajte navedeni ISBN."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Ime skupa:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Podnositelj:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Vrijeme slanja:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s u odnosu na prethodnih 28 dana"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Usporedi s prethodnim razdobljem"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Ukupni broj uređivanja počinje %(date)s, pa duži rasponi počinju na pola puta."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Osobe koje su promijenile zapis knjige, djela ili autora, te one kojima je to bilo prvo uređivanje ikad. Tjedni i mjesečni prikazi broje svaku osobu jednom."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Uređivanja spremljena od strane ljudi, ne botova: na knjigama, djelima, autorima i drugim stranicama, na popisima, i sa stranice Zadaci."
+
+#~ msgid "A week earlier"
+#~ msgstr "Prije tjedan dana"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Prije tjedan dana: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "Prije 4 tjedna: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s naspram prije tjedan dana"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s naspram prije 4 tjedna"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s naspram prethodnih 7 dana"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Zapisi i druge stranice"
 

@@ -171,6 +171,13 @@ msgstr "ಈಗಾಗಲೇ ಸರತಿಯಲ್ಲಿ ಇರುವುದರಿ�
 msgid "View Batch Status"
 msgstr "ಬ್ಯಾಚ್ ಸ್ಥಿತಿಯನ್ನು ವೀಕ್ಷಿಸಿ"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s ಐಟಂ"
+msgstr[1] "%(count)s ಐಟಂಗಳು"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "ಸ್ಥಿತಿ:"
@@ -183,29 +190,21 @@ msgstr "ಎಲ್ಲಾ"
 msgid "Default sort: date added, newest first."
 msgstr "ಡೀಫಾಲ್ಟ್ ವಿಂಗಡಣೆ: ಸೇರಿಸಿದ ದಿನಾಂಕ, ಹೊಸದು ಮೊದಲು."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "ಹೆಸರು"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "ಸೇರಿಸಿದ ಸಮಯ"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "ಸ್ಥಿತಿ"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "ಸಲ್ಲಿಸಿದವರು"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "ಕಾಮೆಂಟ್‌ಗಳು"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "ಸೇರಿಸಿದ ಸಮಯ"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "ಸ್ಥಿತಿ"
 
 #: batch_import_view.html
 #, python-format
@@ -215,18 +214,6 @@ msgstr "ಬ್ಯಾಚ್ #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "ಎಲ್ಲಾ ಬ್ಯಾಚ್‌ಗಳು"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "ಬ್ಯಾಚ್ ಹೆಸರು:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "ಸಲ್ಲಿಸಿದವರು:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "ಸಲ್ಲಿಸಿದ ಸಮಯ:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -267,6 +254,10 @@ msgstr "ಡೇಟಾ"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL ಕೀ"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "ಕಾಮೆಂಟ್‌ಗಳು"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1784,7 +1775,7 @@ msgstr "ಓದುವ ದಾಖಲೆ"
 msgid "My lists"
 msgstr "ನನ್ನ ಪಟ್ಟಿಗಳು"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "ಪಟ್ಟಿಗಳು"
 
@@ -4509,7 +4500,7 @@ msgstr "ಮರೆಮಾಡಲಾಗಿದೆ"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "ಗುರಿ ತಲುಪಲಾಗಿದೆ"
 
@@ -6625,11 +6616,6 @@ msgstr "ಮೆಟ್ರಿಕ್‌ಗಳು. ಚಾರ್ಟ್ ಮಾಡಲು
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s ಮರಳಿ ಬಂದವರು · %(first_time)s ಹೊಸಬರು"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s ಹಿಂದಿನ 28 ದಿನಗಳಿಗೆ ಹೋಲಿಸಿದರೆ"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "ವ್ಯಾಪ್ತಿ"
@@ -6646,17 +6632,9 @@ msgstr "ಟಾಸ್ಕ್‌ಗಳ ಮೂಲಕ"
 msgid "Period"
 msgstr "ಅವಧಿ"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "ಹಿಂದಿನ ಅವಧಿಗೆ ಹೋಲಿಸಿ"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "ಪ್ರತಿ ದಿನ"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 ವಾರಗಳ ಹಿಂದೆ"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6794,9 +6772,8 @@ msgid "Community project progress is counted nightly."
 msgstr "ಸಮುದಾಯ ಯೋಜನೆಯ ಪ್ರಗತಿಯನ್ನು ಪ್ರತಿ ರಾತ್ರಿ ಎಣಿಸಲಾಗುತ್ತದೆ."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "ಸಂಪಾದನಾ ಒಟ್ಟುಗಳು %(date)s ರಂದು ಪ್ರಾರಂಭವಾಗುತ್ತವೆ, ಆದ್ದರಿಂದ ದೀರ್ಘ ವ್ಯಾಪ್ತಿಗಳು ಮಧ್ಯದಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತವೆ."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "ಸಂಪಾದನೆ ಮತ್ತು ಸಂಪಾದಕರ ಒಟ್ಟು ಸಂಖ್ಯೆಗಳು ಮೊದಲ ಬಾರಿಗೆ ಎಣಿಸಿದ ದಿನದಿಂದ ಪ್ರಾರಂಭವಾಗುತ್ತವೆ, ಆದ್ದರಿಂದ ದೀರ್ಘ ಅವಧಿಗಳು ಮಧ್ಯದಿಂದ ಪ್ರಾರಂಭವಾಗಬಹುದು."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9130,7 +9107,7 @@ msgstr "%(start)s ನಿಂದ"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s ನಿಂದ %(end)s ವರೆಗೆ"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "ಗುರಿ: %(percent)s%%"
@@ -9661,13 +9638,6 @@ msgstr "ಯಾವುದೇ ಪಟ್ಟಿಗಳು ಹೊಂದಿಕೆಯಾ�
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "ಪಟ್ಟಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s ಐಟಂ"
-msgstr[1] "%(count)s ಐಟಂಗಳು"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10961,21 +10931,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - ಹುಡುಕಾಟ"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "ಸಂಪಾದಕರು"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "ಪುಸ್ತಕ, ಕೃತಿ ಅಥವಾ ಲೇಖಕ ದಾಖಲೆಯನ್ನು ಬದಲಾಯಿಸಿದ ಜನರು, ಮತ್ತು ಅದು ಅವರ ಮೊದಲ ಸಂಪಾದನೆಯಾಗಿದ್ದವರು. ವಾರ ಮತ್ತು ತಿಂಗಳ ನೋಟಗಳು ಪ್ರತಿ ವ್ಯಕ್ತಿಯನ್ನು ಒಮ್ಮೆ ಎಣಿಸುತ್ತವೆ."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "ಬಾಟ್‌ಗಳಿಂದಲ್ಲ, ಜನರಿಂದ ಉಳಿಸಿದ ಸಂಪಾದನೆಗಳು: ಪುಸ್ತಕಗಳು, ಕೃತಿಗಳು, ಲೇಖಕರು ಮತ್ತು ಇತರ ಪುಟಗಳಿಗೆ, ಪಟ್ಟಿಗಳಿಗೆ, ಮತ್ತು ಟಾಸ್ಕ್‌ಗಳ ಪುಟದಿಂದ."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "ಬಾಟ್‌ಗಳಲ್ಲ, ಜನರು ಆವೃತ್ತಿಗಳು ಮತ್ತು ಕೃತಿಗಳಿಗೆ ಉಳಿಸಿದ ಬದಲಾವಣೆಗಳು, ಟಾಸ್ಕ್‌ಗಳ ಪುಟದಿಂದ ಅಥವಾ ಬೇರೆಲ್ಲಿಂದಲಾದರೂ."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ ಪ್ರತಿ ಸಂಪಾದಕರಿಗೆ %(count)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "ಸಂಪಾದಕರು"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "ಒಂದು ಆವೃತ್ತಿ ಅಥವಾ ಕೃತಿಯನ್ನು ಬದಲಾಯಿಸಿದ ಜನರು, ಮತ್ತು ಅದು ಅವರ ಮೊದಲ ಬದಲಾವಣೆಯಾಗಿದ್ದವರು. ವಾರ ಮತ್ತು ತಿಂಗಳ ವೀಕ್ಷಣೆಗಳು ಪ್ರತಿ ವ್ಯಕ್ತಿಯನ್ನು ಒಮ್ಮೆ ಎಣಿಸುತ್ತವೆ."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "ಹೊಸ ಸಂಪಾದಕರು"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "ಆವೃತ್ತಿ ಅಥವಾ ಕೃತಿಗೆ ಅವರ ಮೊದಲ ಬದಲಾವಣೆ ಈ ಅವಧಿಯಲ್ಲಿ ಬರುವ ಜನರು, ಅದನ್ನು ಅವರು ಎಲ್ಲಿ ಮಾಡಿದ್ದರೂ ಸಹ."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "ಸಂಪಾದಕರ %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11045,35 +11028,6 @@ msgid "Per 4 weeks"
 msgstr "ಪ್ರತಿ 4 ವಾರಗಳು"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "ಒಂದು ವಾರ ಮೊದಲು"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "ಒಂದು ವಾರ ಮೊದಲು: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 ವಾರಗಳ ಹಿಂದೆ: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s ಒಂದು ವಾರ ಹಿಂದಿನದಕ್ಕೆ ಹೋಲಿಸಿದರೆ"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s 4 ವಾರಗಳ ಹಿಂದಿನದಕ್ಕೆ ಹೋಲಿಸಿದರೆ"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s ಹಿಂದಿನ 7 ದಿನಗಳಿಗೆ ಹೋಲಿಸಿದರೆ"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "ಇಲ್ಲಿಯವರೆಗೆ ಇಂದು, ಪ್ರತಿ ಗಂಟೆಗೆ ನವೀಕರಿಸಲಾಗಿದೆ"
 
@@ -11109,8 +11063,8 @@ msgid "First edit ever"
 msgstr "ಮೊದಲ ಬಾರಿಗೆ ಸಂಪಾದನೆ"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "ದಾಖಲೆಗಳು ಮತ್ತು ಇತರ ಪುಟಗಳು"
+msgid "Outside Tasks"
+msgstr "ಟಾಸ್ಕ್‌ಗಳ ಹೊರಗೆ"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -11120,4 +11074,55 @@ msgstr "ಒಟ್ಟು: %(count)s"
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "ಚಾರ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು ಪುಟವನ್ನು ಮರುಲೋಡ್ ಮಾಡಿ."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "ಬ್ಯಾಚ್ ಹೆಸರು:"
+
+#~ msgid "Submitter:"
+#~ msgstr "ಸಲ್ಲಿಸಿದವರು:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "ಸಲ್ಲಿಸಿದ ಸಮಯ:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s ಹಿಂದಿನ 28 ದಿನಗಳಿಗೆ ಹೋಲಿಸಿದರೆ"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "ಹಿಂದಿನ ಅವಧಿಗೆ ಹೋಲಿಸಿ"
+
+#~ msgid "4 weeks earlier"
+#~ msgstr "4 ವಾರಗಳ ಹಿಂದೆ"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "ಸಂಪಾದನಾ ಒಟ್ಟುಗಳು %(date)s ರಂದು ಪ್ರಾರಂಭವಾಗುತ್ತವೆ, ಆದ್ದರಿಂದ ದೀರ್ಘ ವ್ಯಾಪ್ತಿಗಳು ಮಧ್ಯದಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತವೆ."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "ಪುಸ್ತಕ, ಕೃತಿ ಅಥವಾ ಲೇಖಕ ದಾಖಲೆಯನ್ನು ಬದಲಾಯಿಸಿದ ಜನರು, ಮತ್ತು ಅದು ಅವರ ಮೊದಲ ಸಂಪಾದನೆಯಾಗಿದ್ದವರು. ವಾರ ಮತ್ತು ತಿಂಗಳ ನೋಟಗಳು ಪ್ರತಿ ವ್ಯಕ್ತಿಯನ್ನು ಒಮ್ಮೆ ಎಣಿಸುತ್ತವೆ."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "ಬಾಟ್‌ಗಳಿಂದಲ್ಲ, ಜನರಿಂದ ಉಳಿಸಿದ ಸಂಪಾದನೆಗಳು: ಪುಸ್ತಕಗಳು, ಕೃತಿಗಳು, ಲೇಖಕರು ಮತ್ತು ಇತರ ಪುಟಗಳಿಗೆ, ಪಟ್ಟಿಗಳಿಗೆ, ಮತ್ತು ಟಾಸ್ಕ್‌ಗಳ ಪುಟದಿಂದ."
+
+#~ msgid "A week earlier"
+#~ msgstr "ಒಂದು ವಾರ ಮೊದಲು"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "ಒಂದು ವಾರ ಮೊದಲು: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 ವಾರಗಳ ಹಿಂದೆ: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s ಒಂದು ವಾರ ಹಿಂದಿನದಕ್ಕೆ ಹೋಲಿಸಿದರೆ"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s 4 ವಾರಗಳ ಹಿಂದಿನದಕ್ಕೆ ಹೋಲಿಸಿದರೆ"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s ಹಿಂದಿನ 7 ದಿನಗಳಿಗೆ ಹೋಲಿಸಿದರೆ"
+
+#~ msgid "Records and other pages"
+#~ msgstr "ದಾಖಲೆಗಳು ಮತ್ತು ಇತರ ಪುಟಗಳು"
 

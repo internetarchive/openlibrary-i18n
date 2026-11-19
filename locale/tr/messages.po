@@ -172,6 +172,13 @@ msgstr "Zaten kuyrukta olduğu için kuyruğa alınmadı:"
 msgid "View Batch Status"
 msgstr "Toplu Durumu Görüntüle"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s öğe"
+msgstr[1] "%(count)s öğe"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Durum:"
@@ -184,29 +191,21 @@ msgstr "Tümü"
 msgid "Default sort: date added, newest first."
 msgstr "Varsayılan sıralama: eklenme tarihi, en yeni önce."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "toplu_kimlik"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ad"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Eklenme Zamanı"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Durum"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Gönderen"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Yorumlar"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Eklenme Zamanı"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Durum"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +215,6 @@ msgstr "Parti #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Tüm Toplu İçe Aktarmalar"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Toplu Ad:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Gönderen:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Gönderim Zamanı:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +255,10 @@ msgstr "Veri"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL Anahtarı"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Yorumlar"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1785,7 +1776,7 @@ msgstr "Okuma Kaydı"
 msgid "My lists"
 msgstr "Listelerim"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Listeler"
 
@@ -4510,7 +4501,7 @@ msgstr "Gizli"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Hedefe ulaşıldı"
 
@@ -6626,11 +6617,6 @@ msgstr "Ölçümler. Grafiğe dökmek için birini seçin."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s geri dönen · %(first_time)s ilk kez"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "önceki 28 güne göre %(change)s"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Kapsam"
@@ -6647,17 +6633,9 @@ msgstr "Görevler üzerinden"
 msgid "Period"
 msgstr "Dönem"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Önceki dönemle karşılaştır"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Günlük"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 hafta önce"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6795,9 +6773,8 @@ msgid "Community project progress is counted nightly."
 msgstr "Topluluk projelerinin ilerlemesi her gece hesaplanır."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Düzenleme toplamları %(date)s tarihinde başlar, bu nedenle daha uzun aralıklar yarıdan başlar."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Düzenleme ve editör toplamları ilk sayıldıkları günden başlar, bu nedenle daha uzun aralıklar yarıdan itibaren başlayabilir."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9131,7 +9108,7 @@ msgstr "%(start)s'den itibaren"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s - %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Hedef: %(percent)s%%"
@@ -9662,13 +9639,6 @@ msgstr "Eşleşen liste yok."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Listeler yükleniyor…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s öğe"
-msgstr[1] "%(count)s öğe"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10962,21 +10932,34 @@ msgid "%(title)s - search"
 msgstr "Ara - %(title)s"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Editörler"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Bir kitap, eser veya yazar kaydını değiştiren kişiler ve bunun ilk düzenlemeleri olan kişiler. Hafta ve ay görünümleri her kişiyi bir kez sayar."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Botlar tarafından değil, kişiler tarafından kaydedilen düzenlemeler: kitaplarda, eserlerde, yazarlarda ve diğer sayfalarda, listelerde ve Görevler sayfasından."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Botlar değil, kişiler tarafından baskılara ve eserlere kaydedilen değişiklikler; Görevler sayfasından veya başka bir yerden."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "editör başına ≈ %(count)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editörler"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Bir baskıyı veya eseri değiştiren kişiler ve bunun kendileri için bu türden ilk değişiklik olduğu kişiler. Hafta ve ay görünümleri her kişiyi bir kez sayar."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Yeni editörler"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Bir baskıya veya esere yaptıkları ilk değişiklik bu döneme denk gelen kişiler, nerede yapmış olurlarsa olsunlar."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "Editörlerin %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11046,35 +11029,6 @@ msgid "Per 4 weeks"
 msgstr "4 haftalık"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Bir hafta önce"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Bir hafta önce: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 hafta önce: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "bir hafta öncesine karşı %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "4 hafta öncesine karşı %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "önceki 7 güne karşı %(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Bugün şimdiye kadar, saatlik güncellenir"
 
@@ -11110,8 +11064,8 @@ msgid "First edit ever"
 msgstr "İlk düzenleme"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Kayıtlar ve diğer sayfalar"
+msgid "Outside Tasks"
+msgstr "Görevler dışında"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12932,4 +12886,52 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN, telif hakkı sayfasında ve arka kapakta, barkodun üzerinde basılıdır; kitabın taraması varsa önce oraya bakın. Kitap elinizde değilse, WorldCat veya Google Books'ta başlık ve yazara göre arama yapın, yayınevi, yıl ve formatı bu baskıyla eşleşen kaydı açın ve listelenen ISBN'yi kopyalayın."
+
+#~ msgid "batch_id"
+#~ msgstr "toplu_kimlik"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Toplu Ad:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Gönderen:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Gönderim Zamanı:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "önceki 28 güne göre %(change)s"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Önceki dönemle karşılaştır"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Düzenleme toplamları %(date)s tarihinde başlar, bu nedenle daha uzun aralıklar yarıdan başlar."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Bir kitap, eser veya yazar kaydını değiştiren kişiler ve bunun ilk düzenlemeleri olan kişiler. Hafta ve ay görünümleri her kişiyi bir kez sayar."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Botlar tarafından değil, kişiler tarafından kaydedilen düzenlemeler: kitaplarda, eserlerde, yazarlarda ve diğer sayfalarda, listelerde ve Görevler sayfasından."
+
+#~ msgid "A week earlier"
+#~ msgstr "Bir hafta önce"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Bir hafta önce: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 hafta önce: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "bir hafta öncesine karşı %(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "4 hafta öncesine karşı %(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "önceki 7 güne karşı %(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Kayıtlar ve diğer sayfalar"
 
