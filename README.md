@@ -16,9 +16,11 @@ The default branch is `main`.
 
 ## Language coverage
 
-27 languages: ar, as, az, bn, ca, cs, de, es, fr, hi, hr, id, it, ja, ko, nl, pl, pt, ro, ru, sc, sq, te, tl, tr, uk, zh.
+29 languages: ar, as, az, bn, ca, cs, de, es, fr, hi, hr, id, it, ja, kn, ko, mr, nl, pl, pt, ro, ru, sc, sq, te, tl, tr, uk, zh.
 
-openlibrary.org also offers Kannada (`kn`) and Marathi (`mr`), but neither repository has a catalog for them, so those pages are in English. See #329.
+Kannada (`kn`) and Marathi (`mr`) were added in #329, starting empty; the AI translation run fills them.
+
+Every language here is installed into the site and reachable with `?lang=<code>`, but the site's language menu is a separate, hand-written list: `get_supported_languages()` in the main repository's `openlibrary/plugins/openlibrary/code.py`. Today it lists ar, az, cs, de, en, es, fr, hi, hr, it, ko, pt, ro, sc, te, tl, uk and zh, so the other languages here are translated but not offered in the menu.
 
 ## Repository structure
 
@@ -78,7 +80,7 @@ If a translation is correct but its HTML has to differ from the English, start i
 
 Never remove `fuzzy` flags in bulk while keeping the text: a fuzzy entry's `msgstr` is usually the translation of a *different* string (#330 found about 13 in 15 wrong in a German sample), and only the flag keeps it off the site. To get rid of fuzzy entries, empty the `msgstr` along with the flag, so the AI translation run translates them from the English. #330 did that for the whole backlog.
 
-To add a new language, [open an issue](https://github.com/internetarchive/openlibrary-i18n/issues) first; it needs changes in both repositories.
+To add a new language, [open an issue](https://github.com/internetarchive/openlibrary-i18n/issues) first. Then create its catalog from the template, for example `python -m babel.messages.frontend init -i messages.pot -o locale/<lang>/messages.po -l <lang> --width 10000`, compile it, and open a PR. The site build installs any catalog it finds here, so nothing else is needed for the language to work. To list it in the site's language menu, also add it to `get_supported_languages()` in the main repository. If its plural rule isn't covered yet, add it to the plural-forms lists in `i18n-translation-instructions.md`.
 
 Full translator guide: https://docs.openlibrary.org/everyone/internationalization.html
 

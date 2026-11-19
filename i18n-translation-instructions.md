@@ -322,8 +322,8 @@ depends on the language's plural rule (the `Plural-Forms` header of its `.po`):
 - **Form 0 is used only for n=1** (rules like `n != 1`, or `n==1 ? 0 : …`):
   write `msgstr[0]` to match the **singular** English exactly. A literal `1` is
   correct, and adding `%(count)d` is wrong: `./i18n fix` clears it as a
-  format mismatch. Today that is as, az, bn, ca, cs, de, es, hi, it, nl, pl, pt,
-  ro, sc, sq, te, tl, tr.
+  format mismatch. Today that is as, az, bn, ca, cs, de, es, hi, it, kn, mr, nl,
+  pl, pt, ro, sc, sq, te, tl, tr.
 - **Form 0 is also used for other counts** (`nplurals=1`; fr's `n > 1`, which
   covers 0; ru/uk/hr, which reuse form 0 for 21, 31, …; ar, whose form 0 is
   n=0): `msgstr[0]` must carry the **placeholder** — write `…%(count)d…`, never
