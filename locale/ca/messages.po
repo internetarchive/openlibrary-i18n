@@ -172,6 +172,13 @@ msgstr "No afegits a la cua perquè ja hi són presents:"
 msgid "View Batch Status"
 msgstr "Mostra l'estat del lot"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s element"
+msgstr[1] "%(count)s elements"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Estat:"
@@ -184,29 +191,21 @@ msgstr "Tots"
 msgid "Default sort: date added, newest first."
 msgstr "Ordre per defecte: data d'addició, les més recents primer."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Nom"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Hora d'afegiment"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Estat"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Remitent"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Comentaris"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Hora d'afegiment"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Estat"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +215,6 @@ msgstr "Lot #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Tots els blocs"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Nom del lot:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Remitent:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Hora d'enviament:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +255,10 @@ msgstr "Dades"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "Clau OL"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Comentaris"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1785,7 +1776,7 @@ msgstr "Registre de lectura"
 msgid "My lists"
 msgstr "Les meves llistes"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Llistes"
 
@@ -4510,7 +4501,7 @@ msgstr "Amagat"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Objectiu assolit"
 
@@ -6626,11 +6617,6 @@ msgstr "Mètriques. Tria’n una per representar-la en un gràfic."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s recurrents · %(first_time)s per primera vegada"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s respecte als 28 dies anteriors"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Abast"
@@ -6647,17 +6633,9 @@ msgstr "A través de Tasques"
 msgid "Period"
 msgstr "Període"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Compara amb el període anterior"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Per dia"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "Fa 4 setmanes"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6795,9 +6773,8 @@ msgid "Community project progress is counted nightly."
 msgstr "El progrés dels projectes comunitaris es calcula cada nit."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Els totals d’edició comencen el %(date)s, de manera que els intervals més llargs comencen a mig camí."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Els totals d'edicions i editors comencen el dia en què es van comptabilitzar per primera vegada, de manera que els intervals més llargs poden començar a mig període."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9131,7 +9108,7 @@ msgstr "Des de %(start)s"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s a %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Objectiu: %(percent)s%%"
@@ -9662,13 +9639,6 @@ msgstr "Cap llista coincideix."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Carregant llistes…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s element"
-msgstr[1] "%(count)s elements"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10962,21 +10932,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - cerca"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Editors"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Persones que han canviat un registre de llibre, obra o autor, i aquelles per a qui va ser la primera edició. Les vistes setmanals i mensuals compten cada persona una vegada."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Edicions desades per persones, no per bots: a llibres, obres, autors i altres pàgines, a llistes, i des de la pàgina de Tasques."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Canvis desats per persones, no per bots, a edicions i obres, des de la pàgina de tasques o des de qualsevol altre lloc."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s per editor"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editors"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Persones que han canviat una edició o obra, i aquelles per a qui aquest ha estat el seu primer canvi. Les vistes de setmana i mes compten cada persona una sola vegada."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Editors nous"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Persones el primer canvi de les quals a una edició o obra cau dins del període, independentment d'on el van fer."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "%(share)s dels editors"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11046,35 +11029,6 @@ msgid "Per 4 weeks"
 msgstr "Per 4 setmanes"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Fa una setmana"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Fa una setmana: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "Fa 4 setmanes: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s respecte a fa una setmana"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s respecte a fa 4 setmanes"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s respecte als 7 dies anteriors"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Avui fins ara, actualitzat cada hora"
 
@@ -11110,8 +11064,8 @@ msgid "First edit ever"
 msgstr "Primera edició"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Registres i altres pàgines"
+msgid "Outside Tasks"
+msgstr "Fora de tasques"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -11546,4 +11500,52 @@ msgstr "Els gràfics no s'han pogut carregar. Torneu a carregar la pàgina per t
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "L'ISBN està imprès a la pàgina de drets d'autor i a la contraportada, per sobre del codi de barres; si el llibre té un escaneig, mira-hi primer. Sense el llibre a mà, cerca a WorldCat o Google Books per títol i autor, obre el registre l'editorial, l'any i el format del qual coincideixin amb aquesta edició, i copia l'ISBN que hi indica."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Nom del lot:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Remitent:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Hora d'enviament:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s respecte als 28 dies anteriors"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Compara amb el període anterior"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Els totals d’edició comencen el %(date)s, de manera que els intervals més llargs comencen a mig camí."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Persones que han canviat un registre de llibre, obra o autor, i aquelles per a qui va ser la primera edició. Les vistes setmanals i mensuals compten cada persona una vegada."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Edicions desades per persones, no per bots: a llibres, obres, autors i altres pàgines, a llistes, i des de la pàgina de Tasques."
+
+#~ msgid "A week earlier"
+#~ msgstr "Fa una setmana"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Fa una setmana: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "Fa 4 setmanes: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s respecte a fa una setmana"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s respecte a fa 4 setmanes"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s respecte als 7 dies anteriors"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Registres i altres pàgines"
 
