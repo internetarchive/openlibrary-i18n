@@ -4,13 +4,21 @@ Where [Open Library](https://openlibrary.org)'s translations are maintained.
 
 This repository holds the `.po` translation file for each language, the `messages.pot` template they are built from, translation tooling, and validation tests. Starting with [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070), the Open Library production image copies each `locale/<lang>/messages.po` from here over the matching `openlibrary/i18n/<lang>/messages.po` in the main repository. So **translation changes belong here**: an edit to one of those files in the main repository is overwritten at build. The one exception: a language whose file here fails the build's safety check keeps the main repository's file for that build.
 
-Until [openlibrary#13070](https://github.com/internetarchive/openlibrary/pull/13070) ships, the site still reads the main repository's files, so a change made here reaches openlibrary.org when it ships, not before. That delay is expected, and the change is not lost.
+### How a change here reaches openlibrary.org
+
+1. The main repository's `olbase.yaml` workflow builds the base Docker image every Tuesday at 16:00 UTC, and whenever someone runs it by hand. It resolves this repository's `main` to one commit SHA, so every image architecture gets the same translations.
+2. `docker/Dockerfile.olbase` runs `scripts/i18n-pull-translations.sh` with that SHA. The script installs each language whose file passes the safety check, and records the SHA and each language's result (`installed`, or kept the main repository's file) in `openlibrary/i18n/openlibrary-i18n.txt` inside the image.
+3. Production picks up the new translations at the next deploy built on that image.
+
+So a change merged here goes live after the next base-image build **and** the deploy after it. Usually that is within a week, not immediately. The `olbase` run's log shows which SHA it baked and each language's result.
 
 The default branch is `main`.
 
 ## Language coverage
 
-23 languages: ar, as, bn, cs, de, es, fr, hi, hr, id, it, ja, ko, pl, pt, ro, ru, sc, te, tl, tr, uk, zh.
+27 languages: ar, as, az, bn, ca, cs, de, es, fr, hi, hr, id, it, ja, ko, nl, pl, pt, ro, ru, sc, sq, te, tl, tr, uk, zh.
+
+openlibrary.org also offers Kannada (`kn`) and Marathi (`mr`), but neither repository has a catalog for them, so those pages are in English. See #329.
 
 ## Repository structure
 
