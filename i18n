@@ -271,7 +271,18 @@ def _add_missing_from_pot(catalog, pot) -> int:
     return added
 
 
-def _apply_to_catalog(catalog, translations: dict) -> int:
+def _apply_to_catalog(catalog, translations: dict, errors: list[str] | None = None) -> int:
+    """Write `translations` ({msgid: msgstr}) into `catalog`; return how many applied.
+
+    A plural entry is keyed by its singular msgid and needs a list of exactly
+    `catalog.num_plurals` forms (a bare string is accepted only when there is one
+    form). Anything else is rejected, not guessed at: padding a bare string to two
+    forms left form 2 empty for ru/pl/cs and made babel blank all six ar forms
+    (#319). Rejections are appended to `errors` when it is given.
+    """
+    errors = errors if errors is not None else []
+    nplurals = catalog.num_plurals
+    plural_ids = {msg.id[1]: msg.id[0] for msg in catalog if isinstance(msg.id, tuple)}
     count = 0
     for msg in catalog:
         if not msg.id:
@@ -281,10 +292,25 @@ def _apply_to_catalog(catalog, translations: dict) -> int:
             continue
         val = translations[key]
         if isinstance(msg.id, tuple):
-            msg.string = tuple(val) if isinstance(val, list) else (val, val)
+            if isinstance(val, str) and nplurals == 1:
+                val = [val]
+            if not isinstance(val, list) or len(val) != nplurals:
+                got = f"{len(val)} form(s)" if isinstance(val, list) else "a single string"
+                errors.append(
+                    f"{key!r}: plural entry needs a list of exactly {nplurals} "
+                    f"form(s) (nplurals={nplurals}), got {got}; not applied"
+                )
+                continue
+            msg.string = tuple(str(v) for v in val)
         else:
             msg.string = val if isinstance(val, str) else str(val)
         count += 1
+    for key in translations:
+        if key in plural_ids and key not in catalog:
+            errors.append(
+                f"{key!r} is a msgid_plural; give all forms as one list keyed by "
+                f"the singular msgid {plural_ids[key]!r}; not applied"
+            )
     return count
 
 
@@ -538,9 +564,9 @@ def get_untranslated(lang: str, limit: int | None = None) -> list[dict]:
     return _untranslated_from_catalog(_read_po_with_pot(lang), limit)
 
 
-def apply_translations(lang: str, translations: dict) -> int:
+def apply_translations(lang: str, translations: dict, errors: list[str] | None = None) -> int:
     catalog = _read_po_with_pot(lang)
-    count = _apply_to_catalog(catalog, translations)
+    count = _apply_to_catalog(catalog, translations, errors)
     _write_po(lang, catalog)
     return count
 
@@ -1010,8 +1036,14 @@ def main() -> None:
 
     elif args.cmd == "apply":
         translations = json.loads(Path(args.json_file).read_text(encoding="utf-8"))
-        count = apply_translations(args.lang, translations)
+        errors: list[str] = []
+        count = apply_translations(args.lang, translations, errors)
         print(f"Applied: {count}")
+        if errors:
+            for e in errors:
+                print(f"apply: {e}", file=sys.stderr)
+            print(f"Rejected: {len(errors)}", file=sys.stderr)
+            sys.exit(1)
 
     elif args.cmd == "resolve":
         stats = resolve(args.lang, args.incoming_po, base=args.base)

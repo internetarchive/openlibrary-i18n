@@ -140,6 +140,8 @@ with open('translations.json', 'w', encoding='utf-8') as f:
 ```
 If 0 applied: curly apostrophe mismatch — copy keys exactly from `untranslated` output, do not retype.
 
+If `apply` exits non-zero with `Rejected: N`, it wrote every valid entry but held back the plural entries it lists. Key each plural entry by its **singular** `id` only (never add a separate key for `id_plural`), with a list of exactly `nplurals` forms. A bare string is accepted only when `nplurals` is 1. Fix those entries and apply them again.
+
 **4. Fix:**
 ```bash
 ./i18n fix {lang}
@@ -361,6 +363,7 @@ i18n({lang}): batch {N} — AI translations (claude-sonnet-5)
 | `validate` fails | Clear the bad `msgstr` values, re-run |
 | `test` fails | Fix the failing entry, re-run |
 | `apply` reports 0 | Curly apostrophe mismatch — copy keys exactly from `untranslated` output |
+| `apply` reports `Rejected: N` | Plural entry with the wrong number of forms — give a list of exactly `nplurals`, keyed by the singular `id` |
 | Same failure after 3 attempts | Leave empty, note in PR body, continue |
 | Push rejected | `git pull --rebase`, retry |
 
