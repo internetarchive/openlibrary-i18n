@@ -172,6 +172,13 @@ msgstr "క్యూలో ఇప్పటికే ఉన్నందున క
 msgid "View Batch Status"
 msgstr "బ్యాచ్ స్థితిని చూడండి"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s అంశం"
+msgstr[1] "%(count)s అంశాలు"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "స్థితి:"
@@ -184,29 +191,21 @@ msgstr "అన్నీ"
 msgid "Default sort: date added, newest first."
 msgstr "డిఫాల్ట్ క్రమం: జోడించిన తేదీ, కొత్తవి మొదట."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "పేరు "
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "జోడించిన సమయం"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "స్థితి"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "సమర్పించినవారు"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "వ్యాఖ్యలు"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "జోడించిన సమయం"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "స్థితి"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +215,6 @@ msgstr "బ్యాచ్ #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "అన్ని బ్యాచ్‌లు"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "బ్యాచ్ పేరు:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "సమర్పించినవారు:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "సమర్పించిన సమయం:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +255,10 @@ msgstr "డేటా"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL కీ"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "వ్యాఖ్యలు"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1785,7 +1776,7 @@ msgstr "చదివే ప్రదేశం "
 msgid "My lists"
 msgstr "నా జాబితాలు"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "జాబితాలు"
 
@@ -4510,7 +4501,7 @@ msgstr "దాచబడింది"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "లక్ష్యం చేరుకుంది"
 
@@ -6626,11 +6617,6 @@ msgstr "మెట్రిక్‌లు. చార్ట్ చేయడాన
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s మళ్లీ వచ్చినవారు · %(first_time)s మొదటిసారి"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "గత 28 రోజులతో పోలిస్తే %(change)s"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "పరిధి"
@@ -6647,17 +6633,9 @@ msgstr "పనుల ద్వారా"
 msgid "Period"
 msgstr "కాలవ్యవధి"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "మునుపటి కాలంతో పోల్చండి"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "ఒక్కో రోజుకు"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 వారాల క్రితం"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6795,9 +6773,8 @@ msgid "Community project progress is counted nightly."
 msgstr "సంఘ ప్రాజెక్టుల పురోగతి ప్రతి రాత్రి లెక్కించబడుతుంది."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "సవరణల మొత్తం %(date)s నుండి మొదలవుతుంది, కాబట్టి ఎక్కువ కాలవ్యవధులు మధ్యలో నుండి మొదలవుతాయి."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "సవరణలు మరియు సంపాదకుల మొత్తాలు మొదటిసారి లెక్కించిన రోజు నుండి ప్రారంభమవుతాయి, కాబట్టి ఎక్కువ కాల వ్యవధులు మధ్యలో ఎక్కడో ప్రారంభం కావచ్చు."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9131,7 +9108,7 @@ msgstr "%(start)s నుండి"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s నుండి %(end)s వరకు"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "లక్ష్యం: %(percent)s%%"
@@ -9662,13 +9639,6 @@ msgstr "ఏ జాబితా సరిపోలలేదు."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "జాబితాలు లోడ్ అవుతున్నాయి…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s అంశం"
-msgstr[1] "%(count)s అంశాలు"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10962,21 +10932,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - శోధన"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "సంపాదకులు"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన వ్యక్తులు, మరియు వారికి అది మొట్టమొదటి సవరణ అయిన వారు. వారం మరియు నెల వీక్షణలు ప్రతి వ్యక్తిని ఒకసారి లెక్కిస్తాయి."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "బాట్‌లు కాదు, వ్యక్తులు సేవ్ చేసిన సవరణలు: పుస్తకాలు, రచనలు, రచయితలు మరియు ఇతర పేజీలకు, జాబితాలకు, మరియు పనుల పేజీ నుండి."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "బాట్‌లు కాకుండా వ్యక్తులు సేవ్ చేసిన మార్పులు, ఎడిషన్లు మరియు రచనలకు, పనుల పేజీ నుండి లేదా మరెక్కడి నుండైనా."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s ప్రతి సవరణదారుకు"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "సంపాదకులు"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "ఎడిషన్ లేదా రచనను మార్చిన వ్యక్తులు, మరియు వారికి అదే మొదటి మార్పు అయినవారు. వారం మరియు నెల వీక్షణలు ప్రతి వ్యక్తిని ఒకసారి లెక్కిస్తాయి."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "కొత్త సంపాదకులు"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "ఎడిషన్ లేదా రచనకు వారి మొదటి మార్పు ఈ కాలవ్యవధిలో జరిగిన వ్యక్తులు, వారు దాన్ని ఎక్కడ చేసినా సరే."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "సంపాదకుల్లో %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11046,35 +11029,6 @@ msgid "Per 4 weeks"
 msgstr "ప్రతి 4 వారాలకు"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "ఒక వారం క్రితం"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "ఒక వారం క్రితం: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 వారాల క్రితం: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "ఒక వారం క్రితంతో పోలిస్తే %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "4 వారాల క్రితంతో పోలిస్తే %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "మునుపటి 7 రోజులతో పోలిస్తే %(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "ఈ రోజు ఇప్పటివరకు, గంటకొకసారి నవీకరించబడుతుంది"
 
@@ -11110,8 +11064,8 @@ msgid "First edit ever"
 msgstr "మొట్టమొదటి సవరణ"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "రికార్డులు మరియు ఇతర పేజీలు"
+msgid "Outside Tasks"
+msgstr "పనుల వెలుపల"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12715,4 +12669,52 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN కాపీరైట్ పేజీపై మరియు వెనుక కవర్‌పై, బార్‌కోడ్‌కు పైన ముద్రించబడి ఉంటుంది; పుస్తకానికి స్కాన్ ఉంటే, ముందుగా అక్కడ చూడండి. పుస్తకం చేతిలో లేకుండా, WorldCat లేదా Google Books లో శీర్షిక మరియు రచయిత ద్వారా వెతకండి, ప్రచురణకర్త, సంవత్సరం మరియు ఫార్మాట్ ఈ ఎడిషన్‌తో సరిపోలే రికార్డును తెరిచి, అందులో చూపిన ISBNను కాపీ చేయండి."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "బ్యాచ్ పేరు:"
+
+#~ msgid "Submitter:"
+#~ msgstr "సమర్పించినవారు:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "సమర్పించిన సమయం:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "గత 28 రోజులతో పోలిస్తే %(change)s"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "మునుపటి కాలంతో పోల్చండి"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "సవరణల మొత్తం %(date)s నుండి మొదలవుతుంది, కాబట్టి ఎక్కువ కాలవ్యవధులు మధ్యలో నుండి మొదలవుతాయి."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "పుస్తకం, రచన లేదా రచయిత రికార్డును మార్చిన వ్యక్తులు, మరియు వారికి అది మొట్టమొదటి సవరణ అయిన వారు. వారం మరియు నెల వీక్షణలు ప్రతి వ్యక్తిని ఒకసారి లెక్కిస్తాయి."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "బాట్‌లు కాదు, వ్యక్తులు సేవ్ చేసిన సవరణలు: పుస్తకాలు, రచనలు, రచయితలు మరియు ఇతర పేజీలకు, జాబితాలకు, మరియు పనుల పేజీ నుండి."
+
+#~ msgid "A week earlier"
+#~ msgstr "ఒక వారం క్రితం"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "ఒక వారం క్రితం: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 వారాల క్రితం: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "ఒక వారం క్రితంతో పోలిస్తే %(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "4 వారాల క్రితంతో పోలిస్తే %(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "మునుపటి 7 రోజులతో పోలిస్తే %(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "రికార్డులు మరియు ఇతర పేజీలు"
 
