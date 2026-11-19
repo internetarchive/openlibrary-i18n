@@ -105,7 +105,7 @@ gh pr create \
 
 ## Summary
 AI-translated untranslated strings. Format strings, HTML attributes, and proper nouns
-preserved verbatim. Fuzzy entries skipped.
+preserved verbatim. Fuzzy entries retranslated from the English.
 
 ## Review guidance
 - Format strings (`%(name)s`, `%s`, `{page}`) must match the English source exactly
@@ -345,8 +345,8 @@ but do not rely on it.
 ### Proper nouns — never translate
 Internet Archive, Open Library, Wikidata, Archive.org
 
-### Fuzzy entries — skip entirely
-Do not translate or modify entries marked `#, fuzzy`.
+### Fuzzy entries — translate them from the English
+`./i18n untranslated` lists entries marked `#, fuzzy` along with empty ones, and shows only the English. Translate them like any other entry. Their old text was guessed by matching a *similar-looking* string and is usually wrong, so don't try to reuse it; it isn't shown to you for that reason. `apply` removes the `fuzzy` flag when it writes your translation.
 
 ### Control characters — skip
 If msgid contains `\x08`, `\t`, or other control characters, leave `msgstr` empty.
