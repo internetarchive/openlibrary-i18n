@@ -292,18 +292,21 @@ def _apply_to_catalog(catalog, translations: dict, errors: list[str] | None = No
     `catalog.num_plurals` forms (a bare string is accepted only when there is one
     form). Anything else is rejected, not guessed at: padding a bare string to two
     forms left form 2 empty for ru/pl/cs and made babel blank all six ar forms
-    (#319). Rejections are appended to `errors` when it is given.
+    (#319). A key that matches no msgid is rejected too (#357). Rejections are
+    appended to `errors` when it is given.
     """
     errors = errors if errors is not None else []
     nplurals = catalog.num_plurals
     plural_ids = {msg.id[1]: msg.id[0] for msg in catalog if isinstance(msg.id, tuple)}
     count = 0
+    matched = set()
     for msg in catalog:
         if not msg.id:
             continue
         key = msg.id[0] if isinstance(msg.id, tuple) else msg.id
         if key not in translations:
             continue
+        matched.add(key)
         val = translations[key]
         if isinstance(msg.id, tuple):
             if isinstance(val, str) and nplurals == 1:
@@ -323,11 +326,17 @@ def _apply_to_catalog(catalog, translations: dict, errors: list[str] | None = No
         msg.flags.discard("fuzzy")
         count += 1
     for key in translations:
-        if key in plural_ids and key not in catalog:
+        if key in matched:
+            continue
+        if key in plural_ids:
             errors.append(
                 f"{key!r} is a msgid_plural; give all forms as one list keyed by "
                 f"the singular msgid {plural_ids[key]!r}; not applied"
             )
+        else:
+            # A key that matches no msgid (a typo, doubled quote, or escape slip)
+            # used to vanish silently and leave the entry untranslated (#357).
+            errors.append(f"{key!r} matches no msgid in the catalog; not applied")
     return count
 
 
@@ -431,7 +440,10 @@ def _fix_format_errors(catalog) -> list[str]:
 
     cleared = []
     for msg in catalog:
-        if not msg.id or not msg.string:
+        # An untranslated plural entry is ('', ''), which is truthy: skip it too, or
+        # every never-translated plural entry is reported as cleared (#356).
+        has_text = any(msg.string) if isinstance(msg.string, tuple) else bool(msg.string)
+        if not msg.id or not has_text:
             continue
         if mismatch(msg.id, msg.string) or bad_plural(msg.id, msg.string):
             msgid_str = msg.id[0] if isinstance(msg.id, tuple) else msg.id

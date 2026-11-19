@@ -151,7 +151,12 @@ with open('translations.json', 'w', encoding='utf-8') as f:
 ```
 If 0 applied: curly apostrophe mismatch — copy keys exactly from `untranslated` output, do not retype.
 
-If `apply` exits non-zero with `Rejected: N`, it wrote every valid entry but held back the plural entries it lists. Key each plural entry by its **singular** `id` only (never add a separate key for `id_plural`), with a list of exactly `nplurals` forms. A bare string is accepted only when `nplurals` is 1. Fix those entries and apply them again.
+If `apply` exits non-zero with `Rejected: N`, it wrote every valid entry but held back the ones it lists. Two causes:
+
+- **Plural entry with the wrong shape.** Key each plural entry by its **singular** `id` only (never add a separate key for `id_plural`), with a list of exactly `nplurals` forms. A bare string is accepted only when `nplurals` is 1.
+- **Key matches no msgid.** The key must be the `id` exactly as `untranslated` printed it. A doubled quote (`Don''t`), an escaped character or a trimmed space makes it miss.
+
+Fix those entries and apply them again.
 
 **4. Fix:**
 ```bash
@@ -314,13 +319,18 @@ The workflow handles auto-merge after CI passes.
 
 If you cannot safely preserve all format strings, leave `msgstr` empty.
 
-**Plural forms: which forms need the count placeholder.** A plural entry's
-English looks like `msgid "%(value)s, on 1 edition"` / `msgid_plural
-"%(value)s, on %(count)d editions"`. Whether `msgstr[0]` may keep the literal `1`
-depends on the language's plural rule (the `Plural-Forms` header of its `.po`):
+**Plural forms: which forms need the count placeholder.** `msgstr[0]` always
+keeps every placeholder the **singular** English (`msgid`) has. Most plural
+entries already carry the count there (`msgid "%(count)d work"` / `msgid_plural
+"%(count)d works"`), so `msgstr[0]` keeps `%(count)d` in every language;
+dropping it gets the form cleared by `./i18n fix`. The question below only
+arises for the few entries whose singular has a literal `1` instead, like
+`msgid "%(value)s, on 1 edition"` / `msgid_plural "%(value)s, on %(count)d
+editions"`. Whether `msgstr[0]` may keep that literal `1` depends on the
+language's plural rule (the `Plural-Forms` header of its `.po`):
 
 - **Form 0 is used only for n=1** (rules like `n != 1`, or `n==1 ? 0 : …`):
-  write `msgstr[0]` to match the **singular** English exactly. A literal `1` is
+  write `msgstr[0]` with the same placeholders as the **singular** English. A literal `1` is
   correct, and adding `%(count)d` is wrong: `./i18n fix` clears it as a
   format mismatch. Today that is as, az, bn, ca, cs, de, es, hi, it, kn, mr, nl,
   pl, pt, ro, sc, sq, te, tl, tr.
@@ -374,7 +384,7 @@ i18n({lang}): batch {N} — AI translations (claude-sonnet-5)
 | `validate` fails | Clear the bad `msgstr` values, re-run |
 | `test` fails | Fix the failing entry, re-run |
 | `apply` reports 0 | Curly apostrophe mismatch — copy keys exactly from `untranslated` output |
-| `apply` reports `Rejected: N` | Plural entry with the wrong number of forms — give a list of exactly `nplurals`, keyed by the singular `id` |
+| `apply` reports `Rejected: N` | A plural entry with the wrong number of forms (give a list of exactly `nplurals`, keyed by the singular `id`), or a key that matches no msgid (copy the `id` exactly) |
 | Same failure after 3 attempts | Leave empty, note in PR body, continue |
 | Push rejected | `git pull --rebase`, retry |
 
