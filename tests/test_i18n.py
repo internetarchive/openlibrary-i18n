@@ -1456,3 +1456,36 @@ class TestFuzzyAsUntranslated:
     def test_counts_schedule_fuzzy_work(self):
         po = _po('msgid "A"\nmsgstr "a"', '#, fuzzy\nmsgid "B"\nmsgstr "c"')
         assert _batches_from_counts([_stats_from_catalog(_catalog(po), "de")]) == [["de"]]
+
+
+class TestAgentIssueFixes:
+    """#356: fix ignores never-translated plurals. #357: apply reports unmatched keys."""
+
+    _PO = (
+        'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+        '"Plural-Forms: nplurals=2; plural=(n != 1);\\n"\n\n'
+        'msgid "%(count)d work"\nmsgid_plural "%(count)d works"\nmsgstr[0] ""\nmsgstr[1] ""\n\n'
+        'msgid "Hello"\nmsgstr ""\n'
+    )
+
+    def _catalog(self):
+        from io import BytesIO
+        from babel.messages.pofile import read_po
+        return read_po(BytesIO(self._PO.encode()))
+
+    def test_fix_skips_untranslated_plural(self):
+        catalog = self._catalog()
+        assert _fix_format_errors(catalog) == []
+
+    def test_apply_reports_unmatched_key(self):
+        catalog = self._catalog()
+        errors: list[str] = []
+        count = _apply_to_catalog(catalog, {"Hello": "Hallo", "Helo": "x"}, errors)
+        assert count == 1
+        assert len(errors) == 1 and "'Helo'" in errors[0] and "matches no msgid" in errors[0]
+
+    def test_apply_plural_key_reported_once(self):
+        catalog = self._catalog()
+        errors: list[str] = []
+        _apply_to_catalog(catalog, {"%(count)d works": ["a", "b"]}, errors)
+        assert len(errors) == 1 and "msgid_plural" in errors[0]
