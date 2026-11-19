@@ -172,6 +172,14 @@ msgstr "Не добавлены в очередь, так как уже прис
 msgid "View Batch Status"
 msgstr "Просмотреть статус пакета"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s элемент"
+msgstr[1] "%(count)s элемента"
+msgstr[2] "%(count)s элементов"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Статус:"
@@ -184,29 +192,21 @@ msgstr "Все"
 msgid "Default sort: date added, newest first."
 msgstr "Сортировка по умолчанию: дата добавления, сначала новые."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Имя"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Время добавления"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Статус"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Отправитель"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Комментарии"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Время добавления"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Статус"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +216,6 @@ msgstr "Партия #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Все пакеты"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Название пакета:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Отправитель:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Время отправки:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +256,10 @@ msgstr "Данные"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL Key"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Комментарии"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1798,7 +1790,7 @@ msgstr "Журнал чтения"
 msgid "My lists"
 msgstr "Мои списки"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Списки"
 
@@ -4527,7 +4519,7 @@ msgstr "Скрыт"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Цель достигнута"
 
@@ -6662,11 +6654,6 @@ msgstr "Метрики. Выберите одну, чтобы построить
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s постоянных · %(first_time)s впервые"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s по сравнению с предыдущими 28 днями"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Область"
@@ -6683,17 +6670,9 @@ msgstr "Через Задачи"
 msgid "Period"
 msgstr "Период"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Сравнить с предыдущим периодом"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "За день"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 недели назад"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6831,9 +6810,8 @@ msgid "Community project progress is counted nightly."
 msgstr "Прогресс проектов сообщества подсчитывается каждую ночь."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Подсчёт правок начинается %(date)s, поэтому более длинные периоды начинаются с середины."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Итоги по правкам и редакторам начинаются со дня, когда они были впервые учтены, поэтому более длительные периоды могут начинаться с середины."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9182,7 +9160,7 @@ msgstr "С %(start)s"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s – %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Цель: %(percent)s%%"
@@ -9714,14 +9692,6 @@ msgstr "Нет подходящих списков."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Загрузка списков…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s элемент"
-msgstr[1] "%(count)s элемента"
-msgstr[2] "%(count)s элементов"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -11022,21 +10992,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - поиск"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Редакторы"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Люди, которые изменили запись книги, произведения или автора, а также те, для кого это была самая первая правка. Недельные и месячные представления учитывают каждого человека один раз."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Правки, сохранённые людьми, а не ботами: в книгах, произведениях, авторах и других страницах, в списках и со страницы Задачи."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Изменения, сохранённые людьми, а не ботами, в изданиях и произведениях, со страницы «Задачи» или из любого другого места."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s на редактора"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Редакторы"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Люди, которые изменили издание или произведение, а также те, для кого это было их первое подобное изменение. В представлениях по неделям и месяцам каждый человек учитывается один раз."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Новые редакторы"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Люди, чьё самое первое изменение издания или произведения попадает в этот период, независимо от того, где оно было сделано."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "%(share)s редакторов"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11107,35 +11090,6 @@ msgid "Per 4 weeks"
 msgstr "За 4 недели"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Неделю назад"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Неделю назад: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 недели назад: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s по сравнению с неделей назад"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s по сравнению с 4 неделями назад"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s по сравнению с предыдущими 7 днями"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Сегодня (пока), обновляется ежечасно"
 
@@ -11171,8 +11125,8 @@ msgid "First edit ever"
 msgstr "Самая первая правка"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Записи и другие страницы"
+msgid "Outside Tasks"
+msgstr "Вне «Задач»"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -13378,4 +13332,52 @@ msgstr "Не удалось загрузить графики. Перезагр�
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN напечатан на странице с копирайтом и на задней обложке, над штрихкодом; если у книги есть скан, посмотрите сначала там. Без книги под рукой найдите на WorldCat или Google Books по названию и автору, откройте запись, у которой издатель, год и формат совпадают с этим изданием, и скопируйте указанный там ISBN."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Название пакета:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Отправитель:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Время отправки:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s по сравнению с предыдущими 28 днями"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Сравнить с предыдущим периодом"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Подсчёт правок начинается %(date)s, поэтому более длинные периоды начинаются с середины."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Люди, которые изменили запись книги, произведения или автора, а также те, для кого это была самая первая правка. Недельные и месячные представления учитывают каждого человека один раз."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Правки, сохранённые людьми, а не ботами: в книгах, произведениях, авторах и других страницах, в списках и со страницы Задачи."
+
+#~ msgid "A week earlier"
+#~ msgstr "Неделю назад"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Неделю назад: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 недели назад: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s по сравнению с неделей назад"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s по сравнению с 4 неделями назад"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s по сравнению с предыдущими 7 днями"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Записи и другие страницы"
 
