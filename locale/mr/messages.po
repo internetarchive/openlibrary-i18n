@@ -171,6 +171,13 @@ msgstr "रांगेत आधीपासून असल्यामुळ�
 msgid "View Batch Status"
 msgstr "बॅच स्थिती पहा"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s आयटम"
+msgstr[1] "%(count)s आयटम"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "स्थिती:"
@@ -183,29 +190,21 @@ msgstr "सर्व"
 msgid "Default sort: date added, newest first."
 msgstr "डीफॉल्ट क्रम: जोडलेली तारीख, नवीनतम प्रथम."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "नाव"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "जोडलेली वेळ"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "स्थिती"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "सादरकर्ता"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "टिप्पण्या"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "जोडलेली वेळ"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "स्थिती"
 
 #: batch_import_view.html
 #, python-format
@@ -215,18 +214,6 @@ msgstr "बॅच #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "सर्व बॅचेस"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "बॅच नाव:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "सादरकर्ता:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "सादर करण्याची वेळ:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -267,6 +254,10 @@ msgstr "डेटा"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL की"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "टिप्पण्या"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1784,7 +1775,7 @@ msgstr "वाचन नोंद"
 msgid "My lists"
 msgstr "माझ्या याद्या"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "याद्या"
 
@@ -4509,7 +4500,7 @@ msgstr "लपवलेले"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "उद्दिष्ट गाठले"
 
@@ -6625,11 +6616,6 @@ msgstr "मेट्रिक्स. तक्त्यात दाखवण्
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s परतणारे · %(first_time)s प्रथमच"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "मागील 28 दिवसांच्या तुलनेत %(change)s"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "व्याप्ती"
@@ -6646,17 +6632,9 @@ msgstr "कार्यांद्वारे"
 msgid "Period"
 msgstr "कालावधी"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "मागील कालावधीशी तुलना करा"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "दर दिवशी"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 आठवडे आधी"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6794,9 +6772,8 @@ msgid "Community project progress is counted nightly."
 msgstr "समुदाय प्रकल्प प्रगती रात्री मोजली जाते."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "संपादन एकूण %(date)s पासून सुरू होते, त्यामुळे मोठ्या श्रेणी मध्येच सुरू होतात."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "संपादन आणि संपादकांची एकूण संख्या ज्या दिवशी प्रथम मोजली गेली त्या दिवसापासून सुरू होते, त्यामुळे दीर्घ कालावधी मध्येच कुठेतरी सुरू होऊ शकतो."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9130,7 +9107,7 @@ msgstr "%(start)s पासून"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s ते %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "उद्दिष्ट: %(percent)s%%"
@@ -9661,13 +9638,6 @@ msgstr "कोणत्याही याद्या जुळत नाही
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "याद्या लोड करत आहे…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s आयटम"
-msgstr[1] "%(count)s आयटम"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10961,21 +10931,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - शोध"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "संपादक"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "पुस्तक, कृती किंवा लेखक नोंद बदलणारे लोक, आणि ज्यांचे ते पहिलेच संपादन होते असे लोक. आठवडा आणि महिना दृश्ये प्रत्येक व्यक्तीला एकदाच मोजतात."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "बॉट्स नव्हे तर लोकांद्वारे जतन केलेली संपादने: पुस्तके, कृती, लेखक आणि इतर पृष्ठांना, याद्यांना, आणि कार्ये पृष्ठावरून."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "बॉट्सनी नव्हे तर व्यक्तींनी आवृत्त्या आणि कृतींमध्ये जतन केलेले बदल, टास्क पानावरून किंवा इतर कोठूनही."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ प्रति संपादक %(count)s"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "संपादक"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "ज्या व्यक्तींनी आवृत्ती किंवा कृती बदलली, आणि ज्यांच्यासाठी हा त्यांचा पहिलाच असा बदल होता. आठवडा आणि महिना दृश्ये प्रत्येक व्यक्तीला एकदाच मोजतात."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "नवीन संपादक"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "ज्या व्यक्तींचा आवृत्ती किंवा कृतीमधील पहिला बदल या कालावधीत येतो, तो त्यांनी कुठेही केला असला तरी."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "संपादकांपैकी %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11045,35 +11028,6 @@ msgid "Per 4 weeks"
 msgstr "दर 4 आठवड्यांनी"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "एक आठवडा आधी"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "एक आठवडा आधी: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 आठवडे आधी: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "एक आठवडा आधीच्या तुलनेत %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "4 आठवडे आधीच्या तुलनेत %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "मागील 7 दिवसांच्या तुलनेत %(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "आजपर्यंत, दर तासाला अद्ययावत"
 
@@ -11109,8 +11063,8 @@ msgid "First edit ever"
 msgstr "पहिले संपादन"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "नोंदी आणि इतर पृष्ठे"
+msgid "Outside Tasks"
+msgstr "टास्कच्या बाहेर"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -11120,4 +11074,55 @@ msgstr "एकूण: %(count)s"
 #: openlibrary/views/loanstats.py
 msgid "The charts couldn't load. Reload the page to try again."
 msgstr "तक्ते लोड होऊ शकले नाहीत. पुन्हा प्रयत्न करण्यासाठी पृष्ठ पुन्हा लोड करा."
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "बॅच नाव:"
+
+#~ msgid "Submitter:"
+#~ msgstr "सादरकर्ता:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "सादर करण्याची वेळ:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "मागील 28 दिवसांच्या तुलनेत %(change)s"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "मागील कालावधीशी तुलना करा"
+
+#~ msgid "4 weeks earlier"
+#~ msgstr "4 आठवडे आधी"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "संपादन एकूण %(date)s पासून सुरू होते, त्यामुळे मोठ्या श्रेणी मध्येच सुरू होतात."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "पुस्तक, कृती किंवा लेखक नोंद बदलणारे लोक, आणि ज्यांचे ते पहिलेच संपादन होते असे लोक. आठवडा आणि महिना दृश्ये प्रत्येक व्यक्तीला एकदाच मोजतात."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "बॉट्स नव्हे तर लोकांद्वारे जतन केलेली संपादने: पुस्तके, कृती, लेखक आणि इतर पृष्ठांना, याद्यांना, आणि कार्ये पृष्ठावरून."
+
+#~ msgid "A week earlier"
+#~ msgstr "एक आठवडा आधी"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "एक आठवडा आधी: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 आठवडे आधी: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "एक आठवडा आधीच्या तुलनेत %(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "4 आठवडे आधीच्या तुलनेत %(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "मागील 7 दिवसांच्या तुलनेत %(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "नोंदी आणि इतर पृष्ठे"
 
