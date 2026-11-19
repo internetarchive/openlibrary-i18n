@@ -171,6 +171,12 @@ msgstr "이미 대기열에 있어 추가되지 않음:"
 msgid "View Batch Status"
 msgstr "일괄 상태 보기"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s개 항목"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "상태:"
@@ -183,29 +189,21 @@ msgstr "전체"
 msgid "Default sort: date added, newest first."
 msgstr "기본 정렬: 추가 날짜, 최신순."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "일괄 ID"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "이름"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "추가 시간"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "상태"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "제출자"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "댓글"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "추가 시간"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "상태"
 
 #: batch_import_view.html
 #, python-format
@@ -215,18 +213,6 @@ msgstr "배치 #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "전체 일괄 작업"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "일괄 이름:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "제출자:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "제출 시간:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -267,6 +253,10 @@ msgstr "데이터"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL 키"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "댓글"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1771,7 +1761,7 @@ msgstr "독서 기록"
 msgid "My lists"
 msgstr "내 리스트"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "리스트"
 
@@ -4492,7 +4482,7 @@ msgstr "숨김"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "목표 달성"
 
@@ -6589,11 +6579,6 @@ msgstr "지표. 차트로 표시할 항목을 선택하세요."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "재방문 %(returning)s명 · 최초 %(first_time)s명"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "이전 28일 대비 %(change)s"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "범위"
@@ -6610,17 +6595,9 @@ msgstr "작업을 통한"
 msgid "Period"
 msgstr "기간"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "이전 기간과 비교"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "일별"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4주 전"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6758,9 +6735,8 @@ msgid "Community project progress is counted nightly."
 msgstr "커뮤니티 프로젝트의 진행 상황은 매일 밤 집계됩니다."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "편집 합계는 %(date)s부터 시작되므로, 더 긴 기간은 중간부터 시작됩니다."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "편집 및 편집자 총계는 처음 집계된 날짜부터 시작되므로, 더 긴 기간은 중간부터 시작될 수 있습니다."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9079,7 +9055,7 @@ msgstr "%(start)s부터"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s부터 %(end)s까지"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "목표: %(percent)s%%"
@@ -9609,12 +9585,6 @@ msgstr "일치하는 리스트가 없습니다."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "리스트 불러오는 중…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s개 항목"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10901,21 +10871,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - 검색"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "편집자"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "책, 작품 또는 저자 레코드를 변경한 사람, 그리고 그것이 생애 첫 편집이었던 사람. 주간 및 월간 보기에서는 각 사람을 한 번만 집계합니다."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "봇이 아닌 사람이 저장한 편집: 책, 작품, 저자 및 기타 페이지, 목록, 그리고 작업 페이지에서의 편집."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "봇이 아닌 사람이 작업 페이지 또는 다른 곳에서 판과 저작물에 저장한 변경 사항입니다."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "편집자당 약 %(count)s건"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "편집자"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "판이나 저작물을 변경한 사람, 그리고 그것이 그들의 첫 번째 변경이었던 사람들입니다. 주간 및 월간 보기에서는 각 사람을 한 번만 집계합니다."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "신규 편집자"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "판이나 저작물에 대한 첫 번째 변경이 이 기간에 해당하는 사람들로, 어디에서 변경했는지는 상관없습니다."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "편집자의 %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -10984,35 +10967,6 @@ msgid "Per 4 weeks"
 msgstr "4주별"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "1주 전"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "1주 전: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4주 전: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "1주 전 대비 %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "4주 전 대비 %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "이전 7일 대비 %(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "오늘 현재까지, 매시간 갱신"
 
@@ -11048,8 +11002,8 @@ msgid "First edit ever"
 msgstr "생애 첫 편집"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "레코드 및 기타 페이지"
+msgid "Outside Tasks"
+msgstr "작업 외부"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12538,4 +12492,52 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN은 판권 페이지와 뒤표지의 바코드 위에 인쇄되어 있습니다. 책에 스캔이 있다면 먼저 그곳을 확인하세요. 책이 수중에 없다면 WorldCat이나 Google Books에서 제목과 저자로 검색하여 출판사, 연도, 형태가 이 판과 일치하는 레코드를 열고, 거기에 표시된 ISBN을 복사하세요."
+
+#~ msgid "batch_id"
+#~ msgstr "일괄 ID"
+
+#~ msgid "Batch Name:"
+#~ msgstr "일괄 이름:"
+
+#~ msgid "Submitter:"
+#~ msgstr "제출자:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "제출 시간:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "이전 28일 대비 %(change)s"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "이전 기간과 비교"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "편집 합계는 %(date)s부터 시작되므로, 더 긴 기간은 중간부터 시작됩니다."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "책, 작품 또는 저자 레코드를 변경한 사람, 그리고 그것이 생애 첫 편집이었던 사람. 주간 및 월간 보기에서는 각 사람을 한 번만 집계합니다."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "봇이 아닌 사람이 저장한 편집: 책, 작품, 저자 및 기타 페이지, 목록, 그리고 작업 페이지에서의 편집."
+
+#~ msgid "A week earlier"
+#~ msgstr "1주 전"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "1주 전: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4주 전: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "1주 전 대비 %(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "4주 전 대비 %(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "이전 7일 대비 %(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "레코드 및 기타 페이지"
 
