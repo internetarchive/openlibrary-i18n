@@ -125,14 +125,16 @@ def extract(base: str | None, lang: str | None, limit: int) -> dict:
     else:
         entries = all_entries(_read_po((LOCALE_DIR / lang / "messages.po").read_bytes()), lang)
     chosen = sample(entries, limit)
-    return {"total": len(entries), "checked": len(chosen), "entries": chosen}
+    return {"mode": "pr" if base is not None else "sweep",
+            "total": len(entries), "checked": len(chosen), "entries": chosen}
 
 
 def write_entries(doc: dict, out: Path) -> None:
     """One entry per line, so the agent can read the file in chunks by line."""
     lines = ",\n".join(json.dumps(e, ensure_ascii=False) for e in doc["entries"])
+    mode = json.dumps(doc.get("mode", "pr"))
     out.write_text(
-        f'{{"total": {doc["total"]}, "checked": {doc["checked"]}, "entries": [\n{lines}\n]}}\n',
+        f'{{"mode": {mode}, "total": {doc["total"]}, "checked": {doc["checked"]}, "entries": [\n{lines}\n]}}\n',
         encoding="utf-8",
     )
 
@@ -173,15 +175,16 @@ def load_findings(path: Path, entries: list[dict]) -> list[dict] | None:
 
 def render(doc: dict, findings: list[dict] | None) -> str:
     checked, total = doc["checked"], doc["total"]
-    scope = f"{checked} of {total}" if checked < total else f"all {total}"
+    what = "existing translations" if doc.get("mode") == "sweep" else "new or changed translations"
+    scope = (f"{checked} of {total}" if checked < total else f"all {total}") + f" {what}"
     head = "### Meaning check (report-only)\n\n"
     if findings is None:
-        return head + (f"The meaning check did not finish, so the {scope} new or changed "
-                       "translations were not checked. This does not block the PR.\n")
+        return head + (f"The meaning check did not finish, so the {scope} "
+                       "were not checked. This does not block the PR.\n")
     if not findings:
-        return head + f"Checked {scope} new or changed translations. None look wrong.\n"
+        return head + f"Checked {scope}. None look wrong.\n"
     lines = [
-        head + f"Checked {scope} new or changed translations. "
+        head + f"Checked {scope}. "
         f"**{len(findings)} may not mean what the English says.** "
         "A model flagged these; it can be wrong, especially for short strings. "
         "This does not block the PR.\n",

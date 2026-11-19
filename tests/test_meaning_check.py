@@ -83,7 +83,7 @@ class TestAllAndSample:
 
 class TestWriteEntries:
     def test_one_entry_per_line_and_valid_json(self, tmp_path):
-        doc = {"total": 3, "checked": 2, "entries": [{"key": "de:1", "msgid": "a|b"}, {"key": "de:2", "msgid": "ü"}]}
+        doc = {"mode": "pr", "total": 3, "checked": 2, "entries": [{"key": "de:1", "msgid": "a|b"}, {"key": "de:2", "msgid": "ü"}]}
         out = tmp_path / "e.json"
         mc.write_entries(doc, out)
         assert json.loads(out.read_text(encoding="utf-8")) == doc
@@ -137,7 +137,11 @@ class TestRender:
         assert "did not finish" in mc.render(DOC, None)
 
     def test_sampled_scope(self):
-        assert "Checked 2 of 9" in mc.render({"total": 9, "checked": 2, "entries": ENTRIES}, [])
+        assert "Checked 2 of 9 new or changed translations" in mc.render({"total": 9, "checked": 2, "entries": ENTRIES}, [])
+
+    def test_sweep_says_existing(self):
+        doc = {"mode": "sweep", "total": 9, "checked": 2, "entries": ENTRIES}
+        assert "Checked 2 of 9 existing translations" in mc.render(doc, [])
 
     def test_untrusted_text_is_escaped(self):
         nasty = {"key": "de:1", "lang": "de", "msgid": "a|b", "translation": "<script>x</script> @someone `cmd`\nnewline"}
