@@ -172,6 +172,12 @@ msgstr "未加入队列，因为它们已在队列中："
 msgid "View Batch Status"
 msgstr "查看批次状态"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s项"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "状态:"
@@ -184,29 +190,21 @@ msgstr "全部"
 msgid "Default sort: date added, newest first."
 msgstr "默认排序：添加日期，最新优先。"
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "批次ID"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "名字"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "添加时间"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "状态"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "提交者"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "评论"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "添加时间"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "状态"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +214,6 @@ msgstr "批次 #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "所有批次"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "批次名称："
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "提交者："
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "提交时间："
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +254,10 @@ msgstr "数据"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OL键值"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "评论"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1772,7 +1762,7 @@ msgstr "阅读日志"
 msgid "My lists"
 msgstr "我的清单"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "清单"
 
@@ -4493,7 +4483,7 @@ msgstr "已隐藏"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "已达成目标"
 
@@ -6590,11 +6580,6 @@ msgstr "指标。选择一项以绘制图表。"
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s 名回访 · %(first_time)s 名首次"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s（较之前28天）"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "范围"
@@ -6611,17 +6596,9 @@ msgstr "通过任务"
 msgid "Period"
 msgstr "时间段"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "与上一时段比较"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "每天"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 周前"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6759,9 +6736,8 @@ msgid "Community project progress is counted nightly."
 msgstr "社区项目的进度每晚统计一次。"
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "编辑总数从 %(date)s 开始统计，因此较长的时间范围会从中途开始。"
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "编辑和编辑者的总数从首次计入的那天开始统计，因此较长的时间范围可能会从中途开始。"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9080,7 +9056,7 @@ msgstr "自 %(start)s 起"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s 至 %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "目标:%(percent)s%%"
@@ -9610,12 +9586,6 @@ msgstr "没有匹配的清单。"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "正在加载清单…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s项"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10902,21 +10872,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - 搜索"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "编辑者"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "更改过书目、作品或作者记录的人，以及那些首次进行编辑的人。周视图和月视图中每人只统计一次。"
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "由真人（而非机器人）保存的编辑：针对书目、作品、作者及其他页面，针对列表，以及来自任务页面的编辑。"
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "由人（而非机器人）保存到版本和作品的更改，来自任务页面或其他任何地方。"
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "约每位编辑者 %(count)s 次"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "编辑者"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "更改了版本或作品的人，以及这是他们有史以来第一次此类更改的人。按周和按月查看时，每个人只计算一次。"
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "新编辑者"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "对版本或作品的首次更改落在此时间段内的人，无论他们在何处进行了该更改。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "编辑者中的 %(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -10985,35 +10968,6 @@ msgid "Per 4 weeks"
 msgstr "每4周"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "一周前"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "一周前：%(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 周前：%(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "相比一周前 %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "相比 4 周前 %(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "相比过去 7 天 %(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "今日至今，每小时更新"
 
@@ -11049,8 +11003,8 @@ msgid "First edit ever"
 msgstr "首次编辑"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "记录及其他页面"
+msgid "Outside Tasks"
+msgstr "任务之外"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12328,7 +12282,7 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 #~ msgstr "最新"
 
 #~ msgid "4 weeks earlier"
-#~ msgstr "4周前"
+#~ msgstr "4 周前"
 
 #~ msgid "Last 90 days"
 #~ msgstr "过去90天"
@@ -12762,4 +12716,52 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN 印在版权页和封底条形码上方；如果这本书有扫描件，请先看那里。如果手头没有这本书，可以按书名和作者在 WorldCat 或 Google Books 中搜索，打开出版社、年份和版式与此版本相符的记录，并复制其中列出的 ISBN。"
+
+#~ msgid "batch_id"
+#~ msgstr "批次ID"
+
+#~ msgid "Batch Name:"
+#~ msgstr "批次名称："
+
+#~ msgid "Submitter:"
+#~ msgstr "提交者："
+
+#~ msgid "Submit Time:"
+#~ msgstr "提交时间："
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s（较之前28天）"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "与上一时段比较"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "编辑总数从 %(date)s 开始统计，因此较长的时间范围会从中途开始。"
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "更改过书目、作品或作者记录的人，以及那些首次进行编辑的人。周视图和月视图中每人只统计一次。"
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "由真人（而非机器人）保存的编辑：针对书目、作品、作者及其他页面，针对列表，以及来自任务页面的编辑。"
+
+#~ msgid "A week earlier"
+#~ msgstr "一周前"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "一周前：%(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 周前：%(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "相比一周前 %(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "相比 4 周前 %(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "相比过去 7 天 %(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "记录及其他页面"
 
