@@ -1,10 +1,22 @@
 name: Weblate translation review
 
-# Patron/contributor translation PRs get an agentic abuse review and, if they pass
-# every mechanical gate, are auto-healed and landed hands-free. The whole point is
-# that a legitimate translation PR never sits: if it conflicts, we resolve it; if it
-# would regress a live translation or fail a deploy check, we repair it; then we land
-# it and close the PR. Split into two jobs on purpose:
+# Translation PRs from people (Weblate's sync PR, contributor forks, staff branches)
+# get an agentic abuse review, posted as a PR comment.
+#
+# Only Weblate's own sync PR -- head branch `weblate` in THIS repo -- is then
+# auto-healed and landed hands-free. Weblate must not wait: while its PR sits open
+# and main moves on, its next pull conflicts and translators are blocked (#291).
+# If it conflicts, we resolve it; if it would regress a live translation or fail a
+# deploy check, we repair it; then we land it and close the PR.
+#
+# Every other translation PR (a fork, or a branch pushed by staff) gets the review
+# comment and the normal CI checks, and then waits for a maintainer to merge it.
+# Landing those automatically merged staff work before anyone reviewed it (#325),
+# silently undid PRs that clear bad text (resolve never removes a translation, #311),
+# and let unreviewed text from anyone with a fork reach production. Fork PRs are rare
+# enough that waiting for a human costs little.
+#
+# Split into two jobs on purpose:
 #
 #   review   runs the agent with READ-ONLY permissions. The translation diff is
 #            attacker-controllable, so a prompt-injected agent must have no power to
@@ -14,8 +26,8 @@ name: Weblate translation review
 #   enforce  runs NO agent. It performs every privileged action deterministically,
 #            and it NEVER checks out or executes the PR head -- it reads the head's
 #            .po files as DATA (git show) and runs only this repo's own ./i18n
-#            toolbox from the trusted base checkout. It lands content only when ALL
-#            of these pass:
+#            toolbox from the trusted base checkout. For the Weblate sync PR only,
+#            it lands content when ALL of these pass:
 #              1. the diff is translation-only          (scripts/weblate_review_guard.py)
 #              2. the agent did NOT return "reject"     (scripts/weblate_review_guard.py)
 #                 -- the agent is an ABUSE FILTER, not the merge gate. "safe" and a
@@ -55,11 +67,12 @@ concurrency:
 
 jobs:
   review:
-    # Translation PRs that need the untrusted-contributor gate: the recurring
-    # Weblate sync branch, OR any PR NOT authored by openlibrary-bot (a contributor
-    # fork, or a staff member pushing a translation branch). The bot's own i18n/ai-*
-    # batches are excluded -- they have their own gate in translate.yml/reconcile.yml.
-    # Skip PRs labelled `no-automation` so maintainers can merge them by hand.
+    # Translation PRs that get the abuse review: the recurring Weblate sync branch,
+    # OR any PR NOT authored by openlibrary-bot (a contributor fork, or a staff
+    # member pushing a translation branch). The bot's own i18n/ai-* batches are
+    # excluded -- they have their own gate in translate.yml/reconcile.yml.
+    # Skip PRs labelled `no-automation` entirely (no review comment either).
+    # Only the Weblate sync PR is landed automatically; see AUTO_LAND below.
     if: >-
       !contains(github.event.pull_request.labels.*.name, 'no-automation') &&
       (github.head_ref == 'weblate' ||
@@ -131,6 +144,9 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       BASE_REF: ${{ github.base_ref }}
       PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+      # Land automatically ONLY Weblate's sync PR: branch `weblate` in this repo.
+      # The repo check matters: a fork can name its branch `weblate` too.
+      AUTO_LAND: ${{ github.head_ref == 'weblate' && github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
       # BASE checkout (trusted code). The PR head is fetched as data below, never
       # checked out -- so secrets are never exposed to fork-provided code.
@@ -182,19 +198,23 @@ jobs:
           for it in issues[:10]:
               if isinstance(it, dict):
                   lines.append(f"- `{it.get('lang','?')}` {it.get('msgid','')}: {it.get('problem','')}")
-          if verdict != "safe":
+          if os.environ.get("AUTO_LAND") != "true":
+              lines += ["", "_Only Weblate's sync PR is merged automatically. A maintainer will review and merge this one._"]
+          elif verdict != "safe":
               lines += ["", "_This PR stays open for human review until the issues above are resolved._"]
           body = "\n".join(l for l in lines if l is not None)
           subprocess.run(["gh", "pr", "comment", os.environ["PR"], "--body", body], check=False)
           PY
 
       - name: Enforce verdict + blast-radius gate
+        if: env.AUTO_LAND == 'true'
         run: |
           python scripts/weblate_review_guard.py \
             --verdict-file review-verdict.json \
             --changed-files changed-files.txt
 
       - name: Auto-heal (resolve + de-regress), gate deploy-clean, then land + close
+        if: env.AUTO_LAND == 'true'
         run: |
           set -euo pipefail
           # The guard (translation-only + the agent did not reject) has passed; the

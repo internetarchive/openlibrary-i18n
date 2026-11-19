@@ -61,7 +61,8 @@ files — `locale/<lang>/messages.po` on `openlibrary-i18n`. The rule that keeps
 them from fighting:
 
 > **Weblate commits to branches OUTSIDE the `i18n/` namespace — prefix `weblate`
-> — and never writes `main` directly. It opens PRs for human review.**
+> — and never writes `main` directly. It opens a PR from the `weblate` branch, which
+> `weblate-review.yml` reviews for abuse and then lands automatically.**
 
 This is not a style preference; it is forced by two mechanisms in the live
 pipeline. Both were re-confirmed against `translate.yml` and
@@ -103,9 +104,17 @@ So a handful of open Weblate PRs under `i18n/*` would **silently pause daily
 translation** for everyone.
 
 **`weblate` / `weblate/<lang>` avoids both:** it doesn't match `i18n/ai-` (never
-auto-merged) and doesn't match `i18n/` (never counted), it only ever reaches `main`
-through a human-reviewed PR, and — because it's a distinct namespace — the two
-systems' branches never collide.
+picked up by the AI run's merge step) and doesn't match `i18n/` (never counted), and —
+because it's a distinct namespace — the two systems' branches never collide.
+
+It reaches `main` through `weblate-review.yml`, which lands **only** the PR from the
+branch named exactly `weblate` in this repository (not a fork's branch of that name):
+an abuse review, a translation-only file check, `resolve` + `fix` + `de-regress`, then
+validate, PO tests, `check-scope` and bake-regression, all in the job. No person
+reviews it on GitHub, because Weblate gets stuck if its PR sits open while `main`
+moves on (#291). A `weblate/<lang>` branch is **not** landed automatically; it waits
+for a maintainer like any other PR. Every other translation PR (forks, staff branches)
+also gets the review comment and waits for a maintainer.
 
 ### Coexistence over time
 
@@ -117,8 +126,10 @@ systems' branches never collide.
   push webhook). Note: `translate.yml` merges with `github.token`, and pushes made
   with that token **start no workflows**, so Weblate cannot rely on a push event to
   learn about AI merges — it must poll/update on a schedule.
-- **Genuine same-msgid conflicts are adjudicated by the human reviewing the Weblate
-  PR** — which is exactly the right place for human-over-AI precedence.
+- **Genuine same-msgid conflicts are resolved by `./i18n resolve` when the Weblate PR
+  lands**: Weblate's translation of a msgid replaces `main`'s, and a translation that
+  Weblate leaves empty never clears `main`'s, so human work takes precedence over the
+  AI's without anything live being lost.
 
 ---
 
