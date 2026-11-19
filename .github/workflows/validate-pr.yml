@@ -60,7 +60,16 @@ jobs:
             python -m pytest tests/test_po_files.py -q
           else
             echo "Testing languages: $LANGS"
-            python -m pytest tests/test_po_files.py --locale "$LANGS" -q
+            # Exit 5 = no tests collected: these tests run once per translated entry,
+            # so a language with none yet (a new, empty catalog, #329) has nothing
+            # to check. That is a pass, not a failure.
+            rc=0
+            python -m pytest tests/test_po_files.py --locale "$LANGS" -q || rc=$?
+            if [ "$rc" -eq 5 ]; then
+              echo "No translated entries to test in: $LANGS"
+            elif [ "$rc" -ne 0 ]; then
+              exit "$rc"
+            fi
           fi
 
       # Every locale, not the changed-languages list: plural and placeholder
