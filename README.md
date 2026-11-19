@@ -41,10 +41,23 @@ openlibrary-i18n/
 2. When that file changes on `master`, the main repository's `trigger-i18n.yml` sends a `repository_dispatch` event here. `sync-pot.yml` then commits the new `messages.pot` straight to `main`.
 3. `translate.yml` runs on that event (or on a manual `workflow_dispatch`; it has no schedule). It downloads the new `messages.pot` and groups the languages that have untranslated strings into batches. Each batch then runs an AI translation step on a clean checkout of `main`, following `i18n-translation-instructions.md`. The fresh `messages.pot` is passed to that step outside the checkout, through the `I18N_POT` environment variable. The step syncs only its own languages from it, fills untranslated strings and opens one PR per batch. The workflow then merges those PRs itself.
 4. `validate-pr.yml` runs `tests/test_po_files.py` and the format-string validators on PRs that touch `locale/` or `messages.pot`, and reports the result on the PR. It is meant to check only the languages a PR changes, but today it checks every locale: changed-language detection fails in the shallow checkout (`no merge base`), and both steps fall back to the full suite. See #106, which also covers a second bug that the fallback currently hides. **`main` has no branch protection, so a failing check does not prevent a merge.** Review is what catches a bad translation.
+5. `weblate-review.yml` runs on every translation PR from a person: Weblate's sync PR, a contributor's fork, or a staff branch. An AI agent scans the diff for abuse (spam, offensive text, prompt injection, broken placeholders) and posts its verdict as a PR comment. It is not a quality review. Only Weblate's sync PR is then merged automatically; see below.
+
+## What merges automatically
+
+`main` has no branch protection, so the workflows below are what decide whether a PR lands without a person.
+
+| PR | Where it comes from | Merged by | Human review |
+|---|---|---|---|
+| `i18n/ai-*` | `translate.yml`'s AI translation run | `translate.yml` right after the run, or `reconcile.yml` every 6 hours, once the `validate` and "Verify translations deploy cleanly" checks pass | None |
+| `weblate` (branch in this repo) | Weblate pushing its translators' work | `weblate-review.yml`, after the abuse review, a translation-only file check, and its own repair and deploy checks. Weblate gets stuck if its PR sits open, so it is never left waiting for a person | None on GitHub |
+| Anything else that touches `locale/` (forks, staff branches) | People | A maintainer | **Yes**: the bot only posts its abuse-review comment |
+
+A PR labelled `no-automation` when it is opened skips `weblate-review.yml` entirely, with no review comment either. A label added later doesn't stop a run already under way.
 
 ## Contributing translations
 
-To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. Before you do, run the checks locally (Python with `babel` and `pytest`):
+To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. A bot posts an automated abuse-review comment, and then a maintainer reviews and merges your PR. If you translate on Weblate instead, your work reaches `main` through Weblate's own sync PR. Before you open a PR, run the checks locally (Python with `babel` and `pytest`):
 
 ```sh
 ./i18n validate <lang>   # %-style placeholders such as %(name)s must match the English
