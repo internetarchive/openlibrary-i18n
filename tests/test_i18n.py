@@ -1316,3 +1316,82 @@ class TestPartialPlurals:
         cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
         _apply_to_catalog(cat, {"%(n)d book": ["%(n)d kniga", "%(n)d knigi"]})
         assert [e["id"] for e in _untranslated_from_catalog(cat)] == ["%(n)d book"]
+
+
+_AR_HEADER = (
+    b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n'
+    b'"Language: ar\\n"\n'
+    b'"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : '
+    b'n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\\n"\n\n'
+)
+_PLURAL_EMPTY = (
+    b'msgid "And 1 more."\nmsgid_plural "And %(count)d more."\n'
+    b'msgstr[0] ""\nmsgstr[1] ""\n'
+)
+
+
+class TestApplyPluralForms:
+    """#319: apply must not guess plural forms from a bare string or a list of
+    the wrong length -- it rejects them so the agent notices."""
+
+    def test_bare_string_rejected_for_six_form_locale(self):
+        cat = _catalog(_AR_HEADER + _PLURAL_EMPTY)
+        errors: list[str] = []
+        assert _apply_to_catalog(cat, {"And 1 more.": "X"}, errors) == 0
+        assert len(errors) == 1 and "exactly 6" in errors[0]
+        assert [e["id"] for e in _untranslated_from_catalog(cat)] == ["And 1 more."]
+
+    def test_six_forms_applied_for_ar(self):
+        cat = _catalog(_AR_HEADER + _PLURAL_EMPTY)
+        forms = [f"f{i} %(count)d" for i in range(6)]
+        errors: list[str] = []
+        assert _apply_to_catalog(cat, {"And 1 more.": forms}, errors) == 1
+        assert errors == []
+        assert cat["And 1 more."].string == tuple(forms)
+        assert _untranslated_from_catalog(cat) == []
+
+    def test_bare_string_rejected_for_three_form_locale(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        errors: list[str] = []
+        assert _apply_to_catalog(cat, {"%(n)d book": "%(n)d kniga"}, errors) == 0
+        assert "a single string" in errors[0]
+        assert cat["%(n)d book"].string == ("%(n)d kniga", "%(n)d knigi", "")
+
+    def test_wrong_length_list_rejected(self):
+        cat = _catalog(_RU_HEADER + _PLURAL_PARTIAL)
+        errors: list[str] = []
+        assert _apply_to_catalog(cat, {"%(n)d book": ["a", "b"]}, errors) == 0
+        assert "got 2 form(s)" in errors[0]
+
+    def test_bare_string_accepted_for_one_form_locale(self):
+        cat = _catalog(_JA_HEADER + _PLURAL_EMPTY)
+        errors: list[str] = []
+        assert _apply_to_catalog(cat, {"And 1 more.": "ほか%(count)d件"}, errors) == 1
+        assert errors == []
+        assert cat["And 1 more."].string == ("ほか%(count)d件",)
+
+    def test_plural_msgid_key_is_reported(self):
+        # The run in #319 keyed the plural form by msgid_plural; it was ignored
+        # silently. It should be reported, and so should the bare singular string.
+        cat = _catalog(_AR_HEADER + _PLURAL_EMPTY)
+        errors: list[str] = []
+        _apply_to_catalog(cat, {"And 1 more.": "X", "And %(count)d more.": "Y"}, errors)
+        assert len(errors) == 2
+        assert any("is a msgid_plural" in e and "'And 1 more.'" in e for e in errors)
+
+    def test_cli_exits_nonzero_on_rejection(self, tmp_path, monkeypatch):
+        locale = tmp_path / "locale" / "ar"
+        locale.mkdir(parents=True)
+        (locale / "messages.po").write_bytes(_AR_HEADER + _PLURAL_EMPTY + b'\nmsgid "Hi"\nmsgstr ""\n')
+        monkeypatch.setattr(_mod, "LOCALE_DIR", tmp_path / "locale")
+        monkeypatch.setattr(_mod, "MESSAGES_POT", tmp_path / "missing.pot")
+        trans = tmp_path / "t.json"
+        trans.write_text(json.dumps({"Hi": "مرحبا", "And 1 more.": "X"}), encoding="utf-8")
+        monkeypatch.setattr(sys, "argv", ["i18n", "apply", "ar", str(trans)])
+        with pytest.raises(SystemExit) as exc:
+            _mod.main()
+        assert exc.value.code == 1
+        # The valid entry is still written; only the bad plural is held back.
+        cat = read_po(open(locale / "messages.po", "rb"))
+        assert cat["Hi"].string == "مرحبا"
+        assert not any(cat[("And 1 more.")].string)
