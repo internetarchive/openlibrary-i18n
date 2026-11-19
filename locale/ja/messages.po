@@ -172,6 +172,12 @@ msgstr "既にキューに存在するためキューに入りませんでした
 msgid "View Batch Status"
 msgstr "バッチステータスを表示"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s件"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "ステータス:"
@@ -184,29 +190,21 @@ msgstr "すべて"
 msgid "Default sort: date added, newest first."
 msgstr "デフォルトの並び替え：追加日、新しい順。"
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "batch_id"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "名前"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "追加時刻"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "ステータス"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "送信者"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "コメント"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "追加時刻"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "ステータス"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +214,6 @@ msgstr "バッチ #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "すべてのバッチ"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "バッチ名："
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "送信者："
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "送信時刻："
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +254,10 @@ msgstr "データ"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "OLキー"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "コメント"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1772,7 +1762,7 @@ msgstr "読書記録"
 msgid "My lists"
 msgstr "私のリスト"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "リスト"
 
@@ -4493,7 +4483,7 @@ msgstr "非表示"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "目標達成"
 
@@ -6590,11 +6580,6 @@ msgstr "指標。グラフ化する項目を選んでください。"
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s件がリピーター · %(first_time)s件が初回"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "前の28日間と比較して%(change)s"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "範囲"
@@ -6611,17 +6596,9 @@ msgstr "タスク経由"
 msgid "Period"
 msgstr "期間"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "前の期間と比較"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "1日ごと"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4週間前"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6759,9 +6736,8 @@ msgid "Community project progress is counted nightly."
 msgstr "コミュニティプロジェクトの進捗は毎晩集計されます。"
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "編集件数の集計は%(date)sから始まるため、より長い期間は途中から始まります。"
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "編集数と編集者数の合計は、最初に集計された日から開始されるため、長い期間の場合は途中から始まることがあります。"
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9080,7 +9056,7 @@ msgstr "%(start)sから"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)sから%(end)sまで"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "目標：%(percent)s%%"
@@ -9610,12 +9586,6 @@ msgstr "一致するリストがありません。"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "リストを読み込み中…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s件"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10902,21 +10872,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - 検索"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "編集者"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "書籍、作品、著者のレコードを変更した人、およびそれが初めての編集だった人。週表示と月表示では、各人を1回としてカウントします。"
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "ボットではなく人間によって保存された編集:書籍、作品、著者、その他のページ、リスト、およびタスクページから。"
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "タスクページやその他の場所から、ボットではなく人によって版や作品に保存された変更。"
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "編集者あたり約%(count)s件"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "編集者"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "版や作品を変更した人、およびそれが初めての変更だった人。週表示と月表示では、各人を1回のみカウントします。"
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "新規編集者"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "版や作品への初めての変更がこの期間内に行われた人（どこで行ったかにかかわらず）。"
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "編集者の%(share)s"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -10985,35 +10968,6 @@ msgid "Per 4 weeks"
 msgstr "4週間ごと"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "1週間前"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "1週間前:%(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4週間前:%(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "1週間前との差:%(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "4週間前との差:%(change)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "直近7日間との差:%(change)s"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "本日分（1時間ごとに更新）"
 
@@ -11049,8 +11003,8 @@ msgid "First edit ever"
 msgstr "初めての編集"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "レコードとその他のページ"
+msgid "Outside Tasks"
+msgstr "タスク以外"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12868,4 +12822,52 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBNは奥付のページと裏表紙の、バーコードの上に印刷されています。本にスキャンがあれば、まずそこを確認してください。本が手元にない場合は、WorldCatやGoogle Booksでタイトルと著者から検索し、出版社・年・形態がこの版と一致するレコードを開いて、そこに記載されたISBNをコピーしてください。"
+
+#~ msgid "batch_id"
+#~ msgstr "batch_id"
+
+#~ msgid "Batch Name:"
+#~ msgstr "バッチ名："
+
+#~ msgid "Submitter:"
+#~ msgstr "送信者："
+
+#~ msgid "Submit Time:"
+#~ msgstr "送信時刻："
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "前の28日間と比較して%(change)s"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "前の期間と比較"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "編集件数の集計は%(date)sから始まるため、より長い期間は途中から始まります。"
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "書籍、作品、著者のレコードを変更した人、およびそれが初めての編集だった人。週表示と月表示では、各人を1回としてカウントします。"
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "ボットではなく人間によって保存された編集:書籍、作品、著者、その他のページ、リスト、およびタスクページから。"
+
+#~ msgid "A week earlier"
+#~ msgstr "1週間前"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "1週間前:%(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4週間前:%(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "1週間前との差:%(change)s"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "4週間前との差:%(change)s"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "直近7日間との差:%(change)s"
+
+#~ msgid "Records and other pages"
+#~ msgstr "レコードとその他のページ"
 
