@@ -1,0 +1,140 @@
+name: Meaning check
+
+# Report-only check that each new or changed translation means what the English
+# says (#331). Every other check here is structural, so a valid but wrong
+# translation ("Stopped Reading" -> "Trending", #316; Hindi in the Bengali file,
+# #313) passed them all and reached production.
+#
+#   check   collects the entries (scripts/meaning_check.py extract) and has an agent
+#           judge them (meaning-check-instructions.md). Read-only token: the
+#           translations are untrusted data, so the agent gets no power to act.
+#   report  turns the agent's findings into a PR comment (scripts/meaning_check.py
+#           report). Runs no agent.
+#
+# It never fails the PR and never blocks a merge: a model's judgement of
+# dozens of languages has false positives, so measure those before gating on it.
+#
+# One-time sweep of existing translations, one language per run:
+#   gh workflow run meaning-check.yml -f lang=de -f max=0
+# Findings go to the run summary and the `meaning-check` artifact.
+
+on:
+  pull_request:
+    paths:
+      - "locale/*/messages.po"
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "Sweep: check this language's existing translations"
+        required: true
+        type: string
+      max:
+        description: "Most entries to check, sampled evenly; 0 = all"
+        required: false
+        default: "600"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: meaning-check-${{ github.event.pull_request.number || inputs.lang }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    # A fork PR gets no secrets under pull_request, so the agent cannot run there.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      count: ${{ steps.collect.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install babel
+
+      - name: Collect translations to check
+        id: collect
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          SWEEP_LANG: ${{ inputs.lang }}
+          SWEEP_MAX: ${{ inputs.max }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            python scripts/meaning_check.py extract --all --lang "$SWEEP_LANG" --max "${SWEEP_MAX:-600}" --out meaning-entries.json
+          else
+            python scripts/meaning_check.py extract --base "origin/$BASE_REF" --max 400 --out meaning-entries.json
+          fi
+          echo "count=$(python -c 'import json; print(json.load(open("meaning-entries.json"))["checked"])')" >> "$GITHUB_OUTPUT"
+
+      - name: Check meaning (agent; writes meaning-findings.json only)
+        if: steps.collect.outputs.count != '0'
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: "@meaning-check-instructions.md"
+          # Same pinned model as translate.yml and weblate-review.yml.
+          claude_args: "--max-turns 80 --model claude-sonnet-5 --permission-mode acceptEdits"
+          show_full_output: true
+          claude_code_oauth_token: ${{ secrets.OL_BOT_CLAUDE_OAUTH_TOKEN }}
+          # The job's read-only token, as in weblate-review.yml: the action skips the
+          # OIDC exchange, and a prompt-injected agent still cannot write anything.
+          github_token: ${{ github.token }}
+
+      - name: Upload entries and findings
+        if: always() && steps.collect.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: meaning-check
+          path: |
+            meaning-entries.json
+            meaning-findings.json
+          if-no-files-found: warn
+
+  report:
+    needs: check
+    if: always() && needs.check.result != 'skipped' && needs.check.outputs.count != '0'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download entries and findings
+        uses: actions/download-artifact@v4
+        with:
+          name: meaning-check
+        continue-on-error: true
+
+      - name: Post the report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          if [ ! -f meaning-entries.json ]; then
+            echo "No entries artifact; nothing to report."
+            exit 0
+          fi
+          python scripts/meaning_check.py report \
+            --entries meaning-entries.json --findings meaning-findings.json > report.md
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$PR" ]; then
+            gh pr comment "$PR" --body-file report.md || echo "Could not comment on PR #$PR."
+          fi
