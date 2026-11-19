@@ -218,6 +218,9 @@ def _entry_translated(msg, reachable: set[int]) -> bool:
 
 
 def _stats_from_catalog(catalog, lang: str) -> dict:
+    """Counts for one catalog. A fuzzy entry is shown in English (it is left out
+    of the .mo) and is usually a different string's translation, so it counts as
+    untranslated work (#334); `fuzzy` reports how many of those are fuzzy."""
     total = fuzzy = translated = 0
     reachable = _reachable_plural_forms(catalog)
     for msg in catalog:
@@ -228,7 +231,7 @@ def _stats_from_catalog(catalog, lang: str) -> dict:
             fuzzy += 1
         elif _entry_translated(msg, reachable):
             translated += 1
-    untranslated = total - translated - fuzzy
+    untranslated = total - translated
     return {
         "lang": lang,
         "total": total,
@@ -240,12 +243,15 @@ def _stats_from_catalog(catalog, lang: str) -> dict:
 
 
 def _untranslated_from_catalog(catalog, limit: int | None = None) -> list[dict]:
+    """Entries that need a translation: empty ones, plurals with a reachable form
+    empty, and fuzzy ones (#334). A fuzzy entry's old text is not returned: it is
+    usually the translation of a different string, so translate from the English."""
     entries = []
     reachable = _reachable_plural_forms(catalog)
     for msg in catalog:
-        if not msg.id or msg.fuzzy:
+        if not msg.id:
             continue
-        if _entry_translated(msg, reachable):
+        if not msg.fuzzy and _entry_translated(msg, reachable):
             continue
         # A plural needs exactly `nplurals` forms (3 for ru/uk/cs/hr/ro); with
         # fewer, a reachable form stays empty and the entry keeps coming back.
@@ -312,6 +318,9 @@ def _apply_to_catalog(catalog, translations: dict, errors: list[str] | None = No
             msg.string = tuple(str(v) for v in val)
         else:
             msg.string = val if isinstance(val, str) else str(val)
+        # A fresh translation replaces any fuzzy guess: drop the flag, or the entry
+        # stays out of the .mo and English keeps showing (#334).
+        msg.flags.discard("fuzzy")
         count += 1
     for key in translations:
         if key in plural_ids and key not in catalog:

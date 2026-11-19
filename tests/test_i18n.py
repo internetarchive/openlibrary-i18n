@@ -88,7 +88,8 @@ class TestStats:
         assert s["lang"] == "de"
         assert s["translated"] == 1
         assert s["fuzzy"] == 1
-        assert s["untranslated"] == 2
+        # The fuzzy entry is shown in English, so it is untranslated work (#334).
+        assert s["untranslated"] == 3
         assert s["total"] == 4
 
     def test_percentage(self):
@@ -130,7 +131,7 @@ class TestUntranslated:
         ids = [e["id"] for e in entries]
         assert "Hello" in ids
         assert "Goodbye" not in ids
-        assert "Maybe" not in ids
+        assert "Maybe" in ids  # fuzzy: needs a real translation (#334)
 
     def test_limit(self):
         po = _po(
@@ -1424,3 +1425,34 @@ class TestPotOverride:
         assert cat["New"] is not None and cat["Old"].string == "Alt"
         # The repo's own messages.pot is untouched.
         assert b"New" not in (repo / "messages.pot").read_bytes()
+
+
+
+class TestFuzzyAsUntranslated:
+    """#334: fuzzy entries are untranslated work, and apply clears the flag."""
+
+    def test_fuzzy_entry_listed_without_old_text(self):
+        cat = _catalog(_po('#, fuzzy\nmsgid "Staff"\nmsgstr "Statistiken"'))
+        assert _untranslated_from_catalog(cat) == [{"id": "Staff"}]
+
+    def test_fuzzy_plural_listed_with_nplurals(self):
+        cat = _catalog(_RU_HEADER + b'#, fuzzy\n' + _PLURAL_PARTIAL.replace(b'msgstr[2] ""', b'msgstr[2] "x"'))
+        [entry] = _untranslated_from_catalog(cat)
+        assert entry["id"] == "%(n)d book" and entry["nplurals"] == 3
+
+    def test_apply_clears_fuzzy_flag(self):
+        cat = _catalog(_po('#, fuzzy\nmsgid "Staff"\nmsgstr "Statistiken"'))
+        assert _apply_to_catalog(cat, {"Staff": "Mitarbeiter"}) == 1
+        assert cat["Staff"].string == "Mitarbeiter"
+        assert not cat["Staff"].fuzzy
+        assert _untranslated_from_catalog(cat) == []
+
+    def test_apply_keeps_other_flags(self):
+        cat = _catalog(_po('#, fuzzy, python-format\nmsgid "%(n)s items"\nmsgstr "x"'))
+        _apply_to_catalog(cat, {"%(n)s items": "%(n)s Einträge"})
+        assert "python-format" in cat["%(n)s items"].flags
+        assert not cat["%(n)s items"].fuzzy
+
+    def test_counts_schedule_fuzzy_work(self):
+        po = _po('msgid "A"\nmsgstr "a"', '#, fuzzy\nmsgid "B"\nmsgstr "c"')
+        assert _batches_from_counts([_stats_from_catalog(_catalog(po), "de")]) == [["de"]]
