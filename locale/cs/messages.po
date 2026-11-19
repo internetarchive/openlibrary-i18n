@@ -172,6 +172,14 @@ msgstr "Nezařazeno do fronty, protože jsou již ve frontě:"
 msgid "View Batch Status"
 msgstr "Zobrazit stav dávky"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s položka"
+msgstr[1] "%(count)s položky"
+msgstr[2] "%(count)s položek"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Stav:"
@@ -184,29 +192,21 @@ msgstr "Vše"
 msgid "Default sort: date added, newest first."
 msgstr "Výchozí řazení: datum přidání, nejnovější první."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "ID dávky"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Název"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Čas přidání"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Stav"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Odesílatel"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Komentáře"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Čas přidání"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Stav"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +216,6 @@ msgstr "Dávka #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Všechny dávky"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Název dávky:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Odesílatel:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Čas odeslání:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +256,10 @@ msgstr "Data"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "Klíč OL"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Komentáře"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1798,7 +1790,7 @@ msgstr "Čtenářské záznamy"
 msgid "My lists"
 msgstr "Moje seznamy"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Seznamy"
 
@@ -4527,7 +4519,7 @@ msgstr "Skrytý"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Cíl dosažen"
 
@@ -6662,11 +6654,6 @@ msgstr "Metriky. Vyberte jednu pro zobrazení v grafu."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s vracejících se · %(first_time)s poprvé"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s oproti předchozím 28 dnům"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Rozsah"
@@ -6683,17 +6670,9 @@ msgstr "Přes Úkoly"
 msgid "Period"
 msgstr "Období"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Porovnat s předchozím obdobím"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Za den"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "Před 4 týdny"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6831,9 +6810,8 @@ msgid "Community project progress is counted nightly."
 msgstr "Pokrok komunitních projektů se počítá každou noc."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Celkové počty úprav začínají %(date)s, takže delší rozsahy začínají v polovině."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Celkové počty úprav a editorů začínají dnem, kdy byly poprvé započítány, takže delší období mohou začínat uprostřed."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9182,7 +9160,7 @@ msgstr "Od %(start)s"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s až %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Cíl: %(percent)s%%"
@@ -9714,14 +9692,6 @@ msgstr "Žádné seznamy neodpovídají."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Načítání seznamů…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s položka"
-msgstr[1] "%(count)s položky"
-msgstr[2] "%(count)s položek"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -11022,21 +10992,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s – vyhledávání"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Editoři"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Lidé, kteří změnili záznam knihy, díla nebo autora, a ti, pro které to byla vůbec první úprava. Týdenní a měsíční zobrazení počítají každou osobu jednou."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Úpravy uložené lidmi, nikoli roboty: u knih, děl, autorů a dalších stránek, u seznamů a ze stránky Úkoly."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Změny, které uložili lidé, nikoli boti, u vydání a děl, ze stránky Úkoly nebo odkudkoli jinud."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s na editora"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Editoři"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Lidé, kteří změnili vydání nebo dílo, a ti, pro něž to byla vůbec první taková změna. Týdenní a měsíční zobrazení počítají každou osobu jednou."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Noví editoři"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Lidé, jejichž vůbec první změna vydání nebo díla spadá do tohoto období, ať už ji provedli kdekoli."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "%(share)s editorů"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11107,35 +11090,6 @@ msgid "Per 4 weeks"
 msgstr "Za 4 týdny"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Před týdnem"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Před týdnem: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "Před 4 týdny: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s oproti týdnu předtím"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s oproti 4 týdnům předtím"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s oproti předchozím 7 dnům"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Dnes zatím, aktualizováno každou hodinu"
 
@@ -11171,8 +11125,8 @@ msgid "First edit ever"
 msgstr "Vůbec první úprava"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Záznamy a další stránky"
+msgid "Outside Tasks"
+msgstr "Mimo Úkoly"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12901,4 +12855,52 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "ISBN je vytištěno na tiráži a na zadní straně obálky, nad čárovým kódem; pokud má kniha sken, podívejte se tam nejdřív. Bez knihy po ruce hledejte na WorldCat nebo Google Books podle názvu a autora, otevřete záznam, jehož nakladatel, rok a formát odpovídají tomuto vydání, a zkopírujte uvedené ISBN."
+
+#~ msgid "batch_id"
+#~ msgstr "ID dávky"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Název dávky:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Odesílatel:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Čas odeslání:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s oproti předchozím 28 dnům"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Porovnat s předchozím obdobím"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Celkové počty úprav začínají %(date)s, takže delší rozsahy začínají v polovině."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Lidé, kteří změnili záznam knihy, díla nebo autora, a ti, pro které to byla vůbec první úprava. Týdenní a měsíční zobrazení počítají každou osobu jednou."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Úpravy uložené lidmi, nikoli roboty: u knih, děl, autorů a dalších stránek, u seznamů a ze stránky Úkoly."
+
+#~ msgid "A week earlier"
+#~ msgstr "Před týdnem"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Před týdnem: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "Před 4 týdny: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s oproti týdnu předtím"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s oproti 4 týdnům předtím"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s oproti předchozím 7 dnům"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Záznamy a další stránky"
 
