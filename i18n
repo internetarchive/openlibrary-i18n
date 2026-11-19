@@ -27,12 +27,17 @@ Open Library i18n toolbox — ./i18n <command>
   bake-regression        Would baking this repo into openlibrary turn translated
     [--openlibrary-ref R] strings English or break placeholders? Exit 1 if so.
     [--ref R] [--json P] See scripts/bake_regression.py --help.
+
+Environment:
+  I18N_POT=<path>        Use this messages.pot instead of the repo's copy
+                         (pull writes to it; sync/untranslated/apply read it).
 """
 from __future__ import annotations
 
 import argparse
 import gettext
 import json
+import os
 import re
 import subprocess
 import sys
@@ -41,7 +46,10 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent
 LOCALE_DIR = REPO_ROOT / "locale"
-MESSAGES_POT = REPO_ROOT / "messages.pot"
+# I18N_POT points the toolbox at a messages.pot outside the checkout. translate.yml
+# uses it to hand each agent the freshly pulled template while the working tree
+# stays exactly origin/main (#317, #322).
+MESSAGES_POT = Path(os.environ["I18N_POT"]) if os.environ.get("I18N_POT") else REPO_ROOT / "messages.pot"
 TESTS_DIR = REPO_ROOT / "tests"
 BATCH_SIZE = 75
 # Every writer of a .po uses this width, so files are never rewrapped: long

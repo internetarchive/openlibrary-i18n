@@ -29,7 +29,12 @@ jobs:
     outputs:
       batches: ${{ steps.get-batches.outputs.batches }}
     steps:
+      # ref: main, not the triggering SHA: a run queued behind another (the
+      # concurrency group) would otherwise plan against main from before the
+      # earlier run's PRs merged (#317).
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -37,8 +42,14 @@ jobs:
 
       - run: pip install babel pytest
 
+      # Syncing here only sharpens the counts below; this job's tree is
+      # thrown away and nothing from locale/ is handed to the translate job.
       - name: Pull and sync all languages
-        run: ./i18n pull --sync
+        run: |
+          # The fresh messages.pot lives outside the checkout (see the translate job).
+          echo "I18N_POT=$RUNNER_TEMP/pot/messages.pot" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/pot"
+          I18N_POT="$RUNNER_TEMP/pot/messages.pot" ./i18n pull --sync
 
       - name: Show incomplete languages
         run: ./i18n incomplete
@@ -54,13 +65,13 @@ jobs:
           echo "batches=$BATCHES" >> $GITHUB_OUTPUT
           echo "Batches: $BATCHES"
 
-      - name: Upload synced locale files
+      # Hand over only the template, so every batch translates against the same
+      # messages.pot even if sync-pot.yml has not committed it to main yet.
+      - name: Upload messages.pot
         uses: actions/upload-artifact@v4
         with:
-          name: synced-locale
-          path: |
-            locale/
-            messages.pot
+          name: messages-pot
+          path: ${{ env.I18N_POT }}
 
   translate:
     needs: plan
@@ -78,6 +89,9 @@ jobs:
           # pull_request checks the merge gate waits on, so the bot PR never
           # goes green and nothing self-merges. #151.
           token: ${{ secrets.OL_BOT_I18N_PAT }}
+          # Current main, not the triggering SHA, so the agent starts from a
+          # clean tree that already holds every merged translation (#317).
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -85,15 +99,25 @@ jobs:
 
       - run: pip install babel pytest
 
-      - name: Download synced locale files
+      # The template goes to runner.temp, outside the checkout, and the agent
+      # reads it through I18N_POT. Unpacking synced .po files over the checkout
+      # (as this step used to) left every locale dirty at session start (#322),
+      # and when the checkout was stale it hid translations main already had
+      # (#317). The agent now syncs only its own languages, after branching.
+      - name: Download messages.pot
         uses: actions/download-artifact@v4
         with:
-          name: synced-locale
+          name: messages-pot
+          path: ${{ runner.temp }}/pot
+
+      - name: Check the working tree is clean
+        run: git diff --exit-code --stat
 
       - name: Translate batch
         uses: anthropics/claude-code-action@v1
         env:
           GH_TOKEN: ${{ secrets.OL_BOT_I18N_PAT }}
+          I18N_POT: ${{ runner.temp }}/pot/messages.pot
         with:
           prompt: "@i18n-translation-instructions.md\n\nYour batch: ${{ toJSON(matrix.batch) }}"
           # Pin the model. claude-code-action@v1 has no `model` input, so the id
