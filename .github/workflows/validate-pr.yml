@@ -10,6 +10,8 @@ on:
       - "tests/conftest.py"
       - "tests/test_locale_option.py"
       - "scripts/po_same_content.py"
+      - "scripts/meaning_check.py"
+      - "tests/test_meaning_check.py"
       - "tests/test_po_same_content.py"
 
 jobs:
@@ -78,7 +80,7 @@ jobs:
       - name: Run plural-form and toolbox tests
         run: |
           python -m pytest tests/test_plural_forms.py tests/test_i18n.py tests/test_locale_option.py \
-            tests/test_po_same_content.py -q
+            tests/test_po_same_content.py tests/test_meaning_check.py -q
 
       - name: Validate format strings
         run: |
