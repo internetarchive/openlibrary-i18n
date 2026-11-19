@@ -1395,3 +1395,32 @@ class TestApplyPluralForms:
         cat = read_po(open(locale / "messages.po", "rb"))
         assert cat["Hi"].string == "مرحبا"
         assert not any(cat[("And 1 more.")].string)
+
+class TestPotOverride:
+    """#317/#322: translate.yml keeps the fresh messages.pot outside the checkout
+    and points the toolbox at it with I18N_POT, so the working tree stays clean."""
+
+    def test_untranslated_and_sync_read_i18n_pot(self, tmp_path):
+        import shutil
+        repo = tmp_path / "repo"
+        (repo / "locale" / "xx").mkdir(parents=True)
+        shutil.copy(_ROOT / "i18n", repo / "i18n")
+        po = b'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n\nmsgid "Old"\nmsgstr "Alt"\n'
+        (repo / "locale" / "xx" / "messages.po").write_bytes(po)
+        (repo / "messages.pot").write_bytes(b'msgid ""\nmsgstr ""\n\nmsgid "Old"\nmsgstr ""\n')
+        fresh = tmp_path / "fresh.pot"
+        fresh.write_bytes(b'msgid ""\nmsgstr ""\n\nmsgid "Old"\nmsgstr ""\n\nmsgid "New"\nmsgstr ""\n')
+        env = {**os.environ, "I18N_POT": str(fresh)}
+
+        def run(*args):
+            r = subprocess.run([sys.executable, str(repo / "i18n"), *args],
+                               capture_output=True, text=True, cwd=repo, env=env)
+            assert r.returncode == 0, r.stderr
+            return r.stdout
+
+        assert json.loads(run("untranslated", "xx")) == [{"id": "New"}]
+        run("sync", "xx")
+        cat = read_po(open(repo / "locale" / "xx" / "messages.po", "rb"))
+        assert cat["New"] is not None and cat["Old"].string == "Alt"
+        # The repo's own messages.pot is untouched.
+        assert b"New" not in (repo / "messages.pot").read_bytes()

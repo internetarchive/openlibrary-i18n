@@ -8,7 +8,9 @@ You ARE the translation engine — you generate translations directly. You do no
 
 Your batch of languages is at the end of this prompt as a JSON array, e.g. `["de", "fr"]` or `["ja"]`. Translate all languages in your batch. Nothing outside your batch.
 
-The `.po` files are already synced with the latest `messages.pot`. Do not run `pull` or `sync`.
+Your working tree starts **clean**: a fresh checkout of current `main`, with nothing modified. If `git status` shows changes before you have run anything, something is wrong. Do not discard them; report it in the PR comment (Step 5).
+
+The latest `messages.pot` from openlibrary master is **not** in the working tree. The workflow saves it outside the checkout and points `./i18n` at it with the `I18N_POT` environment variable, so `./i18n untranslated`, `apply` and `sync` already use it. The repo's own `messages.pot` may lag behind until `sync-pot.yml` commits the new one; that is expected, and it is not yours to commit. Never run `pull`, and never run `sync` for a language outside your batch: Step 2 syncs exactly your batch's languages.
 
 ## Environment
 
@@ -66,13 +68,19 @@ PR_NUMBER=$(gh pr list --state open --head "$BRANCH" --json number --jq '.[0].nu
 ```bash
 git checkout -B "$BRANCH" "origin/$BRANCH"
 ```
-Skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n untranslated` naturally reflects only what's still remaining, since prior progress was already pushed (see Step 4's commit substep).
+Run the sync below, then skip Step 3 (branch and PR already exist) and go straight to Step 4 — `./i18n untranslated` naturally reflects only what's still remaining, since prior progress was already pushed (see Step 4's commit substep).
 
 **Otherwise**, create the branch fresh from `origin/main`, never from whatever is currently checked out. If a branch with that name is still on the remote without an open PR, it's left over from a closed PR, so add a suffix rather than building on it:
 ```bash
 if git rev-parse -q --verify "origin/$BRANCH" >/dev/null; then BRANCH="${BRANCH}-2"; fi
 git checkout -B "$BRANCH" origin/main
 ```
+
+**On either path, now sync your batch's languages** (and only those) with the latest `messages.pot` from `I18N_POT`, so new strings are added and removed ones become obsolete:
+```bash
+for LANG in <your batch languages>; do ./i18n sync "$LANG"; done
+```
+This leaves your batch's `.po` files modified and nothing else. Step 4 commits them with your translations.
 
 ## Step 3: Open a draft PR immediately
 
