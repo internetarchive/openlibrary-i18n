@@ -38,13 +38,16 @@ if [ "$HAS_WORK" -eq 0 ]; then
   exit 0
 fi
 
-# Count open i18n PRs
+# Count open i18n PRs left over from EARLIER days. Today's PRs are this run's own
+# parallel batches: a run with many languages opens more than 5 at once, and
+# counting them would make the later batches stop for no reason.
+TODAY=$(date +%Y%m%d)
 OPEN=$(gh pr list --state open --json headRefName \
-  --jq '[.[] | select(.headRefName | startswith("i18n/"))] | length')
-echo "Open i18n PRs: $OPEN"
+  --jq "[.[] | select(.headRefName | startswith(\"i18n/\")) | select(.headRefName | contains(\"$TODAY\") | not)] | length")
+echo "Open i18n PRs from earlier days: $OPEN"
 ```
 
-If no untranslated strings exist, stop (no PR). If ≥ 5 open PRs, open a GitHub issue with `--label tooling` explaining the backlog and stop.
+If no untranslated strings exist, stop (no PR). If ≥ 5 open i18n PRs from earlier days, open a GitHub issue with `--label tooling` explaining the backlog and stop.
 
 ## Step 2: Resume existing work, or create a fresh branch
 
@@ -381,4 +384,4 @@ Never push a branch where `validate` or `test` exits non-zero.
 
 ## PR limit
 
-Max 5 open i18n PRs. If ≥ 5 when you check, open a GitHub issue noting the backlog and stop.
+Max 5 open i18n PRs from **earlier days** (head branch not containing today's date). Those are a backlog that isn't merging. Today's PRs belong to this run's parallel batches and don't count. If ≥ 5 when you check, open a GitHub issue noting the backlog and stop.

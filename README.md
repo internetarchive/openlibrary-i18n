@@ -76,7 +76,7 @@ To improve a translation for your language, edit `locale/<lang>/messages.po` and
 
 If a translation is correct but its HTML has to differ from the English, start its `msgstr` with `<!-- i18n-lint no-tree-equal -->` to skip the HTML check for that entry. (The main repository's check also accepts `<!-- i18n-lint no-tree-order -->`, which allows tags in a different order. The check here does not support it yet.)
 
-Review `fuzzy` entries one at a time, and never clear `fuzzy` flags in bulk: a fuzzy entry's `msgstr` is often a translation of a different string, and only the flag keeps it off the site.
+Never remove `fuzzy` flags in bulk while keeping the text: a fuzzy entry's `msgstr` is usually the translation of a *different* string (#330 found about 13 in 15 wrong in a German sample), and only the flag keeps it off the site. To get rid of fuzzy entries, empty the `msgstr` along with the flag, so the AI translation run translates them from the English. #330 did that for the whole backlog.
 
 To add a new language, [open an issue](https://github.com/internetarchive/openlibrary-i18n/issues) first; it needs changes in both repositories.
 
