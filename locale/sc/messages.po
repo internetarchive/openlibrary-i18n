@@ -172,6 +172,13 @@ msgstr "Non postos in fila ca bi sunt giai a intro:"
 msgid "View Batch Status"
 msgstr "Ammustra s'istadu de su lotu"
 
+#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#, python-format
+msgid "%(count)s item"
+msgid_plural "%(count)s items"
+msgstr[0] "%(count)s elementu"
+msgstr[1] "%(count)s elementos"
+
 #: batch_import_list.html
 msgid "Status:"
 msgstr "Istadu:"
@@ -184,29 +191,21 @@ msgstr "Totu"
 msgid "Default sort: date added, newest first."
 msgstr "Ordinamentu predefinidu: data de annanta, prus noos in antis."
 
-#: batch_import_list.html
-msgid "batch_id"
-msgstr "id_lotu"
-
 #: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Nùmene"
-
-#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
-msgid "Added Time"
-msgstr "Momentu de annanta"
-
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
-msgid "Status"
-msgstr "Istadu"
 
 #: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Imbiadore"
 
-#: batch_import_list.html batch_import_view.html
-msgid "Comments"
-msgstr "Cummentos"
+#: admin/imports.html admin/imports_by_date.html batch_import_list.html batch_import_view.html
+msgid "Added Time"
+msgstr "Momentu de annanta"
+
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+msgid "Status"
+msgstr "Istadu"
 
 #: batch_import_view.html
 #, python-format
@@ -216,18 +215,6 @@ msgstr "Lotu #%(id)s"
 #: BatchImportNavigation.html batch_import_view.html
 msgid "All Batches"
 msgstr "Totu is lotos"
-
-#: batch_import_view.html
-msgid "Batch Name:"
-msgstr "Nùmene de su lotu:"
-
-#: batch_import_view.html
-msgid "Submitter:"
-msgstr "Imbiadore:"
-
-#: batch_import_view.html
-msgid "Submit Time:"
-msgstr "Momentu de imbiu:"
 
 #: batch_import_view.html
 msgid "(no error)"
@@ -268,6 +255,10 @@ msgstr "Datos"
 #: admin/imports.html admin/imports_by_date.html batch_import_view.html
 msgid "OL Key"
 msgstr "Crae de OL"
+
+#: batch_import_view.html
+msgid "Comments"
+msgstr "Cummentos"
 
 #: batch_import_view.html
 msgid "Not yet imported"
@@ -1785,7 +1776,7 @@ msgstr "Registru de letura"
 msgid "My lists"
 msgstr "Sas listas meas"
 
-#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py openlibrary/views/loanstats.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
+#: EditionNavBar.html SearchNavigation.html.jinja account/sidebar.html lists/home.html openlibrary/core/shell/nav.py recentchanges/index.html type/edition/view.html type/list/embed.html type/user/view.html type/work/view.html
 msgid "Lists"
 msgstr "Listas"
 
@@ -4510,7 +4501,7 @@ msgstr "Cuadu"
 msgid "%(percent)s%%"
 msgstr "%(percent)s%%"
 
-#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py
+#: contribute/admin/parts.html.jinja openlibrary/plugins/openlibrary/contribute.py stats/tasks.html.jinja
 msgid "Goal reached"
 msgstr "Obietivu agatadu"
 
@@ -6626,11 +6617,6 @@ msgstr "Mètricas. Sèbera una pro la rapresentare in unu gràficu."
 msgid "%(returning)s returning · %(first_time)s first-time"
 msgstr "%(returning)s torrende · %(first_time)s pro sa prima borta"
 
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-#, python-format
-msgid "%(change)s vs previous 28 days"
-msgstr "%(change)s cunfronta a sas 28 dies pretzedentes"
-
 #: stats/tasks.html.jinja
 msgid "Scope"
 msgstr "Ispàtziu"
@@ -6647,17 +6633,9 @@ msgstr "Tramite sas Fainas"
 msgid "Period"
 msgstr "Perìodu"
 
-#: stats/tasks.html.jinja
-msgid "Compare to previous period"
-msgstr "Cunfronta cun su perìodu pretzedente"
-
 #: openlibrary/views/loanstats.py stats/tasks.html.jinja
 msgid "Per day"
 msgstr "Pro die"
-
-#: openlibrary/views/loanstats.py stats/tasks.html.jinja
-msgid "4 weeks earlier"
-msgstr "4 chidas ainnantis"
 
 #: stats/tasks.html.jinja
 msgid "Date range"
@@ -6795,9 +6773,8 @@ msgid "Community project progress is counted nightly."
 msgstr "S'andamentu de sos progetos de sa comunidade est contadu dogni note."
 
 #: stats/tasks.html.jinja
-#, python-format
-msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
-msgstr "Sos totales de modìfica comintzant su %(date)s, duncas sos perìodos prus longos comintzant a mesu caminu."
+msgid "Edit and editor totals start on the day they were first counted, so longer ranges may begin partway through."
+msgstr "Is totales de modìficas e contribuidores incumentzant dae sa die in sa cale sunt istadas contadas pro sa prima bia, pro cussu is perìodos prus longos pòdent cumintzare a mesu caminu."
 
 #: subjects/notfound.html
 msgid "We couldn't find any books about"
@@ -9131,7 +9108,7 @@ msgstr "Dae %(start)s"
 msgid "%(start)s to %(end)s"
 msgstr "%(start)s a %(end)s"
 
-#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py
+#: openlibrary/contribute/manage.py openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Obietivu: %(percent)s%%"
@@ -9662,13 +9639,6 @@ msgstr "Peruna lista currispondet."
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Loading lists…"
 msgstr "Carrighende sas listas…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s item"
-msgid_plural "%(count)s items"
-msgstr[0] "%(count)s elementu"
-msgstr[1] "%(count)s elementos"
 
 #: openlibrary/core/shell/shelf_labels.py
 #, python-format
@@ -10962,21 +10932,34 @@ msgid "%(title)s - search"
 msgstr "%(title)s - chirca"
 
 #: openlibrary/views/loanstats.py
-msgid "Editors"
-msgstr "Contribuidores"
-
-#: openlibrary/views/loanstats.py
-msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
-msgstr "Persones chi ant mudadu unu registru de libru, òpera o autore, e cuddas pro chie fiat sa prima modìfica assolutamente. Sas vistas de chida e de mese contant dogni persona una borta."
-
-#: openlibrary/views/loanstats.py
-msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
-msgstr "Modìficas sarvadas dae persones, non dae bot: in libros, òperas, autores e àteras pàginas, in listas, e dae sa pàgina de sas Fainas."
+msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
+msgstr "Modìficas sarvadas dae persones, non dae bot, in editziones e òperas, dae sa pàgina Fainas o dae ue si siat àteru."
 
 #: openlibrary/views/loanstats.py
 #, python-format
 msgid "≈ %(count)s per editor"
 msgstr "≈ %(count)s pro editore"
+
+#: openlibrary/views/loanstats.py
+msgid "Editors"
+msgstr "Contribuidores"
+
+#: openlibrary/views/loanstats.py
+msgid "People who changed an edition or work, and those whose first such change ever it was. Week and month views count each person once."
+msgstr "Persones chi ant modificadu una editzione o un'òpera, e cuddas pro is cales custa fiat sa prima modìfica de custu tipu. Is vistas de sa chida e de su mese contant dònnia persone una bia sola."
+
+#: openlibrary/views/loanstats.py
+msgid "New editors"
+msgstr "Contribuidores noos"
+
+#: openlibrary/views/loanstats.py
+msgid "People whose first change ever to an edition or work falls in the period, wherever they made it."
+msgstr "Persones chi sa prima modìfica issoro a un'editzione o òpera rucuit in custu perìodu, in ue si siat chi dd'ant fata."
+
+#: openlibrary/views/loanstats.py
+#, python-format
+msgid "%(share)s of editors"
+msgstr "%(share)s de is contribuidores"
 
 #: openlibrary/views/loanstats.py
 msgid "The share of edits saved from the Tasks page."
@@ -11046,35 +11029,6 @@ msgid "Per 4 weeks"
 msgstr "Pro 4 chidas"
 
 #: openlibrary/views/loanstats.py
-msgid "A week earlier"
-msgstr "Una chida ainnantis"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "A week earlier: %(count)s"
-msgstr "Una chida ainnantis: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "4 weeks earlier: %(count)s"
-msgstr "4 chidas ainnantis: %(count)s"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs a week earlier"
-msgstr "%(change)s rispetu a una chida ainnantis"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs 4 weeks earlier"
-msgstr "%(change)s rispetu a 4 chidas ainnantis"
-
-#: openlibrary/views/loanstats.py
-#, python-format
-msgid "%(change)s vs previous 7 days"
-msgstr "%(change)s rispetu a sos 7 dies colados"
-
-#: openlibrary/views/loanstats.py
 msgid "Today so far, updated hourly"
 msgstr "Oe finas a como, atualizadu cada ora"
 
@@ -11110,8 +11064,8 @@ msgid "First edit ever"
 msgstr "Prima modìfica assolutamente"
 
 #: openlibrary/views/loanstats.py
-msgid "Records and other pages"
-msgstr "Registros e àteras pàginas"
+msgid "Outside Tasks"
+msgstr "Foras de Fainas"
 
 #: openlibrary/views/loanstats.py
 #, python-format
@@ -12919,7 +12873,7 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 #~ msgstr "Ùrtimu"
 
 #~ msgid "4 weeks earlier"
-#~ msgstr "4 chidas prima"
+#~ msgstr "4 chidas ainnantis"
 
 #~ msgid "Last 90 days"
 #~ msgstr "Ùrtimas 90 dies"
@@ -13300,4 +13254,52 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 
 #~ msgid "The ISBN is printed on the copyright page and on the back cover, above the barcode; when the book has a scan, look there first. Without the book in hand, search WorldCat or Google Books by title and author, open the record whose publisher, year and format match this one, and copy the ISBN it lists."
 #~ msgstr "S'ISBN est imprentadu in sa pàgina de copyright e in sa parte posteriore de sa coberta, in artu de su barcode; si su libru tenet una iscansione, castia innìe pro primu. Chentza su libru a manu, chirca in WorldCat o in Google Books pro tìtulu e autore, aberi s'archìviu chi tenet editore, annu e formadu chi cuncordant cun custa editzione, e còpia s'ISBN ammustradu."
+
+#~ msgid "batch_id"
+#~ msgstr "id_lotu"
+
+#~ msgid "Batch Name:"
+#~ msgstr "Nùmene de su lotu:"
+
+#~ msgid "Submitter:"
+#~ msgstr "Imbiadore:"
+
+#~ msgid "Submit Time:"
+#~ msgstr "Momentu de imbiu:"
+
+#~ msgid "%(change)s vs previous 28 days"
+#~ msgstr "%(change)s cunfronta a sas 28 dies pretzedentes"
+
+#~ msgid "Compare to previous period"
+#~ msgstr "Cunfronta cun su perìodu pretzedente"
+
+#~ msgid "Edit totals start on %(date)s, so longer ranges begin partway through."
+#~ msgstr "Sos totales de modìfica comintzant su %(date)s, duncas sos perìodos prus longos comintzant a mesu caminu."
+
+#~ msgid "People who changed a book, work or author record, and those whose first edit ever it was. Week and month views count each person once."
+#~ msgstr "Persones chi ant mudadu unu registru de libru, òpera o autore, e cuddas pro chie fiat sa prima modìfica assolutamente. Sas vistas de chida e de mese contant dogni persona una borta."
+
+#~ msgid "Edits saved by people, not bots: to books, works, authors and other pages, to lists, and from the Tasks page."
+#~ msgstr "Modìficas sarvadas dae persones, non dae bot: in libros, òperas, autores e àteras pàginas, in listas, e dae sa pàgina de sas Fainas."
+
+#~ msgid "A week earlier"
+#~ msgstr "Una chida ainnantis"
+
+#~ msgid "A week earlier: %(count)s"
+#~ msgstr "Una chida ainnantis: %(count)s"
+
+#~ msgid "4 weeks earlier: %(count)s"
+#~ msgstr "4 chidas ainnantis: %(count)s"
+
+#~ msgid "%(change)s vs a week earlier"
+#~ msgstr "%(change)s rispetu a una chida ainnantis"
+
+#~ msgid "%(change)s vs 4 weeks earlier"
+#~ msgstr "%(change)s rispetu a 4 chidas ainnantis"
+
+#~ msgid "%(change)s vs previous 7 days"
+#~ msgstr "%(change)s rispetu a sos 7 dies colados"
+
+#~ msgid "Records and other pages"
+#~ msgstr "Registros e àteras pàginas"
 
