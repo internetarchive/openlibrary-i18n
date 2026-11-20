@@ -952,19 +952,19 @@ msgstr "Aceasta este vizibilă doar pentru super-bibliotecari."
 msgid "Solr Editions"
 msgstr "Ediții Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Doar lizibil"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrați după disponibilitate"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Limbă"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Căutați limbi…"
 
@@ -972,11 +972,11 @@ msgstr "Căutați limbi…"
 msgid "Languages"
 msgstr "Limbi"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Se încarcă…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtrați după limbă"
 
@@ -6058,20 +6058,15 @@ msgstr "Fuzionați autori"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Niciun <strong>autor</strong> nu s-a potrivit direct cu căutarea dvs."
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Căutați în Open Library %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Căutare în interior"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Alegeți o limbă"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
@@ -6079,7 +6074,7 @@ msgstr[0] "Aproximativ %(total)s rezultat"
 msgstr[1] "Aproximativ %(total)s rezultate"
 msgstr[2] "Aproximativ %(total)s de rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
@@ -6087,30 +6082,30 @@ msgstr[0] "%(start)s - %(end)s din aproximativ %(total)s rezultat"
 msgstr[1] "%(start)s - %(end)s din aproximativ %(total)s rezultate"
 msgstr[2] "%(start)s - %(end)s din aproximativ %(total)s de rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Nu există potriviri exacte pentru „%(query)s”. Se afișează cărțile care conțin toate aceste cuvinte."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Se afișează potriviri exacte pentru „%(query)s”. %(link_start)sCăutați în schimb toate aceste cuvinte.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Se afișează toate aceste cuvinte, în orice ordine. %(link_start)sCăutați în schimb expresia exactă.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Niciun rezultat găsit. Încercați un alt cuvânt sau o altă expresie."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Nicio potrivire de pe această pagină nu poate fi afișată cu aceste filtre. Încercați o altă pagină sau eliminați un filtru."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Nu mai există rezultate. Încercați o pagină anterioară."
 
@@ -10097,6 +10092,15 @@ msgstr "Căutare liste"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Căutare în text integral"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Căutare în text integral"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Căutare subiecte"
 
@@ -12787,4 +12791,7 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 
 #~ msgid " by %(name)s"
 #~ msgstr " de %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Căutați în Open Library %s"
 

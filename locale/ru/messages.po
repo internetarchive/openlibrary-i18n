@@ -952,19 +952,19 @@ msgstr "Это видно только суперлибрариям."
 msgid "Solr Editions"
 msgstr "Издания Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Только доступные для чтения"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Фильтр по доступности"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Язык"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Поиск языков…"
 
@@ -972,11 +972,11 @@ msgstr "Поиск языков…"
 msgid "Languages"
 msgstr "Языки"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Загрузка…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Фильтр по языку"
 
@@ -6058,20 +6058,15 @@ msgstr "Объединить авторов"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Нет <strong>авторов</strong>, напрямую соответствующих вашему запросу"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Искать %s в Open Library"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Искать внутри"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Выберите один язык"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
@@ -6079,7 +6074,7 @@ msgstr[0] "Около %(total)s результата"
 msgstr[1] "Около %(total)s результатов"
 msgstr[2] "Около %(total)s результатов"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
@@ -6087,30 +6082,30 @@ msgstr[0] "%(start)s - %(end)s из примерно %(total)s результа�
 msgstr[1] "%(start)s - %(end)s из примерно %(total)s результатов"
 msgstr[2] "%(start)s - %(end)s из примерно %(total)s результатов"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Точных совпадений для \"%(query)s\" не найдено. Показаны книги, содержащие все эти слова."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Показаны точные совпадения для \"%(query)s\". %(link_start)sВместо этого искать все эти слова.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Показаны все эти слова в любом порядке. %(link_start)sВместо этого искать точную фразу.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Результаты не найдены. Попробуйте другое слово или фразу."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Ни одно совпадение на этой странице не может быть показано с этими фильтрами. Попробуйте другую страницу или уберите фильтр."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Больше нет результатов. Попробуйте предыдущую страницу."
 
@@ -10097,6 +10092,15 @@ msgstr "Поиск списков"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Полнотекстовый поиск"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Полнотекстовый поиск"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s — Поиск рубрик"
 
@@ -13408,4 +13412,7 @@ msgstr "Не удалось загрузить графики. Перезагр�
 
 #~ msgid " by %(name)s"
 #~ msgstr " от %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Искать %s в Open Library"
 

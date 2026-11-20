@@ -952,19 +952,19 @@ msgstr "Toto je viditelné pouze pro super knihovníky."
 msgid "Solr Editions"
 msgstr "Vydání Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Pouze ke čtení"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtrovat podle dostupnosti"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Jazyk"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Hledat jazyky…"
 
@@ -972,11 +972,11 @@ msgstr "Hledat jazyky…"
 msgid "Languages"
 msgstr "Jazyky"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Načítání…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtrovat podle jazyka"
 
@@ -6058,20 +6058,15 @@ msgstr "Sloučit autory"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Žádní <strong>autoři</strong> přímo neodpovídají vašemu vyhledávání"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Hledat v Open Library %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Hledat uvnitř"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Vyberte jeden jazyk"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
@@ -6079,7 +6074,7 @@ msgstr[0] "Přibližně %(total)s výsledek"
 msgstr[1] "Přibližně %(total)s výsledky"
 msgstr[2] "Přibližně %(total)s výsledků"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
@@ -6087,30 +6082,30 @@ msgstr[0] "%(start)s - %(end)s z přibližně %(total)s výsledku"
 msgstr[1] "%(start)s - %(end)s z přibližně %(total)s výsledků"
 msgstr[2] "%(start)s - %(end)s z přibližně %(total)s výsledků"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Žádné přesné shody pro \"%(query)s\". Zobrazují se knihy obsahující všechna tato slova."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Zobrazují se přesné shody pro \"%(query)s\". %(link_start)sMísto toho vyhledejte všechna tato slova.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Zobrazují se všechna tato slova, v libovolném pořadí. %(link_start)sMísto toho vyhledejte přesnou frázi.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Nebyly nalezeny žádné výsledky. Zkuste jiné slovo nebo frázi."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Žádnou z shod na této stránce nelze s těmito filtry zobrazit. Zkuste jinou stránku nebo odeberte filtr."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Žádné další výsledky. Zkuste předchozí stránku."
 
@@ -10097,6 +10092,15 @@ msgstr "Vyhledávání seznamů"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Fulltextové vyhledávání"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Fulltextové vyhledávání"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Vyhledávání témat"
 
@@ -12931,4 +12935,7 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid " by %(name)s"
 #~ msgstr " od %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Hledat v Open Library %s"
 

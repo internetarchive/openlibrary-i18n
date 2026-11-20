@@ -949,19 +949,19 @@ msgstr "Kjo është e dukshme vetëm për super-bibliotekarët."
 msgid "Solr Editions"
 msgstr "Edicionet Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Vetëm të Lexueshme"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtro sipas disponueshmërisë"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Gjuha"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Kërko gjuhë…"
 
@@ -969,11 +969,11 @@ msgstr "Kërko gjuhë…"
 msgid "Languages"
 msgstr "Gjuhët"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Duke ngarkuar…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtro sipas gjuhës"
 
@@ -6024,57 +6024,52 @@ msgstr "Bashko autorët"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Asnjë <strong>autor</strong> nuk përputhet drejtpërdrejt me kërkimin tuaj"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Kërko në Open Library për %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Kërko Brenda"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Zgjidh një gjuhë"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Rreth %(total)s rezultat"
 msgstr[1] "Rreth %(total)s rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "%(start)s - %(end)s nga rreth %(total)s rezultat"
 msgstr[1] "%(start)s - %(end)s nga rreth %(total)s rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Asnjë përputhje e saktë për \"%(query)s\". Duke shfaqur libra që përmbajnë të gjitha këto fjalë."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Duke shfaqur përputhje të sakta për \"%(query)s\". %(link_start)sKërko në vend të kësaj për të gjitha këto fjalë.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Duke shfaqur të gjitha këto fjalë, në çdo rend. %(link_start)sKërko në vend të kësaj për frazën e saktë.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Nuk u gjetën rezultate. Provo një fjalë apo frazë tjetër."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Asnjë nga përputhjet në këtë faqe nuk mund të shfaqet me këto filtra. Provo një faqe tjetër ose hiq një filtër."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Nuk ka më rezultate. Provo një faqe të mëparshme."
 
@@ -10042,6 +10037,15 @@ msgstr "Kërkim listash"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Kërkim me Tekst të Plotë"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Kërkim me Tekst të Plotë"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Kërkim subjektesh"
 
@@ -11588,4 +11592,7 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 
 #~ msgid " by %(name)s"
 #~ msgstr " nga %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Kërko në Open Library për %s"
 
