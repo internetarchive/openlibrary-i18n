@@ -953,19 +953,19 @@ msgstr "Ovo vide samo glavni knjižničari."
 msgid "Solr Editions"
 msgstr "Solr Editions"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Samo za čitanje"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtriraj po dostupnosti"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Jezik"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Pretraži jezike…"
 
@@ -973,11 +973,11 @@ msgstr "Pretraži jezike…"
 msgid "Languages"
 msgstr "Jezici"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Učitavanje…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtriraj po jeziku"
 
@@ -6059,20 +6059,15 @@ msgstr "Sjedini autore"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Nijedan <strong>autor</strong> se ne poklapa s tvojom pretragom"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Traži %s u Open Library"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Traži unutar"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Odaberite jedan jezik"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
@@ -6080,7 +6075,7 @@ msgstr[0] "Otprilike %(total)s rezultat"
 msgstr[1] "Otprilike %(total)s rezultata"
 msgstr[2] "Otprilike %(total)s rezultata"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
@@ -6088,30 +6083,30 @@ msgstr[0] "%(start)s - %(end)s od otprilike %(total)s rezultata"
 msgstr[1] "%(start)s - %(end)s od otprilike %(total)s rezultata"
 msgstr[2] "%(start)s - %(end)s od otprilike %(total)s rezultata"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Nema točnih podudaranja za \"%(query)s\". Prikazuju se knjige koje sadrže sve ove riječi."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Prikazuju se točna podudaranja za \"%(query)s\". %(link_start)sUmjesto toga pretražite sve ove riječi.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Prikazuju se sve ove riječi, bilo kojim redoslijedom. %(link_start)sUmjesto toga pretražite točan izraz.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Nema pronađenih rezultata. Pokušajte s drugom riječi ili izrazom."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Nijedno podudaranje na ovoj stranici ne može se prikazati s ovim filtrima. Pokušajte s drugom stranicom ili uklonite filtar."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Nema više rezultata. Pokušajte s ranijom stranicom."
 
@@ -10100,6 +10095,15 @@ msgstr "Pretraga popisa"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Pretraga cijelog teksta"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Pretraga cijelog teksta"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Pretraga područja"
 
@@ -12931,4 +12935,7 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid " by %(name)s"
 #~ msgstr " od %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Traži %s u Open Library"
 
