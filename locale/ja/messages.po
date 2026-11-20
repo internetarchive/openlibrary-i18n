@@ -946,19 +946,19 @@ msgstr "これはスーパーライブラリアンにのみ表示されます。
 msgid "Solr Editions"
 msgstr "Solrエディション"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "読めるもののみ"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "利用可否で絞り込む"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "言語"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "言語を検索…"
 
@@ -966,11 +966,11 @@ msgstr "言語を検索…"
 msgid "Languages"
 msgstr "言語"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "読み込み中…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "言語で絞り込む"
 
@@ -5990,55 +5990,50 @@ msgstr "著者を統合"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "検索に直接一致する<strong>著者</strong>は見つかりませんでした"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Open Libraryで%sを検索"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "本文検索"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "言語を1つ選択してください"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "約%(total)s件の結果"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "約%(total)s件中%(start)s - %(end)s件"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "\"%(query)s\"との完全一致はありません。これらの単語をすべて含む本を表示しています。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "\"%(query)s\"との完全一致を表示しています。%(link_start)s代わりにこれらの単語をすべて検索する%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "これらの単語をすべて、順不同で表示しています。%(link_start)s代わりに完全なフレーズを検索する%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "結果が見つかりませんでした。別の単語やフレーズをお試しください。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "このフィルターでは、このページの一致結果を表示できません。別のページを試すか、フィルターを解除してください。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "これ以上結果はありません。前のページをお試しください。"
 
@@ -9987,6 +9982,15 @@ msgstr "リスト検索"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - 全文検索"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "全文検索"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - サブジェクト検索"
 
@@ -12898,4 +12902,7 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid " by %(name)s"
 #~ msgstr " %(name)s著"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Open Libraryで%sを検索"
 
