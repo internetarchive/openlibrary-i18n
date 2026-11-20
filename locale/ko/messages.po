@@ -945,19 +945,19 @@ msgstr "super librarians에게만 표시됩니다."
 msgid "Solr Editions"
 msgstr "Solr 에디션"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "읽기 가능만"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "이용 가능 여부로 필터링"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "언어"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "언어 검색…"
 
@@ -965,11 +965,11 @@ msgstr "언어 검색…"
 msgid "Languages"
 msgstr "언어"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "로딩 중…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "언어로 필터링"
 
@@ -5989,55 +5989,50 @@ msgstr "저자 병합"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "검색어와 직접 일치하는 <strong>저자</strong>가 없습니다"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Open Library에서 %s 검색"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "내부 검색"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "언어를 하나 선택하세요"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "약 %(total)s개의 결과"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "약 %(total)s개 중 %(start)s - %(end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "\"%(query)s\"에 대한 정확히 일치하는 결과가 없습니다. 이 단어들을 모두 포함하는 책을 표시합니다."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "\"%(query)s\"에 대한 정확히 일치하는 결과를 표시합니다. %(link_start)s대신 이 단어들을 모두 검색하세요.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "이 단어들을 순서에 상관없이 모두 표시합니다. %(link_start)s대신 정확한 문구를 검색하세요.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "결과를 찾을 수 없습니다. 다른 단어나 문구를 시도해 보세요."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "이 필터로는 이 페이지의 일치 항목을 표시할 수 없습니다. 다른 페이지를 시도하거나 필터를 제거하세요."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "더 이상 결과가 없습니다. 이전 페이지를 시도해 보세요."
 
@@ -9986,6 +9981,15 @@ msgstr "목록 검색"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - 전문 검색"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "전문 검색"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - 주제 검색"
 
@@ -12568,4 +12572,7 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid " by %(name)s"
 #~ msgstr " %(name)s 지음"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Open Library에서 %s 검색"
 
