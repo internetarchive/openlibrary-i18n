@@ -949,19 +949,19 @@ msgstr "Bu sadece süper kütüphaneciler tarafından görülebilir."
 msgid "Solr Editions"
 msgstr "Solr basımı"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Yalnızca Okunabilir"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Uygunluğa göre filtrele"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Dil"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Dilleri ara…"
 
@@ -969,11 +969,11 @@ msgstr "Dilleri ara…"
 msgid "Languages"
 msgstr "Diller"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Dile göre filtrele"
 
@@ -6024,57 +6024,52 @@ msgstr "Yazarları birleştir"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Aramanızla doğrudan eşleşen <strong>yazar</strong> bulunamadı"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Open Library'de %s için arama yapın"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "İçinde Ara"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Bir dil seçin"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Yaklaşık %(total)s sonuç"
 msgstr[1] "Yaklaşık %(total)s sonuç"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "Yaklaşık %(total)s sonuçtan %(start)s - %(end)s"
 msgstr[1] "Yaklaşık %(total)s sonuçtan %(start)s - %(end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "\"%(query)s\" için tam eşleşme yok. Bu kelimelerin tümünü içeren kitaplar gösteriliyor."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "\"%(query)s\" için tam eşleşmeler gösteriliyor. %(link_start)sBunun yerine bu kelimelerin tümünü arayın.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Bu kelimelerin tümü, herhangi bir sırada, gösteriliyor. %(link_start)sBunun yerine tam ifadeyi arayın.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Sonuç bulunamadı. Farklı bir kelime veya ifade deneyin."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Bu sayfadaki eşleşmelerin hiçbiri bu filtrelerle gösterilemiyor. Başka bir sayfa deneyin veya bir filtreyi kaldırın."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Başka sonuç yok. Daha önceki bir sayfayı deneyin."
 
@@ -10042,6 +10037,15 @@ msgstr "Liste arama"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Tam Metin Araması"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Tam Metin Araması"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Konu arama"
 
@@ -12962,4 +12966,7 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid " by %(name)s"
 #~ msgstr " — %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Open Library'de %s için arama yapın"
 
