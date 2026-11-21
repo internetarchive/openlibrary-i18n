@@ -191,7 +191,7 @@ msgstr "Alle"
 msgid "Default sort: date added, newest first."
 msgstr "Standaardsortering: datum toegevoegd, nieuwste eerst."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Naam"
 
@@ -838,12 +838,12 @@ msgstr "Bekijk wat lezers uit de community aan hun boekenplanken toevoegen"
 msgid "Earliest trending data is from October 2017"
 msgstr "Vroegste trendgegevens zijn van oktober 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Wil lezen"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Nu aan het lezen"
 
@@ -852,7 +852,7 @@ msgid "Read"
 msgstr "Gelezen"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Gestopt met lezen"
 
@@ -933,7 +933,7 @@ msgstr "Meer informatie"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "op <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Zoekresultaten binnenin controleren"
 
@@ -1368,7 +1368,7 @@ msgstr "Wachtlijst verlaten"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Je verliest je plaats in de rij voor <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1433,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Leningen & geschiedenis"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Al gelezen"
 
@@ -1648,7 +1648,7 @@ msgstr "Boeken toegevoegd door mensen die %(username)s volgt"
 msgid "Search your reading log"
 msgstr "Doorzoek je leeslog"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1773,7 +1773,7 @@ msgstr "Leesdoel %(year)d"
 msgid "Set %(year_span)s reading goal"
 msgstr "Stel leesdoel %(year_span)s in"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Leeslog"
 
@@ -2760,12 +2760,12 @@ msgstr "Zoek een auteur"
 msgid "Search"
 msgstr "Zoeken"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "over %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "waaronder <i>%(topwork)s</i>"
@@ -3061,7 +3061,7 @@ msgstr "Boek toevoegen aan Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "We hebben een minimale set velden nodig om een nieuw record aan te maken. Dit zijn die velden."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Titel"
 
@@ -4843,7 +4843,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Grotere auteursfoto weergeven"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Foto van %(author)s"
@@ -4973,7 +4973,7 @@ msgstr "Nieuwste blogberichten"
 msgid "Browse the stacks"
 msgstr "Bladeren door de stapels"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Trending"
 
@@ -4999,7 +4999,7 @@ msgstr "Nieuwste"
 msgid "Top rated"
 msgstr "Best beoordeeld"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Sorteren op"
 
@@ -6007,24 +6007,19 @@ msgstr "Hoe te zoeken?"
 msgid "Full Text Search?"
 msgstr "Volledige tekst zoeken?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Zoek \"%(query)s\" op Open Library"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Auteurs zoeken"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Staat dezelfde auteur twee keer vermeld?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Auteurs samenvoegen"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Geen <strong>auteurs</strong> kwamen direct overeen met je zoekopdracht"
 
@@ -6101,91 +6096,11 @@ msgstr "Geen <strong>lijsten</strong> kwamen direct overeen met je zoekopdracht"
 msgid "Publishers Search"
 msgstr "Uitgevers zoeken"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Relevantie"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Aantal werken"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Willekeurig"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Geboortedatum (oudste) (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Geboortedatum (jongste) (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Lijstvolgorde"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Recent toegevoegd"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Recent bewerkt"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Taalnaam"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Aantal e-bookedities"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Datum toegevoegd (nieuwste)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Datum toegevoegd (oudste)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Eerst gepubliceerd"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Jouw best beoordeelde"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Meest gewild"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Meeste edities"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Meest recent"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Best beoordeeld"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Elke"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Werktitel (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Resultaten sorteren"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Schudden"
 
@@ -10057,6 +9972,15 @@ msgstr "%(query)s - Onderwerpen zoeken"
 msgid "Subject search"
 msgstr "Onderwerpen zoeken"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Auteur zoeken"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Auteur zoeken"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Iemand anders heeft dit project gewijzigd terwijl je het open had. Controleer het hieronder en probeer het opnieuw."
@@ -10956,6 +10880,86 @@ msgstr "Klassieke e-books verborgen"
 msgid "%(title)s - search"
 msgstr "%(title)s - zoeken"
 
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Relevantie"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Aantal werken"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Willekeurig"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Geboortedatum (oudste) (bèta: alleen bibliothecaris)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Geboortedatum (jongste) (bèta: alleen bibliothecaris)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Lijstvolgorde"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Recent toegevoegd"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Recent bewerkt"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Taalnaam"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Aantal e-bookedities"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Datum toegevoegd (nieuwste)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Datum toegevoegd (oudste)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Eerst gepubliceerd"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Jouw best beoordeelde"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Meest gewild"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Meeste edities"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Meest recent"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Best beoordeeld"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Elke"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Werktitel (bèta: alleen bibliothecaris)"
+
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
 msgstr "Wijzigingen die door mensen, niet door bots, zijn opgeslagen aan edities en werken, vanaf de Taken-pagina of ergens anders."
@@ -11534,4 +11538,7 @@ msgstr "De grafieken konden niet worden geladen. Herlaad de pagina om het opnieu
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Zoek %s op Open Library"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Zoek \"%(query)s\" op Open Library"
 
