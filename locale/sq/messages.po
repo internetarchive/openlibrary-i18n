@@ -191,7 +191,7 @@ msgstr "Të gjitha"
 msgid "Default sort: date added, newest first."
 msgstr "Renditja parazgjedhje: data e shtimit, më të rejat së pari."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Emri"
 
@@ -838,12 +838,12 @@ msgstr "Shiko çfarë po shtojnë lexuesit e komunitetit në raftet e tyre të l
 msgid "Earliest trending data is from October 2017"
 msgstr "Të dhënat më të hershme të trendit janë nga tetori 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Dua ta Lexoj"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Duke e Lexuar"
 
@@ -852,7 +852,7 @@ msgid "Read"
 msgstr "Lexuar"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Ndërprerë"
 
@@ -933,7 +933,7 @@ msgstr "Mëso Më Shumë"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "në <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Duke kontrolluar përputhjet e Kërkimit të Brendshëm"
 
@@ -1368,7 +1368,7 @@ msgstr "Dil nga lista e pritjes"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Do të humbisni vendin tuaj në radhë për <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1433,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Huazimet dhe Historiku"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Tashmë i Lexuar"
 
@@ -1648,7 +1648,7 @@ msgstr "Libra të shtuar nga njerëzit që ndjek %(username)s"
 msgid "Search your reading log"
 msgstr "Kërko në regjistrin tuaj të leximit"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1773,7 +1773,7 @@ msgstr "Objektivi i Leximit për %(year)d"
 msgid "Set %(year_span)s reading goal"
 msgstr "Cakto objektivin e leximit për %(year_span)s"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Regjistri i Leximit"
 
@@ -2760,12 +2760,12 @@ msgstr "Kërko për një Autor"
 msgid "Search"
 msgstr "Kërko"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "rreth %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "duke përfshirë <i>%(topwork)s</i>"
@@ -3061,7 +3061,7 @@ msgstr "Shto një libër në Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kërkojmë një grup minimal fushash për të krijuar një regjistrim të ri. Këto janë ato fusha."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Titulli"
 
@@ -4843,7 +4843,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Shfaq një foto më të madhe të autorit"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Foto e %(author)s"
@@ -4973,7 +4973,7 @@ msgstr "Postimet e Fundit në Blog"
 msgid "Browse the stacks"
 msgstr "Shfleto raftet"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Në Trend"
 
@@ -4999,7 +4999,7 @@ msgstr "Më të rejat"
 msgid "Top rated"
 msgstr "Më të vlerësuarat"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Rendit sipas"
 
@@ -6007,24 +6007,19 @@ msgstr "Si të kërkoj?"
 msgid "Full Text Search?"
 msgstr "Kërkim me Tekst të Plotë?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Kërko në Open Library për \"%(query)s\""
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Kërko Autorë"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "A është i njëjti autor i listuar dy herë?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Bashko autorët"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Asnjë <strong>autor</strong> nuk përputhet drejtpërdrejt me kërkimin tuaj"
 
@@ -6101,91 +6096,11 @@ msgstr "Asnjë <strong>listë</strong> nuk përputhet drejtpërdrejt me kërkimi
 msgid "Publishers Search"
 msgstr "Kërkimi i Botuesve"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Rëndësia"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Numri i Veprave"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "I Rastësishëm"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Data e Lindjes (më e vjetra) (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Data e Lindjes (më e reja) (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Rendi i Listës"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Shtuar së fundmi"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Modifikuar së fundmi"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Emri i Gjuhës"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Numri i Edicioneve E-libër"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Data e Shtimit (më e reja)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Data e Shtimit (më e vjetra)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Botuar së Pari"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Më të Vlerësuarat Tuaja"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Më të Kërkuarat"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Më Shumë Edicione"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Më të Fundit"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Më të Vlerësuarat"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Çdo"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Titulli i Veprës (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Rendit rezultatet"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Përzieji"
 
@@ -10057,6 +9972,15 @@ msgstr "%(query)s - Kërkim subjektesh"
 msgid "Subject search"
 msgstr "Kërkim subjektesh"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Kërkimi i Autorëve"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Kërkimi i Autorëve"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Dikush tjetër e ndryshoi këtë projekt ndërsa e kishit të hapur. Kontrollojeni më poshtë, pastaj provoni përsëri."
@@ -10956,6 +10880,86 @@ msgstr "E-librat Klasikë të fshehur"
 msgid "%(title)s - search"
 msgstr "%(title)s - kërkim"
 
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Rëndësia"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Numri i Veprave"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "I Rastësishëm"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Data e Lindjes (më e vjetra) (beta: vetëm Bibliotekarë)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Data e Lindjes (më e reja) (beta: vetëm Bibliotekarë)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Rendi i Listës"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Shtuar së fundmi"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Modifikuar së fundmi"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Emri i Gjuhës"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Numri i Edicioneve E-libër"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Data e Shtimit (më e reja)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Data e Shtimit (më e vjetra)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Botuar së Pari"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Më të Vlerësuarat Tuaja"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Më të Kërkuarat"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Më Shumë Edicione"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Më të Fundit"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Më të Vlerësuarat"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Çdo"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Titulli i Veprës (beta: vetëm Bibliotekarë)"
+
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
 msgstr "Ndryshime të ruajtura nga njerëz, jo nga bot, në botime dhe vepra, nga faqja e Detyrave ose nga çdo vend tjetër."
@@ -11606,4 +11610,7 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Kërko në Open Library për %s"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Kërko në Open Library për \"%(query)s\""
 

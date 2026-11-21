@@ -191,7 +191,7 @@ msgstr "Lahat"
 msgid "Default sort: date added, newest first."
 msgstr "Default na pagsunod-sunod: petsa ng pagdaragdag, pinakabago muna."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Pangalan"
 
@@ -838,12 +838,12 @@ msgstr "Tingnan kung ano ang idinadagdag ng mga mambabasa mula sa komunidad sa k
 msgid "Earliest trending data is from October 2017"
 msgstr "Ang pinakamatandang data ng trending ay mula Oktubre 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Gustong Basahin"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
@@ -852,7 +852,7 @@ msgid "Read"
 msgstr "Basahin"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Itinigil ang Pagbasa"
 
@@ -933,7 +933,7 @@ msgstr "Matuto Nang Higit Pa"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "sa <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Tinitingnan ang mga tugma sa Search Inside"
 
@@ -1368,7 +1368,7 @@ msgstr "Umalis sa listahan ng naghihintay"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Mawawala ang iyong pwesto sa waiting list para sa <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1433,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Mga Pautang at Kasaysayan"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Nabasa na"
 
@@ -1648,7 +1648,7 @@ msgstr "Mga librong idinadagdag ng mga taong sinusuportahan ni %(username)s"
 msgid "Search your reading log"
 msgstr "Maghanap sa iyong reading log"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1773,7 +1773,7 @@ msgstr "%(year)d Layunin sa Pagbasa"
 msgid "Set %(year_span)s reading goal"
 msgstr "Itakda ang layunin sa pagbasa ng %(year_span)s"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Log ng Pagbasa"
 
@@ -2760,12 +2760,12 @@ msgstr "Maghanap ng May-akda"
 msgid "Search"
 msgstr "Maghanap"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "tungkol sa %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "kasama ang <i>%(topwork)s</i>"
@@ -3061,7 +3061,7 @@ msgstr "Magdagdag ng libro sa Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kailangan namin ng minimum na set ng mga field upang lumikha ng bagong tala. Ito ang mga field na iyon."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Pamagat"
 
@@ -4843,7 +4843,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Itaas ang mas malaking larawan ng may-akda"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Larawan ng %(author)s"
@@ -4973,7 +4973,7 @@ msgstr "Pinakabagong Mga Post sa Blog"
 msgid "Browse the stacks"
 msgstr "Mag-browse sa mga istante"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Kasalukuyang Uso"
 
@@ -4999,7 +4999,7 @@ msgstr "Pinakabago"
 msgid "Top rated"
 msgstr "Pinakamataas ang rating"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Ayusin ayon sa"
 
@@ -6007,24 +6007,19 @@ msgstr "Paano maghanap?"
 msgid "Full Text Search?"
 msgstr "Paghahanap ng Buong Teksto?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Maghanap sa Open Library para sa \"%(query)s\""
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Maghanap ng mga May-akda"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Ang parehong may-akda ba ay nakalista ng dalawang beses?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Pagsamahin ang mga may-akda"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Walang <strong>mga may-akda</strong> na tumugma sa iyong paghahanap"
 
@@ -6101,91 +6096,11 @@ msgstr "Walang <strong>mga listahan</strong> na tumugma sa iyong paghahanap"
 msgid "Publishers Search"
 msgstr "Paghahanap ng Publishers"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Kaugnayan"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Bilang ng Trabaho"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Random"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Petsa ng Kapanganakan (pinakaluma) (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Petsa ng Kapanganakan (pinakabata) (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Kaayusan ng Listahan"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Bagong Idinagdag"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Bagong Na-edit"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Pangalan ng Wika"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Bilang ng Edisyon ng Ebook"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Petsa ng Idinagdag (pinakabago)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Petsa ng Idinagdag (pinakaluma)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Unang Nailathala"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Ang Iyong Pinakamataas na Rating"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Pinakagustong Basahin"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Pinakamaraming Edisyon"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Pinakabago"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Pinakamataas na Rating"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Anuman"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Pamagat ng Trabaho (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Ayusin ang mga resulta"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Shuffle"
 
@@ -10057,6 +9972,15 @@ msgstr "%(query)s - Paghahanap ng paksa"
 msgid "Subject search"
 msgstr "Paghahanap ng paksa"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Paghahanap ng May-Akda"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Paghahanap ng May-Akda"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "May ibang nagbago sa proyektong ito habang bukas ito sa iyo. Tingnan ito sa ibaba, pagkatapos ay subukan ulit."
@@ -10955,6 +10879,86 @@ msgstr "Nakatago ang mga klasikong eBook"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - paghahanap"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Kaugnayan"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Bilang ng Trabaho"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Random"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Petsa ng Kapanganakan (pinakaluma) (beta: Para lamang sa Librarian)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Petsa ng Kapanganakan (pinakabata) (beta: Para lamang sa Librarian)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Kaayusan ng Listahan"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Bagong Idinagdag"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Bagong Na-edit"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Pangalan ng Wika"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Bilang ng Edisyon ng Ebook"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Petsa ng Idinagdag (pinakabago)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Petsa ng Idinagdag (pinakaluma)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Unang Nailathala"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Ang Iyong Pinakamataas na Rating"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Pinakagustong Basahin"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Pinakamaraming Edisyon"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Pinakabago"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Pinakamataas na Rating"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Anuman"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Pamagat ng Trabaho (beta: Para lamang sa Librarian)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12909,4 +12913,7 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Maghanap sa Open Library para sa %s"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Maghanap sa Open Library para sa \"%(query)s\""
 

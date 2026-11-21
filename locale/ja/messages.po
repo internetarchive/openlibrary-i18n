@@ -190,7 +190,7 @@ msgstr "すべて"
 msgid "Default sort: date added, newest first."
 msgstr "デフォルトの並び替え：追加日、新しい順。"
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "名前"
 
@@ -836,12 +836,12 @@ msgstr "コミュニティの読者が本棚に追加しているものを見る
 msgid "Earliest trending data is from October 2017"
 msgstr "最も古いトレンドデータは2017年10月からです"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "読みたい"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "読書中"
 
@@ -850,7 +850,7 @@ msgid "Read"
 msgstr "読んだ"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "読むのをやめた"
 
@@ -930,7 +930,7 @@ msgstr "詳細を見る"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>で"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "検索内の一致を確認中"
 
@@ -1359,7 +1359,7 @@ msgstr "順番待ちリストから離脱"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "<strong>%(title)s</strong>の順番待ちリストの位置を失います。"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1420,7 +1420,7 @@ msgid "Loans & History"
 msgstr "貸出と履歴"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "読み終わった"
 
@@ -1635,7 +1635,7 @@ msgstr "%(username)sがフォローしている人が追加した本"
 msgid "Search your reading log"
 msgstr "読書記録を検索"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1759,7 +1759,7 @@ msgstr "%(year)d年の読書目標"
 msgid "Set %(year_span)s reading goal"
 msgstr "%(year_span)sの読書目標を設定"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "読書記録"
 
@@ -2745,12 +2745,12 @@ msgstr "著者を検索"
 msgid "Search"
 msgstr "検索"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "%(subjects)sについて"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "<i>%(topwork)s</i>を含む"
@@ -3045,7 +3045,7 @@ msgstr "Open Libraryに本を追加"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "新しいレコードを作成するには最低限のフィールドが必要です。これらがそのフィールドです。"
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "タイトル"
 
@@ -4825,7 +4825,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "著者の写真を拡大"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)sの写真"
@@ -4955,7 +4955,7 @@ msgstr "最新のブログ記事"
 msgid "Browse the stacks"
 msgstr "書架を閲覧する"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "トレンド"
 
@@ -4981,7 +4981,7 @@ msgstr "新しい順"
 msgid "Top rated"
 msgstr "評価の高い"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "並び替え基準"
 
@@ -5973,24 +5973,19 @@ msgstr "検索方法は？"
 msgid "Full Text Search?"
 msgstr "全文検索？"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Open Libraryで「%(query)s」を検索"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "著者を検索"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "同じ著者が2度リストされていますか？"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "著者を統合"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "検索に直接一致する<strong>著者</strong>は見つかりませんでした"
 
@@ -6065,91 +6060,11 @@ msgstr "検索に直接一致する<strong>リスト</strong>は見つかりま�
 msgid "Publishers Search"
 msgstr "出版社を検索"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "関連性"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "作品数"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "ランダム"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "生年月日（古い順）（ベータ：司書専用）"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "生年月日（新しい順）（ベータ：司書専用）"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "リスト順"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "最近追加"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "最近編集"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "言語名"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "電子書籍版数"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "追加日（新しい順）"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "追加日（古い順）"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "初出版年"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "あなたの評価が高い順"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "読みたい人が多い順"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "版数が多い順"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "最新"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "評価が高い順"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "すべて"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "作品タイトル（ベータ：司書専用）"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "結果を並び替え"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "シャッフル"
 
@@ -10002,6 +9917,15 @@ msgstr "%(query)s - サブジェクト検索"
 msgid "Subject search"
 msgstr "サブジェクト検索"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - 著者検索"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "著者検索"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "このプロジェクトを開いている間に、他の人が変更を加えました。以下の内容を確認してから、もう一度お試しください。"
@@ -10894,6 +10818,86 @@ msgstr "クラシック電子書籍を非表示"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - 検索"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "関連性"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "作品数"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "ランダム"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "生年月日（古い順）（ベータ：司書専用）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "生年月日（新しい順）（ベータ：司書専用）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "リスト順"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "最近追加"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "最近編集"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "言語名"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "電子書籍版数"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "追加日（新しい順）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "追加日（古い順）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "初出版年"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "あなたの評価が高い順"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "読みたい人が多い順"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "版数が多い順"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "最新"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "評価が高い順"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "すべて"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "作品タイトル（ベータ：司書専用）"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12915,4 +12919,7 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Open Libraryで%sを検索"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Open Libraryで「%(query)s」を検索"
 

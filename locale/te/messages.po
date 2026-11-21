@@ -191,7 +191,7 @@ msgstr "అన్నీ"
 msgid "Default sort: date added, newest first."
 msgstr "డిఫాల్ట్ క్రమం: జోడించిన తేదీ, కొత్తవి మొదట."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "పేరు "
 
@@ -838,12 +838,12 @@ msgstr "సమాజ పాఠకులు వారి బుక్‌షెల
 msgid "Earliest trending data is from October 2017"
 msgstr "ట్రెండింగ్ డేటా అక్టోబర్ 2017 నుండి అందుబాటులో ఉంది"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "చదవాలనుకుంటున్నాను"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "ప్రస్తుతం చదువుతున్నాను"
 
@@ -852,7 +852,7 @@ msgid "Read"
 msgstr "చదువు"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "చదవడం ఆపాను"
 
@@ -933,7 +933,7 @@ msgstr "మరింత తెలుసుకోండి"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> లో"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "శోధన సరిపోలికలను తనిఖీ చేస్తోంది"
 
@@ -1368,7 +1368,7 @@ msgstr "వెయిటింగ్ లిస్ట్ నుండి బయట
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "మీరు <strong>%(title)s</strong> కోసం వేచి ఉన్న జాబితాలో మీ స్థానాన్ని కోల్పోతారు."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1433,7 +1433,7 @@ msgid "Loans & History"
 msgstr "రుణాలు & చరిత్ర"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "ఇప్పటికే చదివారు"
 
@@ -1648,7 +1648,7 @@ msgstr "%(username)s అనుసరించే వ్యక్తులు చ
 msgid "Search your reading log"
 msgstr "మీ పఠన లాగ్‌ను శోధించండి"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1773,7 +1773,7 @@ msgstr "%(year)d చదువు లక్ష్యం"
 msgid "Set %(year_span)s reading goal"
 msgstr "%(year_span)s చదువు లక్ష్యం నిర్ణయించండి"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "చదివే ప్రదేశం "
 
@@ -2760,12 +2760,12 @@ msgstr "రచయిత కోసం శోధించండి"
 msgid "Search"
 msgstr "వెతుకు"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "%(subjects)s గురించి"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "<i>%(topwork)s</i> తో సహా"
@@ -3061,7 +3061,7 @@ msgstr "Open Library కు ఒక పుస్తకాన్ని చేర�
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "కొత్త రికార్డు సృష్టించడానికి కనీస సమాచారాన్ని అవసరం. ఇవే ఆ ఫీల్డులు."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "శీర్షిక:"
 
@@ -4843,7 +4843,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "పెద్ద రచయిత ఫోటో చూపించు"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s యొక్క ఫోటో"
@@ -4973,7 +4973,7 @@ msgstr "తాజా బ్లాగ్ పోస్టులు"
 msgid "Browse the stacks"
 msgstr "స్టాక్‌లను బ్రౌజ్ చేయండి"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "ట్రెండింగ్"
 
@@ -4999,7 +4999,7 @@ msgstr "కొత్తవి"
 msgid "Top rated"
 msgstr "అత్యధిక రేటింగ్"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "దీని ప్రకారం క్రమబద్ధీకరించండి"
 
@@ -6007,24 +6007,19 @@ msgstr "ఎలా శోధించాలి?"
 msgid "Full Text Search?"
 msgstr "పూర్తి టెక్స్ట్ శోధన?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Open Library లో \"%(query)s\" శోధించండి"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "రచయితలను శోధించండి"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "అదే రచయిత రెండుసార్లు జాబితా చేయబడ్డారా?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "రచయితలను విలీనం చేయండి"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "మీ శోధనకు నేరుగా <strong>రచయితలు</strong> సరిపోలలేదు"
 
@@ -6101,91 +6096,11 @@ msgstr "మీ శోధనకు నేరుగా <strong>జాబితా�
 msgid "Publishers Search"
 msgstr "ప్రచురణకర్తల శోధన"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "సంబంధం"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "వర్క్ సంఖ్య"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "యాదృచ్ఛికం"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "జన్మ తేదీ (పాతది) (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "జన్మ తేదీ (కొత్తది) (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "జాబితా క్రమం"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "ఇటీవల జోడించబడింది"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "ఇటీవల సవరించబడింది"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "భాష పేరు"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "ఈబుక్ ఎడిషన్ సంఖ్య"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "జోడించిన తేదీ (కొత్తవి)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "జోడించిన తేదీ (పాతది)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "ముదటి ప్రచురణ"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "మీ అత్యధిక రేటింగ్"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "అత్యధికంగా కోరుకున్నవి"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "అత్యధిక ఎడిషన్లు"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "అత్యంత తాజా"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "అత్యధిక రేటింగ్"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "ఏదైనా"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "రచన శీర్షిక (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "ఫలితాలను క్రమబద్ధీకరించండి"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "షఫుల్"
 
@@ -10057,6 +9972,15 @@ msgstr "%(query)s - సబ్జెక్ట్ శోధన"
 msgid "Subject search"
 msgstr "సబ్జెక్ట్ శోధన"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - రచయిత శోధన"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "రచయిత శోధన"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "మీరు దీన్ని తెరిచి ఉన్నప్పుడు మరొకరు ఈ ప్రాజెక్టును మార్చారు. దిగువన దాన్ని తనిఖీ చేసి, మళ్ళీ ప్రయత్నించండి."
@@ -10955,6 +10879,86 @@ msgstr "క్లాసిక్ ఈబుక్‌లు దాచబడ్డ�
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - శోధన"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "సంబంధం"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "వర్క్ సంఖ్య"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "యాదృచ్ఛికం"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "జన్మ తేదీ (పాతది) (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "జన్మ తేదీ (కొత్తది) (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "జాబితా క్రమం"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "ఇటీవల జోడించబడింది"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "ఇటీవల సవరించబడింది"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "భాష పేరు"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "ఈబుక్ ఎడిషన్ సంఖ్య"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "జోడించిన తేదీ (కొత్తవి)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "జోడించిన తేదీ (పాతది)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "ముదటి ప్రచురణ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "మీ అత్యధిక రేటింగ్"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "అత్యధికంగా కోరుకున్నవి"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "అత్యధిక ఎడిషన్లు"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "అత్యంత తాజా"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "అత్యధిక రేటింగ్"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "ఏదైనా"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "రచన శీర్షిక (బీటా: లైబ్రేరియన్లకు మాత్రమే)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12763,4 +12767,7 @@ msgstr "చార్ట్‌లు లోడ్ కాలేదు. మళ్�
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Open Library లో %s శోధించండి"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Open Library లో \"%(query)s\" శోధించండి"
 

@@ -193,7 +193,7 @@ msgstr "Sve"
 msgid "Default sort: date added, newest first."
 msgstr "Zadano razvrstavanje: datum dodavanja, najnovije prvo."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ime"
 
@@ -841,12 +841,12 @@ msgstr "Pogledaj što čitatelji zajednice dodaju u svoje police"
 msgid "Earliest trending data is from October 2017"
 msgstr "Najraniji podaci o trendovima su od listopada 2017."
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Želim čitati"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Trenutačno čitam"
 
@@ -855,7 +855,7 @@ msgid "Read"
 msgstr "Čitaj"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Prestao/la čitati"
 
@@ -937,7 +937,7 @@ msgstr "Saznaj više"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "na <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Provjera poklapanja pretraživanja unutar"
 
@@ -1378,7 +1378,7 @@ msgstr "Izbriši se iz popisa čekanja"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Izgubit ćete svoje mjesto na listi čekanja za <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1447,7 +1447,7 @@ msgid "Loans & History"
 msgstr "Posudbe i povijest"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Već pročitano"
 
@@ -1662,7 +1662,7 @@ msgstr "Knjige koje su dodali ljudi %(username)s slijedi"
 msgid "Search your reading log"
 msgstr "Pretraži tvoj dnevnik čitanja"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1788,7 +1788,7 @@ msgstr "Cilj čitanja za %(year)d."
 msgid "Set %(year_span)s reading goal"
 msgstr "Postavi cilj čitanja za %(year_span)s."
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Dnevnik čitanja"
 
@@ -2776,12 +2776,12 @@ msgstr "Traži autora"
 msgid "Search"
 msgstr "Traži"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "informacije o %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "uključujući <i>%(topwork)s</i>"
@@ -3078,7 +3078,7 @@ msgstr "Dodaj knjigu u Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Za stvaranje novog zapisa potreban je određen broj polja. Ovo su ta polja."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Naslov"
 
@@ -4862,7 +4862,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Prenesi veliku sliku autora"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Slika za %(author)s"
@@ -4992,7 +4992,7 @@ msgstr "Najnovije objave na blogu"
 msgid "Browse the stacks"
 msgstr "Pregledaj police"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "U trendu"
 
@@ -5018,7 +5018,7 @@ msgstr "Najnovije"
 msgid "Top rated"
 msgstr "Najbolje ocijenjeno"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Razvrstaj po"
 
@@ -6042,24 +6042,19 @@ msgstr "Kako tražiti?"
 msgid "Full Text Search?"
 msgstr "Pretražiti cijeli tekst?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Traži „%(query)s“ u Open Library"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Traži autore"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Je li isti autor naveden dvaput?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Sjedini autore"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Nijedan <strong>autor</strong> se ne poklapa s tvojom pretragom"
 
@@ -6138,91 +6133,11 @@ msgstr "Nijedan <strong>popis</strong> se ne poklapa s tvojom pretragom"
 msgid "Publishers Search"
 msgstr "Pretraživanje izdavača"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Relevantnost"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Broj djela"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Slučajno"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Datum rođenja (najstariji) (beta: samo knjižničar)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Datum rođenja (najmlađi) (beta: samo knjižničar)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Redoslijed popisa"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Nedavno dodano"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Nedavno uređeno"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Ime jezika"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Broj izdanja e-knjige"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Datumu dodavanja (najnovije)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Datumu dodavanja (najstarije)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Prvi put izdano"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Vaše najbolje ocijenjeno"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Najtraženije"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Najviše izdanja"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Najnedavnije"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Najbolje ocijenjeno"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Bilo koje"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Naslov djela (beta: samo knjižničar)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Razvrstaj rezultate"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Promiješaj"
 
@@ -10115,6 +10030,15 @@ msgstr "%(query)s - Pretraga područja"
 msgid "Subject search"
 msgstr "Pretraga područja"
 
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Pretraga autora"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Pretraga autora"
+
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
 msgstr "Netko drugi je u međuvremenu promijenio ovaj projekt. Provjeri ga ispod, pa pokušaj ponovno."
@@ -11019,6 +10943,86 @@ msgstr "Klasične e-knjige su skrivene"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s – pretraga"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Relevantnost"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Broj djela"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Slučajno"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Datum rođenja (najstariji) (beta: samo knjižničar)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Datum rođenja (najmlađi) (beta: samo knjižničar)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Redoslijed popisa"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Nedavno dodano"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Nedavno uređeno"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Ime jezika"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Broj izdanja e-knjige"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Datumu dodavanja (najnovije)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Datumu dodavanja (najstarije)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Prvi put izdano"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Vaše najbolje ocijenjeno"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Najtraženije"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Najviše izdanja"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Najnedavnije"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Najbolje ocijenjeno"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Bilo koje"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Naslov djela (beta: samo knjižničar)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12950,4 +12954,7 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "Search Open Library for %s"
 #~ msgstr "Traži %s u Open Library"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Traži „%(query)s“ u Open Library"
 
