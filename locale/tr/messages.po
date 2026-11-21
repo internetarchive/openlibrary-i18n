@@ -183,7 +183,7 @@ msgstr[1] "%(count)s öğe"
 msgid "Status:"
 msgstr "Durum:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Tümü"
 
@@ -2080,8 +2080,16 @@ msgid "Stats"
 msgstr "İstatistikler"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Görev istatistikleri: kim düzenliyor ve görev düzenlemeleri ne kadar kalıcı"
+msgid "Related stats pages"
+msgstr "İlgili istatistik sayfaları"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Görevler"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Spam incelemesi"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2304,6 +2312,247 @@ msgstr "Mağazayı İncele"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Memcache'i İncele"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "En yeni %(count)s düzenlemede, %(time)s tarihine kadar, %(age)s yaşından genç hesaplar. Engellenen ve güvenilir hesaplar İncelendi durumuna taşınır. Saatler UTC cinsindendir."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "En yeni düzenlemelerde %(age)s yaşından genç hesaplar. Engellenen ve güvenilir hesaplar İncelendi durumuna taşınır. Saatler UTC cinsindendir."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Hesaplar nasıl işaretlenir"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Bu kurallar, yöneticilerin Ağustos 2025 ile Kasım 2026 arasında spam olarak geri aldığı 861 hesaptan türetilmiştir. Güçlü göstergeler bunların %%86'sını işaretler ve karşılaştırıldıkları 42 sıradan yeni okuyucu, yazar ve kütüphanecinin hiçbirini işaretlemez."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Muhtemel spam: aşağıdakilerden herhangi biri"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Yazdıkları veya düzenledikleri bir kayıtta telefon numarası. Sahte havayolu ve yazılım destek hatları en yaygın spam türüdür. Hesap aynı zamanda kapak veya fotoğraf da yüklüyorsa bir yayıncı olma ihtimali daha yüksektir, bu yüzden bu yalnızca göz atmaya değer olduğunu gösterir."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Satış veya destek hattı ifadeleri: promosyon kodları, indirimler, kumarhaneler, “müşteri hizmetleri numarası”, “canlı biriyle nasıl konuşulur”, “… çevrimiçi satın al” ve benzerleri."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Yönetici spam kelime listesindeki kelimeler."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s veya daha fazla liste oluşturuldu. Okuyucular bir veya iki liste oluşturur; spam hesapları 100'e kadar liste oluşturmuştur."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Tek düzenlemeleri profillerine bir bağlantı koymak oldu. Bunlar kaydolup bir web sitesi ekleyen ve genellikle bir dakika içinde ayrılan SEO hesaplarıdır."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Bir kütüphanecinin daha önce sildiği, ekledikleri kitaplar veya yazarlar."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Göz atmaya değer"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Diğer düzenlemelerin yanı sıra yazdıkları kitaplar, listeler veya profilde bağlantılar. Genellikle kendi eserlerini tanıtan yazarlar ve yayıncılardır."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Açıklamada makale biçimlendirmesi (Markdown başlıkları, kalın yazı, bağlantılar)."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "İlk saatte 10 veya daha fazla kitap veya liste."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Sayılmadı"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Bir listeye kitap ekleme. Çoğu yeni okuyucunun yaptığı şey budur, bu yüzden bir hesabı işaretlemez veya sırasını yükseltmez."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Kaydolduktan dakikalar sonra düzenleme yapma. Gerçek yeni kullanıcıların çoğu da bunu yapar; bu sütun yalnızca bağlam sağlamak içindir."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Hangi hesaplar"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Muhtemel spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "İncelendi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Düzenlemeler yüklenemedi: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "%(total)s hesaptan en yoğun %(shown)s tanesi gösteriliyor."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Tüm hesapları seç"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Tümünü seç"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s seçildi"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Seçilen hesaplar engellensin mi?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Engelle"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Seçilen hesaplar engellensin ve tüm düzenlemeleri geri alınsın mı?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Engelle ve geri al"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Seçilen hesaplar güvenilir olarak işaretlensin mi? Bu sırayı terk ederler ve kitap eklerken captcha'yı atlarlar."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Güvenilir olarak işaretle"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Hesap"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Spam belirtileri"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Kayıt tarihi"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Son düzenlemeler"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Son düzenlemeler"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)s kullanıcısını seç"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Engellendi, düzenlemeler geri alındı"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Engellendi"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Güvenilir"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profil"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Yönetici sayfası"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Yok"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s önce"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "İlk düzenlemeye kadar %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s kitap eklendi"
+msgstr[1] "%(count)s kitap eklendi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s liste oluşturuldu"
+msgstr[1] "%(count)s liste oluşturuldu"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s listeye ekleme"
+msgstr[1] "%(count)s listeye ekleme"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s diğer düzenleme"
+msgstr[1] "%(count)s diğer düzenleme"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "Toplam %(count)s"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "silindi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Bu düzenlemelerdeki %(age)s yaşından genç %(count)s hesaptan hiçbiri bu grupta değil."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "%(age)s yaşından genç hiçbir hesap bu düzenlemelerden herhangi birini yapmadı."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4108,10 +4357,6 @@ msgstr "Yardım gerekiyor"
 msgid "Getting the list ready…"
 msgstr "Liste hazırlanıyor…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Görevler"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Katalogun oluşturulmasına yardım edin, her seferinde bir kitap."
@@ -4315,10 +4560,6 @@ msgstr "Open Library her ay %(books)s kataloglanmış kitap arasında %(readers)
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library'deki birçok kitapta hâlâ eksik bir ayrıntı var: bir kapak, bir dil, bir yayıncı. Bunları tamamlamaya yardımcı olabilirsiniz."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Son düzenlemeler"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -10050,6 +10291,121 @@ msgstr "Yalnızca henüz başlamamış bir proje silinebilir. Bunu durdurun ya d
 msgid "The project is deleted."
 msgstr "Proje silindi."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Yönetici Merkezi] Spam incelemesi"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "En az bir hesap seçin."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d hesap güvenilir olarak işaretlendi."
+msgstr[1] "%(count)d hesap güvenilir olarak işaretlendi."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "%(count)d hesap engellendi."
+msgstr[1] "%(count)d hesap engellendi."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "%(edits)d düzenleme geri alındı ve %(deleted)d kayıt silindi."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s sn"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s dk"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s sa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s g"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s kayıtta telefon numarası"
+msgstr[1] "%(count)s kayıtta telefon numarası"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s kayıtta satış veya destek hattı ifadesi"
+msgstr[1] "%(count)s kayıtta satış veya destek hattı ifadesi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s kayıtta spam kelimeleri"
+msgstr[1] "%(count)s kayıtta spam kelimeleri"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s liste oluşturuldu"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s kayıt zaten silindi"
+msgstr[1] "%(count)s kayıt zaten silindi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Tek düzenleme: profillerinde bir bağlantı"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s kayıtta bağlantılar"
+msgstr[1] "%(count)s kayıtta bağlantılar"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s kayıtta makale biçimlendirmesi"
+msgstr[1] "%(count)s kayıtta makale biçimlendirmesi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "İlk %(minutes)s dakikada %(count)s eklendi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s gün"
+msgstr[1] "%(count)s gün"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "en fazla %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Arama Sonuçları"
@@ -12532,7 +12888,7 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 #~ msgstr "Önce kaydı açın ve bu baskıyla eşleştiğini doğrulayın."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "Görev istatistikleri: kim düzenliyor ve görev düzenlemeleri ne kadar kalıcı"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "Görev istatistikleri"
