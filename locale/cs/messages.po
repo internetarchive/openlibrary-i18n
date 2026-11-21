@@ -787,7 +787,7 @@ msgstr "Vytvořit štítek pro toto téma"
 msgid "See all works"
 msgstr "Zobrazit všechna díla"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1020,7 +1020,7 @@ msgstr "Žádné odpovídající knihy ani autoři"
 msgid "Add a new book"
 msgstr "Přidat novou knihu"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autoři"
 
@@ -1377,7 +1377,7 @@ msgstr "Opustit pořadník"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Ztratíte své místo ve frontě na <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -2004,7 +2004,7 @@ msgstr "Odeslat"
 msgid "New Books Imported Per Day"
 msgstr "Nově importované knihy za den"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Pro zobrazení pěkného grafu musíte mít zapnutý JavaScript!"
 
@@ -2771,7 +2771,7 @@ msgstr "Nic nenalezeno"
 msgid "Search for an Author"
 msgstr "Hledat autora"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Hledat"
 
@@ -3215,7 +3215,7 @@ msgstr "Než vyberete knihu, vyplňte prosím reCAPTCHA výše."
 msgid "Select this book"
 msgstr "Vybrat tuto knihu"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5747,37 +5747,44 @@ msgstr "+ Přidat komunitní recenzi"
 msgid "+ Log in to add your community review"
 msgstr "+ Přihlaste se a přidejte komunitní recenzi"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Nakladatelé"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Vyhledávání nakladatelů"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Zkuste klíčové slovo."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Nenašli jsme žádné knihy vydané nakladatelstvím %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Zkusit něco jiného?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Nakladatelství: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Hledat nakladatele"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Nenalezeno"
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Zobrazit více knih tohoto autora a zjistit více informací"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Vydavatel"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
@@ -5785,56 +5792,48 @@ msgstr[0] "%(count)s e-kniha"
 msgstr[1] "%(count)s e-knihy"
 msgstr[2] "%(count)s e-knih"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-knih"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Publikační historie"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Toto je graf zobrazující kdy toto nakladatelství vydávalo knihy. Na ose X je čas a na ose Y je počet vydaných vydání. <a href=\"#subjectRelated\">Klikněte zde pro přeskočení grafu</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Obnovit graf"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "nebo pokračovat v přiblížení."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Tento graf zobrazuje vydání od tohoto nakladatelství v průběhu času. Klikněte pro zobrazení jednotlivého roku nebo přetáhněte pro výběr rozsahu."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Vydaná vydání"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Rok vydání"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Běžná témata"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Hledat knihy vydané nakladatelstvím %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Nenalezeno"
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Zobrazit více knih tohoto autora a zjistit více informací"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "nejvíce vydáno timto vydavatelem"
 
@@ -6128,7 +6127,7 @@ msgstr "Hledat seznamy"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Žádné <strong>seznamy</strong> přímo neodpovídají vašemu vyhledávání"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Vyhledávání nakladatelů"
 
@@ -10000,6 +9999,11 @@ msgstr "Hodnocení"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Jak dobře dokáže uživatel posoudit, zda je toto vydání relevantní pro jeho potřeby, ještě než k němu přistoupí?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Nakladatelství: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10026,6 +10030,15 @@ msgstr "%(query)s - Vyhledávání témat"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Vyhledávání témat"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Vyhledávání nakladatelů"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Vyhledávání nakladatelů"
 
 #: openlibrary/fastapi/search.py
 #, python-format
