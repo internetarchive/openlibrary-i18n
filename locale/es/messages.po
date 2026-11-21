@@ -183,7 +183,7 @@ msgstr[1] "%(count)s elementos"
 msgid "Status:"
 msgstr "Estado:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Todo"
 
@@ -2082,8 +2082,16 @@ msgid "Stats"
 msgstr "Estadísticas"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Estadísticas de tareas: quién edita y cómo se mantienen las ediciones de tareas"
+msgid "Related stats pages"
+msgstr "Páginas de estadísticas relacionadas"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Tareas"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Revisión de spam"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2306,6 +2314,247 @@ msgstr "Inspeccionar la tienda"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Inspeccionar memoria caché"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Cuentas de menos de %(age)s de antigüedad en las %(count)s ediciones más recientes, hasta %(time)s. Las cuentas bloqueadas y de confianza pasan a Revisadas. Las horas están en UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Cuentas de menos de %(age)s de antigüedad en las ediciones más recientes. Las cuentas bloqueadas y de confianza pasan a Revisadas. Las horas están en UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Cómo se marcan las cuentas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Estas reglas provienen de las 861 cuentas que los administradores revirtieron por spam entre agosto de 2025 y noviembre de 2026. Las señales fuertes marcan al 86%% de ellas, y ninguna de las 42 cuentas normales de lectores, autores y bibliotecarios nuevos con las que se compararon."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Probable spam: cualquiera de los siguientes"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Un número de teléfono en un registro que escribieron o editaron. Las líneas falsas de soporte de aerolíneas y software son el tipo de spam más común. Cuando la cuenta también sube portadas o fotos, es más probable que sea una editorial, por lo que esto solo indica que merece una revisión."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Lenguaje de ventas o línea de soporte: códigos promocionales, descuentos, casinos, “número de atención al cliente”, “cómo hablar con una persona real”, “comprar … en línea” y similares."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Palabras de la lista de palabras de spam de los administradores."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s o más listas creadas. Los lectores suelen crear una o dos; las cuentas de spam han creado hasta 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Su única edición puso un enlace en su perfil. Son cuentas de SEO que se registran, añaden un sitio web y se marchan, a menudo en menos de un minuto."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Libros o autores que agregaron y que un bibliotecario ya ha eliminado."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Merece una revisión"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Enlaces en libros, listas o un perfil que escribieron, junto con otras ediciones. Normalmente son autores y editoriales que promocionan su propia obra."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Formato de artículo (encabezados Markdown, negrita, enlaces) en una descripción."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 o más libros o listas en la primera hora."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "No contabilizado"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Agregar libros a una lista. Es lo que hace la mayoría de los lectores nuevos, por lo que no marca la cuenta ni la sube en el orden."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Editar a los pocos minutos de registrarse. La mayoría de los usuarios nuevos reales también lo hacen; la columna está ahí solo como contexto."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Qué cuentas"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Probable spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Revisada"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "No se pudieron cargar las ediciones: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Mostrando las %(shown)s cuentas más activas de un total de %(total)s."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Seleccionar todas las cuentas"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Seleccionar todo"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s seleccionadas"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "¿Bloquear las cuentas seleccionadas?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Bloquear"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "¿Bloquear las cuentas seleccionadas y revertir todas sus ediciones?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Bloquear y revertir"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "¿Marcar las cuentas seleccionadas como de confianza? Saldrán de esta cola y omitirán el captcha al agregar libros."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Marcar como de confianza"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Cuenta"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Señales de spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Registro"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Ediciones recientes"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Últimas ediciones"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Seleccionar %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Bloqueada, ediciones revertidas"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Bloqueada"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "De confianza"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Perfil"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Página de administración"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Ninguno"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "hace %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s hasta la primera edición"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s libro agregado"
+msgstr[1] "%(count)s libros agregados"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s lista creada"
+msgstr[1] "%(count)s listas creadas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s adición a lista"
+msgstr[1] "%(count)s adiciones a listas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s otra edición"
+msgstr[1] "%(count)s otras ediciones"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s en total"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "eliminado"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Ninguna de las %(count)s cuentas de menos de %(age)s de antigüedad en estas ediciones está en este grupo."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Ninguna cuenta de menos de %(age)s de antigüedad hizo ninguna de estas ediciones."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4110,10 +4359,6 @@ msgstr "Se necesita ayuda"
 msgid "Getting the list ready…"
 msgstr "Preparando la lista…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Tareas"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Ayuda a construir el catálogo, un libro a la vez."
@@ -4317,10 +4562,6 @@ msgstr "Open Library sirve a %(readers)s lectores cada mes en %(books)s libros c
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "A muchos libros de la Biblioteca Abierta aún les falta algún dato: la portada, el idioma o la editorial. Puedes ayudarnos a completarlos."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Ediciones recientes"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -10058,6 +10299,121 @@ msgstr "Solo se puede eliminar un proyecto que no haya comenzado. Detén u ocult
 msgid "The project is deleted."
 msgstr "El proyecto está eliminado."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Centro de administración] Revisión de spam"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Selecciona al menos una cuenta."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Se marcó %(count)d cuenta como de confianza."
+msgstr[1] "Se marcaron %(count)d cuentas como de confianza."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "Se bloqueó %(count)d cuenta."
+msgstr[1] "Se bloquearon %(count)d cuentas."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "Se revirtieron %(edits)d ediciones y se eliminaron %(deleted)d registros."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s h"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Número de teléfono en %(count)s registro"
+msgstr[1] "Números de teléfono en %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Lenguaje de ventas o línea de soporte en %(count)s registro"
+msgstr[1] "Lenguaje de ventas o línea de soporte en %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Palabras de spam en %(count)s registro"
+msgstr[1] "Palabras de spam en %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s listas creadas"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s registro ya eliminado"
+msgstr[1] "%(count)s registros ya eliminados"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Única edición: un enlace en su perfil"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Enlaces en %(count)s registro"
+msgstr[1] "Enlaces en %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Formato de artículo en %(count)s registro"
+msgstr[1] "Formato de artículo en %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s agregados en los primeros %(minutes)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s día"
+msgstr[1] "%(count)s días"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "como máximo %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Resultados de la búsqueda"
@@ -13503,4 +13859,7 @@ msgstr "Los gráficos no se pudieron cargar. Recarga la página para intentarlo 
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "Buscar «%(query)s» en la Biblioteca Abierta"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "Estadísticas de tareas: quién edita y cómo se mantienen las ediciones de tareas"
 
