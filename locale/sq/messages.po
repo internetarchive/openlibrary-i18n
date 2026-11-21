@@ -183,7 +183,7 @@ msgstr[1] "%(count)s artikuj"
 msgid "Status:"
 msgstr "Statusi:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Të gjitha"
 
@@ -2080,8 +2080,16 @@ msgid "Stats"
 msgstr "Statistikat"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Statistikat e detyrave: kush po redakton dhe sa qëndrojnë redaktimet e detyrave"
+msgid "Related stats pages"
+msgstr "Faqe statistikash të lidhura"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Detyrat"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Shqyrtim i mesazheve të padëshiruara"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2304,6 +2312,247 @@ msgstr "Inspekto store-in"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Inspekto memcache-un"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Llogari nën %(age)s vjeç në %(count)s redaktimet më të fundit, deri në %(time)s. Llogaritë e bllokuara dhe të besuara kalojnë te Të shqyrtuara. Orët janë në UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Llogari nën %(age)s vjeç në redaktimet më të fundit. Llogaritë e bllokuara dhe të besuara kalojnë te Të shqyrtuara. Orët janë në UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Si shënjohen llogaritë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Këto rregulla vijnë nga 861 llogaritë që administratorët i kthyen mbrapsht si të padëshiruara mes gushtit 2025 dhe nëntorit 2026. Shenjat e forta shënjojnë 86%% prej tyre, dhe asnjë nga 42 lexuesit, autorët dhe bibliotekarët e rinj të zakonshëm me të cilët u krahasuan."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Me gjasë i padëshiruar: cilado prej"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Një numër telefoni në një regjistrim që kanë shkruar ose redaktuar. Linjat e rreme të mbështetjes për linja ajrore dhe softuer janë lloji më i zakonshëm i mesazheve të padëshiruara. Kur llogaria ngarkon gjithashtu kapakë ose foto, ka më shumë gjasa të jetë një botues, kështu që kjo vetëm e shënjon si të denjë për shikim."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Gjuhë shitjeje ose linje mbështetjeje: kode promocionale, zbritje, kazino, “numër i shërbimit ndaj klientit”, “si të flasësh me një person të vërtetë”, “bli … online” dhe të ngjashme."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Fjalë nga lista e fjalëve të padëshiruara e administratorëve."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s ose më shumë lista të krijuara. Lexuesit krijojnë një ose dy; llogaritë e padëshiruara krijuan deri në 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Redaktimi i tyre i vetëm vendosi një lidhje në profilin e tyre. Këto janë llogari SEO që regjistrohen, shtojnë një faqe interneti dhe largohen, shpesh brenda një minute."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Libra ose autorë që kanë shtuar dhe që një bibliotekar i ka fshirë tashmë."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "E denjë për shikim"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Lidhje në libra, lista ose një profil që kanë shkruar, krahas redaktimeve të tjera. Zakonisht autorë dhe botues që promovojnë veprën e tyre."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Formatim artikulli (tituj Markdown, tekst të theksuar, lidhje) në një përshkrim."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 ose më shumë libra apo lista në orën e parë."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Nuk numërohet"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Shtimi i librave në një listë. Kjo është ajo që bëjnë shumica e lexuesve të rinj, prandaj nuk e shënjon një llogari apo e ngre atë në radhë."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Redaktim brenda minutash nga regjistrimi. Shumica e përdoruesve të vërtetë të rinj e bëjnë këtë gjithashtu; kolona është aty për kontekst."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Cilat llogari"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Me gjasë i padëshiruar"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "I shqyrtuar"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Redaktimet nuk mund të ngarkoheshin: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Po shfaqen %(shown)s nga llogaritë më aktive nga %(total)s gjithsej."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Përzgjidh të gjitha llogaritë"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Përzgjidh të gjitha"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s të përzgjedhura"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Të bllokohen llogaritë e përzgjedhura?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Blloko"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Të bllokohen llogaritë e përzgjedhura dhe të kthehen mbrapsht të gjitha redaktimet e tyre?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Blloko dhe kthe mbrapsht"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Të shënjohen llogaritë e përzgjedhura si të besuara? Ato do të largohen nga kjo radhë dhe do ta anashkalojnë captcha-n kur shtojnë libra."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Shënjo si të besuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Llogaria"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Shenja të mesazheve të padëshiruara"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "U regjistrua"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Modifikimet e fundit"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Redaktimet e fundit"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Përzgjidh %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "I bllokuar, redaktimet u kthyen mbrapsht"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "I bllokuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "I besuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profili"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Faqja e administrimit"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Asnjë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s më parë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s deri te redaktimi i parë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s libër i shtuar"
+msgstr[1] "%(count)s libra të shtuar"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s listë e krijuar"
+msgstr[1] "%(count)s lista të krijuara"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s shtim në listë"
+msgstr[1] "%(count)s shtime në lista"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s redaktim tjetër"
+msgstr[1] "%(count)s redaktime të tjera"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s gjithsej"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "i fshirë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Asnjëra nga %(count)s llogaritë nën %(age)s vjeç në këto redaktime nuk është në këtë grup."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Asnjë llogari nën %(age)s vjeç nuk ka bërë asnjë nga këto redaktime."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4108,10 +4357,6 @@ msgstr "Nevojitet ndihmë"
 msgid "Getting the list ready…"
 msgstr "Lista po përgatitet…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Detyrat"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Ndihmoni të ndërtohet katalogu, një libër në herë."
@@ -4315,10 +4560,6 @@ msgstr "Open Library u shërben %(readers)s lexuesve çdo muaj nëpër %(books)s
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Shumë libra në Open Library ende u mungon një detaj: një kopertinë, një gjuhë, një botues. Mund të ndihmoni duke i plotësuar."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Modifikimet e fundit"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -10050,6 +10291,121 @@ msgstr "Vetëm një projekt që nuk ka filluar mund të fshihet. Ndaloni ose fsh
 msgid "The project is deleted."
 msgstr "Projekti është fshirë."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Qendra e Administrimit] Shqyrtim i mesazheve të padëshiruara"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Përzgjidh të paktën një llogari."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d llogari u shënjua si e besuar."
+msgstr[1] "%(count)d llogari u shënjuan si të besuara."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "U bllokua %(count)d llogari."
+msgstr[1] "U bllokuan %(count)d llogari."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "U kthyen mbrapsht %(edits)d redaktime dhe u fshinë %(deleted)d regjistrime."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s sek"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s orë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s ditë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Numër telefoni në %(count)s regjistrim"
+msgstr[1] "Numra telefoni në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Gjuhë shitjeje ose linje mbështetjeje në %(count)s regjistrim"
+msgstr[1] "Gjuhë shitjeje ose linje mbështetjeje në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Fjalë të padëshiruara në %(count)s regjistrim"
+msgstr[1] "Fjalë të padëshiruara në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s lista të krijuara"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s regjistrim tashmë i fshirë"
+msgstr[1] "%(count)s regjistrime tashmë të fshira"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Redaktimi i vetëm: një lidhje në profilin e tyre"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Lidhje në %(count)s regjistrim"
+msgstr[1] "Lidhje në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Formatim artikulli në %(count)s regjistrim"
+msgstr[1] "Formatim artikulli në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s të shtuara në %(minutes)s minutat e para"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s ditë"
+msgstr[1] "%(count)s ditë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "më së shumti %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Rezultatet e Kërkimit"
@@ -11158,7 +11514,7 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 #~ msgstr "Hap regjistrimin dhe konfirmo që përputhet me këtë edicion fillimisht."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "Statistikat e detyrave: kush po redakton dhe sa qëndrojnë redaktimet e detyrave"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "Statistikat e detyrave"
