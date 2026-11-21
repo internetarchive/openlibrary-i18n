@@ -837,12 +837,12 @@ msgstr "समुदायातील वाचक त्यांच्या 
 msgid "Earliest trending data is from October 2017"
 msgstr "सर्वात जुना ट्रेंडिंग डेटा ऑक्टोबर 2017 पासूनचा आहे"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "वाचायचे आहे"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "सध्या वाचत आहे"
 
@@ -5300,6 +5300,56 @@ msgstr "7-दिवसांच्या सरासरीनुसार म�
 msgid "Up %(percent)d%% over the month"
 msgstr "महिन्यात %(percent)d%% वाढ"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "पुन्हा स्वागत आहे, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "पुन्हा स्वागत आहे"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "उधार घेण्यास तयार"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "ऋणे आणि आरक्षणे"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "चेक आउट केले"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "तुमची ऋणे"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "सर्व ऋणे पहा"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "आता वाचण्यास तयार"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "तुमच्या शेल्फ्समधून"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)sसध्या वाचत आहे%(link_end)s आणि %(want_start)sवाचायचे आहे%(link_end)s मधून"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "तुमचे शेल्फ्स"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "तुमची पुस्तके लोड होत आहेत"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "ऑनलाइन मोफत लायब्ररी पुस्तके वाचा"
@@ -8039,10 +8089,6 @@ msgstr "तुम्ही रांगेत पुढील असाल."
 msgid "All copies are checked out."
 msgstr "सर्व प्रती चेक आउट झाल्या आहेत."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "चेक आउट केले"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "लायब्ररीत नाही"
@@ -9605,7 +9651,7 @@ msgstr "कोणतेही निकाल आढळले नाहीत"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s पैकी %(shown)s निकाल दाखवत आहे"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "शीर्षकहीन"
 
@@ -10923,6 +10969,60 @@ msgstr "अभिजात"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "सर्वाधिक हवे असलेले"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "आज परत करायचे आहे"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "उद्या परत करायचे आहे"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d दिवसात परत करायचे आहे"
+msgstr[1] "%(count)d दिवसात परत करायचे आहे"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "लवकर उधार घ्या, अन्यथा ते पुढील वाचकाकडे जाईल."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "तुमच्यासाठी आणखी %(count)d तास राखून ठेवले आहे."
+msgstr[1] "तुमच्यासाठी आणखी %(count)d तास राखून ठेवले आहे."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "तुमच्यासाठी आणखी %(count)d दिवस राखून ठेवले आहे."
+msgstr[1] "तुमच्यासाठी आणखी %(count)d दिवस राखून ठेवले आहे."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "तुम्ही रांगेत पुढील आहात"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "तुम्ही रांगेत %(size)d पैकी %(position)d क्रमांकावर आहात"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "उधार दिलेले"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "वाचन सुरू ठेवा"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "आता उधार घ्या"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

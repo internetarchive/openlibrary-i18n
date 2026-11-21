@@ -838,12 +838,12 @@ msgstr "Shiko çfarë po shtojnë lexuesit e komunitetit në raftet e tyre të l
 msgid "Earliest trending data is from October 2017"
 msgstr "Të dhënat më të hershme të trendit janë nga tetori 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Dua ta Lexoj"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Duke e Lexuar"
 
@@ -5301,6 +5301,56 @@ msgstr "Ndryshimi gjatë muajit, sipas mesatares 7-ditore"
 msgid "Up %(percent)d%% over the month"
 msgstr "Rritje %(percent)d%% gjatë muajit"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Mirë se u ktheve, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Mirë se u ktheve"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Gati për t'u huazuar"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Huazimet dhe Rezervimet"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Huazuar"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Huazimet tuaja"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Shiko të gjitha huazimet"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Gati për t'u lexuar tani"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Nga raftet tuaja"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Nga %(reading_start)sDuke e Lexuar%(link_end)s dhe %(want_start)sDua ta Lexoj%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Raftet tuaja"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Duke ngarkuar librat tuaj"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Lexo Libra Falas Bibliotekash Online"
@@ -8040,10 +8090,6 @@ msgstr "Do të jeni i radhës."
 msgid "All copies are checked out."
 msgstr "Të gjitha kopjet janë huazuar."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Huazuar"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Jo në Bibliotekë"
@@ -9606,7 +9652,7 @@ msgstr "Nuk u gjetën rezultate"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Po shfaqen %(shown)s nga %(total)s rezultate"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Pa titull"
 
@@ -10924,6 +10970,60 @@ msgstr "Klasikë"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Më të kërkuarit"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Duhet kthyer sot"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Duhet kthyer nesër"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Duhet kthyer brenda %(count)d dite"
+msgstr[1] "Duhet kthyer brenda %(count)d dite"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Huazojeni së shpejti, përndryshe do t'i kalojë lexuesit tjetër."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Rezervuar për ju për edhe %(count)d orë."
+msgstr[1] "Rezervuar për ju për edhe %(count)d orë."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Rezervuar për ju për edhe %(count)d ditë."
+msgstr[1] "Rezervuar për ju për edhe %(count)d ditë."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ju jeni i radhës"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ju jeni numri %(position)d nga %(size)d në radhë"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Në huazim"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Vazhdo leximin"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Huazo tani"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

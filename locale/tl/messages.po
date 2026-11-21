@@ -838,12 +838,12 @@ msgstr "Tingnan kung ano ang idinadagdag ng mga mambabasa mula sa komunidad sa k
 msgid "Earliest trending data is from October 2017"
 msgstr "Ang pinakamatandang data ng trending ay mula Oktubre 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Gustong Basahin"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
@@ -5301,6 +5301,56 @@ msgstr "Pagbabago sa loob ng buwan, batay sa 7-araw na average"
 msgid "Up %(percent)d%% over the month"
 msgstr "Tumaas ng %(percent)d%% sa loob ng buwan"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Maligayang pagbabalik, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Maligayang pagbabalik"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Handa nang Hiramin"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Mga Pautang at Reserbasyon"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Nakahiram"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Mga pautang mo"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Tingnan Lahat ng Pautang"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Handa nang Basahin Ngayon"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Mula sa Iyong mga Istante"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Mula sa %(reading_start)sKasalukuyan Nang Binabasa%(link_end)s at %(want_start)sGustong Basahin%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Mga istante mo"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Nilo-load ang mga libro mo"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Magbasa ng Libreng Mga Aklat ng Aklatan Online"
@@ -8040,10 +8090,6 @@ msgstr "Ikaw ay susunod sa pila."
 msgid "All copies are checked out."
 msgstr "Lahat ng kopya ay hiniram na."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Nakahiram"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Wala sa Aklatan"
@@ -9606,7 +9652,7 @@ msgstr "Walang nahanap na resulta"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Ipinapakita ang %(shown)s sa %(total)s resulta"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Walang Pamagat"
 
@@ -10924,6 +10970,60 @@ msgstr "Mga Klasiko"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Pinakahanap"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Isasauli ngayong araw"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Isasauli bukas"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Isasauli sa loob ng %(count)d araw"
+msgstr[1] "Isasauli sa loob ng %(count)d araw"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Hiramin mo agad, kung hindi ay mapupunta ito sa susunod na mambabasa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Nakareserba para sa iyo ng %(count)d oras pa."
+msgstr[1] "Nakareserba para sa iyo ng %(count)d oras pa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Nakareserba para sa iyo ng %(count)d araw pa."
+msgstr[1] "Nakareserba para sa iyo ng %(count)d araw pa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ikaw na ang susunod sa pila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ikaw ang numero %(position)d sa %(size)d sa pila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Nahiram na"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Ipagpatuloy ang pagbasa"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Hiramin ngayon"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

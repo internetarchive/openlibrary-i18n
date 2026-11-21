@@ -838,12 +838,12 @@ msgstr "సమాజ పాఠకులు వారి బుక్‌షెల
 msgid "Earliest trending data is from October 2017"
 msgstr "ట్రెండింగ్ డేటా అక్టోబర్ 2017 నుండి అందుబాటులో ఉంది"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "చదవాలనుకుంటున్నాను"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "ప్రస్తుతం చదువుతున్నాను"
 
@@ -5301,6 +5301,56 @@ msgstr "నెల వారీగా మార్పు, 7-రోజుల స�
 msgid "Up %(percent)d%% over the month"
 msgstr "నెలలో %(percent)d%% పెరిగింది"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "తిరిగి స్వాగతం, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "తిరిగి స్వాగతం"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "అరువు తీసుకోవడానికి సిద్ధంగా ఉంది"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "రుణాలు మరియు రిజర్వేషన్లు"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "తీసుకోబడింది"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "మీ రుణాలు"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "అన్ని రుణాలను చూడండి"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "ఇప్పుడే చదవడానికి సిద్ధంగా ఉంది"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "మీ షెల్ఫుల నుండి"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)sప్రస్తుతం చదువుతున్నాను%(link_end)s మరియు %(want_start)sచదవాలనుకుంటున్నాను%(link_end)s నుండి"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "మీ షెల్ఫులు"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "మీ పుస్తకాలను లోడ్ చేస్తోంది"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "ఉచితంగా లైబ్రరీ పుస్తకాలను ఆన్‌లైన్‌లో చదవండి"
@@ -8040,10 +8090,6 @@ msgstr "మీరు తదుపరి వరుసలో ఉంటారు"
 msgid "All copies are checked out."
 msgstr "అన్ని ప్రతులు చెక్అవుట్ చేయబడ్డాయి."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "తీసుకోబడింది"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "లైబ్రరీలో లేదు"
@@ -9606,7 +9652,7 @@ msgstr "ఫలితాలు కనుగొనబడలేదు"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s ఫలితాల్లో %(shown)s చూపబడుతున్నాయి"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "శీర్షిక లేనిది"
 
@@ -10924,6 +10970,60 @@ msgstr "క్లాసిక్‌లు"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "అత్యంత కోరుకున్నవి"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "ఈరోజు తిరిగి ఇవ్వాలి"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "రేపు తిరిగి ఇవ్వాలి"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d రోజులో తిరిగి ఇవ్వాలి"
+msgstr[1] "%(count)d రోజులో తిరిగి ఇవ్వాలి"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "త్వరలో దీన్ని అరువు తీసుకోండి, లేకపోతే ఇది తదుపరి పాఠకుడికి వెళ్తుంది."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "మీ కోసం మరో %(count)d గంట అట్టిపెట్టబడింది."
+msgstr[1] "మీ కోసం మరో %(count)d గంట అట్టిపెట్టబడింది."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "మీ కోసం మరో %(count)d రోజు అట్టిపెట్టబడింది."
+msgstr[1] "మీ కోసం మరో %(count)d రోజు అట్టిపెట్టబడింది."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "మీరు వరుసలో తదుపరివారు"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "మీరు వరుసలో %(size)d లో %(position)d వ స్థానంలో ఉన్నారు"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "అరువులో ఉంది"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "చదవడం కొనసాగించండి"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "ఇప్పుడే అరువు తీసుకోండి"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

@@ -838,12 +838,12 @@ msgstr "Vedi cosa i lettori della comunità aggiungono alle loro mensole"
 msgid "Earliest trending data is from October 2017"
 msgstr "I dati di tendenza più vecchi risalgono all'ottobre 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Da leggere"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Lettura in corso"
 
@@ -5301,6 +5301,56 @@ msgstr "Variazione nel mese, media su 7 giorni"
 msgid "Up %(percent)d%% over the month"
 msgstr "Aumento del %(percent)d%% nel mese"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Bentornato/a, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Bentornato/a"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Pronto per il prestito"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Prestiti e prenotazioni"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Prestato"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "I tuoi prestiti"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Vedi tutti i prestiti"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Pronto per la lettura"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Dai tuoi scaffali"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Da %(reading_start)sLettura in corso%(link_end)s e %(want_start)sDa leggere%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "I tuoi scaffali"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Caricamento dei tuoi libri"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Leggi libri dalla biblioteca online"
@@ -8040,10 +8090,6 @@ msgstr "Se il prossimo in coda."
 msgid "All copies are checked out."
 msgstr "Tutte le copie sono in prestito."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Prestato"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Non in biblioteca"
@@ -9606,7 +9652,7 @@ msgstr "Nessun risultato trovato"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Visualizzazione di %(shown)s risultati su %(total)s"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Senza titolo"
 
@@ -10924,6 +10970,60 @@ msgstr "Classici"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "I più richiesti"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Da restituire oggi"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Da restituire domani"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Da restituire tra %(count)d giorno"
+msgstr[1] "Da restituire tra %(count)d giorni"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Prendilo in prestito presto, o passerà al prossimo lettore."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Riservato per te per ancora %(count)d ora."
+msgstr[1] "Riservato per te per ancora %(count)d ore."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Riservato per te per ancora %(count)d giorno."
+msgstr[1] "Riservato per te per ancora %(count)d giorni."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Sei il prossimo in coda"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Sei il numero %(position)d su %(size)d in coda"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "In prestito"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Continua a leggere"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Prendi in prestito ora"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

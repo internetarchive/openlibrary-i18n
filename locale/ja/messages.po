@@ -836,12 +836,12 @@ msgstr "コミュニティの読者が本棚に追加しているものを見る
 msgid "Earliest trending data is from October 2017"
 msgstr "最も古いトレンドデータは2017年10月からです"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "読みたい"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "読書中"
 
@@ -5279,6 +5279,56 @@ msgstr "7日間平均による月間の変化"
 msgid "Up %(percent)d%% over the month"
 msgstr "月間で%(percent)d%%増加"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "おかえりなさい、%(name)sさん"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "おかえりなさい"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "貸し出し可能"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "貸し出しと予約"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "貸し出し中"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "あなたの貸し出し"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "すべての貸し出しを見る"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "今すぐ読めます"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "あなたの本棚から"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)s読書中%(link_end)sと%(want_start)s読みたい%(link_end)sから"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "あなたの本棚"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "本を読み込んでいます"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "図書館の本を無料でオンラインで読む"
@@ -7991,10 +8041,6 @@ msgstr "あなたが次です。"
 msgid "All copies are checked out."
 msgstr "すべてのコピーが貸し出し中です。"
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "貸し出し中"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "図書館にありません"
@@ -9549,7 +9595,7 @@ msgstr "結果が見つかりませんでした"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s 件中 %(shown)s 件を表示中"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "無題"
 
@@ -10850,6 +10896,57 @@ msgstr "名作"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "人気急上昇"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "本日返却期限"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "明日返却期限"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d日後が返却期限"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "お早めに借りてください。次の読者に移ってしまいます。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "あと%(count)d時間取り置きされています。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "あと%(count)d日間取り置きされています。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "あなたが次の番です"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "あなたは%(size)d人中%(position)d番目です"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "貸し出し中"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "読書を続ける"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "今すぐ借りる"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

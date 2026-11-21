@@ -836,12 +836,12 @@ msgstr "Lihat apa yang ditambahkan pembaca dari komunitas ke rak buku mereka"
 msgid "Earliest trending data is from October 2017"
 msgstr "Data tren paling awal berasal dari Oktober 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Ingin Dibaca"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Sedang Dibaca"
 
@@ -5279,6 +5279,56 @@ msgstr "Perubahan selama sebulan, berdasarkan rata-rata 7 hari"
 msgid "Up %(percent)d%% over the month"
 msgstr "Naik %(percent)d%% selama sebulan"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Selamat datang kembali, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Selamat datang kembali"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Siap Dipinjam"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Pinjaman dan Reservasi"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Dipinjam"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Pinjaman Anda"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Lihat Semua Pinjaman"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Siap Dibaca Sekarang"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Dari Rak Anda"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Dari %(reading_start)sSedang Dibaca%(link_end)s dan %(want_start)sIngin Dibaca%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Rak Anda"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Memuat buku Anda"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Baca Buku Perpustakaan Gratis Secara Online"
@@ -7991,10 +8041,6 @@ msgstr "Anda akan menjadi berikutnya dalam antrian."
 msgid "All copies are checked out."
 msgstr "Semua salinan sedang dipinjam."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Dipinjam"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Tidak Ada di Perpustakaan"
@@ -9549,7 +9595,7 @@ msgstr "Tidak ada hasil ditemukan"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Menampilkan %(shown)s dari %(total)s hasil"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Tanpa judul"
 
@@ -10850,6 +10896,57 @@ msgstr "Klasik"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Paling dicari"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Harus dikembalikan hari ini"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Harus dikembalikan besok"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Harus dikembalikan dalam %(count)d hari"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Pinjam segera, atau akan diberikan ke pembaca berikutnya."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Ditahan untuk Anda selama %(count)d jam lagi."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Ditahan untuk Anda selama %(count)d hari lagi."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Anda berikutnya dalam antrian"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Anda nomor %(position)d dari %(size)d dalam antrian"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Sedang Dipinjam"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Lanjutkan membaca"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Pinjam sekarang"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"

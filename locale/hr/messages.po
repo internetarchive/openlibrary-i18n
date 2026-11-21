@@ -841,12 +841,12 @@ msgstr "Pogledaj što čitatelji zajednice dodaju u svoje police"
 msgid "Earliest trending data is from October 2017"
 msgstr "Najraniji podaci o trendovima su od listopada 2017."
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Želim čitati"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Trenutačno čitam"
 
@@ -5324,6 +5324,56 @@ msgstr "Promjena tijekom mjeseca, po 7-dnevnom prosjeku"
 msgid "Up %(percent)d%% over the month"
 msgstr "Porast od %(percent)d%% tijekom mjeseca"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Dobrodošli natrag, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Dobrodošli natrag"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Spremno za posudbu"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Posudbe i rezervacije"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Posuđeno"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Tvoje posudbe"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Pogledaj sve posudbe"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Spremno za čitanje"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "S tvojih polica"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Iz %(reading_start)sTrenutačno čitam%(link_end)s i %(want_start)sŽelim čitati%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Tvoje police"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Učitavanje tvojih knjiga"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Čitaj besplatne knjige knjižnice na internetu"
@@ -8092,10 +8142,6 @@ msgstr "Bit ćeš sljedeći/a na redu."
 msgid "All copies are checked out."
 msgstr "Sve su kopije posuđene."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Posuđeno"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Nije u knjižnici"
@@ -9666,7 +9712,7 @@ msgstr "Nema pronađenih rezultata"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Prikazano %(shown)s od %(total)s rezultata"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Bez naslova"
 
@@ -11001,6 +11047,63 @@ msgstr "Klasici"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Najtraženije"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Rok povrata danas"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Rok povrata sutra"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Rok povrata za %(count)d dan"
+msgstr[1] "Rok povrata za %(count)d dana"
+msgstr[2] "Rok povrata za %(count)d dana"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Posudi je uskoro, ili će otići sljedećem čitatelju."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Rezervirano za tebe još %(count)d sat."
+msgstr[1] "Rezervirano za tebe još %(count)d sata."
+msgstr[2] "Rezervirano za tebe još %(count)d sati."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Rezervirano za tebe još %(count)d dan."
+msgstr[1] "Rezervirano za tebe još %(count)d dana."
+msgstr[2] "Rezervirano za tebe još %(count)d dana."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ti si sljedeći/a na redu"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ti si %(position)d. od %(size)d u redu"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Posuđeno"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Nastavi čitati"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Posudi sada"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
