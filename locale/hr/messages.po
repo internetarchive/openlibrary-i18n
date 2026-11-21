@@ -185,7 +185,7 @@ msgstr[2] "%(count)s stavki"
 msgid "Status:"
 msgstr "Stanje:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Sve"
 
@@ -2095,8 +2095,16 @@ msgid "Stats"
 msgstr "Statistika"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Statistika zadataka: tko uređuje i koliko dobro uređivanja zadataka traju"
+msgid "Related stats pages"
+msgstr "Povezane stranice sa statistikom"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Zadaci"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Pregled neželjene pošte"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2320,6 +2328,251 @@ msgstr "Pregledaj trgovinu"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Pregledaj memcache"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Računi mlađi od %(age)s u posljednjih %(count)s izmjena, unatrag do %(time)s. Blokirani i pouzdani računi prelaze u Pregledano. Vremena su u UTC-u."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Računi mlađi od %(age)s u najnovijim izmjenama. Blokirani i pouzdani računi prelaze u Pregledano. Vremena su u UTC-u."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Kako se računi označavaju"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Ova pravila proizlaze iz 861 računa koje su administratori vratili kao neželjenu poštu između kolovoza 2025. i studenog 2026. Jaki pokazatelji označavaju 86%% njih, a nijedan od 42 obična nova čitatelja, autora i knjižničara s kojima su uspoređeni nije obilježen."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Vjerojatno neželjena pošta: bilo što od sljedećeg"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Broj telefona u zapisu koji su napisali ili uredili. Lažne linije podrške zrakoplovnih tvrtki ili softvera najčešći su oblik neželjene pošte. Kada račun također učitava naslovnice ili fotografije, vjerojatnije je da je riječ o izdavaču, pa ovo samo ukazuje da ga vrijedi pregledati."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Formulacije prodaje ili korisničke podrške: promotivni kodovi, popusti, kasina, “broj korisničke službe”, “kako razgovarati sa stvarnom osobom”, “kupite … online” i slično."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Riječi s administratorskog popisa riječi neželjene pošte."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "Stvoreno je %(count)s ili više popisa. Čitatelji obično naprave jedan ili dva; računi s neželjenom poštom znaju napraviti i do 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Njihova jedina izmjena bila je dodavanje poveznice na profil. Riječ je o SEO računima koji se registriraju, dodaju web-stranicu i odlaze, često unutar minute."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Knjige ili autori koje su dodali, a koje je knjižničar već izbrisao."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Vrijedi pregledati"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Poveznice u knjigama, popisima ili profilu koje su napisali, uz ostale izmjene. Obično su to autori i izdavači koji promoviraju vlastita djela."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Oblikovanje članka (Markdown naslovi, podebljano, poveznice) u opisu."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 ili više knjiga ili popisa u prvom satu."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Ne broji se"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Dodavanje knjiga u popis. To je ono što čini većina novih čitatelja, pa to ne označava račun niti ga pomiče više na popisu."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Uređivanje unutar nekoliko minuta od registracije. To čine i većina stvarnih novih korisnika; ovaj stupac služi samo kao kontekst."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Koji računi"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Vjerojatno neželjena pošta"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Pregledano"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Izmjene nije bilo moguće učitati: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Prikazano je %(shown)s najaktivnijih od ukupno %(total)s računa."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Odaberi sve račune"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Odaberi sve"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "Odabrano: %(count)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Blokirati odabrane račune?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Blokiraj"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Blokirati odabrane račune i poništiti sve njihove izmjene?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Blokiraj i poništi"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Označiti odabrane račune kao pouzdane? Napustit će ovaj red čekanja i preskočiti captchu prilikom dodavanja knjiga."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Označi kao pouzdan"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Račun"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Znakovi neželjene pošte"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Registriran"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Nedavne izmjene"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Posljednje izmjene"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Odaberi %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Blokiran, izmjene poništene"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Blokiran"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Pouzdan"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profil"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Administratorska stranica"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Nijedan"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "prije %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s do prve izmjene"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "Dodana je %(count)s knjiga"
+msgstr[1] "Dodane su %(count)s knjige"
+msgstr[2] "Dodano je %(count)s knjiga"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "Stvoren je %(count)s popis"
+msgstr[1] "Stvorena su %(count)s popisa"
+msgstr[2] "Stvoreno je %(count)s popisa"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s dodavanje u popis"
+msgstr[1] "%(count)s dodavanja u popis"
+msgstr[2] "%(count)s dodavanja u popis"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s druga izmjena"
+msgstr[1] "%(count)s druge izmjene"
+msgstr[2] "%(count)s drugih izmjena"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s ukupno"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "izbrisano"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Nijedan od %(count)s računa mlađih od %(age)s u ovim izmjenama nije u ovoj skupini."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Nijedan račun mlađi od %(age)s nije napravio nijednu od ovih izmjena."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4127,10 +4380,6 @@ msgstr "Potrebna pomoć"
 msgid "Getting the list ready…"
 msgstr "Priprema popisa…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Zadaci"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Pomozite izgraditi katalog, jednu knjigu po jednu."
@@ -4334,10 +4583,6 @@ msgstr "Open Library opslužuje %(readers)s čitatelja svaki mjesec u %(books)s 
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Mnogim knjigama na Open Library još uvijek nedostaje neki podatak: naslovnica, jezik, izdavač. Možeš pomoći da se to popuni."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Nedavne izmjene"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -10108,6 +10353,130 @@ msgstr "Samo projekt koji još nije započeo može se izbrisati. Zaustavi ili sa
 msgid "The project is deleted."
 msgstr "Projekt je izbrisan."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Administratorski centar] Pregled neželjene pošte"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Odaberite barem jedan račun."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Označen je %(count)d račun kao pouzdan."
+msgstr[1] "Označena su %(count)d računa kao pouzdana."
+msgstr[2] "Označeno je %(count)d računa kao pouzdano."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "Blokiran je %(count)d račun."
+msgstr[1] "Blokirana su %(count)d računa."
+msgstr[2] "Blokirano je %(count)d računa."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "Poništeno je %(edits)d izmjena i izbrisano %(deleted)d zapisa."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s h"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Broj telefona u %(count)s zapisu"
+msgstr[1] "Broj telefona u %(count)s zapisa"
+msgstr[2] "Broj telefona u %(count)s zapisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Prodajne fraze ili fraze podrške u %(count)s zapisu"
+msgstr[1] "Prodajne fraze ili fraze podrške u %(count)s zapisa"
+msgstr[2] "Prodajne fraze ili fraze podrške u %(count)s zapisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Riječi neželjene pošte u %(count)s zapisu"
+msgstr[1] "Riječi neželjene pošte u %(count)s zapisa"
+msgstr[2] "Riječi neželjene pošte u %(count)s zapisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s stvorenih popisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s zapis je već izbrisan"
+msgstr[1] "%(count)s zapisa su već izbrisana"
+msgstr[2] "%(count)s zapisa je već izbrisano"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Jedina izmjena: poveznica na profilu"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Poveznice u %(count)s zapisu"
+msgstr[1] "Poveznice u %(count)s zapisa"
+msgstr[2] "Poveznice u %(count)s zapisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Oblikovanje članka u %(count)s zapisu"
+msgstr[1] "Oblikovanje članka u %(count)s zapisa"
+msgstr[2] "Oblikovanje članka u %(count)s zapisa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s dodano u prvih %(minutes)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s dan"
+msgstr[1] "%(count)s dana"
+msgstr[2] "%(count)s dana"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "najviše %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Rezultati pretrage"
@@ -12970,4 +13339,7 @@ msgstr "Grafikoni se nisu uspjeli učitati. Ponovno učitajte stranicu za novi p
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "Traži „%(query)s“ u Open Library"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "Statistika zadataka: tko uređuje i koliko dobro uređivanja zadataka traju"
 
