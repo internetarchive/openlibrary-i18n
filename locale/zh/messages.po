@@ -182,7 +182,7 @@ msgstr[0] "%(count)s项"
 msgid "Status:"
 msgstr "状态:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "全部"
 
@@ -2066,8 +2066,16 @@ msgid "Stats"
 msgstr "统计"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
+msgid "Related stats pages"
+msgstr "相关统计页面"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "任务"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "垃圾内容审核"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2289,6 +2297,243 @@ msgstr "检查商店"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "检查记忆缓存"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "注册时间不足 %(age)s 的账户，在最近 %(count)s 次编辑中（回溯至 %(time)s）。已封禁和受信任的账户会移至“已审核”。时间均为 UTC。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "注册时间不足 %(age)s 的账户，在最近的编辑中。已封禁和受信任的账户会移至“已审核”。时间均为 UTC。"
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "账户是如何被标记的"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "这些规则源自管理员在 2025 年 8 月至 2026 年 11 月间作为垃圾内容回退的 861 个账户。其中强特征标记出了 86%% 的账户，而与之对比的 42 个普通新读者、作者和图书管理员中没有一个被标记。"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "疑似垃圾内容：满足以下任一条件"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "在其撰写或编辑的记录中出现电话号码。虚假的航空公司和软件支持热线是最常见的垃圾内容。如果该账户还上传了封面或照片，则更可能是出版商，因此这只会将其标记为值得留意。"
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "销售或客服热线用语：优惠码、折扣、赌场、“客服电话”、“如何联系人工客服”、“在线购买……”等。"
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "来自管理员垃圾内容词表中的词语。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "创建了 %(count)s 个或更多清单。普通读者通常只创建一两个；垃圾内容账户最多创建过 100 个。"
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "其唯一的编辑是在个人资料中添加了一个链接。这些是用于搜索引擎优化（SEO）的账户，注册后添加网站便离开，通常在一分钟内完成。"
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "其添加的图书或作者已被图书管理员删除。"
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "值得留意"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "在其撰写的图书、清单或个人资料中出现链接，且伴随有其他编辑。通常是作者或出版商在推广自己的作品。"
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "在简介中使用了文章格式（Markdown 标题、加粗、链接）。"
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "在第一小时内添加了 10 个或更多图书或清单。"
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "不计入统计"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "将图书添加到清单。这是大多数新读者都会做的事，因此不会标记账户或提高其排序。"
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "注册后几分钟内就开始编辑。大多数真实的新用户也会这样做；此列仅供参考。"
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "哪些账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "疑似垃圾内容"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "已审核"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "无法加载编辑记录：%(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "显示 %(total)s 个账户中最活跃的 %(shown)s 个。"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "选择所有账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "全选"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "已选择 %(count)s 个"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "要封禁所选账户吗？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "封禁"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "要封禁所选账户并回退其所有编辑吗？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "封禁并回退"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "要将所选账户标记为受信任吗？它们将从此队列中移除，并在添加图书时跳过验证码。"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "标记为受信任"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "垃圾内容特征"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "注册时间"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "最近的编辑"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "最近编辑"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "选择 %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "已封禁，编辑已回退"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "已封禁"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "受信任"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "个人资料"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "管理页面"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "无"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s前"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "距首次编辑 %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "已添加 %(count)s 本图书"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "已创建 %(count)s 个清单"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s 次清单添加"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s 次其他编辑"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "共 %(count)s 个"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "已删除"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "这些编辑中注册时间不足 %(age)s 的 %(count)s 个账户均不在此分组中。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "没有注册时间不足 %(age)s 的账户进行过这些编辑。"
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4090,10 +4335,6 @@ msgstr "需要帮助"
 msgid "Getting the list ready…"
 msgstr "正在准备列表…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "任务"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "帮助构建目录,一次一本书。"
@@ -4297,10 +4538,6 @@ msgstr "Open Library 每月为 %(readers)s 位读者提供 %(books)s 本已编�
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library 上的许多图书仍缺少一些信息：封面、语言或出版商。您可以帮助补全这些信息。"
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "最近的编辑"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -9995,6 +10232,112 @@ msgstr "只有尚未开始的项目才能被删除。请先结束或隐藏此项
 msgid "The project is deleted."
 msgstr "该项目已被删除。"
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[管理中心] 垃圾内容审核"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "请至少选择一个账户。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "已将 %(count)d 个账户标记为受信任。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "已封禁 %(count)d 个账户。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "已回退 %(edits)d 次编辑并删除 %(deleted)d 条记录。"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s 秒"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s 分"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s 时"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s 天"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现电话号码"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现销售或客服热线用语"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现垃圾内容词语"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "已创建 %(count)s 个清单"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s 条记录已被删除"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "唯一的编辑：在个人资料中添加链接"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现链接"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s 条记录中使用了文章格式"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "在前 %(minutes)s 分钟内添加了 %(count)s 个"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s 天"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "最多 %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "搜索结果"
@@ -12308,7 +12651,7 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 #~ msgstr "请先打开记录，确认其与此版本相符。"
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "任务统计"
