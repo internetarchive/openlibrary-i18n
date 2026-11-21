@@ -785,7 +785,7 @@ msgstr "ಈ ವಿಷಯಕ್ಕಾಗಿ ಟ್ಯಾಗ್ ರಚಿಸಿ"
 msgid "See all works"
 msgstr "ಎಲ್ಲಾ ಕೃತಿಗಳನ್ನು ನೋಡಿ"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1014,7 +1014,7 @@ msgstr "ಹೊಂದಾಣಿಕೆಯಾಗುವ ಪುಸ್ತಕಗಳು �
 msgid "Add a new book"
 msgstr "ಹೊಸ ಪುಸ್ತಕವನ್ನು ಸೇರಿಸಿ"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "ಲೇಖಕರು"
 
@@ -1367,7 +1367,7 @@ msgstr "ಕಾಯುವ ಪಟ್ಟಿಯನ್ನು ತೊರೆಯಿರಿ"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "ನೀವು <strong>%(title)s</strong> ಗಾಗಿ ಸರದಿಯಲ್ಲಿ ನಿಮ್ಮ ಸ್ಥಾನವನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತೀರಿ."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1989,7 +1989,7 @@ msgstr "ಸಲ್ಲಿಸಿ"
 msgid "New Books Imported Per Day"
 msgstr "ದಿನಕ್ಕೆ ಆಮದು ಮಾಡಿದ ಹೊಸ ಪುಸ್ತಕಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "ಈ ಸೊಗಸಾದ ಚಾರ್ಟ್ ನೋಡಲು ನಿಮಗೆ JavaScript ಆನ್ ಆಗಿರಬೇಕು!"
 
@@ -2755,7 +2755,7 @@ msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ"
 msgid "Search for an Author"
 msgstr "ಲೇಖಕರನ್ನು ಹುಡುಕಿ"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "ಹುಡುಕಿ"
 
@@ -3198,7 +3198,7 @@ msgstr "ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆ ಮಾಡುವ ಮೊ
 msgid "Select this book"
 msgstr "ಈ ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5717,93 +5717,92 @@ msgstr "+ ನಿಮ್ಮ ಸಮುದಾಯ ವಿಮರ್ಶೆಯನ್ನ�
 msgid "+ Log in to add your community review"
 msgstr "+ ನಿಮ್ಮ ಸಮುದಾಯ ವಿಮರ್ಶೆಯನ್ನು ಸೇರಿಸಲು ಲಾಗ್ ಇನ್ ಮಾಡಿ"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "ಪ್ರಕಾಶಕರು"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "ಕೀವರ್ಡ್ ಪ್ರಯತ್ನಿಸಿ."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "%(publisher)s ಪ್ರಕಟಿಸಿದ ಯಾವುದೇ ಪುಸ್ತಕಗಳನ್ನು ನಾವು ಕಂಡುಹಿಡಿಯಲಾಗಲಿಲ್ಲ."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "ಬೇರೆಯದನ್ನು ಪ್ರಯತ್ನಿಸುವುದೇ?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "ಪ್ರಕಾಶಕ: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "ಪ್ರಕಾಶಕರನ್ನು ಹುಡುಕಿ"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "ಈ ಲೇಖಕರ ಇನ್ನಷ್ಟು ಪುಸ್ತಕಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಅವರ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "ಪ್ರಕಾಶಕ"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s ಇ-ಪುಸ್ತಕ"
 msgstr[1] "%(count)s ಇ-ಪುಸ್ತಕಗಳು"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 ಇ-ಪುಸ್ತಕಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "ಪ್ರಕಟಣಾ ಇತಿಹಾಸ"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "ಈ ಪ್ರಕಾಶಕರು ಯಾವಾಗ ಪುಸ್ತಕಗಳನ್ನು ಪ್ರಕಟಿಸಿದರು ಎಂದು ತೋರಿಸುವ ಚಾರ್ಟ್ ಇದು. X ಅಕ್ಷದ ಉದ್ದಕ್ಕೂ ಸಮಯ, ಮತ್ತು Y ಅಕ್ಷದಲ್ಲಿ ಪ್ರಕಟಿಸಿದ ಆವೃತ್ತಿಗಳ ಸಂಖ್ಯೆ ಇದೆ. <a href=\"#subjectRelated\">ಚಾರ್ಟ್ ಅನ್ನು ಬಿಟ್ಟುಬಿಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "ಚಾರ್ಟ್ ಅನ್ನು ಮರುಹೊಂದಿಸಿ"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "ಅಥವಾ ಝೂಮ್ ಇನ್ ಮಾಡುವುದನ್ನು ಮುಂದುವರಿಸಿ."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "ಈ ಗ್ರಾಫ್ ಈ ಪ್ರಕಾಶಕರ ಆವೃತ್ತಿಗಳನ್ನು ಕಾಲಾವಧಿಯಲ್ಲಿ ಚಾರ್ಟ್ ಮಾಡುತ್ತದೆ. ಒಂದು ವರ್ಷವನ್ನು ನೋಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ, ಅಥವಾ ಒಂದು ವ್ಯಾಪ್ತಿಯುದ್ದಕ್ಕೂ ಎಳೆಯಿರಿ."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "ಪ್ರಕಟಿಸಿದ ಆವೃತ್ತಿಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "ಪ್ರಕಟಣಾ ವರ್ಷ"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "ಸಾಮಾನ್ಯ ವಿಷಯಗಳು"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)s ಪ್ರಕಟಿಸಿದ ಪುಸ್ತಕಗಳನ್ನು ಹುಡುಕಿ"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "ಈ ಲೇಖಕರ ಇನ್ನಷ್ಟು ಪುಸ್ತಕಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಅವರ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "ಈ ಪ್ರಕಾಶಕರಿಂದ ಹೆಚ್ಚು ಪ್ರಕಟಿಸಲ್ಪಟ್ಟ"
 
@@ -6091,7 +6090,7 @@ msgstr "ಪಟ್ಟಿಗಳನ್ನು ಹುಡುಕಿ"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ನೇರವಾಗಿ ಯಾವುದೇ <strong>ಪಟ್ಟಿಗಳು</strong> ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "ಪ್ರಕಾಶಕರ ಹುಡುಕಾಟ"
 
@@ -9944,6 +9943,11 @@ msgstr "ಮೌಲ್ಯಮಾಪನ"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "ಬಳಕೆದಾರರು ಪ್ರವೇಶಿಸುವ ಮೊದಲು ಈ ಆವೃತ್ತಿ ಅವರ ಅಗತ್ಯಗಳಿಗೆ ಸಂಬಂಧಿತವಾಗಿದೆಯೇ ಎಂದು ಎಷ್ಟು ಚೆನ್ನಾಗಿ ನಿರ್ಧರಿಸಬಹುದು?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "ಪ್ರಕಾಶಕ: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -9970,6 +9974,15 @@ msgstr "%(query)s - ವಿಷಯ ಹುಡುಕಾಟ"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "ವಿಷಯ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
 
 #: openlibrary/fastapi/search.py
 #, python-format
