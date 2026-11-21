@@ -181,7 +181,7 @@ msgstr[0] "%(count)s개 항목"
 msgid "Status:"
 msgstr "상태:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "전체"
 
@@ -2065,8 +2065,16 @@ msgid "Stats"
 msgstr "통계"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "작업 통계: 누가 편집하고 있는지, 작업 편집이 얼마나 유지되는지"
+msgid "Related stats pages"
+msgstr "관련 통계 페이지"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "작업"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "스팸 검토"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2288,6 +2296,243 @@ msgstr "저장소 검사"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Memcache 검사"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "최근 %(count)s건의 편집 중 가입한 지 %(age)s 미만인 계정, %(time)s까지 거슬러 올라갑니다. 차단되거나 신뢰할 수 있는 계정은 검토 완료로 이동합니다. 시간은 UTC 기준입니다."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "최근 편집 중 가입한 지 %(age)s 미만인 계정입니다. 차단되거나 신뢰할 수 있는 계정은 검토 완료로 이동합니다. 시간은 UTC 기준입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "계정이 표시되는 방식"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "이 규칙은 2025년 8월부터 2026년 11월 사이에 관리자가 스팸으로 되돌린 861개 계정을 바탕으로 합니다. 강한 신호는 이 중 86%%를 표시하며, 비교 대상이었던 일반 신규 독자, 저자, 사서 42명 중 어느 누구도 표시하지 않았습니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "스팸으로 의심됨: 다음 중 하나"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "작성하거나 편집한 레코드에 전화번호가 있는 경우입니다. 가짜 항공사 및 소프트웨어 지원 전화번호가 가장 흔한 스팸 유형입니다. 계정이 표지나 사진도 업로드했다면 출판사일 가능성이 높으므로, 이 경우에는 확인이 필요하다고만 표시합니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "판매 또는 상담 전화 문구: 프로모션 코드, 할인, 카지노, “고객 서비스 번호”, “상담원과 통화하는 방법”, “… 온라인 구매” 등입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "관리자 스팸 단어 목록에 있는 단어입니다."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "목록을 %(count)s개 이상 만들었습니다. 일반 독자는 보통 한두 개를 만들지만, 스팸 계정은 최대 100개까지 만들었습니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "유일한 편집이 프로필에 링크를 추가한 것입니다. 가입 후 웹사이트를 추가하고 떠나는 SEO 계정으로, 흔히 1분 이내에 이루어집니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "사서가 이미 삭제한 책이나 저자를 추가한 경우입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "확인 필요"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "다른 편집과 함께 작성한 책, 목록 또는 프로필에 링크가 있습니다. 대개 자신의 작품을 홍보하는 저자나 출판사입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "설명에 기사 서식(마크다운 제목, 굵게, 링크)이 있는 경우입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "첫 1시간 동안 책이나 목록을 10개 이상 추가한 경우입니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "집계 제외"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "목록에 책을 추가하는 것입니다. 대부분의 신규 독자가 하는 일이므로 계정을 표시하거나 순위를 올리지 않습니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "가입 후 몇 분 안에 편집하는 것입니다. 실제 신규 사용자 대부분도 그렇게 하므로, 이 열은 참고용으로만 표시됩니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "대상 계정"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "스팸 의심"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "검토 완료"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "편집 내역을 불러올 수 없습니다: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "전체 %(total)s개 계정 중 활동이 가장 많은 %(shown)s개를 표시합니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "모든 계정 선택"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "전체 선택"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s개 선택됨"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "선택한 계정을 차단하시겠습니까?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "차단"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "선택한 계정을 차단하고 모든 편집을 되돌리시겠습니까?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "차단하고 되돌리기"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "선택한 계정을 신뢰할 수 있음으로 표시하시겠습니까? 이 대기열에서 제외되며 책을 추가할 때 캡차를 건너뜁니다."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "신뢰할 수 있음으로 표시"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "계정"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "스팸 징후"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "가입일"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "최근 편집"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "최근 편집"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)s 선택"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "차단됨, 편집 되돌려짐"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "차단됨"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "신뢰할 수 있음"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "프로필"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "관리자 페이지"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "없음"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s 전"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "첫 편집까지 %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "책 %(count)s권 추가됨"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "목록 %(count)s개 생성됨"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "목록 추가 %(count)s건"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "기타 편집 %(count)s건"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "총 %(count)s개"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "삭제됨"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "이 편집에 포함된, 가입한 지 %(age)s 미만인 %(count)s개 계정 중 이 그룹에 속하는 계정이 없습니다."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "가입한 지 %(age)s 미만인 계정 중 이 편집을 한 계정이 없습니다."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4089,10 +4334,6 @@ msgstr "도움이 필요합니다"
 msgid "Getting the list ready…"
 msgstr "목록을 준비하는 중…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "작업"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "한 번에 한 권씩, 카탈로그를 만드는 데 도움을 주세요."
@@ -4296,10 +4537,6 @@ msgstr "Open Library는 매달 %(readers)s명의 독자에게 %(books)s권의 �
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library에는 표지, 언어, 출판사 같은 정보가 빠진 책이 아직 많습니다. 여러분이 이를 채우는 데 도움을 주실 수 있습니다."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "최근 편집"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -9994,6 +10231,112 @@ msgstr "아직 시작되지 않은 프로젝트만 삭제할 수 있습니다. �
 msgid "The project is deleted."
 msgstr "프로젝트가 삭제되었습니다."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[관리자 센터] 스팸 검토"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "계정을 하나 이상 선택하세요."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "계정 %(count)d개를 신뢰할 수 있음으로 표시했습니다."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "계정 %(count)d개를 차단했습니다."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "편집 %(edits)d건을 되돌리고 레코드 %(deleted)d건을 삭제했습니다."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s초"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s분"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s시간"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s일"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "레코드 %(count)s건에 전화번호 있음"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "레코드 %(count)s건에 판매/상담 전화 문구 있음"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "레코드 %(count)s건에 스팸 단어 있음"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "목록 %(count)s개 생성됨"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "레코드 %(count)s건이 이미 삭제됨"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "유일한 편집: 프로필에 링크 추가"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "레코드 %(count)s건에 링크 있음"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "레코드 %(count)s건에 기사 서식 있음"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "첫 %(minutes)s분 동안 %(count)s개 추가됨"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s일"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "최대 %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "검색 결과"
@@ -12605,4 +12948,7 @@ msgstr "차트를 불러오지 못했습니다. 페이지를 새로고침하여 
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "Open Library에서 \"%(query)s\" 검색"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "작업 통계: 누가 편집하고 있는지, 작업 편집이 얼마나 유지되는지"
 

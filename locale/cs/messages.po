@@ -184,7 +184,7 @@ msgstr[2] "%(count)s položek"
 msgid "Status:"
 msgstr "Stav:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Vše"
 
@@ -2094,8 +2094,16 @@ msgid "Stats"
 msgstr "Statistiky"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Statistiky úkolů: kdo edituje a jak dobře úpravy úkolů vydrží"
+msgid "Related stats pages"
+msgstr "Související stránky se statistikami"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Úkoly"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Kontrola spamu"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2319,6 +2327,251 @@ msgstr "Prozkoumat úložiště"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Prozkoumat memcache"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Účty mladší než %(age)s v nejnovějších %(count)s úpravách, zpět až do %(time)s. Blokované a důvěryhodné účty se přesouvají do Zkontrolováno. Časy jsou v UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Účty mladší než %(age)s v nejnovějších úpravách. Blokované a důvěryhodné účty se přesouvají do Zkontrolováno. Časy jsou v UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Jak jsou účty označovány"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Tato pravidla vycházejí z 861 účtů, které administrátoři mezi srpnem 2025 a listopadem 2026 vrátili jako spam. Silné signály označují 86%% z nich a žádný ze 42 běžných nových čtenářů, autorů a knihovníků, vůči nimž byla porovnána."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Pravděpodobně spam: kterékoli z následujícího"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Telefonní číslo v záznamu, který napsali nebo upravili. Nejčastějším spamem jsou falešné linky podpory leteckých společností a softwaru. Pokud účet také nahrává obálky nebo fotografie, je pravděpodobnější, že jde o nakladatele, takže to pouze označuje, že stojí za prověření."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Formulace prodejní linky nebo linky podpory: propagační kódy, slevy, kasina, „číslo zákaznického servisu“, „jak mluvit se živým člověkem“, „kupte … online“ a podobně."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Slova ze seznamu spamových slov administrátorů."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "Vytvořeno %(count)s nebo více seznamů. Čtenáři obvykle vytvoří jeden nebo dva; spamové účty jich vytvořily až 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Jejich jedinou úpravou bylo vložení odkazu do profilu. Jde o SEO účty, které se zaregistrují, přidají webovou stránku a odejdou, často během jedné minuty."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Knihy nebo autoři, které přidali a které už knihovník smazal."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Stojí za prověření"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Odkazy v knihách, seznamech nebo profilu, které napsali, spolu s dalšími úpravami. Obvykle jde o autory a nakladatele propagující vlastní díla."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Formátování článku (nadpisy Markdown, tučné písmo, odkazy) v popisu."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 nebo více knih či seznamů během první hodiny."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Nezapočítává se"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Přidávání knih do seznamu. To dělá většina nových čtenářů, takže to účet neoznačuje ani neposouvá výš v pořadí."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Úpravy během několika minut od registrace. To dělá i většina skutečných nových uživatelů; sloupec slouží jen pro kontext."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Které účty"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Pravděpodobně spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Zkontrolováno"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Úpravy se nepodařilo načíst: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Zobrazeno %(shown)s z %(total)s nejaktivnějších účtů."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Vybrat všechny účty"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Vybrat vše"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "Vybráno: %(count)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Zablokovat vybrané účty?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Zablokovat"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Zablokovat vybrané účty a vrátit zpět všechny jejich úpravy?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Zablokovat a vrátit zpět"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Označit vybrané účty jako důvěryhodné? Opustí tuto frontu a při přidávání knih přeskočí captchu."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Označit jako důvěryhodný"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Účet"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Známky spamu"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Registrace"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Nedávné úpravy"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Poslední úpravy"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Vybrat %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Zablokováno, úpravy vráceny zpět"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Zablokováno"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Důvěryhodný"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profil"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Stránka administrace"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Žádné"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "před %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s do první úpravy"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "Přidána %(count)s kniha"
+msgstr[1] "Přidány %(count)s knihy"
+msgstr[2] "Přidáno %(count)s knih"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "Vytvořen %(count)s seznam"
+msgstr[1] "Vytvořeny %(count)s seznamy"
+msgstr[2] "Vytvořeno %(count)s seznamů"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s přidání do seznamu"
+msgstr[1] "%(count)s přidání do seznamu"
+msgstr[2] "%(count)s přidání do seznamu"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s jiná úprava"
+msgstr[1] "%(count)s jiné úpravy"
+msgstr[2] "%(count)s jiných úprav"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s celkem"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "smazáno"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Žádný z %(count)s účtů mladších než %(age)s v těchto úpravách není v této skupině."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Žádný účet mladší než %(age)s neprovedl žádnou z těchto úprav."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4126,10 +4379,6 @@ msgstr "Potřebná pomoc"
 msgid "Getting the list ready…"
 msgstr "Příprava seznamu…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Úkoly"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Pomozte budovat katalog, jedna kniha po druhé."
@@ -4333,10 +4582,6 @@ msgstr "Open Library slouží %(readers)s čtenářům měsíčně napříč %(b
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Mnoha knihám na Open Library stále chybí nějaký údaj: obálka, jazyk, nakladatel. Můžete pomoci je doplnit."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Nedávné úpravy"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -10105,6 +10350,130 @@ msgstr "Smazat lze pouze projekt, který ještě nezačal. Tento ukončete nebo 
 msgid "The project is deleted."
 msgstr "Projekt je smazán."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Centrum administrace] Kontrola spamu"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Vyberte alespoň jeden účet."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Označen %(count)d účet jako důvěryhodný."
+msgstr[1] "Označeny %(count)d účty jako důvěryhodné."
+msgstr[2] "Označeno %(count)d účtů jako důvěryhodných."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "Zablokován %(count)d účet."
+msgstr[1] "Zablokovány %(count)d účty."
+msgstr[2] "Zablokováno %(count)d účtů."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "Vráceno zpět %(edits)d úprav a smazáno %(deleted)d záznamů."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s h"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Telefonní číslo v %(count)s záznamu"
+msgstr[1] "Telefonní čísla v %(count)s záznamech"
+msgstr[2] "Telefonní čísla v %(count)s záznamech"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Formulace prodejní linky nebo linky podpory v %(count)s záznamu"
+msgstr[1] "Formulace prodejní linky nebo linky podpory v %(count)s záznamech"
+msgstr[2] "Formulace prodejní linky nebo linky podpory v %(count)s záznamech"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Spamová slova v %(count)s záznamu"
+msgstr[1] "Spamová slova v %(count)s záznamech"
+msgstr[2] "Spamová slova v %(count)s záznamech"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s vytvořených seznamů"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s záznam už byl smazán"
+msgstr[1] "%(count)s záznamy už byly smazány"
+msgstr[2] "%(count)s záznamů už bylo smazáno"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Jediná úprava: odkaz v jejich profilu"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Odkazy v %(count)s záznamu"
+msgstr[1] "Odkazy v %(count)s záznamech"
+msgstr[2] "Odkazy v %(count)s záznamech"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Formátování článku v %(count)s záznamu"
+msgstr[1] "Formátování článku v %(count)s záznamech"
+msgstr[2] "Formátování článku v %(count)s záznamech"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s přidáno během prvních %(minutes)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s den"
+msgstr[1] "%(count)s dny"
+msgstr[2] "%(count)s dní"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "nejvýše %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Výsledky hledání"
@@ -12970,4 +13339,7 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "Hledat v Open Library \"%(query)s\""
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "Statistiky úkolů: kdo edituje a jak dobře úpravy úkolů vydrží"
 
