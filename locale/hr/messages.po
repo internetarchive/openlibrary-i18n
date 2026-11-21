@@ -788,7 +788,7 @@ msgstr "Stvori oznaku za ovo područje"
 msgid "See all works"
 msgstr "Pogledaj sva djela"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1021,7 +1021,7 @@ msgstr "Nema odgovarajućih knjiga ili autora"
 msgid "Add a new book"
 msgstr "Dodaj novu knjigu"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autori"
 
@@ -1378,7 +1378,7 @@ msgstr "Izbriši se iz popisa čekanja"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Izgubit ćete svoje mjesto na listi čekanja za <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -2005,7 +2005,7 @@ msgstr "Pošalji"
 msgid "New Books Imported Per Day"
 msgstr "Dnevno uvezene nove knjige"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Za prikaz dijagrama JavaScript mora biti uključen!"
 
@@ -2772,7 +2772,7 @@ msgstr "Ništa nije pronađeno"
 msgid "Search for an Author"
 msgstr "Traži autora"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Traži"
 
@@ -3216,7 +3216,7 @@ msgstr "Riješite reCAPTCHA iznad prije odabira knjige."
 msgid "Select this book"
 msgstr "Odaberi ovu knjigu"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5748,37 +5748,44 @@ msgstr "+ Dodaj tvoju recenziju zajednice"
 msgid "+ Log in to add your community review"
 msgstr "+ Prijavi se za dodavanje tvoje recenzije zajednice"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Izdavači"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Pretraživanje izdavača"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Pokušaj s ključnom riječi."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Nismo pronašli nijednu izdanu knjigu izdavača %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Želiš li pokušati nešto drugo?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Izdavač: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Traži izdavače"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Ništa nije pronađeno."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Pogledaj još knjiga ovog autora i saznaj više o njemu"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Izdavač"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
@@ -5786,56 +5793,48 @@ msgstr[0] "%(count)s e-knjiga"
 msgstr[1] "%(count)s e-knjige"
 msgstr[2] "%(count)s e-knjiga"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-knjiga"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Povijest izdanja"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Vremenski dijagram za prikaz izdanih knjiga ovog izdavača. Os x označava vrijeme, os y broj objavljenih izdanja. <a href=\"#subjectRelated\">Za preskakanje prikaza dijagrama pritisni ovdje</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Obnovi dijagram"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "ili nastavi uvećavati prikaz."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Dijagram prikazuje izdanja ovog izdavača u odnosu na vrijeme. Pritisni za prikaz određene godine ili povuci mišem preko raspona godina."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Objavljena izdanja"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Godina izdanja"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Opća područja"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Traži knjige izdane od %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Ništa nije pronađeno."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Pogledaj još knjiga ovog autora i saznaj više o njemu"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "najviše izdano od ovog izdavača"
 
@@ -6129,7 +6128,7 @@ msgstr "Traži popise"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Nijedan <strong>popis</strong> se ne poklapa s tvojom pretragom"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Pretraživanje izdavača"
 
@@ -10003,6 +10002,11 @@ msgstr "Procjena"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Koliko dobro korisnik može utvrditi je li ovo izdanje relevantno za njegove potrebe prije nego mu pristupi?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Izdavač: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10029,6 +10033,15 @@ msgstr "%(query)s - Pretraga područja"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Pretraga područja"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Pretraživanje izdavača"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Pretraživanje izdavača"
 
 #: openlibrary/fastapi/search.py
 #, python-format

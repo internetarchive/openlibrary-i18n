@@ -787,7 +787,7 @@ msgstr "Creează eticheta pentru acest subiect"
 msgid "See all works"
 msgstr "Vezi toate lucrările"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1020,7 +1020,7 @@ msgstr "Nicio carte sau autor potrivit"
 msgid "Add a new book"
 msgstr "Adaugă o carte nouă"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autori"
 
@@ -1377,7 +1377,7 @@ msgstr "Ieșiți din lista de așteptare"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Îți vei pierde locul în lista de așteptare pentru <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -2004,7 +2004,7 @@ msgstr "Salvează"
 msgid "New Books Imported Per Day"
 msgstr "Cărți noi importate pe zi"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Trebuie să ai JavaScript activat pentru a vedea graficul!"
 
@@ -2771,7 +2771,7 @@ msgstr "Niciuna găsită"
 msgid "Search for an Author"
 msgstr "Caută un autor"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Căutare"
 
@@ -3215,7 +3215,7 @@ msgstr "Vă rugăm să completați reCAPTCHA de mai sus înainte de a alege o ca
 msgid "Select this book"
 msgstr "Selectează această carte"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5747,37 +5747,44 @@ msgstr "+ Adaugă recenzia ta din comunitate"
 msgid "+ Log in to add your community review"
 msgstr "+ Autentifică-te pentru a adăuga recenzia ta din comunitate"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Editori"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Căutare editor"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Încercați un cuvânt cheie."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Nu am putut găsi nicio carte publicată de %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Încercați altceva?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Editor: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Căutați editori"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Niciun rezultat."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Vedeți mai multe cărți ale acestui autor și aflați mai multe despre el"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Editor"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
@@ -5785,56 +5792,48 @@ msgstr[0] "%(count)s carte electronică"
 msgstr[1] "%(count)s cărți electronice"
 msgstr[2] "%(count)s de cărți electronice"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-books"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Istoricul publicării"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Acesta este un grafic care arată când a publicat cărți acest editor. Pe axa X este timpul, iar pe axa Y este numărul de ediții publicate. <a href=\"#subjectRelated\">Faceți clic aici pentru a sări graficul</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Resetați graficul"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "sau continuați mărirea."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Acest grafic ilustrează edițiile acestui editor de-a lungul timpului. Faceți clic pentru a vedea un singur an sau trageți pentru a selecta un interval."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Ediții publicate"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Anul publicării"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Subiecte comune"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Căutați cărți publicate de %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Niciun rezultat."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Vedeți mai multe cărți ale acestui autor și aflați mai multe despre el"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "publicat cel mai mult de acest editor"
 
@@ -6128,7 +6127,7 @@ msgstr "Căutați liste"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Nicio <strong>listă</strong> nu s-a potrivit direct cu căutarea dvs."
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Căutare edituri"
 
@@ -10000,6 +9999,11 @@ msgstr "Evaluare"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Cât de bine poate un utilizator să stabilească dacă această ediție este relevantă pentru nevoile sale înainte de a o accesa?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Editor: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10026,6 +10030,15 @@ msgstr "%(query)s - Căutare subiecte"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Căutare subiecte"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Căutare editor"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Căutare editor"
 
 #: openlibrary/fastapi/search.py
 #, python-format

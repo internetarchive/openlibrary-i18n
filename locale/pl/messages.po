@@ -787,7 +787,7 @@ msgstr "Utwórz tag dla tego tematu"
 msgid "See all works"
 msgstr "Zobacz wszystkie dzieła"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1020,7 +1020,7 @@ msgstr "Brak pasujących książek lub autorów"
 msgid "Add a new book"
 msgstr "Dodaj nową książkę"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autorzy"
 
@@ -1377,7 +1377,7 @@ msgstr "Opuść listę oczekujących"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Stracisz swoje miejsce w kolejce do <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -2004,7 +2004,7 @@ msgstr "Zatwierdź"
 msgid "New Books Imported Per Day"
 msgstr "Nowe książki zaimportowane dziennie"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Musisz mieć włączony JavaScript, aby zobaczyć fajny wykres!"
 
@@ -2771,7 +2771,7 @@ msgstr "Nie znaleziono"
 msgid "Search for an Author"
 msgstr "Wyszukaj autora"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Szukaj"
 
@@ -3215,7 +3215,7 @@ msgstr "Proszę rozwiązać powyższy reCAPTCHA przed wyborem książki."
 msgid "Select this book"
 msgstr "Wybierz tę książkę"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5747,37 +5747,44 @@ msgstr "+ Dodaj swoją recenzję społeczności"
 msgid "+ Log in to add your community review"
 msgstr "+ Zaloguj się, aby dodać swoją recenzję społeczności"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Wydawnictwa"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Wyszukiwanie wydawców"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Spróbuj słowa kluczowego."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Nie znaleźliśmy żadnych książek wydanych przez %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Wyszukać inne?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Wydawca: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Szukaj wydawców"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Nie znaleziono."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Zobacz więcej książek tego autora i dowiedz się więcej"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Wydawca"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
@@ -5785,56 +5792,48 @@ msgstr[0] "%(count)s e-book"
 msgstr[1] "%(count)s e-booki"
 msgstr[2] "%(count)s e-booków"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-booków"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Historia publikacji"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "To wykres pokazujący, kiedy ten wydawca opublikował książki. Oś X wskazuje na czas, oś Y wskazuje liczbę opublikowanych wydań. <a href=\"#subjectRelated\"> Kliknij tutaj, aby pominąć wykres</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Zresetuj wykres"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "lub kontynuuj powiększanie."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Ten diagram przedstawia wykresy publikacji tego wydawcy w miarę upływu czasu. Kliknij, aby wyświetlić pojedynczy rok lub przeciągnij przez cały zakres."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Wydania opublikowane"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Rok wydania"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Wspólne tematy"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Szukaj książek wydanych przez %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Nie znaleziono."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Zobacz więcej książek tego autora i dowiedz się więcej"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "Najczęściej publikowana przez tego wydawcę"
 
@@ -6128,7 +6127,7 @@ msgstr "Szukaj list"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Żadna <strong>lista</strong> nie pasuje bezpośrednio do Twojego wyszukiwania"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Wyszukiwanie wydawcy"
 
@@ -10000,6 +9999,11 @@ msgstr "Ocena"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Jak dobrze użytkownik może ocenić, czy to wydanie odpowiada jego potrzebom, zanim uzyska do niego dostęp?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Wydawca: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10026,6 +10030,15 @@ msgstr "%(query)s - Wyszukiwanie tematów"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Wyszukiwanie tematów"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Wyszukiwanie wydawców"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Wyszukiwanie wydawców"
 
 #: openlibrary/fastapi/search.py
 #, python-format

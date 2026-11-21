@@ -789,7 +789,7 @@ msgstr "इस विषय के लिए टैग बनाएं"
 msgid "See all works"
 msgstr "सभी काम देखें"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -1018,7 +1018,7 @@ msgstr "कोई मिलती-जुलती किताबें या �
 msgid "Add a new book"
 msgstr "नई किताब जोड़ें"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "लेखक"
 
@@ -1371,7 +1371,7 @@ msgstr "प्रतीक्षा सूची छोड़ें"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "आप <strong>%(title)s</strong> की प्रतीक्षा सूची में अपना स्थान खो देंगे।"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html.jinja search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1993,7 +1993,7 @@ msgstr "सबमिट"
 msgid "New Books Imported Per Day"
 msgstr "प्रतिदिन नई आयात की गई पुस्तकें"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "निफ्टी चार्ट देखने के लिए आपको जावास्क्रिप्ट चालू करनी होगी!"
 
@@ -2759,7 +2759,7 @@ msgstr "कोई नहीं मिला"
 msgid "Search for an Author"
 msgstr "लेखक खोजें"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "किताबें खोजें"
 
@@ -3202,7 +3202,7 @@ msgstr "किताब चुनने से पहले कृपया ऊ�
 msgid "Select this book"
 msgstr "इस किताब का चयन करें"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5721,93 +5721,92 @@ msgstr "+ अपनी समुदाय समीक्षा जोड़े�
 msgid "+ Log in to add your community review"
 msgstr "+ अपनी समुदाय समीक्षा जोड़ने के लिए लॉग इन करें"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "प्रकाशक"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "प्रकाशक खोज"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "कोई कीवर्ड आज़माएं।"
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "हमें %(publisher)s द्वारा प्रकाशित कोई भी किताब नहीं मिली।"
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "कुछ और आज़माएँ?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "प्रकाशक: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "प्रकाशक खोजें"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "कुछ नहीं मिला।"
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "इस लेखक द्वारा और किताबें देखें, और इसके बारे में जानें"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "प्रकाशक"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s ई - बुक्स"
 msgstr[1] "%(count)s ई - बुक्स"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 ई-बुक"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "पब्लिशिंग हिस्ट्री"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "यह चार्ट यह दिखाने के लिए है कि इस प्रकाशक ने कब किताबें प्रकाशित कीं। X अक्ष के साथ समय है, और y अक्ष पर प्रकाशित संस्करणों की गणना है। <a href=\"#subjectRelated\">चार्ट को छोड़ने के लिए यहाँ क्लिक करें</a>।"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "चार्ट रीसेट करें"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "या ज़ूम इन करना जारी रखें।"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "यह ग्राफ़ समय के साथ इस प्रकाशक के संस्करणों को चार्ट करता है। एक साल देखने के लिए क्लिक करें या किसी रेंज में ड्रैग करें।"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "प्रकाशन प्रकाशित"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "प्रकाशन का वर्ष"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "सामान्य विषय"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)s द्वारा प्रकाशित किताबें खोजें"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "कुछ नहीं मिला।"
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "इस लेखक द्वारा और किताबें देखें, और इसके बारे में जानें"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "इस प्रकाशक द्वारा सबसे अधिक प्रकाशित"
 
@@ -6095,7 +6094,7 @@ msgstr "खोज सूचियाँ"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "आपकी खोज से सीधे कोई <strong>सूची</strong> मेल नहीं खाई"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "प्रकाशक खोजें"
 
@@ -9948,6 +9947,11 @@ msgstr "मूल्यांकन"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "एक उपयोगकर्ता एक्सेस करने से पहले यह कितनी अच्छी तरह तय कर सकता है कि यह संस्करण उनकी ज़रूरतों के लिए प्रासंगिक है?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "प्रकाशक: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -9974,6 +9978,15 @@ msgstr "%(query)s - विषय खोज"
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "विषय खोज"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - प्रकाशक खोज"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "प्रकाशक खोज"
 
 #: openlibrary/fastapi/search.py
 #, python-format
