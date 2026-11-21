@@ -840,12 +840,12 @@ msgstr "Prohlédněte si, co čtenáři z komunity přidávají do svých polič
 msgid "Earliest trending data is from October 2017"
 msgstr "Nejstarší trendová data jsou z října 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Chci přečíst"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Právě čtu"
 
@@ -5323,6 +5323,56 @@ msgstr "Změna za měsíc, podle 7denního průměru"
 msgid "Up %(percent)d%% over the month"
 msgstr "Nárůst o %(percent)d %% za měsíc"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Vítejte zpět, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Vítejte zpět"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Připraveno k půjčení"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Výpůjčky a rezervace"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Vypůjčeno"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Vaše výpůjčky"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Zobrazit všechny výpůjčky"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Připraveno ke čtení"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Z vašich polic"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Z %(reading_start)sPrávě čtu%(link_end)s a %(want_start)sChci přečíst%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Vaše police"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Načítání vašich knih"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Čtěte knihy z bezplatné knihovny online"
@@ -8089,10 +8139,6 @@ msgstr "Budete další v řadě."
 msgid "All copies are checked out."
 msgstr "Všechny výtisky jsou vypůjčeny."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Vypůjčeno"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Není v knihovně"
@@ -9663,7 +9709,7 @@ msgstr "Nebyly nalezeny žádné výsledky"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Zobrazeno %(shown)s z %(total)s výsledků"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Bez názvu"
 
@@ -10998,6 +11044,63 @@ msgstr "Klasika"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Nejžádanější"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Vrátit dnes"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Vrátit zítra"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Vrátit za %(count)d den"
+msgstr[1] "Vrátit za %(count)d dny"
+msgstr[2] "Vrátit za %(count)d dní"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Půjčte si ji brzy, jinak přejde na dalšího čtenáře."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Rezervováno pro vás ještě %(count)d hodinu."
+msgstr[1] "Rezervováno pro vás ještě %(count)d hodiny."
+msgstr[2] "Rezervováno pro vás ještě %(count)d hodin."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Rezervováno pro vás ještě %(count)d den."
+msgstr[1] "Rezervováno pro vás ještě %(count)d dny."
+msgstr[2] "Rezervováno pro vás ještě %(count)d dní."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Jste další v řadě"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Jste na %(position)d. místě z %(size)d v řadě"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Vypůjčeno"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Pokračovat ve čtení"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Půjčit nyní"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
