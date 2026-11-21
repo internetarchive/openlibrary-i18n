@@ -835,12 +835,12 @@ msgstr "커뮤니티 독자들이 책장에 추가하는 책들을 확인하세�
 msgid "Earliest trending data is from October 2017"
 msgstr "가장 오래된 인기 데이터는 2017년 10월부터입니다"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "읽고 싶어요"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "읽는 중"
 
@@ -5278,6 +5278,56 @@ msgstr "7일 평균 기준 한 달간 변화"
 msgid "Up %(percent)d%% over the month"
 msgstr "한 달간 %(percent)d%% 증가"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "다시 오신 것을 환영합니다, %(name)s님"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "다시 오신 것을 환영합니다"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "대출 준비 완료"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "대출 및 예약"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "대출 중"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "내 대출"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "모든 대출 보기"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "지금 읽을 준비 완료"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "내 책장에서"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)s읽는 중%(link_end)s 및 %(want_start)s읽고 싶어요%(link_end)s에서"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "내 책장"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "책을 불러오는 중"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "무료 도서관 책을 온라인으로 읽기"
@@ -7990,10 +8040,6 @@ msgstr "다음 차례입니다."
 msgid "All copies are checked out."
 msgstr "모든 사본이 대출 중입니다."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "대출 중"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "도서관에 없음"
@@ -9548,7 +9594,7 @@ msgstr "결과를 찾을 수 없습니다"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s개 중 %(shown)s개 결과 표시 중"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "제목 없음"
 
@@ -10849,6 +10895,57 @@ msgstr "고전"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "가장 많이 찾는 책"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "오늘 반납 예정"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "내일 반납 예정"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d일 후 반납 예정"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "곧 대출하지 않으면 다음 독자에게 넘어갑니다."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "%(count)d시간 더 보관됩니다."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "%(count)d일 더 보관됩니다."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "다음 차례입니다"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "대기 %(size)d명 중 %(position)d번째입니다"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "대출 중"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "계속 읽기"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "지금 대출하기"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
