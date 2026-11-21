@@ -182,7 +182,7 @@ msgstr[0] "%(count)s件"
 msgid "Status:"
 msgstr "ステータス:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "すべて"
 
@@ -2066,8 +2066,16 @@ msgid "Stats"
 msgstr "統計"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "タスク統計: 誰が編集しているか、タスクの編集がどれだけ保持されるか"
+msgid "Related stats pages"
+msgstr "関連する統計ページ"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "タスク"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "スパムレビュー"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2289,6 +2297,243 @@ msgstr "ストアを検査"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Memcacheを検査"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "最新の%(count)s件の編集のうち、作成から%(age)s未満のアカウント（%(time)sまで遡って表示）。ブロック済みおよび信頼済みのアカウントは「レビュー済み」に移動します。時刻はUTCです。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "最新の編集における、作成から%(age)s未満のアカウント。ブロック済みおよび信頼済みのアカウントは「レビュー済み」に移動します。時刻はUTCです。"
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "アカウントがフラグされる仕組み"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "これらのルールは、2025年8月から2026年11月の間に管理者がスパムとして差し戻した861件のアカウントから導かれています。強いサインはそのうち86%%を特定し、比較対象とした42件の通常の新規読者・著者・図書館員のアカウントには一つも該当しません。"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "スパムの可能性が高い：以下のいずれか"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "作成または編集したレコードに電話番号が含まれる。偽の航空会社やソフトウェアサポート窓口が最も多いスパムのパターンです。アカウントが表紙や写真もアップロードしている場合は出版社である可能性が高いため、この項目は「確認する価値あり」にとどめます。"
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "販売やサポート窓口に特有の文言：プロモコード、割引、カジノ、「カスタマーサービス番号」、「オペレーターと話す方法」、「…をオンラインで購入」など。"
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "管理者のスパム単語リストに含まれる単語。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s件以上のリストを作成。通常の読者は1、2件作成する程度ですが、スパムアカウントは最大100件作成していました。"
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "唯一の編集がプロフィールへのリンク追加。これらはSEO目的のアカウントで、登録してウェブサイトを追加し、多くの場合1分以内に離脱します。"
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "追加した本や著者が、すでに図書館員によって削除されている。"
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "確認する価値あり"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "他の編集と並んで、作成した本・リスト・プロフィールにリンクが含まれる。通常は著者や出版社が自身の作品を宣伝しているケースです。"
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "説明文にMarkdown形式（見出し、太字、リンク）が使われている。"
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "最初の1時間に10件以上の本またはリストを作成。"
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "カウント対象外"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "リストに本を追加する行為。ほとんどの新規読者が行うことなので、アカウントにフラグを立てたり順位を上げたりはしません。"
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "登録から数分以内の編集。実在する新規ユーザーの多くも行うため、この列は参考情報として表示しています。"
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "対象のアカウント"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "スパムの可能性"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "レビュー済み"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "編集内容を読み込めませんでした：%(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "%(total)s件のアカウントのうち、最も活動が多い%(shown)s件を表示しています。"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "すべてのアカウントを選択"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "すべて選択"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s件を選択中"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "選択したアカウントをブロックしますか？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "ブロック"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "選択したアカウントをブロックし、すべての編集を差し戻しますか？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "ブロックして差し戻す"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "選択したアカウントを信頼済みにしますか？このキューから外れ、本を追加する際のキャプチャが不要になります。"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "信頼済みにする"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "アカウント"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "スパムの兆候"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "登録日"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "最近の編集"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "最近の編集"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)sを選択"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "ブロック済み、編集は差し戻し済み"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "ブロック済み"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "信頼済み"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "プロフィール"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "管理ページ"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "なし"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s前"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "最初の編集まで%(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s件の本を追加"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s件のリストを作成"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s件のリストへの追加"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s件のその他の編集"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "合計%(count)s件"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "削除済み"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "これらの編集における、作成から%(age)s未満の%(count)s件のアカウントのうち、このグループに該当するものはありません。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "作成から%(age)s未満のアカウントによる編集はありませんでした。"
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -4090,10 +4335,6 @@ msgstr "サポートが必要です"
 msgid "Getting the list ready…"
 msgstr "リストを準備しています…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "タスク"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "カタログ作りに協力しましょう。一度に一冊ずつ。"
@@ -4297,10 +4538,6 @@ msgstr "Open Libraryは毎月%(readers)s人の読者に%(books)s冊の目録化�
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Libraryには、表紙、言語、出版社などの詳細情報が欠けている本がまだ多くあります。あなたの力でそれらを補うことができます。"
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "最近の編集"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -9995,6 +10232,112 @@ msgstr "まだ開始していないプロジェクトのみ削除できます。
 msgid "The project is deleted."
 msgstr "プロジェクトを削除しました。"
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "［管理センター］スパムレビュー"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "少なくとも1つのアカウントを選択してください。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d件のアカウントを信頼済みにしました。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "%(count)d件のアカウントをブロックしました。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "%(edits)d件の編集を差し戻し、%(deleted)d件のレコードを削除しました。"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s秒"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s分"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s時間"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s日"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s件のレコードに電話番号あり"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s件のレコードに販売・サポート窓口の文言あり"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s件のレコードにスパム単語あり"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s件のリストを作成済み"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s件のレコードはすでに削除済み"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "唯一の編集：プロフィールへのリンク"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s件のレコードにリンクあり"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s件のレコードに記事形式の書式あり"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "最初の%(minutes)s分間に%(count)s件を追加"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s日"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "最大%(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "検索結果"
@@ -12935,4 +13278,7 @@ msgstr "グラフを読み込めませんでした。ページを再読み込み
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "Open Libraryで「%(query)s」を検索"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "タスク統計: 誰が編集しているか、タスクの編集がどれだけ保持されるか"
 
