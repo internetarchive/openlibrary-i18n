@@ -840,12 +840,12 @@ msgstr "Vezi ce adaugă cititorii din comunitate pe rafturile lor"
 msgid "Earliest trending data is from October 2017"
 msgstr "Cele mai vechi date despre tendințe sunt din octombrie 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Doresc să citesc"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "În curs de citire"
 
@@ -5323,6 +5323,56 @@ msgstr "Variație pe parcursul lunii, pe baza mediei pe 7 zile"
 msgid "Up %(percent)d%% over the month"
 msgstr "Creștere de %(percent)d%% în cursul lunii"
 
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Bine ai revenit, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Bine ai revenit"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Gata de împrumutat"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Împrumuturi și rezervări"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Împrumutată"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Împrumuturile tale"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Vezi toate împrumuturile"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Gata de citit acum"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Din rafturile tale"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Din %(reading_start)sÎn curs de citire%(link_end)s și %(want_start)sDoresc să citesc%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Rafturile tale"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Se încarcă cărțile tale"
+
 #: home/welcome.html
 msgid "Read Free Library Books Online"
 msgstr "Citiți online gratuit cărți din bibliotecă"
@@ -8089,10 +8139,6 @@ msgstr "Veți fi următorul la rând."
 msgid "All copies are checked out."
 msgstr "Toate exemplarele sunt împrumutate."
 
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Împrumutată"
-
 #: NotInLibrary.html
 msgid "Not in Library"
 msgstr "Nu se află în bibliotecă"
@@ -9663,7 +9709,7 @@ msgstr "Nu s-au găsit rezultate"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Se afișează %(shown)s din %(total)s rezultate"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Fără titlu"
 
@@ -10998,6 +11044,63 @@ msgstr "Clasici"
 #: openlibrary/plugins/openlibrary/home_genres.py
 msgid "Most wanted"
 msgstr "Cele mai căutate"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Trebuie returnată azi"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Trebuie returnată mâine"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Trebuie returnată în %(count)d zi"
+msgstr[1] "Trebuie returnată în %(count)d zile"
+msgstr[2] "Trebuie returnată în %(count)d de zile"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Împrumut-o curând, altfel va trece la următorul cititor."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Rezervată pentru tine încă %(count)d oră."
+msgstr[1] "Rezervată pentru tine încă %(count)d ore."
+msgstr[2] "Rezervată pentru tine încă %(count)d de ore."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Rezervată pentru tine încă %(count)d zi."
+msgstr[1] "Rezervată pentru tine încă %(count)d zile."
+msgstr[2] "Rezervată pentru tine încă %(count)d de zile."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ești următorul la rând"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ești numărul %(position)d din %(size)d la rând"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Împrumutată"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Continuă să citești"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Împrumută acum"
 
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
