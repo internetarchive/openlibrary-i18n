@@ -183,7 +183,7 @@ msgstr[1] "%(count)s item"
 msgid "Status:"
 msgstr "Katayuan:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Lahat"
 
@@ -191,7 +191,7 @@ msgstr "Lahat"
 msgid "Default sort: date added, newest first."
 msgstr "Default na pagsunod-sunod: petsa ng pagdaragdag, pinakabago muna."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Pangalan"
 
@@ -227,6 +227,10 @@ msgstr "Buod ng Katayuan"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "Aprubahan"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "I-pause"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -782,7 +786,7 @@ msgstr "Lumikha ng tag para sa paksang ito"
 msgid "See all works"
 msgstr "Tingnan ang lahat ng gawa"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -834,12 +838,12 @@ msgstr "Tingnan kung ano ang idinadagdag ng mga mambabasa mula sa komunidad sa k
 msgid "Earliest trending data is from October 2017"
 msgstr "Ang pinakamatandang data ng trending ay mula Oktubre 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Gustong Basahin"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
@@ -848,7 +852,7 @@ msgid "Read"
 msgstr "Basahin"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Itinigil ang Pagbasa"
 
@@ -929,7 +933,7 @@ msgstr "Matuto Nang Higit Pa"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "sa <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Tinitingnan ang mga tugma sa Search Inside"
 
@@ -949,19 +953,19 @@ msgstr "Ito ay nakikita lamang ng mga super librarian."
 msgid "Solr Editions"
 msgstr "Mga Edision ng Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Mababasa Lamang"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "I-filter ayon sa availability"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Wika"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Maghanap ng mga wika…"
 
@@ -969,11 +973,11 @@ msgstr "Maghanap ng mga wika…"
 msgid "Languages"
 msgstr "Wika"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Naglo-load…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "I-filter ayon sa wika"
 
@@ -1011,7 +1015,7 @@ msgstr "Walang tugmang aklat o may-akda"
 msgid "Add a new book"
 msgstr "Magdagdag ng bagong aklat"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Mga May-Akda"
 
@@ -1364,7 +1368,7 @@ msgstr "Umalis sa listahan ng naghihintay"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Mawawala ang iyong pwesto sa waiting list para sa <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1429,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Mga Pautang at Kasaysayan"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Nabasa na"
 
@@ -1471,12 +1475,13 @@ msgid "My notes for this work"
 msgstr "Ang aking mga tala para sa akdang ito"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "Aking mga tala para sa isang edisyon ng "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "Nawawalang Pamagat"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "Ang aking mga tala para sa isang edisyon ng %(title)s"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1643,7 +1648,7 @@ msgstr "Mga librong idinadagdag ng mga taong sinusuportahan ni %(username)s"
 msgid "Search your reading log"
 msgstr "Maghanap sa iyong reading log"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1768,7 +1773,7 @@ msgstr "%(year)d Layunin sa Pagbasa"
 msgid "Set %(year_span)s reading goal"
 msgstr "Itakda ang layunin sa pagbasa ng %(year_span)s"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Log ng Pagbasa"
 
@@ -1985,7 +1990,7 @@ msgstr "Isumite"
 msgid "New Books Imported Per Day"
 msgstr "Mga Bagong Aklat na Inangkat bawat Araw"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Kailangan mong i-on ang JavaScript upang makita ang maganda nyang tsart!"
 
@@ -2075,8 +2080,16 @@ msgid "Stats"
 msgstr "Statistika"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Istatistika ng Mga Gawain: sino ang nag-e-edit, at kung gaano katagal nananatili ang mga pag-edit sa Mga Gawain"
+msgid "Related stats pages"
+msgstr "Mga kaugnay na pahina ng istatistika"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Mga Gawain"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Pagsusuri ng spam"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2299,6 +2312,247 @@ msgstr "Suriin ang tindahan"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Suriin ang memcache"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Mga account na wala pang %(age)s gulang sa pinakabagong %(count)s pag-edit, pabalik hanggang %(time)s. Ang mga na-block at pinagkakatiwalaang account ay lumilipat sa Nasuri na. Ang mga oras ay nasa UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Mga account na wala pang %(age)s gulang sa pinakabagong mga pag-edit. Ang mga na-block at pinagkakatiwalaang account ay lumilipat sa Nasuri na. Ang mga oras ay nasa UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Paano nafla-flag ang mga account"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Ang mga patakarang ito ay batay sa 861 account na ibinalik ng mga admin bilang spam sa pagitan ng Agosto 2025 at Nobyembre 2026. Ang mga malakas na palatandaan ay tumutugma sa 86%% sa kanila, at wala sa 42 ordinaryong bagong mambabasa, may-akda at librarian na ginamit bilang paghahambing."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Malamang na spam: anuman sa mga sumusunod"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Isang numero ng telepono sa talaang isinulat o in-edit nila. Ang mga pekeng linya ng suporta ng airline at software ang pinakakaraniwang spam. Kapag nag-upload din ang account ng mga cover o larawan, mas malamang na publisher ito, kaya minamarkahan lamang ito bilang karapat-dapat tingnan."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Mga salitang pang-benta o linya ng suporta: mga promo code, diskwento, casino, “customer service number”, “paano makausap ang isang tunay na tao”, “bumili ng … online” at mga katulad nito."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Mga salita mula sa listahan ng mga salitang spam ng admin."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s o higit pang listahan ang nagawa. Karaniwang isa o dalawa lang ang ginagawa ng mga mambabasa; ang mga spam account ay nakagawa ng hanggang 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Ang kanilang tanging pag-edit ay naglagay ng link sa kanilang profile. Ito ay mga SEO account na nagpaparehistro, nagdaragdag ng website, at umaalis, kadalasan sa loob ng isang minuto."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Mga libro o may-akda na idinagdag nila na tinanggal na ng isang librarian."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Karapat-dapat tingnan"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Mga link sa mga libro, listahan, o profile na isinulat nila, kasama ng iba pang pag-edit. Karaniwang mga may-akda at publisher na nagpo-promote ng sarili nilang gawa."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Pag-format ng artikulo (mga heading ng Markdown, bold, link) sa isang paglalarawan."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 o higit pang libro o listahan sa unang oras."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Hindi binilang"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Pagdaragdag ng mga libro sa isang listahan. Ito ang ginagawa ng karamihan sa mga bagong mambabasa, kaya hindi nito nafla-flag ang isang account o itinataas ang ranggo nito."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Pag-edit sa loob ng ilang minuto matapos magparehistro. Ginagawa rin ito ng karamihan sa mga tunay na bagong user; nariyan ang column para sa konteksto."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Aling mga account"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Malamang na spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Nasuri na"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Hindi na-load ang mga pag-edit: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Ipinapakita ang %(shown)s pinaka-abalang account mula sa %(total)s na account."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Piliin ang lahat ng account"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Piliin lahat"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s ang napili"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "I-block ang mga napiling account?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "I-block"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "I-block ang mga napiling account at ibalik ang lahat ng kanilang mga pag-edit?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "I-block at ibalik"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Markahan bilang pinagkakatiwalaan ang mga napiling account? Aalisin sila sa pilang ito at hindi na kailangan ng captcha kapag nagdaragdag ng mga libro."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Markahan bilang pinagkakatiwalaan"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Account"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Mga palatandaan ng spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Nagparehistro"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Mga kamakailang pag-edit"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Mga huling pag-edit"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Piliin si %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Na-block, naibalik ang mga pag-edit"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Na-block"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Pinagkakatiwalaan"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profile"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Pahina ng admin"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Wala"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s ang nakalipas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s hanggang sa unang pag-edit"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s librong idinagdag"
+msgstr[1] "%(count)s (na) librong idinagdag"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s listahang nagawa"
+msgstr[1] "%(count)s (na) listahang nagawa"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s pagdaragdag sa listahan"
+msgstr[1] "%(count)s (na) pagdaragdag sa listahan"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s ibang pag-edit"
+msgstr[1] "%(count)s (na) ibang pag-edit"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s sa kabuuan"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "tinanggal"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Wala sa %(count)s na account na wala pang %(age)s gulang sa mga pag-edit na ito ang nasa grupong ito."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Walang account na wala pang %(age)s gulang ang gumawa ng alinman sa mga pag-edit na ito."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2751,16 +3005,16 @@ msgstr "Walang natagpuan"
 msgid "Search for an Author"
 msgstr "Maghanap ng May-akda"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Maghanap"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "tungkol sa %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "kasama ang <i>%(topwork)s</i>"
@@ -3056,7 +3310,7 @@ msgstr "Magdagdag ng libro sa Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kailangan namin ng minimum na set ng mga field upang lumikha ng bagong tala. Ito ang mga field na iyon."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Pamagat"
 
@@ -3187,10 +3441,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "Sa halip na lumikha ng duplicate na tala, pakiclick ang resulta na sa tingin mo ay pinakamahusay na tugma sa iyong libro."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "Pakisuyong kumpletuhin ang reCAPTCHA sa itaas bago pumili ng libro."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "Pumili ng librong ito"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3269,8 +3527,9 @@ msgid "Open Library Home"
 msgstr "Bahay ng Open Library"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "Walang DAISY file na magagamit para sa "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "Walang available na DAISY file para sa <a href=\"%(url)s\">%(title)s</a>"
 
 #: books/daisy.html
 #, python-format
@@ -3282,8 +3541,8 @@ msgid "Books for people who don't read print?"
 msgstr "Mga libro para sa mga taong hindi nagbabasa ng nakalimbag?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "Ang <a href=\"//archive.org\">Internet Archive</a> ay ipinagmamalaki na namimigay ng mahigit 1 milyong aklat nang libre sa isang format na tinatawag na DAISY, na dinisenyo para sa mga tao na nahihirapan gumamit ng regular na nakaimprentang media."
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "Ipinagmamalaki ng <a href=\"//archive.org\">Internet Archive</a> na mamahagi ng mahigit 1 milyong libro nang libre sa isang format na tinatawag na DAISY, na dinisenyo para sa mga taong nahihirapang gumamit ng karaniwang nakalimbag na media."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3334,8 +3593,8 @@ msgid "Need help?"
 msgstr "Kailangan ba ng tulong?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " Mangyaring basahin ang aming <a href=\"/help/faq\">FAQ tungkol sa pag-access sa mga aklat sa pamamagitan ng Open Library</a>."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Pakibasa ang aming <a href=\"/help/faq\">FAQ tungkol sa pag-access ng mga libro sa pamamagitan ng Open Library</a>."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3446,8 +3705,8 @@ msgstr "isinalin ni %(translator)s"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " ni %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(title)s ni %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4098,10 +4357,6 @@ msgstr "Kailangan ng tulong"
 msgid "Getting the list ready…"
 msgstr "Inihahanda ang listahan…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Mga Gawain"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Tumulong bumuo ng katalogo, isang libro sa bawat pagkakataon."
@@ -4305,10 +4560,6 @@ msgstr "Naglilingkod ang Open Library sa %(readers)s na mambabasa bawat buwan sa
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Maraming aklat sa Open Library ang kulang pa sa detalye: isang cover, isang wika, isang publisher. Matutulungan mo kaming punan ang mga ito."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Mga kamakailang pag-edit"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4833,7 +5084,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Itaas ang mas malaking larawan ng may-akda"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Larawan ng %(author)s"
@@ -4963,7 +5214,7 @@ msgstr "Pinakabagong Mga Post sa Blog"
 msgid "Browse the stacks"
 msgstr "Mag-browse sa mga istante"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Kasalukuyang Uso"
 
@@ -4989,7 +5240,7 @@ msgstr "Pinakabago"
 msgid "Top rated"
 msgstr "Pinakamataas ang rating"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Ayusin ayon sa"
 
@@ -5049,6 +5300,56 @@ msgstr "Pagbabago sa loob ng buwan, batay sa 7-araw na average"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "Tumaas ng %(percent)d%% sa loob ng buwan"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Maligayang pagbabalik, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Maligayang pagbabalik"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Handa nang Hiramin"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Mga Pautang at Reserbasyon"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Nakahiram"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Mga pautang mo"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Tingnan Lahat ng Pautang"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Handa nang Basahin Ngayon"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Mula sa Iyong mga Istante"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Mula sa %(reading_start)sKasalukuyan Nang Binabasa%(link_end)s at %(want_start)sGustong Basahin%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Mga istante mo"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Nilo-load ang mga libro mo"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5708,93 +6009,92 @@ msgstr "+ Idagdag ang iyong pagsusuri ng komunidad"
 msgid "+ Log in to add your community review"
 msgstr "+ Mag-log in upang idagdag ang iyong pagsusuri ng komunidad"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Mga Publisher"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Paghahanap ng Publisher"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Subukan ang isang keyword."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Hindi namin mahanap ang anumang mga aklat na inilathala ng %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Subukan ang iba pa?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Publisher: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Maghanap ng mga Publisher"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Walang natagpuan."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Tingnan ang higit pang mga aklat mula sa may-akdang ito at alamin ang tungkol sa kanya"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Publisher"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s ebook"
 msgstr[1] "%(count)s ebooks"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 ebooks"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Kasaysayan ng Paglilimbag"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Ito ay isang tsart upang ipakita kung kailan naglathala ang publisher na ito ng mga aklat. Sa X axis ay ang oras, at sa Y axis ay ang bilang ng mga inilathalang edisyon. <a href=\"#subjectRelated\">I-click dito upang laktawan ang tsart</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "I-reset ang tsart"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "o magpatuloy sa pag-zoom in."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Ang graph na ito ay naglalarawan ng mga edisyon mula sa publisher na ito sa paglipas ng panahon. I-click upang tingnan ang isang solong taon, o i-drag sa isang saklaw."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Mga Nailimbag na Edisyon"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Taon ng Paglilimbag"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Mga Karaniwang Paksa"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Maghanap ng mga aklat na inilathala ng %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Walang natagpuan."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Tingnan ang higit pang mga aklat mula sa may-akdang ito at alamin ang tungkol sa kanya"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "pinakamaraming inilathala ng publisher na ito"
 
@@ -5997,78 +6297,68 @@ msgstr "Paano maghanap?"
 msgid "Full Text Search?"
 msgstr "Paghahanap ng Buong Teksto?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Maghanap sa Open Library para sa \"%(query)s\""
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Maghanap ng mga May-akda"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Ang parehong may-akda ba ay nakalista ng dalawang beses?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Pagsamahin ang mga may-akda"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Walang <strong>mga may-akda</strong> na tumugma sa iyong paghahanap"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Maghanap sa Open Library para sa %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Maghanap Sa Loob"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Pumili ng isang wika"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Humigit-kumulang %(total)s resulta"
 msgstr[1] "Humigit-kumulang %(total)s na resulta"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "%(start)s - %(end)s ng humigit-kumulang %(total)s resulta"
 msgstr[1] "%(start)s - %(end)s ng humigit-kumulang %(total)s na resulta"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Walang eksaktong tugma para sa \"%(query)s\". Ipinapakita ang mga aklat na naglalaman ng lahat ng salitang ito."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Ipinapakita ang eksaktong tugma para sa \"%(query)s\". %(link_start)sMaghanap na lamang ng lahat ng salitang ito.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Ipinapakita ang lahat ng salitang ito, sa kahit anong pagkakasunod-sunod. %(link_start)sMaghanap na lamang ng eksaktong parirala.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Walang nahanap na resulta. Subukan ang ibang salita o parirala."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Wala sa mga tugma sa pahinang ito ang maipapakita gamit ang mga filter na ito. Subukan ang ibang pahina o alisin ang isang filter."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Wala nang ibang resulta. Subukan ang naunang pahina."
 
@@ -6092,95 +6382,15 @@ msgstr "Maghanap ng Mga Listahan"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Walang <strong>mga listahan</strong> na tumugma sa iyong paghahanap"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Paghahanap ng Publishers"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Kaugnayan"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Bilang ng Trabaho"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Random"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Petsa ng Kapanganakan (pinakaluma) (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Petsa ng Kapanganakan (pinakabata) (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Kaayusan ng Listahan"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Bagong Idinagdag"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Bagong Na-edit"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Pangalan ng Wika"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Bilang ng Edisyon ng Ebook"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Petsa ng Idinagdag (pinakabago)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Petsa ng Idinagdag (pinakaluma)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Unang Nailathala"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Ang Iyong Pinakamataas na Rating"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Pinakagustong Basahin"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Pinakamaraming Edisyon"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Pinakabago"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Pinakamataas na Rating"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Anuman"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Pamagat ng Trabaho (beta: Para lamang sa Librarian)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Ayusin ang mga resulta"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Shuffle"
 
@@ -7097,10 +7307,6 @@ msgstr "Serye"
 msgid "Volume"
 msgstr "Bilang"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "Genre"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "Iba pang mga Pamagat"
@@ -7883,10 +8089,6 @@ msgstr "Ikaw ay susunod sa pila."
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "Lahat ng kopya ay hiniram na."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Nakahiram"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9450,7 +9652,7 @@ msgstr "Walang nahanap na resulta"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Ipinapakita ang %(shown)s sa %(total)s resulta"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Walang Pamagat"
 
@@ -10029,6 +10231,11 @@ msgstr "Pagsusuri"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Gaano kahusay matutukoy ng isang patron kung ang edisyong ito ay may kaugnayan sa kanilang mga pangangailangan bago ito i-access?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Publisher: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10040,12 +10247,39 @@ msgstr "Paghahanap ng listahan"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Paghahanap ng Buong Teksto"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Paghahanap ng Buong Teksto"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Paghahanap ng paksa"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Paghahanap ng paksa"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Paghahanap ng Publisher"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Paghahanap ng Publisher"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Paghahanap ng May-Akda"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Paghahanap ng May-Akda"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10103,6 +10337,121 @@ msgstr "Isang proyekto lamang na hindi pa nagsimula ang maaaring burahin. Itigil
 msgid "The project is deleted."
 msgstr "Nabura ang proyekto."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Sentro ng Admin] Pagsusuri ng spam"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Pumili ng hindi bababa sa isang account."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Minarkahan ang %(count)d account bilang pinagkakatiwalaan."
+msgstr[1] "Minarkahan ang %(count)d (na) account bilang pinagkakatiwalaan."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "Na-block ang %(count)d account."
+msgstr[1] "Na-block ang %(count)d (na) account."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "Naibalik ang %(edits)d pag-edit at tinanggal ang %(deleted)d talaan."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s seg"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s oras"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s araw"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Numero ng telepono sa %(count)s talaan"
+msgstr[1] "Numero ng telepono sa %(count)s (na) talaan"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Mga salitang pang-benta o linya ng suporta sa %(count)s talaan"
+msgstr[1] "Mga salitang pang-benta o linya ng suporta sa %(count)s (na) talaan"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Mga salitang spam sa %(count)s talaan"
+msgstr[1] "Mga salitang spam sa %(count)s (na) talaan"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s listahan ang nagawa"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s talaan ang tinanggal na"
+msgstr[1] "%(count)s (na) talaan ang tinanggal na"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Tanging pag-edit: isang link sa kanilang profile"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Mga link sa %(count)s talaan"
+msgstr[1] "Mga link sa %(count)s (na) talaan"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Pag-format ng artikulo sa %(count)s talaan"
+msgstr[1] "Pag-format ng artikulo sa %(count)s (na) talaan"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s ang idinagdag sa unang %(minutes)s minuto"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s araw"
+msgstr[1] "%(count)s (na) araw"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "hanggang %(duration)s lamang"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Mga Resulta ng Paghahanap"
@@ -10133,6 +10482,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "Naibalik sa pila ang %(count)d nabigong item."
 msgstr[1] "Naibalik sa pila ang %(count)d nabigong mga item."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "Na-pause ang %(count)d nakabinbing item."
+msgstr[1] "Na-pause ang %(count)d nakabinbing mga item."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10209,6 +10565,10 @@ msgstr "Filipino"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "Fiction o nonfiction"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "Genre"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10294,8 +10654,8 @@ msgstr "%(percent)s%% tapos na, naabot ang target"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% tapos na, target %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% tapos na, target %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10611,6 +10971,60 @@ msgstr "Mga Klasiko"
 msgid "Most wanted"
 msgstr "Pinakahanap"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Isasauli ngayong araw"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Isasauli bukas"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Isasauli sa loob ng %(count)d araw"
+msgstr[1] "Isasauli sa loob ng %(count)d araw"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Hiramin mo agad, kung hindi ay mapupunta ito sa susunod na mambabasa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Nakareserba para sa iyo ng %(count)d oras pa."
+msgstr[1] "Nakareserba para sa iyo ng %(count)d oras pa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Nakareserba para sa iyo ng %(count)d araw pa."
+msgstr[1] "Nakareserba para sa iyo ng %(count)d araw pa."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ikaw na ang susunod sa pila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ikaw ang numero %(position)d sa %(size)d sa pila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Nahiram na"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Ipagpatuloy ang pagbasa"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Hiramin ngayon"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "Hindi bababa sa 1 paksa"
@@ -10794,6 +11208,10 @@ msgstr "Pahintulot tinanggihan"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "Hindi ka pinapayagang magdagdag ng Internet Archive ID."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "Hindi ka pinapayagang magdagdag ng URL ng Libro."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "ang librong ito"
@@ -10930,6 +11348,86 @@ msgstr "Nakatago ang mga klasikong eBook"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - paghahanap"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Kaugnayan"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Bilang ng Trabaho"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Random"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Petsa ng Kapanganakan (pinakaluma) (beta: Para lamang sa Librarian)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Petsa ng Kapanganakan (pinakabata) (beta: Para lamang sa Librarian)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Kaayusan ng Listahan"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Bagong Idinagdag"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Bagong Na-edit"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Pangalan ng Wika"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Bilang ng Edisyon ng Ebook"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Petsa ng Idinagdag (pinakabago)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Petsa ng Idinagdag (pinakaluma)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Unang Nailathala"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Ang Iyong Pinakamataas na Rating"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Pinakagustong Basahin"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Pinakamaraming Edisyon"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Pinakabago"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Pinakamataas na Rating"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Anuman"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Pamagat ng Trabaho (beta: Para lamang sa Librarian)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12419,7 +12917,7 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 #~ msgstr "Buksan muna ang record at kumpirmahin na tumutugma ito sa edisyong ito."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "Istatistika ng Mga Gawain: sino ang nag-e-edit, at kung gaano katagal nananatili ang mga pag-edit sa Mga Gawain"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "Istatistika ng Mga Gawain"
@@ -12863,4 +13361,28 @@ msgstr "Hindi na-load ang mga chart. I-reload ang pahina para subukang muli."
 
 #~ msgid "Records and other pages"
 #~ msgstr "Mga rekord at iba pang pahina"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% tapos na, target %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "Aking mga tala para sa isang edisyon ng "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "Walang DAISY file na magagamit para sa "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "Ang <a href=\"//archive.org\">Internet Archive</a> ay ipinagmamalaki na namimigay ng mahigit 1 milyong aklat nang libre sa isang format na tinatawag na DAISY, na dinisenyo para sa mga tao na nahihirapan gumamit ng regular na nakaimprentang media."
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " Mangyaring basahin ang aming <a href=\"/help/faq\">FAQ tungkol sa pag-access sa mga aklat sa pamamagitan ng Open Library</a>."
+
+#~ msgid " by %(name)s"
+#~ msgstr " ni %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Maghanap sa Open Library para sa %s"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Maghanap sa Open Library para sa \"%(query)s\""
 

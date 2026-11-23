@@ -182,7 +182,7 @@ msgstr[0] "%(count)s项"
 msgid "Status:"
 msgstr "状态:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "全部"
 
@@ -190,7 +190,7 @@ msgstr "全部"
 msgid "Default sort: date added, newest first."
 msgstr "默认排序：添加日期，最新优先。"
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "名字"
 
@@ -226,6 +226,10 @@ msgstr "状态摘要"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "批准"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "暂停"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -781,7 +785,7 @@ msgstr "为此主题创建标签"
 msgid "See all works"
 msgstr "查看所有作品"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -832,12 +836,12 @@ msgstr "查看社区读者正在添加到书架的内容"
 msgid "Earliest trending data is from October 2017"
 msgstr "最早的趋势数据来自2017年10月"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "想读"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "正在阅读"
 
@@ -846,7 +850,7 @@ msgid "Read"
 msgstr "阅读"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "已停止阅读"
 
@@ -926,7 +930,7 @@ msgstr "了解更多"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "在<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "正在检查“站内搜索”匹配项"
 
@@ -946,19 +950,19 @@ msgstr "这只对超级图书馆员可见。"
 msgid "Solr Editions"
 msgstr "Solr 版本"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "仅可阅读"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "按可用性筛选"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "语言"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "搜索语言…"
 
@@ -966,11 +970,11 @@ msgstr "搜索语言…"
 msgid "Languages"
 msgstr "语言"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "加载中…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "按语言筛选"
 
@@ -1006,7 +1010,7 @@ msgstr "没有匹配的书籍或作者"
 msgid "Add a new book"
 msgstr "添加新书"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "作者"
 
@@ -1355,7 +1359,7 @@ msgstr "离开等候名单"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "您将失去在<strong>%(title)s</strong>等候名单中的位置。"
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1416,7 +1420,7 @@ msgid "Loans & History"
 msgstr "借阅与历史"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "已经阅读过的"
 
@@ -1458,12 +1462,13 @@ msgid "My notes for this work"
 msgstr "我对这部作品的笔记"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "我的笔记于"
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "缺少标题"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "我对《%(title)s》某个版本的笔记"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1630,7 +1635,7 @@ msgstr "%(username)s关注的人添加的书籍"
 msgid "Search your reading log"
 msgstr "搜索您的阅读日志"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1754,7 +1759,7 @@ msgstr "%(year)d年阅读目标"
 msgid "Set %(year_span)s reading goal"
 msgstr "设置%(year_span)s阅读目标"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "阅读日志"
 
@@ -1971,7 +1976,7 @@ msgstr "提交"
 msgid "New Books Imported Per Day"
 msgstr "每日新导入书籍数"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "您需要打开 JavaScript 才能看到漂亮的图表!"
 
@@ -2061,8 +2066,16 @@ msgid "Stats"
 msgstr "统计"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
+msgid "Related stats pages"
+msgstr "相关统计页面"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "任务"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "垃圾内容审核"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2284,6 +2297,243 @@ msgstr "检查商店"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "检查记忆缓存"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "注册时间不足 %(age)s 的账户，在最近 %(count)s 次编辑中（回溯至 %(time)s）。已封禁和受信任的账户会移至“已审核”。时间均为 UTC。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "注册时间不足 %(age)s 的账户，在最近的编辑中。已封禁和受信任的账户会移至“已审核”。时间均为 UTC。"
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "账户是如何被标记的"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "这些规则源自管理员在 2025 年 8 月至 2026 年 11 月间作为垃圾内容回退的 861 个账户。其中强特征标记出了 86%% 的账户，而与之对比的 42 个普通新读者、作者和图书管理员中没有一个被标记。"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "疑似垃圾内容：满足以下任一条件"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "在其撰写或编辑的记录中出现电话号码。虚假的航空公司和软件支持热线是最常见的垃圾内容。如果该账户还上传了封面或照片，则更可能是出版商，因此这只会将其标记为值得留意。"
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "销售或客服热线用语：优惠码、折扣、赌场、“客服电话”、“如何联系人工客服”、“在线购买……”等。"
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "来自管理员垃圾内容词表中的词语。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "创建了 %(count)s 个或更多清单。普通读者通常只创建一两个；垃圾内容账户最多创建过 100 个。"
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "其唯一的编辑是在个人资料中添加了一个链接。这些是用于搜索引擎优化（SEO）的账户，注册后添加网站便离开，通常在一分钟内完成。"
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "其添加的图书或作者已被图书管理员删除。"
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "值得留意"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "在其撰写的图书、清单或个人资料中出现链接，且伴随有其他编辑。通常是作者或出版商在推广自己的作品。"
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "在简介中使用了文章格式（Markdown 标题、加粗、链接）。"
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "在第一小时内添加了 10 个或更多图书或清单。"
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "不计入统计"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "将图书添加到清单。这是大多数新读者都会做的事，因此不会标记账户或提高其排序。"
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "注册后几分钟内就开始编辑。大多数真实的新用户也会这样做；此列仅供参考。"
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "哪些账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "疑似垃圾内容"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "已审核"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "无法加载编辑记录：%(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "显示 %(total)s 个账户中最活跃的 %(shown)s 个。"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "选择所有账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "全选"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "已选择 %(count)s 个"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "要封禁所选账户吗？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "封禁"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "要封禁所选账户并回退其所有编辑吗？"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "封禁并回退"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "要将所选账户标记为受信任吗？它们将从此队列中移除，并在添加图书时跳过验证码。"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "标记为受信任"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "账户"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "垃圾内容特征"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "注册时间"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "最近的编辑"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "最近编辑"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "选择 %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "已封禁，编辑已回退"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "已封禁"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "受信任"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "个人资料"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "管理页面"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "无"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s前"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "距首次编辑 %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "已添加 %(count)s 本图书"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "已创建 %(count)s 个清单"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s 次清单添加"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s 次其他编辑"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "共 %(count)s 个"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "已删除"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "这些编辑中注册时间不足 %(age)s 的 %(count)s 个账户均不在此分组中。"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "没有注册时间不足 %(age)s 的账户进行过这些编辑。"
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2736,16 +2986,16 @@ msgstr "未找到"
 msgid "Search for an Author"
 msgstr "搜索作者"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "搜索"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "关于%(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "包含<i>%(topwork)s</i>"
@@ -3040,7 +3290,7 @@ msgstr "在开放图书馆添加书籍"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "创建一份新的记录需要一组最基本的字段。以下是那些字段。"
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "标题"
 
@@ -3171,10 +3421,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "请点击您认为最符合您书籍的结果，而不是创建一份重复的记录。"
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "请在选择图书之前完成上方的 reCAPTCHA 验证。"
+
+#: books/check.html
 msgid "Select this book"
 msgstr "选择此书籍"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3251,8 +3505,9 @@ msgid "Open Library Home"
 msgstr "Open Library 首页"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "没有可用的DAISY文件 "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "没有可用于<a href=\"%(url)s\">%(title)s</a>的DAISY文件"
 
 #: books/daisy.html
 #, python-format
@@ -3264,8 +3519,8 @@ msgid "Books for people who don't read print?"
 msgstr "为不阅读印刷品的人提供的书籍？"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "<a href=\"//archive.org\">互联网档案馆</a>自豪地以一种名为DAISY的格式免费发行超过100万本书籍。"
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "<a href=\"//archive.org\">Internet Archive</a>很自豪能够以名为DAISY的格式免费分发超过100万本书，该格式专为那些使用常规印刷媒介有困难的人士设计。"
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3316,8 +3571,8 @@ msgid "Need help?"
 msgstr "需要帮助？"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " 请阅读我们的<a href=\"/help/faq\">关于通过Open Library访问书籍的常见问题解答</a>。"
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "请阅读我们关于通过Open Library获取图书的<a href=\"/help/faq\">常见问题解答（FAQ）</a>。"
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3428,8 +3683,8 @@ msgstr "由 %(translator)s 翻译"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr "来自 %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(name)s 著 %(title)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4080,10 +4335,6 @@ msgstr "需要帮助"
 msgid "Getting the list ready…"
 msgstr "正在准备列表…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "任务"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "帮助构建目录,一次一本书。"
@@ -4287,10 +4538,6 @@ msgstr "Open Library 每月为 %(readers)s 位读者提供 %(books)s 本已编�
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library 上的许多图书仍缺少一些信息：封面、语言或出版商。您可以帮助补全这些信息。"
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "最近的编辑"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4815,7 +5062,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "调出更大的作者照片"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s的照片"
@@ -4945,7 +5192,7 @@ msgstr "最新的博客文章"
 msgid "Browse the stacks"
 msgstr "浏览书架"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "趋势"
 
@@ -4971,7 +5218,7 @@ msgstr "最新"
 msgid "Top rated"
 msgstr "评分最高"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "排序方式"
 
@@ -5031,6 +5278,56 @@ msgstr "按 7 天平均值计算的月度变化"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "本月上涨 %(percent)d%%"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "欢迎回来，%(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "欢迎回来"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "可以借阅"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "借阅与预约"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "借阅"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "您的借阅"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "查看所有借阅"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "现在可以阅读"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "来自您的书架"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "来自%(reading_start)s正在阅读%(link_end)s和%(want_start)s想读%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "您的书架"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "正在加载您的书籍"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5679,92 +5976,91 @@ msgstr "+ 添加您的社区评论"
 msgid "+ Log in to add your community review"
 msgstr "+ 登录以添加您的社区评论"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "出版商"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "出版商搜索"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "尝试使用关键词。"
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "我们没法找到任何由%(publisher)s出版的书籍。"
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "试试别的？"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "出版商：%(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "搜索出版商"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "未发现。"
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "查看更多该作者的书籍，以及了解该作者"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "出版商"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s 本电子书"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 本电子书"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "出版历史"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "这张图表显示了该出版社何时出版了书籍。X轴上的是出版时间，Y轴上的是出版的版本数量。<a href=\"#subjectRelated\">点击这里跳过图表</a>。"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "重置图表"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "或继续缩放。"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "该图显示了该出版社版本随时间变化的情况。点击查看单个年份，或拖动鼠标来查看一个范围内的内容。"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "版本已出版"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "出版年份"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "常见主题"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "搜索由 %(publisher)s 出版的图书"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "未发现。"
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "查看更多该作者的书籍，以及了解该作者"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "该出版商出版最多的"
 
@@ -5963,76 +6259,66 @@ msgstr "如何搜索？"
 msgid "Full Text Search?"
 msgstr "全文搜索？"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "在Open Library中搜索\"%(query)s\""
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "搜索作者"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "同一个作者被列入两次？"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "合并作者"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "没有<strong>作者</strong>与您的搜索直接匹配"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "在开发图书馆里查找 %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "在内部搜索"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "选择一种语言"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "约 %(total)s 条结果"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "约 %(total)s 条结果中的 %(start)s - %(end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "没有与“%(query)s”完全匹配的结果。正在显示包含所有这些词语的图书。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "正在显示与“%(query)s”完全匹配的结果。%(link_start)s改为搜索包含所有这些词语的内容。%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "正在显示包含所有这些词语的结果，顺序不限。%(link_start)s改为搜索精确短语。%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "未找到结果。请尝试其他词语或短语。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "此页面上的匹配项无法用这些筛选条件显示。请尝试其他页面或移除一个筛选条件。"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "没有更多结果了。请尝试前一页。"
 
@@ -6056,95 +6342,15 @@ msgstr "搜索清单"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "没有<strong>书单</strong>与您的搜索直接匹配"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "搜索出版商"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "相关信息"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "作品数量"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "随机"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "出生日期（最早）（测试版：仅限馆员）"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "出生日期（最近）（测试版：仅限馆员）"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "清单顺序"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "最近添加"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "最近编辑"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "语言名称"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "电子书版本数量"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "添加日期（最新）"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "添加日期（最早）"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "首次出版"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "你的最高评分"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "最想读的"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "大多数的版本"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "最新的"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "最高评分"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "任意"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "作品标题（测试版：仅限馆员）"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "对结果排序"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "随机混杂"
 
@@ -7060,10 +7266,6 @@ msgstr "系列"
 msgid "Volume"
 msgstr "卷"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "体裁"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "其他标题"
@@ -7838,10 +8040,6 @@ msgstr "您将是下一位。"
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "所有副本均已借出。"
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "借阅"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9397,7 +9595,7 @@ msgstr "未找到结果"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "显示 %(total)s 条结果中的 %(shown)s 条"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "无标题"
 
@@ -9974,6 +10172,11 @@ msgstr "评估"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "用户在访问此版本之前能多好地判断它是否符合自己的需求？"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "出版商：%(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -9985,12 +10188,39 @@ msgstr "列表搜索"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - 全文搜索"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "全文搜索"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - 主题搜索"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "主题搜索"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - 出版商搜索"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "出版商搜索"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - 作者搜索"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "作者搜索"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10048,6 +10278,112 @@ msgstr "只有尚未开始的项目才能被删除。请先结束或隐藏此项
 msgid "The project is deleted."
 msgstr "该项目已被删除。"
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[管理中心] 垃圾内容审核"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "请至少选择一个账户。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "已将 %(count)d 个账户标记为受信任。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "已封禁 %(count)d 个账户。"
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "已回退 %(edits)d 次编辑并删除 %(deleted)d 条记录。"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s 秒"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s 分"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s 时"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s 天"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现电话号码"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现销售或客服热线用语"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现垃圾内容词语"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "已创建 %(count)s 个清单"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s 条记录已被删除"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "唯一的编辑：在个人资料中添加链接"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s 条记录中出现链接"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s 条记录中使用了文章格式"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "在前 %(minutes)s 分钟内添加了 %(count)s 个"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s 天"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "最多 %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "搜索结果"
@@ -10077,6 +10413,12 @@ msgstr "教科书"
 msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "已将 %(count)d 个失败的项目重新加入队列。"
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "已暂停 %(count)d 个待处理的项目。"
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10153,6 +10495,10 @@ msgstr "菲律宾语"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "虚构或非虚构"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "体裁"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10237,8 +10583,8 @@ msgstr "已完成%(percent)s%%,达成目标"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "已完成%(percent)s%%,目标%(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "已完成%(percent)s%%,目标%(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10551,6 +10897,57 @@ msgstr "经典"
 msgid "Most wanted"
 msgstr "最受欢迎"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "今天到期归还"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "明天到期归还"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d 天后到期归还"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "请尽快借阅，否则将轮到下一位读者。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "为您保留 %(count)d 小时。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "为您保留 %(count)d 天。"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "您是下一位"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "您在排队中排第 %(position)d 位，共 %(size)d 位"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "已借出"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "继续阅读"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "立即借阅"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "至少1个主题"
@@ -10734,6 +11131,10 @@ msgstr "权限被拒绝"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "您无权添加 Internet Archive ID。"
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "您无权添加图书 URL。"
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "这本书"
@@ -10870,6 +11271,86 @@ msgstr "已隐藏经典电子书"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - 搜索"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "相关信息"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "作品数量"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "随机"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "出生日期（最早）（测试版：仅限馆员）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "出生日期（最近）（测试版：仅限馆员）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "清单顺序"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "最近添加"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "最近编辑"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "语言名称"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "电子书版本数量"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "添加日期（最新）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "添加日期（最早）"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "首次出版"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "你的最高评分"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "最想读的"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "大多数的版本"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "最新的"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "最高评分"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "任意"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "作品标题（测试版：仅限馆员）"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12267,7 +12748,7 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 #~ msgstr "请先打开记录，确认其与此版本相符。"
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "任务统计：谁在编辑，以及任务编辑的留存情况"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "任务统计"
@@ -12764,4 +13245,28 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Records and other pages"
 #~ msgstr "记录及其他页面"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "已完成%(percent)s%%,目标%(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "我的笔记于"
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "没有可用的DAISY文件 "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "<a href=\"//archive.org\">互联网档案馆</a>自豪地以一种名为DAISY的格式免费发行超过100万本书籍。"
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " 请阅读我们的<a href=\"/help/faq\">关于通过Open Library访问书籍的常见问题解答</a>。"
+
+#~ msgid " by %(name)s"
+#~ msgstr "来自 %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "在开发图书馆里查找 %s"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "在Open Library中搜索\"%(query)s\""
 

@@ -183,7 +183,7 @@ msgstr[1] "%(count)s artikuj"
 msgid "Status:"
 msgstr "Statusi:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Të gjitha"
 
@@ -191,7 +191,7 @@ msgstr "Të gjitha"
 msgid "Default sort: date added, newest first."
 msgstr "Renditja parazgjedhje: data e shtimit, më të rejat së pari."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Emri"
 
@@ -227,6 +227,10 @@ msgstr "Përmbledhja e Statusit"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "Aprovo"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "Pauzo"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -782,7 +786,7 @@ msgstr "Krijo etiketën për këtë subjekt"
 msgid "See all works"
 msgstr "Shiko të gjitha veprat"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -834,12 +838,12 @@ msgstr "Shiko çfarë po shtojnë lexuesit e komunitetit në raftet e tyre të l
 msgid "Earliest trending data is from October 2017"
 msgstr "Të dhënat më të hershme të trendit janë nga tetori 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Dua ta Lexoj"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Duke e Lexuar"
 
@@ -848,7 +852,7 @@ msgid "Read"
 msgstr "Lexuar"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Ndërprerë"
 
@@ -929,7 +933,7 @@ msgstr "Mëso Më Shumë"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "në <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Duke kontrolluar përputhjet e Kërkimit të Brendshëm"
 
@@ -949,19 +953,19 @@ msgstr "Kjo është e dukshme vetëm për super-bibliotekarët."
 msgid "Solr Editions"
 msgstr "Edicionet Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Vetëm të Lexueshme"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtro sipas disponueshmërisë"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Gjuha"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Kërko gjuhë…"
 
@@ -969,11 +973,11 @@ msgstr "Kërko gjuhë…"
 msgid "Languages"
 msgstr "Gjuhët"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Duke ngarkuar…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtro sipas gjuhës"
 
@@ -1011,7 +1015,7 @@ msgstr "Asnjë libër apo autor përputhës"
 msgid "Add a new book"
 msgstr "Shto një libër të ri"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autorët"
 
@@ -1364,7 +1368,7 @@ msgstr "Dil nga lista e pritjes"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Do të humbisni vendin tuaj në radhë për <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1429,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Huazimet dhe Historiku"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Tashmë i Lexuar"
 
@@ -1471,12 +1475,13 @@ msgid "My notes for this work"
 msgstr "Shënimet e mia për këtë vepër"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "Shënimet e mia për një edicion të "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "Titulli Mungon"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "Shënimet e mia për një botim të %(title)s"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1643,7 +1648,7 @@ msgstr "Libra të shtuar nga njerëzit që ndjek %(username)s"
 msgid "Search your reading log"
 msgstr "Kërko në regjistrin tuaj të leximit"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1768,7 +1773,7 @@ msgstr "Objektivi i Leximit për %(year)d"
 msgid "Set %(year_span)s reading goal"
 msgstr "Cakto objektivin e leximit për %(year_span)s"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Regjistri i Leximit"
 
@@ -1985,7 +1990,7 @@ msgstr "Dërgo"
 msgid "New Books Imported Per Day"
 msgstr "Libra të Rinj të Importuar Në Ditë"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Duhet të keni JavaScript të aktivizuar për të parë grafikun e bukur!"
 
@@ -2075,8 +2080,16 @@ msgid "Stats"
 msgstr "Statistikat"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Statistikat e detyrave: kush po redakton dhe sa qëndrojnë redaktimet e detyrave"
+msgid "Related stats pages"
+msgstr "Faqe statistikash të lidhura"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Detyrat"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Shqyrtim i mesazheve të padëshiruara"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2299,6 +2312,247 @@ msgstr "Inspekto store-in"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Inspekto memcache-un"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Llogari nën %(age)s vjeç në %(count)s redaktimet më të fundit, deri në %(time)s. Llogaritë e bllokuara dhe të besuara kalojnë te Të shqyrtuara. Orët janë në UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Llogari nën %(age)s vjeç në redaktimet më të fundit. Llogaritë e bllokuara dhe të besuara kalojnë te Të shqyrtuara. Orët janë në UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Si shënjohen llogaritë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Këto rregulla vijnë nga 861 llogaritë që administratorët i kthyen mbrapsht si të padëshiruara mes gushtit 2025 dhe nëntorit 2026. Shenjat e forta shënjojnë 86%% prej tyre, dhe asnjë nga 42 lexuesit, autorët dhe bibliotekarët e rinj të zakonshëm me të cilët u krahasuan."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Me gjasë i padëshiruar: cilado prej"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Një numër telefoni në një regjistrim që kanë shkruar ose redaktuar. Linjat e rreme të mbështetjes për linja ajrore dhe softuer janë lloji më i zakonshëm i mesazheve të padëshiruara. Kur llogaria ngarkon gjithashtu kapakë ose foto, ka më shumë gjasa të jetë një botues, kështu që kjo vetëm e shënjon si të denjë për shikim."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Gjuhë shitjeje ose linje mbështetjeje: kode promocionale, zbritje, kazino, “numër i shërbimit ndaj klientit”, “si të flasësh me një person të vërtetë”, “bli … online” dhe të ngjashme."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Fjalë nga lista e fjalëve të padëshiruara e administratorëve."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s ose më shumë lista të krijuara. Lexuesit krijojnë një ose dy; llogaritë e padëshiruara krijuan deri në 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Redaktimi i tyre i vetëm vendosi një lidhje në profilin e tyre. Këto janë llogari SEO që regjistrohen, shtojnë një faqe interneti dhe largohen, shpesh brenda një minute."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Libra ose autorë që kanë shtuar dhe që një bibliotekar i ka fshirë tashmë."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "E denjë për shikim"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Lidhje në libra, lista ose një profil që kanë shkruar, krahas redaktimeve të tjera. Zakonisht autorë dhe botues që promovojnë veprën e tyre."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Formatim artikulli (tituj Markdown, tekst të theksuar, lidhje) në një përshkrim."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 ose më shumë libra apo lista në orën e parë."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Nuk numërohet"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Shtimi i librave në një listë. Kjo është ajo që bëjnë shumica e lexuesve të rinj, prandaj nuk e shënjon një llogari apo e ngre atë në radhë."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Redaktim brenda minutash nga regjistrimi. Shumica e përdoruesve të vërtetë të rinj e bëjnë këtë gjithashtu; kolona është aty për kontekst."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Cilat llogari"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Me gjasë i padëshiruar"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "I shqyrtuar"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Redaktimet nuk mund të ngarkoheshin: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Po shfaqen %(shown)s nga llogaritë më aktive nga %(total)s gjithsej."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Përzgjidh të gjitha llogaritë"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Përzgjidh të gjitha"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s të përzgjedhura"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Të bllokohen llogaritë e përzgjedhura?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Blloko"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Të bllokohen llogaritë e përzgjedhura dhe të kthehen mbrapsht të gjitha redaktimet e tyre?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Blloko dhe kthe mbrapsht"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Të shënjohen llogaritë e përzgjedhura si të besuara? Ato do të largohen nga kjo radhë dhe do ta anashkalojnë captcha-n kur shtojnë libra."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Shënjo si të besuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Llogaria"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Shenja të mesazheve të padëshiruara"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "U regjistrua"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Modifikimet e fundit"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Redaktimet e fundit"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Përzgjidh %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "I bllokuar, redaktimet u kthyen mbrapsht"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "I bllokuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "I besuar"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profili"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Faqja e administrimit"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Asnjë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s më parë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s deri te redaktimi i parë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s libër i shtuar"
+msgstr[1] "%(count)s libra të shtuar"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s listë e krijuar"
+msgstr[1] "%(count)s lista të krijuara"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s shtim në listë"
+msgstr[1] "%(count)s shtime në lista"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s redaktim tjetër"
+msgstr[1] "%(count)s redaktime të tjera"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s gjithsej"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "i fshirë"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Asnjëra nga %(count)s llogaritë nën %(age)s vjeç në këto redaktime nuk është në këtë grup."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Asnjë llogari nën %(age)s vjeç nuk ka bërë asnjë nga këto redaktime."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2751,16 +3005,16 @@ msgstr "Asnjë i gjetur"
 msgid "Search for an Author"
 msgstr "Kërko për një Autor"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Kërko"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "rreth %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "duke përfshirë <i>%(topwork)s</i>"
@@ -3056,7 +3310,7 @@ msgstr "Shto një libër në Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kërkojmë një grup minimal fushash për të krijuar një regjistrim të ri. Këto janë ato fusha."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Titulli"
 
@@ -3187,10 +3441,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "Në vend që të krijoni një regjistrim të dyfishtë, ju lutemi klikoni mbi rezultatin që mendoni se përputhet më mirë me librin tuaj."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "Ju lutemi plotësoni reCAPTCHA-n më sipër para se të zgjidhni një libër."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "Zgjidh këtë libër"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3269,8 +3527,9 @@ msgid "Open Library Home"
 msgstr "Faqja Kryesore e Open Library"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "Nuk ka asnjë skedar DAISY të disponueshëm për "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "Nuk ka asnjë skedar DAISY të disponueshëm për <a href=\"%(url)s\">%(title)s</a>"
 
 #: books/daisy.html
 #, python-format
@@ -3282,8 +3541,8 @@ msgid "Books for people who don't read print?"
 msgstr "Libra për njerëzit që nuk lexojnë shtyp?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "<a href=\"//archive.org\">Internet Archive</a> është krenar që shpërndan mbi 1 milion libra falas në një format të quajtur DAISY, të projektuar për ata prej nesh që e kanë të vështirë të përdorin median e zakonshme të shtypur. "
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "<a href=\"//archive.org\">Internet Archive</a> është krenar që shpërndan falas mbi 1 milion libra në një format të quajtur DAISY, të dizajnuar për ata që e kanë të vështirë të përdorin mediat e zakonshme të shtypura."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3334,8 +3593,8 @@ msgid "Need help?"
 msgstr "Keni nevojë për ndihmë?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " Ju lutemi lexoni <a href=\"/help/faq\">Pyetjet e Shpeshta mbi aksesimin e librave përmes Open Library</a>."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Ju lutemi lexoni <a href=\"/help/faq\">pyetjet tona të shpeshta rreth qasjes në libra përmes Open Library</a>."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3446,8 +3705,8 @@ msgstr "përkthyer nga %(translator)s"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " nga %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(title)s nga %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4098,10 +4357,6 @@ msgstr "Nevojitet ndihmë"
 msgid "Getting the list ready…"
 msgstr "Lista po përgatitet…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Detyrat"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Ndihmoni të ndërtohet katalogu, një libër në herë."
@@ -4305,10 +4560,6 @@ msgstr "Open Library u shërben %(readers)s lexuesve çdo muaj nëpër %(books)s
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Shumë libra në Open Library ende u mungon një detaj: një kopertinë, një gjuhë, një botues. Mund të ndihmoni duke i plotësuar."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Modifikimet e fundit"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4833,7 +5084,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Shfaq një foto më të madhe të autorit"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Foto e %(author)s"
@@ -4963,7 +5214,7 @@ msgstr "Postimet e Fundit në Blog"
 msgid "Browse the stacks"
 msgstr "Shfleto raftet"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Në Trend"
 
@@ -4989,7 +5240,7 @@ msgstr "Më të rejat"
 msgid "Top rated"
 msgstr "Më të vlerësuarat"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Rendit sipas"
 
@@ -5049,6 +5300,56 @@ msgstr "Ndryshimi gjatë muajit, sipas mesatares 7-ditore"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "Rritje %(percent)d%% gjatë muajit"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Mirë se u ktheve, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Mirë se u ktheve"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Gati për t'u huazuar"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Huazimet dhe Rezervimet"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Huazuar"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Huazimet tuaja"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Shiko të gjitha huazimet"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Gati për t'u lexuar tani"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Nga raftet tuaja"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Nga %(reading_start)sDuke e Lexuar%(link_end)s dhe %(want_start)sDua ta Lexoj%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Raftet tuaja"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Duke ngarkuar librat tuaj"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5708,93 +6009,92 @@ msgstr "+ Shto vlerësimin tuaj të komunitetit"
 msgid "+ Log in to add your community review"
 msgstr "+ Hyni për të shtuar vlerësimin tuaj të komunitetit"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Botuesit"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Kërkimi i Botuesve"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Provo një fjalë kyçe."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "Nuk gjetëm dot asnjë libër të botuar nga %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Provo diçka tjetër?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Botuesi: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Kërko Botuesit"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Asnjë i gjetur."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Shiko më shumë libra nga, dhe mëso rreth, këtij autori"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Botuesi"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s e-libër"
 msgstr[1] "%(count)s e-libra"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-libra"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Historiku i Botimit"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Ky është një grafik që tregon kur ky botues ka botuar libra. Përgjatë boshtit X është koha, dhe në boshtin y është numri i edicioneve të botuara. <a href=\"#subjectRelated\">Kliko këtu për ta anashkaluar grafikun</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Rivendos grafikun"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "ose vazhdo të zmadhosh."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Ky grafik paraqet edicionet e këtij botuesi me kalimin e kohës. Kliko për të parë një vit të vetëm, ose tërhiq përgjatë një intervali."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Edicione të Botuara"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Viti i Botimit"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Subjektet e Zakonshme"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Kërko libra të botuar nga %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Asnjë i gjetur."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Shiko më shumë libra nga, dhe mëso rreth, këtij autori"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "botuar më së shumti nga ky botues"
 
@@ -5997,78 +6297,68 @@ msgstr "Si të kërkoj?"
 msgid "Full Text Search?"
 msgstr "Kërkim me Tekst të Plotë?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Kërko në Open Library për \"%(query)s\""
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Kërko Autorë"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "A është i njëjti autor i listuar dy herë?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Bashko autorët"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Asnjë <strong>autor</strong> nuk përputhet drejtpërdrejt me kërkimin tuaj"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Kërko në Open Library për %s"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Kërko Brenda"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Zgjidh një gjuhë"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Rreth %(total)s rezultat"
 msgstr[1] "Rreth %(total)s rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "%(start)s - %(end)s nga rreth %(total)s rezultat"
 msgstr[1] "%(start)s - %(end)s nga rreth %(total)s rezultate"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Asnjë përputhje e saktë për \"%(query)s\". Duke shfaqur libra që përmbajnë të gjitha këto fjalë."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Duke shfaqur përputhje të sakta për \"%(query)s\". %(link_start)sKërko në vend të kësaj për të gjitha këto fjalë.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Duke shfaqur të gjitha këto fjalë, në çdo rend. %(link_start)sKërko në vend të kësaj për frazën e saktë.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Nuk u gjetën rezultate. Provo një fjalë apo frazë tjetër."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Asnjë nga përputhjet në këtë faqe nuk mund të shfaqet me këto filtra. Provo një faqe tjetër ose hiq një filtër."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Nuk ka më rezultate. Provo një faqe të mëparshme."
 
@@ -6092,95 +6382,15 @@ msgstr "Kërko Listat"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Asnjë <strong>listë</strong> nuk përputhet drejtpërdrejt me kërkimin tuaj"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Kërkimi i Botuesve"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Rëndësia"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Numri i Veprave"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "I Rastësishëm"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Data e Lindjes (më e vjetra) (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Data e Lindjes (më e reja) (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Rendi i Listës"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Shtuar së fundmi"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Modifikuar së fundmi"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Emri i Gjuhës"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Numri i Edicioneve E-libër"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Data e Shtimit (më e reja)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Data e Shtimit (më e vjetra)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Botuar së Pari"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Më të Vlerësuarat Tuaja"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Më të Kërkuarat"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Më Shumë Edicione"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Më të Fundit"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Më të Vlerësuarat"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Çdo"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Titulli i Veprës (beta: vetëm Bibliotekarë)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Rendit rezultatet"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Përzieji"
 
@@ -7097,10 +7307,6 @@ msgstr "Seritë"
 msgid "Volume"
 msgstr "Vëllimi"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "Zhanri"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "Tituj të Tjerë"
@@ -7883,10 +8089,6 @@ msgstr "Do të jeni i radhës."
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "Të gjitha kopjet janë huazuar."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Huazuar"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9450,7 +9652,7 @@ msgstr "Nuk u gjetën rezultate"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Po shfaqen %(shown)s nga %(total)s rezultate"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Pa titull"
 
@@ -10029,6 +10231,11 @@ msgstr "Vlerësimi"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Sa mirë mund të përcaktojë një përdorues nëse ky edicion është i rëndësishëm për nevojat e tij para se ta aksesojë?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Botuesi: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10040,12 +10247,39 @@ msgstr "Kërkim listash"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Kërkim me Tekst të Plotë"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Kërkim me Tekst të Plotë"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Kërkim subjektesh"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Kërkim subjektesh"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Kërkimi i Botuesve"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Kërkimi i Botuesve"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Kërkimi i Autorëve"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Kërkimi i Autorëve"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10103,6 +10337,121 @@ msgstr "Vetëm një projekt që nuk ka filluar mund të fshihet. Ndaloni ose fsh
 msgid "The project is deleted."
 msgstr "Projekti është fshirë."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Qendra e Administrimit] Shqyrtim i mesazheve të padëshiruara"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Përzgjidh të paktën një llogari."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d llogari u shënjua si e besuar."
+msgstr[1] "%(count)d llogari u shënjuan si të besuara."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "U bllokua %(count)d llogari."
+msgstr[1] "U bllokuan %(count)d llogari."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "U kthyen mbrapsht %(edits)d redaktime dhe u fshinë %(deleted)d regjistrime."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s sek"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s orë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s ditë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Numër telefoni në %(count)s regjistrim"
+msgstr[1] "Numra telefoni në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Gjuhë shitjeje ose linje mbështetjeje në %(count)s regjistrim"
+msgstr[1] "Gjuhë shitjeje ose linje mbështetjeje në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Fjalë të padëshiruara në %(count)s regjistrim"
+msgstr[1] "Fjalë të padëshiruara në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s lista të krijuara"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s regjistrim tashmë i fshirë"
+msgstr[1] "%(count)s regjistrime tashmë të fshira"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Redaktimi i vetëm: një lidhje në profilin e tyre"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Lidhje në %(count)s regjistrim"
+msgstr[1] "Lidhje në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Formatim artikulli në %(count)s regjistrim"
+msgstr[1] "Formatim artikulli në %(count)s regjistrime"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s të shtuara në %(minutes)s minutat e para"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s ditë"
+msgstr[1] "%(count)s ditë"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "më së shumti %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Rezultatet e Kërkimit"
@@ -10133,6 +10482,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "%(count)d artikull i dështuar u rivendos në radhë."
 msgstr[1] "%(count)d artikuj të dështuar u rivendosën në radhë."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "%(count)d artikull në pritje u pauzua."
+msgstr[1] "%(count)d artikuj në pritje u pauzuan."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10209,6 +10565,10 @@ msgstr "Filipinisht"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "Trillim ose jotrillim"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "Zhanri"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10294,8 +10654,8 @@ msgstr "%(percent)s%% e kryer, objektivi u arrit"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% e kryer, objektivi %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% e kryer, objektivi %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10611,6 +10971,60 @@ msgstr "Klasikë"
 msgid "Most wanted"
 msgstr "Më të kërkuarit"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Duhet kthyer sot"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Duhet kthyer nesër"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Duhet kthyer brenda %(count)d dite"
+msgstr[1] "Duhet kthyer brenda %(count)d dite"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Huazojeni së shpejti, përndryshe do t'i kalojë lexuesit tjetër."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Rezervuar për ju për edhe %(count)d orë."
+msgstr[1] "Rezervuar për ju për edhe %(count)d orë."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Rezervuar për ju për edhe %(count)d ditë."
+msgstr[1] "Rezervuar për ju për edhe %(count)d ditë."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ju jeni i radhës"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ju jeni numri %(position)d nga %(size)d në radhë"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Në huazim"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Vazhdo leximin"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Huazo tani"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "Të paktën 1 subjekt"
@@ -10794,6 +11208,10 @@ msgstr "Leja u refuzua"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "Nuk lejoheni të shtoni një ID të Internet Archive."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "Nuk lejoheni të shtoni një URL të Librit."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "ky libër"
@@ -10930,6 +11348,86 @@ msgstr "E-librat Klasikë të fshehur"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - kërkim"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Rëndësia"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Numri i Veprave"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "I Rastësishëm"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Data e Lindjes (më e vjetra) (beta: vetëm Bibliotekarë)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Data e Lindjes (më e reja) (beta: vetëm Bibliotekarë)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Rendi i Listës"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Shtuar së fundmi"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Modifikuar së fundmi"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Emri i Gjuhës"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Numri i Edicioneve E-libër"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Data e Shtimit (më e reja)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Data e Shtimit (më e vjetra)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Botuar së Pari"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Më të Vlerësuarat Tuaja"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Më të Kërkuarat"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Më Shumë Edicione"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Më të Fundit"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Më të Vlerësuarat"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Çdo"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Titulli i Veprës (beta: vetëm Bibliotekarë)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -11116,7 +11614,7 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 #~ msgstr "Hap regjistrimin dhe konfirmo që përputhet me këtë edicion fillimisht."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "Statistikat e detyrave: kush po redakton dhe sa qëndrojnë redaktimet e detyrave"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "Statistikat e detyrave"
@@ -11560,4 +12058,28 @@ msgstr "Grafikët nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsër
 
 #~ msgid "Records and other pages"
 #~ msgstr "Regjistrime dhe faqe të tjera"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% e kryer, objektivi %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "Shënimet e mia për një edicion të "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "Nuk ka asnjë skedar DAISY të disponueshëm për "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "<a href=\"//archive.org\">Internet Archive</a> është krenar që shpërndan mbi 1 milion libra falas në një format të quajtur DAISY, të projektuar për ata prej nesh që e kanë të vështirë të përdorin median e zakonshme të shtypur. "
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " Ju lutemi lexoni <a href=\"/help/faq\">Pyetjet e Shpeshta mbi aksesimin e librave përmes Open Library</a>."
+
+#~ msgid " by %(name)s"
+#~ msgstr " nga %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Kërko në Open Library për %s"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Kërko në Open Library për \"%(query)s\""
 

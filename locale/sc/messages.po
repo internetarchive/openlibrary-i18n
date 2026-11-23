@@ -183,7 +183,7 @@ msgstr[1] "%(count)s elementos"
 msgid "Status:"
 msgstr "Istadu:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Totu"
 
@@ -191,7 +191,7 @@ msgstr "Totu"
 msgid "Default sort: date added, newest first."
 msgstr "Ordinamentu predefinidu: data de annanta, prus noos in antis."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Nùmene"
 
@@ -227,6 +227,10 @@ msgstr "Resumu de istadu"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "Aprova"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "Pausa"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -782,7 +786,7 @@ msgstr "Crea un'eticheta pro custu argumentu"
 msgid "See all works"
 msgstr "Abbista totu sas òperas"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -834,12 +838,12 @@ msgstr "Abbista ite sos letores de sa comunidade sunt annanghende a sos iscafale
 msgid "Earliest trending data is from October 2017"
 msgstr "Sos primos datos subra de sas tendèntzias sunt de su santugaine de su 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Chèrgio lèghere"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "So leghende"
 
@@ -848,7 +852,7 @@ msgid "Read"
 msgstr "Leghe"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Dessinidu de lèghere"
 
@@ -929,7 +933,7 @@ msgstr "Impara de prus"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "in <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Verifichende sas currispondèntzias cun sa Chirca a intro"
 
@@ -949,19 +953,19 @@ msgstr "Visìbile petzi pro sos superbibliotecàrios."
 msgid "Solr Editions"
 msgstr "Editziones Solr"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Petzi chi si podet lèghere"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filtra pro disponibilidade"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Limba"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Chirca limbas…"
 
@@ -969,11 +973,11 @@ msgstr "Chirca limbas…"
 msgid "Languages"
 msgstr "Limbas"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Carrighende…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filtra pro limba"
 
@@ -1011,7 +1015,7 @@ msgstr "Perunu libru o autore chi currispondat"
 msgid "Add a new book"
 msgstr "Annanghe unu libru nou"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Autores"
 
@@ -1364,7 +1368,7 @@ msgstr "Lassa sa lista de isetu"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "As a pèrdere su postu tuo in fila pro <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1429,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Imprèstidos e cronologia"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Giai lèghidu"
 
@@ -1471,12 +1475,13 @@ msgid "My notes for this work"
 msgstr "Sas notas meas pro cust'òpera"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "Sas notas meas pro un'editzione de "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "Mancat su tìtulu"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "Sas annotatziones mias pro una editzione de %(title)s"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1643,7 +1648,7 @@ msgstr "Libros annantos dae gente chi %(username)s sighit"
 msgid "Search your reading log"
 msgstr "Chirca in su registru de letura tuo"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1768,7 +1773,7 @@ msgstr "Obietivu de letura pro su %(year)d"
 msgid "Set %(year_span)s reading goal"
 msgstr "Cunfigura s'obietivu de letura pro su %(year_span)s"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Registru de letura"
 
@@ -1985,7 +1990,7 @@ msgstr "Imbia"
 msgid "New Books Imported Per Day"
 msgstr "Libros noos importados pro die"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Depes tènnere JavaScript allutu pro bìdere custu gràficu galanu!"
 
@@ -2075,8 +2080,16 @@ msgid "Stats"
 msgstr "Istatìsticas"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Istatìsticas de sas Fainas: chie est modifichende e comente resistent sas modìficas fatas cun sas Fainas"
+msgid "Related stats pages"
+msgstr "Pàginas de istatìsticas afines"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Fainas"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Revisione de su spam"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2299,6 +2312,247 @@ msgstr "Ispetziona s'archìviu de datos"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Ispetziona sa memòria temporànea"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Contos cun prus pagu de %(age)s in sas %(count)s modìficas prus noas, fintzas a %(time)s. Sos contos blocados e fidados colant a Revisionados. Sos oràrios sunt in UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Contos cun prus pagu de %(age)s in sas modìficas prus noas. Sos contos blocados e fidados colant a Revisionados. Sos oràrios sunt in UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Comente sunt signalados sos contos"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Custas règulas benint dae sos 861 contos chi sos amministradores ant annulladu comente spam intre Austu 2025 e Santandria 2026. Sos signales fortes marcant su 86%% de issos, e perunu de sos 42 letores, autores e bibliotecàrios noos e ordinàrios cun sos chi sunt istados cunfrontados."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Probabile spam: una cale si siat de custas"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Unu nùmeru de telèfonu in unu registru chi ant iscritu o modificadu. Sas lìnias de agiudu farsas de cumpangias aèreas o software sunt su spam prus comunu. Candu su contu carrigat finas cobertas o fotografias est prus probàbile chi siat un'editore, duncas custu marcat isceti chi balet sa pena de dare un'oghiada."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Faeddos de bèndida o de lìnia de agiudu: còdices promotzionales, iscontos, casinos, “nùmeru de serbìtziu clientes”, “comente faeddare cun una persone vera”, “acàtta … online” e cosas simile."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Paràulas dae sa lista de paràulas de spam de sos amministradores."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s listas o prus creadas. Sos letores nde faghent una o duas; sos contos de spam nde ant fatu fintzas a 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "S'ùnica modìfica insoro at postu unu ligòngiu in su profilu insoro. Custos sunt contos SEO chi s'iscrient, agiunghent unu situ web e si nde andant, a sa prus spissu intro de unu minutu."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Libros o autores chi ant agiuntu chi unu bibliotecàriu at giai cantzelladu."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Balet sa pena de dare un'oghiada"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Ligòngios in libros, listas o unu profilu chi ant iscritu, paris a àteras modìficas. In gènere autores e editores chi promovent s'òpera insoro."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Formatadura de artìculu (tìtulos Markdown, grassete, ligòngios) in una descritzione."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 libros o listas o prus in sa prima ora."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "No contadu"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Agiunghere libros a una lista. Est su chi faghent sa parte manna de sos letores noos, duncas no signalat unu contu ne lu movet in artu in s'òrdine."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Modificare intro de pagos minutos dae s'iscritzione. Sa parte manna de sos utentes noos e veros faghent su matessi; sa colunna est pro su cuntestu."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Cales contos"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Probabile spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Revisionadu"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "No est istadu possìbile carrigare sas modìficas: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "Mustrende sos %(shown)s contos prus ativos de %(total)s."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Seletziona totus sos contos"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Seletziona totu"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s seletzionados"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Blocare sos contos seletzionados?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Bloca"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Blocare sos contos seletzionados e annullare totus sas modìficas insoro?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Bloca e annulla"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Marcare comente fidados sos contos seletzionados? Nde essint dae custa lista e no depent fàghere su captcha candu agiunghent libros."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Marca comente fidadu"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Contu"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Signales de spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Iscritu"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Modìficas reghentes"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Ùrtimas modìficas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "Seletziona %(username)s"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Blocadu, modìficas annulladas"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Blocadu"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Fidadu"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profilu"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Pàgina de amministratzione"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Nudda"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s a oe"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s a sa prima modìfica"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s libru agiuntu"
+msgstr[1] "%(count)s libros agiuntos"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s lista creada"
+msgstr[1] "%(count)s listas creadas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s agiunta a una lista"
+msgstr[1] "%(count)s agiuntas a listas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s àtera modìfica"
+msgstr[1] "%(count)s àteras modìficas"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s in totale"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "cantzelladu"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Perunu de sos %(count)s contos cun prus pagu de %(age)s in custas modìficas est in custu grupu."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Perunu contu cun prus pagu de %(age)s at fatu peruna de custas modìficas."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2751,16 +3005,16 @@ msgstr "Perunu agatadu"
 msgid "Search for an Author"
 msgstr "Chirca un'autore"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Chirca"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "subra de %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "includende <i>%(topwork)s</i>"
@@ -3056,7 +3310,7 @@ msgstr "Annanghe unu libru a s'Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Tenimus bisòngiu de unu grupu mìnimu de campos pro creare unu registru nou. Custos sunt cussos campos."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Tìtulu"
 
@@ -3187,10 +3441,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "In càmbiu de creare unu registru dòpiu incarca in su resurtadu chi pensas chi currispondat mègius cun su libru tuo."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "Pro praghere cumprite su reCAPTCHA inoghe in subra innantis de seletzionare unu libru."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "Seletziona custu libru"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3269,8 +3527,9 @@ msgid "Open Library Home"
 msgstr "Pàgina printzipale de Open Library"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "Non b'at unu documentu DAISY a disponimentu pro "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "No b'at nissunu archìviu DAISY disponìbile pro <a href=\"%(url)s\">%(title)s</a>"
 
 #: books/daisy.html
 #, python-format
@@ -3282,8 +3541,8 @@ msgid "Books for people who don't read print?"
 msgstr "Libros pro chie non podet lèghere cosa imprentada?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "S'<a href=\"//archive.org\">Internet Archive</a> est fieru de distribuire prus de 1 millione de libros a indonu in unu formadu chi si narat DAISY, progetadu pro sos de nois chi atzapant difìtzile a impreare mèdios imprentados in manera regulare. "
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "S'<a href=\"//archive.org\">Internet Archive</a> est fiera de distribuire in manera gratùita prus de 1 milione de libros in unu formadu mutidu DAISY, pensadu pro chie incontrat dificultades a impreare sos mèdios imprentados normales."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3334,8 +3593,8 @@ msgid "Need help?"
 msgstr "Ti bisòngiat agiudu?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " Leghe·ti sas <a href=\"/help/faq\">PF nostras subra de s'atzessu a sos libros pro mèdiu de s'Open Library</a>."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Pro praghere lege sas nostras <a href=\"/help/faq\">FAQ subra comente intrare in sos libros tràmite s'Open Library</a>."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3446,8 +3705,8 @@ msgstr "bortadu dae %(translator)s"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " de %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(title)s de %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4098,10 +4357,6 @@ msgstr "Serbit agiudu"
 msgid "Getting the list ready…"
 msgstr "Preparende sa lista…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Fainas"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Agiuda a costruire su catàlogu, unu libru a sa borta."
@@ -4305,10 +4560,6 @@ msgstr "Open Library serbit %(readers)s leghidores cada mese intre %(books)s lib
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Medas libros in Open Library sunt galu chene unu detàlliu: una cobertedda, una limba, un'editore. Podes agiudare a los cumprire."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Modìficas reghentes"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4833,7 +5084,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Abbista una fotografia prus manna de s'autore"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Fotografia de %(author)s"
@@ -4963,7 +5214,7 @@ msgstr "Ùrtimas publicatziones de su blog"
 msgid "Browse the stacks"
 msgstr "Esplora sos iscafales"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "De tendèntzia"
 
@@ -4989,7 +5240,7 @@ msgstr "Prus noos"
 msgid "Top rated"
 msgstr "Mègius valutados"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Òrdina pro"
 
@@ -5049,6 +5300,56 @@ msgstr "Variatzione in su mese, cun sa mèdia de 7 dies"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "Aumentu de su %(percent)d%% in su mese"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Torra bene bènnidu/a, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Torra bene bènnidu/a"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Prontu/a pro pigare in prèstidu"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Prèstidos e riserbas"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Pigadu in prèstidu"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Is prèstidos tuos"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Ida totu is prèstidos"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Prontu/a a lèghere imoe"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "De is iscansias tuas"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "De %(reading_start)sSo leghende%(link_end)s e %(want_start)sChèrgio lèghere%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Is iscansias tuas"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Carrighende is libros tuos"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5708,93 +6009,92 @@ msgstr "+ Annanghe sa retzensione comunitària tua"
 msgid "+ Log in to add your community review"
 msgstr "+ Intra pro annànghere sa retzensione comunitària tua"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Editores"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Chirca pro editore"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Proa una paràula crae."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "No amus pòdidu agatare perunu libru publicadu dae %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Proare carchi cosa de àteru?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Editore: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Chirca editores"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Perunu agatadu."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Abbista prus libros de custu autore, e impara cosas subra de issu"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Editore"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s libru eletrònicu"
 msgstr[1] "%(count)s libros eletrònicos"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 libros eletrònicos"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Cronologia de publicatzione"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Custu est unu gràficu pro ammustrare cando custu editore at publicadu libros. In s'asse X b'at su tempus, e in s'asse Y b'at su contu de sas editziones publicadas. <a href=\"#subjectRelated\">Incarca inoghe pro brincare su gràficu</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Reseta su gràficu"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "o sighi a ismanniare."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Custu gràficu mapat sas editziones de custu editore in su tempus. Incarca pro bìdere un'annu sìngulu, o traga in un'intervallu."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Editziones publicadas"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Annu de publicatzione"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Argumentos comunes"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Chirca libros publicados dae %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Perunu agatadu."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Abbista prus libros de custu autore, e impara cosas subra de issu"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "publicadu mescamente dae custu editore"
 
@@ -5997,78 +6297,68 @@ msgstr "Comente chircare?"
 msgid "Full Text Search?"
 msgstr "Chirca a testu intreu?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Chirca \"%(query)s\" in s'Open Library"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Chirca autores"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Su matessi autore est allistadu duas bortas?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Auni autores"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Perunu <strong>autore</strong> at tentu currispondèntzias diretas cun sa chirca tua"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Chirca %s in s'Open Library"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Chirca a intro"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Issèbera una limba"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Pagu prus o mancu %(total)s resurtadu"
 msgstr[1] "Pagu prus o mancu %(total)s resurtados"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "%(start)s - %(end)s de pagu prus o mancu %(total)s resurtadu"
 msgstr[1] "%(start)s - %(end)s de pagu prus o mancu %(total)s resurtados"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Peruna currispondèntzia esata pro \"%(query)s\". Mustrende libros chi cuntenent totu custas paràulas."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Mustrende currispondèntzias esatas pro \"%(query)s\". %(link_start)sChirca imbetzes custas paràulas totu paris.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Mustrende totu custas paràulas, in cale si siat òrdine. %(link_start)sChirca imbetzes sa frase esata.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Perunu resurtadu atzapadu. Proa cun un'àtera paràula o frase."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Peruna de sas currispondèntzias in custa pàgina si podet mustrare cun custos filtros. Proa un'àtera pàgina o boga unu filtru."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Perunu àteru resurtadu. Proa una pàgina prus betza."
 
@@ -6092,95 +6382,15 @@ msgstr "Chirca listas"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "No b'at <strong>listas</strong> chi currispondant diretamente a sa chirca tua"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Chirca de sos editores"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Rilevàntzia"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Nùmeru de òperas"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "A casu"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Data de nàschida (prus betzu) (beta: bibliotecàriu ebbia)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Data de nàschida (prus giòvanu) (beta: bibliotecàriu ebbia)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Òrdine de sa lista"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Annantos de reghente"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Modificados de reghente"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Nùmene de sa limba"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Nùmeru de editziones digitales"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Data de annanta (prus noos)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Data de annanta (prus betzos)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Prus betzos"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Sos votos tuos prus artos"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Prus disigiados"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Prus editziones"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Prus reghentes"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Votos prus artos"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Cale si siat"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Tìtulu de s'òpera (beta: bibliotecàrios ebbia)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Òrdina sos resurtados"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Ammistura"
 
@@ -7097,10 +7307,6 @@ msgstr "Sèrie"
 msgid "Volume"
 msgstr "Volùmene"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "Gènere"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "Àteros tìtulos"
@@ -7883,10 +8089,6 @@ msgstr "As a èssere s'imbeniente in fila."
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "Totu sas còpias sunt imprestadas."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Pigadu in prèstidu"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9450,7 +9652,7 @@ msgstr "Perunu resurtadu agatadu"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "Si abèt amostrende %(shown)s de %(total)s resultados"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Chene tìtulu"
 
@@ -10029,6 +10231,11 @@ msgstr "Valutatzione"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Cantu bene podet un'utente determinare si custa editzione est pertinente a sos bisòngios suos in antis de l'abèrrere?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Editore: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10040,12 +10247,39 @@ msgstr "Chirca de listas"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Chirca a testu intreu"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Chirca a testu intreu"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Chirca de argumentos"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Chirca de argumentos"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Chirca pro editore"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Chirca pro editore"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Chirca de sos autores"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Chirca de sos autores"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10103,6 +10337,121 @@ msgstr "Petzi unu progetu chi no est galu incumintzadu si podet cantzellare. Fir
 msgid "The project is deleted."
 msgstr "Su progetu est cantzelladu."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Chentru de amministratzione] Revisione de su spam"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Seletziona a su mancu unu contu."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Marcadu %(count)d contu comente fidadu."
+msgstr[1] "Marcados %(count)d contos comente fidados."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "Blocadu %(count)d contu."
+msgstr[1] "Blocados %(count)d contos."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "Annulladas %(edits)d modìficas e cantzellados %(deleted)d registros."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s h"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Nùmeru de telèfonu in %(count)s registru"
+msgstr[1] "Nùmeros de telèfonu in %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Faeddos de bèndida o de lìnia de agiudu in %(count)s registru"
+msgstr[1] "Faeddos de bèndida o de lìnia de agiudu in %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Paràulas de spam in %(count)s registru"
+msgstr[1] "Paràulas de spam in %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s listas creadas"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s registru giai cantzelladu"
+msgstr[1] "%(count)s registros giai cantzellados"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Ùnica modìfica: unu ligòngiu in su profilu insoro"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Ligòngios in %(count)s registru"
+msgstr[1] "Ligòngios in %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Formatadura de artìculu in %(count)s registru"
+msgstr[1] "Formatadura de artìculu in %(count)s registros"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s agiuntos in sos primos %(minutes)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s die"
+msgstr[1] "%(count)s dies"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "a su prus %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Resurtados de chirca"
@@ -10133,6 +10482,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "%(count)d elementu faddinu est torradu a inserire in sa coa."
 msgstr[1] "%(count)d elementos faddinos sunt torrados a inserire in sa coa."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "%(count)d elementu in suspesu est istadu pausadu."
+msgstr[1] "%(count)d elementos in suspesu sunt istados pausados."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10209,6 +10565,10 @@ msgstr "Filipinu"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "Fintzione o non fintzione"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "Gènere"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10294,8 +10654,8 @@ msgstr "%(percent)s%% fatu, obietivu agatadu"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% fatu, obietivu %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% fatu, obietivu %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10611,6 +10971,60 @@ msgstr "Clàssicos"
 msgid "Most wanted"
 msgstr "Prus disigiados"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Da torrare oe"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Da torrare cras"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Da torrare in %(count)d die"
+msgstr[1] "Da torrare in %(count)d dies"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Piga·lu in prèstidu luego, o at a colare a s'àteru letore."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Riservadu pro tue pro %(count)d ora ancora."
+msgstr[1] "Riservadu pro tue pro %(count)d oras ancora."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Riservadu pro tue pro %(count)d die ancora."
+msgstr[1] "Riservadu pro tue pro %(count)d dies ancora."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Ses s'imbeniente in fila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Ses su numeru %(position)d de %(size)d in fila"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "In prèstidu"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Sighi a lèghere"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Piga·lu in prèstidu imoe"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "A su mancu 1 argumentu"
@@ -10794,6 +11208,10 @@ msgstr "Permissu negadu"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "Non tenes su permissu de agiùnghere un'ID de s'Internet Archive."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "Non tenes su permissu de agiùnghere un'URL de su libru."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "custu libru"
@@ -10930,6 +11348,86 @@ msgstr "Libros eletrònicos clàssicos cuados"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - chirca"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Rilevàntzia"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Nùmeru de òperas"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "A casu"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Data de nàschida (prus betzu) (beta: bibliotecàriu ebbia)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Data de nàschida (prus giòvanu) (beta: bibliotecàriu ebbia)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Òrdine de sa lista"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Annantos de reghente"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Modificados de reghente"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Nùmene de sa limba"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Nùmeru de editziones digitales"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Data de annanta (prus noos)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Data de annanta (prus betzos)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Prus betzos"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Sos votos tuos prus artos"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Prus disigiados"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Prus editziones"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Prus reghentes"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Votos prus artos"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Cale si siat"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Tìtulu de s'òpera (beta: bibliotecàrios ebbia)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -12858,7 +13356,7 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 #~ msgstr "Aberi su registru e cunfirma prima chi currispondet a custa editzione."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-#~ msgstr ""
+#~ msgstr "Istatìsticas de sas Fainas: chie est modifichende e comente resistent sas modìficas fatas cun sas Fainas"
 
 #~ msgid "Tasks Stats"
 #~ msgstr "Istatìsticas de sas Fainas"
@@ -13302,4 +13800,28 @@ msgstr "Non at fatu a carrigare sos gràficos. Torra a carrigare sa pàgina pro 
 
 #~ msgid "Records and other pages"
 #~ msgstr "Registros e àteras pàginas"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% fatu, obietivu %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "Sas notas meas pro un'editzione de "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "Non b'at unu documentu DAISY a disponimentu pro "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "S'<a href=\"//archive.org\">Internet Archive</a> est fieru de distribuire prus de 1 millione de libros a indonu in unu formadu chi si narat DAISY, progetadu pro sos de nois chi atzapant difìtzile a impreare mèdios imprentados in manera regulare. "
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " Leghe·ti sas <a href=\"/help/faq\">PF nostras subra de s'atzessu a sos libros pro mèdiu de s'Open Library</a>."
+
+#~ msgid " by %(name)s"
+#~ msgstr " de %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Chirca %s in s'Open Library"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Chirca \"%(query)s\" in s'Open Library"
 

@@ -183,7 +183,7 @@ msgstr[1] "%(count)s element"
 msgid "Status:"
 msgstr "Vəziyyət:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Hamısı"
 
@@ -191,7 +191,7 @@ msgstr "Hamısı"
 msgid "Default sort: date added, newest first."
 msgstr "Standart sıralama: əlavə edilmə tarixi, ən yeni əvvəl."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ad"
 
@@ -227,6 +227,10 @@ msgstr "Vəziyyətin xülasəsi"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "Təsdiqlə"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "Fasilə ver"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -782,7 +786,7 @@ msgstr "Bu mövzu üçün etiket yarat"
 msgid "See all works"
 msgstr "Bütün əsərlərə bax"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -834,12 +838,12 @@ msgstr "İcma üzvlərinin kitab rəflərinə hansı kitabları əlavə etdiyin�
 msgid "Earliest trending data is from October 2017"
 msgstr "Populyarlıq haqqında ən erkən məlumatlar 2017-ci ilin oktyabrına aiddir"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Oxumaq istəyirəm"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Hazırda oxuyuram"
 
@@ -848,7 +852,7 @@ msgid "Read"
 msgstr "Oxu"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Oxumağı dayandırmışam"
 
@@ -929,7 +933,7 @@ msgstr "Ətraflı məlumat al"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> saytında"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Kitab daxilində axtarışın uyğunluqları yoxlanılır"
 
@@ -949,19 +953,19 @@ msgstr "Bu, yalnız baş kitabxanaçılara görünür."
 msgid "Solr Editions"
 msgstr "Solr nəşrləri"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Yalnız oxuna bilənlər"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Əlçatanlığa görə süz"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Dil"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Dil axtar…"
 
@@ -969,11 +973,11 @@ msgstr "Dil axtar…"
 msgid "Languages"
 msgstr "Dillər"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Yüklənir…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Dilə görə süz"
 
@@ -1011,7 +1015,7 @@ msgstr "Uyğun kitab və ya müəllif tapılmadı"
 msgid "Add a new book"
 msgstr "Yeni kitab əlavə et"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Müəlliflər"
 
@@ -1364,7 +1368,7 @@ msgstr "Gözləmə siyahısından çıx"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "<strong>%(title)s</strong> üçün növbədəki yerinizi itirəcəksiniz."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1429,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Borc alınmış kitablar və tarixçə"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Artıq oxumuşam"
 
@@ -1471,12 +1475,13 @@ msgid "My notes for this work"
 msgstr "Bu əsər haqqında qeydlərim"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "Bu əsərin bir nəşri haqqında qeydlərim: "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "Başlıq yoxdur"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "%(title)s nəşrinə dair qeydlərim"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1643,7 +1648,7 @@ msgstr "%(username)s adlı istifadəçinin izlədiyi şəxslərin əlavə etdiyi
 msgid "Search your reading log"
 msgstr "Oxu gündəliyinizdə axtar"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1768,7 +1773,7 @@ msgstr "%(year)d üçün oxu hədəfi"
 msgid "Set %(year_span)s reading goal"
 msgstr "%(year_span)s üçün oxu hədəfi təyin et"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Oxu gündəliyi"
 
@@ -1985,7 +1990,7 @@ msgstr "Göndər"
 msgid "New Books Imported Per Day"
 msgstr "Gün ərzində idxal edilmiş yeni kitablar"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Bu gözəl diaqramı görmək üçün JavaScript-i aktivləşdirməlisiniz!"
 
@@ -2075,8 +2080,16 @@ msgid "Stats"
 msgstr "Statistika"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Tapşırıq statistikası: kim redaktə edir və Tapşırıq redaktələri nə qədər davamlıdır"
+msgid "Related stats pages"
+msgstr "Əlaqəli statistika səhifələri"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Tapşırıqlar"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Spam baxışı"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2299,6 +2312,247 @@ msgstr "Verilənlər anbarını yoxla"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Memcache-i yoxla"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "%(age)s-dən gənc hesablar ən yeni %(count)s redaktədə, %(time)s-ə qədər. Bloklanmış və etibarlı hesablar Baxılıb bölməsinə keçir. Vaxtlar UTC ilədir."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "%(age)s-dən gənc hesablar ən yeni redaktələrdə. Bloklanmış və etibarlı hesablar Baxılıb bölməsinə keçir. Vaxtlar UTC ilədir."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Hesabların necə işarələndiyi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Bu qaydalar administratorların avqust 2025 ilə noyabr 2026 arasında spam kimi geri qaytardığı 861 hesabdan götürülüb. Güclü əlamətlər onların 86%%-ni işarələyir və müqayisə edildiyi 42 adi yeni oxucu, müəllif və kitabxanaçıdan heç birini işarələmir."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Ehtimal olunan spam: aşağıdakılardan biri"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Yazdıqları və ya redaktə etdikləri qeyddə telefon nömrəsi. Saxta aviaşirkət və proqram dəstək xətləri ən geniş yayılmış spamdır. Hesab həmçinin üz qabığı və ya foto yükləyərsə, nəşriyyat olma ehtimalı artır, ona görə bu, yalnız baxışa dəyər olduğunu bildirir."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Satış və ya dəstək xətti ifadələri: promo kodlar, endirimlər, kazinolar, “müştəri xidməti nömrəsi”, “canlı operatorla necə danışmaq olar”, “… onlayn al” və bu kimilər."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Administrator spam söz siyahısındakı sözlər."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s və ya daha çox siyahı yaradılıb. Oxucular adətən bir və ya iki yaradır; spam hesablar isə 100-ə qədər yaradıb."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Tək redaktələri profillərinə keçid qoymaq olub. Bunlar qeydiyyatdan keçib, sayt əlavə edib və ayrılan SEO hesablarıdır, çox vaxt bir dəqiqə ərzində."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Əlavə etdikləri və artıq kitabxanaçı tərəfindən silinmiş kitab və ya müəlliflər."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "Baxışa dəyər"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Yazdıqları kitab, siyahı və ya profildə digər redaktələrlə yanaşı keçidlər. Adətən öz əsərlərini reklam edən müəllif və nəşriyyatlar."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Təsvirdə məqalə formatlaşdırması (Markdown başlıqları, qalın şrift, keçidlər)."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "İlk saatda 10 və ya daha çox kitab ya da siyahı."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Hesablanmır"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Kitabları siyahıya əlavə etmək. Əksər yeni oxucuların etdiyi budur, ona görə hesabı işarələmir və ya sırada yuxarı qaldırmır."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Qeydiyyatdan sonra dəqiqələr ərzində redaktə etmək. Əksər real yeni istifadəçilər də bunu edir; sütun yalnız kontekst üçündür."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Hansı hesablar"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Ehtimal olunan spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Baxılıb"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "Redaktələr yüklənə bilmədi: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "%(total)s hesabdan ən aktiv %(shown)s göstərilir."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Bütün hesabları seç"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Hamısını seç"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s seçildi"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "Seçilmiş hesablar bloklansın?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Blokla"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "Seçilmiş hesablar bloklansın və bütün redaktələri geri qaytarılsın?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Blokla və geri qaytar"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "Seçilmiş hesablar etibarlı kimi işarələnsin? Onlar bu növbədən çıxacaq və kitab əlavə edərkən captcha-nı keçəcək."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Etibarlı kimi işarələ"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Hesab"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Spam əlamətləri"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Qeydiyyat tarixi"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Son dəyişikliklər"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Son redaktələr"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)s seç"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Bloklanıb, redaktələr geri qaytarılıb"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Bloklanıb"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Etibarlı"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profil"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Administrator səhifəsi"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Yoxdur"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s əvvəl"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "ilk redaktəyə qədər %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s kitab əlavə edildi"
+msgstr[1] "%(count)s kitab əlavə edildi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s siyahı yaradıldı"
+msgstr[1] "%(count)s siyahı yaradıldı"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s siyahı əlavəsi"
+msgstr[1] "%(count)s siyahı əlavəsi"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s digər redaktə"
+msgstr[1] "%(count)s digər redaktə"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "cəmi %(count)s"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "silinib"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Bu redaktələrdə %(age)s-dən gənc %(count)s hesabdan heç biri bu qrupda deyil."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "%(age)s-dən gənc heç bir hesab bu redaktələrdən birini etməyib."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2751,16 +3005,16 @@ msgstr "Heç nə tapılmadı"
 msgid "Search for an Author"
 msgstr "Müəllif axtar"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Axtar"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "%(subjects)s haqqında"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "<i>%(topwork)s</i> daxil olmaqla"
@@ -3056,7 +3310,7 @@ msgstr "Open Library-yə kitab əlavə et"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Yeni qeyd yaratmaq üçün ən azı müəyyən sahələr doldurulmalıdır. Həmin sahələr bunlardır."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Başlıq"
 
@@ -3187,10 +3441,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "Təkrar qeyd yaratmaq əvəzinə, kitabınıza ən çox uyğun gəldiyini düşündüyünüz nəticəyə keçin."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "Kitab seçmədən əvvəl yuxarıdakı reCAPTCHA-nı tamamlayın."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "Bu kitabı seç"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3269,8 +3527,9 @@ msgid "Open Library Home"
 msgstr "Open Library əsas səhifəsi"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "Bunun üçün DAISY faylı mövcud deyil: "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "<a href=\"%(url)s\">%(title)s</a> üçün mövcud DAISY faylı yoxdur"
 
 #: books/daisy.html
 #, python-format
@@ -3282,8 +3541,8 @@ msgid "Books for people who don't read print?"
 msgstr "Çap mətnini oxuya bilməyənlər üçün kitablar?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "<a href=\"//archive.org\">Internet Archive</a> adi çap materiallarından istifadə etməkdə çətinlik çəkənlər üçün hazırlanmış DAISY adlı formatda 1 milyondan çox kitabı pulsuz yaymaqdan qürur duyur. "
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "<a href=\"//archive.org\">Internet Archive</a> adi çap materiallarından istifadə etməkdə çətinlik çəkənlər üçün hazırlanmış DAISY adlı formatda 1 milyondan çox kitabı pulsuz paylaşmaqdan qürur duyur."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3334,8 +3593,8 @@ msgid "Need help?"
 msgstr "Kömək lazımdır?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " <a href=\"/help/faq\">Open Library vasitəsilə kitablardan istifadə haqqında tez-tez verilən sualları</a> oxuyun."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Zəhmət olmasa Open Library vasitəsilə kitablara giriş haqqında <a href=\"/help/faq\">FAQ</a> bölməmizi oxuyun."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3446,8 +3705,8 @@ msgstr "tərcümə edən: %(translator)s"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " müəllif: %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(name)s tərəfindən %(title)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4098,10 +4357,6 @@ msgstr "Kömək lazımdır"
 msgid "Getting the list ready…"
 msgstr "Siyahı hazırlanır…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Tapşırıqlar"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Kataloqun qurulmasına kömək edin, hər dəfə bir kitab."
@@ -4305,10 +4560,6 @@ msgstr "Open Library hər ay %(books)s kataloqlaşdırılmış kitab arasında %
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library-dəki bir çox kitabda hələ də detal çatışmır: üz qabığı, dil, naşir. Siz onları tamamlamağa kömək edə bilərsiniz."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Son dəyişikliklər"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4833,7 +5084,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Müəllifin daha böyük fotosunu aç"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s fotosu"
@@ -4963,7 +5214,7 @@ msgstr "Son bloq yazıları"
 msgid "Browse the stacks"
 msgstr "Rəflərə baxın"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Populyarlaşanlar"
 
@@ -4989,7 +5240,7 @@ msgstr "Ən yeni"
 msgid "Top rated"
 msgstr "Ən yüksək reytinqli"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Sıralama meyarı"
 
@@ -5049,6 +5300,56 @@ msgstr "Ay ərzində dəyişiklik, 7 günlük orta göstərici üzrə"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "Ay ərzində %(percent)d%% artım"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Yenidən xoş gəlmisiniz, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Yenidən xoş gəlmisiniz"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Borc almağa hazır"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Borclar və Saxlanmalar"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Müvəqqəti istifadəyə verilib"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Borclarınız"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Bütün borcları göstər"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "İndi oxumağa hazır"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Rəflərinizdən"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)sHazırda oxuyuram%(link_end)s və %(want_start)sOxumaq istəyirəm%(link_end)s siyahılarından"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Rəfləriniz"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Kitablarınız yüklənir"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5708,93 +6009,92 @@ msgstr "+ İcma rəyini əlavə et"
 msgid "+ Log in to add your community review"
 msgstr "+ İcma rəyini əlavə etmək üçün daxil ol"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Nəşriyyatlar"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Nəşriyyat axtarışı"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Açar sözlə axtarın."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "%(publisher)s tərəfindən nəşr edilmiş kitab tapa bilmədik."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Başqa bir şey sınamaq istəyirsiniz?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Nəşriyyat: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Nəşriyyatları axtar"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Heç nə tapılmadı."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Bu müəllifin digər kitablarına baxın və müəllif haqqında məlumat əldə edin"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Nəşriyyat"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s elektron kitab"
 msgstr[1] "%(count)s elektron kitab"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 elektron kitab"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Nəşr tarixçəsi"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Bu diaqram nəşriyyatın kitabları nə vaxt nəşr etdiyini göstərir. X oxunda vaxt, Y oxunda isə nəşrlərin sayı göstərilir. <a href=\"#subjectRelated\">Diaqramı keçmək üçün buraya klikləyin</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Diaqramı sıfırla"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "və ya böyütməyə davam edin."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Bu qrafik nəşriyyatın nəşrlərini zaman üzrə göstərir. Bir ilə baxmaq üçün klikləyin və ya müəyyən dövrü seçmək üçün dartın."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Buraxılmış nəşrlər"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Nəşr ili"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Ümumi mövzular"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)s tərəfindən nəşr edilmiş kitabları axtar"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Heç nə tapılmadı."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Bu müəllifin digər kitablarına baxın və müəllif haqqında məlumat əldə edin"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "bu nəşriyyatda ən çox nəşr olunanlar"
 
@@ -5997,78 +6297,68 @@ msgstr "Necə axtarmalı?"
 msgid "Full Text Search?"
 msgstr "Tam mətn axtarışı?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Open Library-də \"%(query)s\" axtar"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Müəllifləri axtar"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Eyni müəllif iki dəfə göstərilib?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Müəllifləri birləşdir"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Axtarışınıza birbaşa uyğun gələn <strong>müəllif</strong> tapılmadı"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Open Library-də %s axtar"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Mətn daxilində axtar"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Bir dil seçin"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Təxminən %(total)s nəticə"
 msgstr[1] "Təxminən %(total)s nəticə"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "Təxminən %(total)s nəticədən %(start)s - %(end)s"
 msgstr[1] "Təxminən %(total)s nəticədən %(start)s - %(end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "\"%(query)s\" üçün dəqiq uyğunluq tapılmadı. Bu sözlərin hamısını ehtiva edən kitablar göstərilir."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "\"%(query)s\" üçün dəqiq uyğunluqlar göstərilir. %(link_start)sƏvəzinə bu sözlərin hamısını axtarın.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Bu sözlərin hamısı, istənilən sırada, göstərilir. %(link_start)sƏvəzinə dəqiq ifadəni axtarın.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Nəticə tapılmadı. Başqa söz və ya ifadə sınayın."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Bu səhifədəki uyğunluqların heç biri bu filtrlərlə göstərilə bilmir. Başqa səhifə sınayın və ya filtri silin."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Başqa nəticə yoxdur. Əvvəlki səhifəni sınayın."
 
@@ -6092,95 +6382,15 @@ msgstr "Siyahıları axtar"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Axtarışınıza birbaşa uyğun gələn <strong>siyahı</strong> tapılmadı"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Nəşriyyatlar üzrə axtarış"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Uyğunluq"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Əsər sayı"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Təsadüfi"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Doğum tarixi (ən yaşlı) (beta: yalnız kitabxanaçılar üçün)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Doğum tarixi (ən gənc) (beta: yalnız kitabxanaçılar üçün)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Siyahı sırası"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Son əlavə edilənlər"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Son redaktə edilənlər"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Dilin adı"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Elektron kitab nəşrlərinin sayı"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Əlavə edilmə tarixi (ən yeni)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Əlavə edilmə tarixi (ən köhnə)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "İlk nəşr"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Ən yüksək qiymətləndirdikləriniz"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Ən çox istənilən"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Ən çox nəşri olanlar"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Ən son"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Ən yüksək qiymətləndirilənlər"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "İstənilən"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Əsərin başlığı (beta: yalnız kitabxanaçılar üçün)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Nəticələri sırala"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Qarışdır"
 
@@ -7097,10 +7307,6 @@ msgstr "Seriya"
 msgid "Volume"
 msgstr "Cild"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "Janr"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "Digər başlıqlar"
@@ -7883,10 +8089,6 @@ msgstr "Növbədə növbəti siz olacaqsınız."
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "Bütün nüsxələr müvəqqəti istifadəyə verilib."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Müvəqqəti istifadəyə verilib"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9450,7 +9652,7 @@ msgstr "Nəticə tapılmadı"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s nəticədən %(shown)s göstərilir"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Başlıqsız"
 
@@ -10029,6 +10231,11 @@ msgstr "Qiymətləndirmə"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "İstifadəçi bu nəşri açmazdan əvvəl onun ehtiyaclarına uyğun olub-olmadığını nə dərəcədə müəyyən edə bilər?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Nəşriyyat: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10040,12 +10247,39 @@ msgstr "Siyahı axtarışı"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Tam mətn axtarışı"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Tam mətn axtarışı"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Mövzu axtarışı"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Mövzu axtarışı"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Nəşriyyat axtarışı"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Nəşriyyat axtarışı"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Müəllif axtarışı"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Müəllif axtarışı"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10103,6 +10337,121 @@ msgstr "Yalnız başlamamış layihə silinə bilər. Bunu dayandırın və ya g
 msgid "The project is deleted."
 msgstr "Layihə silindi."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Administrator Mərkəzi] Spam baxışı"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Ən azı bir hesab seçin."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "Etibarlı kimi %(count)d hesab işarələndi."
+msgstr[1] "Etibarlı kimi %(count)d hesab işarələndi."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "%(count)d hesab bloklandı."
+msgstr[1] "%(count)d hesab bloklandı."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "%(edits)d redaktə geri qaytarıldı və %(deleted)d qeyd silindi."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s g"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s qeyddə telefon nömrəsi"
+msgstr[1] "%(count)s qeyddə telefon nömrəsi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s qeyddə satış və ya dəstək xətti ifadələri"
+msgstr[1] "%(count)s qeyddə satış və ya dəstək xətti ifadələri"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s qeyddə spam sözləri"
+msgstr[1] "%(count)s qeyddə spam sözləri"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s siyahı yaradıldı"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s qeyd artıq silinib"
+msgstr[1] "%(count)s qeyd artıq silinib"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Tək redaktə: profillərində keçid"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s qeyddə keçidlər"
+msgstr[1] "%(count)s qeyddə keçidlər"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s qeyddə məqalə formatlaşdırması"
+msgstr[1] "%(count)s qeyddə məqalə formatlaşdırması"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "ilk %(minutes)s dəqiqədə %(count)s əlavə edildi"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s gün"
+msgstr[1] "%(count)s gün"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "ən çox %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Axtarış nəticələri"
@@ -10133,6 +10482,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "%(count)d uğursuz element növbəyə yenidən qoyuldu."
 msgstr[1] "%(count)d uğursuz element növbəyə yenidən qoyuldu."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "%(count)d gözləyən element fasiləyə alındı."
+msgstr[1] "%(count)d gözləyən element fasiləyə alındı."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10209,6 +10565,10 @@ msgstr "Filippin dili"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "Bədii və ya bədii olmayan"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "Janr"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10294,8 +10654,8 @@ msgstr "%(percent)s%% tamamlandı, hədəfə çatıldı"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% tamamlandı, hədəf %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% tamamlandı, hədəf %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10611,6 +10971,60 @@ msgstr "Klassiklər"
 msgid "Most wanted"
 msgstr "Ən çox axtarılan"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Bu gün qaytarılmalıdır"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Sabah qaytarılmalıdır"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d gün ərzində qaytarılmalıdır"
+msgstr[1] "%(count)d gün ərzində qaytarılmalıdır"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Tezliklə borc alın, əks halda növbəti oxucuya keçəcək."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Sizin üçün daha %(count)d saat saxlanılır."
+msgstr[1] "Sizin üçün daha %(count)d saat saxlanılır."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Sizin üçün daha %(count)d gün saxlanılır."
+msgstr[1] "Sizin üçün daha %(count)d gün saxlanılır."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Siz növbədə növbətisiniz"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Siz növbədə %(size)d nəfərdən %(position)d-cisiniz"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Borcda"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Oxumağa davam et"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "İndi borc al"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "Ən azı 1 mövzu"
@@ -10794,6 +11208,10 @@ msgstr "İcazə verilmədi"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "Internet Archive ID əlavə etməyə icazəniz yoxdur."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "Kitabın URL-ini əlavə etməyə icazəniz yoxdur."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "bu kitab"
@@ -10930,6 +11348,86 @@ msgstr "Klassik elektron kitablar gizlədilib"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - axtarış"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Uyğunluq"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Əsər sayı"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Təsadüfi"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Doğum tarixi (ən yaşlı) (beta: yalnız kitabxanaçılar üçün)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Doğum tarixi (ən gənc) (beta: yalnız kitabxanaçılar üçün)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Siyahı sırası"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Son əlavə edilənlər"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Son redaktə edilənlər"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Dilin adı"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Elektron kitab nəşrlərinin sayı"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Əlavə edilmə tarixi (ən yeni)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Əlavə edilmə tarixi (ən köhnə)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "İlk nəşr"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Ən yüksək qiymətləndirdikləriniz"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Ən çox istənilən"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Ən çox nəşri olanlar"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Ən son"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Ən yüksək qiymətləndirilənlər"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "İstənilən"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Əsərin başlığı (beta: yalnız kitabxanaçılar üçün)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -11751,4 +12249,31 @@ msgstr "Qrafiklər yüklənə bilmədi. Yenidən cəhd etmək üçün səhifəni
 
 #~ msgid "Records and other pages"
 #~ msgstr "Qeydlər və digər səhifələr"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% tamamlandı, hədəf %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "Bu əsərin bir nəşri haqqında qeydlərim: "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "Bunun üçün DAISY faylı mövcud deyil: "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "<a href=\"//archive.org\">Internet Archive</a> adi çap materiallarından istifadə etməkdə çətinlik çəkənlər üçün hazırlanmış DAISY adlı formatda 1 milyondan çox kitabı pulsuz yaymaqdan qürur duyur. "
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " <a href=\"/help/faq\">Open Library vasitəsilə kitablardan istifadə haqqında tez-tez verilən sualları</a> oxuyun."
+
+#~ msgid " by %(name)s"
+#~ msgstr " müəllif: %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Open Library-də %s axtar"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Open Library-də \"%(query)s\" axtar"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "Tapşırıq statistikası: kim redaktə edir və Tapşırıq redaktələri nə qədər davamlıdır"
 

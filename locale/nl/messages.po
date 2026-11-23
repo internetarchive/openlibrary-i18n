@@ -183,7 +183,7 @@ msgstr[1] "%(count)s items"
 msgid "Status:"
 msgstr "Status:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "Alle"
 
@@ -191,7 +191,7 @@ msgstr "Alle"
 msgid "Default sort: date added, newest first."
 msgstr "Standaardsortering: datum toegevoegd, nieuwste eerst."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Naam"
 
@@ -227,6 +227,10 @@ msgstr "Statusoverzicht"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "Goedkeuren"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "Pauzeren"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -782,7 +786,7 @@ msgstr "Tag aanmaken voor dit onderwerp"
 msgid "See all works"
 msgstr "Alle werken bekijken"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -834,12 +838,12 @@ msgstr "Bekijk wat lezers uit de community aan hun boekenplanken toevoegen"
 msgid "Earliest trending data is from October 2017"
 msgstr "Vroegste trendgegevens zijn van oktober 2017"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "Wil lezen"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "Nu aan het lezen"
 
@@ -848,7 +852,7 @@ msgid "Read"
 msgstr "Gelezen"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "Gestopt met lezen"
 
@@ -929,7 +933,7 @@ msgstr "Meer informatie"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "op <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "Zoekresultaten binnenin controleren"
 
@@ -949,19 +953,19 @@ msgstr "Dit is alleen zichtbaar voor superbibliothecarissen."
 msgid "Solr Editions"
 msgstr "Solr-edities"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "Alleen leesbaar"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "Filteren op beschikbaarheid"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "Taal"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "Talen zoeken…"
 
@@ -969,11 +973,11 @@ msgstr "Talen zoeken…"
 msgid "Languages"
 msgstr "Talen"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "Laden…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "Filteren op taal"
 
@@ -1011,7 +1015,7 @@ msgstr "Geen overeenkomende boeken of auteurs"
 msgid "Add a new book"
 msgstr "Nieuw boek toevoegen"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "Auteurs"
 
@@ -1364,7 +1368,7 @@ msgstr "Wachtlijst verlaten"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "Je verliest je plaats in de rij voor <strong>%(title)s</strong>."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1429,7 +1433,7 @@ msgid "Loans & History"
 msgstr "Leningen & geschiedenis"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "Al gelezen"
 
@@ -1471,12 +1475,13 @@ msgid "My notes for this work"
 msgstr "Mijn notities voor dit werk"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "Mijn notities voor een editie van "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "Titel ontbreekt"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "Mijn notities voor een editie van %(title)s"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1643,7 +1648,7 @@ msgstr "Boeken toegevoegd door mensen die %(username)s volgt"
 msgid "Search your reading log"
 msgstr "Doorzoek je leeslog"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1768,7 +1773,7 @@ msgstr "Leesdoel %(year)d"
 msgid "Set %(year_span)s reading goal"
 msgstr "Stel leesdoel %(year_span)s in"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "Leeslog"
 
@@ -1985,7 +1990,7 @@ msgstr "Indienen"
 msgid "New Books Imported Per Day"
 msgstr "Nieuwe boeken geïmporteerd per dag"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "Je moet JavaScript hebben ingeschakeld om de handige grafiek te zien!"
 
@@ -2075,8 +2080,16 @@ msgid "Stats"
 msgstr "Statistieken"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "Taakstatistieken: wie bewerkt er, en hoe houden taakbewerkingen stand"
+msgid "Related stats pages"
+msgstr "Gerelateerde statistiekpagina's"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "Taken"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "Spambeoordeling"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2299,6 +2312,247 @@ msgstr "Store inspecteren"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "Memcache inspecteren"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Accounts die korter dan %(age)s bestaan, in de nieuwste %(count)s bewerkingen, terug tot %(time)s. Geblokkeerde en vertrouwde accounts verhuizen naar Beoordeeld. Tijden zijn in UTC."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "Accounts die korter dan %(age)s bestaan, in de nieuwste bewerkingen. Geblokkeerde en vertrouwde accounts verhuizen naar Beoordeeld. Tijden zijn in UTC."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "Hoe accounts worden gemarkeerd"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "Deze regels zijn gebaseerd op de 861 accounts die beheerders tussen augustus 2025 en november 2026 als spam hebben teruggedraaid. De sterke signalen markeren 86%% daarvan, en geen van de 42 gewone nieuwe lezers, auteurs en bibliothecarissen waartegen ze zijn getoetst."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "Waarschijnlijk spam: een van de volgende"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "Een telefoonnummer in een record dat ze schreven of bewerkten. Nepnummers van luchtvaartmaatschappijen en softwareondersteuning zijn de meest voorkomende spam. Als het account ook omslagen of foto's uploadt, is het eerder een uitgever, dus dit markeert alleen dat het de moeite waard is om te bekijken."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "Verkoop- of klantenservicetaal: promocodes, kortingen, casino's, “klantenservicenummer”, “hoe spreek ik een medewerker”, “koop … online” en dergelijke."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "Woorden uit de spamwoordenlijst van de beheerders."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s of meer lijsten aangemaakt. Lezers maken er meestal één of twee; spamaccounts maakten er tot wel 100."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "Hun enige bewerking was het plaatsen van een link op hun profiel. Dit zijn seo-accounts die zich aanmelden, een website toevoegen en weer verdwijnen, vaak binnen een minuut."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "Boeken of auteurs die ze toevoegden en die een bibliothecaris al heeft verwijderd."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "De moeite waard om te bekijken"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "Links in boeken, lijsten of een profiel dat ze schreven, naast andere bewerkingen. Meestal auteurs en uitgevers die hun eigen werk promoten."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "Artikelopmaak (Markdown-koppen, vetgedrukte tekst, links) in een beschrijving."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "10 of meer boeken of lijsten binnen het eerste uur."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "Niet meegeteld"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "Boeken toevoegen aan een lijst. Dit is wat de meeste nieuwe lezers doen, dus het markeert een account niet en verandert de volgorde niet."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "Bewerken binnen enkele minuten na aanmelding. De meeste echte nieuwe gebruikers doen dat ook; deze kolom is er alleen voor context."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "Welke accounts"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "Waarschijnlijk spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "Beoordeeld"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "De bewerkingen konden niet worden geladen: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "%(shown)s van de %(total)s drukste accounts worden getoond."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "Alle accounts selecteren"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "Alles selecteren"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s geselecteerd"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "De geselecteerde accounts blokkeren?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "Blokkeren"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "De geselecteerde accounts blokkeren en al hun bewerkingen terugdraaien?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "Blokkeren en terugdraaien"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "De geselecteerde accounts als vertrouwd markeren? Ze verdwijnen uit deze wachtrij en slaan de captcha over bij het toevoegen van boeken."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "Als vertrouwd markeren"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "Account"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "Tekenen van spam"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "Aangemeld"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "Recente bewerkingen"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "Laatste bewerkingen"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)s selecteren"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "Geblokkeerd, bewerkingen teruggedraaid"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "Geblokkeerd"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "Vertrouwd"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "Profiel"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "Beheerderspagina"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "Geen"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s geleden"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "%(duration)s tot eerste bewerking"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s boek toegevoegd"
+msgstr[1] "%(count)s boeken toegevoegd"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s lijst aangemaakt"
+msgstr[1] "%(count)s lijsten aangemaakt"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s lijsttoevoeging"
+msgstr[1] "%(count)s lijsttoevoegingen"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s andere bewerking"
+msgstr[1] "%(count)s andere bewerkingen"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "%(count)s in totaal"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "verwijderd"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "Geen van de %(count)s accounts die korter dan %(age)s bestaan in deze bewerkingen zit in deze groep."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "Geen enkel account dat korter dan %(age)s bestaat heeft een van deze bewerkingen gemaakt."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2751,16 +3005,16 @@ msgstr "Niets gevonden"
 msgid "Search for an Author"
 msgstr "Zoek een auteur"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Zoeken"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "over %(subjects)s"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "waaronder <i>%(topwork)s</i>"
@@ -3056,7 +3310,7 @@ msgstr "Boek toevoegen aan Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "We hebben een minimale set velden nodig om een nieuw record aan te maken. Dit zijn die velden."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Titel"
 
@@ -3187,10 +3441,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "Klik, in plaats van een dubbel record aan te maken, op het resultaat dat volgens jou het beste overeenkomt met je boek."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "Voltooi de reCAPTCHA hierboven voordat je een boek kiest."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "Dit boek selecteren"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3269,8 +3527,9 @@ msgid "Open Library Home"
 msgstr "Open Library-startpagina"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "Er is geen DAISY-bestand beschikbaar voor "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "Er is geen DAISY-bestand beschikbaar voor <a href=\"%(url)s\">%(title)s</a>"
 
 #: books/daisy.html
 #, python-format
@@ -3282,8 +3541,8 @@ msgid "Books for people who don't read print?"
 msgstr "Boeken voor mensen die geen gedrukte tekst lezen?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "Het <a href=\"//archive.org\">Internet Archive</a> is er trots op meer dan 1 miljoen boeken gratis te verspreiden in een formaat genaamd DAISY, ontworpen voor mensen die moeite hebben met het gebruik van gewone gedrukte media. "
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "Het <a href=\"//archive.org\">Internet Archive</a> is er trots op meer dan 1 miljoen boeken gratis te verspreiden in een formaat genaamd DAISY, ontworpen voor mensen die moeite hebben met het gebruik van gewone gedrukte media."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3334,8 +3593,8 @@ msgid "Need help?"
 msgstr "Hulp nodig?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " Lees onze <a href=\"/help/faq\">FAQ over toegang tot boeken via Open Library</a>."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Lees onze <a href=\"/help/faq\">veelgestelde vragen over toegang tot boeken via Open Library</a>."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3446,8 +3705,8 @@ msgstr "vertaald door %(translator)s"
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " door %(name)s"
+msgid "%(title)s by %(name)s"
+msgstr "%(title)s door %(name)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4098,10 +4357,6 @@ msgstr "Hulp nodig"
 msgid "Getting the list ready…"
 msgstr "Lijst wordt voorbereid…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "Taken"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "Help mee de catalogus op te bouwen, één boek per keer."
@@ -4305,10 +4560,6 @@ msgstr "Open Library bedient elke maand %(readers)s lezers over %(books)s gecata
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Bij veel boeken op Open Library ontbreekt nog een detail: een omslag, een taal, een uitgever. Je kunt helpen deze aan te vullen."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "Recente bewerkingen"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4833,7 +5084,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "Grotere auteursfoto weergeven"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "Foto van %(author)s"
@@ -4963,7 +5214,7 @@ msgstr "Nieuwste blogberichten"
 msgid "Browse the stacks"
 msgstr "Bladeren door de stapels"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "Trending"
 
@@ -4989,7 +5240,7 @@ msgstr "Nieuwste"
 msgid "Top rated"
 msgstr "Best beoordeeld"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "Sorteren op"
 
@@ -5049,6 +5300,56 @@ msgstr "Verandering over de maand, op basis van 7-daags gemiddelde"
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "%(percent)d%% gestegen over de maand"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "Welkom terug, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "Welkom terug"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "Klaar om te lenen"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "Leningen en reserveringen"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "Uitgeleend"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "Jouw leningen"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "Bekijk alle leningen"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "Klaar om nu te lezen"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "Van jouw planken"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "Van %(reading_start)sNu aan het lezen%(link_end)s en %(want_start)sWil lezen%(link_end)s"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "Jouw planken"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "Je boeken laden"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5708,93 +6009,92 @@ msgstr "+ Voeg je communityrecensie toe"
 msgid "+ Log in to add your community review"
 msgstr "+ Log in om je communityrecensie toe te voegen"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "Uitgevers"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "Uitgever zoeken"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "Probeer een trefwoord."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "We konden geen boeken vinden die zijn gepubliceerd door %(publisher)s."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "Iets anders proberen?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "Uitgever: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "Uitgevers zoeken"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "Niets gevonden."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "Bekijk meer boeken van, en leer meer over, deze auteur"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "Uitgever"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s e-book"
 msgstr[1] "%(count)s e-books"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 e-books"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "Publicatiegeschiedenis"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "Dit is een grafiek die laat zien wanneer deze uitgever boeken heeft gepubliceerd. Op de X-as staat de tijd, en op de Y-as het aantal gepubliceerde edities. <a href=\"#subjectRelated\">Klik hier om de grafiek over te slaan</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "Grafiek resetten"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "of blijf inzoomen."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "Deze grafiek toont edities van deze uitgever in de loop van de tijd. Klik om één jaar te bekijken, of sleep over een periode."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "Gepubliceerde edities"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "Jaar van publicatie"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "Veelvoorkomende onderwerpen"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "Zoek naar boeken gepubliceerd door %(publisher)s"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "Niets gevonden."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "Bekijk meer boeken van, en leer meer over, deze auteur"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "meest gepubliceerd door deze uitgever"
 
@@ -5997,78 +6297,68 @@ msgstr "Hoe te zoeken?"
 msgid "Full Text Search?"
 msgstr "Volledige tekst zoeken?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "Zoek \"%(query)s\" op Open Library"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "Auteurs zoeken"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "Staat dezelfde auteur twee keer vermeld?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "Auteurs samenvoegen"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "Geen <strong>auteurs</strong> kwamen direct overeen met je zoekopdracht"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "Zoek %s op Open Library"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "Binnenin zoeken"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "Kies één taal"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "Ongeveer %(total)s resultaat"
 msgstr[1] "Ongeveer %(total)s resultaten"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "%(start)s - %(end)s van ongeveer %(total)s resultaat"
 msgstr[1] "%(start)s - %(end)s van ongeveer %(total)s resultaten"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "Geen exacte overeenkomsten voor \"%(query)s\". Boeken die al deze woorden bevatten worden getoond."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "Exacte overeenkomsten voor \"%(query)s\" worden getoond. %(link_start)sZoek in plaats daarvan naar al deze woorden.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "Al deze woorden worden getoond, in willekeurige volgorde. %(link_start)sZoek in plaats daarvan naar de exacte zin.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "Geen resultaten gevonden. Probeer een ander woord of een andere zin."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "Geen van de overeenkomsten op deze pagina kan worden getoond met deze filters. Probeer een andere pagina of verwijder een filter."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "Geen resultaten meer. Probeer een eerdere pagina."
 
@@ -6092,95 +6382,15 @@ msgstr "Lijsten zoeken"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "Geen <strong>lijsten</strong> kwamen direct overeen met je zoekopdracht"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "Uitgevers zoeken"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "Relevantie"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "Aantal werken"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "Willekeurig"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "Geboortedatum (oudste) (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "Geboortedatum (jongste) (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "Lijstvolgorde"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "Recent toegevoegd"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "Recent bewerkt"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "Taalnaam"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "Aantal e-bookedities"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "Datum toegevoegd (nieuwste)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "Datum toegevoegd (oudste)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "Eerst gepubliceerd"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "Jouw best beoordeelde"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "Meest gewild"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "Meeste edities"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "Meest recent"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "Best beoordeeld"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "Elke"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "Werktitel (bèta: alleen bibliothecaris)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "Resultaten sorteren"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "Schudden"
 
@@ -7097,10 +7307,6 @@ msgstr "Reeks"
 msgid "Volume"
 msgstr "Deel"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "Genre"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "Andere titels"
@@ -7883,10 +8089,6 @@ msgstr "Jij bent als volgende aan de beurt."
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "Alle exemplaren zijn uitgeleend."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "Uitgeleend"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9450,7 +9652,7 @@ msgstr "Geen resultaten gevonden"
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(shown)s van %(total)s resultaten weergegeven"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "Naamloos"
 
@@ -10029,6 +10231,11 @@ msgstr "Evaluatie"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Hoe goed kan een gebruiker bepalen of deze editie relevant is voor hun behoeften voordat ze deze openen?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "Uitgever: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10040,12 +10247,39 @@ msgstr "Lijsten zoeken"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - Volledige tekst zoeken"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "Volledige tekst zoeken"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - Onderwerpen zoeken"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "Onderwerpen zoeken"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - Uitgever zoeken"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "Uitgever zoeken"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - Auteur zoeken"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "Auteur zoeken"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10103,6 +10337,121 @@ msgstr "Alleen een project dat nog niet begonnen is, kan verwijderd worden. Stop
 msgid "The project is deleted."
 msgstr "Het project is verwijderd."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[Beheercentrum] Spambeoordeling"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "Selecteer ten minste één account."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d account als vertrouwd gemarkeerd."
+msgstr[1] "%(count)d accounts als vertrouwd gemarkeerd."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "%(count)d account geblokkeerd."
+msgstr[1] "%(count)d accounts geblokkeerd."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "%(edits)d bewerkingen teruggedraaid en %(deleted)d records verwijderd."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s s"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s u"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s d"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "Telefoonnummer in %(count)s record"
+msgstr[1] "Telefoonnummers in %(count)s records"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "Verkoop- of klantenservicetaal in %(count)s record"
+msgstr[1] "Verkoop- of klantenservicetaal in %(count)s records"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "Spamwoorden in %(count)s record"
+msgstr[1] "Spamwoorden in %(count)s records"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s lijsten aangemaakt"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s record al verwijderd"
+msgstr[1] "%(count)s records al verwijderd"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "Enige bewerking: een link op hun profiel"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "Links in %(count)s record"
+msgstr[1] "Links in %(count)s records"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "Artikelopmaak in %(count)s record"
+msgstr[1] "Artikelopmaak in %(count)s records"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "%(count)s toegevoegd binnen de eerste %(minutes)s min"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s dag"
+msgstr[1] "%(count)s dagen"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "hoogstens %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "Zoekresultaten"
@@ -10133,6 +10482,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "%(count)d mislukt item is opnieuw in de wachtrij geplaatst."
 msgstr[1] "%(count)d mislukte items zijn opnieuw in de wachtrij geplaatst."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "%(count)d wachtend item is gepauzeerd."
+msgstr[1] "%(count)d wachtende items zijn gepauzeerd."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10209,6 +10565,10 @@ msgstr "Filipijns"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "Fictie of non-fictie"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "Genre"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10294,8 +10654,8 @@ msgstr "%(percent)s%% klaar, doel bereikt"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% klaar, doel %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% klaar, doel %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10611,6 +10971,60 @@ msgstr "Klassiekers"
 msgid "Most wanted"
 msgstr "Meest gewild"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "Vandaag terugbrengen"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "Morgen terugbrengen"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "Terugbrengen over %(count)d dag"
+msgstr[1] "Terugbrengen over %(count)d dagen"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "Leen het snel, anders gaat het naar de volgende lezer."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "Nog %(count)d uur voor jou gereserveerd."
+msgstr[1] "Nog %(count)d uur voor jou gereserveerd."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "Nog %(count)d dag voor jou gereserveerd."
+msgstr[1] "Nog %(count)d dagen voor jou gereserveerd."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "Jij bent als volgende aan de beurt"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "Je bent nummer %(position)d van %(size)d in de rij"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "Uitgeleend"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "Doorgaan met lezen"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "Nu lenen"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "Minstens 1 onderwerp"
@@ -10794,6 +11208,10 @@ msgstr "Toestemming geweigerd"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "U mag geen Internet Archive ID toevoegen."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "U mag geen Boek-URL toevoegen."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "dit boek"
@@ -10930,6 +11348,86 @@ msgstr "Klassieke e-books verborgen"
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - zoeken"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "Relevantie"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "Aantal werken"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "Willekeurig"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "Geboortedatum (oudste) (bèta: alleen bibliothecaris)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "Geboortedatum (jongste) (bèta: alleen bibliothecaris)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "Lijstvolgorde"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "Recent toegevoegd"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "Recent bewerkt"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "Taalnaam"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "Aantal e-bookedities"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "Datum toegevoegd (nieuwste)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "Datum toegevoegd (oudste)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "Eerst gepubliceerd"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "Jouw best beoordeelde"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "Meest gewild"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "Meeste edities"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "Meest recent"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "Best beoordeeld"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "Elke"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "Werktitel (bèta: alleen bibliothecaris)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -11488,4 +11986,31 @@ msgstr "De grafieken konden niet worden geladen. Herlaad de pagina om het opnieu
 
 #~ msgid "Records and other pages"
 #~ msgstr "Records en andere pagina's"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% klaar, doel %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "Mijn notities voor een editie van "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "Er is geen DAISY-bestand beschikbaar voor "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "Het <a href=\"//archive.org\">Internet Archive</a> is er trots op meer dan 1 miljoen boeken gratis te verspreiden in een formaat genaamd DAISY, ontworpen voor mensen die moeite hebben met het gebruik van gewone gedrukte media. "
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " Lees onze <a href=\"/help/faq\">FAQ over toegang tot boeken via Open Library</a>."
+
+#~ msgid " by %(name)s"
+#~ msgstr " door %(name)s"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "Zoek %s op Open Library"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "Zoek \"%(query)s\" op Open Library"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "Taakstatistieken: wie bewerkt er, en hoe houden taakbewerkingen stand"
 

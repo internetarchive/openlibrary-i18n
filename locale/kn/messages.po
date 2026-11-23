@@ -182,7 +182,7 @@ msgstr[1] "%(count)s ಐಟಂಗಳು"
 msgid "Status:"
 msgstr "ಸ್ಥಿತಿ:"
 
-#: about/index.html batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
 msgid "All"
 msgstr "ಎಲ್ಲಾ"
 
@@ -190,7 +190,7 @@ msgstr "ಎಲ್ಲಾ"
 msgid "Default sort: date added, newest first."
 msgstr "ಡೀಫಾಲ್ಟ್ ವಿಂಗಡಣೆ: ಸೇರಿಸಿದ ದಿನಾಂಕ, ಹೊಸದು ಮೊದಲು."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html search/sort_options.html status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "ಹೆಸರು"
 
@@ -226,6 +226,10 @@ msgstr "ಸ್ಥಿತಿ ಸಾರಾಂಶ"
 #: batch_import_view.html
 msgid "Approve"
 msgstr "ಅನುಮೋದಿಸಿ"
+
+#: batch_import_view.html
+msgid "Pause"
+msgstr "ವಿರಾಮಗೊಳಿಸಿ"
 
 #: batch_import_view.html
 msgid "Retry failed"
@@ -781,7 +785,7 @@ msgstr "ಈ ವಿಷಯಕ್ಕಾಗಿ ಟ್ಯಾಗ್ ರಚಿಸಿ"
 msgid "See all works"
 msgstr "ಎಲ್ಲಾ ಕೃತಿಗಳನ್ನು ನೋಡಿ"
 
-#: merge/authors.html publishers/view.html subjects.html type/author/view.html
+#: merge/authors.html publishers/view.html.jinja subjects.html type/author/view.html
 #, python-format
 msgid "%(count)d work"
 msgid_plural "%(count)d works"
@@ -833,12 +837,12 @@ msgstr "ಸಮುದಾಯದ ಓದುಗರು ತಮ್ಮ ಪುಸ್ತಕ
 msgid "Earliest trending data is from October 2017"
 msgstr "ಆರಂಭಿಕ ಟ್ರೆಂಡಿಂಗ್ ಡೇಟಾ ಅಕ್ಟೋಬರ್ 2017 ರಿಂದ ಇದೆ"
 
-#: account/mybooks.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "ಓದಲು ಬಯಸುತ್ತೇನೆ"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "ಪ್ರಸ್ತುತ ಓದುತ್ತಿದ್ದೇನೆ"
 
@@ -847,7 +851,7 @@ msgid "Read"
 msgstr "ಓದಿದ್ದೇನೆ"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py search/sort_options.html trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "ಓದುವುದನ್ನು ನಿಲ್ಲಿಸಿದ್ದೇನೆ"
 
@@ -928,7 +932,7 @@ msgstr "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"
 msgid "on <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a>"
 msgstr "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"%(link)s\">openlibrary.org</a> ನಲ್ಲಿ"
 
-#: search/authors.html search/lists.html.jinja search/subjects.html.jinja work_search.html
+#: search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja work_search.html
 msgid "Checking Search Inside matches"
 msgstr "ಹುಡುಕಾಟ ಒಳಗೆ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ"
 
@@ -948,19 +952,19 @@ msgstr "ಇದು ಸೂಪರ್ ಲೈಬ್ರರಿಯನ್‌ಗಳಿಗ�
 msgid "Solr Editions"
 msgstr "Solr ಆವೃತ್ತಿಗಳು"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "ಓದಬಹುದಾದವು ಮಾತ್ರ"
 
-#: account/reading_log.html search/inside.html type/author/view.html work_search.html
+#: account/reading_log.html search/inside.html.jinja type/author/view.html work_search.html
 msgid "Filter by availability"
 msgstr "ಲಭ್ಯತೆಯಿಂದ ಫಿಲ್ಟರ್ ಮಾಡಿ"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "ಭಾಷೆ"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ…"
 
@@ -968,11 +972,11 @@ msgstr "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ…"
 msgid "Languages"
 msgstr "ಭಾಷೆಗಳು"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html work_search.html
+#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ…"
 
-#: search/inside.html work_search.html
+#: search/inside.html.jinja work_search.html
 msgid "Filter by language"
 msgstr "ಭಾಷೆಯಿಂದ ಫಿಲ್ಟರ್ ಮಾಡಿ"
 
@@ -1010,7 +1014,7 @@ msgstr "ಹೊಂದಾಣಿಕೆಯಾಗುವ ಪುಸ್ತಕಗಳು �
 msgid "Add a new book"
 msgstr "ಹೊಸ ಪುಸ್ತಕವನ್ನು ಸೇರಿಸಿ"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "ಲೇಖಕರು"
 
@@ -1363,7 +1367,7 @@ msgstr "ಕಾಯುವ ಪಟ್ಟಿಯನ್ನು ತೊರೆಯಿರಿ"
 msgid "You will lose your place in line for <strong>%(title)s</strong>."
 msgstr "ನೀವು <strong>%(title)s</strong> ಗಾಗಿ ಸರದಿಯಲ್ಲಿ ನಿಮ್ಮ ಸ್ಥಾನವನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತೀರಿ."
 
-#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html search/authors.html search/publishers.html search/subjects.html.jinja
+#: account/loans.html authors/index.html.jinja lists/list_follow.html.jinja lists/showcase.html publishers/view.html.jinja search/authors.html.jinja search/publishers.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)d book"
 msgid_plural "%(count)d books"
@@ -1428,7 +1432,7 @@ msgid "Loans & History"
 msgstr "ಎರವಲುಗಳು ಮತ್ತು ಇತಿಹಾಸ"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py search/sort_options.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "ಈಗಾಗಲೇ ಓದಿದ್ದೇನೆ"
 
@@ -1470,12 +1474,13 @@ msgid "My notes for this work"
 msgstr "ಈ ಕೃತಿಗಾಗಿ ನನ್ನ ಟಿಪ್ಪಣಿಗಳು"
 
 #: account/notes.html
-msgid "My notes for an edition of "
-msgstr "ಇದರ ಒಂದು ಆವೃತ್ತಿಗಾಗಿ ನನ್ನ ಟಿಪ್ಪಣಿಗಳು "
-
-#: account/notes.html
 msgid "Title Missing"
 msgstr "ಶೀರ್ಷಿಕೆ ಕಾಣೆಯಾಗಿದೆ"
+
+#: account/notes.html
+#, python-format
+msgid "My notes for an edition of %(title)s"
+msgstr "%(title)s ಆವೃತ್ತಿಗಾಗಿ ನನ್ನ ಟಿಪ್ಪಣಿಗಳು"
 
 #: account/notes.html lists/export_as_html.html type/work/editions.html
 msgid "Publish date unknown"
@@ -1642,7 +1647,7 @@ msgstr "%(username)s ಅನುಸರಿಸುವ ಜನರು ಸೇರಿಸಿ
 msgid "Search your reading log"
 msgstr "ನಿಮ್ಮ ಓದುವ ದಾಖಲೆಯನ್ನು ಹುಡುಕಿ"
 
-#: account/reading_log.html search/authors.html search/lists.html.jinja search/subjects.html.jinja
+#: account/reading_log.html search/authors.html.jinja search/lists.html.jinja search/subjects.html.jinja
 #, python-format
 msgid "%(count)s hit"
 msgid_plural "%(count)s hits"
@@ -1767,7 +1772,7 @@ msgstr "%(year)d ಓದುವ ಗುರಿ"
 msgid "Set %(year_span)s reading goal"
 msgstr "%(year_span)s ಓದುವ ಗುರಿಯನ್ನು ಹೊಂದಿಸಿ"
 
-#: account/sidebar.html search/sort_options.html type/user/view.html
+#: account/sidebar.html openlibrary/plugins/worksearch/sort_menu.py type/user/view.html
 msgid "Reading Log"
 msgstr "ಓದುವ ದಾಖಲೆ"
 
@@ -1984,7 +1989,7 @@ msgstr "ಸಲ್ಲಿಸಿ"
 msgid "New Books Imported Per Day"
 msgstr "ದಿನಕ್ಕೆ ಆಮದು ಮಾಡಿದ ಹೊಸ ಪುಸ್ತಕಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja admin/imports.html publishers/view.html.jinja
 msgid "You need to have JavaScript turned on to see the nifty chart!"
 msgstr "ಈ ಸೊಗಸಾದ ಚಾರ್ಟ್ ನೋಡಲು ನಿಮಗೆ JavaScript ಆನ್ ಆಗಿರಬೇಕು!"
 
@@ -2074,8 +2079,16 @@ msgid "Stats"
 msgstr "ಅಂಕಿಅಂಶಗಳು"
 
 #: admin/index.html
-msgid "Tasks stats: who is editing, and how Tasks edits hold up"
-msgstr "ಟಾಸ್ಕ್ ಅಂಕಿಅಂಶಗಳು: ಯಾರು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾರೆ, ಮತ್ತು ಟಾಸ್ಕ್ ಸಂಪಾದನೆಗಳು ಹೇಗೆ ಬಾಳಿಕೆ ಬರುತ್ತವೆ"
+msgid "Related stats pages"
+msgstr "ಸಂಬಂಧಿತ ಅಂಕಿಅಂಶ ಪುಟಗಳು"
+
+#: admin/index.html contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
+msgid "Tasks"
+msgstr "ಟಾಸ್ಕ್‌ಗಳು"
+
+#: admin/index.html admin/menu.html admin/new_accounts.html.jinja
+msgid "Spam review"
+msgstr "ಸ್ಪ್ಯಾಮ್ ಪರಿಶೀಲನೆ"
 
 #: admin/index.html
 msgid "Edits Per Day"
@@ -2298,6 +2311,247 @@ msgstr "ಸ್ಟೋರ್ ಪರಿಶೀಲಿಸಿ"
 #: admin/menu.html
 msgid "Inspect memcache"
 msgstr "memcache ಪರಿಶೀಲಿಸಿ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest %(count)s edits, back to %(time)s. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "ಇತ್ತೀಚಿನ %(count)s ಸಂಪಾದನೆಗಳಲ್ಲಿ %(age)s ಗಿಂತ ಕಡಿಮೆ ವಯಸ್ಸಿನ ಖಾತೆಗಳು, %(time)s ವರೆಗೆ ಹಿಂದಕ್ಕೆ. ನಿರ್ಬಂಧಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಖಾತೆಗಳು ಪರಿಶೀಲಿಸಲಾಗಿದೆ ಎಂಬಲ್ಲಿಗೆ ಸ್ಥಳಾಂತರಗೊಳ್ಳುತ್ತವೆ. ಸಮಯಗಳು UTC ಯಲ್ಲಿವೆ."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Accounts under %(age)s old in the newest edits. Blocked and trusted accounts move to Reviewed. Times are in UTC."
+msgstr "ಇತ್ತೀಚಿನ ಸಂಪಾದನೆಗಳಲ್ಲಿ %(age)s ಗಿಂತ ಕಡಿಮೆ ವಯಸ್ಸಿನ ಖಾತೆಗಳು. ನಿರ್ಬಂಧಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಖಾತೆಗಳು ಪರಿಶೀಲಿಸಲಾಗಿದೆ ಎಂಬಲ್ಲಿಗೆ ಸ್ಥಳಾಂತರಗೊಳ್ಳುತ್ತವೆ. ಸಮಯಗಳು UTC ಯಲ್ಲಿವೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "How accounts are flagged"
+msgstr "ಖಾತೆಗಳನ್ನು ಹೇಗೆ ಗುರುತಿಸಲಾಗುತ್ತದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "These rules come from the 861 accounts admins reverted as spam between August 2025 and November 2026. The strong signs mark 86%% of them, and none of the 42 ordinary new readers, authors and librarians they were checked against."
+msgstr "ಈ ನಿಯಮಗಳು ಆಗಸ್ಟ್ 2025 ಮತ್ತು ನವೆಂಬರ್ 2026ರ ನಡುವೆ ನಿರ್ವಾಹಕರು ಸ್ಪ್ಯಾಮ್ ಎಂದು ಹಿಂತಿರುಗಿಸಿದ 861 ಖಾತೆಗಳಿಂದ ಬಂದಿವೆ. ಪ್ರಬಲ ಸೂಚನೆಗಳು ಅವುಗಳಲ್ಲಿ 86%% ಅನ್ನು ಗುರುತಿಸುತ್ತವೆ, ಮತ್ತು ಅವುಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾದ 42 ಸಾಮಾನ್ಯ ಹೊಸ ಓದುಗರು, ಲೇಖಕರು ಮತ್ತು ಗ್ರಂಥಪಾಲಕರಲ್ಲಿ ಯಾರನ್ನೂ ಗುರುತಿಸುವುದಿಲ್ಲ."
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam: any one of"
+msgstr "ಸ್ಪ್ಯಾಮ್ ಆಗಿರುವ ಸಾಧ್ಯತೆ: ಇವುಗಳಲ್ಲಿ ಯಾವುದಾದರೂ ಒಂದು"
+
+#: admin/new_accounts.html.jinja
+msgid "A phone number in a record they wrote or edited. Fake airline and software support lines are the most common spam. When the account also uploads covers or photos it is more likely a publisher, so this only marks it worth a look."
+msgstr "ಅವರು ಬರೆದ ಅಥವಾ ಸಂಪಾದಿಸಿದ ದಾಖಲೆಯಲ್ಲಿ ಫೋನ್ ಸಂಖ್ಯೆ. ನಕಲಿ ಏರ್‌ಲೈನ್ ಮತ್ತು ಸಾಫ್ಟ್‌ವೇರ್ ಬೆಂಬಲ ಸಾಲುಗಳು ಸಾಮಾನ್ಯ ಸ್ಪ್ಯಾಮ್ ಆಗಿವೆ. ಖಾತೆಯು ಮುಖಪುಟಗಳನ್ನು ಅಥವಾ ಫೋಟೋಗಳನ್ನು ಸಹ ಅಪ್‌ಲೋಡ್ ಮಾಡಿದಾಗ ಅದು ಪ್ರಕಾಶಕರಾಗಿರುವ ಸಾಧ್ಯತೆ ಹೆಚ್ಚು, ಆದ್ದರಿಂದ ಇದು ಕೇವಲ ಗಮನಿಸಬೇಕಾದದ್ದು ಎಂದು ಗುರುತಿಸುತ್ತದೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Sales or support-line wording: promo codes, discounts, casinos, “customer service number”, “how to talk to a live person”, “buy … online” and the like."
+msgstr "ಮಾರಾಟ ಅಥವಾ ಬೆಂಬಲ-ಸಾಲಿನ ಪದಗಳು: ಪ್ರೊಮೋ ಕೋಡ್‌ಗಳು, ರಿಯಾಯಿತಿಗಳು, ಕ್ಯಾಸಿನೋಗಳು, “ಗ್ರಾಹಕ ಸೇವಾ ಸಂಖ್ಯೆ”, “ನೇರ ವ್ಯಕ್ತಿಯೊಂದಿಗೆ ಹೇಗೆ ಮಾತನಾಡುವುದು”, “… ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಖರೀದಿಸಿ” ಮತ್ತು ಇಂತಹವು."
+
+#: admin/new_accounts.html.jinja
+msgid "Words from the admin spam word list."
+msgstr "ನಿರ್ವಾಹಕರ ಸ್ಪ್ಯಾಮ್ ಪದ ಪಟ್ಟಿಯಿಂದ ಪದಗಳು."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s or more lists created. Readers make one or two; spam accounts made up to 100."
+msgstr "%(count)s ಅಥವಾ ಹೆಚ್ಚಿನ ಪಟ್ಟಿಗಳನ್ನು ರಚಿಸಲಾಗಿದೆ. ಓದುಗರು ಒಂದು ಅಥವಾ ಎರಡು ರಚಿಸುತ್ತಾರೆ; ಸ್ಪ್ಯಾಮ್ ಖಾತೆಗಳು 100ರ ವರೆಗೆ ರಚಿಸಿವೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Their only edit put a link on their profile. These are SEO accounts that sign up, add a website and leave, often within a minute."
+msgstr "ಅವರ ಏಕೈಕ ಸಂಪಾದನೆ ಅವರ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ಲಿಂಕ್ ಹಾಕಿತು. ಇವು SEO ಖಾತೆಗಳಾಗಿದ್ದು, ಇವು ಸೈನ್ ಅಪ್ ಮಾಡಿ, ವೆಬ್‌ಸೈಟ್ ಸೇರಿಸಿ ಮತ್ತು ಹೆಚ್ಚಾಗಿ ಒಂದು ನಿಮಿಷದೊಳಗೆ ಬಿಟ್ಟುಹೋಗುತ್ತವೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Books or authors they added that a librarian has already deleted."
+msgstr "ಗ್ರಂಥಪಾಲಕರು ಈಗಾಗಲೇ ಅಳಿಸಿರುವ ಅವರು ಸೇರಿಸಿದ ಪುಸ್ತಕಗಳು ಅಥವಾ ಲೇಖಕರು."
+
+#: admin/new_accounts.html.jinja
+msgid "Worth a look"
+msgstr "ಗಮನಿಸಬೇಕಾದದ್ದು"
+
+#: admin/new_accounts.html.jinja
+msgid "Links in books, lists or a profile they wrote, alongside other edits. Usually authors and publishers promoting their own work."
+msgstr "ಇತರ ಸಂಪಾದನೆಗಳ ಜೊತೆಗೆ, ಅವರು ಬರೆದ ಪುಸ್ತಕಗಳು, ಪಟ್ಟಿಗಳು ಅಥವಾ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ಲಿಂಕ್‌ಗಳು. ಸಾಮಾನ್ಯವಾಗಿ ಲೇಖಕರು ಮತ್ತು ಪ್ರಕಾಶಕರು ತಮ್ಮದೇ ಆದ ಕೆಲಸವನ್ನು ಪ್ರಚಾರ ಮಾಡುತ್ತಿದ್ದಾರೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Article formatting (Markdown headings, bold, links) in a description."
+msgstr "ವಿವರಣೆಯಲ್ಲಿ ಲೇಖನ ಫಾರ್ಮ್ಯಾಟಿಂಗ್ (ಮಾರ್ಕ್‌ಡೌನ್ ಶೀರ್ಷಿಕೆಗಳು, ದಪ್ಪ ಅಕ್ಷರ, ಲಿಂಕ್‌ಗಳು)."
+
+#: admin/new_accounts.html.jinja
+msgid "10 or more books or lists in the first hour."
+msgstr "ಮೊದಲ ಗಂಟೆಯಲ್ಲಿ 10 ಅಥವಾ ಹೆಚ್ಚಿನ ಪುಸ್ತಕಗಳು ಅಥವಾ ಪಟ್ಟಿಗಳು."
+
+#: admin/new_accounts.html.jinja
+msgid "Not counted"
+msgstr "ಎಣಿಸಲಾಗಿಲ್ಲ"
+
+#: admin/new_accounts.html.jinja
+msgid "Adding books to a list. It is what most new readers do, so it doesn't flag an account or move it up the order."
+msgstr "ಪಟ್ಟಿಗೆ ಪುಸ್ತಕಗಳನ್ನು ಸೇರಿಸುವುದು. ಇದನ್ನೇ ಹೆಚ್ಚಿನ ಹೊಸ ಓದುಗರು ಮಾಡುತ್ತಾರೆ, ಆದ್ದರಿಂದ ಇದು ಖಾತೆಯನ್ನು ಗುರುತಿಸುವುದಿಲ್ಲ ಅಥವಾ ಅದರ ಕ್ರಮವನ್ನು ಮೇಲಕ್ಕೆ ಸರಿಸುವುದಿಲ್ಲ."
+
+#: admin/new_accounts.html.jinja
+msgid "Editing within minutes of signing up. Most real new users do that too; the column is there for context."
+msgstr "ಸೈನ್ ಅಪ್ ಮಾಡಿದ ನಿಮಿಷಗಳಲ್ಲಿ ಸಂಪಾದಿಸುವುದು. ಹೆಚ್ಚಿನ ನೈಜ ಹೊಸ ಬಳಕೆದಾರರು ಸಹ ಹಾಗೆ ಮಾಡುತ್ತಾರೆ; ಈ ಕಾಲಂ ಸಂದರ್ಭಕ್ಕಾಗಿ ಇದೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Which accounts"
+msgstr "ಯಾವ ಖಾತೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+msgid "Likely spam"
+msgstr "ಸ್ಪ್ಯಾಮ್ ಆಗಿರುವ ಸಾಧ್ಯತೆ"
+
+#: admin/new_accounts.html.jinja
+msgid "Reviewed"
+msgstr "ಪರಿಶೀಲಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "The edits could not be loaded: %(error)s"
+msgstr "ಸಂಪಾದನೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: %(error)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Showing the %(shown)s busiest of %(total)s accounts."
+msgstr "%(total)s ಖಾತೆಗಳಲ್ಲಿ %(shown)s ಅತ್ಯಂತ ಚಟುವಟಿಕೆಯ ಖಾತೆಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Select all accounts"
+msgstr "ಎಲ್ಲಾ ಖಾತೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: admin/new_accounts.html.jinja
+msgid "Select all"
+msgstr "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s selected"
+msgstr "%(count)s ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts?"
+msgstr "ಆಯ್ಕೆಮಾಡಿದ ಖಾತೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸುವುದೇ?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block"
+msgstr "ನಿರ್ಬಂಧಿಸಿ"
+
+#: admin/new_accounts.html.jinja
+msgid "Block the selected accounts and revert all their edits?"
+msgstr "ಆಯ್ಕೆಮಾಡಿದ ಖಾತೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸಿ ಮತ್ತು ಅವರ ಎಲ್ಲಾ ಸಂಪಾದನೆಗಳನ್ನು ಹಿಂತಿರುಗಿಸುವುದೇ?"
+
+#: admin/new_accounts.html.jinja
+msgid "Block and revert"
+msgstr "ನಿರ್ಬಂಧಿಸಿ ಮತ್ತು ಹಿಂತಿರುಗಿಸಿ"
+
+#: admin/new_accounts.html.jinja
+msgid "Mark the selected accounts trusted? They leave this queue and skip the captcha when adding books."
+msgstr "ಆಯ್ಕೆಮಾಡಿದ ಖಾತೆಗಳನ್ನು ವಿಶ್ವಾಸಾರ್ಹ ಎಂದು ಗುರುತಿಸುವುದೇ? ಅವು ಈ ಸರತಿಯಿಂದ ಹೊರಗುಳಿಯುತ್ತವೆ ಮತ್ತು ಪುಸ್ತಕಗಳನ್ನು ಸೇರಿಸುವಾಗ ಕ್ಯಾಪ್ಚಾವನ್ನು ಬಿಟ್ಟುಬಿಡುತ್ತವೆ."
+
+#: admin/new_accounts.html.jinja
+msgid "Mark trusted"
+msgstr "ವಿಶ್ವಾಸಾರ್ಹ ಎಂದು ಗುರುತಿಸಿ"
+
+#: admin/new_accounts.html.jinja
+msgid "Account"
+msgstr "ಖಾತೆ"
+
+#: admin/new_accounts.html.jinja
+msgid "Signs of spam"
+msgstr "ಸ್ಪ್ಯಾಮ್‌ನ ಚಿಹ್ನೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+msgid "Signed up"
+msgstr "ಸೈನ್ ಅಪ್ ಮಾಡಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja contribute/landing.html.jinja
+msgid "Recent edits"
+msgstr "ಇತ್ತೀಚಿನ ಸಂಪಾದನೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+msgid "Last edits"
+msgstr "ಕೊನೆಯ ಸಂಪಾದನೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "Select %(username)s"
+msgstr "%(username)s ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked, edits reverted"
+msgstr "ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ, ಸಂಪಾದನೆಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+msgid "Blocked"
+msgstr "ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+msgid "Trusted"
+msgstr "ವಿಶ್ವಾಸಾರ್ಹ"
+
+#: admin/new_accounts.html.jinja
+msgid "Profile"
+msgstr "ಪ್ರೊಫೈಲ್"
+
+#: admin/new_accounts.html.jinja
+msgid "Admin page"
+msgstr "ನಿರ್ವಾಹಕ ಪುಟ"
+
+#: admin/new_accounts.html.jinja
+msgid "None"
+msgstr "ಯಾವುದೂ ಇಲ್ಲ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s ago"
+msgstr "%(duration)s ಹಿಂದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(duration)s to first edit"
+msgstr "ಮೊದಲ ಸಂಪಾದನೆಗೆ %(duration)s"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s book added"
+msgid_plural "%(count)s books added"
+msgstr[0] "%(count)s ಪುಸ್ತಕ ಸೇರಿಸಲಾಗಿದೆ"
+msgstr[1] "%(count)s ಪುಸ್ತಕಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list created"
+msgid_plural "%(count)s lists created"
+msgstr[0] "%(count)s ಪಟ್ಟಿ ರಚಿಸಲಾಗಿದೆ"
+msgstr[1] "%(count)s ಪಟ್ಟಿಗಳನ್ನು ರಚಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s list addition"
+msgid_plural "%(count)s list additions"
+msgstr[0] "%(count)s ಪಟ್ಟಿ ಸೇರ್ಪಡೆ"
+msgstr[1] "%(count)s ಪಟ್ಟಿ ಸೇರ್ಪಡೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s other edit"
+msgid_plural "%(count)s other edits"
+msgstr[0] "%(count)s ಇತರ ಸಂಪಾದನೆ"
+msgstr[1] "%(count)s ಇತರ ಸಂಪಾದನೆಗಳು"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "%(count)s in total"
+msgstr "ಒಟ್ಟು %(count)s"
+
+#: admin/new_accounts.html.jinja
+msgid "deleted"
+msgstr "ಅಳಿಸಲಾಗಿದೆ"
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "None of the %(count)s accounts under %(age)s old in these edits is in this group."
+msgstr "ಈ ಸಂಪಾದನೆಗಳಲ್ಲಿ %(age)s ಗಿಂತ ಕಡಿಮೆ ವಯಸ್ಸಿನ %(count)s ಖಾತೆಗಳಲ್ಲಿ ಯಾವುದೂ ಈ ಗುಂಪಿನಲ್ಲಿ ಇಲ್ಲ."
+
+#: admin/new_accounts.html.jinja
+#, python-format
+msgid "No accounts under %(age)s old made any of these edits."
+msgstr "%(age)s ಗಿಂತ ಕಡಿಮೆ ವಯಸ್ಸಿನ ಯಾವುದೇ ಖಾತೆ ಈ ಸಂಪಾದನೆಗಳಲ್ಲಿ ಯಾವುದನ್ನೂ ಮಾಡಿಲ್ಲ."
 
 #: admin/pd_dashboard.html
 msgid "Print Disability Access Requests"
@@ -2750,16 +3004,16 @@ msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ"
 msgid "Search for an Author"
 msgstr "ಲೇಖಕರನ್ನು ಹುಡುಕಿ"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html publishers/notfound.html publishers/view.html search/advancedsearch.html.jinja search/publishers.html search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "ಹುಡುಕಿ"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "about %(subjects)s"
 msgstr "%(subjects)s ಕುರಿತು"
 
-#: authors/index.html.jinja search/authors.html
+#: authors/index.html.jinja search/authors.html.jinja
 #, python-format
 msgid "including <i>%(topwork)s</i>"
 msgstr "<i>%(topwork)s</i> ಸೇರಿದಂತೆ"
@@ -3055,7 +3309,7 @@ msgstr "Open Library ಗೆ ಪುಸ್ತಕವನ್ನು ಸೇರಿಸಿ
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "ಹೊಸ ದಾಖಲೆಯನ್ನು ರಚಿಸಲು ನಮಗೆ ಕನಿಷ್ಠ ಕ್ಷೇತ್ರಗಳ ಸೆಟ್ ಅಗತ್ಯವಿದೆ. ಅವು ಈ ಕ್ಷೇತ್ರಗಳಾಗಿವೆ."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja search/advancedsearch.html.jinja search/sort_options.html type/about/edit.html type/page/edit.html type/template/edit.html
+#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "ಶೀರ್ಷಿಕೆ"
 
@@ -3186,10 +3440,14 @@ msgid "Rather than creating a duplicate record, please click through the result 
 msgstr "ನಕಲಿ ದಾಖಲೆಯನ್ನು ರಚಿಸುವ ಬದಲು, ನಿಮ್ಮ ಪುಸ್ತಕಕ್ಕೆ ಉತ್ತಮವಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆ ಎಂದು ನೀವು ಭಾವಿಸುವ ಫಲಿತಾಂಶದ ಮೇಲೆ ದಯವಿಟ್ಟು ಕ್ಲಿಕ್ ಮಾಡಿ."
 
 #: books/check.html
+msgid "Please complete the reCAPTCHA above before choosing a book."
+msgstr "ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆ ಮಾಡುವ ಮೊದಲು ದಯವಿಟ್ಟು ಮೇಲಿನ reCAPTCHA ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ."
+
+#: books/check.html
 msgid "Select this book"
 msgstr "ಈ ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py publishers/view.html
+#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -3268,8 +3526,9 @@ msgid "Open Library Home"
 msgstr "Open Library ಮುಖಪುಟ"
 
 #: books/daisy.html
-msgid "There isn't a DAISY file available for "
-msgstr "ಇದಕ್ಕಾಗಿ ಯಾವುದೇ DAISY ಫೈಲ್ ಲಭ್ಯವಿಲ್ಲ "
+#, python-format
+msgid "There isn't a DAISY file available for <a href=\"%(url)s\">%(title)s</a>"
+msgstr "<a href=\"%(url)s\">%(title)s</a> ಗೆ DAISY ಫೈಲ್ ಲಭ್ಯವಿಲ್ಲ"
 
 #: books/daisy.html
 #, python-format
@@ -3281,8 +3540,8 @@ msgid "Books for people who don't read print?"
 msgstr "ಮುದ್ರಣವನ್ನು ಓದದ ಜನರಿಗಾಗಿ ಪುಸ್ತಕಗಳೇ?"
 
 #: books/daisy.html
-msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
-msgstr "ಸಾಮಾನ್ಯ ಮುದ್ರಿತ ಮಾಧ್ಯಮವನ್ನು ಬಳಸಲು ಕಷ್ಟಪಡುವ ನಮ್ಮಲ್ಲಿ ಕೆಲವರಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ DAISY ಎಂಬ ಸ್ವರೂಪದಲ್ಲಿ 10 ಲಕ್ಷಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳನ್ನು ಉಚಿತವಾಗಿ ವಿತರಿಸುತ್ತಿರುವುದಕ್ಕೆ <a href=\"//archive.org\">Internet Archive</a> ಹೆಮ್ಮೆಪಡುತ್ತದೆ. "
+msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media."
+msgstr "<a href=\"//archive.org\">Internet Archive</a> ಸಾಮಾನ್ಯ ಮುದ್ರಿತ ಮಾಧ್ಯಮವನ್ನು ಬಳಸಲು ಕಷ್ಟಪಡುವವರಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ DAISY ಎಂಬ ಸ್ವರೂಪದಲ್ಲಿ 10 ಲಕ್ಷಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳನ್ನು ಉಚಿತವಾಗಿ ವಿತರಿಸುತ್ತಿರುವುದಕ್ಕೆ ಹೆಮ್ಮೆಪಡುತ್ತದೆ."
 
 #: books/daisy.html
 msgid "There are two types of DAISYs on Open Library: <i>open</i> and <i>protected</i>. Open DAISYs can be read by anyone in the world on many different devices. Protected DAISYs can only be opened using a key issued by the <a href=\"http://www.loc.gov/nls/\">Library of Congress NLS program</a>."
@@ -3333,8 +3592,8 @@ msgid "Need help?"
 msgstr "ಸಹಾಯ ಬೇಕೇ?"
 
 #: books/daisy.html
-msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
-msgstr " Open Library ಮೂಲಕ ಪುಸ್ತಕಗಳನ್ನು ಪ್ರವೇಶಿಸುವ ಕುರಿತು ನಮ್ಮ <a href=\"/help/faq\">FAQ</a> ಅನ್ನು ದಯವಿಟ್ಟು ಓದಿ."
+msgid "Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+msgstr "Open Library ಮೂಲಕ ಪುಸ್ತಕಗಳನ್ನು ಪ್ರವೇಶಿಸುವ ಕುರಿತು ದಯವಿಟ್ಟು ನಮ್ಮ <a href=\"/help/faq\">ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳನ್ನು (FAQ)</a> ಓದಿ."
 
 #: books/edit.html
 msgid "Add a little more?"
@@ -3445,8 +3704,8 @@ msgstr "%(translator)s ಅವರಿಂದ ಅನುವಾದಿಸಲಾಗಿ�
 
 #: books/mobile_carousel.html openlibrary/plugins/openlibrary/partials.py
 #, python-format
-msgid " by %(name)s"
-msgstr " %(name)s ಅವರಿಂದ"
+msgid "%(title)s by %(name)s"
+msgstr "%(name)s ಅವರಿಂದ %(title)s"
 
 #. Page title for the "Want to Read" shelf page.
 #. Example: "Want to Read (17)". %(count)d is the number of books on this shelf.
@@ -4097,10 +4356,6 @@ msgstr "ಸಹಾಯ ಬೇಕಾಗಿದೆ"
 msgid "Getting the list ready…"
 msgstr "ಪಟ್ಟಿಯನ್ನು ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…"
 
-#: contribute/admin/index.html.jinja contribute/dashboard.html.jinja contribute/faq.html.jinja openlibrary/plugins/openlibrary/contribute.py openlibrary/views/loanstats.py
-msgid "Tasks"
-msgstr "ಟಾಸ್ಕ್‌ಗಳು"
-
 #: contribute/dashboard.html.jinja
 msgid "Help build the catalog, one book at a time."
 msgstr "ಒಮ್ಮೆಗೆ ಒಂದು ಪುಸ್ತಕದಂತೆ ಕ್ಯಾಟಲಾಗ್ ನಿರ್ಮಿಸಲು ಸಹಾಯ ಮಾಡಿ."
@@ -4304,10 +4559,6 @@ msgstr "Open Library ಪ್ರತಿ ತಿಂಗಳು %(books)s ಕ್ಯಾ�
 #: contribute/landing.html.jinja
 msgid "Many books on Open Library are still missing a detail: a cover, a language, a publisher. You can help fill them in."
 msgstr "Open Library ನಲ್ಲಿ ಅನೇಕ ಪುಸ್ತಕಗಳಿಗೆ ಇನ್ನೂ ವಿವರ ಕಾಣೆಯಾಗಿದೆ: ಮುಖಪುಟ, ಭಾಷೆ, ಪ್ರಕಾಶಕ. ಅವುಗಳನ್ನು ಭರ್ತಿ ಮಾಡಲು ನೀವು ಸಹಾಯ ಮಾಡಬಹುದು."
-
-#: contribute/landing.html.jinja
-msgid "Recent edits"
-msgstr "ಇತ್ತೀಚಿನ ಸಂಪಾದನೆಗಳು"
 
 #: FulltextResultIA.html.jinja contribute/landing.html.jinja contribute/parts.html.jinja
 #, python-format
@@ -4832,7 +5083,7 @@ msgstr "Wikidata"
 msgid "Pull up a larger author photo"
 msgstr "ದೊಡ್ಡ ಲೇಖಕ ಫೋಟೋವನ್ನು ತೋರಿಸಿ"
 
-#: covers/author_photo.html search/authors.html
+#: covers/author_photo.html search/authors.html.jinja
 #, python-format
 msgid "Photo of %(author)s"
 msgstr "%(author)s ನ ಫೋಟೋ"
@@ -4962,7 +5213,7 @@ msgstr "ಇತ್ತೀಚಿನ ಬ್ಲಾಗ್ ಪೋಸ್ಟ್‌ಗಳ�
 msgid "Browse the stacks"
 msgstr "ಸಂಗ್ರಹವನ್ನು ಬ್ರೌಸ್ ಮಾಡಿ"
 
-#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py search/sort_options.html
+#: home/browse_stacks.html.jinja home/genre_shelf.html.jinja openlibrary/core/shell/nav.py openlibrary/plugins/openlibrary/partials.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Trending"
 msgstr "ಟ್ರೆಂಡಿಂಗ್"
 
@@ -4988,7 +5239,7 @@ msgstr "ಹೊಸದು"
 msgid "Top rated"
 msgstr "ಉನ್ನತ ರೇಟಿಂಗ್"
 
-#: home/genre_shelf.html.jinja search/sort_options.html
+#: home/genre_shelf.html.jinja search/sort_options.html.jinja
 msgid "Sort by"
 msgstr "ಇದರ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ"
 
@@ -5048,6 +5299,56 @@ msgstr "ತಿಂಗಳ ಅವಧಿಯಲ್ಲಿ ಬದಲಾವಣೆ, 7-ದ
 #, python-format
 msgid "Up %(percent)d%% over the month"
 msgstr "ತಿಂಗಳ ಅವಧಿಯಲ್ಲಿ %(percent)d%% ಏರಿಕೆ"
+
+#: home/member.html.jinja
+#, python-format
+msgid "Welcome back, %(name)s"
+msgstr "ಮರಳಿ ಸ್ವಾಗತ, %(name)s"
+
+#: home/member.html.jinja
+msgid "Welcome back"
+msgstr "ಮರಳಿ ಸ್ವಾಗತ"
+
+#: home/member.html.jinja
+msgid "Ready to Borrow"
+msgstr "ಎರವಲು ಪಡೆಯಲು ಸಿದ್ಧ"
+
+#: home/member.html.jinja
+msgid "Loans and Holds"
+msgstr "ಎರವಲುಗಳು ಮತ್ತು ಕಾಯ್ದಿರಿಸುವಿಕೆಗಳು"
+
+#: LoanStatus.html home/member.html.jinja
+msgid "Checked Out"
+msgstr "ಚೆಕ್ ಔಟ್ ಆಗಿದೆ"
+
+#: home/member.html.jinja
+msgid "Your loans"
+msgstr "ನಿಮ್ಮ ಎರವಲುಗಳು"
+
+#: home/member.html.jinja
+msgid "See All Loans"
+msgstr "ಎಲ್ಲಾ ಎರವಲುಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+#: home/member.html.jinja
+msgid "Ready to Read Now"
+msgstr "ಈಗಲೇ ಓದಲು ಸಿದ್ಧ"
+
+#: home/member.html.jinja
+msgid "From Your Shelves"
+msgstr "ನಿಮ್ಮ ಕಪಾಟುಗಳಿಂದ"
+
+#: home/member.html.jinja
+#, python-format
+msgid "From %(reading_start)sCurrently Reading%(link_end)s and %(want_start)sWant to Read%(link_end)s"
+msgstr "%(reading_start)sಪ್ರಸ್ತುತ ಓದುತ್ತಿದ್ದೇನೆ%(link_end)s ಮತ್ತು %(want_start)sಓದಲು ಬಯಸುತ್ತೇನೆ%(link_end)s ನಿಂದ"
+
+#: home/member.html.jinja
+msgid "Your shelves"
+msgstr "ನಿಮ್ಮ ಕಪಾಟುಗಳು"
+
+#: home/member_skeleton.html.jinja
+msgid "Loading your books"
+msgstr "ನಿಮ್ಮ ಪುಸ್ತಕಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ"
 
 #: home/welcome.html
 msgid "Read Free Library Books Online"
@@ -5707,93 +6008,92 @@ msgstr "+ ನಿಮ್ಮ ಸಮುದಾಯ ವಿಮರ್ಶೆಯನ್ನ�
 msgid "+ Log in to add your community review"
 msgstr "+ ನಿಮ್ಮ ಸಮುದಾಯ ವಿಮರ್ಶೆಯನ್ನು ಸೇರಿಸಲು ಲಾಗ್ ಇನ್ ಮಾಡಿ"
 
-#: publishers/index.html publishers/notfound.html
+#: publishers/index.html.jinja publishers/notfound.html.jinja
 msgid "Publishers"
 msgstr "ಪ್ರಕಾಶಕರು"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Publisher Search"
 msgstr "ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
 
-#: publishers/index.html publishers/view.html
+#: publishers/index.html.jinja publishers/view.html.jinja
 msgid "Try a keyword."
 msgstr "ಕೀವರ್ಡ್ ಪ್ರಯತ್ನಿಸಿ."
 
-#: publishers/notfound.html
+#: publishers/notfound.html.jinja
 #, python-format
 msgid "We couldn't find any books published by %(publisher)s."
 msgstr "%(publisher)s ಪ್ರಕಟಿಸಿದ ಯಾವುದೇ ಪುಸ್ತಕಗಳನ್ನು ನಾವು ಕಂಡುಹಿಡಿಯಲಾಗಲಿಲ್ಲ."
 
-#: publishers/notfound.html subjects/notfound.html
+#: publishers/notfound.html.jinja subjects/notfound.html
 msgid "Try something else?"
 msgstr "ಬೇರೆಯದನ್ನು ಪ್ರಯತ್ನಿಸುವುದೇ?"
 
-#: publishers/view.html
-#, python-format
-msgid "Publisher: %(name)s"
-msgstr "ಪ್ರಕಾಶಕ: %(name)s"
+#: publishers/notfound.html.jinja
+msgid "Search publishers"
+msgstr "ಪ್ರಕಾಶಕರನ್ನು ಹುಡುಕಿ"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
+#: RelatedSubjects.html.jinja publishers/view.html.jinja
+msgid "None found."
+msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: publishers/view.html.jinja
+msgid "See more books by, and learn about, this author"
+msgstr "ಈ ಲೇಖಕರ ಇನ್ನಷ್ಟು ಪುಸ್ತಕಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಅವರ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ"
+
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py publishers/view.html.jinja search/advancedsearch.html.jinja type/edition/view.html type/work/view.html
 msgid "Publisher"
 msgstr "ಪ್ರಕಾಶಕ"
 
-#: SearchResultsWork.html publishers/view.html
+#: SearchResultsWork.html publishers/view.html.jinja
 #, python-format
 msgid "%(count)s ebook"
 msgid_plural "%(count)s ebooks"
 msgstr[0] "%(count)s ಇ-ಪುಸ್ತಕ"
 msgstr[1] "%(count)s ಇ-ಪುಸ್ತಕಗಳು"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "0 ebooks"
 msgstr "0 ಇ-ಪುಸ್ತಕಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Publishing History"
 msgstr "ಪ್ರಕಟಣಾ ಇತಿಹಾಸ"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This is a chart to show the when this publisher published books. Along the X axis is time, and on the y axis is the count of editions published. <a href=\"#subjectRelated\">Click here to skip the chart</a>."
 msgstr "ಈ ಪ್ರಕಾಶಕರು ಯಾವಾಗ ಪುಸ್ತಕಗಳನ್ನು ಪ್ರಕಟಿಸಿದರು ಎಂದು ತೋರಿಸುವ ಚಾರ್ಟ್ ಇದು. X ಅಕ್ಷದ ಉದ್ದಕ್ಕೂ ಸಮಯ, ಮತ್ತು Y ಅಕ್ಷದಲ್ಲಿ ಪ್ರಕಟಿಸಿದ ಆವೃತ್ತಿಗಳ ಸಂಖ್ಯೆ ಇದೆ. <a href=\"#subjectRelated\">ಚಾರ್ಟ್ ಅನ್ನು ಬಿಟ್ಟುಬಿಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</a>."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Reset chart"
 msgstr "ಚಾರ್ಟ್ ಅನ್ನು ಮರುಹೊಂದಿಸಿ"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "or continue zooming in."
 msgstr "ಅಥವಾ ಝೂಮ್ ಇನ್ ಮಾಡುವುದನ್ನು ಮುಂದುವರಿಸಿ."
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "This graph charts editions from this publisher over time. Click to view a single year, or drag across a range."
 msgstr "ಈ ಗ್ರಾಫ್ ಈ ಪ್ರಕಾಶಕರ ಆವೃತ್ತಿಗಳನ್ನು ಕಾಲಾವಧಿಯಲ್ಲಿ ಚಾರ್ಟ್ ಮಾಡುತ್ತದೆ. ಒಂದು ವರ್ಷವನ್ನು ನೋಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ, ಅಥವಾ ಒಂದು ವ್ಯಾಪ್ತಿಯುದ್ದಕ್ಕೂ ಎಳೆಯಿರಿ."
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Editions Published"
 msgstr "ಪ್ರಕಟಿಸಿದ ಆವೃತ್ತಿಗಳು"
 
-#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html
+#: PublishingHistory.html PublishingHistory.html.jinja publishers/view.html.jinja
 msgid "Year of Publication"
 msgstr "ಪ್ರಕಟಣಾ ವರ್ಷ"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "Common Subjects"
 msgstr "ಸಾಮಾನ್ಯ ವಿಷಯಗಳು"
 
-#: publishers/view.html
+#: publishers/view.html.jinja
 #, python-format
 msgid "Search for books published by %(publisher)s"
 msgstr "%(publisher)s ಪ್ರಕಟಿಸಿದ ಪುಸ್ತಕಗಳನ್ನು ಹುಡುಕಿ"
 
-#: RelatedSubjects.html.jinja publishers/view.html
-msgid "None found."
-msgstr "ಯಾವುದೂ ಕಂಡುಬಂದಿಲ್ಲ."
-
-#: publishers/view.html
-msgid "See more books by, and learn about, this author"
-msgstr "ಈ ಲೇಖಕರ ಇನ್ನಷ್ಟು ಪುಸ್ತಕಗಳನ್ನು ನೋಡಿ ಮತ್ತು ಅವರ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ"
-
-#: publishers/view.html
+#: publishers/view.html.jinja
 msgid "published most by this publisher"
 msgstr "ಈ ಪ್ರಕಾಶಕರಿಂದ ಹೆಚ್ಚು ಪ್ರಕಟಿಸಲ್ಪಟ್ಟ"
 
@@ -5996,78 +6296,68 @@ msgstr "ಹೇಗೆ ಹುಡುಕುವುದು?"
 msgid "Full Text Search?"
 msgstr "ಪೂರ್ಣ ಪಠ್ಯ ಹುಡುಕಾಟ?"
 
-#: search/authors.html
-#, python-format
-msgid "Search Open Library for \"%(query)s\""
-msgstr "\"%(query)s\" ಗಾಗಿ Open Library ಯಲ್ಲಿ ಹುಡುಕಿ"
-
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Search Authors"
 msgstr "ಲೇಖಕರನ್ನು ಹುಡುಕಿ"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Is the same author listed twice?"
 msgstr "ಅದೇ ಲೇಖಕರನ್ನು ಎರಡು ಬಾರಿ ಪಟ್ಟಿ ಮಾಡಲಾಗಿದೆಯೇ?"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "Merge authors"
 msgstr "ಲೇಖಕರನ್ನು ವಿಲೀನಗೊಳಿಸಿ"
 
-#: search/authors.html
+#: search/authors.html.jinja
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ನೇರವಾಗಿ ಯಾವುದೇ <strong>ಲೇಖಕರು</strong> ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ"
 
-#: search/inside.html
-#, python-format
-msgid "Search Open Library for %s"
-msgstr "%s ಗಾಗಿ Open Library ಯಲ್ಲಿ ಹುಡುಕಿ"
-
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html
+#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
 msgid "Search Inside"
 msgstr "ಒಳಗೆ ಹುಡುಕಿ"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "Choose one language"
 msgstr "ಒಂದು ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "About %(total)s result"
 msgid_plural "About %(total)s results"
 msgstr[0] "ಸುಮಾರು %(total)s ಫಲಿತಾಂಶ"
 msgstr[1] "ಸುಮಾರು %(total)s ಫಲಿತಾಂಶಗಳು"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "%(start)s - %(end)s of about %(total)s result"
 msgid_plural "%(start)s - %(end)s of about %(total)s results"
 msgstr[0] "ಸುಮಾರು %(total)s ಫಲಿತಾಂಶದಲ್ಲಿ %(start)s - %(end)s"
 msgstr[1] "ಸುಮಾರು %(total)s ಫಲಿತಾಂಶಗಳಲ್ಲಿ %(start)s - %(end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "No exact matches for \"%(query)s\". Showing books containing all of these words."
 msgstr "\"%(query)s\" ಗೆ ನಿಖರ ಹೊಂದಾಣಿಕೆಗಳಿಲ್ಲ. ಈ ಎಲ್ಲಾ ಪದಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಪುಸ್ತಕಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ."
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing exact matches for \"%(query)s\". %(link_start)sSearch for all of these words instead.%(link_end)s"
 msgstr "\"%(query)s\" ಗೆ ನಿಖರ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ. %(link_start)sಬದಲಿಗೆ ಈ ಎಲ್ಲಾ ಪದಗಳಿಗಾಗಿ ಹುಡುಕಿ.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 #, python-format
 msgid "Showing all of these words, in any order. %(link_start)sSearch for the exact phrase instead.%(link_end)s"
 msgstr "ಈ ಎಲ್ಲಾ ಪದಗಳನ್ನು, ಯಾವುದೇ ಕ್ರಮದಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತಿದೆ. %(link_start)sಬದಲಿಗೆ ನಿಖರ ಪದಗುಚ್ಛಕ್ಕಾಗಿ ಹುಡುಕಿ.%(link_end)s"
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No results found. Try a different word or phrase."
 msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ಬೇರೆ ಪದ ಅಥವಾ ಪದಗುಚ್ಛವನ್ನು ಪ್ರಯತ್ನಿಸಿ."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "None of the matches on this page can be shown with these filters. Try another page or remove a filter."
 msgstr "ಈ ಪುಟದಲ್ಲಿನ ಯಾವುದೇ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಈ ಫಿಲ್ಟರ್‌ಗಳೊಂದಿಗೆ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ. ಬೇರೆ ಪುಟವನ್ನು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಫಿಲ್ಟರ್ ಅನ್ನು ತೆಗೆದುಹಾಕಿ."
 
-#: search/inside.html
+#: search/inside.html.jinja
 msgid "No more results. Try an earlier page."
 msgstr "ಇನ್ನು ಯಾವುದೇ ಫಲಿತಾಂಶಗಳಿಲ್ಲ. ಹಿಂದಿನ ಪುಟವನ್ನು ಪ್ರಯತ್ನಿಸಿ."
 
@@ -6091,95 +6381,15 @@ msgstr "ಪಟ್ಟಿಗಳನ್ನು ಹುಡುಕಿ"
 msgid "No <strong>lists</strong> directly matched your search"
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ನೇರವಾಗಿ ಯಾವುದೇ <strong>ಪಟ್ಟಿಗಳು</strong> ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ"
 
-#: search/publishers.html
+#: search/publishers.html.jinja
 msgid "Publishers Search"
 msgstr "ಪ್ರಕಾಶಕರ ಹುಡುಕಾಟ"
 
-#: search/sort_options.html
-msgid "Relevance"
-msgstr "ಪ್ರಸ್ತುತತೆ"
-
-#: search/sort_options.html
-msgid "Work Count"
-msgstr "ಕೃತಿಗಳ ಸಂಖ್ಯೆ"
-
-#: search/sort_options.html
-msgid "Random"
-msgstr "ಯಾದೃಚ್ಛಿಕ"
-
-#: search/sort_options.html
-msgid "Birth Date (oldest) (beta: Librarian only)"
-msgstr "ಜನ್ಮ ದಿನಾಂಕ (ಹಳೆಯದು) (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
-
-#: search/sort_options.html
-msgid "Birth Date (youngest) (beta: Librarian only)"
-msgstr "ಜನ್ಮ ದಿನಾಂಕ (ಕಿರಿಯದು) (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
-
-#: search/sort_options.html
-msgid "List Order"
-msgstr "ಪಟ್ಟಿ ಕ್ರಮ"
-
-#: search/sort_options.html
-msgid "Recently Added"
-msgstr "ಇತ್ತೀಚೆಗೆ ಸೇರಿಸಲಾಗಿದೆ"
-
-#: search/sort_options.html
-msgid "Recently Edited"
-msgstr "ಇತ್ತೀಚೆಗೆ ಸಂಪಾದಿಸಲಾಗಿದೆ"
-
-#: search/sort_options.html
-msgid "Language Name"
-msgstr "ಭಾಷೆಯ ಹೆಸರು"
-
-#: search/sort_options.html
-msgid "Ebook Edition Count"
-msgstr "ಇ-ಪುಸ್ತಕ ಆವೃತ್ತಿಗಳ ಸಂಖ್ಯೆ"
-
-#: search/sort_options.html
-msgid "Date Added (newest)"
-msgstr "ಸೇರಿಸಿದ ದಿನಾಂಕ (ಹೊಸದು)"
-
-#: search/sort_options.html
-msgid "Date Added (oldest)"
-msgstr "ಸೇರಿಸಿದ ದಿನಾಂಕ (ಹಳೆಯದು)"
-
-#: search/sort_options.html
-msgid "First Published"
-msgstr "ಮೊದಲು ಪ್ರಕಟಿಸಲಾಗಿದೆ"
-
-#: search/sort_options.html
-msgid "Your Top Rated"
-msgstr "ನಿಮ್ಮ ಉನ್ನತ ರೇಟಿಂಗ್"
-
-#: search/sort_options.html
-msgid "Most Wanted"
-msgstr "ಹೆಚ್ಚು ಬಯಸಿದ"
-
-#: search/sort_options.html
-msgid "Most Editions"
-msgstr "ಹೆಚ್ಚು ಆವೃತ್ತಿಗಳು"
-
-#: search/sort_options.html
-msgid "Most Recent"
-msgstr "ಇತ್ತೀಚಿನ"
-
-#: search/sort_options.html
-msgid "Top Rated"
-msgstr "ಉನ್ನತ ರೇಟಿಂಗ್"
-
-#: search/sort_options.html
-msgid "Any"
-msgstr "ಯಾವುದಾದರೂ"
-
-#: search/sort_options.html
-msgid "Work Title (beta: Librarian only)"
-msgstr "ಕೃತಿ ಶೀರ್ಷಿಕೆ (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
-
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Sort results"
 msgstr "ಫಲಿತಾಂಶಗಳನ್ನು ವಿಂಗಡಿಸಿ"
 
-#: search/sort_options.html
+#: search/sort_options.html.jinja
 msgid "Shuffle"
 msgstr "ಶಫಲ್ ಮಾಡಿ"
 
@@ -7096,10 +7306,6 @@ msgstr "ಸರಣಿ"
 msgid "Volume"
 msgstr "ಸಂಪುಟ"
 
-#: openlibrary/plugins/openlibrary/contribute.py type/edition/view.html type/work/view.html
-msgid "Genre"
-msgstr "ಪ್ರಕಾರ"
-
 #: type/edition/view.html type/work/view.html
 msgid "Other Titles"
 msgstr "ಇತರ ಶೀರ್ಷಿಕೆಗಳು"
@@ -7882,10 +8088,6 @@ msgstr "ನೀವು ಸರದಿಯಲ್ಲಿ ಮುಂದಿನವರಾಗ�
 #: LoanStatus.html
 msgid "All copies are checked out."
 msgstr "ಎಲ್ಲಾ ಪ್ರತಿಗಳನ್ನು ಚೆಕ್ ಔಟ್ ಮಾಡಲಾಗಿದೆ."
-
-#: LoanStatus.html
-msgid "Checked Out"
-msgstr "ಚೆಕ್ ಔಟ್ ಆಗಿದೆ"
 
 #: NotInLibrary.html
 msgid "Not in Library"
@@ -9449,7 +9651,7 @@ msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದ�
 msgid "Showing %(shown)s of %(total)s results"
 msgstr "%(total)s ರಲ್ಲಿ %(shown)s ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ"
 
-#: openlibrary/core/shell/search_modal.py
+#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
 msgid "Untitled"
 msgstr "ಶೀರ್ಷಿಕೆರಹಿತ"
 
@@ -10028,6 +10230,11 @@ msgstr "ಮೌಲ್ಯಮಾಪನ"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "ಬಳಕೆದಾರರು ಪ್ರವೇಶಿಸುವ ಮೊದಲು ಈ ಆವೃತ್ತಿ ಅವರ ಅಗತ್ಯಗಳಿಗೆ ಸಂಬಂಧಿತವಾಗಿದೆಯೇ ಎಂದು ಎಷ್ಟು ಚೆನ್ನಾಗಿ ನಿರ್ಧರಿಸಬಹುದು?"
 
+#: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
+#, python-format
+msgid "Publisher: %(name)s"
+msgstr "ಪ್ರಕಾಶಕ: %(name)s"
+
 #: openlibrary/fastapi/search.py
 #, python-format
 msgid "%(query)s - List search"
@@ -10039,12 +10246,39 @@ msgstr "ಪಟ್ಟಿ ಹುಡುಕಾಟ"
 
 #: openlibrary/fastapi/search.py
 #, python-format
+msgid "%(query)s - Full-text search"
+msgstr "%(query)s - ಪೂರ್ಣ ಪಠ್ಯ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+msgid "Full-text search"
+msgstr "ಪೂರ್ಣ ಪಠ್ಯ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+#, python-format
 msgid "%(query)s - Subject search"
 msgstr "%(query)s - ವಿಷಯ ಹುಡುಕಾಟ"
 
 #: openlibrary/fastapi/search.py
 msgid "Subject search"
 msgstr "ವಿಷಯ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Publisher search"
+msgstr "%(query)s - ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+msgid "Publisher search"
+msgstr "ಪ್ರಕಾಶಕ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+#, python-format
+msgid "%(query)s - Author search"
+msgstr "%(query)s - ಲೇಖಕ ಹುಡುಕಾಟ"
+
+#: openlibrary/fastapi/search.py
+msgid "Author search"
+msgstr "ಲೇಖಕ ಹುಡುಕಾಟ"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -10102,6 +10336,121 @@ msgstr "ಇನ್ನೂ ಪ್ರಾರಂಭವಾಗದ ಯೋಜನೆಯನ�
 msgid "The project is deleted."
 msgstr "ಯೋಜನೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ."
 
+#: openlibrary/plugins/admin/code.py
+msgid "[Admin Center] Spam review"
+msgstr "[ನಿರ್ವಾಹಕ ಕೇಂದ್ರ] ಸ್ಪ್ಯಾಮ್ ಪರಿಶೀಲನೆ"
+
+#: openlibrary/plugins/admin/code.py
+msgid "Select at least one account."
+msgstr "ಕನಿಷ್ಠ ಒಂದು ಖಾತೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Marked %(count)d account trusted."
+msgid_plural "Marked %(count)d accounts trusted."
+msgstr[0] "%(count)d ಖಾತೆಯನ್ನು ವಿಶ್ವಾಸಾರ್ಹ ಎಂದು ಗುರುತಿಸಲಾಗಿದೆ."
+msgstr[1] "%(count)d ಖಾತೆಗಳನ್ನು ವಿಶ್ವಾಸಾರ್ಹ ಎಂದು ಗುರುತಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Blocked %(count)d account."
+msgid_plural "Blocked %(count)d accounts."
+msgstr[0] "%(count)d ಖಾತೆಯನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ."
+msgstr[1] "%(count)d ಖಾತೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/admin/code.py
+#, python-format
+msgid "Reverted %(edits)d edits and deleted %(deleted)d records."
+msgstr "%(edits)d ಸಂಪಾದನೆಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗಿದೆ ಮತ್ತು %(deleted)d ದಾಖಲೆಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s s"
+msgstr "%(n)s ಸೆ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s min"
+msgstr "%(n)s ನಿ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s h"
+msgstr "%(n)s ಗಂ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(n)s d"
+msgstr "%(n)s ದಿ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Phone number in %(count)s record"
+msgid_plural "Phone numbers in %(count)s records"
+msgstr[0] "%(count)s ದಾಖಲೆಯಲ್ಲಿ ಫೋನ್ ಸಂಖ್ಯೆ"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳಲ್ಲಿ ಫೋನ್ ಸಂಖ್ಯೆಗಳು"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Sales or support-line wording in %(count)s record"
+msgid_plural "Sales or support-line wording in %(count)s records"
+msgstr[0] "%(count)s ದಾಖಲೆಯಲ್ಲಿ ಮಾರಾಟ ಅಥವಾ ಬೆಂಬಲ-ಸಾಲಿನ ಪದಗಳು"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳಲ್ಲಿ ಮಾರಾಟ ಅಥವಾ ಬೆಂಬಲ-ಸಾಲಿನ ಪದಗಳು"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Spam words in %(count)s record"
+msgid_plural "Spam words in %(count)s records"
+msgstr[0] "%(count)s ದಾಖಲೆಯಲ್ಲಿ ಸ್ಪ್ಯಾಮ್ ಪದಗಳು"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳಲ್ಲಿ ಸ್ಪ್ಯಾಮ್ ಪದಗಳು"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s lists created"
+msgstr "%(count)s ಪಟ್ಟಿಗಳನ್ನು ರಚಿಸಲಾಗಿದೆ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s record already deleted"
+msgid_plural "%(count)s records already deleted"
+msgstr[0] "%(count)s ದಾಖಲೆ ಈಗಾಗಲೇ ಅಳಿಸಲಾಗಿದೆ"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳು ಈಗಾಗಲೇ ಅಳಿಸಲಾಗಿವೆ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+msgid "Only edit: a link on their profile"
+msgstr "ಏಕೈಕ ಸಂಪಾದನೆ: ಅವರ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ಲಿಂಕ್"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Links in %(count)s record"
+msgid_plural "Links in %(count)s records"
+msgstr[0] "%(count)s ದಾಖಲೆಯಲ್ಲಿ ಲಿಂಕ್‌ಗಳು"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳಲ್ಲಿ ಲಿಂಕ್‌ಗಳು"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "Article formatting in %(count)s record"
+msgid_plural "Article formatting in %(count)s records"
+msgstr[0] "%(count)s ದಾಖಲೆಯಲ್ಲಿ ಲೇಖನ ಫಾರ್ಮ್ಯಾಟಿಂಗ್"
+msgstr[1] "%(count)s ದಾಖಲೆಗಳಲ್ಲಿ ಲೇಖನ ಫಾರ್ಮ್ಯಾಟಿಂಗ್"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s added in the first %(minutes)s min"
+msgstr "ಮೊದಲ %(minutes)s ನಿಮಿಷಗಳಲ್ಲಿ %(count)s ಸೇರಿಸಲಾಗಿದೆ"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "%(count)s day"
+msgid_plural "%(count)s days"
+msgstr[0] "%(count)s ದಿನ"
+msgstr[1] "%(count)s ದಿನಗಳು"
+
+#: openlibrary/plugins/admin/new_accounts.py
+#, python-format
+msgid "at most %(duration)s"
+msgstr "ಗರಿಷ್ಠ %(duration)s"
+
 #: openlibrary/plugins/openlibrary/api.py
 msgid "Search Results"
 msgstr "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು"
@@ -10132,6 +10481,13 @@ msgid "Re-queued %(count)d failed item."
 msgid_plural "Re-queued %(count)d failed items."
 msgstr[0] "%(count)d ವಿಫಲ ಐಟಂ ಅನ್ನು ಮರು-ಸರತಿಗೊಳಿಸಲಾಗಿದೆ."
 msgstr[1] "%(count)d ವಿಫಲ ಐಟಂಗಳನ್ನು ಮರು-ಸರತಿಗೊಳಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/openlibrary/code.py
+#, python-format
+msgid "Paused %(count)d pending item."
+msgid_plural "Paused %(count)d pending items."
+msgstr[0] "%(count)d ಬಾಕಿ ಇರುವ ಐಟಂ ಅನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ."
+msgstr[1] "%(count)d ಬಾಕಿ ಇರುವ ಐಟಂಗಳನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ."
 
 #: openlibrary/plugins/openlibrary/code.py
 msgid "Arabic"
@@ -10208,6 +10564,10 @@ msgstr "ಫಿಲಿಪಿನೋ"
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Fiction or nonfiction"
 msgstr "ಕಾಲ್ಪನಿಕ ಅಥವಾ ವಾಸ್ತವಿಕ"
+
+#: openlibrary/plugins/openlibrary/contribute.py
+msgid "Genre"
+msgstr "ಪ್ರಕಾರ"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 msgid "Books missing a cover"
@@ -10293,8 +10653,8 @@ msgstr "%(percent)s%% ಪೂರ್ಣಗೊಂಡಿದೆ, ಗುರಿ ತಲ�
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
-msgid "%(percent)s%% done, goal %(goal)s%%"
-msgstr "%(percent)s%% ಪೂರ್ಣಗೊಂಡಿದೆ, ಗುರಿ %(goal)s%%"
+msgid "%(percent)s%% done, goal %(goal)s"
+msgstr "%(percent)s%% ಪೂರ್ಣಗೊಂಡಿದೆ, ಗುರಿ %(goal)s"
 
 #: openlibrary/plugins/openlibrary/contribute.py
 #, python-format
@@ -10610,6 +10970,60 @@ msgstr "ಕ್ಲಾಸಿಕ್‌ಗಳು"
 msgid "Most wanted"
 msgstr "ಹೆಚ್ಚು ಬಯಸಿದ"
 
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back today"
+msgstr "ಇಂದು ಹಿಂದಿರುಗಿಸಬೇಕು"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Due back tomorrow"
+msgstr "ನಾಳೆ ಹಿಂದಿರುಗಿಸಬೇಕು"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Due back in %(count)d day"
+msgid_plural "Due back in %(count)d days"
+msgstr[0] "%(count)d ದಿನದಲ್ಲಿ ಹಿಂದಿರುಗಿಸಬೇಕು"
+msgstr[1] "%(count)d ದಿನದಲ್ಲಿ ಹಿಂದಿರುಗಿಸಬೇಕು"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow it soon, or it goes to the next reader."
+msgstr "ಶೀಘ್ರದಲ್ಲೇ ಎರವಲು ಪಡೆಯಿರಿ, ಇಲ್ಲದಿದ್ದರೆ ಅದು ಮುಂದಿನ ಓದುಗರಿಗೆ ಹೋಗುತ್ತದೆ."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more hour."
+msgid_plural "Held for you for %(count)d more hours."
+msgstr[0] "ನಿಮಗಾಗಿ ಇನ್ನೂ %(count)d ಗಂಟೆ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+msgstr[1] "ನಿಮಗಾಗಿ ಇನ್ನೂ %(count)d ಗಂಟೆ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "Held for you for %(count)d more day."
+msgid_plural "Held for you for %(count)d more days."
+msgstr[0] "ನಿಮಗಾಗಿ ಇನ್ನೂ %(count)d ದಿನ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+msgstr[1] "ನಿಮಗಾಗಿ ಇನ್ನೂ %(count)d ದಿನ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ."
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "You're next in line"
+msgstr "ನೀವು ಸರದಿಯಲ್ಲಿ ಮುಂದಿನವರು"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+#, python-format
+msgid "You're number %(position)d of %(size)d in line"
+msgstr "ನೀವು ಸರದಿಯಲ್ಲಿ %(size)d ರಲ್ಲಿ %(position)d ನೇ ಸ್ಥಾನದಲ್ಲಿದ್ದೀರಿ"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "On loan"
+msgstr "ಎರವಲು ನೀಡಲಾಗಿದೆ"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Continue reading"
+msgstr "ಓದುವುದನ್ನು ಮುಂದುವರಿಸಿ"
+
+#: openlibrary/plugins/openlibrary/home_member.py
+msgid "Borrow now"
+msgstr "ಈಗಲೇ ಎರವಲು ಪಡೆಯಿರಿ"
+
 #: openlibrary/plugins/openlibrary/librarian_dashboard.py
 msgid "At least 1 subject"
 msgstr "ಕನಿಷ್ಠ 1 ವಿಷಯ"
@@ -10793,6 +11207,10 @@ msgstr "ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ"
 msgid "You are not allowed to add an Internet Archive ID."
 msgstr "ನೀವು Internet Archive ID ಸೇರಿಸಲು ಅನುಮತಿ ಹೊಂದಿಲ್ಲ."
 
+#: openlibrary/plugins/upstream/addbook.py
+msgid "You are not allowed to add a Book URL."
+msgstr "ನೀವು ಪುಸ್ತಕ URL ಸೇರಿಸಲು ಅನುಮತಿ ಹೊಂದಿಲ್ಲ."
+
 #: openlibrary/plugins/upstream/borrow.py
 msgid "this book"
 msgstr "ಈ ಪುಸ್ತಕ"
@@ -10929,6 +11347,86 @@ msgstr "ಕ್ಲಾಸಿಕ್ ಇ-ಪುಸ್ತಕಗಳನ್ನು ಮರ
 #, python-format
 msgid "%(title)s - search"
 msgstr "%(title)s - ಹುಡುಕಾಟ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Relevance"
+msgstr "ಪ್ರಸ್ತುತತೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Count"
+msgstr "ಕೃತಿಗಳ ಸಂಖ್ಯೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Random"
+msgstr "ಯಾದೃಚ್ಛಿಕ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (oldest) (beta: Librarian only)"
+msgstr "ಜನ್ಮ ದಿನಾಂಕ (ಹಳೆಯದು) (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Birth Date (youngest) (beta: Librarian only)"
+msgstr "ಜನ್ಮ ದಿನಾಂಕ (ಕಿರಿಯದು) (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "List Order"
+msgstr "ಪಟ್ಟಿ ಕ್ರಮ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Added"
+msgstr "ಇತ್ತೀಚೆಗೆ ಸೇರಿಸಲಾಗಿದೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Recently Edited"
+msgstr "ಇತ್ತೀಚೆಗೆ ಸಂಪಾದಿಸಲಾಗಿದೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Language Name"
+msgstr "ಭಾಷೆಯ ಹೆಸರು"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Ebook Edition Count"
+msgstr "ಇ-ಪುಸ್ತಕ ಆವೃತ್ತಿಗಳ ಸಂಖ್ಯೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (newest)"
+msgstr "ಸೇರಿಸಿದ ದಿನಾಂಕ (ಹೊಸದು)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Date Added (oldest)"
+msgstr "ಸೇರಿಸಿದ ದಿನಾಂಕ (ಹಳೆಯದು)"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "First Published"
+msgstr "ಮೊದಲು ಪ್ರಕಟಿಸಲಾಗಿದೆ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Your Top Rated"
+msgstr "ನಿಮ್ಮ ಉನ್ನತ ರೇಟಿಂಗ್"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Wanted"
+msgstr "ಹೆಚ್ಚು ಬಯಸಿದ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Editions"
+msgstr "ಹೆಚ್ಚು ಆವೃತ್ತಿಗಳು"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Most Recent"
+msgstr "ಇತ್ತೀಚಿನ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Top Rated"
+msgstr "ಉನ್ನತ ರೇಟಿಂಗ್"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Any"
+msgstr "ಯಾವುದಾದರೂ"
+
+#: openlibrary/plugins/worksearch/sort_menu.py
+msgid "Work Title (beta: Librarian only)"
+msgstr "ಕೃತಿ ಶೀರ್ಷಿಕೆ (ಬೀಟಾ: ಗ್ರಂಥಪಾಲಕರಿಗೆ ಮಾತ್ರ)"
 
 #: openlibrary/views/loanstats.py
 msgid "Changes people, not bots, saved to editions and works, from the Tasks page or anywhere else."
@@ -11125,4 +11623,31 @@ msgstr "ಚಾರ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸ
 
 #~ msgid "Records and other pages"
 #~ msgstr "ದಾಖಲೆಗಳು ಮತ್ತು ಇತರ ಪುಟಗಳು"
+
+#~ msgid "%(percent)s%% done, goal %(goal)s%%"
+#~ msgstr "%(percent)s%% ಪೂರ್ಣಗೊಂಡಿದೆ, ಗುರಿ %(goal)s%%"
+
+#~ msgid "My notes for an edition of "
+#~ msgstr "ಇದರ ಒಂದು ಆವೃತ್ತಿಗಾಗಿ ನನ್ನ ಟಿಪ್ಪಣಿಗಳು "
+
+#~ msgid "There isn't a DAISY file available for "
+#~ msgstr "ಇದಕ್ಕಾಗಿ ಯಾವುದೇ DAISY ಫೈಲ್ ಲಭ್ಯವಿಲ್ಲ "
+
+#~ msgid "The <a href=\"//archive.org\">Internet Archive</a> is proud to be distributing over 1 million books free in a format called DAISY, designed for those of us who find it challenging to use regular printed media. "
+#~ msgstr "ಸಾಮಾನ್ಯ ಮುದ್ರಿತ ಮಾಧ್ಯಮವನ್ನು ಬಳಸಲು ಕಷ್ಟಪಡುವ ನಮ್ಮಲ್ಲಿ ಕೆಲವರಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ DAISY ಎಂಬ ಸ್ವರೂಪದಲ್ಲಿ 10 ಲಕ್ಷಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳನ್ನು ಉಚಿತವಾಗಿ ವಿತರಿಸುತ್ತಿರುವುದಕ್ಕೆ <a href=\"//archive.org\">Internet Archive</a> ಹೆಮ್ಮೆಪಡುತ್ತದೆ. "
+
+#~ msgid " Please read our <a href=\"/help/faq\">FAQ on accessing books through Open Library</a>."
+#~ msgstr " Open Library ಮೂಲಕ ಪುಸ್ತಕಗಳನ್ನು ಪ್ರವೇಶಿಸುವ ಕುರಿತು ನಮ್ಮ <a href=\"/help/faq\">FAQ</a> ಅನ್ನು ದಯವಿಟ್ಟು ಓದಿ."
+
+#~ msgid " by %(name)s"
+#~ msgstr " %(name)s ಅವರಿಂದ"
+
+#~ msgid "Search Open Library for %s"
+#~ msgstr "%s ಗಾಗಿ Open Library ಯಲ್ಲಿ ಹುಡುಕಿ"
+
+#~ msgid "Search Open Library for \"%(query)s\""
+#~ msgstr "\"%(query)s\" ಗಾಗಿ Open Library ಯಲ್ಲಿ ಹುಡುಕಿ"
+
+#~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
+#~ msgstr "ಟಾಸ್ಕ್ ಅಂಕಿಅಂಶಗಳು: ಯಾರು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾರೆ, ಮತ್ತು ಟಾಸ್ಕ್ ಸಂಪಾದನೆಗಳು ಹೇಗೆ ಬಾಳಿಕೆ ಬರುತ್ತವೆ"
 
