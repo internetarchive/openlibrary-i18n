@@ -538,7 +538,7 @@ msgstr "ರದ್ದುಮಾಡಿ"
 msgid "Continue without waiting"
 msgstr "ಕಾಯದೆ ಮುಂದುವರಿಸಿ"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
 
@@ -3253,7 +3253,7 @@ msgstr "Open Library ಗೆ ಪುಸ್ತಕವನ್ನು ಸೇರಿಸಿ
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "ಹೊಸ ದಾಖಲೆಯನ್ನು ರಚಿಸಲು ನಮಗೆ ಕನಿಷ್ಠ ಕ್ಷೇತ್ರಗಳ ಸೆಟ್ ಅಗತ್ಯವಿದೆ. ಅವು ಈ ಕ್ಷೇತ್ರಗಳಾಗಿವೆ."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "ಶೀರ್ಷಿಕೆ"
 
@@ -3265,7 +3265,7 @@ msgstr "ಉಪಶೀರ್ಷಿಕೆ ಸೇರಿಸಲು <b><i>ಶೀರ್�
 msgid "Required field"
 msgstr "ಅಗತ್ಯ ಕ್ಷೇತ್ರ"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "ಲೇಖಕ"
 
@@ -3391,7 +3391,7 @@ msgstr "ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆ ಮಾಡುವ ಮೊ
 msgid "Select this book"
 msgstr "ಈ ಪುಸ್ತಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6272,7 +6272,7 @@ msgstr "%(count)d ದಾಖಲೆಗಳನ್ನು ಮಾರ್ಪಡಿಸಲ�
 msgid "All fields"
 msgstr "ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳು"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8655,6 +8655,132 @@ msgstr "ಪ್ರತಿ ಆವೃತ್ತಿಗೆ ಕೇವಲ ಒಂದು In
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s ಗಾಗಿ ಗುರುತಿಸುವಿಕೆ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ."
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "ದಯವಿಟ್ಟು ಒಂದು ಹೆಡರ್ ಸಾಲನ್ನು ಸೇರಿಸಿ. ಬೆಂಬಲಿತ ಕಾಲಮ್‌ಗಳಲ್ಲಿ ಇವು ಸೇರಿವೆ: \"Title\", \"Author\", \"ISBN\"."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "ಕೆಳಗೆ ನಿಮ್ಮ ಪುಸ್ತಕಗಳನ್ನು ನಮೂದಿಸಿ."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "ಪ್ರತಿ ಸಾಲಿಗೆ ಒಂದು, ಅಥವಾ ಸ್ಪ್ರೆಡ್‌ಶೀಟ್‌ನಿಂದ ಅಂಟಿಸಿ."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "ನಿಮ್ಮ ಪುಸ್ತಕಗಳನ್ನು ನಮೂದಿಸಿ..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "ಪುಸ್ತಕಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "ಮೇಲಿನ ನಿಮ್ಮ ಪುಸ್ತಕಗಳನ್ನು ಶೀರ್ಷಿಕೆ ಮತ್ತು ಲೇಖಕರಂತಹ ರಚನಾತ್ಮಕ ಮಾಹಿತಿಗೆ ಹೇಗೆ ಪರಿವರ್ತಿಸುವುದು."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "ಎಕ್ಸ್‌ಟ್ರಾಕ್ಟರ್"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API ಕೀ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "ಇಲ್ಲಿ OpenAI API ಕೀ ನಮೂದಿಸಿ...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "ಪುಸ್ತಕಗಳನ್ನು ಹೊಂದಿಸಿ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "ರಚನಾತ್ಮಕ ಡೇಟಾ ಕಂಡುಬಂದ ನಂತರ, ಅದನ್ನು OpenLibrary ನಲ್ಲಿರುವ ಪುಸ್ತಕದೊಂದಿಗೆ ಹೊಂದಿಸುವ ಸಮಯ!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "ಆಯ್ಕೆಗಳು"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "ಹುಡುಕಾಟ ಪ್ರಶ್ನೆಯಲ್ಲಿ ಲೇಖಕರನ್ನು ಬಳಸಿ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "ನಿಮ್ಮ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಉಳಿಸಿ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "ಈಗ ನೀವು ನಿಮ್ಮ ಪುಸ್ತಕಗಳನ್ನು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ, ಅವುಗಳನ್ನು ನಿಮ್ಮ ಓದುವ ದಾಖಲೆಗೆ ಏಕೆ ಉಳಿಸಬಾರದು? ಅಥವಾ ಪಟ್ಟಿಗೆ?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Open Library ನಲ್ಲಿ ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "ಹೊರತೆಗೆದ ಪುಸ್ತಕಗಳು"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "ಹೊಂದಾಣಿಕೆಯಾದ ಪುಸ್ತಕಗಳು"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "ಯಾವುದೇ ಪುಸ್ತಕಗಳು ಕಂಡುಬಂದಿಲ್ಲ"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "ಮಾದರಿ: ಲೇಖಕರಿಂದ ಶೀರ್ಷಿಕೆ"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "ಮಾದರಿ: ಲೇಖಕ - ಶೀರ್ಷಿಕೆ"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "ಮಾದರಿ: ಶೀರ್ಷಿಕೆ - ಲೇಖಕ"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "ಮಾದರಿ: ಶೀರ್ಷಿಕೆ (ಲೇಖಕ)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "ವಿಕಿಪೀಡಿಯ ಉಲ್ಲೇಖ ಮಾದರಿ: (ಉದಾ. Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI ಹೊರತೆಗೆಯುವಿಕೆ (ಬೀಟಾ)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "ಟೇಬಲ್/ಸ್ಪ್ರೆಡ್‌ಶೀಟ್‌ನಿಂದ ಹೊರತೆಗೆಯಿರಿ"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "ಮಾದರಿಯನ್ನು ಪ್ರಯತ್ನಿಸಿ..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "1927 ರ ಪುಸ್ತಕಗಳು"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023 ಸಾರ್ವಜನಿಕ ಡೊಮೈನ್ ದಿನ"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "ಹತ್ಯಾಕಾಂಡ ವಿಕಿಪೀಡಿಯ ಉಲ್ಲೇಖಗಳು"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8667,6 +8793,22 @@ msgstr "ಅಮಾನ್ಯ ಗುರುತಿಸುವಿಕೆ"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "ಆ ID ಈಗಾಗಲೇ ಒಂದು ಗುರುತಿಸುವಿಕೆಗೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ."
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "ನಿಮ್ಮ ವಿಮರ್ಶೆಗಳನ್ನು ಸೇರಿಸಿ:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "ಮೇಲೆ ಪಟ್ಟಿ ಮಾಡಲಾದ ವಿಮರ್ಶೆಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "ಯಾವುದೇ ಟ್ಯಾಗ್‌ಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "ಮೌಲ್ಯವನ್ನು ತೆಗೆದುಹಾಕಿ"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9840,10 +9982,6 @@ msgstr "5 ರಲ್ಲಿ %(rating)s ರೇಟ್ ಮಾಡಿ"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "ರೇಟಿಂಗ್ ತೆರವುಗೊಳಿಸಿ"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
