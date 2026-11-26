@@ -539,7 +539,7 @@ msgstr "Kanselahin"
 msgid "Continue without waiting"
 msgstr "Magpatuloy nang hindi nag-aantay"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Naglo-load..."
 
@@ -3392,7 +3392,7 @@ msgstr "Pakisuyong kumpletuhin ang reCAPTCHA sa itaas bago pumili ng libro."
 msgid "Select this book"
 msgstr "Pumili ng librong ito"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5775,7 +5775,7 @@ msgstr "Unang nailathala noong"
 msgid "Visit this author's page in a new window"
 msgstr "Bisitahin ang pahina ng may-akdang ito sa isang bagong bintana"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "Komento:"
 
@@ -5783,11 +5783,11 @@ msgstr "Komento:"
 msgid "Comment..."
 msgstr "Komento..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "Humiling ng Pagsamahin"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "Tanggihan ang Pagsamahin"
 
@@ -8656,6 +8656,53 @@ msgstr "Isang Internet Archive ID lang ang pinapayagan bawat edisyon."
 msgid "An identifier for %(name)s already exists."
 msgstr "Mayroon nang tagatukoy para sa %(name)s."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "Ipagsama"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "Sine-save..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "Tapos na"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "Walang record na ipagsasama. Magtakda ng mga record sa url tulad nito:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "Ipakita ang mga pagkakaiba sa teksto"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "Ipakita ang mga diff ng teksto"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "Ang pangunahing record ay dapat na isang work — maaaring isama ang mga edisyon sa isang pagsasama, pero hindi maaaring piliin bilang pangunahin."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "Hindi maisagawa ang pagsasama: mayroong %(works)s na higit sa %(limit)s na edisyon."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "Nabigo ang pagsasama, maaaring kulang ang iyong account ng pahintulot na /usergroup/api."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "Nabigo ang pagsasama (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "Sarado na ang kahilingan sa pagsasama"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8794,6 +8841,75 @@ msgstr "Di-wastong tagatukoy"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Umiiral na ang ID na iyon para sa isang tagatukoy."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "I-click upang palakihin ang larawan ng cover"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "Ang edisyong ito ay may maraming OCLC"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "Ang edisyong ito ay may maraming posibleng ASIN"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s p"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(pahina: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s item)"
+msgstr[1] ".%(field)s (%(count)s item)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "mga listahan"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "TB:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "Mga Rating:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "Error sa network: nabigong mag-load"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s listahan"
+msgstr[1] "%(count)s listahan"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "Pangunahing Record"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "Isama sa Pagsasama"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "Error sa network; nabigong i-load ang mga edisyon para sa %(key)s. I-click ang OK upang i-reload."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

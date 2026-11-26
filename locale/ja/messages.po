@@ -538,7 +538,7 @@ msgstr "キャンセル"
 msgid "Continue without waiting"
 msgstr "待たずに続行"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -3372,7 +3372,7 @@ msgstr "本を選択する前に、上記のreCAPTCHAを完了してください
 msgid "Select this book"
 msgstr "この本を選択"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5742,7 +5742,7 @@ msgstr "初出版："
 msgid "Visit this author's page in a new window"
 msgstr "この著者のページを新しいウィンドウで表示"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "コメント："
 
@@ -5750,11 +5750,11 @@ msgstr "コメント："
 msgid "Comment..."
 msgstr "コメント..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "統合をリクエスト"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "統合を拒否"
 
@@ -8601,6 +8601,53 @@ msgstr "版ごとに許可されるInternet Archive IDは1つのみです。"
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)sの識別子はすでに存在します。"
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "統合を実行"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "保存中..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "完了"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "統合するレコードがありません。次のようにURLでレコードを指定してください:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "テキストの違いを表示"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "テキストの差分を表示"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "主レコードはワーク（work）である必要があります — 版（edition）は統合に含めることはできますが、主レコードとして選択することはできません。"
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "統合できませんでした: %(works)s には %(limit)s を超える版があります。"
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "統合に失敗しました。アカウントに /usergroup/api の権限がない可能性があります。"
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "統合に失敗しました (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "統合リクエストはクローズされました"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8739,6 +8786,73 @@ msgstr "無効な識別子"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "このIDはすでに識別子として存在します。"
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "クリックして表紙画像を拡大"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "この版には複数のOCLCがあります"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "この版には複数の候補ASINがあります"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s ページ"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(ページ: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s 件)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "リスト"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "RL:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "評価:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "ネットワークエラー: 読み込みに失敗しました"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s リスト"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "主レコード"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "統合に含める"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "ネットワークエラー: %(key)s の版の読み込みに失敗しました。OKをクリックして再読み込みしてください。"
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

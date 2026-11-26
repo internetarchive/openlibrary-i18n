@@ -541,7 +541,7 @@ msgstr "Prekini"
 msgid "Continue without waiting"
 msgstr "Nastavi bez čekanja"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Učitavanje …"
 
@@ -3413,7 +3413,7 @@ msgstr "Riješite reCAPTCHA iznad prije odabira knjige."
 msgid "Select this book"
 msgstr "Odaberi ovu knjigu"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5809,7 +5809,7 @@ msgstr "Prvi put izdano"
 msgid "Visit this author's page in a new window"
 msgstr "Posjeti stranicu ovog autora u novom prozoru"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "Komentar:"
 
@@ -5817,11 +5817,11 @@ msgstr "Komentar:"
 msgid "Comment..."
 msgstr "Komentar …"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "Zatraži sjedinjavanje"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "Odbij sjedinjavanje"
 
@@ -8714,6 +8714,53 @@ msgstr "Po izdanju je dopušten samo jedan Internet Archive ID."
 msgid "An identifier for %(name)s already exists."
 msgstr "Identifikator za %(name)s već postoji."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "Izvrši spajanje"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "Spremanje..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "Gotovo"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "Nema zapisa za spajanje. Navedite neke zapise u URL-u ovako:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "Prikaži tekstualne razlike"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "Prikaži razlike teksta"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "Primarni zapis mora biti djelo (work) — izdanja se mogu uključiti u spajanje, ali se ne mogu odabrati kao primarna."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "Spajanje nije uspjelo: %(works)s ima više od %(limit)s izdanja."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "Spajanje nije uspjelo, vašem računu možda nedostaje dopuštenje /usergroup/api."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "Spajanje nije uspjelo (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "Zahtjev za spajanje zatvoren"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8852,6 +8899,77 @@ msgstr "Neispravan identifikator"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Taj ID već postoji za jedan identifikator."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "Kliknite za povećanje slike naslovnice"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "Ovo izdanje ima više OCLC brojeva"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "Ovo izdanje ima više mogućih ASIN brojeva"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s str"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(stranica: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s stavka)"
+msgstr[1] ".%(field)s (%(count)s stavke)"
+msgstr[2] ".%(field)s (%(count)s stavki)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "popisi"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "DČ:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "Ocjene:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "Mrežna pogreška: učitavanje nije uspjelo"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s popis"
+msgstr[1] "%(count)s popisa"
+msgstr[2] "%(count)s popisa"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "Primarni zapis"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "Uključi u spajanje"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "Mrežna pogreška; učitavanje izdanja za %(key)s nije uspjelo. Kliknite U redu za ponovno učitavanje."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

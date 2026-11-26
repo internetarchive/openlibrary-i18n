@@ -538,7 +538,7 @@ msgstr "取消"
 msgid "Continue without waiting"
 msgstr "不等待，继续"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -3372,7 +3372,7 @@ msgstr "请在选择图书之前完成上方的 reCAPTCHA 验证。"
 msgid "Select this book"
 msgstr "选择此书籍"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5742,7 +5742,7 @@ msgstr "首次出版于"
 msgid "Visit this author's page in a new window"
 msgstr "在新窗口中访问该作者的页面"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "备注："
 
@@ -5750,11 +5750,11 @@ msgstr "备注："
 msgid "Comment..."
 msgstr "备注……"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "请求合并"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "拒绝合并"
 
@@ -8601,6 +8601,53 @@ msgstr "每个版本只允许一个Internet Archive ID。"
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s的标识符已存在。"
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "执行合并"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "保存中..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "完成"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "没有可合并的记录。请在网址中按如下方式指定一些记录："
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "显示文本差异"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "显示文字差异"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "主记录必须是一个作品（work）——版本可以包含在合并中，但不能被选为主记录。"
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "无法合并：%(works)s 的版本数超过了 %(limit)s 个。"
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "合并失败，您的账户可能缺少 /usergroup/api 权限。"
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "合并失败 (HTTP %(status)s)：%(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "合并请求已关闭"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8739,6 +8786,73 @@ msgstr "无效的标识符"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "该ID已存在于某个标识符中。"
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "点击放大封面图片"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "此版本有多个 OCLC"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "此版本有多个可能的 ASIN"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s 页"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "（页：%(page)s）"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s 项)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "列表"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "阅读记录："
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "评分："
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "网络错误：加载失败"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s 个列表"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "主记录"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "包含在合并中"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "网络错误；加载 %(key)s 的版本失败。点击确定重新加载。"
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

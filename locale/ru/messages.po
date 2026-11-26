@@ -540,7 +540,7 @@ msgstr "Отмена"
 msgid "Continue without waiting"
 msgstr "Продолжить без ожидания"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Загрузка..."
 
@@ -3412,7 +3412,7 @@ msgstr "Пожалуйста, пройдите проверку reCAPTCHA выш
 msgid "Select this book"
 msgstr "Выбрать эту книгу"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5808,7 +5808,7 @@ msgstr "Впервые опубликовано"
 msgid "Visit this author's page in a new window"
 msgstr "Посетить страницу автора в новом окне"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "Комментарий:"
 
@@ -5816,11 +5816,11 @@ msgstr "Комментарий:"
 msgid "Comment..."
 msgstr "Комментарий..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "Запросить объединение"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "Отклонить объединение"
 
@@ -8711,6 +8711,53 @@ msgstr "Для одного издания разрешён только оди�
 msgid "An identifier for %(name)s already exists."
 msgstr "Идентификатор для %(name)s уже существует."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "Выполнить слияние"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "Сохранение..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "Готово"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "Нет записей для слияния. Укажите несколько записей в URL вот так:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "Показать текстовые различия"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "Показать различия текста"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "Основная запись должна быть произведением (work) — издания можно включать в слияние, но нельзя выбирать как основные."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "Не удалось выполнить слияние: %(works)s имеет более %(limit)s изданий."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "Слияние не удалось, возможно, у вашей учетной записи отсутствует разрешение /usergroup/api."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "Слияние не удалось (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "Запрос на слияние закрыт"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8849,6 +8896,77 @@ msgstr "Недействительный идентификатор"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Этот ID уже существует для одного из идентификаторов."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "Нажмите, чтобы увеличить изображение обложки"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "У этого издания несколько номеров OCLC"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "У этого издания несколько возможных ASIN"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s с"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(страница: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s элемент)"
+msgstr[1] ".%(field)s (%(count)s элемента)"
+msgstr[2] ".%(field)s (%(count)s элементов)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "списки"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "ДЧ:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "Оценки:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "Ошибка сети: не удалось загрузить"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s список"
+msgstr[1] "%(count)s списка"
+msgstr[2] "%(count)s списков"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "Основная запись"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "Включить в слияние"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "Ошибка сети; не удалось загрузить издания для %(key)s. Нажмите OK, чтобы перезагрузить."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

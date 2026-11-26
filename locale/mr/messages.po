@@ -538,7 +538,7 @@ msgstr "रद्द करा"
 msgid "Continue without waiting"
 msgstr "प्रतीक्षा न करता पुढे जा"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "लोड होत आहे..."
 
@@ -3391,7 +3391,7 @@ msgstr "पुस्तक निवडण्यापूर्वी कृप�
 msgid "Select this book"
 msgstr "हे पुस्तक निवडा"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5774,7 +5774,7 @@ msgstr "प्रथम प्रकाशित"
 msgid "Visit this author's page in a new window"
 msgstr "या लेखकाचे पृष्ठ नवीन विंडोमध्ये भेट द्या"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "टिप्पणी:"
 
@@ -5782,11 +5782,11 @@ msgstr "टिप्पणी:"
 msgid "Comment..."
 msgstr "टिप्पणी..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "विलीनीकरणाची विनंती करा"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "विलीनीकरण नाकारा"
 
@@ -8655,6 +8655,53 @@ msgstr "प्रत्येक संस्करणासाठी फक्�
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s साठी ओळखकर्ता आधीपासूनच अस्तित्वात आहे."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "विलीन करा"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "जतन करत आहे..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "पूर्ण झाले"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "विलीन करण्यासाठी कोणतेही रेकॉर्ड नाहीत. URL मध्ये असे काही रेकॉर्ड निर्दिष्ट करा:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "मजकुरातील फरक दर्शवा"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "मजकूर फरक दर्शवा"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "प्राथमिक रेकॉर्ड हे एक वर्क असणे आवश्यक आहे — आवृत्त्या विलीनीकरणात समाविष्ट केल्या जाऊ शकतात, परंतु त्या प्राथमिक म्हणून निवडल्या जाऊ शकत नाहीत."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "विलीन करता आले नाही: %(works)s मध्ये %(limit)s पेक्षा जास्त आवृत्त्या आहेत."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "विलीनीकरण अयशस्वी झाले, तुमच्या खात्याला /usergroup/api परवानगी नसू शकते."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "विलीनीकरण अयशस्वी झाले (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "विलीनीकरण विनंती बंद केली"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8793,6 +8840,75 @@ msgstr "अवैध ओळखकर्ता"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "ती ID एका ओळखकर्त्यासाठी आधीपासूनच अस्तित्वात आहे."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "मुखपृष्ठ प्रतिमा मोठी करण्यासाठी क्लिक करा"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "या आवृत्तीमध्ये अनेक OCLC आहेत"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "या आवृत्तीमध्ये अनेक संभाव्य ASIN आहेत"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s पृ"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(पृष्ठ: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s आयटम)"
+msgstr[1] ".%(field)s (%(count)s आयटम)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "याद्या"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "नोंद:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "रेटिंग:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "नेटवर्क त्रुटी: लोड करण्यात अयशस्वी"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s यादी"
+msgstr[1] "%(count)s याद्या"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "प्राथमिक रेकॉर्ड"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "विलीनीकरणात समाविष्ट करा"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "नेटवर्क त्रुटी; %(key)s साठी आवृत्त्या लोड करण्यात अयशस्वी. पुन्हा लोड करण्यासाठी ओके क्लिक करा."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

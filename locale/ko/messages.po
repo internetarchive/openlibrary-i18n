@@ -537,7 +537,7 @@ msgstr "취소"
 msgid "Continue without waiting"
 msgstr "기다리지 않고 계속"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "로딩 중..."
 
@@ -3371,7 +3371,7 @@ msgstr "책을 선택하기 전에 위의 reCAPTCHA를 완료해 주세요."
 msgid "Select this book"
 msgstr "이 책 선택"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5741,7 +5741,7 @@ msgstr "초판 발행 연도:"
 msgid "Visit this author's page in a new window"
 msgstr "새 창에서 이 저자의 페이지 열기"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "댓글:"
 
@@ -5749,11 +5749,11 @@ msgstr "댓글:"
 msgid "Comment..."
 msgstr "댓글..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "병합 요청"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "병합 거절"
 
@@ -8600,6 +8600,53 @@ msgstr "판본당 하나의 Internet Archive ID만 허용됩니다."
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s에 대한 식별자가 이미 존재합니다."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "병합 실행"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "저장 중..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "완료"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "병합할 레코드가 없습니다. 다음과 같이 URL에 레코드를 지정하세요:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "텍스트 차이점 표시"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "텍스트 차이 표시"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "기본 레코드는 반드시 작품(work)이어야 합니다 — 판본(edition)은 병합에 포함될 수 있지만 기본으로 선택할 수는 없습니다."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "병합할 수 없습니다: %(works)s에 %(limit)s개보다 많은 판본이 있습니다."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "병합에 실패했습니다. 계정에 /usergroup/api 권한이 없을 수 있습니다."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "병합에 실패했습니다 (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "병합 요청이 닫혔습니다"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8738,6 +8785,73 @@ msgstr "유효하지 않은 식별자"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "해당 ID는 이미 다른 식별자에 존재합니다."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "표지 이미지를 확대하려면 클릭하세요"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "이 판본에는 여러 개의 OCLC가 있습니다"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "이 판본에는 여러 개의 잠재적 ASIN이 있습니다"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s쪽"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(쪽: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s개 항목)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "목록"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "RL:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "평점:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "네트워크 오류: 로드하지 못했습니다"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s개 목록"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "기본 레코드"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "병합에 포함"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "네트워크 오류; %(key)s의 판본을 로드하지 못했습니다. 다시 로드하려면 확인을 클릭하세요."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"

@@ -539,7 +539,7 @@ msgstr "Cancel·la"
 msgid "Continue without waiting"
 msgstr "Continua sense esperar"
 
-#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue MergeUI.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Carregant..."
 
@@ -3392,7 +3392,7 @@ msgstr "Completeu el reCAPTCHA de dalt abans de triar un llibre."
 msgid "Select this book"
 msgstr "Selecciona aquest llibre"
 
-#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -5775,7 +5775,7 @@ msgstr "Publicat per primera vegada el"
 msgid "Visit this author's page in a new window"
 msgstr "Visita la pàgina d'aquest autor en una finestra nova"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Comment:"
 msgstr "Comentari:"
 
@@ -5783,11 +5783,11 @@ msgstr "Comentari:"
 msgid "Comment..."
 msgstr "Comentari..."
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Request Merge"
 msgstr "Sol·licita la fusió"
 
-#: merge/authors.html
+#: MergeUI.vue merge/authors.html
 msgid "Reject Merge"
 msgstr "Rebutja la fusió"
 
@@ -8656,6 +8656,53 @@ msgstr "Només es permet un ID d'Internet Archive per edició."
 msgid "An identifier for %(name)s already exists."
 msgstr "Ja existeix un identificador per a %(name)s."
 
+#: MergeUI.vue
+msgid "Do Merge"
+msgstr "Fusiona"
+
+#: MergeUI.vue
+msgid "Saving..."
+msgstr "Desant..."
+
+#: MergeUI.vue
+msgid "Done"
+msgstr "Fet"
+
+#. Followed by an example of the URL parameter that lists the records to merge.
+#: MergeUI.vue
+msgid "No records to merge. Specify some records in the url like so:"
+msgstr "No hi ha registres per fusionar. Especifiqueu alguns registres a l'URL així:"
+
+#: MergeUI.vue
+msgid "Show textual differences"
+msgstr "Mostra les diferències textuals"
+
+#: MergeUI.vue
+msgid "Show text diffs"
+msgstr "Mostra les diferències de text"
+
+#: MergeUI.vue
+msgid "The primary record must be a work — editions can be included in a merge, but not chosen as the primary."
+msgstr "El registre principal ha de ser una obra — les edicions es poden incloure en una fusió, però no es poden triar com a principal."
+
+#: MergeUI.vue
+#, python-format
+msgid "Could not merge: %(works)s has more than %(limit)s editions."
+msgstr "No s'ha pogut fusionar: %(works)s té més de %(limit)s edicions."
+
+#: MergeUI.vue
+msgid "Merge failed, your account may be missing the /usergroup/api permission."
+msgstr "La fusió ha fallat, és possible que al vostre compte li falti el permís /usergroup/api."
+
+#: MergeUI.vue
+#, python-format
+msgid "Merge failed (HTTP %(status)s): %(message)s"
+msgstr "La fusió ha fallat (HTTP %(status)s): %(message)s"
+
+#: MergeUI.vue
+msgid "Merge request closed"
+msgstr "Sol·licitud de fusió tancada"
+
 #. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
 #: BulkSearch/components/BulkSearchControls.vue
 msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
@@ -8794,6 +8841,75 @@ msgstr "Identificador no vàlid"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Aquest ID ja existeix per a un identificador."
+
+#: MergeUI/EditionSnippet.vue
+msgid "Click to enlarge cover image"
+msgstr "Feu clic per ampliar la imatge de la coberta"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple OCLCs"
+msgstr "Aquesta edició té diversos OCLC"
+
+#: MergeUI/EditionSnippet.vue
+msgid "This edition has multiple potential ASINs"
+msgstr "Aquesta edició té diversos ASIN potencials"
+
+#. Abbreviation of "pages", after the edition's page count.
+#: MergeUI/EditionSnippet.vue
+#, python-format
+msgid "%(pages)s p"
+msgstr "%(pages)s p"
+
+#: MergeUI/ExcerptsTable.vue
+#, python-format
+msgid "(page: %(page)s)"
+msgstr "(pàgina: %(page)s)"
+
+#: MergeUI/MergeRowField.vue
+#, python-format
+msgid ".%(field)s (%(count)s item)"
+msgid_plural ".%(field)s (%(count)s items)"
+msgstr[0] ".%(field)s (%(count)s element)"
+msgstr[1] ".%(field)s (%(count)s elements)"
+
+#. Shown after a loading or warning icon, in place of the number of lists the work is on.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "lists"
+msgstr "llistes"
+
+#. Abbreviation of "Reading Log"; followed by the counts of readers who want to read, are reading and have read the work.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "RL:"
+msgstr "RL:"
+
+#. Label for the number of ratings the work has.
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Ratings:"
+msgstr "Valoracions:"
+
+#: MergeUI/MergeRowReferencesField.vue
+msgid "Network error: failed to load"
+msgstr "Error de xarxa: no s'ha pogut carregar"
+
+#: MergeUI/MergeRowReferencesField.vue
+#, python-format
+msgid "%(count)s list"
+msgid_plural "%(count)s lists"
+msgstr[0] "%(count)s llista"
+msgstr[1] "%(count)s llistes"
+
+#: MergeUI/MergeTable.vue
+msgid "Primary Record"
+msgstr "Registre principal"
+
+#: MergeUI/MergeTable.vue
+msgid "Include in Merge"
+msgstr "Inclou a la fusió"
+
+#: MergeUI/utils.js
+#, python-format
+msgid "Network error; failed to load editions for %(key)s. Click OK to reload."
+msgstr "Error de xarxa; no s'han pogut carregar les edicions de %(key)s. Feu clic a D'acord per tornar a carregar."
 
 #: ObservationForm/components/CategorySelector.vue
 msgid "Add your reviews:"
