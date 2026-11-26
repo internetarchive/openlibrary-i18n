@@ -537,7 +537,7 @@ msgstr "취소"
 msgid "Continue without waiting"
 msgstr "기다리지 않고 계속"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "로딩 중..."
 
@@ -3233,7 +3233,7 @@ msgstr "Open Library에 책 추가"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "새 레코드를 만들려면 최소한의 필드가 필요합니다. 아래가 그 필드들입니다."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "제목"
 
@@ -3245,7 +3245,7 @@ msgstr "부제를 추가하려면 <b><i>제목: 부제</i></b> 형식을 사용�
 msgid "Required field"
 msgstr "필수 항목"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "저자"
 
@@ -3371,7 +3371,7 @@ msgstr "책을 선택하기 전에 위의 reCAPTCHA를 완료해 주세요."
 msgid "Select this book"
 msgstr "이 책 선택"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6234,7 +6234,7 @@ msgstr "%(count)d개 레코드가 수정되었습니다."
 msgid "All fields"
 msgstr "모든 필드"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8600,6 +8600,132 @@ msgstr "판본당 하나의 Internet Archive ID만 허용됩니다."
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s에 대한 식별자가 이미 존재합니다."
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "헤더 행을 포함해 주세요. 지원되는 열에는 다음이 포함됩니다: \"Title\", \"Author\", \"ISBN\"."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "아래에 책을 입력하세요."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "한 줄에 하나씩 입력하거나 스프레드시트에서 붙여넣으세요."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "책을 입력하세요..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "책 추출"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "위의 책을 제목 및 저자와 같은 구조화된 정보로 변환하는 방법."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "추출기"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API 키"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "여기에 OpenAI API 키를 입력하세요...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "책 매칭"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "구조화된 데이터를 찾았다면 이제 OpenLibrary의 책과 매칭할 차례입니다!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "옵션"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "검색 쿼리에 저자 사용"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "매칭 결과 저장"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "이제 책을 찾았으니, 독서 기록이나 목록에 저장해 보는 건 어떨까요?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "리스트에 추가"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Open Library에서 결과 보기"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "추출된 책"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "매칭된 책"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "책을 찾을 수 없습니다"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "패턴: 저자별 제목"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "패턴: 저자 - 제목"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "패턴: 제목 - 저자"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "패턴: 제목 (저자)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "위키백과 인용 패턴: (예: Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI 추출 (베타)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "표/스프레드시트에서 추출"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "샘플 사용해보기..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "1927년 책"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023 퍼블릭 도메인 데이"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "홀로코스트 위키백과 인용"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8612,6 +8738,22 @@ msgstr "유효하지 않은 식별자"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "해당 ID는 이미 다른 식별자에 존재합니다."
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "리뷰 추가:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "위에 나열된 리뷰가 저장되었습니다."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "선택된 태그가 없습니다."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "값 제거"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9782,10 +9924,6 @@ msgstr "5점 중 %(rating)s점으로 평가"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "평점 삭제"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "리스트에 추가"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
