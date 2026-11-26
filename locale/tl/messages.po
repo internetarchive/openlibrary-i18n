@@ -183,7 +183,7 @@ msgstr[1] "%(count)s item"
 msgid "Status:"
 msgstr "Katayuan:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "Lahat"
 
@@ -244,7 +244,7 @@ msgstr "Mag-import ng Mga Item"
 msgid "Import Time"
 msgstr "Oras ng Pag-import"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "Error"
 
@@ -268,7 +268,7 @@ msgstr "Mga Komento"
 msgid "Not yet imported"
 msgstr "Hindi pa nai-import"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "Tukuyin"
 
@@ -835,7 +835,7 @@ msgstr "Gustong Basahin"
 msgid "Currently Reading"
 msgstr "Kasalukuyan Nang Binabasa"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Basahin"
 
@@ -894,7 +894,7 @@ msgstr "Basahin ang \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Umatras ng \"%(title)s\""
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Hiramin"
 
@@ -1016,63 +1016,63 @@ msgstr "Mga Aklat"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Ang paghahanap sa solr ay tumagal ng %(count)s segundo"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Ang Koponan ng Open Library"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Ang Open Library ay naging posible dahil sa isang dedikadong koponan ng mga tauhan at mahigit 100 boluntaryo mula sa iba't ibang panig ng mundo."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "Gustong sumali sa amin?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "Papel:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "Mga Tauhan"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "Mga Pinuno"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "Mga Kasamahan"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "Mga Boluntaryo"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "Kagawaran:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "Komunikasyon"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "Disenyo"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "Inhenyeriya"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "Librarian"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "Taon:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Kung ikaw ay magboboluntaryo sa Open Library at nais maging bahagi ng koponan, kumpletuhin ang <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">form ng impormasyon nOpen Library team</a>."
 
@@ -1269,6 +1269,13 @@ msgstr "I-import ang iyong mga reading log at hamon mula sa StoryGraph."
 #: account/import.html
 msgid "Importing..."
 msgstr "Nag-i-import..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "I-import ang %(count)s Aklat"
+msgstr[1] "I-import ang %(count)s na Aklat"
 
 #: account/import.html
 msgid "Reason"
@@ -1492,7 +1499,7 @@ msgstr "Tanggalin ang Tala"
 msgid "Save Note"
 msgstr "I-save ang Tala"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "Walang natagpuang mga tala."
 
@@ -1556,11 +1563,11 @@ msgstr "Gusto mo bang gawing pampubliko ang iyong <a href=\"/account/books\">Rea
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "Papayagan nito ang iba na makita kung anong mga libro ang gusto mong basahin, binabasa mo, tinigil mong basahin, o nabasa mo na. Ang mga gumagamit na may pampublikong reading log ay maaaring sundan."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "Oo"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "Hindi"
 
@@ -1970,7 +1977,7 @@ msgstr "Magdagdag ng mga bagong aklat sa pila ng pag-import"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Pakidagdag ang mga IA identifier na ipapasok, isa sa bawat linya."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Isumite"
 
@@ -2227,11 +2234,11 @@ msgstr "Nag-iipon ng mga estadistika ng pag-log in..."
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3086,7 +3093,7 @@ msgstr "Basahin ang iyong hiniram mula sa %s"
 msgid "Listen to a reading from %s"
 msgstr "Makinig sa isang pagbabasa mula sa %s"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "Makinig"
 
@@ -3392,7 +3399,7 @@ msgstr "Pakisuyong kumpletuhin ang reCAPTCHA sa itaas bago pumili ng libro."
 msgid "Select this book"
 msgstr "Pumili ng librong ito"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4140,11 +4147,11 @@ msgstr "Format ng File"
 msgid "Provider Name"
 msgstr "Pangalan ng Nagbigay"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Bumili"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "Web"
 
@@ -7370,7 +7377,7 @@ msgstr "mga wika"
 msgid "Code"
 msgstr "Code"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "Kasalukuyan"
 
@@ -8119,7 +8126,7 @@ msgstr "Maghanap sa koleksyon"
 msgid "Failed to fetch carousel."
 msgstr "Nabigong kunin ang carousel."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "Subukan muli?"
 
@@ -9150,6 +9157,265 @@ msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(num)s commit na huli sa %(sha)s"
 msgstr[1] "%(num)s commit na huli sa %(sha)s"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "Talaga bang i-anonymize ang account ni %(name)s? Tatanggalin nito ang profile page at mga booknote ni %(name)s, at i-aanonymize ang reading log, mga review, star rating, at mga isinumiteng merge request ni %(name)s."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "Sigurado ka ba?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "Ilagay ang bagong posisyon (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "Mangyaring maglagay ng wastong numero sa pagitan ng 1 at %(total)s."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "Nasa posisyon na iyon ang item."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "Naghahanap ng mga cover"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "Walang nahanap na imahe sa clipboard"
+
+#: covers.js
+msgid "Change Image"
+msgstr "Palitan ang Imahe"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "Maaaring hindi wasto ang ISBN %(isbn)s. Idagdag pa rin?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "Nabigong kunin ang mga mungkahi sa fulltext search."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s Aklat"
+msgstr[1] "%(count)s na Aklat"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "Pumunta sa iyong Reading Log"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "Hindi suportado ang mga custom shelf"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "Nabigong idagdag ang aklat sa reading log"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "Nabigong idagdag ang rating"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "Nabigong itakda ang petsa ng pagbabasa"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "Na-import"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "Wala sa koleksyon ang aklat"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "Inilathala noong %(year)s"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "Inilathala sa pagitan ng %(first)s at %(last)s."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "Mukhang wala kaming sinuman na may ganoong mga detalye."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "Mula %(year)s"
+
+#: team.js
+msgid "Emeritus"
+msgstr "Emeritus"
+
+#: team.js
+msgid "Past"
+msgstr "Nakaraan"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "Isinusumite..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "Nabigo ang batch na pag-update ng subject. Mangyaring subukang muli sa loob ng ilang minuto."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "Matagumpay na na-update ang mga subject."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "Ipakita ang %(menu)s na entry"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "Maghanap:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "Ipinapakita ang %(start)s hanggang %(end)s ng %(total)s na entry"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Ipinapakita ang 0 hanggang 0 ng 0 na entry"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(na-filter mula sa %(max)s kabuuang entry)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "Walang nahanap na tumutugmang record"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "Walang available na data sa table"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "Pagbukud-bukurin mula pinakabago hanggang pinakaluma"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "Pagbukud-bukurin mula pinakaluma hanggang pinakabago"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "Pagbukud-bukurin ayon sa petsa ng paglathala"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "Itulak ang mga nababasang bersyon sa ibaba"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "Pagbukud-bukurin ayon sa mga edisyong babasahin"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "Available na basahin"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s ang napili"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "I-clear ang mga Pinili"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "Ilipat sa may-akdang ito"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "Ginagawa..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "May nangyaring mali: %(failed)s/%(total)s ang hindi na-save."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "Tapos na! %(total)s/%(total)s na-save."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "Nagka-error!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "Ilipat sa akdang ito"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s gawa"
+msgstr[1] "%(count)s mga gawa"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s may-akda"
+msgstr[1] "%(count)s na may-akda"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "I-tag ang mga Akda"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "Gumawa ng listahan..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "Pagsamahin ang mga Akda..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "Pagsamahin ang mga May-akda..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "Matagumpay ang pag-update!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "Talaga bang tatanggalin ang book note na ito?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "Tinanggal ang note."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "Ina-update ang mga obserbasyon"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "Walang obserbasyon para sa akdang ito."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Na-edit ang aklat na ito"
@@ -9596,13 +9862,6 @@ msgstr "%(start)s hanggang %(end)s"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Target: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s gawa"
-msgstr[1] "%(count)s mga gawa"
 
 #: openlibrary/contribute/manage.py
 msgid "title"
