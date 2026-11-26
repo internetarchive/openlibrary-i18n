@@ -185,7 +185,7 @@ msgstr[2] "%(count)s stavki"
 msgid "Status:"
 msgstr "Stanje:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "Sve"
 
@@ -246,7 +246,7 @@ msgstr "Uvoz artikala"
 msgid "Import Time"
 msgstr "Vrijeme uvoza"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "Greška"
 
@@ -270,7 +270,7 @@ msgstr "Komentari"
 msgid "Not yet imported"
 msgstr "Još nije uvezeno"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "Pregled"
 
@@ -838,7 +838,7 @@ msgstr "Želim čitati"
 msgid "Currently Reading"
 msgstr "Trenutačno čitam"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Čitaj"
 
@@ -898,7 +898,7 @@ msgstr "Čitaj „%(title)s”"
 msgid "Borrow \"%(title)s\""
 msgstr "Posudi „%(title)s”"
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Posudi"
 
@@ -1022,63 +1022,63 @@ msgstr "Knjige"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Pretraživanje solr-a je trajalo %(count)s s"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Open Library tim"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library postoji zahvaljujući posvećenom timu zaposlenika i više od 100 volontera iz cijelog svijeta."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "Želiš nam se pridružiti?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "Uloga:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "Zaposlenici"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "Voditelji"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "Suradnici"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "Volonteri"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "Odjel:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "Komunikacije"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "Dizajn"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "Inženjerstvo"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "Knjižničarstvo"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "Godina:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Ako volontiraš u Open Library i želiš biti naveden/a kao dio tima, ispuni <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">obrazac s podacima za Open Library tim</a>."
 
@@ -1275,6 +1275,14 @@ msgstr "Uvezite svoje dnevnike čitanja i izazove iz StoryGrapha."
 #: account/import.html
 msgid "Importing..."
 msgstr "Uvoz …"
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "Uvezi %(count)s knjigu"
+msgstr[1] "Uvezi %(count)s knjige"
+msgstr[2] "Uvezi %(count)s knjiga"
 
 #: account/import.html
 msgid "Reason"
@@ -1506,7 +1514,7 @@ msgstr "Izbriši napomenu"
 msgid "Save Note"
 msgstr "Spremi napomenu"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "Nema napomena."
 
@@ -1570,11 +1578,11 @@ msgstr "Želiš li da se tvoj <a href=\"/account/books\">dnevnik čitanja</a> pr
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "Ovo će omogućiti drugima da vide koje knjige želiš čitati, trenutačno čitaš, prestao/la si čitati ili si već pročitao/la. Korisnici s javno postavljenim dnevnicima čitanja mogu se pratiti."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "Da"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "Ne"
 
@@ -1985,7 +1993,7 @@ msgstr "Dodaj nove knjige u red čekanja za uvoz"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Dodaj IA identifikatore za uvoz, jedan po retku."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Pošalji"
 
@@ -2242,11 +2250,11 @@ msgstr "Prikupljanje statistike prijava …"
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3106,7 +3114,7 @@ msgstr "Pročitajte svoju posudbu iz %s"
 msgid "Listen to a reading from %s"
 msgstr "Slušaj čitanje od %s"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "Slušaj"
 
@@ -3413,7 +3421,7 @@ msgstr "Riješite reCAPTCHA iznad prije odabira knjige."
 msgid "Select this book"
 msgstr "Odaberi ovu knjigu"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4163,11 +4171,11 @@ msgstr "Format datoteke"
 msgid "Provider Name"
 msgstr "Ime pružatelja"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Kupi"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "Web"
 
@@ -7414,7 +7422,7 @@ msgstr "jezici"
 msgid "Code"
 msgstr "Šifra"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "Trenutačno"
 
@@ -8171,7 +8179,7 @@ msgstr "Traži zbirku"
 msgid "Failed to fetch carousel."
 msgstr "Neuspjelo dohvaćanje animacije prikaza."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "Ponovo pokušati?"
 
@@ -9212,6 +9220,268 @@ msgstr[0] "Zaostaje %(num)s commit za %(sha)s"
 msgstr[1] "Zaostaje %(num)s commita za %(sha)s"
 msgstr[2] "Zaostaje %(num)s commitova za %(sha)s"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "Stvarno anonimizirati račun korisnika %(name)s? Ovo će izbrisati profilnu stranicu i bilješke o knjigama korisnika %(name)s te anonimizirati dnevnik čitanja, recenzije, ocjene zvjezdicama i zahtjeve za spajanje korisnika %(name)s."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "Jesi li siguran/na?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "Unesi novu poziciju (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "Unesi valjani broj između 1 i %(total)s."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "Stavka je već na toj poziciji."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "Pretraživanje naslovnica"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "Nije pronađena slika u međuspremniku"
+
+#: covers.js
+msgid "Change Image"
+msgstr "Promijeni sliku"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s možda nije valjan. Ipak ga dodati?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "Dohvaćanje prijedloga za pretraživanje cjelovitog teksta nije uspjelo."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s knjiga"
+msgstr[1] "%(count)s knjige"
+msgstr[2] "%(count)s knjiga"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "Idi na svoj dnevnik čitanja"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "Prilagođene police nisu podržane"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "Dodavanje knjige u dnevnik čitanja nije uspjelo"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "Dodavanje ocjene nije uspjelo"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "Postavljanje datuma čitanja nije uspjelo"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "Uvezeno"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "Knjiga nije u zbirci"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "Objavljeno %(year)s."
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "Objavljeno između %(first)s i %(last)s."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "Čini se da nemamo nikoga s tim specifikacijama."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "Od %(year)s"
+
+#: team.js
+msgid "Emeritus"
+msgstr "Umirovljen"
+
+#: team.js
+msgid "Past"
+msgstr "Prošlo"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "Slanje..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "Skupno ažuriranje tema nije uspjelo. Pokušaj ponovno za nekoliko minuta."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "Teme su uspješno ažurirane."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "Prikaži %(menu)s unosa"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "Pretraži:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "Prikazano %(start)s do %(end)s od %(total)s unosa"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Prikazano 0 do 0 od 0 unosa"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(filtrirano od ukupno %(max)s unosa)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "Nema pronađenih odgovarajućih zapisa"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "Nema dostupnih podataka u tablici"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "Razvrstaj od najnovijeg do najstarijeg"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "Razvrstaj od najstarijeg do najnovijeg"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "Razvrstaj prema datumu objave"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "Pomakni čitljive verzije na dno"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "Razvrstaj prema izdanjima za čitanje"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "Dostupno za čitanje"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s odabrano"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "Očisti odabir"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "Premjesti na ovog autora"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "Obrada u tijeku..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "Nešto je pošlo po zlu: %(failed)s/%(total)s nije spremljeno."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "Dovršeno! %(total)s/%(total)s spremljeno."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "Greška!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "Premjesti na ovo djelo"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s djelo"
+msgstr[1] "%(count)s djela"
+msgstr[2] "%(count)s djela"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s autor"
+msgstr[1] "%(count)s autora"
+msgstr[2] "%(count)s autora"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "Označi djela oznakama"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "Stvori popis..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "Spoji djela..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "Spoji autore..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "Ažuriranje uspješno!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "Stvarno izbrisati ovu bilješku o knjizi?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "Bilješka izbrisana."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "Ažuriranje zapažanja"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "Nema zapažanja za ovo djelo."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Uredio/la ovu knjigu"
@@ -9658,14 +9928,6 @@ msgstr "%(start)s do %(end)s"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Cilj: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s djelo"
-msgstr[1] "%(count)s djela"
-msgstr[2] "%(count)s djela"
 
 #: openlibrary/contribute/manage.py
 msgid "title"
