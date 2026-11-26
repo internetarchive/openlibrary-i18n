@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -194,11 +194,11 @@ msgstr "الكل"
 msgid "Default sort: date added, newest first."
 msgstr "الترتيب الافتراضي: تاريخ الإضافة، الأحدث أولاً."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "الاسم"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "الراسل"
 
@@ -206,7 +206,7 @@ msgstr "الراسل"
 msgid "Added Time"
 msgstr "وقت الإضافة"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "الحالة"
 
@@ -749,31 +749,23 @@ msgstr "رابط التنزيل"
 msgid "Next"
 msgstr "التالي"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "حالة خادم Open Library"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "حالة الخادم"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "لوحة بيئة الاختبار مرئية للمشرفين فقط."
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "نتيجة آخر بناء"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "عرض طلبات السحب على GitHub"
 
-#: status.html
-msgid "Show changed files"
-msgstr "عرض الملفات المتغيرة"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "معلومات النظام"
 
@@ -1137,7 +1129,7 @@ msgstr "تسجيل"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "احصل على بطاقة Open Library المجانية واستعر الكتب الرقمية من Internet Archive غير الربحية"
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "نجاح!"
 
@@ -2145,6 +2137,10 @@ msgstr "صفحات إحصائيات ذات صلة"
 msgid "Tasks"
 msgstr "المهام"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "طلبات الدمج"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "مراجعة البريد العشوائي"
@@ -2822,49 +2818,13 @@ msgstr "Json"
 msgid "No results found."
 msgstr "لم يتم العثور على نتائج."
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[مركز الإدارة] عناوين IP"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "عناوين IP"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "قائمة العناوين المحظورة"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "تاريخ/وقت"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "عنوان IP"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "تعليق المسؤول"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "عدد التعديلات"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "منذ x دقيقة"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "تعليق"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[مركز الإدارة]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2945,6 +2905,10 @@ msgstr "لم يتم العثور على حساب بهذا المعرّف."
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "الحسابات الأخيرة"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "تاريخ/وقت"
 
 #: admin/people/index.html
 msgid "email"
@@ -3065,27 +3029,11 @@ msgstr "الاستعارات المعلقة"
 msgid "%(num)d edits"
 msgstr "%(num)d تعديلًا"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "معلومات تصحيح الأخطاء"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "معلومات الحساب"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "روابط التحقق"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "لم يُعثر على شيء"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "ابحث عن مؤلف"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "بحث"
 
@@ -4441,7 +4389,7 @@ msgstr "اقرأه الآن"
 msgid "Back to Open Library"
 msgstr "العودة إلى Open Library"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "بحث مجمّع (تجريبي)"
 
@@ -5989,9 +5937,81 @@ msgstr "طلب دمج"
 msgid "Reject Merge"
 msgstr "رفض الدمج"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "دمج المؤلفين…"
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "حسنًا. الدمج جارٍ. <i>سيستغرق <u>بضع دقائق لإكمال</u> التحديث.</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "آه!"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "لم ينجح الدمج. إنها مسؤوليتنا، وقد أخذنا ملاحظة بذلك."
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "دمج الأعمال"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "جميع الأوقات"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "العام الماضي"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "الشهر الماضي"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "الطلبات"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "تم الدمج"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "مرفوض"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "إحصائيات طلبات تعديل المجتمع"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "الطلبات المغلقة فقط. لا تُحتسب الطلبات التي ما زالت بانتظار المراجعة."
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "المراجعون"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "الراسلون"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "المراجع"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "طلبات المؤلفين"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "طلبات الأعمال"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "لا توجد إدخالات هنا!"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -6023,8 +6043,8 @@ msgid "Community Edit Requests"
 msgstr "طلبات تعديل المجتمع"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "لا توجد إدخالات هنا!"
+msgid "View reviewer and submitter statistics"
+msgstr "عرض إحصائيات المراجعين والراسلين"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -6042,14 +6062,6 @@ msgstr "الحالة ▾"
 msgid "Request Status"
 msgstr "حالة الطلب"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "تم الدمج"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "مرفوض"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "الراسل ▾"
@@ -6065,10 +6077,6 @@ msgstr "مقدم من قبلي"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "المراجع ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "المراجع"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6413,7 +6421,7 @@ msgid "Details here"
 msgstr "التفاصيل هنا"
 
 # | msgid "Deprecated"
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "تكرارات"
 
@@ -6957,10 +6965,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "العدد الإجمالي للكتب التي تم تسجيلها باستخدام ميزة سجل القراءة"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "جميع الأوقات"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "عدد المستخدمين الفريدين الذين قاموا بتسجيل الكتب"
 
@@ -7286,30 +7290,6 @@ msgstr "%(page_title)s | المكتبة الحرة"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "مؤلف %(book_titles)s"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "دمج المؤلفين…"
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "قيد التنفيذ…"
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "تحديث الصفحة؟"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "حسنًا. الدمج جارٍ. <i>سيستغرق <u>بضع دقائق لإكمال</u> التحديث.</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "آه!"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "لم ينجح الدمج. إنها مسؤوليتنا، وقد أخذنا ملاحظة بذلك."
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8578,7 +8558,7 @@ msgstr "مؤلفون بارزون"
 msgid "See more books by %(name)s"
 msgstr "عرض المزيد من الكتب بواسطة %(name)s"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "ابحث عن موضوع"
 
@@ -10519,6 +10499,14 @@ msgstr "التقييم"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "ما مدى قدرة المستخدم على تحديد ما إذا كان هذا الإصدار ذا صلة باحتياجاته قبل الوصول إليه؟"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "شكراً لتسجيل حساب Open Library وطلب الوصول الخاص لذوي الإعاقة المطبوعة. ستتلقى بريداً إلكترونياً يوضح الخطوات التالية في العملية."
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "نسبة الدمج %"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10568,6 +10556,10 @@ msgstr "%(query)s - بحث عن مؤلف"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "بحث عن مؤلف"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "حالة خادم Open Library"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11527,10 +11519,6 @@ msgstr "واجهت محاولة تسجيل الدخول أو التسجيل خط
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "فشل الطلب برمز الخطأ: %(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "شكراً لتسجيل حساب Open Library وطلب الوصول الخاص لذوي الإعاقة المطبوعة. ستتلقى بريداً إلكترونياً يوضح الخطوات التالية في العملية."
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -14071,4 +14059,49 @@ msgstr "تعذّر تحميل الرسوم البيانية. أعد تحميل �
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
 #~ msgstr "إحصاءات المهام: من يُجري التعديلات، وكيف تصمد تعديلات المهام"
+
+#~ msgid "Show changed files"
+#~ msgstr "عرض الملفات المتغيرة"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[مركز الإدارة] عناوين IP"
+
+#~ msgid "IP Addresses"
+#~ msgstr "عناوين IP"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "قائمة العناوين المحظورة"
+
+#~ msgid "IP address"
+#~ msgstr "عنوان IP"
+
+#~ msgid "Admin Comment"
+#~ msgstr "تعليق المسؤول"
+
+#~ msgid "# of edits"
+#~ msgstr "عدد التعديلات"
+
+#~ msgid "x minutes ago"
+#~ msgstr "منذ x دقيقة"
+
+#~ msgid "comment"
+#~ msgstr "تعليق"
+
+#~ msgid "Debug Info"
+#~ msgstr "معلومات تصحيح الأخطاء"
+
+#~ msgid "Account Information"
+#~ msgstr "معلومات الحساب"
+
+#~ msgid "Verifications Links"
+#~ msgstr "روابط التحقق"
+
+#~ msgid "None found"
+#~ msgstr "لم يُعثر على شيء"
+
+#~ msgid "In progress..."
+#~ msgstr "قيد التنفيذ…"
+
+#~ msgid "Refresh the page?"
+#~ msgstr "تحديث الصفحة؟"
 
