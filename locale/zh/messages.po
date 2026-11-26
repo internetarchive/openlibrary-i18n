@@ -538,7 +538,7 @@ msgstr "取消"
 msgid "Continue without waiting"
 msgstr "不等待，继续"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -3234,7 +3234,7 @@ msgstr "在开放图书馆添加书籍"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "创建一份新的记录需要一组最基本的字段。以下是那些字段。"
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "标题"
 
@@ -3246,7 +3246,7 @@ msgstr "使用<b><i>标题: 副标题</i></b>来添加一个副标题。"
 msgid "Required field"
 msgstr "必须填写"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "作者"
 
@@ -3372,7 +3372,7 @@ msgstr "请在选择图书之前完成上方的 reCAPTCHA 验证。"
 msgid "Select this book"
 msgstr "选择此书籍"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6235,7 +6235,7 @@ msgstr "已修改%(count)d条记录。"
 msgid "All fields"
 msgstr "所有字段"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8601,6 +8601,132 @@ msgstr "每个版本只允许一个Internet Archive ID。"
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s的标识符已存在。"
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "请包含表头行。支持的列包括:\"Title\"、\"Author\"、\"ISBN\"。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "请在下方输入您的书籍。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "每行一本,或从电子表格粘贴。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "输入您的书籍..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "提取书籍"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "如何将上面的书籍转换为结构化信息,例如书名和作者。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "提取器"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API 密钥"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "在此输入 OpenAI API 密钥...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "匹配书籍"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "找到结构化数据后,就该将其与 OpenLibrary 中的书籍进行匹配了!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "选项"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "在搜索查询中使用作者"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "保存您的匹配结果"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "既然您已经找到了自己的书籍,何不将它们保存到您的阅读记录中?或保存到一个列表中?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "添加到清单"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "在 Open Library 中查看结果"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "已提取的书籍"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "已匹配的书籍"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "未找到书籍"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "格式:书名 作者"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "格式:作者 - 书名"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "格式:书名 - 作者"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "格式:书名(作者)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "维基百科引用格式:(例如 Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI 提取(测试版)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "从表格/电子表格中提取"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "试用示例..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "1927 年书籍"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023 年公共领域日"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "关于大屠杀的维基百科引用"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8613,6 +8739,22 @@ msgstr "无效的标识符"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "该ID已存在于某个标识符中。"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "添加您的评论:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "上面列出的评论已保存。"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "未选择任何标签。"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "移除值"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9783,10 +9925,6 @@ msgstr "评为5分中的%(rating)s分"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "清除评分"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "添加到清单"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
