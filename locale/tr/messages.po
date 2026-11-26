@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -191,11 +191,11 @@ msgstr "Tümü"
 msgid "Default sort: date added, newest first."
 msgstr "Varsayılan sıralama: eklenme tarihi, en yeni önce."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Ad"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Gönderen"
 
@@ -203,7 +203,7 @@ msgstr "Gönderen"
 msgid "Added Time"
 msgstr "Eklenme Zamanı"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "Durum"
 
@@ -746,31 +746,23 @@ msgstr "İndirme Bağlantısı"
 msgid "Next"
 msgstr "İleri"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "Open Library sunucu durumu"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "Sunucu statüsü"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "Test ortamı paneli yalnızca bakımcılar tarafından görülebilir."
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "Son Derleme Sonucu"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "GitHub'da PR'ları Görüntüle"
 
-#: status.html
-msgid "Show changed files"
-msgstr "Değiştirilen dosyaları göster"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "Sistem bilgisi"
 
@@ -1116,7 +1108,7 @@ msgstr "Kayıt Ol"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "Ücretsiz Open Library kartınızı alın ve kar amacı gütmeyen Internet Archive'dan dijital kitap ödünç alın"
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "Başarılı!"
 
@@ -2087,6 +2079,10 @@ msgstr "İlgili istatistik sayfaları"
 msgid "Tasks"
 msgstr "Görevler"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "Birleştirme istekleri"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "Spam incelemesi"
@@ -2742,49 +2738,13 @@ msgstr "JSON"
 msgid "No results found."
 msgstr "Sonuç bulunamadı."
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[Yönetim Merkezi] IP Adresleri"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "IP Adresleri"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "Yasaklı IP Listesi"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "Tarih/Saat"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "IP adresi"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "Yönetici Yorumu"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "Düzenleme sayısı"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "x dakika önce"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "yorum"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[Yönetim Merkezi]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2865,6 +2825,10 @@ msgstr "Bu kimlikle hesap bulunamadı."
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "Son Hesaplar"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "Tarih/Saat"
 
 #: admin/people/index.html
 msgid "email"
@@ -2985,27 +2949,11 @@ msgstr "Bekleyen Ödünçler"
 msgid "%(num)d edits"
 msgstr "%(num)d düzenleme"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "Hata Ayıklama Bilgisi"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "Hesap Bilgileri"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "Doğrulama Bağlantıları"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "Hiçbiri bulunamadı"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "Yazar Ara"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Ara"
 
@@ -4345,7 +4293,7 @@ msgstr "Şimdi oku"
 msgid "Back to Open Library"
 msgstr "Open Library'ye dön"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "Toplu Arama (beta)"
 
@@ -5847,9 +5795,81 @@ msgstr "Birleştirme İste"
 msgid "Reject Merge"
 msgstr "Birleştirmeyi Reddet"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "Yazarlar Birleştiriliyor..."
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "Tamam. Birleştirme başladı. <i>Güncellemenin tamamlanması <u>birkaç dakika sürecek</u>.</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "Eyvah!"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "Bu birleştirme çalışmadı. Bu bizim hatamız ve bunu not aldık."
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "Eserleri Birleştir"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "Tüm zamanlar"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "Geçen yıl"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "Geçen ay"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "İstekler"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "Birleştirildi"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "Reddedildi"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "Topluluk Düzenleme İsteği İstatistikleri"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "Yalnızca kapatılmış istekler. Hâlâ değerlendirme bekleyen istekler sayılmaz."
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "Değerlendiriciler"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "Gönderenler"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "Değerlendirici"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "Yazar istekleri"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "Eser istekleri"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "Burada hiçbir şey yok!"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -5881,8 +5901,8 @@ msgid "Community Edit Requests"
 msgstr "Topluluk Düzenleme İstekleri"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "Burada hiçbir şey yok!"
+msgid "View reviewer and submitter statistics"
+msgstr "Değerlendirici ve gönderen istatistiklerini görüntüle"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -5900,14 +5920,6 @@ msgstr "Durum ▾"
 msgid "Request Status"
 msgstr "İstek Durumu"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "Birleştirildi"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "Reddedildi"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "Gönderen ▾"
@@ -5923,10 +5935,6 @@ msgstr "Benim tarafımdan gönderildi"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "İnceleyen ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "Değerlendirici"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6244,7 +6252,7 @@ msgstr "Bu birleştirme geri alındı."
 msgid "Details here"
 msgstr "Ayrıntılar burada"
 
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "Kopyalar"
 
@@ -6760,10 +6768,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "Okuma Günlüğü özelliği kullanılarak kaydedilen toplam kitap sayısı"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "Tüm zamanlar"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "# Kitap Kaydeden Benzersiz Kullanıcı"
 
@@ -7084,30 +7088,6 @@ msgstr "%(page_title)s | Open Library"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "%(book_titles)s yazarı"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "Yazarlar Birleştiriliyor..."
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "Devam ediyor..."
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "Sayfayı yenileyin mi?"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "Tamam. Birleştirme başladı. <i>Güncellemenin tamamlanması <u>birkaç dakika sürecek</u>.</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "Eyvah!"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "Bu birleştirme çalışmadı. Bu bizim hatamız ve bunu not aldık."
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8322,7 +8302,7 @@ msgstr "Öne Çıkan Yazarlar"
 msgid "See more books by %(name)s"
 msgstr "%(name)s'in daha fazla kitabını görüntüle"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "Konu Ara"
 
@@ -10231,6 +10211,14 @@ msgstr "Değerlendirme"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Bir kullanıcı, bu baskıya erişmeden önce ihtiyaçlarıyla ne kadar iyi ilgili olduğunu belirleyebilir?"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "Open Library hesabı oluşturduğunuz ve özel baskı engeli erişimi talep ettiğiniz için teşekkür ederiz. Süreçte sonraki adımları detaylandıran bir e-posta alacaksınız."
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "Birleştirildi %"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10280,6 +10268,10 @@ msgstr "%(query)s - Yazar Arama"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "Yazar Arama"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "Open Library sunucu durumu"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11167,10 +11159,6 @@ msgstr "Giriş veya kayıt denemesinde beklenmedik bir hatayla karşılaşıldı
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "İstek hata kodu ile başarısız oldu: %(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "Open Library hesabı oluşturduğunuz ve özel baskı engeli erişimi talep ettiğiniz için teşekkür ederiz. Süreçte sonraki adımları detaylandıran bir e-posta alacaksınız."
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -13456,4 +13444,49 @@ msgstr "Grafikler yüklenemedi. Yeniden denemek için sayfayı yeniden yükleyin
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "\"%(query)s\" için Open Library'de arama yapın"
+
+#~ msgid "Show changed files"
+#~ msgstr "Değiştirilen dosyaları göster"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[Yönetim Merkezi] IP Adresleri"
+
+#~ msgid "IP Addresses"
+#~ msgstr "IP Adresleri"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "Yasaklı IP Listesi"
+
+#~ msgid "IP address"
+#~ msgstr "IP adresi"
+
+#~ msgid "Admin Comment"
+#~ msgstr "Yönetici Yorumu"
+
+#~ msgid "# of edits"
+#~ msgstr "Düzenleme sayısı"
+
+#~ msgid "x minutes ago"
+#~ msgstr "x dakika önce"
+
+#~ msgid "comment"
+#~ msgstr "yorum"
+
+#~ msgid "Debug Info"
+#~ msgstr "Hata Ayıklama Bilgisi"
+
+#~ msgid "Account Information"
+#~ msgstr "Hesap Bilgileri"
+
+#~ msgid "Verifications Links"
+#~ msgstr "Doğrulama Bağlantıları"
+
+#~ msgid "None found"
+#~ msgstr "Hiçbiri bulunamadı"
+
+#~ msgid "In progress..."
+#~ msgstr "Devam ediyor..."
+
+#~ msgid "Refresh the page?"
+#~ msgstr "Sayfayı yenileyin mi?"
 
