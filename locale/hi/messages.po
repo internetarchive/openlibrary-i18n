@@ -186,7 +186,7 @@ msgstr[1] "%(count)s आइटम"
 msgid "Status:"
 msgstr "स्थिति:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "सभी"
 
@@ -247,7 +247,7 @@ msgstr "आइटम आयात करें"
 msgid "Import Time"
 msgstr "आयात समय"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "त्रुटि"
 
@@ -271,7 +271,7 @@ msgstr "टिप्पणियाँ"
 msgid "Not yet imported"
 msgstr "अभी तक आयात नहीं हुआ"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "प्रिव्यू"
 
@@ -838,7 +838,7 @@ msgstr "पढ़ने में रुचि"
 msgid "Currently Reading"
 msgstr "फ़िलहाल पढ़ रहे हैं"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "पढ़ें"
 
@@ -897,7 +897,7 @@ msgstr "\"%(title)s\" पढ़ें"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" उधार लें"
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "उधार"
 
@@ -1019,63 +1019,63 @@ msgstr "पुस्तक"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Solr खोज में %(count)s सेकंड लगे"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Open Library टीम"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library कर्मचारियों की एक समर्पित टीम और दुनिया भर के 100 से अधिक स्वयंसेवकों की बदौलत संभव है।"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "हमसे जुड़ना चाहते हैं?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "भूमिका:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "स्टाफ"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "प्रमुख"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "फ़ेलो"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "स्वयंसेवक"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "विभाग:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "संचार"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "डिज़ाइन"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "इंजीनियरिंग"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "लाइब्रेरियनशिप"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "वर्ष:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "यदि आप Open Library के साथ स्वयंसेवा करते हैं और टीम के हिस्से के रूप में सूचीबद्ध होना चाहते हैं, तो <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library टीम सूचना फ़ॉर्म</a> भरें।"
 
@@ -1272,6 +1272,13 @@ msgstr "StoryGraph से अपने रीडिंग लॉग और च�
 #: account/import.html
 msgid "Importing..."
 msgstr "आयात किया जा रहा है..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "%(count)s पुस्तक आयात करें"
+msgstr[1] "%(count)s पुस्तकें आयात करें"
 
 #: account/import.html
 msgid "Reason"
@@ -1495,7 +1502,7 @@ msgstr "इस नोट को मिटाएं"
 msgid "Save Note"
 msgstr "नोट सेव करें"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "कोई नोट नहीं मिला।"
 
@@ -1559,11 +1566,11 @@ msgstr "क्या आप अपना <a href=\"/account/books\">रीडि
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "इससे अन्य लोग देख सकेंगे कि आप कौन सी पुस्तकें पढ़ना चाहते हैं, पढ़ रहे हैं, पढ़ना बंद कर दिया है, या पहले ही पढ़ चुके हैं। सार्वजनिक रीडिंग लॉग वाले सदस्यों को फ़ॉलो किया जा सकता है।"
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "हाँ"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "नहीं"
 
@@ -1973,7 +1980,7 @@ msgstr "आयात कतार में नई किताबें जो�
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "कृपया आयात किए जाने वाले IA पहचानकर्ता जोड़ें, प्रति पंक्ति एक।"
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "सबमिट"
 
@@ -2230,11 +2237,11 @@ msgstr "लॉगिन आंकड़े एकत्र किए जा र�
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3089,7 +3096,7 @@ msgstr "%s से उधार ली गई किताब पढ़ें"
 msgid "Listen to a reading from %s"
 msgstr "%s से एक वाचन सुनें"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "बात सुनो"
 
@@ -3395,7 +3402,7 @@ msgstr "किताब चुनने से पहले कृपया ऊ�
 msgid "Select this book"
 msgstr "इस किताब का चयन करें"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4143,11 +4150,11 @@ msgstr "छवि तारीख"
 msgid "Provider Name"
 msgstr "प्रदाता का नाम"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "खरीद"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "वेब"
 
@@ -7373,7 +7380,7 @@ msgstr "भाषाएं"
 msgid "Code"
 msgstr "कोड"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "वर्तमान"
 
@@ -8122,7 +8129,7 @@ msgstr "संग्रह खोजें"
 msgid "Failed to fetch carousel."
 msgstr "कैरोसेल लाने में विफल।"
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "पुनः प्रयास करें?"
 
@@ -9153,6 +9160,265 @@ msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(num)s कमिट %(sha)s से पीछे"
 msgstr[1] "%(num)s कमिट %(sha)s से पीछे"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "क्या आप वाकई %(name)s का खाता गुमनाम बनाना चाहते हैं? इससे %(name)s का प्रोफ़ाइल पेज और बुकनोट्स हट जाएंगे, और %(name)s का रीडिंग लॉग, समीक्षाएं, स्टार रेटिंग, और मर्ज अनुरोध सबमिशन गुमनाम कर दिए जाएंगे।"
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "क्या आप सुनिश्चित हैं?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "नई स्थिति दर्ज करें (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "कृपया 1 और %(total)s के बीच एक मान्य संख्या दर्ज करें।"
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "आइटम पहले से ही उस स्थिति में है।"
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "कवर खोजे जा रहे हैं"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "क्लिपबोर्ड में कोई छवि नहीं मिली"
+
+#: covers.js
+msgid "Change Image"
+msgstr "छवि बदलें"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s अमान्य हो सकता है। फिर भी जोड़ें?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "पूर्ण-पाठ खोज सुझाव प्राप्त करने में विफल।"
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s पुस्तक"
+msgstr[1] "%(count)s पुस्तकें"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "अपने रीडिंग लॉग पर जाएं"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "कस्टम शेल्फ़ समर्थित नहीं हैं"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "पुस्तक को रीडिंग लॉग में जोड़ने में विफल"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "रेटिंग जोड़ने में विफल"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "पढ़ने की तारीख सेट करने में विफल"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "आयात किया गया"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "पुस्तक संग्रह में नहीं है"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "%(year)s में प्रकाशित"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "%(first)s और %(last)s के बीच प्रकाशित।"
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "ऐसा लगता है कि हमारे पास उन विशेषताओं वाला कोई नहीं है।"
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "%(year)s से"
+
+#: team.js
+msgid "Emeritus"
+msgstr "एमेरिटस"
+
+#: team.js
+msgid "Past"
+msgstr "पिछला"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "सबमिट किया जा रहा है..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "बैच विषय अपडेट विफल रहा। कृपया कुछ मिनट बाद फिर से प्रयास करें।"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "विषय सफलतापूर्वक अपडेट किए गए।"
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "%(menu)s प्रविष्टियां दिखाएं"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "खोजें:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "%(total)s में से %(start)s से %(end)s प्रविष्टियां दिखाई जा रही हैं"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "0 में से 0 से 0 प्रविष्टियां दिखाई जा रही हैं"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(कुल %(max)s प्रविष्टियों में से फ़िल्टर किया गया)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "कोई मेल खाता रिकॉर्ड नहीं मिला"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "तालिका में कोई डेटा उपलब्ध नहीं है"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "नवीनतम से पुराने क्रम में क्रमबद्ध करें"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "पुराने से नवीनतम क्रम में क्रमबद्ध करें"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "प्रकाशन तिथि के अनुसार क्रमबद्ध करें"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "पठनीय संस्करणों को नीचे भेजें"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "पढ़ने के लिए संस्करणों के अनुसार क्रमबद्ध करें"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "पढ़ने के लिए उपलब्ध"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s चयनित"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "चयन साफ़ करें"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "इस लेखक पर ले जाएं"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "कार्य जारी है..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "कुछ गलत हो गया: %(failed)s/%(total)s सहेजने में विफल रहे।"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "पूर्ण! %(total)s/%(total)s सहेजे गए।"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "त्रुटि हुई!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "इस कृति पर ले जाएं"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s कृति"
+msgstr[1] "%(count)s कृतियां"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s लेखक"
+msgstr[1] "%(count)s लेखक"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "कृतियों को टैग करें"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "सूची बनाएं..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "कृतियों को मर्ज करें..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "लेखकों को मर्ज करें..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "अपडेट सफल!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "क्या वाकई यह बुकनोट हटाएं?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "नोट हटा दिया गया।"
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "अवलोकन अपडेट किए जा रहे हैं"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "इस कृति के लिए कोई अवलोकन नहीं है।"
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "इस किताब में बदलाव किया"
@@ -9599,13 +9865,6 @@ msgstr "%(start)s से %(end)s तक"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "लक्ष्य: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s कृति"
-msgstr[1] "%(count)s कृतियां"
 
 #: openlibrary/contribute/manage.py
 msgid "title"

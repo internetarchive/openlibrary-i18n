@@ -182,7 +182,7 @@ msgstr[0] "%(count)s项"
 msgid "Status:"
 msgstr "状态:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "全部"
 
@@ -243,7 +243,7 @@ msgstr "导入项目"
 msgid "Import Time"
 msgstr "导入时间"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "错误"
 
@@ -267,7 +267,7 @@ msgstr "评论"
 msgid "Not yet imported"
 msgstr "尚未导入"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "预览"
 
@@ -833,7 +833,7 @@ msgstr "想读"
 msgid "Currently Reading"
 msgstr "正在阅读"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "阅读"
 
@@ -891,7 +891,7 @@ msgstr "阅读 \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "借阅 \"%(title)s\""
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "借阅"
 
@@ -1011,63 +1011,63 @@ msgstr "书籍"
 msgid "Searching solr took %(count)s seconds"
 msgstr "搜索solr耗时%(count)s秒"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Open Library 团队"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library之所以成为可能，是因为有一支专职员工队伍和来自全球100多名志愿者的支持。"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "想加入我们吗？"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "角色："
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "工作人员"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "负责人"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "研究员"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "志愿者"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "部门："
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "传播"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "设计"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "工程"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "图书馆学"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "年份："
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "如果您是Open Library的志愿者并希望作为团队成员列出，请填写<a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library团队信息表</a>。"
 
@@ -1264,6 +1264,12 @@ msgstr "从 StoryGraph 导入您的阅读记录和挑战。"
 #: account/import.html
 msgid "Importing..."
 msgstr "正在导入……"
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "导入 %(count)s 本书"
 
 #: account/import.html
 msgid "Reason"
@@ -1479,7 +1485,7 @@ msgstr "删除笔记"
 msgid "Save Note"
 msgstr "保存笔记"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "没有发现任何笔记。"
 
@@ -1543,11 +1549,11 @@ msgstr "您是否希望将您的<a href=\"/account/books\">阅读日志</a>设�
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "这将使其他人能够看到您想读、正在读、已停止阅读或已读完的书籍。读者可以关注您并看到您的公开阅读活动。"
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "是"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "否"
 
@@ -1956,7 +1962,7 @@ msgstr "将新图书添加到导入队列"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "请添加要导入的IA标识符，每行一个。"
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "提交"
 
@@ -2213,11 +2219,11 @@ msgstr "正在收集登录统计数据……"
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3067,7 +3073,7 @@ msgstr "阅读您从 %s 借阅的图书"
 msgid "Listen to a reading from %s"
 msgstr "从%s收听朗读"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "聆听"
 
@@ -3372,7 +3378,7 @@ msgstr "请在选择图书之前完成上方的 reCAPTCHA 验证。"
 msgid "Select this book"
 msgstr "选择此书籍"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4118,11 +4124,11 @@ msgstr "文件格式"
 msgid "Provider Name"
 msgstr "提供商名称"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "购买"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "网页"
 
@@ -7329,7 +7335,7 @@ msgstr "语言"
 msgid "Code"
 msgstr "代码"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "当前"
 
@@ -8070,7 +8076,7 @@ msgstr "搜索馆藏"
 msgid "Failed to fetch carousel."
 msgstr "获取轮播图失败。"
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "重试？"
 
@@ -9091,6 +9097,262 @@ msgid "%(num)s commit behind %(sha)s"
 msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "落后 %(sha)s %(num)s 个提交"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "真的要匿名化 %(name)s 的账户吗?这将删除 %(name)s 的个人资料页面和书籍笔记,并匿名化 %(name)s 的阅读记录、评论、星级评分和合并请求提交。"
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "您确定吗?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "请输入新位置(1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "请输入一个介于 1 和 %(total)s 之间的有效数字。"
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "该项目已在该位置。"
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "正在搜索封面"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "剪贴板中未找到图片"
+
+#: covers.js
+msgid "Change Image"
+msgstr "更改图片"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s 可能无效。仍要添加吗?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "获取全文搜索建议失败。"
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s 本书"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "前往您的阅读记录"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "不支持自定义书架"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "添加书籍到阅读记录失败"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "添加评分失败"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "设置阅读日期失败"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "已导入"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "书籍不在收藏中"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "出版于 %(year)s"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "出版于 %(first)s 至 %(last)s 之间。"
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "看起来我们没有符合这些条件的人。"
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "自 %(year)s 起"
+
+#: team.js
+msgid "Emeritus"
+msgstr "荣誉退休"
+
+#: team.js
+msgid "Past"
+msgstr "过去"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "正在提交..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "批量主题更新失败。请几分钟后重试。"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "主题更新成功。"
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "显示 %(menu)s 条记录"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "搜索:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "显示第 %(start)s 到 %(end)s 条,共 %(total)s 条记录"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "显示第 0 到 0 条,共 0 条记录"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(从总共 %(max)s 条记录中筛选)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "未找到匹配的记录"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "表格中无可用数据"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "按最新到最早排序"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "按最早到最新排序"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "按出版日期排序"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "将可阅读版本移到底部"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "按可阅读版本排序"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "可供阅读"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "已选择 %(items)s 项"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "清除选择"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "移至此作者"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "正在处理..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "出现问题:%(failed)s/%(total)s 保存失败。"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "完成!%(total)s/%(total)s 已保存。"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "出错了!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "移至此作品"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s 份作品"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s 位作者"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "为作品添加标签"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "创建列表..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "合并作品..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "合并作者..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "更新成功!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "确定要删除此书籍笔记吗?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "笔记已删除。"
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "正在更新观察记录"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "此作品没有观察记录。"
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "编辑了这本书"
@@ -9537,12 +9799,6 @@ msgstr "%(start)s 至 %(end)s"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "目标:%(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s 份作品"
 
 #: openlibrary/contribute/manage.py
 msgid "title"

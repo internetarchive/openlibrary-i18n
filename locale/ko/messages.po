@@ -181,7 +181,7 @@ msgstr[0] "%(count)s개 항목"
 msgid "Status:"
 msgstr "상태:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "전체"
 
@@ -242,7 +242,7 @@ msgstr "항목 가져오기"
 msgid "Import Time"
 msgstr "가져오기 시간"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "오류"
 
@@ -266,7 +266,7 @@ msgstr "댓글"
 msgid "Not yet imported"
 msgstr "아직 가져오지 않음"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "미리보기"
 
@@ -832,7 +832,7 @@ msgstr "읽고 싶어요"
 msgid "Currently Reading"
 msgstr "읽는 중"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "읽기"
 
@@ -890,7 +890,7 @@ msgstr "\"%(title)s\\ 읽기"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\\ 대출"
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "대출"
 
@@ -1010,63 +1010,63 @@ msgstr "책"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Solr 검색에 %(count)s초 걸렸습니다"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Open Library 팀"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library는 전 세계 100명 이상의 자원봉사자와 헌신적인 직원들이 운영합니다."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "저희와 함께하시겠습니까?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "역할:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "직원"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "리드"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "펠로우"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "자원봉사자"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "부서:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "커뮤니케이션"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "디자인"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "엔지니어링"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "사서직"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "연도:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Open Library 에 자원봉사할 의향이 있고, 팀 목록에 등록되고 싶다면 <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library 팀 정보 양식</a>을 작성해 주세요."
 
@@ -1263,6 +1263,12 @@ msgstr "StoryGraph에서 독서 기록과 챌린지를 가져옵니다."
 #: account/import.html
 msgid "Importing..."
 msgstr "가져오는 중..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "도서 %(count)s권 가져오기"
 
 #: account/import.html
 msgid "Reason"
@@ -1478,7 +1484,7 @@ msgstr "메모 삭제"
 msgid "Save Note"
 msgstr "메모 저장"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "메모가 없습니다."
 
@@ -1542,11 +1548,11 @@ msgstr "<a href=\"/account/books\">독서 기록</a>을 공개하시겠어요?"
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "이렇게 하면 다른 사람들이 당신이 읽고 싶어하는 책, 읽고 있는 책, 읽기를 중단한 책, 또는 이미 읽은 책을 볼 수 있게 됩니다. 독서 기록을 공개로 설정한 이용자는 팔로우할 수 있습니다."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "예"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "아니요"
 
@@ -1955,7 +1961,7 @@ msgstr "가져오기 대기열에 새 책 추가"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "가져올 IA 식별자를 한 줄에 하나씩 입력하세요."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "제출"
 
@@ -2212,11 +2218,11 @@ msgstr "로그인 통계 수집 중..."
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3066,7 +3072,7 @@ msgstr "%s에서 대출한 책 읽기"
 msgid "Listen to a reading from %s"
 msgstr "%s의 낭독 듣기"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "듣기"
 
@@ -3371,7 +3377,7 @@ msgstr "책을 선택하기 전에 위의 reCAPTCHA를 완료해 주세요."
 msgid "Select this book"
 msgstr "이 책 선택"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4117,11 +4123,11 @@ msgstr "파일 형식"
 msgid "Provider Name"
 msgstr "제공자 이름"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "구매"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "웹"
 
@@ -7328,7 +7334,7 @@ msgstr "언어"
 msgid "Code"
 msgstr "코드"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "현재"
 
@@ -8069,7 +8075,7 @@ msgstr "컬렉션 검색"
 msgid "Failed to fetch carousel."
 msgstr "캐러셀을 불러오지 못했습니다."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "다시 시도?"
 
@@ -9090,6 +9096,262 @@ msgid "%(num)s commit behind %(sha)s"
 msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(sha)s보다 %(num)s커밋 뒤처짐"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "%(name)s님의 계정을 정말로 익명화하시겠습니까? %(name)s님의 프로필 페이지와 도서 메모가 삭제되고, %(name)s님의 독서 기록, 리뷰, 별점, 병합 요청 제출 내역이 익명화됩니다."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "정말 진행하시겠습니까?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "새 위치를 입력하세요 (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "1에서 %(total)s 사이의 유효한 숫자를 입력해 주세요."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "항목이 이미 해당 위치에 있습니다."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "표지를 검색하는 중"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "클립보드에서 이미지를 찾을 수 없습니다"
+
+#: covers.js
+msgid "Change Image"
+msgstr "이미지 변경"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s가 유효하지 않을 수 있습니다. 그래도 추가하시겠습니까?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "전체 텍스트 검색 제안을 가져오지 못했습니다."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "도서 %(count)s권"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "내 독서 기록으로 이동"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "사용자 지정 서가는 지원되지 않습니다"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "독서 기록에 도서를 추가하지 못했습니다"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "평점을 추가하지 못했습니다"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "읽은 날짜를 설정하지 못했습니다"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "가져옴"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "컬렉션에 없는 도서"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "%(year)s년 출판"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "%(first)s년과 %(last)s년 사이에 출판됨."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "해당 조건에 맞는 사람을 찾을 수 없는 것 같습니다."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "%(year)s년부터"
+
+#: team.js
+msgid "Emeritus"
+msgstr "명예직"
+
+#: team.js
+msgid "Past"
+msgstr "과거"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "제출하는 중..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "일괄 주제 업데이트에 실패했습니다. 몇 분 후에 다시 시도해 주세요."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "주제가 성공적으로 업데이트되었습니다."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "%(menu)s개 항목 표시"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "검색:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "전체 %(total)s개 항목 중 %(start)s~%(end)s 표시 중"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "전체 0개 항목 중 0~0 표시 중"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(전체 %(max)s개 항목에서 필터링됨)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "일치하는 레코드를 찾을 수 없습니다"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "테이블에 사용 가능한 데이터가 없습니다"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "최신순에서 과거순으로 정렬"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "과거순에서 최신순으로 정렬"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "출판일 기준 정렬"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "읽을 수 있는 버전을 아래로 이동"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "읽을 수 있는 판 기준 정렬"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "읽기 가능"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s개 선택됨"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "선택 항목 지우기"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "이 저자로 이동"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "작업 중..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "문제가 발생했습니다: %(failed)s/%(total)s개 저장에 실패했습니다."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "완료되었습니다! %(total)s/%(total)s개 저장됨."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "오류 발생!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "이 작품으로 이동"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s개 작품"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "저자 %(count)s명"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "작품에 태그 지정"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "목록 만들기..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "작품 병합..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "저자 병합..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "업데이트 성공!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "이 도서 메모를 정말로 삭제하시겠습니까?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "메모가 삭제되었습니다."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "관찰 내용을 업데이트하는 중"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "이 작품에 대한 관찰 내용이 없습니다."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "이 책을 편집함"
@@ -9536,12 +9798,6 @@ msgstr "%(start)s부터 %(end)s까지"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "목표: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s개 작품"
 
 #: openlibrary/contribute/manage.py
 msgid "title"

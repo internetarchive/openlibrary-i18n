@@ -183,7 +183,7 @@ msgstr[1] "%(count)s element"
 msgid "Status:"
 msgstr "Vəziyyət:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "Hamısı"
 
@@ -244,7 +244,7 @@ msgstr "İdxal elementləri"
 msgid "Import Time"
 msgstr "İdxal vaxtı"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "Xəta"
 
@@ -268,7 +268,7 @@ msgstr "Şərhlər"
 msgid "Not yet imported"
 msgstr "Hələ idxal edilməyib"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "Önbaxış"
 
@@ -835,7 +835,7 @@ msgstr "Oxumaq istəyirəm"
 msgid "Currently Reading"
 msgstr "Hazırda oxuyuram"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Oxu"
 
@@ -894,7 +894,7 @@ msgstr "\"%(title)s\" kitabını oxu"
 msgid "Borrow \"%(title)s\""
 msgstr "\"%(title)s\" kitabını borc al"
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Borc al"
 
@@ -1016,63 +1016,63 @@ msgstr "Kitablar"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Solr-da axtarış %(count)s saniyə çəkdi"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Open Library komandası"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library fədakar əməkdaşlardan və dünyanın müxtəlif yerlərindən 100-dən çox könüllüdən ibarət komandanın sayəsində fəaliyyət göstərir."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "Bizə qoşulmaq istəyirsiniz?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "Rol:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "Əməkdaşlar"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "Rəhbərlər"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "Təqaüd proqramının iştirakçıları"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "Könüllülər"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "Şöbə:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "İctimaiyyətlə əlaqələr"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "Dizayn"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "Mühəndislik"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "Kitabxanaçılıq"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "İl:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Open Library-də könüllü kimi çalışırsınızsa və komandanın üzvü kimi siyahıda yer almaq istəyirsinizsə, <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library komandası haqqında məlumat formasını</a> doldurun."
 
@@ -1269,6 +1269,13 @@ msgstr "Oxu jurnallarınızı və çağırışlarınızı StoryGraph-dan idxal e
 #: account/import.html
 msgid "Importing..."
 msgstr "İdxal edilir..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "%(count)s Kitab idxal et"
+msgstr[1] "%(count)s Kitab idxal et"
 
 #: account/import.html
 msgid "Reason"
@@ -1492,7 +1499,7 @@ msgstr "Qeydi sil"
 msgid "Save Note"
 msgstr "Qeydi yadda saxla"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "Qeyd tapılmadı."
 
@@ -1556,11 +1563,11 @@ msgstr "<a href=\"/account/books\">Oxu gündəliyinizi</a> hamıya görünən et
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "Bu, başqalarına hansı kitabları oxumaq istədiyinizi, oxuduğunuzu, oxumağı dayandırdığınızı və ya artıq oxuyub bitirdiyinizi görmək imkanı verəcək. Oxu gündəliyi hamıya görünən olan oxucuları izləmək mümkündür."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "Bəli"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "Xeyr"
 
@@ -1970,7 +1977,7 @@ msgstr "İdxal növbəsinə yeni kitablar əlavə et"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "İdxal ediləcək IA identifikatorlarını hər sətirdə birini yazmaqla əlavə edin."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Göndər"
 
@@ -2227,11 +2234,11 @@ msgstr "Giriş statistikası toplanır..."
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3086,7 +3093,7 @@ msgstr "%s saytından götürdüyünüz icarəni oxuyun"
 msgid "Listen to a reading from %s"
 msgstr "%s mənbəyindən səsləndirilmiş mətni dinlə"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "Dinlə"
 
@@ -3392,7 +3399,7 @@ msgstr "Kitab seçmədən əvvəl yuxarıdakı reCAPTCHA-nı tamamlayın."
 msgid "Select this book"
 msgstr "Bu kitabı seç"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4140,11 +4147,11 @@ msgstr "Fayl formatı"
 msgid "Provider Name"
 msgstr "Provayderin adı"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Satın al"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "Veb"
 
@@ -7370,7 +7377,7 @@ msgstr "dillər"
 msgid "Code"
 msgstr "Kod"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "Cari"
 
@@ -8119,7 +8126,7 @@ msgstr "Kolleksiyada axtar"
 msgid "Failed to fetch carousel."
 msgstr "Karuseli yükləmək mümkün olmadı."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "Yenidən cəhd edilsin?"
 
@@ -9150,6 +9157,265 @@ msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(sha)s versiyasından %(num)s kommit geridədir"
 msgstr[1] "%(sha)s versiyasından %(num)s kommit geridədir"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "Həqiqətən %(name)s hesabını anonimləşdirmək istəyirsiniz? Bu, %(name)s profil səhifəsini və kitab qeydlərini siləcək, %(name)s oxu gündəliyini, rəylərini, ulduz reytinqlərini və birləşdirmə tələbi təqdimatlarını anonimləşdirəcək."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "Əminsiniz?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "Yeni mövqeyi daxil edin (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "Zəhmət olmasa 1 ilə %(total)s arasında etibarlı bir rəqəm daxil edin."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "Element artıq bu mövqededir."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "Üz qabıqları axtarılır"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "Mübadilə buferində şəkil tapılmadı"
+
+#: covers.js
+msgid "Change Image"
+msgstr "Şəkli dəyiş"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s etibarsız ola bilər. Yenə də əlavə edilsin?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "Tam mətn axtarış təkliflərini əldə etmək alınmadı."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s Kitab"
+msgstr[1] "%(count)s Kitab"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "Oxu gündəliyinizə keçin"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "Fərdi rəflərə dəstək yoxdur"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "Kitabı oxu gündəliyinə əlavə etmək alınmadı"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "Reytinq əlavə etmək alınmadı"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "Oxunma tarixini təyin etmək alınmadı"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "İdxal edildi"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "Kitab kolleksiyada deyil"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "%(year)s-ci ildə nəşr edilib"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "%(first)s və %(last)s arasında nəşr edilib."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "Görünür, bu xüsusiyyətlərə uyğun heç kəsimiz yoxdur."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "%(year)s-dan bəri"
+
+#: team.js
+msgid "Emeritus"
+msgstr "Fəxri"
+
+#: team.js
+msgid "Past"
+msgstr "Keçmiş"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "Göndərilir..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "Toplu mövzu yeniləməsi uğursuz oldu. Zəhmət olmasa bir neçə dəqiqə sonra yenidən cəhd edin."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "Mövzular uğurla yeniləndi."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "%(menu)s qeyd göstər"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "Axtar:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "%(total)s qeyddən %(start)s-%(end)s göstərilir"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "0 qeyddən 0-0 göstərilir"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(ümumi %(max)s qeyddən süzülüb)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "Uyğun qeyd tapılmadı"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "Cədvəldə məlumat yoxdur"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "Ən yenidən ən köhnəyə sırala"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "Ən köhnədən ən yeniyə sırala"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "Nəşr tarixinə görə sırala"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "Oxuna bilən versiyaları aşağıya göndər"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "Oxumaq üçün nəşrlərə görə sırala"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "Oxumaq üçün mövcuddur"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s seçildi"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "Seçimləri təmizlə"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "Bu müəllifə köçür"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "İşləyir..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "Nəsə səhv getdi: %(failed)s/%(total)s saxlanıla bilmədi."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "Tamamlandı! %(total)s/%(total)s saxlanıldı."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "Xəta baş verdi!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "Bu əsərə köçür"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s əsər"
+msgstr[1] "%(count)s əsər"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s müəllif"
+msgstr[1] "%(count)s müəllif"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "Əsərləri etiketlə"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "Siyahı yarat..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "Əsərləri birləşdir..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "Müəllifləri birləşdir..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "Yeniləmə uğurlu oldu!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "Bu kitab qeydini həqiqətən silmək istəyirsiniz?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "Qeyd silindi."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "Müşahidələr yenilənir"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "Bu əsər üçün müşahidə yoxdur."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Bu kitabı redaktə etdi"
@@ -9596,13 +9862,6 @@ msgstr "%(start)s-dən %(end)s-ə"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Hədəf: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s əsər"
-msgstr[1] "%(count)s əsər"
 
 #: openlibrary/contribute/manage.py
 msgid "title"

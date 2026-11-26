@@ -182,7 +182,7 @@ msgstr[0] "%(count)s item"
 msgid "Status:"
 msgstr "Status:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "Semua"
 
@@ -243,7 +243,7 @@ msgstr "Impor Item"
 msgid "Import Time"
 msgstr "Waktu Impor"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "Kesalahan"
 
@@ -267,7 +267,7 @@ msgstr "Komentar"
 msgid "Not yet imported"
 msgstr "Belum diimpor"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "Pratinjau"
 
@@ -833,7 +833,7 @@ msgstr "Ingin Dibaca"
 msgid "Currently Reading"
 msgstr "Sedang Dibaca"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Baca"
 
@@ -891,7 +891,7 @@ msgstr "Baca \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Pinjam \"%(title)s\""
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Pinjam"
 
@@ -1011,63 +1011,63 @@ msgstr "Buku"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Pencarian solr membutuhkan %(count)s detik"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Tim Open Library"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library dimungkinkan karena tim staf yang berdedikasi dan lebih dari 100 relawan dari seluruh dunia."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "Ingin bergabung dengan kami?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "Peran:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "Staf"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "Pemimpin"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "Peserta"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "Relawan"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "Departemen:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "Komunikasi"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "Desain"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "Rekayasa"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "Kepustakawanan"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "Tahun:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Jika Anda menjadi relawan dengan Open Library dan ingin tercantum sebagai bagian dari tim, lengkapi <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">formulir informasi tim Open Library</a>."
 
@@ -1264,6 +1264,12 @@ msgstr "Impor log bacaan dan tantangan Anda dari StoryGraph."
 #: account/import.html
 msgid "Importing..."
 msgstr "Mengimpor..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "Impor %(count)s Buku"
 
 #: account/import.html
 msgid "Reason"
@@ -1479,7 +1485,7 @@ msgstr "Hapus Catatan"
 msgid "Save Note"
 msgstr "Simpan Catatan"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "Tidak ada catatan ditemukan."
 
@@ -1543,11 +1549,11 @@ msgstr "Apakah Anda ingin membuat <a href=\"/account/books\">Log Membaca</a> And
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "Ini akan memungkinkan orang lain melihat buku apa yang ingin Anda baca, sedang Anda baca, berhenti Anda baca, atau telah Anda baca. Pengguna dengan log bacaan yang diatur ke publik dapat diikuti."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "Ya"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "Tidak"
 
@@ -1956,7 +1962,7 @@ msgstr "Tambahkan buku baru ke antrian impor"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Harap tambahkan identifier IA untuk diimpor, satu per baris."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Kirim"
 
@@ -2213,11 +2219,11 @@ msgstr "Mengumpulkan statistik login..."
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3067,7 +3073,7 @@ msgstr "Baca pinjaman Anda dari %s"
 msgid "Listen to a reading from %s"
 msgstr "Dengarkan bacaan dari %s"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "Dengarkan"
 
@@ -3372,7 +3378,7 @@ msgstr "Harap selesaikan reCAPTCHA di atas sebelum memilih buku."
 msgid "Select this book"
 msgstr "Pilih buku ini"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4118,11 +4124,11 @@ msgstr "Format File"
 msgid "Provider Name"
 msgstr "Nama Penyedia"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Beli"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "Web"
 
@@ -7329,7 +7335,7 @@ msgstr "bahasa"
 msgid "Code"
 msgstr "Kode"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "Saat ini"
 
@@ -8070,7 +8076,7 @@ msgstr "Cari koleksi"
 msgid "Failed to fetch carousel."
 msgstr "Gagal mengambil korsel."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "Coba lagi?"
 
@@ -9091,6 +9097,262 @@ msgid "%(num)s commit behind %(sha)s"
 msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(num)s commit tertinggal dari %(sha)s"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "Benar-benar anonimkan akun %(name)s? Ini akan menghapus halaman profil dan catatan buku %(name)s, serta menganonimkan log bacaan, ulasan, peringkat bintang, dan pengajuan permintaan penggabungan %(name)s."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "Anda yakin?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "Masukkan posisi baru (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "Harap masukkan angka yang valid antara 1 dan %(total)s."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "Item sudah berada di posisi tersebut."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "Mencari sampul"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "Tidak ada gambar yang ditemukan di clipboard"
+
+#: covers.js
+msgid "Change Image"
+msgstr "Ganti Gambar"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s mungkin tidak valid. Tetap tambahkan?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "Gagal mengambil saran pencarian teks lengkap."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s Buku"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "Buka Log Bacaan Anda"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "Rak khusus tidak didukung"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "Gagal menambahkan buku ke log bacaan"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "Gagal menambahkan peringkat"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "Gagal mengatur tanggal baca"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "Diimpor"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "Buku tidak ada dalam koleksi"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "Diterbitkan pada %(year)s"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "Diterbitkan antara %(first)s & %(last)s."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "Sepertinya kami tidak memiliki siapa pun dengan spesifikasi tersebut."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "Sejak %(year)s"
+
+#: team.js
+msgid "Emeritus"
+msgstr "Emeritus"
+
+#: team.js
+msgid "Past"
+msgstr "Lampau"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "Mengirimkan..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "Pembaruan subjek batch gagal. Silakan coba lagi dalam beberapa menit."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "Subjek berhasil diperbarui."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "Tampilkan %(menu)s entri"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "Cari:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "Menampilkan %(start)s hingga %(end)s dari %(total)s entri"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Menampilkan 0 hingga 0 dari 0 entri"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(disaring dari %(max)s total entri)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "Tidak ada catatan yang cocok ditemukan"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "Tidak ada data yang tersedia dalam tabel"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "Urutkan dari terbaru ke terlama"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "Urutkan dari terlama ke terbaru"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "Urutkan berdasarkan tanggal terbit"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "Dorong versi yang dapat dibaca ke bawah"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "Urutkan berdasarkan edisi untuk dibaca"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "Tersedia untuk dibaca"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s dipilih"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "Hapus Pilihan"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "Pindahkan ke penulis ini"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "Memproses..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "Terjadi kesalahan: %(failed)s/%(total)s gagal disimpan."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "Selesai! %(total)s/%(total)s disimpan."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "Terjadi kesalahan!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "Pindahkan ke karya ini"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s karya"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s penulis"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "Tandai Karya"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "Buat daftar..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "Gabungkan Karya..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "Gabungkan Penulis..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "Pembaruan berhasil!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "Benar-benar hapus catatan buku ini?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "Catatan dihapus."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "Memperbarui pengamatan"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "Tidak ada pengamatan untuk karya ini."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Menyunting buku ini"
@@ -9537,12 +9799,6 @@ msgstr "%(start)s hingga %(end)s"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Target: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s karya"
 
 #: openlibrary/contribute/manage.py
 msgid "title"
