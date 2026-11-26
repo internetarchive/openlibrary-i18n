@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -190,11 +190,11 @@ msgstr "全部"
 msgid "Default sort: date added, newest first."
 msgstr "默认排序：添加日期，最新优先。"
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "名字"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "提交者"
 
@@ -202,7 +202,7 @@ msgstr "提交者"
 msgid "Added Time"
 msgstr "添加时间"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "状态"
 
@@ -538,10 +538,6 @@ msgstr "取消"
 msgid "Continue without waiting"
 msgstr "不等待，继续"
 
-#: library_explorer.html openlibrary/core/shell/nav.py
-msgid "Library Explorer"
-msgstr "图书馆资源管理器"
-
 #: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "加载中..."
@@ -745,31 +741,23 @@ msgstr "下载链接"
 msgid "Next"
 msgstr "下一个"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "Open Library 服务器状态"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "服务器状态"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "测试环境面板仅对维护者可见。"
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "上次构建结果"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "在GitHub上查看PR"
 
-#: status.html
-msgid "Show changed files"
-msgstr "显示已更改的文件"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "系统信息"
 
@@ -1111,7 +1099,7 @@ msgstr "注册"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "获取您的免费 Open Library 卡，从非营利组织 Internet Archive 借阅数字图书"
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "成功了！"
 
@@ -2073,6 +2061,10 @@ msgstr "相关统计页面"
 msgid "Tasks"
 msgstr "任务"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "合并请求"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "垃圾内容审核"
@@ -2723,49 +2715,13 @@ msgstr "Json"
 msgid "No results found."
 msgstr "没有找到任何结果。"
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[管理中心] IP 地址"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "IP 地址"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "被禁止的IP名单"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "日期/时间"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "IP地址"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "管理员备注"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "编辑数"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "x分钟前"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "备注"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[管理中心]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2846,6 +2802,10 @@ msgstr "未找到此ID的账户。"
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "近期账号"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "日期/时间"
 
 #: admin/people/index.html
 msgid "email"
@@ -2966,27 +2926,11 @@ msgstr "等待中的租借"
 msgid "%(num)d edits"
 msgstr "%(num)d次编辑"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "调试信息"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "账户信息"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "验证链接"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "未找到"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "搜索作者"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "搜索"
 
@@ -4323,7 +4267,7 @@ msgstr "立即阅读"
 msgid "Back to Open Library"
 msgstr "返回 Open Library"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "批量搜索（测试版）"
 
@@ -5814,9 +5758,81 @@ msgstr "请求合并"
 msgid "Reject Merge"
 msgstr "拒绝合并"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "合并作者中..."
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "好的。正在进行合并。<i>需要<u>几分钟的时间来完成</u>此更新。</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "啊呀！"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "这次合并失败了。这是我们的错误，我们已经将它记录下来了。"
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "合并作品"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "全部时间"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "去年"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "上个月"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "请求"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "已合并"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "已拒绝"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "社区编辑请求统计"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "仅统计已关闭的请求。仍在等待审核的请求不计入统计。"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "审核者"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "提交者"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "审核者"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "作者请求"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "作品请求"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "这里没有条目！"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -5848,8 +5864,8 @@ msgid "Community Edit Requests"
 msgstr "社区编辑请求"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "这里没有条目！"
+msgid "View reviewer and submitter statistics"
+msgstr "查看审核者和提交者统计"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -5867,14 +5883,6 @@ msgstr "状态 ▾"
 msgid "Request Status"
 msgstr "请求状态"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "已合并"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "已拒绝"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "提交者 ▾"
@@ -5890,10 +5898,6 @@ msgstr "由我提交"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "审核者 ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "审核者"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6207,7 +6211,7 @@ msgstr "这一合并已被撤销。"
 msgid "Details here"
 msgstr "详情请见这里"
 
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "重复的内容"
 
@@ -6720,10 +6724,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "使用阅读日志功能记录的书籍总数"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "全部时间"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "登记书籍的独特用户数量"
 
@@ -7043,30 +7043,6 @@ msgstr "%(page_title)s | 开放图书馆"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "%(book_titles)s的作者"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "合并作者中..."
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "进行中..."
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "刷新页面吗？"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "好的。正在进行合并。<i>需要<u>几分钟的时间来完成</u>此更新。</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "啊呀！"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "这次合并失败了。这是我们的错误，我们已经将它记录下来了。"
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8271,7 +8247,7 @@ msgstr "知名作者"
 msgid "See more books by %(name)s"
 msgstr "查看%(name)s的更多书籍"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "搜索主题"
 
@@ -9446,12 +9422,16 @@ msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the 
 msgstr "这不是有效的 ISBN。请检查数字：ISBN 应为10位或13位，最后一位是校验位。"
 
 #: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "这个年份似乎不对。请输入此版本出版的年份。"
+
+#: openlibrary/contribute/save.py
 msgid "Enter the date with its year, for example 2005 or March 2005."
 msgstr "请输入包含年份的日期，例如2005年或2005年3月。"
 
 #: openlibrary/contribute/save.py
-msgid "That year doesn't look right. Enter the year this edition came out."
-msgstr "这个年份似乎不对。请输入此版本出版的年份。"
+msgid "Put the earlier year first, for example 1998-2002."
+msgstr "请先输入较早的年份，例如1998-2002。"
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -9493,6 +9473,10 @@ msgstr "[记录已删除]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "未知"
+
+#: openlibrary/core/shell/nav.py openlibrary/fastapi/library_explorer.py openlibrary/plugins/upstream/code.py
+msgid "Library Explorer"
+msgstr "图书馆资源管理器"
 
 #: openlibrary/core/shell/nav.py
 msgid "K-12 Student Library"
@@ -10172,6 +10156,14 @@ msgstr "评估"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "用户在访问此版本之前能多好地判断它是否符合自己的需求？"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "感谢您注册Open Library账户并申请印刷障碍特殊访问权限。您应会收到一封电子邮件，详述下一步流程。"
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "已合并 %%"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10221,6 +10213,10 @@ msgstr "%(query)s - 作者搜索"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "作者搜索"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "Open Library 服务器状态"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11090,10 +11086,6 @@ msgstr "登录或注册时遇到意外错误，请重试或联系info@archive.or
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "请求失败，错误代码：%(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "感谢您注册Open Library账户并申请印刷障碍特殊访问权限。您应会收到一封电子邮件，详述下一步流程。"
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -13269,4 +13261,49 @@ msgstr "图表加载失败。请重新加载页面再试一次。"
 
 #~ msgid "Search Open Library for \"%(query)s\""
 #~ msgstr "在Open Library中搜索\"%(query)s\""
+
+#~ msgid "Show changed files"
+#~ msgstr "显示已更改的文件"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[管理中心] IP 地址"
+
+#~ msgid "IP Addresses"
+#~ msgstr "IP 地址"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "被禁止的IP名单"
+
+#~ msgid "IP address"
+#~ msgstr "IP地址"
+
+#~ msgid "Admin Comment"
+#~ msgstr "管理员备注"
+
+#~ msgid "# of edits"
+#~ msgstr "编辑数"
+
+#~ msgid "x minutes ago"
+#~ msgstr "x分钟前"
+
+#~ msgid "comment"
+#~ msgstr "备注"
+
+#~ msgid "Debug Info"
+#~ msgstr "调试信息"
+
+#~ msgid "Account Information"
+#~ msgstr "账户信息"
+
+#~ msgid "Verifications Links"
+#~ msgstr "验证链接"
+
+#~ msgid "None found"
+#~ msgstr "未找到"
+
+#~ msgid "In progress..."
+#~ msgstr "进行中..."
+
+#~ msgid "Refresh the page?"
+#~ msgstr "刷新页面吗？"
 

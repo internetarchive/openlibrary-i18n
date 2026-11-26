@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -192,11 +192,11 @@ msgstr "Vše"
 msgid "Default sort: date added, newest first."
 msgstr "Výchozí řazení: datum přidání, nejnovější první."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Název"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Odesílatel"
 
@@ -204,7 +204,7 @@ msgstr "Odesílatel"
 msgid "Added Time"
 msgstr "Čas přidání"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "Stav"
 
@@ -540,10 +540,6 @@ msgstr "Zrušit"
 msgid "Continue without waiting"
 msgstr "Pokračovat bez čekání"
 
-#: library_explorer.html openlibrary/core/shell/nav.py
-msgid "Library Explorer"
-msgstr "Průzkumník knihovny"
-
 #: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Načítání..."
@@ -747,31 +743,23 @@ msgstr "Odkaz ke stažení"
 msgid "Next"
 msgstr "Další"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "Stav serveru Open Library"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "Stav serveru"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "Panel testovacího prostředí je viditelný pouze pro správce."
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "Výsledek posledního buildu"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "Zobrazit PR na GitHubu"
 
-#: status.html
-msgid "Show changed files"
-msgstr "Zobrazit změněné soubory"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "Systémové informace"
 
@@ -1121,7 +1109,7 @@ msgstr "Registrovat"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "Získejte svou bezplatnou kartu Open Library a půjčujte si digitální knihy od neziskového Internet Archive."
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "Úspěch!"
 
@@ -2101,6 +2089,10 @@ msgstr "Související stránky se statistikami"
 msgid "Tasks"
 msgstr "Úkoly"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "Požadavky na sloučení"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "Kontrola spamu"
@@ -2761,49 +2753,13 @@ msgstr "Json"
 msgid "No results found."
 msgstr "Nebyly nalezeny žádné výsledky."
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[Centrum správy] IP adresy"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "IP adresy"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "Seznam zakázaných IP adres"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "Datum/Čas"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "IP adresa"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "Komentář správce"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "Počet úprav"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "před x minutami"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "komentář"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[Centrum správy]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2884,6 +2840,10 @@ msgstr "Nebyl nalezen žádný účet s tímto ID."
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "Nedávné účty"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "Datum/Čas"
 
 #: admin/people/index.html
 msgid "email"
@@ -3004,27 +2964,11 @@ msgstr "Výpůjčky v pořadníku"
 msgid "%(num)d edits"
 msgstr "%(num)d úprav"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "Ladící informace"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "Informace o účtu"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "Odkazy pro ověření"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "Nic nenalezeno"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "Hledat autora"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Hledat"
 
@@ -4367,7 +4311,7 @@ msgstr "Číst nyní"
 msgid "Back to Open Library"
 msgstr "Zpět na Open Library"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "Hromadné vyhledávání (beta)"
 
@@ -5880,9 +5824,81 @@ msgstr "Požádat o sloučení"
 msgid "Reject Merge"
 msgstr "Odmítnout sloučení"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "Slučování autorů..."
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "OK. Sloučení probíhá. <i>Dokončení aktualizace <u>bude trvat několik minut</u>.</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "Ach!"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "Sloučení se nezdařilo. Je to naše chyba a zaznamenali jsme ji."
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "Sloučit díla"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "Celkově"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "Poslední rok"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "Poslední měsíc"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "Požadavky"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "Sloučeno"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "Zamítnuto"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "Statistiky komunitních požadavků na úpravy"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "Pouze uzavřené požadavky. Požadavky čekající na posouzení se nepočítají."
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "Recenzenti"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "Odesílatelé"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "Recenzent"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "Požadavky na autory"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "Požadavky na díla"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "Žádné záznamy!"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -5914,8 +5930,8 @@ msgid "Community Edit Requests"
 msgstr "Požadavky na komunitní úpravy"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "Žádné záznamy!"
+msgid "View reviewer and submitter statistics"
+msgstr "Zobrazit statistiky recenzentů a odesílatelů"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -5933,14 +5949,6 @@ msgstr "Stav ▾"
 msgid "Request Status"
 msgstr "Stav požadavku"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "Sloučeno"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "Zamítnuto"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "Odesílatel ▾"
@@ -5956,10 +5964,6 @@ msgstr "Odesláno mnou"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "Recenzent ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "Recenzent"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6281,7 +6285,7 @@ msgstr "Toto sloučení bylo vráceno."
 msgid "Details here"
 msgstr "Podrobnosti zde"
 
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "Duplikáty"
 
@@ -6800,10 +6804,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "Celkový počet knih zaznamenaných pomocí funkce Čtenářský deník"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "Celkově"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "# unikátní uživatelé zaznamenávající knihy"
 
@@ -7125,30 +7125,6 @@ msgstr "%(page_title)s | Open Library"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "Autor %(book_titles)s"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "Slučování autorů..."
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "Probíhá…"
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "Obnovit stránku?"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "OK. Sloučení probíhá. <i>Dokončení aktualizace <u>bude trvat několik minut</u>.</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "Ach!"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "Sloučení se nezdařilo. Je to naše chyba a zaznamenali jsme ji."
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8373,7 +8349,7 @@ msgstr "Významní autoři"
 msgid "See more books by %(name)s"
 msgstr "Zobrazit další knihy od %(name)s"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "Hledat téma"
 
@@ -9560,12 +9536,16 @@ msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the 
 msgstr "To není platné ISBN. Zkontrolujte číslice: ISBN má 10 nebo 13 znaků a poslední je kontrolní číslice."
 
 #: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Ten rok nevypadá správně. Zadejte rok, kdy toto vydání vyšlo."
+
+#: openlibrary/contribute/save.py
 msgid "Enter the date with its year, for example 2005 or March 2005."
 msgstr "Zadejte datum i s rokem, například 2005 nebo březen 2005."
 
 #: openlibrary/contribute/save.py
-msgid "That year doesn't look right. Enter the year this edition came out."
-msgstr "Ten rok nevypadá správně. Zadejte rok, kdy toto vydání vyšlo."
+msgid "Put the earlier year first, for example 1998-2002."
+msgstr "Uveďte nejprve dřívější rok, například 1998-2002."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -9607,6 +9587,10 @@ msgstr "[Záznam smazán]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "Neznámý"
+
+#: openlibrary/core/shell/nav.py openlibrary/fastapi/library_explorer.py openlibrary/plugins/upstream/code.py
+msgid "Library Explorer"
+msgstr "Průzkumník knihovny"
 
 #: openlibrary/core/shell/nav.py
 msgid "K-12 Student Library"
@@ -10290,6 +10274,14 @@ msgstr "Hodnocení"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Jak dobře dokáže uživatel posoudit, zda je toto vydání relevantní pro jeho potřeby, ještě než k němu přistoupí?"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "Děkujeme za registraci účtu Open Library a žádost o speciální přístup pro postižení tisku. Měli byste obdržet e-mail s podrobnostmi o dalších krocích."
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "Sloučeno %%"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10339,6 +10331,10 @@ msgstr "%(query)s - Vyhledávání autorů"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "Vyhledávání autorů"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "Stav serveru Open Library"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11244,10 +11240,6 @@ msgstr "Při pokusu o přihlášení nebo registraci došlo k neočekávané chy
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "Požadavek selhal s kódem chyby: %(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "Děkujeme za registraci účtu Open Library a žádost o speciální přístup pro postižení tisku. Měli byste obdržet e-mail s podrobnostmi o dalších krocích."
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -13445,4 +13437,49 @@ msgstr "Grafy se nepodařilo načíst. Zkuste stránku znovu načíst."
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
 #~ msgstr "Statistiky úkolů: kdo edituje a jak dobře úpravy úkolů vydrží"
+
+#~ msgid "Show changed files"
+#~ msgstr "Zobrazit změněné soubory"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[Centrum správy] IP adresy"
+
+#~ msgid "IP Addresses"
+#~ msgstr "IP adresy"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "Seznam zakázaných IP adres"
+
+#~ msgid "IP address"
+#~ msgstr "IP adresa"
+
+#~ msgid "Admin Comment"
+#~ msgstr "Komentář správce"
+
+#~ msgid "# of edits"
+#~ msgstr "Počet úprav"
+
+#~ msgid "x minutes ago"
+#~ msgstr "před x minutami"
+
+#~ msgid "comment"
+#~ msgstr "komentář"
+
+#~ msgid "Debug Info"
+#~ msgstr "Ladící informace"
+
+#~ msgid "Account Information"
+#~ msgstr "Informace o účtu"
+
+#~ msgid "Verifications Links"
+#~ msgstr "Odkazy pro ověření"
+
+#~ msgid "None found"
+#~ msgstr "Nic nenalezeno"
+
+#~ msgid "In progress..."
+#~ msgstr "Probíhá…"
+
+#~ msgid "Refresh the page?"
+#~ msgstr "Obnovit stránku?"
 

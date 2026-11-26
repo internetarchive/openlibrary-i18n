@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -191,11 +191,11 @@ msgstr "Tout"
 msgid "Default sort: date added, newest first."
 msgstr "Tri par défaut : date d'ajout, les plus récents en premier."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Nom"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Demandeur"
 
@@ -203,7 +203,7 @@ msgstr "Demandeur"
 msgid "Added Time"
 msgstr "Prolongation"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "Statut"
 
@@ -539,10 +539,6 @@ msgstr "Annuler"
 msgid "Continue without waiting"
 msgstr "Continuer sans attendre"
 
-#: library_explorer.html openlibrary/core/shell/nav.py
-msgid "Library Explorer"
-msgstr "Explorateur de bibliothèque"
-
 #: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Chargement..."
@@ -746,31 +742,23 @@ msgstr "Lien de téléchargement"
 msgid "Next"
 msgstr "Suivant"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "Statut du serveur Open Library"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "Statut du serveur"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "Le panneau de l'environnement de test n'est visible que par les mainteneurs."
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "Dernier résultat de compilation"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "Voir les PR sur GitHub"
 
-#: status.html
-msgid "Show changed files"
-msgstr "Afficher les fichiers modifiés"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "Informations système"
 
@@ -1116,7 +1104,7 @@ msgstr "S'enregistrer"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "Obtenez votre carte Open Library gratuite et empruntez des livres numériques auprès de l'Internet Archive, une organisation à but non lucratif"
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "Succès !"
 
@@ -2087,6 +2075,10 @@ msgstr "Pages de statistiques connexes"
 msgid "Tasks"
 msgstr "Tâches"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "Demandes de fusion"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "Révision des spams"
@@ -2742,49 +2734,13 @@ msgstr "Json"
 msgid "No results found."
 msgstr "Aucun résultat trouvé."
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[Centre d'administration] Adresses IP"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "Adresses IP"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "Liste d'adresses IP bannies"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "Date/Heure"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "Adresse IP"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "Commentaire de l'administrateur"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "# de modifications"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "il y a x minutes"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "commentaire"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[Centre d'administration]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2865,6 +2821,10 @@ msgstr "Aucun compte trouvé avec cet ID."
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "Comptes récents"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "Date/Heure"
 
 #: admin/people/index.html
 msgid "email"
@@ -2985,27 +2945,11 @@ msgstr "Emprunts en attente"
 msgid "%(num)d edits"
 msgstr "%(num)d modifications"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "Info de débogage"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "Informations du compte"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "Liens de vérification"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "Aucun trouvé"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "Rechercher un auteur"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Rechercher"
 
@@ -4345,7 +4289,7 @@ msgstr "Lire maintenant"
 msgid "Back to Open Library"
 msgstr "Retour à Open Library"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "Recherche en masse (bêta)"
 
@@ -5847,9 +5791,81 @@ msgstr "Demander une fusion"
 msgid "Reject Merge"
 msgstr "Refuser la fusion"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "Fusion d'auteurs en cours…"
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "OK. La fusion est en cours. <i>Il faudra <u>quelques minutes pour terminer</u> la mise à jour.</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "Ooph !"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "Cette fusion n'a pas fonctionné. C'est notre faute, et nous en avons pris note."
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "Fusionner des œuvres"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "De tous les temps"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "Dernière année"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "Dernier mois"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "Demandes"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "Fusionné"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "Refusé"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "Statistiques des demandes de modification de la communauté"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "Demandes fermées uniquement. Les demandes encore en attente de relecture ne sont pas comptabilisées."
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "Relecteurs"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "Demandeurs"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "Relecteur"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "Demandes d'auteur"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "Demandes d'œuvre"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "Pas d'entrée ici !"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -5881,8 +5897,8 @@ msgid "Community Edit Requests"
 msgstr "Requêtes de modification de la communauté"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "Pas d'entrée ici !"
+msgid "View reviewer and submitter statistics"
+msgstr "Voir les statistiques des relecteurs et des demandeurs"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -5900,14 +5916,6 @@ msgstr "Statut ▾"
 msgid "Request Status"
 msgstr "Statut de la demande"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "Fusionné"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "Refusé"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "Demandeur ▾"
@@ -5923,10 +5931,6 @@ msgstr "Soumis par moi"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "Relecteur ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "Relecteur"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6244,7 +6248,7 @@ msgstr "Cette fusion a été annulée."
 msgid "Details here"
 msgstr "Détails ici"
 
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "Doublons"
 
@@ -6760,10 +6764,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "Le nombre total de livres enregistrés en utilisant le journal de lecture"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "De tous les temps"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "# Utilisateurs uniques ayant enregistré des livres"
 
@@ -7084,30 +7084,6 @@ msgstr "%(page_title)s | Open Library"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "Auteur de %(book_titles)s"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "Fusion d'auteurs en cours…"
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "En cours…"
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "Actualiser la page ?"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "OK. La fusion est en cours. <i>Il faudra <u>quelques minutes pour terminer</u> la mise à jour.</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "Ooph !"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "Cette fusion n'a pas fonctionné. C'est notre faute, et nous en avons pris note."
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8322,7 +8298,7 @@ msgstr "Auteurs notables"
 msgid "See more books by %(name)s"
 msgstr "Voir plus de livres de %(name)s"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "Rechercher un thème"
 
@@ -9503,12 +9479,16 @@ msgid "That isn't a valid ISBN. Check the digits: an ISBN has 10 or 13, and the 
 msgstr "Ce n'est pas un ISBN valide. Vérifiez les chiffres : un ISBN en comporte 10 ou 13, et le dernier est une clé de contrôle."
 
 #: openlibrary/contribute/save.py
+msgid "That year doesn't look right. Enter the year this edition came out."
+msgstr "Cette année ne semble pas correcte. Indiquez l'année de sortie de cette édition."
+
+#: openlibrary/contribute/save.py
 msgid "Enter the date with its year, for example 2005 or March 2005."
 msgstr "Indiquez la date avec son année, par exemple 2005 ou mars 2005."
 
 #: openlibrary/contribute/save.py
-msgid "That year doesn't look right. Enter the year this edition came out."
-msgstr "Cette année ne semble pas correcte. Indiquez l'année de sortie de cette édition."
+msgid "Put the earlier year first, for example 1998-2002."
+msgstr "Indiquez d'abord l'année la plus ancienne, par exemple 1998-2002."
 
 #: openlibrary/contribute/save.py
 msgid "Fill in an answer, or choose “I couldn't find it”."
@@ -9550,6 +9530,10 @@ msgstr "[Enregistrement supprimé]"
 #: openlibrary/core/edits.py
 msgid "Unknown"
 msgstr "Inconnu"
+
+#: openlibrary/core/shell/nav.py openlibrary/fastapi/library_explorer.py openlibrary/plugins/upstream/code.py
+msgid "Library Explorer"
+msgstr "Explorateur de bibliothèque"
 
 #: openlibrary/core/shell/nav.py
 msgid "K-12 Student Library"
@@ -10231,6 +10215,14 @@ msgstr "Évaluation"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Dans quelle mesure un usager peut-il déterminer si cette édition répond à ses besoins avant d'y accéder ?"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "Merci d'avoir créé un compte Open Library et demandé un accès spécial pour handicap de lecture. Vous devriez recevoir un e-mail décrivant les prochaines étapes."
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "%% fusionné"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10280,6 +10272,10 @@ msgstr "%(query)s - Recherche d'auteur"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "Recherche d'auteur"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "Statut du serveur Open Library"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11167,10 +11163,6 @@ msgstr "La tentative de connexion ou d'inscription a rencontré une erreur inatt
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "La requête a échoué avec le code d'erreur : %(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "Merci d'avoir créé un compte Open Library et demandé un accès spécial pour handicap de lecture. Vous devriez recevoir un e-mail décrivant les prochaines étapes."
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -13710,4 +13702,49 @@ msgstr "Les graphiques n'ont pas pu se charger. Rechargez la page pour réessaye
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
 #~ msgstr "Statistiques des tâches : qui modifie, et comment les modifications des tâches résistent dans le temps"
+
+#~ msgid "Show changed files"
+#~ msgstr "Afficher les fichiers modifiés"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[Centre d'administration] Adresses IP"
+
+#~ msgid "IP Addresses"
+#~ msgstr "Adresses IP"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "Liste d'adresses IP bannies"
+
+#~ msgid "IP address"
+#~ msgstr "Adresse IP"
+
+#~ msgid "Admin Comment"
+#~ msgstr "Commentaire de l'administrateur"
+
+#~ msgid "# of edits"
+#~ msgstr "# de modifications"
+
+#~ msgid "x minutes ago"
+#~ msgstr "il y a x minutes"
+
+#~ msgid "comment"
+#~ msgstr "commentaire"
+
+#~ msgid "Debug Info"
+#~ msgstr "Info de débogage"
+
+#~ msgid "Account Information"
+#~ msgstr "Informations du compte"
+
+#~ msgid "Verifications Links"
+#~ msgstr "Liens de vérification"
+
+#~ msgid "None found"
+#~ msgstr "Aucun trouvé"
+
+#~ msgid "In progress..."
+#~ msgstr "En cours…"
+
+#~ msgid "Refresh the page?"
+#~ msgstr "Actualiser la page ?"
 
