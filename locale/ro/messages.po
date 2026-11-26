@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.19.0\n"
 
 #: account.html account/notifications.html account/privacy.html shell/header.html.jinja type/user/view.html
 msgid "Settings"
@@ -192,11 +192,11 @@ msgstr "Toate"
 msgid "Default sort: date added, newest first."
 msgstr "Sortare implicită: data adăugării, cele mai noi primele."
 
-#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html type/author/edit.html type/language/view.html
+#: admin/inspect/store.html admin/people/index.html batch_import_list.html openlibrary/plugins/worksearch/sort_menu.py status.html.jinja type/author/edit.html type/language/view.html
 msgid "Name"
 msgstr "Nume"
 
-#: batch_import_list.html batch_import_view.html merge_request_table/table_header.html
+#: batch_import_list.html batch_import_view.html merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
 msgid "Submitter"
 msgstr "Expeditor"
 
@@ -204,7 +204,7 @@ msgstr "Expeditor"
 msgid "Added Time"
 msgstr "Ora adăugării"
 
-#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html
+#: account/import.html account/loans.html admin/imports.html admin/imports_by_date.html admin/loans_table.html admin/menu.html batch_import_list.html batch_import_progress.html batch_import_view.html contribute/admin/index.html.jinja librarian_dashboard/data_quality_table.html status.html.jinja
 msgid "Status"
 msgstr "Stare"
 
@@ -747,31 +747,23 @@ msgstr "Link de descărcare"
 msgid "Next"
 msgstr "Următor"
 
-#: status.html
-msgid "Open Library server status"
-msgstr "Starea serverului Open Library"
-
-#: status.html
+#: status.html.jinja
 msgid "Server status"
 msgstr "Starea serverului"
 
-#: status.html
+#: status.html.jinja
 msgid "The testing environment panel is only visible to maintainers."
 msgstr "Panoul mediului de testare este vizibil doar pentru mentenanți."
 
-#: status.html
+#: status.html.jinja
 msgid "Last Build Result"
 msgstr "Ultimul rezultat al build-ului"
 
-#: status.html
+#: status.html.jinja
 msgid "View PRs on GitHub"
 msgstr "Vezi PR-urile pe GitHub"
 
-#: status.html
-msgid "Show changed files"
-msgstr "Arată fișierele modificate"
-
-#: status.html
+#: status.html.jinja
 msgid "System information"
 msgstr "Informații sistem"
 
@@ -1121,7 +1113,7 @@ msgstr "Înscriere"
 msgid "Get your free Open Library card and borrow digital books from the nonprofit Internet Archive"
 msgstr "Obține-ți cardul gratuit Open Library și împrumută cărți digitale de la organizația nonprofit Internet Archive"
 
-#: account/create.html type/author/view.html
+#: account/create.html merge/authors.html
 msgid "Success!"
 msgstr "Succes!"
 
@@ -2101,6 +2093,10 @@ msgstr "Pagini de statistici conexe"
 msgid "Tasks"
 msgstr "Sarcini"
 
+#: admin/index.html
+msgid "Merge requests"
+msgstr "Cereri de fuzionare"
+
 #: admin/index.html admin/menu.html admin/new_accounts.html.jinja
 msgid "Spam review"
 msgstr "Revizuire spam"
@@ -2761,49 +2757,13 @@ msgstr "Json"
 msgid "No results found."
 msgstr "Niciun rezultat găsit."
 
-#: admin/ip/index.html
-msgid "[Admin Center] IP Addresses"
-msgstr "[Centru de administrare] Adrese IP"
-
-#: admin/ip/index.html
-msgid "IP Addresses"
-msgstr "Adrese IP"
-
-#: admin/ip/index.html
-msgid "List of Banned IPs"
-msgstr "Lista IP-urilor blocate"
-
-#: admin/ip/index.html admin/people/index.html
-msgid "Date/Time"
-msgstr "Dată/Oră"
-
-#: admin/ip/index.html
-msgid "IP address"
-msgstr "Adresă IP"
-
-#: admin/ip/index.html
-msgid "Admin Comment"
-msgstr "Comentariu admin"
-
-#: admin/ip/index.html
-msgid "# of edits"
-msgstr "Nr. de modificări"
-
-#: admin/ip/index.html
-msgid "x minutes ago"
-msgstr "x minute în urmă"
-
-#: admin/ip/index.html admin/ip/view.html
-msgid "IP"
-msgstr "IP"
-
-#: admin/ip/index.html
-msgid "comment"
-msgstr "comentariu"
-
 #: admin/ip/view.html admin/people/view.html
 msgid "[Admin Center]"
 msgstr "[Centru de administrare]"
+
+#: admin/ip/view.html
+msgid "IP"
+msgstr "IP"
 
 #: admin/ip/view.html
 #, python-format
@@ -2884,6 +2844,10 @@ msgstr "Niciun cont găsit cu acest ID."
 #: admin/people/index.html
 msgid "Recent Accounts"
 msgstr "Conturi recente"
+
+#: admin/people/index.html
+msgid "Date/Time"
+msgstr "Dată/Oră"
 
 #: admin/people/index.html
 msgid "email"
@@ -3004,27 +2968,11 @@ msgstr "Împrumuturi în așteptare"
 msgid "%(num)d edits"
 msgstr "%(num)d modificări"
 
-#: admin/people/view.html
-msgid "Debug Info"
-msgstr "Informații de depanare"
-
-#: admin/people/view.html
-msgid "Account Information"
-msgstr "Informații cont"
-
-#: admin/people/view.html
-msgid "Verifications Links"
-msgstr "Linkuri de verificare"
-
-#: admin/people/view.html
-msgid "None found"
-msgstr "Niciuna găsită"
-
 #: authors/index.html.jinja
 msgid "Search for an Author"
 msgstr "Caută un autor"
 
-#: PreviewSearchInside.html SubjectSearch.html authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "Căutare"
 
@@ -4367,7 +4315,7 @@ msgstr "Citește acum"
 msgid "Back to Open Library"
 msgstr "Înapoi la Open Library"
 
-#: bulk_search/bulk_search.html search/advancedsearch.html.jinja
+#: bulk_search/bulk_search.html.jinja openlibrary/fastapi/search.py openlibrary/plugins/worksearch/bulk_search.py search/advancedsearch.html.jinja
 msgid "Bulk Search (beta)"
 msgstr "Căutare în masă (beta)"
 
@@ -5880,9 +5828,81 @@ msgstr "Solicită fuzionare"
 msgid "Reject Merge"
 msgstr "Respinge fuzionarea"
 
+#: merge/authors.html
+msgid "Merging Authors..."
+msgstr "Fuzionarea autorilor..."
+
+#: merge/authors.html
+msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
+msgstr "OK. Fuzionarea este în curs. <i>Va dura <u>câteva minute pentru a finaliza</u> actualizarea.</i>"
+
+#: merge/authors.html
+msgid "Argh!"
+msgstr "Argh!"
+
+#: merge/authors.html
+msgid "That merge didn't work. It's our fault, and we've made a note of it."
+msgstr "Fuzionarea nu a funcționat. Este greșeala noastră și am notat-o."
+
 #: merge/works.html
 msgid "Merge Works"
 msgstr "Fuzionează opere"
+
+#: merge_request_table/merge_request_stats.html.jinja stats/readinglog.html
+msgid "All time"
+msgstr "Toată perioada"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last year"
+msgstr "Anul trecut"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Last month"
+msgstr "Luna trecută"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Requests"
+msgstr "Cereri"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Merged"
+msgstr "Fuzionat"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html openlibrary/core/edits.py
+msgid "Declined"
+msgstr "Respins"
+
+#: merge_request_table/merge_request_stats.html.jinja openlibrary/fastapi/merge_stats.py
+msgid "Community Edit Request Statistics"
+msgstr "Statistici cereri de editare ale comunității"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Closed requests only. Requests still waiting for review are not counted."
+msgstr "Doar cererile închise. Cererile care încă așteaptă revizuire nu sunt numărate."
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Reviewers"
+msgstr "Recenzenți"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Submitters"
+msgstr "Expeditori"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/table_header.html
+msgid "Reviewer"
+msgstr "Recenzent"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Author requests"
+msgstr "Cereri despre autori"
+
+#: merge_request_table/merge_request_stats.html.jinja
+msgid "Work requests"
+msgstr "Cereri despre opere"
+
+#: merge_request_table/merge_request_stats.html.jinja merge_request_table/merge_request_table.html
+msgid "No entries here!"
+msgstr "Nicio intrare aici!"
 
 #: merge_request_table/merge_request_table.html
 msgid "Failed to submit comment. Please try again in a few moments."
@@ -5914,8 +5934,8 @@ msgid "Community Edit Requests"
 msgstr "Cereri de editare din comunitate"
 
 #: merge_request_table/merge_request_table.html
-msgid "No entries here!"
-msgstr "Nicio intrare aici!"
+msgid "View reviewer and submitter statistics"
+msgstr "Vizualizează statisticile recenzenților și expeditorilor"
 
 #: merge_request_table/table_header.html
 msgid "Open"
@@ -5933,14 +5953,6 @@ msgstr "Stare ▾"
 msgid "Request Status"
 msgstr "Starea cererii"
 
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Merged"
-msgstr "Fuzionat"
-
-#: merge_request_table/table_header.html openlibrary/core/edits.py
-msgid "Declined"
-msgstr "Respins"
-
 #: merge_request_table/table_header.html
 msgid "Submitter ▾"
 msgstr "Expeditor ▾"
@@ -5956,10 +5968,6 @@ msgstr "Trimise de mine"
 #: merge_request_table/table_header.html
 msgid "Reviewer ▾"
 msgstr "Recenzent ▾"
-
-#: merge_request_table/table_header.html
-msgid "Reviewer"
-msgstr "Recenzent"
 
 #: merge_request_table/table_header.html
 msgid "Filter reviewers"
@@ -6281,7 +6289,7 @@ msgstr "Această fuzionare a fost anulată."
 msgid "Details here"
 msgstr "Detalii aici"
 
-#: recentchanges/merge/view.html type/author/view.html
+#: recentchanges/merge/view.html
 msgid "Duplicates"
 msgstr "Duplicate"
 
@@ -6800,10 +6808,6 @@ msgid "The total number of books logged using the Reading Log feature"
 msgstr "Numărul total de cărți înregistrate folosind funcția Jurnal lectură"
 
 #: stats/readinglog.html
-msgid "All time"
-msgstr "Toată perioada"
-
-#: stats/readinglog.html
 msgid "# Unique Users Logging Books"
 msgstr "# Utilizatori unici care înregistrează cărți"
 
@@ -7125,30 +7129,6 @@ msgstr "%(page_title)s | Open Library"
 #, python-format
 msgid "Author of %(book_titles)s"
 msgstr "Autor al %(book_titles)s"
-
-#: type/author/view.html
-msgid "Merging Authors..."
-msgstr "Fuzionarea autorilor..."
-
-#: type/author/view.html
-msgid "In progress..."
-msgstr "În curs..."
-
-#: type/author/view.html
-msgid "Refresh the page?"
-msgstr "Reîncărcați pagina?"
-
-#: type/author/view.html
-msgid "OK. The merge is in motion. <i>It will take <u>a few minutes to finish</u> the update.</i>"
-msgstr "OK. Fuzionarea este în curs. <i>Va dura <u>câteva minute pentru a finaliza</u> actualizarea.</i>"
-
-#: type/author/view.html
-msgid "Argh!"
-msgstr "Argh!"
-
-#: type/author/view.html
-msgid "That merge didn't work. It's our fault, and we've made a note of it."
-msgstr "Fuzionarea nu a funcționat. Este greșeala noastră și am notat-o."
 
 #: type/author/view.html
 msgid "Add another?"
@@ -8373,7 +8353,7 @@ msgstr "Autori remarcabili"
 msgid "See more books by %(name)s"
 msgstr "Vedeți mai multe cărți de %(name)s"
 
-#: SubjectSearch.html
+#: SubjectSearch.html.jinja
 msgid "Search for a subject"
 msgstr "Caută un subiect"
 
@@ -10290,6 +10270,14 @@ msgstr "Evaluare"
 msgid "How well can a patron determine if this edition is relevant to their needs before accessing it?"
 msgstr "Cât de bine poate un utilizator să stabilească dacă această ediție este relevantă pentru nevoile sale înainte de a o accesa?"
 
+#: openlibrary/fastapi/account.py openlibrary/plugins/upstream/account.py
+msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
+msgstr "Vă mulțumim pentru înregistrarea unui cont Open Library și solicitarea accesului special pentru dizabilități de lectură tipărită. Ar trebui să primiți un email cu detalii despre pașii următori în proces."
+
+#: openlibrary/fastapi/merge_stats.py
+msgid "Merged %"
+msgstr "% Fuzionat"
+
 #: openlibrary/fastapi/publishers.py openlibrary/plugins/worksearch/publishers.py
 #, python-format
 msgid "Publisher: %(name)s"
@@ -10339,6 +10327,10 @@ msgstr "%(query)s - Căutare autor"
 #: openlibrary/fastapi/search.py
 msgid "Author search"
 msgstr "Căutare autor"
+
+#: openlibrary/fastapi/status.py
+msgid "Open Library server status"
+msgstr "Starea serverului Open Library"
 
 #: openlibrary/fastapi/tasks.py
 msgid "Someone else changed this project while you had it open. Check it below, then try again."
@@ -11244,10 +11236,6 @@ msgstr "Încercarea de conectare sau înregistrare a întâlnit o eroare neaște
 #, python-format
 msgid "Request failed with error code: %(error_code)s"
 msgstr "Solicitarea a eșuat cu codul de eroare: %(error_code)s"
-
-#: openlibrary/plugins/upstream/account.py
-msgid "Thank you for registering an Open Library account and requesting special print disability access. You should receive an email detailing next steps in the process."
-msgstr "Vă mulțumim pentru înregistrarea unui cont Open Library și solicitarea accesului special pentru dizabilități de lectură tipărită. Ar trebui să primiți un email cu detalii despre pașii următori în proces."
 
 #: openlibrary/plugins/upstream/account.py
 msgid "Username unavailable"
@@ -13301,4 +13289,49 @@ msgstr "Graficele nu s-au putut încărca. Reîncarcă pagina pentru a încerca 
 
 #~ msgid "Tasks stats: who is editing, and how Tasks edits hold up"
 #~ msgstr "Statistici sarcini: cine editează și cât de bine rezistă editările sarcinilor"
+
+#~ msgid "Show changed files"
+#~ msgstr "Arată fișierele modificate"
+
+#~ msgid "[Admin Center] IP Addresses"
+#~ msgstr "[Centru de administrare] Adrese IP"
+
+#~ msgid "IP Addresses"
+#~ msgstr "Adrese IP"
+
+#~ msgid "List of Banned IPs"
+#~ msgstr "Lista IP-urilor blocate"
+
+#~ msgid "IP address"
+#~ msgstr "Adresă IP"
+
+#~ msgid "Admin Comment"
+#~ msgstr "Comentariu admin"
+
+#~ msgid "# of edits"
+#~ msgstr "Nr. de modificări"
+
+#~ msgid "x minutes ago"
+#~ msgstr "x minute în urmă"
+
+#~ msgid "comment"
+#~ msgstr "comentariu"
+
+#~ msgid "Debug Info"
+#~ msgstr "Informații de depanare"
+
+#~ msgid "Account Information"
+#~ msgstr "Informații cont"
+
+#~ msgid "Verifications Links"
+#~ msgstr "Linkuri de verificare"
+
+#~ msgid "None found"
+#~ msgstr "Niciuna găsită"
+
+#~ msgid "In progress..."
+#~ msgstr "În curs..."
+
+#~ msgid "Refresh the page?"
+#~ msgstr "Reîncărcați pagina?"
 
