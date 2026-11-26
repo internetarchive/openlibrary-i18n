@@ -539,7 +539,7 @@ msgstr "Annuleren"
 msgid "Continue without waiting"
 msgstr "Doorgaan zonder te wachten"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Laden..."
 
@@ -3254,7 +3254,7 @@ msgstr "Boek toevoegen aan Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "We hebben een minimale set velden nodig om een nieuw record aan te maken. Dit zijn die velden."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Titel"
 
@@ -3266,7 +3266,7 @@ msgstr "Gebruik <b><i>Titel: Ondertitel</i></b> om een ondertitel toe te voegen.
 msgid "Required field"
 msgstr "Verplicht veld"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "Auteur"
 
@@ -3392,7 +3392,7 @@ msgstr "Voltooi de reCAPTCHA hierboven voordat je een boek kiest."
 msgid "Select this book"
 msgstr "Dit boek selecteren"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6273,7 +6273,7 @@ msgstr "%(count)d records gewijzigd."
 msgid "All fields"
 msgstr "Alle velden"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8656,6 +8656,132 @@ msgstr "Er is slechts één Internet Archive ID toegestaan per editie."
 msgid "An identifier for %(name)s already exists."
 msgstr "Er bestaat al een identificatie voor %(name)s."
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "Voeg een koptekstrij toe. Ondersteunde kolommen zijn onder andere: \"Title\", \"Author\", \"ISBN\"."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "Voer hieronder uw boeken in."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "Eén per regel, of plak vanuit een spreadsheet."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "Voer uw boeken in..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "Boeken extraheren"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "Hoe u uw bovenstaande boeken omzet in gestructureerde informatie, zoals titel en auteur."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "Extractor"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API-sleutel"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "OpenAI API-sleutel hier...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "Boeken matchen"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "Zodra gestructureerde gegevens zijn gevonden, is het tijd om ze te matchen met een boek in OpenLibrary!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "Opties"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "Auteur gebruiken in zoekopdracht"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "Sla uw matches op"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "Nu u uw boeken heeft gevonden, waarom slaat u ze niet op in uw leeslogboek? Of in een lijst?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "Toevoegen aan lijst"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Resultaten bekijken in Open Library"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "Geëxtraheerde boeken"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "Gematchte boeken"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "Geen boeken gevonden"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "Patroon: Titel door Auteur"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "Patroon: Auteur - Titel"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "Patroon: Titel - Auteur"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "Patroon: Titel (Auteur)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "Wikipedia-citatiepatroon: (bijv. Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI-extractie (Bèta)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "Extraheren uit een tabel/spreadsheet"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "Probeer een voorbeeld..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "Boeken uit 1927"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "Dag van het publieke domein 2023"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "Wikipedia-citaten over de Holocaust"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8668,6 +8794,22 @@ msgstr "Ongeldige identificatie"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Die ID bestaat al voor een identificatie."
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "Voeg uw recensies toe:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "De hierboven vermelde recensies zijn opgeslagen."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "Geen tags geselecteerd."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "Waarde verwijderen"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9841,10 +9983,6 @@ msgstr "Beoordeel met %(rating)s van 5"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "Beoordeling wissen"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "Toevoegen aan lijst"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."

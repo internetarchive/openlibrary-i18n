@@ -547,7 +547,7 @@ msgstr "বাতিল কৰক"
 msgid "Continue without waiting"
 msgstr "অপেক্ষা নকৰি অব্যাহত ৰাখক"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "লোড হৈছে..."
 
@@ -3262,7 +3262,7 @@ msgstr "Open Library-ত এখন কিতাপ যোগ কৰক"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "নতুন ৰেকৰ্ড তৈয়াৰ কৰিবলৈ আমাক ন্যূনতম ক্ষেত্ৰসমূহৰ প্ৰয়োজন। এইবোৰ সেই ক্ষেত্ৰসমূহ।"
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "শিৰোনাম"
 
@@ -3274,7 +3274,7 @@ msgstr "উপশিৰোনাম যোগ কৰিবলৈ <b><i>শিৰ
 msgid "Required field"
 msgstr "প্ৰয়োজনীয় ক্ষেত্ৰ"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "লেখক"
 
@@ -3400,7 +3400,7 @@ msgstr "কিতাপ এখন বাছনি কৰাৰ আগতে অ�
 msgid "Select this book"
 msgstr "এই কিতাপ নিৰ্বাচন কৰক"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6281,7 +6281,7 @@ msgstr "%(count)d ৰেকৰ্ড পৰিৱৰ্তন কৰা হৈ�
 msgid "All fields"
 msgstr "সকলো ক্ষেত্ৰ"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8666,6 +8666,132 @@ msgstr "প্ৰতিটো সংস্কৰণৰ বাবে কেৱল
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)s ৰ বাবে এটা পৰিচায়ক ইতিমধ্যে আছে।"
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "অনুগ্ৰহ কৰি এটা হেডাৰ শাৰী অন্তৰ্ভুক্ত কৰক। সমৰ্থিত স্তম্ভসমূহৰ ভিতৰত আছে: \"Title\", \"Author\", \"ISBN\"।"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "তলত আপোনাৰ কিতাপসমূহ দিয়ক।"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "প্ৰতি শাৰীত এটাকৈ, বা স্প্ৰেডশ্বীটৰ পৰা পেষ্ট কৰক।"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "আপোনাৰ কিতাপসমূহ দিয়ক..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "কিতাপ উলিয়াওক"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "ওপৰৰ আপোনাৰ কিতাপসমূহক কেনেকৈ শিৰোনাম আৰু লেখকৰ দৰে গঠনমূলক তথ্যলৈ ৰূপান্তৰ কৰিব লাগে।"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "এক্সট্ৰেক্টৰ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API চাবি"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "OpenAI API চাবি ইয়াত দিয়ক...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "কিতাপ মিলাওক"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "গঠনমূলক তথ্য পোৱাৰ পিছত, OpenLibrary-ত থকা কিতাপৰ সৈতে ইয়াক মিলোৱাৰ সময়!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "বিকল্পসমূহ"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "সন্ধান প্ৰশ্নত লেখকৰ নাম ব্যৱহাৰ কৰক"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "আপোনাৰ মিলসমূহ ছেভ কৰক"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "এতিয়া যেতিয়া আপুনি আপোনাৰ কিতাপসমূহ বিচাৰি পালে, কিয় সেইবোৰ আপোনাৰ ৰিডিং লগত ছেভ নকৰে? নাইবা এটা তালিকাত?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "তালিকাত যোগ কৰক"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Open Library ত ফলাফল চাওক"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "উলিওৱা কিতাপসমূহ"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "মিলোৱা কিতাপসমূহ"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "কোনো কিতাপ পোৱা নগ'ল"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "আৰ্হি: লেখকৰ দ্বাৰা শিৰোনাম"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "আৰ্হি: লেখক - শিৰোনাম"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "আৰ্হি: শিৰোনাম - লেখক"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "আৰ্হি: শিৰোনাম (লেখক)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "ৱিকিপিডিয়া উদ্ধৃতি আৰ্হি: (যেনে Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI নিষ্কাশন (বেটা)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "টেবুল/স্প্ৰেডশ্বীটৰ পৰা উলিয়াওক"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "এটা নমুনা চেষ্টা কৰক..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "1927 চনৰ কিতাপসমূহ"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023 ৰ ৰাজহুৱা ডমেইন দিৱস"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "হলোকাষ্ট ৱিকিপিডিয়া উদ্ধৃতিসমূহ"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8678,6 +8804,22 @@ msgstr "অবৈধ পৰিচায়ক"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "সেই ID এটা পৰিচায়কৰ বাবে ইতিমধ্যে আছে।"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "আপোনাৰ পৰ্যালোচনা যোগ কৰক:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "ওপৰত তালিকাভুক্ত কৰা পৰ্যালোচনাসমূহ ছেভ কৰা হৈছে।"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "কোনো টেগ বাছনি কৰা হোৱা নাই।"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "মান আঁতৰাওক"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9851,10 +9993,6 @@ msgstr "৫ ৰ %(rating)s ৰেট কৰক"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "ৰেটিং মচি পেলাওক"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "তালিকাত যোগ কৰক"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."

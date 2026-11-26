@@ -538,7 +538,7 @@ msgstr "Batal"
 msgid "Continue without waiting"
 msgstr "Lanjutkan tanpa menunggu"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Memuat..."
 
@@ -3234,7 +3234,7 @@ msgstr "Tambahkan buku ke Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kami memerlukan kumpulan field minimum untuk membuat catatan baru. Ini adalah field-field tersebut."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Judul"
 
@@ -3246,7 +3246,7 @@ msgstr "Gunakan <b><i>Judul: Subjudul</i></b> untuk menambahkan subjudul."
 msgid "Required field"
 msgstr "Field wajib"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "Penulis"
 
@@ -3372,7 +3372,7 @@ msgstr "Harap selesaikan reCAPTCHA di atas sebelum memilih buku."
 msgid "Select this book"
 msgstr "Pilih buku ini"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6235,7 +6235,7 @@ msgstr "%(count)d entri diubah."
 msgid "All fields"
 msgstr "Semua bidang"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8601,6 +8601,132 @@ msgstr "Hanya satu ID Internet Archive yang diperbolehkan per edisi."
 msgid "An identifier for %(name)s already exists."
 msgstr "Identifier untuk %(name)s sudah ada."
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "Sertakan baris header. Kolom yang didukung meliputi: \"Title\", \"Author\", \"ISBN\"."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "Masukkan buku Anda di bawah ini."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "Satu per baris, atau tempel dari spreadsheet."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "Masukkan buku Anda..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "Ekstrak Buku"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "Cara mengubah buku Anda di atas menjadi informasi terstruktur, seperti judul dan penulis."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "Pengekstrak"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "Kunci API OpenAI"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "Kunci API OpenAI di sini...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "Cocokkan Buku"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "Setelah data terstruktur ditemukan, saatnya mencocokkannya dengan buku di OpenLibrary!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "Opsi"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "Gunakan penulis dalam kueri pencarian"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "Simpan Kecocokan Anda"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "Sekarang setelah Anda menemukan buku Anda, mengapa tidak menyimpannya ke log bacaan Anda? Atau ke daftar?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "Tambahkan ke daftar"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Lihat hasil di Open Library"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "Buku yang Diekstrak"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "Buku yang Dicocokkan"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "Tidak Ada Buku yang Ditemukan"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "Pola: Judul oleh Penulis"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "Pola: Penulis - Judul"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "Pola: Judul - Penulis"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "Pola: Judul (Penulis)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "Pola Kutipan Wikipedia: (mis. Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ Ekstraksi AI (Beta)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "Ekstrak dari Tabel/Spreadsheet"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "Coba Contoh..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "Buku Tahun 1927"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "Hari Domain Publik 2023"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "Kutipan Wikipedia tentang Holocaust"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8613,6 +8739,22 @@ msgstr "Identifier tidak valid"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "ID tersebut sudah ada untuk sebuah identifier."
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "Tambahkan ulasan Anda:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "Ulasan yang tercantum di atas telah disimpan."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "Tidak ada tag yang dipilih."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "Hapus nilai"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9783,10 +9925,6 @@ msgstr "Beri nilai %(rating)s dari 5"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "Hapus nilai"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "Tambahkan ke daftar"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."

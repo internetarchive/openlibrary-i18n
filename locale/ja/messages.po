@@ -538,7 +538,7 @@ msgstr "キャンセル"
 msgid "Continue without waiting"
 msgstr "待たずに続行"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -3234,7 +3234,7 @@ msgstr "Open Libraryに本を追加"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "新しいレコードを作成するには最低限のフィールドが必要です。これらがそのフィールドです。"
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "タイトル"
 
@@ -3246,7 +3246,7 @@ msgstr "サブタイトルを追加するには<b><i>タイトル：サブタイ
 msgid "Required field"
 msgstr "必須フィールド"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "作者"
 
@@ -3372,7 +3372,7 @@ msgstr "本を選択する前に、上記のreCAPTCHAを完了してください
 msgid "Select this book"
 msgstr "この本を選択"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6235,7 +6235,7 @@ msgstr "%(count)dレコードが変更されました。"
 msgid "All fields"
 msgstr "すべてのフィールド"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8601,6 +8601,132 @@ msgstr "版ごとに許可されるInternet Archive IDは1つのみです。"
 msgid "An identifier for %(name)s already exists."
 msgstr "%(name)sの識別子はすでに存在します。"
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "ヘッダー行を含めてください。サポートされている列には次のものがあります: \"Title\"、\"Author\"、\"ISBN\"。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "下にあなたの本を入力してください。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "1行に1冊、またはスプレッドシートから貼り付けてください。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "あなたの本を入力してください..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "本を抽出"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "上記の本をタイトルや著者などの構造化された情報に変換する方法。"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "抽出ツール"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI APIキー"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "ここにOpenAI APIキーを入力...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "本を照合"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "構造化データが見つかったら、OpenLibraryの本と照合する時です!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "オプション"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "検索クエリに著者を使用する"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "照合結果を保存"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "本が見つかったので、読書ログやリストに保存してみませんか?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "リストに追加"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Open Libraryで結果を表示"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "抽出された本"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "照合された本"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "本が見つかりません"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "パターン: 著者によるタイトル"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "パターン: 著者 - タイトル"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "パターン: タイトル - 著者"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "パターン: タイトル (著者)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "Wikipedia引用パターン: (例: Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ AI抽出 (ベータ版)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "表/スプレッドシートから抽出"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "サンプルを試す..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "1927年の本"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023年パブリックドメインデー"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "ホロコーストに関するWikipedia引用"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8613,6 +8739,22 @@ msgstr "無効な識別子"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "このIDはすでに識別子として存在します。"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "レビューを追加:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "上記にリストされたレビューは保存されました。"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "タグが選択されていません。"
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "値を削除"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9783,10 +9925,6 @@ msgstr "5点中%(rating)s点で評価"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "評価を削除"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "リストに追加"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
