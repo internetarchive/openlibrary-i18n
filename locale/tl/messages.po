@@ -539,7 +539,7 @@ msgstr "Kanselahin"
 msgid "Continue without waiting"
 msgstr "Magpatuloy nang hindi nag-aantay"
 
-#: RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
+#: BulkSearch/components/BulkSearchControls.vue RelatedSubjects.html.jinja account/create.html librarian_dashboard/data_quality_table.html login.html search/work_search_facets.html.jinja
 msgid "Loading..."
 msgstr "Naglo-load..."
 
@@ -3254,7 +3254,7 @@ msgstr "Magdagdag ng libro sa Open Library"
 msgid "We require a minimum set of fields to create a new record. These are those fields."
 msgstr "Kailangan namin ng minimum na set ng mga field upang lumikha ng bagong tala. Ito ang mga field na iyon."
 
-#: books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
+#: BulkSearch/components/MatchTable.vue books/add.html books/edit.html books/edit/edition.html contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/worksearch/sort_menu.py search/advancedsearch.html.jinja type/about/edit.html type/page/edit.html type/template/edit.html
 msgid "Title"
 msgstr "Pamagat"
 
@@ -3266,7 +3266,7 @@ msgstr "Gamitin ang <b><i>Pamagat: Subtitle</i></b> upang magdagdag ng subtitle.
 msgid "Required field"
 msgstr "Kinakailangang field"
 
-#: SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "May-akda"
 
@@ -3392,7 +3392,7 @@ msgstr "Pakisuyong kumpletuhin ang reCAPTCHA sa itaas bago pumili ng libro."
 msgid "Select this book"
 msgstr "Pumili ng librong ito"
 
-#: SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -6273,7 +6273,7 @@ msgstr "%(count)d mga tala ang gumawa."
 msgid "All fields"
 msgstr "Lahat ng field"
 
-#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py search/advancedsearch.html.jinja
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -8656,6 +8656,132 @@ msgstr "Isang Internet Archive ID lang ang pinapayagan bawat edisyon."
 msgid "An identifier for %(name)s already exists."
 msgstr "Mayroon nang tagatukoy para sa %(name)s."
 
+#. "Title", "Author" and "ISBN" are the column names the spreadsheet must use, so keep them in English.
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Please include a header row. Supported columns include: \"Title\", \"Author\", \"ISBN\"."
+msgstr "Mangyaring isama ang isang header row. Kabilang sa mga suportadong column ang: \"Title\", \"Author\", \"ISBN\"."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books below."
+msgstr "Ilagay ang iyong mga libro sa ibaba."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "One per line, or paste from a spreadsheet."
+msgstr "Isa bawat linya, o i-paste mula sa isang spreadsheet."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Enter your books..."
+msgstr "Ilagay ang iyong mga libro..."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extract Books"
+msgstr "Kunin ang mga Libro"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "How to convert your books above into structured information, like title and author."
+msgstr "Paano i-convert ang iyong mga libro sa itaas sa structured na impormasyon, tulad ng pamagat at may-akda."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Extractor"
+msgstr "Extractor"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API Key"
+msgstr "OpenAI API Key"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "OpenAI API key here...."
+msgstr "OpenAI API key dito...."
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Match Books"
+msgstr "Itugma ang mga Libro"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Once structured data has been found, it's time to match it to a book in OpenLibrary!"
+msgstr "Kapag nahanap na ang structured na data, oras na para itugma ito sa isang libro sa OpenLibrary!"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Options"
+msgstr "Mga Opsyon"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Use author in search query"
+msgstr "Gamitin ang may-akda sa search query"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Save your Matches"
+msgstr "I-save ang iyong mga Tugma"
+
+#: BulkSearch/components/BulkSearchControls.vue
+msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
+msgstr "Ngayong nahanap mo na ang iyong mga libro, bakit hindi mo ito i-save sa iyong reading log? O sa isang listahan?"
+
+#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+msgid "Add to list"
+msgstr "Idagdag sa listahan"
+
+#: BulkSearch/components/MatchRow.vue
+msgid "View results in Open Library"
+msgstr "Tingnan ang mga resulta sa Open Library"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Extracted Books"
+msgstr "Mga Nakuhang Libro"
+
+#: BulkSearch/components/MatchTable.vue
+msgid "Matched Books"
+msgstr "Mga Natugmang Libro"
+
+#: BulkSearch/components/NoBookCard.vue
+msgid "No Books Found"
+msgstr "Walang Nahanap na Libro"
+
+#. These name the formats the extractors read. Keep the English "by" in "Title by Author": the pattern matches it.
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title by Author"
+msgstr "Pattern: Pamagat ni May-akda"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Author - Title"
+msgstr "Pattern: May-akda - Pamagat"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title - Author"
+msgstr "Pattern: Pamagat - May-akda"
+
+#: BulkSearch/utils/classes.js
+msgid "Pattern: Title (Author)"
+msgstr "Pattern: Pamagat (May-akda)"
+
+#: BulkSearch/utils/classes.js
+msgid "Wikipedia Citation Pattern: (e.g. Baum, Frank L. (1994). The Wizard of Oz)"
+msgstr "Pattern ng Pagsipi sa Wikipedia: (hal. Baum, Frank L. (1994). The Wizard of Oz)"
+
+#: BulkSearch/utils/classes.js
+msgid "✨ AI Extraction (Beta)"
+msgstr "✨ Pagkuha gamit ang AI (Beta)"
+
+#: BulkSearch/utils/classes.js
+msgid "Extract from a Table/Spreadsheet"
+msgstr "Kumuha mula sa isang Table/Spreadsheet"
+
+#: BulkSearch/utils/samples.js
+msgid "Try a Sample..."
+msgstr "Subukan ang Isang Halimbawa..."
+
+#: BulkSearch/utils/samples.js
+msgid "1927 Books"
+msgstr "Mga Libro noong 1927"
+
+#: BulkSearch/utils/samples.js
+msgid "2023 Public Domain Day"
+msgstr "2023 Public Domain Day"
+
+#: BulkSearch/utils/samples.js
+msgid "Holocaust Wikipedia citations"
+msgstr "Mga sipi sa Wikipedia tungkol sa Holocaust"
+
 #: IdentifiersInput/utils/utils.js
 #, python-format
 msgid "ISBN %(isbn)s may be invalid. Please confirm if you'd like to add it before saving all changes"
@@ -8668,6 +8794,22 @@ msgstr "Di-wastong tagatukoy"
 #: IdentifiersInput/utils/utils.js
 msgid "That ID already exists for an identifier."
 msgstr "Umiiral na ang ID na iyon para sa isang tagatukoy."
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Add your reviews:"
+msgstr "Idagdag ang iyong mga review:"
+
+#: ObservationForm/components/CategorySelector.vue
+msgid "Reviews listed above have been saved."
+msgstr "Na-save na ang mga review na nakalista sa itaas."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "No tags selected."
+msgstr "Walang napiling tag."
+
+#: ObservationForm/components/SavedTags.vue
+msgid "Remove value"
+msgstr "Alisin ang value"
 
 #: TestingEnvironment/utils.js
 msgid "Loading testing environment…"
@@ -9841,10 +9983,6 @@ msgstr "Bigyan ng %(rating)s sa 5 na rating"
 #: openlibrary/core/shell/shelf_labels.py
 msgid "Clear rating"
 msgstr "Alisin ang rating"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add to list"
-msgstr "Idagdag sa listahan"
 
 #: openlibrary/core/shell/shelf_labels.py
 msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
