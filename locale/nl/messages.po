@@ -183,7 +183,7 @@ msgstr[1] "%(count)s items"
 msgid "Status:"
 msgstr "Status:"
 
-#: about/index.html admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html type/tag/index.html
+#: about/index.html.jinja admin/new_accounts.html.jinja batch_import_list.html batch_import_view.html editions-table/index.js type/tag/index.html
 msgid "All"
 msgstr "Alle"
 
@@ -244,7 +244,7 @@ msgstr "Items importeren"
 msgid "Import Time"
 msgstr "Importtijd"
 
-#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html librarian_dashboard/data_quality_table.html
+#: account/import.html admin/imports.html admin/imports_by_date.html batch_import_view.html goodreads_import.js librarian_dashboard/data_quality_table.html
 msgid "Error"
 msgstr "Fout"
 
@@ -268,7 +268,7 @@ msgstr "Opmerkingen"
 msgid "Not yet imported"
 msgstr "Nog niet geïmporteerd"
 
-#: BookPreview.html PreviewSearchInside.html batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
+#: BookPreview.html PreviewSearchInside.html add_provider.js batch_import_view.html book_providers/read_button.html books/edit/edition.html editpage.html import_preview.html
 msgid "Preview"
 msgstr "Voorbeeldweergave"
 
@@ -835,7 +835,7 @@ msgstr "Wil lezen"
 msgid "Currently Reading"
 msgstr "Nu aan het lezen"
 
-#: LoanReadForm.html ReadButton.html account/loan_actions.html admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
+#: LoanReadForm.html ReadButton.html account/loan_actions.html add_provider.js admin/inspect/memcache.html book_providers/read_button.html books/edit/edition.html trending.html type/list/embed.html widget.html
 msgid "Read"
 msgstr "Gelezen"
 
@@ -894,7 +894,7 @@ msgstr "Lees \"%(title)s\""
 msgid "Borrow \"%(title)s\""
 msgstr "Leen \"%(title)s\""
 
-#: ReadButton.html book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
+#: ReadButton.html add_provider.js book_providers/read_button.html books/edit/edition.html borrow/provider_popup_result.html.jinja type/list/embed.html widget.html
 msgid "Borrow"
 msgstr "Lenen"
 
@@ -1016,63 +1016,63 @@ msgstr "Boeken"
 msgid "Searching solr took %(count)s seconds"
 msgstr "Zoeken in solr duurde %(count)s seconden"
 
-#: about/index.html
+#: about/index.html.jinja openlibrary/fastapi/about.py openlibrary/plugins/openlibrary/code.py
 msgid "The Open Library Team"
 msgstr "Het Open Library-team"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Open Library is made possible because of a dedicated team of staff and over 100 volunteers from around the globe."
 msgstr "Open Library is mogelijk gemaakt door een toegewijd team van medewerkers en meer dan 100 vrijwilligers van over de hele wereld."
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Want to join us?"
 msgstr "Wil je met ons meedoen?"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Role:"
 msgstr "Rol:"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Staff"
 msgstr "Medewerkers"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Leads"
 msgstr "Leads"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Fellows"
 msgstr "Fellows"
 
-#: about/index.html
+#: about/index.html.jinja team.js
 msgid "Volunteers"
 msgstr "Vrijwilligers"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Department:"
 msgstr "Afdeling:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Communications"
 msgstr "Communicatie"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Design"
 msgstr "Design"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Engineering"
 msgstr "Engineering"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Librarianship"
 msgstr "Bibliotheekwetenschap"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "Year:"
 msgstr "Jaar:"
 
-#: about/index.html
+#: about/index.html.jinja
 msgid "If you volunteer with Open Library and would like to be listed as part of the team, then complete the <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library team information form</a>."
 msgstr "Als je vrijwilligerswerk doet voor Open Library en graag vermeld wilt worden als teamlid, vul dan het <a href=\"https://forms.gle/zPyuXGf4Bg6RzbDA7\">Open Library-teaminformatieformulier</a> in."
 
@@ -1269,6 +1269,13 @@ msgstr "Importeer je leeslogs en challenges vanuit StoryGraph."
 #: account/import.html
 msgid "Importing..."
 msgstr "Importeren..."
+
+#: account/import.html goodreads_import.js
+#, python-format
+msgid "Import %(count)s Book"
+msgid_plural "Import %(count)s Books"
+msgstr[0] "Importeer %(count)s boek"
+msgstr[1] "Importeer %(count)s boeken"
 
 #: account/import.html
 msgid "Reason"
@@ -1492,7 +1499,7 @@ msgstr "Notitie verwijderen"
 msgid "Save Note"
 msgstr "Notitie opslaan"
 
-#: account/notes.html
+#: account/notes.html modals/index.js
 msgid "No notes found."
 msgstr "Geen notities gevonden."
 
@@ -1556,11 +1563,11 @@ msgstr "Wil je je <a href=\"/account/books\">leeslog</a> openbaar maken?"
 msgid "This will enable others to see what books you want to read, are reading, stopped reading, or have already read. Patrons with reading logs set to public may be followed."
 msgstr "Hierdoor kunnen anderen zien welke boeken je wilt lezen, aan het lezen bent, waarmee je gestopt bent, of al hebt gelezen. Gebruikers met een openbare leeslog kunnen gevolgd worden."
 
-#: account/privacy.html admin/people/view.html
+#: account/privacy.html admin/people/view.html edit.js
 msgid "Yes"
 msgstr "Ja"
 
-#: account/privacy.html admin/people/view.html books/edit/edition.html
+#: account/privacy.html admin/people/view.html books/edit/edition.html edit.js
 msgid "No"
 msgstr "Nee"
 
@@ -1970,7 +1977,7 @@ msgstr "Nieuwe boeken toevoegen aan importwachtrij"
 msgid "Please add IA identifiers to be imported, one per line."
 msgstr "Voeg IA-identificaties toe die geïmporteerd moeten worden, één per regel."
 
-#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html reading_goals/reading_goal_form.html.jinja
+#: admin/imports-add.html admin/inspect/store.html admin/ip/view.html admin/people/edits.html admin/permissions.html bulk-tagger/BulkTagger.js reading_goals/reading_goal_form.html.jinja
 msgid "Submit"
 msgstr "Indienen"
 
@@ -2227,11 +2234,11 @@ msgstr "Loginstatistieken verzamelen..."
 msgid "BookReader"
 msgstr "BookReader"
 
-#: admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/cita_press_download_options.html book_providers/ia_download_options.html book_providers/openstax_download_options.html book_providers/wikisource_download_options.html books/edit/edition.html
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
+#: add_provider.js admin/loans_table.html book_providers/gutenberg_download_options.html book_providers/ia_download_options.html book_providers/standard_ebooks_download_options.html books/edit/edition.html
 msgid "ePub"
 msgstr "ePub"
 
@@ -3086,7 +3093,7 @@ msgstr "Lees je lening van %s"
 msgid "Listen to a reading from %s"
 msgstr "Luister naar een voorlezing van %s"
 
-#: ReadingOptionsMenu.html book_providers/read_button.html
+#: ReadingOptionsMenu.html add_provider.js book_providers/read_button.html
 msgid "Listen"
 msgstr "Luisteren"
 
@@ -3392,7 +3399,7 @@ msgstr "Voltooi de reCAPTCHA hierboven voordat je een boek kiest."
 msgid "Select this book"
 msgstr "Dit boek selecteren"
 
-#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html merge/authors.html openlibrary/contribute/manage.py
+#: BulkSearch/components/BookCard.vue MergeUI/MergeRowEditionField.vue SearchResultsWork.html books/check.html ile/utils/SelectionManager/SelectionManager.js merge/authors.html openlibrary/contribute/manage.py
 #, python-format
 msgid "%(count)s edition"
 msgid_plural "%(count)s editions"
@@ -4140,11 +4147,11 @@ msgstr "Bestandsformaat"
 msgid "Provider Name"
 msgstr "Naam aanbieder"
 
-#: books/edit/edition.html databarWork.html
+#: add_provider.js books/edit/edition.html databarWork.html
 msgid "Buy"
 msgstr "Kopen"
 
-#: books/edit/edition.html
+#: add_provider.js books/edit/edition.html
 msgid "Web"
 msgstr "Web"
 
@@ -7370,7 +7377,7 @@ msgstr "talen"
 msgid "Code"
 msgstr "Code"
 
-#: type/language/view.html
+#: team.js type/language/view.html
 msgid "Current"
 msgstr "Huidig"
 
@@ -8119,7 +8126,7 @@ msgstr "Collectie doorzoeken"
 msgid "Failed to fetch carousel."
 msgstr "Carousel laden mislukt."
 
-#: RawQueryCarouselPlaceholder.html.jinja
+#: RawQueryCarouselPlaceholder.html.jinja fulltext-search-suggestion.js
 msgid "Retry?"
 msgstr "Opnieuw proberen?"
 
@@ -9150,6 +9157,265 @@ msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(num)s commit achter op %(sha)s"
 msgstr[1] "%(num)s commits achter op %(sha)s"
 
+#: admin.js
+#, python-format
+msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
+msgstr "Account van %(name)s echt anonimiseren? Dit verwijdert de profielpagina en boeknotities van %(name)s, en anonimiseert het leeslog, de recensies, sterbeoordelingen en samenvoegverzoeken van %(name)s."
+
+#: admin.js
+msgid "Are you sure?"
+msgstr "Weet je het zeker?"
+
+#: autocomplete.js
+#, python-format
+msgid "Enter the new position (1-%(total)s):"
+msgstr "Voer de nieuwe positie in (1-%(total)s):"
+
+#: autocomplete.js
+#, python-format
+msgid "Please enter a valid number between 1 and %(total)s."
+msgstr "Voer een geldig getal in tussen 1 en %(total)s."
+
+#: autocomplete.js
+msgid "Item is already at that position."
+msgstr "Item staat al op die positie."
+
+#: covers.js
+msgid "Searching for covers"
+msgstr "Covers zoeken"
+
+#: covers.js
+msgid "No image found in clipboard"
+msgstr "Geen afbeelding gevonden in klembord"
+
+#: covers.js
+msgid "Change Image"
+msgstr "Afbeelding wijzigen"
+
+#: edit.js
+#, python-format
+msgid "ISBN %(isbn)s may be invalid. Add it anyway?"
+msgstr "ISBN %(isbn)s is mogelijk ongeldig. Toch toevoegen?"
+
+#: fulltext-search-suggestion.js
+msgid "Failed to fetch fulltext search suggestions."
+msgstr "Ophalen van suggesties voor volledige tekst zoeken is mislukt."
+
+#: goodreads_import.js
+#, python-format
+msgid "%(count)s Book"
+msgid_plural "%(count)s Books"
+msgstr[0] "%(count)s boek"
+msgstr[1] "%(count)s boeken"
+
+#: goodreads_import.js
+msgid "Go to your Reading Log"
+msgstr "Ga naar je leeslog"
+
+#: goodreads_import.js
+msgid "Custom shelves are not supported"
+msgstr "Aangepaste planken worden niet ondersteund"
+
+#: goodreads_import.js
+msgid "Failed to add book to reading log"
+msgstr "Boek toevoegen aan leeslog is mislukt"
+
+#: goodreads_import.js
+msgid "Failed to add rating"
+msgstr "Beoordeling toevoegen is mislukt"
+
+#: goodreads_import.js
+msgid "Failed to set the read date"
+msgstr "Leesdatum instellen is mislukt"
+
+#: goodreads_import.js
+msgid "Imported"
+msgstr "Geïmporteerd"
+
+#: goodreads_import.js
+msgid "Book not in collection"
+msgstr "Boek niet in collectie"
+
+#: publishing_history.js
+#, python-format
+msgid "Published in %(year)s"
+msgstr "Gepubliceerd in %(year)s"
+
+#: publishing_history.js
+#, python-format
+msgid "Published between %(first)s & %(last)s."
+msgstr "Gepubliceerd tussen %(first)s en %(last)s."
+
+#: team.js
+msgid "It looks like we don't have anyone with those specifications."
+msgstr "Het lijkt erop dat we niemand hebben met die kenmerken."
+
+#: team.js
+#, python-format
+msgid "Since %(year)s"
+msgstr "Sinds %(year)s"
+
+#: team.js
+msgid "Emeritus"
+msgstr "Emeritus"
+
+#: team.js
+msgid "Past"
+msgstr "Verleden"
+
+#: bulk-tagger/BulkTagger.js
+msgid "Submitting..."
+msgstr "Verzenden..."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Batch subject update failed. Please try again in a few minutes."
+msgstr "Bijwerken van onderwerpen in batch is mislukt. Probeer het over een paar minuten opnieuw."
+
+#: bulk-tagger/BulkTagger.js
+msgid "Subjects successfully updated."
+msgstr "Onderwerpen succesvol bijgewerkt."
+
+#. %(menu)s is a dropdown of how many editions to show per page.
+#: editions-table/index.js
+#, python-format
+msgid "Show %(menu)s entries"
+msgstr "Toon %(menu)s items"
+
+#: editions-table/index.js
+msgid "Search:"
+msgstr "Zoeken:"
+
+#: editions-table/index.js
+#, python-format
+msgid "Showing %(start)s to %(end)s of %(total)s entries"
+msgstr "%(start)s tot %(end)s van %(total)s items weergegeven"
+
+#: editions-table/index.js
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "0 tot 0 van 0 items weergegeven"
+
+#: editions-table/index.js
+#, python-format
+msgid "(filtered from %(max)s total entries)"
+msgstr "(gefilterd uit %(max)s items in totaal)"
+
+#: editions-table/index.js
+msgid "No matching records found"
+msgstr "Geen overeenkomende records gevonden"
+
+#: editions-table/index.js
+msgid "No data available in table"
+msgstr "Geen gegevens beschikbaar in tabel"
+
+#: editions-table/index.js
+msgid "Sort latest to earliest"
+msgstr "Sorteer van nieuw naar oud"
+
+#: editions-table/index.js
+msgid "Sort earliest to latest"
+msgstr "Sorteer van oud naar nieuw"
+
+#: editions-table/index.js
+msgid "Sort by publish date"
+msgstr "Sorteer op publicatiedatum"
+
+#: editions-table/index.js
+msgid "Push readable versions to the bottom"
+msgstr "Leesbare versies naar beneden plaatsen"
+
+#: editions-table/index.js
+msgid "Sort by editions to read"
+msgstr "Sorteer op te lezen edities"
+
+#: editions-table/index.js
+msgid "Available to read"
+msgstr "Beschikbaar om te lezen"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(items)s selected"
+msgstr "%(items)s geselecteerd"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Clear Selections"
+msgstr "Selecties wissen"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this author"
+msgstr "Verplaatsen naar deze auteur"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Working..."
+msgstr "Bezig..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Something went wrong: %(failed)s/%(total)s failed to save."
+msgstr "Er is iets misgegaan: %(failed)s/%(total)s konden niet worden opgeslagen."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "Completed! %(total)s/%(total)s saved."
+msgstr "Voltooid! %(total)s/%(total)s opgeslagen."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Errored!"
+msgstr "Fout opgetreden!"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Move to this work"
+msgstr "Verplaatsen naar dit werk"
+
+#: ile/utils/SelectionManager/SelectionManager.js openlibrary/contribute/manage.py
+#, python-format
+msgid "%(count)s work"
+msgid_plural "%(count)s works"
+msgstr[0] "%(count)s werk"
+msgstr[1] "%(count)s werken"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+#, python-format
+msgid "%(count)s author"
+msgid_plural "%(count)s authors"
+msgstr[0] "%(count)s auteur"
+msgstr[1] "%(count)s auteurs"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Tag Works"
+msgstr "Werken taggen"
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Create list..."
+msgstr "Lijst maken..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Works..."
+msgstr "Werken samenvoegen..."
+
+#: ile/utils/SelectionManager/SelectionManager.js
+msgid "Merge Authors..."
+msgstr "Auteurs samenvoegen..."
+
+#: modals/index.js
+msgid "Update successful!"
+msgstr "Bijwerken succesvol!"
+
+#: modals/index.js
+msgid "Really delete this book note?"
+msgstr "Deze boeknotitie echt verwijderen?"
+
+#: modals/index.js
+msgid "Note deleted."
+msgstr "Notitie verwijderd."
+
+#: modals/index.js
+msgid "Updating observations"
+msgstr "Observaties bijwerken"
+
+#: modals/index.js
+msgid "No observations for this work."
+msgstr "Geen observaties voor dit werk."
+
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
 msgstr "Dit boek bewerkt"
@@ -9596,13 +9862,6 @@ msgstr "%(start)s tot %(end)s"
 #, python-format
 msgid "Goal: %(percent)s%%"
 msgstr "Doel: %(percent)s%%"
-
-#: openlibrary/contribute/manage.py
-#, python-format
-msgid "%(count)s work"
-msgid_plural "%(count)s works"
-msgstr[0] "%(count)s werk"
-msgstr[1] "%(count)s werken"
 
 #: openlibrary/contribute/manage.py
 msgid "title"
