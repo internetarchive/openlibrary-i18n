@@ -172,7 +172,7 @@ msgstr "క్యూలో ఇప్పటికే ఉన్నందున క
 msgid "View Batch Status"
 msgstr "బ్యాచ్ స్థితిని చూడండి"
 
-#: batch_import_card.html openlibrary/core/shell/shelf_labels.py
+#: batch_import_card.html lit/OlShelfActions.js
 #, python-format
 msgid "%(count)s item"
 msgid_plural "%(count)s items"
@@ -531,7 +531,7 @@ msgstr "ఈ పుస్తకాన్ని %(book_provider)s అందిస�
 msgid "In %(time)s seconds, you will be automatically redirected to: %(url)s"
 msgstr "%(time)s సెకన్లలో, మీరు స్వయంచాలకంగా %(url)s కు దారి మళ్ళించబడతారు"
 
-#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html contribute/admin/project.html.jinja databarEdit.html interstitial.html.jinja lists/lists.html merge/authors.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
+#: EditButtons.html PreviewSearchInside.html account/loans.html account/notifications.html account/privacy.html admin/imports-add.html admin/permissions.html books/add.html contribute/admin/project.html.jinja databarEdit.html interstitial.html.jinja lists/lists.html lit/alert-dialog.js merge/authors.html type/edition/notes_modal_i18n.html type/list/edit.html type/list/view_body.html type/series/edit.html type/tag/form.html
 msgid "Cancel"
 msgstr "రద్దుచేయి"
 
@@ -624,7 +624,7 @@ msgstr "కొత్త వర్క్ రికార్డును సృష
 msgid "Added new book."
 msgstr "కొత్త పుస్తకాన్ని జోడించారు."
 
-#: ObservationsModal.html account/loans.html contribute/admin/project.html.jinja lists/lists.html lit/OlBanner.js merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
+#: ObservationsModal.html account/loans.html contribute/admin/project.html.jinja lists/lists.html lit/OlBanner.js lit/OlToast.js merge/authors.html native_dialog.html.jinja shell/edit_saved.html.jinja type/edition/notes_modal_i18n.html type/list/view_body.html
 msgid "Close"
 msgstr "మూసు"
 
@@ -794,7 +794,7 @@ msgstr "స్పష్టీకరణలు"
 msgid "Now"
 msgstr "ఇప్పుడు"
 
-#: admin/graphs.html admin/index.html openlibrary/core/shell/shelf_labels.py trending.html
+#: admin/graphs.html admin/index.html lit/OlShelfActions.js trending.html
 msgid "Today"
 msgstr "నేడు"
 
@@ -826,12 +826,12 @@ msgstr "సమాజ పాఠకులు వారి బుక్‌షెల
 msgid "Earliest trending data is from October 2017"
 msgstr "ట్రెండింగ్ డేటా అక్టోబర్ 2017 నుండి అందుబాటులో ఉంది"
 
-#: account/mybooks.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/sidebar.html book-state.js home/member.html.jinja lit/OlShelfActions.js openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Want to Read"
 msgstr "చదవాలనుకుంటున్నాను"
 
 #. Display name for the "currently-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html home/member.html.jinja openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html book-state.js home/member.html.jinja lit/OlShelfActions.js openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Currently Reading"
 msgstr "ప్రస్తుతం చదువుతున్నాను"
 
@@ -840,7 +840,7 @@ msgid "Read"
 msgstr "చదువు"
 
 #. Display name for the "stopped-reading" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/worksearch/sort_menu.py trending.html
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html book-state.js lit/OlShelfActions.js openlibrary/plugins/worksearch/sort_menu.py trending.html
 msgid "Stopped Reading"
 msgstr "చదవడం ఆపాను"
 
@@ -941,7 +941,7 @@ msgstr "ఇది కేవలం సూపర్ లైబ్రేరియన
 msgid "Solr Editions"
 msgstr "Solr ఎడిషన్లు"
 
-#: account/reading_log.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/author/view.html work_search.html
+#: account/reading_log.html openlibrary/plugins/worksearch/code.py search-modal/constants.js search/inside.html.jinja type/author/view.html work_search.html
 msgid "Readable Only"
 msgstr "చదవగలిగేవి మాత్రమే"
 
@@ -949,19 +949,19 @@ msgstr "చదవగలిగేవి మాత్రమే"
 msgid "Filter by availability"
 msgstr "లభ్యత ద్వారా ఫిల్టర్ చేయండి"
 
-#: openlibrary/contribute/field_guides.py openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
+#: openlibrary/contribute/field_guides.py openlibrary/plugins/openlibrary/contribute.py openlibrary/plugins/worksearch/code.py search-modal/constants.js search/inside.html.jinja type/edition/view.html type/work/view.html work_search.html
 msgid "Language"
 msgstr "భాష"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
+#: search-modal/constants.js search/inside.html.jinja work_search.html
 msgid "Search languages…"
 msgstr "భాషలను శోధించండి…"
 
-#: books/edit/edition.html contribute/parts.html.jinja languages/index.html openlibrary/core/shell/search_modal.py work_search.html
+#: books/edit/edition.html contribute/parts.html.jinja languages/index.html search-modal/constants.js work_search.html
 msgid "Languages"
 msgstr "భాషలు"
 
-#: openlibrary/core/shell/search_modal.py search/inside.html.jinja work_search.html
+#: lit/OlSelectPopover.js search-modal/constants.js search/inside.html.jinja work_search.html
 msgid "Loading…"
 msgstr "లోడ్ అవుతోంది…"
 
@@ -995,7 +995,7 @@ msgstr "Solr డీబగ్గింగ్:"
 msgid "Full URL:"
 msgstr "పూర్తి URL:"
 
-#: openlibrary/core/shell/search_modal.py work_search.html
+#: search-modal/constants.js work_search.html
 msgid "No matching books or authors"
 msgstr "సరిపోలే పుస్తకాలు లేదా రచయితలు లేరు"
 
@@ -1003,11 +1003,11 @@ msgstr "సరిపోలే పుస్తకాలు లేదా రచయ
 msgid "Add a new book"
 msgstr "కొత్త పుస్తకాన్ని జోడించండి"
 
-#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja authors/index.html.jinja merge/authors.html openlibrary/plugins/openlibrary/authors.py publishers/view.html.jinja search-modal/constants.js shell/footer.html.jinja work_search.html
 msgid "Authors"
 msgstr "రచయితలు"
 
-#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html contribute/admin/index.html.jinja contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/core/shell/search_modal.py openlibrary/plugins/upstream/mybooks.py shell/footer.html.jinja work_search.html
+#: SearchNavigation.html.jinja books/custom_carousel.html.jinja books/mybooks_breadcrumb_select.html contribute/admin/index.html.jinja contribute/admin/new.html.jinja contribute/admin/project.html.jinja openlibrary/plugins/upstream/mybooks.py search-modal/constants.js shell/footer.html.jinja work_search.html
 msgid "Books"
 msgstr "పుస్తకాలు"
 
@@ -1428,7 +1428,7 @@ msgid "Loans & History"
 msgstr "రుణాలు & చరిత్ర"
 
 #. Display name for the "already-read" reading log shelf used in page headings and breadcrumbs.
-#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html openlibrary/core/shell/shelf_labels.py openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
+#: account/mybooks.html account/readinglog_shelf_name.html account/sidebar.html book-state.js lit/OlShelfActions.js openlibrary/plugins/upstream/mybooks.py openlibrary/plugins/worksearch/sort_menu.py
 msgid "Already Read"
 msgstr "ఇప్పటికే చదివారు"
 
@@ -1527,7 +1527,7 @@ msgstr "వద్దండి, ఫరవాలేదు"
 msgid "Yes! Please!"
 msgstr "ఓ! తప్పకుండా!"
 
-#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/admin/project.html.jinja contribute/parts.html.jinja covers/manage.html openlibrary/core/shell/shelf_labels.py
+#: EditButtons.html account/notifications.html account/privacy.html admin/block.html admin/spamwords.html contribute/admin/project.html.jinja contribute/parts.html.jinja covers/manage.html lit/OlShelfActions.js
 msgid "Save"
 msgstr "భద్రపరచు"
 
@@ -1784,7 +1784,7 @@ msgstr "జాబితాలు"
 msgid "See All"
 msgstr "అన్నీ చూడండి"
 
-#: account/sidebar.html openlibrary/core/shell/shelf_labels.py type/list/edit.html type/series/edit.html
+#: account/sidebar.html lit/OlShelfActions.js type/list/edit.html type/series/edit.html
 msgid "Create a list"
 msgstr "జాబితాను సృష్టించండి"
 
@@ -2042,7 +2042,7 @@ msgstr "గుర్తింపు"
 msgid "Imported Time"
 msgstr "దిగుమతి సమయం"
 
-#: admin/imports_by_date.html admin/index.html admin/pd_dashboard.html
+#: admin/imports_by_date.html admin/index.html admin/pd_dashboard.html lit/OlScorecard.js
 msgid "Total"
 msgstr "మొత్తం"
 
@@ -2956,7 +2956,7 @@ msgstr "%(num)d సవరణలు"
 msgid "Search for an Author"
 msgstr "రచయిత కోసం శోధించండి"
 
-#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html openlibrary/core/shell/search_modal.py publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
+#: PreviewSearchInside.html SubjectSearch.html.jinja authors/index.html.jinja lists/home.html publishers/index.html.jinja publishers/notfound.html.jinja publishers/view.html.jinja search-modal/constants.js search/advancedsearch.html.jinja search/searchbox.html search/searchbox.html.jinja shell/header.html.jinja type/local_id/view.html
 msgid "Search"
 msgstr "వెతుకు"
 
@@ -3273,7 +3273,7 @@ msgstr "ఉపశీర్షిక జోడించడానికి <b><i>�
 msgid "Required field"
 msgstr "కావలసిన విభాగం"
 
-#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search/advancedsearch.html.jinja
+#: BulkSearch/components/MatchTable.vue SearchAuthorSuggestion.html TestingEnvironment/utils.js books/add.html books/edit.html books/edit/edition.html openlibrary/plugins/worksearch/code.py openlibrary/plugins/worksearch/facets.py search-modal/constants.js search/advancedsearch.html.jinja
 msgid "Author"
 msgstr "రచయితల"
 
@@ -3428,24 +3428,24 @@ msgstr "%(title)s అన్నీ చూడండి"
 msgid "See all"
 msgstr "అన్నీ చూడండి"
 
-#: books/custom_carousel.html.jinja home/welcome.html
+#: books/custom_carousel.html.jinja home/welcome.html lit/OlCarousel.js
 msgid "Previous page"
 msgstr "మునుపటి పేజీ"
 
-#: books/custom_carousel.html.jinja home/welcome.html
+#: books/custom_carousel.html.jinja home/welcome.html lit/OlCarousel.js
 msgid "Next page"
 msgstr "తదుపరి పేజీ"
 
-#: books/custom_carousel.html.jinja home/welcome.html
+#: books/custom_carousel.html.jinja home/welcome.html lit/OlCarousel.js
 msgid "Carousel pages"
 msgstr "కారౌసెల్ పేజీలు"
 
-#: books/custom_carousel.html.jinja home/welcome.html
+#: books/custom_carousel.html.jinja home/welcome.html lit/OlCarousel.js
 #, python-brace-format
 msgid "Go to page {page} of {total}"
 msgstr "{total}లో {page} పేజీకి వెళ్ళండి"
 
-#: books/custom_carousel.html.jinja home/welcome.html
+#: books/custom_carousel.html.jinja home/welcome.html lit/OlCarousel.js
 #, python-brace-format
 msgid "Page {page} of {total}"
 msgstr "{total}లో {page} పేజీ"
@@ -3469,7 +3469,7 @@ msgstr "రుణం గడువు ముగిసింది"
 msgid "Return book"
 msgstr "పుస్తకం తిరిగి ఇవ్వండి"
 
-#: books/daisy.html openlibrary/core/shell/shelf_labels.py
+#: books/daisy.html lit/OlShelfActions.js
 msgid "Back"
 msgstr "వెనక్కు"
 
@@ -3792,17 +3792,17 @@ msgstr "-- కొత్త రచనకు తరలించండి"
 msgid "This Edition"
 msgstr "ఈ ఎడిషన్"
 
-#: books/edit/edition.html
+#: books/edit/edition.html lit/OlScorecard.js
 #, python-brace-format
 msgid "Failing Checks ({count})"
 msgstr "విఫలమైన తనిఖీలు ({count})"
 
-#: books/edit/edition.html
+#: books/edit/edition.html lit/OlScorecard.js
 #, python-brace-format
 msgid "Passing Checks ({count})"
 msgstr "ఉత్తీర్ణమైన తనిఖీలు ({count})"
 
-#: books/edit/edition.html
+#: books/edit/edition.html lit/OlScorecard.js
 #, python-brace-format
 msgid "{score} points"
 msgstr "{score} పాయింట్లు"
@@ -5149,7 +5149,7 @@ msgstr "ప్రాజెక్ట్ గురించి"
 msgid "Open Library is an open, editable library catalog, building towards a web page for every book ever published."
 msgstr "ఓపెన్ లైబ్రరీ ఒక తెరచిన, సవరించదగిన గ్రంథాలయ కేటలాగ్, ప్రతి పుస్తకానికి ఒక వెబ్ పేజీ నిర్మించడానికి కృషి చేస్తోంది."
 
-#: home/about.html search/work_search_facets.html.jinja
+#: home/about.html lit/OLMarkdownEditor.js search/work_search_facets.html.jinja
 msgid "More"
 msgstr "మరిన్ని"
 
@@ -5678,21 +5678,21 @@ msgstr "నా జాబితాలు (%(count)d)"
 msgid "You have no lists."
 msgstr "మీకు జాబితాలు లేవు."
 
-#: lists/widget.html
+#: lists/widget.html lit/OlBookLists.js
 msgid "On your lists"
 msgstr "మీ జాబితాలలో"
 
-#: lists/widget.html
+#: lists/widget.html lit/OlBookLists.js
 #, python-format
 msgid "Remove from %(name)s"
 msgstr "%(name)s నుండి తొలగించు"
 
-#: lists/widget.html openlibrary/core/shell/shelf_labels.py
+#: lists/widget.html lit/OlBookLists.js lit/OlShelfActions.js
 #, python-format
 msgid "Removed from %(name)s"
 msgstr "%(name)s నుండి తీసివేయబడింది"
 
-#: lists/widget.html openlibrary/core/shell/shelf_labels.py
+#: book-state.js lists/widget.html lit/OlBookLists.js lit/OlShelfActions.js
 msgid "Something went wrong. Please try again."
 msgstr "ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి."
 
@@ -5728,7 +5728,7 @@ msgstr "MERGE AUTHORS నొక్కండి."
 msgid "No primary record"
 msgstr "ప్రాథమిక రికార్డు లేదు"
 
-#: TestingEnvironment/utils.js merge/authors.html
+#: TestingEnvironment/utils.js lit/alert-dialog.js merge/authors.html
 msgid "OK"
 msgstr "సరే"
 
@@ -6324,7 +6324,7 @@ msgstr "రచయితలను విలీనం చేయండి"
 msgid "No <strong>authors</strong> directly matched your search"
 msgstr "మీ శోధనకు నేరుగా <strong>రచయితలు</strong> సరిపోలలేదు"
 
-#: SearchNavigation.html.jinja openlibrary/core/shell/search_modal.py search/inside.html.jinja
+#: SearchNavigation.html.jinja search-modal/constants.js search/inside.html.jinja
 msgid "Search Inside"
 msgstr "లోపల శోధించండి"
 
@@ -6878,7 +6878,7 @@ msgstr "12 నెలలు"
 msgid "Group by"
 msgstr "వర్గీకరణ"
 
-#: openlibrary/core/shell/shelf_labels.py stats/tasks.html.jinja
+#: lit/OlShelfActions.js stats/tasks.html.jinja
 msgid "Day"
 msgstr "రోజు"
 
@@ -6886,7 +6886,7 @@ msgstr "రోజు"
 msgid "Week"
 msgstr "వారం"
 
-#: openlibrary/core/shell/shelf_labels.py stats/tasks.html.jinja
+#: lit/OlShelfActions.js stats/tasks.html.jinja
 msgid "Month"
 msgstr "నెల"
 
@@ -7231,11 +7231,11 @@ msgstr "ఈ ఎడిషన్ %(year)s లో ప్రచురించబడ
 msgid "Edition published by %(publishers)s"
 msgstr "ఈ ఎడిషన్ %(publishers)s ద్వారా ప్రచురించబడింది"
 
-#: type/edition/view.html type/work/view.html
+#: lit/OLReadMore.js type/edition/view.html type/work/view.html
 msgid "Read More"
 msgstr "మరింత చదవండి"
 
-#: type/edition/view.html type/work/view.html
+#: lit/OLReadMore.js type/edition/view.html type/work/view.html
 msgid "Read Less"
 msgstr "తక్కువ చదవండి"
 
@@ -7310,7 +7310,7 @@ msgstr "అనువదించబడింది"
 msgid "External Links"
 msgstr "బాహ్య లింకులు"
 
-#: OlPagination.html.jinja OlPaginationArrows.html type/edition/view.html type/work/editions_datatable.html type/work/view.html
+#: OlPagination.html.jinja OlPaginationArrows.html lit/OlPagination.js type/edition/view.html type/work/editions_datatable.html type/work/view.html
 msgid "Pagination"
 msgstr "పేజీ వరుస"
 
@@ -7843,24 +7843,24 @@ msgstr "అన్ని %(count)d ఎడిషన్లు చూడాలా?"
 msgid "Edition"
 msgstr "ఎడిషన్"
 
-#: openlibrary/core/shell/search_modal.py type/work/editions_datatable.html
+#: search-modal/constants.js type/work/editions_datatable.html
 msgid "Availability"
 msgstr "అందుబాటులో ఉంది"
 
-#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html lit/OlPagination.js type/work/editions_datatable.html
 msgid "Go to previous page"
 msgstr "మునుపటి పేజీకి వెళ్లండి"
 
-#: OlPagination.html.jinja OlPaginationArrows.html type/work/editions_datatable.html
+#: OlPagination.html.jinja OlPaginationArrows.html lit/OlPagination.js type/work/editions_datatable.html
 msgid "Go to next page"
 msgstr "తదుపరి పేజీకి వెళ్ళు"
 
-#: OlPagination.html.jinja type/work/editions_datatable.html
+#: OlPagination.html.jinja lit/OlPagination.js type/work/editions_datatable.html
 #, python-brace-format
 msgid "Go to page {page}"
 msgstr "పేజీ {page} కి వెళ్ళు"
 
-#: OlPagination.html.jinja type/work/editions_datatable.html
+#: OlPagination.html.jinja lit/OlPagination.js type/work/editions_datatable.html
 #, python-brace-format
 msgid "Page {page}, current page"
 msgstr "పేజీ {page}, ప్రస్తుత పేజీ"
@@ -8031,7 +8031,7 @@ msgstr "తదుపరి విభాగానికి వెళ్ళు"
 msgid "Expires"
 msgstr "గడువు ముగుస్తుంది"
 
-#: FulltextSearchSuggestion.html.jinja openlibrary/core/shell/search_modal.py
+#: FulltextSearchSuggestion.html.jinja search-modal/constants.js
 msgid "Search inside books"
 msgstr "పుస్తకాల లోపల శోధించండి"
 
@@ -8621,7 +8621,7 @@ msgstr "మీరు దీన్ని ఎక్కడ కనుగొన్న
 msgid "Save and next"
 msgstr "సేవ్ చేసి తదుపరికి వెళ్ళండి"
 
-#: contribute/parts.html.jinja openlibrary/core/shell/shelf_labels.py
+#: contribute/parts.html.jinja lit/OlShelfActions.js
 msgid "Skip"
 msgstr "దాటవేయి"
 
@@ -8771,7 +8771,7 @@ msgstr "మీ సరిపోలికలను సేవ్ చేయండి
 msgid "Now that you've found your books, why not save them to your reading log? Or a list?"
 msgstr "ఇప్పుడు మీరు మీ పుస్తకాలను కనుగొన్నారు కాబట్టి, వాటిని మీ పఠన లాగ్‌లో ఎందుకు సేవ్ చేయకూడదు? లేదా జాబితాలో?"
 
-#: BulkSearch/components/BulkSearchControls.vue openlibrary/core/shell/shelf_labels.py
+#: BulkSearch/components/BulkSearchControls.vue lit/OlShelfActions.js
 msgid "Add to list"
 msgstr "జాబితాకు జోడించండి"
 
@@ -9157,6 +9157,301 @@ msgid_plural "%(num)s commits behind %(sha)s"
 msgstr[0] "%(sha)s కంటే %(num)s కమిట్ వెనుక ఉంది"
 msgstr[1] "%(sha)s కంటే %(num)s కమిట్‌లు వెనుక ఉంది"
 
+#: lit/OLMarkdownEditor.js
+msgid "Write something..."
+msgstr "ఏదైనా రాయండి..."
+
+#: lit/OLMarkdownEditor.js
+msgid "Heading 1"
+msgstr "శీర్షిక 1"
+
+#: lit/OLMarkdownEditor.js
+msgid "Heading 2"
+msgstr "శీర్షిక 2"
+
+#: lit/OLMarkdownEditor.js
+msgid "Image"
+msgstr "చిత్రం"
+
+#: lit/OLMarkdownEditor.js
+msgid "Blockquote"
+msgstr "ఉల్లేఖనం"
+
+#: lit/OLMarkdownEditor.js
+msgid "Divider"
+msgstr "విభజన రేఖ"
+
+#: lit/OLMarkdownEditor.js
+msgid "Inline Code"
+msgstr "ఇన్‌లైన్ కోడ్"
+
+#: lit/OLMarkdownEditor.js
+msgid "Code Block"
+msgstr "కోడ్ బ్లాక్"
+
+#: lit/OLMarkdownEditor.js
+msgid "HTML Block"
+msgstr "HTML బ్లాక్"
+
+#: lit/OLMarkdownEditor.js
+msgid "View source"
+msgstr "మూలాన్ని వీక్షించండి"
+
+#: book-state.js lit/OLMarkdownEditor.js
+msgid "Undo"
+msgstr "వెనక్కి తీసుకో"
+
+#: lit/OLMarkdownEditor.js
+msgid "Redo"
+msgstr "మళ్ళీ చేయండి"
+
+#: lit/OLMarkdownEditor.js
+msgid "Bold"
+msgstr "బోల్డ్"
+
+#: lit/OLMarkdownEditor.js
+msgid "Italic"
+msgstr "ఇటాలిక్"
+
+#: lit/OLMarkdownEditor.js
+msgid "Link"
+msgstr "లింక్"
+
+#: lit/OLMarkdownEditor.js
+msgid "Save Link"
+msgstr "లింక్‌ను సేవ్ చేయండి"
+
+#: lit/OLMarkdownEditor.js
+msgid "Remove Link"
+msgstr "లింక్‌ను తీసివేయండి"
+
+#: lit/OLMarkdownEditor.js
+msgid "Insert Image"
+msgstr "చిత్రాన్ని చొప్పించండి"
+
+#: lit/OLMarkdownEditor.js
+msgid "Bullet List"
+msgstr "బుల్లెట్ జాబితా"
+
+#: lit/OLMarkdownEditor.js
+msgid "Numbered List"
+msgstr "సంఖ్యా జాబితా"
+
+#: lit/OLMarkdownEditor.js
+msgid "View formatted"
+msgstr "ఫార్మాట్ చేసినది వీక్షించండి"
+
+#: lit/OlCarousel.js
+msgid "Carousel"
+msgstr "క్యారోసెల్"
+
+#: lit/OlDialog.js
+msgid "Close dialog"
+msgstr "డైలాగ్‌ను మూసివేయండి"
+
+#: lit/OlOptionsPopover.js lit/OlSelectPopover.js
+msgid "Filter…"
+msgstr "ఫిల్టర్…"
+
+#: lit/OlOptionsPopover.js lit/OlSelectPopover.js
+msgid "No matches"
+msgstr "సరిపోలికలు లేవు"
+
+#: lit/OlScorecard.js
+#, python-brace-format
+msgid "{name}: {percentage}%. Click to expand."
+msgstr "{name}: {percentage}%. విస్తరించడానికి క్లిక్ చేయండి."
+
+#: lit/OlScorecard.js
+msgid "Collapse"
+msgstr "కుదించు"
+
+#: lit/OlScorecard.js
+msgid "This record has been edited and is not yet reflected in Solr. It should update in a minute or so."
+msgstr "ఈ రికార్డు సవరించబడింది మరియు ఇంకా Solr‌లో ప్రతిబింబించలేదు. ఇది సుమారు ఒక నిమిషంలో నవీకరించబడాలి."
+
+#: lit/OlSelectPopover.js
+msgid "SELECTED"
+msgstr "ఎంచుకోబడింది"
+
+#: lit/OlSelectPopover.js
+msgid "SUGGESTIONS"
+msgstr "సూచనలు"
+
+#: lit/OlSelectPopover.js
+msgid "Clear selections"
+msgstr "ఎంపికలను క్లియర్ చేయండి"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Actions for %(title)s"
+msgstr "%(title)s కోసం చర్యలు"
+
+#: lit/OlShelfActions.js
+msgid "Reading log"
+msgstr "చదివే ప్రదేశం"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Added to %(shelf)s"
+msgstr "%(shelf)sకు జోడించబడింది"
+
+#: book-state.js lit/OlShelfActions.js
+msgid "Removed from shelf"
+msgstr "షెల్ఫ్ నుండి తీసివేయబడింది"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Rated %(rating)s of 5"
+msgstr "5లో %(rating)s రేటింగ్ ఇవ్వబడింది"
+
+#: lit/OlShelfActions.js
+msgid "Rating cleared"
+msgstr "రేటింగ్ తొలగించబడింది"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Finished %(date)s"
+msgstr "%(date)s న పూర్తయింది"
+
+#: lit/OlShelfActions.js
+msgid "Date removed"
+msgstr "తేదీ తీసివేయబడింది"
+
+#: lit/OlShelfActions.js
+msgid "Add date"
+msgstr "తేదీని జోడించండి"
+
+#: lit/OlShelfActions.js
+msgid "Rate this book"
+msgstr "ఈ పుస్తకాన్ని రేట్ చేయండి"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Rate %(rating)s of 5"
+msgstr "5లో %(rating)s రేట్ చేయండి"
+
+#: lit/OlShelfActions.js
+msgid "Clear rating"
+msgstr "రేటింగ్‌ను తొలగించండి"
+
+#: lit/OlShelfActions.js
+msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
+msgstr "ఈ ఎడిషన్‌కు ఇంకా రచన రికార్డు లేదు, కాబట్టి దీన్ని జాబితాలకు జోడించవచ్చు కానీ మీ పఠన లాగ్‌కు జోడించలేరు."
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "%(count)s other edition"
+msgid_plural "%(count)s other editions"
+msgstr[0] "%(count)s ఇతర సంచిక"
+msgstr[1] "%(count)s ఇతర సంచికలు"
+
+#: lit/OlShelfActions.js
+msgid "Already on this list"
+msgstr "ఇప్పటికే ఈ జాబితాలో ఉంది"
+
+#: lit/OlShelfActions.js
+msgid "List name"
+msgstr "జాబితా పేరు"
+
+#: lit/OlShelfActions.js
+msgid "Create"
+msgstr "సృష్టించు"
+
+#: lit/OlShelfActions.js
+msgid "Filter lists…"
+msgstr "జాబితాలను ఫిల్టర్ చేయండి…"
+
+#: lit/OlShelfActions.js
+msgid "Create your first list"
+msgstr "మీ మొదటి జాబితాను సృష్టించండి"
+
+#: lit/OlShelfActions.js
+msgid "No lists match."
+msgstr "ఏ జాబితా సరిపోలలేదు."
+
+#: lit/OlShelfActions.js
+msgid "Loading lists…"
+msgstr "జాబితాలు లోడ్ అవుతున్నాయి…"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "On %(count)s list"
+msgid_plural "On %(count)s lists"
+msgstr[0] "%(count)s జాబితాలో"
+msgstr[1] "%(count)s జాబితాల్లో"
+
+#: lit/OlShelfActions.js
+msgid "Recently used"
+msgstr "ఇటీవల ఉపయోగించినవి"
+
+#: lit/OlShelfActions.js
+msgid "On this book and recently used"
+msgstr "ఈ పుస్తకంపై మరియు ఇటీవల ఉపయోగించినవి"
+
+#: lit/OlShelfActions.js
+msgid "Other lists"
+msgstr "ఇతర జాబితాలు"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "Added to %(name)s"
+msgstr "%(name)sకు జోడించబడింది"
+
+#: lit/OlShelfActions.js
+msgid "Manage lists"
+msgstr "జాబితాలను నిర్వహించండి"
+
+#: lit/OlShelfActions.js
+msgid "When did you finish this book?"
+msgstr "మీరు ఈ పుస్తకాన్ని ఎప్పుడు పూర్తి చేశారు?"
+
+#: lit/OlShelfActions.js
+#, python-format
+msgid "In %(year)s"
+msgstr "%(year)s లో"
+
+#: lit/OlShelfActions.js
+msgid "Other date"
+msgstr "ఇతర తేదీ"
+
+#: lit/OlShelfActions.js
+msgid "Year"
+msgstr "సంవత్సరం"
+
+#: lit/OlShelfActions.js
+msgid "Remove date"
+msgstr "తేదీని తీసివేయండి"
+
+#: lit/OlShelfButton.js
+#, python-format
+msgid "Save %(title)s to your reading log"
+msgstr "%(title)sను మీ చదివే ప్రదేశంలో భద్రపరచండి"
+
+#: lit/OlShelfButton.js
+#, python-format
+msgid "%(title)s is on your reading log"
+msgstr "%(title)s మీ చదివే ప్రదేశంలో ఉంది"
+
+#: lit/OlShelfButton.js
+#, python-format
+msgid "%(shelf)s: %(title)s"
+msgstr "%(shelf)s: %(title)s"
+
+#: lit/OlShelfButton.js
+#, python-format
+msgid "More options for %(title)s"
+msgstr "%(title)s కోసం మరిన్ని ఎంపికలు"
+
+#: lit/OlShelfButton.js
+#, python-format
+msgid "Add %(title)s to a list"
+msgstr "%(title)sను జాబితాకు జోడించండి"
+
+#: lit/alert-dialog.js
+msgid "Confirm"
+msgstr "నిర్ధారించండి"
+
 #: admin.js
 #, python-format
 msgid "Really anonymize %(name)s's account? This will delete %(name)s's profile page and booknotes, and anonymize %(name)s's reading log, reviews, star ratings, and merge request submissions."
@@ -9179,6 +9474,11 @@ msgstr "దయచేసి 1 మరియు %(total)s మధ్య చెల్
 #: autocomplete.js
 msgid "Item is already at that position."
 msgstr "అంశం ఇప్పటికే ఆ స్థానంలో ఉంది."
+
+#: book-state.js
+#, python-format
+msgid "Moved to %(shelf)s"
+msgstr "%(shelf)sకు తరలించబడింది"
 
 #: covers.js
 msgid "Searching for covers"
@@ -9415,6 +9715,179 @@ msgstr "పరిశీలనలను నవీకరిస్తోంది"
 #: modals/index.js
 msgid "No observations for this work."
 msgstr "ఈ రచనకు పరిశీలనలు లేవు."
+
+#: openlibrary/plugins/worksearch/code.py search-modal/constants.js
+msgid "All books"
+msgstr "అన్ని పుస్తకాలు"
+
+#: openlibrary/plugins/worksearch/code.py search-modal/constants.js
+msgid "Free to read now"
+msgstr "ఇప్పుడే ఉచితంగా చదవండి"
+
+#: openlibrary/plugins/worksearch/code.py search-modal/constants.js
+msgid "Borrow online"
+msgstr "ఆన్‌లైన్‌లో అరువు తీసుకోండి"
+
+#: search-modal/constants.js
+msgid "Search Open Library"
+msgstr "ఓపెన్ లైబ్రరీని శోధించండి"
+
+#: search-modal/constants.js
+msgid "Search books and authors…"
+msgstr "పుస్తకాలు మరియు రచయితలను శోధించండి…"
+
+#: search-modal/constants.js
+msgid "Close search"
+msgstr "శోధనను మూసివేయండి"
+
+#: search-modal/constants.js
+msgid "Clear search"
+msgstr "శోధనను క్లియర్ చేయండి"
+
+#: search-modal/constants.js
+msgid "See results"
+msgstr "ఫలితాలను చూడండి"
+
+#: search-modal/constants.js
+msgid "Go to full search"
+msgstr "పూర్తి శోధనకు వెళ్లండి"
+
+#: search-modal/constants.js
+#, python-format
+msgid "See %s book"
+msgstr "%s పుస్తకాన్ని చూడండి"
+
+#: search-modal/constants.js
+#, python-format
+msgid "See %s books"
+msgstr "%s పుస్తకాలను చూడండి"
+
+#: search-modal/constants.js
+#, python-format
+msgid "See all %s books"
+msgstr "అన్ని %s పుస్తకాలను చూడండి"
+
+#: search-modal/constants.js
+#, python-format
+msgid "All %s books"
+msgstr "అన్ని %s పుస్తకాలు"
+
+#: search-modal/constants.js
+msgid "Clear all"
+msgstr "అన్నీ తొలగించు"
+
+#: search-modal/constants.js
+msgid "Search scope"
+msgstr "శోధన పరిధి"
+
+#: search-modal/constants.js
+msgid "Inside books"
+msgstr "పుస్తకాల లోపల"
+
+#: search-modal/constants.js
+msgid "Search filters"
+msgstr "శోధన ఫిల్టర్‌లు"
+
+#: search-modal/constants.js
+msgid "Searching books and authors…"
+msgstr "పుస్తకాలు మరియు రచయితలను శోధిస్తోంది…"
+
+#: search-modal/constants.js
+msgid "Searching inside books…"
+msgstr "పుస్తకాల లోపల శోధిస్తోంది…"
+
+#: search-modal/constants.js
+msgid "No results found"
+msgstr "ఫలితాలు కనుగొనబడలేదు"
+
+#: search-modal/constants.js
+#, python-format
+msgid "Showing %(shown)s of %(total)s results"
+msgstr "%(total)s ఫలితాల్లో %(shown)s చూపబడుతున్నాయి"
+
+#: openlibrary/plugins/openlibrary/home_member.py search-modal/constants.js
+msgid "Untitled"
+msgstr "శీర్షిక లేనిది"
+
+#: search-modal/constants.js
+msgid "Readable"
+msgstr "చదవగలిగేది"
+
+#: search-modal/constants.js
+#, python-format
+msgid "Readable in %s"
+msgstr "%sలో చదవడానికి అందుబాటులో ఉంది"
+
+#: search-modal/constants.js
+msgid "Recent searches"
+msgstr "ఇటీవలి శోధనలు"
+
+#: search-modal/constants.js
+#, python-format
+msgid "Remove \"%s\" from recent searches"
+msgstr "ఇటీవలి శోధనల నుండి \"%s\" తొలగించు"
+
+#: search-modal/constants.js
+#, python-format
+msgid "Search Inside %s book"
+msgstr "%s పుస్తకం లోపల శోధించండి"
+
+#: search-modal/constants.js
+#, python-format
+msgid "Search Inside %s books"
+msgstr "%s పుస్తకాల లోపల శోధించండి"
+
+#: search-modal/constants.js
+msgid "View all"
+msgstr "అన్నీ చూడండి"
+
+#: search-modal/constants.js
+msgid "Search inside books…"
+msgstr "పుస్తకాల లోపల శోధించండి…"
+
+#: search-modal/constants.js
+msgid "Type a word or phrase to find it on the pages of millions of books."
+msgstr "లక్షలాది పుస్తకాల పేజీలలో కనుగొనడానికి ఒక పదం లేదా పదబంధాన్ని టైప్ చేయండి."
+
+#: search-modal/constants.js
+msgid "No matches inside books"
+msgstr "పుస్తకాల లోపల సరిపోలికలు లేవు"
+
+#: search-modal/constants.js
+msgid "Search inside books is temporarily unavailable. Please try again later."
+msgstr "పుస్తకాల లోపల శోధన తాత్కాలికంగా అందుబాటులో లేదు. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
+
+#: search-modal/constants.js
+#, python-format
+msgid "Showing exact matches for \"%s\"."
+msgstr "\"%s\" కోసం ఖచ్చితమైన సరిపోలికలు చూపబడుతున్నాయి."
+
+#: search-modal/constants.js
+msgid "Search for all of these words instead."
+msgstr "బదులుగా ఈ పదాలన్నింటి కోసం శోధించండి."
+
+#: search-modal/constants.js
+msgid "Showing all of these words, in any order."
+msgstr "ఈ పదాలన్నీ, ఏ క్రమంలోనైనా, చూపబడుతున్నాయి."
+
+#: search-modal/constants.js
+msgid "Search for the exact phrase instead."
+msgstr "బదులుగా ఖచ్చితమైన పదబంధం కోసం శోధించండి."
+
+#: search-modal/constants.js
+#, python-format
+msgid "No exact matches for \"%s\". Showing books containing all of these words."
+msgstr "\"%s\" కోసం ఖచ్చితమైన సరిపోలికలు లేవు. ఈ పదాలన్నీ ఉన్న పుస్తకాలు చూపబడుతున్నాయి."
+
+#: search-modal/constants.js
+#, python-format
+msgid "%s match found inside books"
+msgstr "పుస్తకాల లోపల %s సరిపోలిక కనబడింది"
+
+#: search-modal/constants.js
+#, python-format
+msgid "%s matches found inside books"
+msgstr "పుస్తకాల లోపల %s సరిపోలికలు కనబడ్డాయి"
 
 #: openlibrary/contribute/feed.py
 msgid "Edited this book"
@@ -10111,354 +10584,6 @@ msgstr "పుస్తక చర్చలు"
 #: openlibrary/core/shell/nav.py
 msgid "Random Book"
 msgstr "యాదృచ్ఛిక పుస్తకం"
-
-#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
-msgid "All books"
-msgstr "అన్ని పుస్తకాలు"
-
-#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
-msgid "Free to read now"
-msgstr "ఇప్పుడే ఉచితంగా చదవండి"
-
-#: openlibrary/core/shell/search_modal.py openlibrary/plugins/worksearch/code.py
-msgid "Borrow online"
-msgstr "ఆన్‌లైన్‌లో అరువు తీసుకోండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search Open Library"
-msgstr "ఓపెన్ లైబ్రరీని శోధించండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search books and authors…"
-msgstr "పుస్తకాలు మరియు రచయితలను శోధించండి…"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Close search"
-msgstr "శోధనను మూసివేయండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Clear search"
-msgstr "శోధనను క్లియర్ చేయండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "See results"
-msgstr "ఫలితాలను చూడండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Go to full search"
-msgstr "పూర్తి శోధనకు వెళ్లండి"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "See %s book"
-msgstr "%s పుస్తకాన్ని చూడండి"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "See %s books"
-msgstr "%s పుస్తకాలను చూడండి"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "See all %s books"
-msgstr "అన్ని %s పుస్తకాలను చూడండి"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "All %s books"
-msgstr "అన్ని %s పుస్తకాలు"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Clear all"
-msgstr "అన్నీ తొలగించు"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search scope"
-msgstr "శోధన పరిధి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Inside books"
-msgstr "పుస్తకాల లోపల"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search filters"
-msgstr "శోధన ఫిల్టర్‌లు"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Searching books and authors…"
-msgstr "పుస్తకాలు మరియు రచయితలను శోధిస్తోంది…"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Searching inside books…"
-msgstr "పుస్తకాల లోపల శోధిస్తోంది…"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "No results found"
-msgstr "ఫలితాలు కనుగొనబడలేదు"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Showing %(shown)s of %(total)s results"
-msgstr "%(total)s ఫలితాల్లో %(shown)s చూపబడుతున్నాయి"
-
-#: openlibrary/core/shell/search_modal.py openlibrary/plugins/openlibrary/home_member.py
-msgid "Untitled"
-msgstr "శీర్షిక లేనిది"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Readable"
-msgstr "చదవగలిగేది"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Readable in %s"
-msgstr "%sలో చదవడానికి అందుబాటులో ఉంది"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Recent searches"
-msgstr "ఇటీవలి శోధనలు"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Remove \"%s\" from recent searches"
-msgstr "ఇటీవలి శోధనల నుండి \"%s\" తొలగించు"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Search Inside %s book"
-msgstr "%s పుస్తకం లోపల శోధించండి"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Search Inside %s books"
-msgstr "%s పుస్తకాల లోపల శోధించండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "View all"
-msgstr "అన్నీ చూడండి"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search inside books…"
-msgstr "పుస్తకాల లోపల శోధించండి…"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Type a word or phrase to find it on the pages of millions of books."
-msgstr "లక్షలాది పుస్తకాల పేజీలలో కనుగొనడానికి ఒక పదం లేదా పదబంధాన్ని టైప్ చేయండి."
-
-#: openlibrary/core/shell/search_modal.py
-msgid "No matches inside books"
-msgstr "పుస్తకాల లోపల సరిపోలికలు లేవు"
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search inside books is temporarily unavailable. Please try again later."
-msgstr "పుస్తకాల లోపల శోధన తాత్కాలికంగా అందుబాటులో లేదు. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "Showing exact matches for \"%s\"."
-msgstr "\"%s\" కోసం ఖచ్చితమైన సరిపోలికలు చూపబడుతున్నాయి."
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search for all of these words instead."
-msgstr "బదులుగా ఈ పదాలన్నింటి కోసం శోధించండి."
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Showing all of these words, in any order."
-msgstr "ఈ పదాలన్నీ, ఏ క్రమంలోనైనా, చూపబడుతున్నాయి."
-
-#: openlibrary/core/shell/search_modal.py
-msgid "Search for the exact phrase instead."
-msgstr "బదులుగా ఖచ్చితమైన పదబంధం కోసం శోధించండి."
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "No exact matches for \"%s\". Showing books containing all of these words."
-msgstr "\"%s\" కోసం ఖచ్చితమైన సరిపోలికలు లేవు. ఈ పదాలన్నీ ఉన్న పుస్తకాలు చూపబడుతున్నాయి."
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "%s match found inside books"
-msgstr "పుస్తకాల లోపల %s సరిపోలిక కనబడింది"
-
-#: openlibrary/core/shell/search_modal.py
-#, python-format
-msgid "%s matches found inside books"
-msgstr "పుస్తకాల లోపల %s సరిపోలికలు కనబడ్డాయి"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Save %(title)s to your reading log"
-msgstr "%(title)sను మీ చదివే ప్రదేశంలో భద్రపరచండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(title)s is on your reading log"
-msgstr "%(title)s మీ చదివే ప్రదేశంలో ఉంది"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(shelf)s: %(title)s"
-msgstr "%(shelf)s: %(title)s"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "More options for %(title)s"
-msgstr "%(title)s కోసం మరిన్ని ఎంపికలు"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Add %(title)s to a list"
-msgstr "%(title)sను జాబితాకు జోడించండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Actions for %(title)s"
-msgstr "%(title)s కోసం చర్యలు"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Reading log"
-msgstr "చదివే ప్రదేశం"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Added to %(shelf)s"
-msgstr "%(shelf)sకు జోడించబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Removed from shelf"
-msgstr "షెల్ఫ్ నుండి తీసివేయబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Rated %(rating)s of 5"
-msgstr "5లో %(rating)s రేటింగ్ ఇవ్వబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Rating cleared"
-msgstr "రేటింగ్ తొలగించబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Finished %(date)s"
-msgstr "%(date)s న పూర్తయింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Date removed"
-msgstr "తేదీ తీసివేయబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Rate this book"
-msgstr "ఈ పుస్తకాన్ని రేట్ చేయండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Rate %(rating)s of 5"
-msgstr "5లో %(rating)s రేట్ చేయండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Clear rating"
-msgstr "రేటింగ్‌ను తొలగించండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "This edition has no work record yet, so it can be added to lists but not to your reading log."
-msgstr "ఈ ఎడిషన్‌కు ఇంకా రచన రికార్డు లేదు, కాబట్టి దీన్ని జాబితాలకు జోడించవచ్చు కానీ మీ పఠన లాగ్‌కు జోడించలేరు."
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "List name"
-msgstr "జాబితా పేరు"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Create"
-msgstr "సృష్టించు"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Filter lists…"
-msgstr "జాబితాలను ఫిల్టర్ చేయండి…"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Create your first list"
-msgstr "మీ మొదటి జాబితాను సృష్టించండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "No lists match."
-msgstr "ఏ జాబితా సరిపోలలేదు."
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Loading lists…"
-msgstr "జాబితాలు లోడ్ అవుతున్నాయి…"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "%(count)s other edition"
-msgid_plural "%(count)s other editions"
-msgstr[0] "%(count)s ఇతర సంచిక"
-msgstr[1] "%(count)s ఇతర సంచికలు"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Already on this list"
-msgstr "ఇప్పటికే ఈ జాబితాలో ఉంది"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "On %(count)s list"
-msgid_plural "On %(count)s lists"
-msgstr[0] "%(count)s జాబితాలో"
-msgstr[1] "%(count)s జాబితాల్లో"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Recently used"
-msgstr "ఇటీవల ఉపయోగించినవి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "On this book and recently used"
-msgstr "ఈ పుస్తకంపై మరియు ఇటీవల ఉపయోగించినవి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Other lists"
-msgstr "ఇతర జాబితాలు"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Added to %(name)s"
-msgstr "%(name)sకు జోడించబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Manage lists"
-msgstr "జాబితాలను నిర్వహించండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Add date"
-msgstr "తేదీని జోడించండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "When did you finish this book?"
-msgstr "మీరు ఈ పుస్తకాన్ని ఎప్పుడు పూర్తి చేశారు?"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "In %(year)s"
-msgstr "%(year)s లో"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Other date"
-msgstr "ఇతర తేదీ"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Year"
-msgstr "సంవత్సరం"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Remove date"
-msgstr "తేదీని తీసివేయండి"
-
-#: openlibrary/core/shell/shelf_labels.py
-#, python-format
-msgid "Moved to %(shelf)s"
-msgstr "%(shelf)sకు తరలించబడింది"
-
-#: openlibrary/core/shell/shelf_labels.py
-msgid "Undo"
-msgstr "వెనక్కి తీసుకో"
 
 #: openlibrary/core/tags.py
 msgid "Novels, stories, plays and poems."
