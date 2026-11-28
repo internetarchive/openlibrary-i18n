@@ -16,7 +16,7 @@ The latest `messages.pot` from openlibrary master is **not** in the working tree
 
 Running in GitHub Actions:
 - `./i18n` at repo root — your toolbox for all file operations
-- Python 3.12 with `babel` and `pytest` installed
+- Python 3.14 (the version openlibrary runs) with `babel` and `pytest` installed
 - `git` and `gh` configured with `GITHUB_TOKEN` (write access to this repo)
 
 ---
@@ -318,6 +318,21 @@ The workflow handles auto-merge after CI passes.
 | `{page}` | `Page {page} of {total}` | Exact key name |
 
 If you cannot safely preserve all format strings, leave `msgstr` empty.
+
+**A literal percent sign (`%`).** How to write it depends on where the string is used,
+which the `#:` line above the entry tells you:
+
+- **Only `.js` or `.vue` files** (e.g. `#: lit/OlScorecard.js`): the browser shows the
+  text as it is. Write a plain `%`, exactly as the English does:
+  `{name}: {percentage}%. Click to expand.` → `{name}: {percentage}%. Kliknite.`
+  Never write `%%` here: users would see "50%%".
+- **Anywhere else** (a template or Python file, even alongside a `.js` file): the server
+  formats the text with Python's `%`, so copy the English: where it has `%%`, write `%%`.
+  If the English has a bare `%` that isn't a placeholder, leave `msgstr` empty and open
+  an issue (#389).
+
+`./i18n validate` catches a bare `%` in a server string, but not `%%` in a browser
+string, so follow this rule rather than relying on the check.
 
 **Plural forms: which forms need the count placeholder.** `msgstr[0]` always
 keeps every placeholder the **singular** English (`msgid`) has. Most plural
