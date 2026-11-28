@@ -23,7 +23,7 @@ re-wrap, a template refactor, a msgid edit that kept the translation) is looked 
 Anything the rules cannot place is "indeterminate", and indeterminate never copies.
 
 A copy is then excluded, and this repo's entry left untouched, if the copied entry would
-fail tests/validators.py, tests/test_po_files.py::test_html_format, a %-placeholder check
+fail openlibrary's validators.py, tests/test_po_files.py::test_html_format, a %-placeholder check
 over every plural form, would be altered by the daily run's `./i18n fix`, or is the
 English msgid itself.
 
@@ -92,8 +92,10 @@ def toolbox():
 
 
 def validators():
+    """openlibrary's own openlibrary/i18n/validators.py, as validate-pr.yml runs it."""
     if "validators" not in _modules:
-        _modules["validators"] = _load("i18n_validators", REPO_ROOT / "tests" / "validators.py")
+        bake = _load("bake_regression", REPO_ROOT / "scripts" / "bake_regression.py")
+        _modules["validators"] = bake.load_openlibrary_validators()
     return _modules["validators"]
 
 
