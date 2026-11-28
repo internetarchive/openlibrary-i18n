@@ -1,8 +1,12 @@
 name: Translate
 
+# Nightly rather than on every openlibrary-pot-updated dispatch: a busy day of
+# merges upstream used to start a batch per merge, and each batch's PRs and
+# their checks held the org's shared Actions runners for hours. sync-pot.yml
+# still follows each dispatch; this run picks up whatever it committed.
 on:
-  repository_dispatch:
-    types: [openlibrary-pot-updated]
+  schedule:
+    - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
       language:
@@ -16,9 +20,9 @@ permissions:
   issues: write
   id-token: write
 
-# Two dispatches seconds apart used to run side by side, compute the same
-# date-based branch name and translate the same languages into it (#209).
-# Queue the second run behind the first instead.
+# Two runs seconds apart (e.g. a manual run during the nightly one) would run
+# side by side, compute the same date-based branch name and translate the same
+# languages into it (#209). Queue the second run behind the first instead.
 concurrency:
   group: translate
   cancel-in-progress: false
@@ -38,7 +42,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - run: pip install babel pytest
 
@@ -95,7 +99,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - run: pip install babel pytest
 
