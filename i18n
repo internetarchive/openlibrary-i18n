@@ -864,21 +864,10 @@ def fix(lang: str) -> tuple[int, int]:
     return html, len(cleared_ids) + len(validator_cleared) + len(plural_cleared)
 
 
-_validators_validate = None
-
-
 def _get_validate_fn():
-    global _validators_validate
-    if _validators_validate is None:
-        import importlib.util
-        from importlib.machinery import SourceFileLoader
-        path = TESTS_DIR / "validators.py"
-        loader = SourceFileLoader("i18n_validators", str(path))
-        spec = importlib.util.spec_from_file_location("i18n_validators", path, loader=loader)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        _validators_validate = mod.validate
-    return _validators_validate
+    """openlibrary's own validate(), from openlibrary/i18n/validators.py on master
+    (or $OPENLIBRARY_REF), so a translation passes here exactly when it passes there."""
+    return _bake_regression().load_openlibrary_validators().validate
 
 
 def validate(lang: str) -> list[tuple]:
