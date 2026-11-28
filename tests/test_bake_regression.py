@@ -1,6 +1,8 @@
 """Tests for scripts/bake_regression.py.
 
-Synthetic catalogs only: no network, no dependence on the real locale/ files.
+Synthetic catalogs only, no dependence on the real locale/ files. The render
+check is openlibrary's own (openlibrary/i18n/validators.py on master), downloaded
+once and cached in .cache/; the loader's own tests below use no network.
 The known-answer controls each build a pair with one regression, assert the
 check fails, remove the regression, and assert it passes.
 """
@@ -698,3 +700,61 @@ class TestNotLiveIsAnError:
         _write(ol_dir, "es", [ENABLE])
         code, _, out = _run(ol_dir, locale, "--baseline", base)
         assert code == 2, out.stdout
+
+
+class TestOpenlibraryValidators:
+    """openlibrary's checks are run from openlibrary, never copied into this repo."""
+
+    STUB = (b"def render_errors(message):\n"
+            b"    return ['stub: ' + message.string] if 'BAD' in message.string else []\n")
+
+    @pytest.fixture
+    def cache(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(br, "VALIDATORS_CACHE", tmp_path / "cache")
+        br.load_openlibrary_validators.cache_clear()
+        yield tmp_path / "cache"
+        br.load_openlibrary_validators.cache_clear()
+
+    def test_install_rejections_uses_the_given_checks(self):
+        checks = br.validators_from_source(self.STUB, "stub")
+        assert br.install_rejections(_po_text('msgid "Done"\nmsgstr "BAD"').encode(), checks) == ["stub: BAD"]
+        assert br.install_rejections(_po_text('msgid "Done"\nmsgstr "Hecho"').encode(), checks) == []
+
+    def test_commit_without_render_errors_is_an_error_not_a_pass(self):
+        checks = br.validators_from_source(b"def validate(message, catalog):\n    return []\n", "old")
+        with pytest.raises(br.CheckError, match="predates"):
+            br.install_rejections(_po_text('msgid "Done"\nmsgstr "Hecho"').encode(), checks)
+
+    def test_syntax_newer_than_this_python_names_the_version(self):
+        with pytest.raises(br.CheckError, match="Python 3.14"):
+            br.validators_from_source(b"def f(:\n", "validators.py")
+
+    def test_openlibrary_directory_uses_its_own_validators(self, tmp_path):
+        (tmp_path / "validators.py").write_bytes(self.STUB)
+        checks = br.validators_for(br.DirectorySource(tmp_path))
+        assert checks.render_errors(type("M", (), {"string": "BAD"})()) == ["stub: BAD"]
+
+    def test_offline_uses_the_last_downloaded_copy(self, cache, monkeypatch):
+        cache.mkdir()
+        (cache / ("validators-" + "a" * 40 + ".py")).write_bytes(self.STUB)
+
+        def offline(*args, **kwargs):
+            raise br.CheckError("no network")
+
+        monkeypatch.setattr(br, "OpenlibrarySource", offline)
+        assert br.load_openlibrary_validators("master").render_errors(type("M", (), {"string": "BAD"})())
+
+    def test_offline_with_nothing_cached_is_an_error(self, cache, monkeypatch):
+        def offline(*args, **kwargs):
+            raise br.CheckError("no network")
+
+        monkeypatch.setattr(br, "OpenlibrarySource", offline)
+        with pytest.raises(br.CheckError, match="cannot download"):
+            br.load_openlibrary_validators("master")
+
+    def test_a_commit_already_downloaded_is_not_fetched_again(self, cache, monkeypatch):
+        sha = "b" * 40
+        cache.mkdir()
+        (cache / f"validators-{sha}.py").write_bytes(self.STUB)
+        monkeypatch.setattr(br, "OpenlibrarySource", lambda *a, **k: pytest.fail("fetched"))
+        assert hasattr(br.load_openlibrary_validators(sha), "render_errors")
