@@ -11,8 +11,15 @@ on:
       - "tests/test_locale_option.py"
       - "scripts/po_same_content.py"
       - "scripts/meaning_check.py"
+      - "scripts/bake_regression.py"
       - "tests/test_meaning_check.py"
       - "tests/test_po_same_content.py"
+
+# A new push to a PR supersedes its earlier runs. Pushes to main and the
+# nightly run are keyed by run id, so they never cancel each other.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -26,7 +33,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - name: Install dependencies
         run: pip install babel pytest
@@ -86,11 +93,17 @@ jobs:
         run: |
           LANGS="${{ steps.changed-langs.outputs.langs }}"
           python - <<'EOF'
+          import importlib.util
           import sys
           from pathlib import Path
           from babel.messages.pofile import read_po
-          sys.path.insert(0, str(Path('tests')))
-          from validators import validate
+
+          # openlibrary's own checks (openlibrary/i18n/validators.py on master), not a copy
+          spec = importlib.util.spec_from_file_location("bake_regression", "scripts/bake_regression.py")
+          bake = importlib.util.module_from_spec(spec)
+          sys.modules["bake_regression"] = bake  # dataclasses resolve types via sys.modules
+          spec.loader.exec_module(bake)
+          validate = bake.load_openlibrary_validators().validate
 
           changed = "${{ steps.changed-langs.outputs.langs }}".split()
           locale_dir = Path("locale")

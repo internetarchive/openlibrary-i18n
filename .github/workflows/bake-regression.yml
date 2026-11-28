@@ -38,6 +38,12 @@ on:
 permissions:
   contents: read
 
+# A new push to a PR supersedes its earlier runs. Pushes to main and the
+# nightly run are keyed by run id, so they never cancel each other.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   bake-regression:
     # Display name = the status-check name shown on the PR and matched by the
@@ -54,7 +60,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       # openlibrary pins Babel 2.18.0; write_mo() behaviour is what is being measured.
       - run: pip install "Babel==2.18.0" pytest
