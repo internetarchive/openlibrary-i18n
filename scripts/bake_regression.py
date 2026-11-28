@@ -10,9 +10,10 @@ What "baking" means here is openlibrary#13070 as of 26b45e8: at image build,
 install_translations() copies locale/<lang>/messages.po from this repo over
 openlibrary/i18n/<lang>/messages.po for every <lang> here, creating the
 directory if needed, unless the file fails check_po_file() (it does not parse,
-compile or load, or a compiled msgstr raises when formatted), in which case that
-locale keeps openlibrary's committed file. openlibrary then compiles each
-catalog with babel's write_mo() at its default use_fuzzy=False. So both sides
+compile or load, or a compiled msgstr fails openlibrary's render_errors()), in
+which case that locale keeps openlibrary's committed file. render_errors() is not
+copied here: it runs from openlibrary/i18n/validators.py at the compared commit.
+openlibrary then compiles each catalog with babel's write_mo() at its default use_fuzzy=False. So both sides
 are compiled with write_mo() and loaded with babel.support.Translations -- the
 same calls openlibrary makes -- and asked for each string.
 
@@ -51,11 +52,14 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+import functools
 import json
 import os
 import re
 import subprocess
 import sys
+import time
+import types
 import urllib.error
 import urllib.request
 from dataclasses import asdict, dataclass, field
@@ -564,6 +568,102 @@ def resolve_github_ref(repo: str, ref: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# openlibrary's translation checks, run from openlibrary rather than copied
+# ---------------------------------------------------------------------------
+
+# Downloaded copies of openlibrary/i18n/validators.py, one per commit, so the
+# checks still run offline (with a warning) after one online run.
+VALIDATORS_CACHE = REPO_ROOT / ".cache" / "openlibrary"
+VALIDATORS_CACHE_KEEP = 5
+# How long a branch name (master) is taken to point at the commit last
+# downloaded for it, so local runs and tests do not ask GitHub every time. CI
+# starts with no cache, so it always downloads.
+REF_CACHE_SECONDS = 3600
+
+
+def validators_from_source(data: bytes, origin: str) -> types.ModuleType:
+    """
+    openlibrary/i18n/validators.py loaded from its text. It imports only the
+    standard library and Babel, so it runs without an openlibrary checkout.
+    """
+    module = types.ModuleType("openlibrary_validators")
+    module.__file__ = origin
+    try:
+        exec(compile(data, origin, "exec"), module.__dict__)
+    except SyntaxError as e:
+        raise CheckError(
+            f"cannot load {origin} on Python {sys.version.split()[0]}: {e}. "
+            "openlibrary runs Python 3.14, and its checks need the same"
+        ) from e
+    return module
+
+
+@functools.cache
+def load_openlibrary_validators(ref: str | None = None) -> types.ModuleType:
+    """
+    openlibrary's translation checks (validate, render_errors) at `ref`: a branch,
+    tag or SHA, by default $OPENLIBRARY_REF or master. Downloaded once per commit
+    and cached; when the download fails, the most recent cached copy is used with
+    a warning, and with none cached the error is raised.
+    """
+    ref = ref or os.environ.get("OPENLIBRARY_REF") or "master"
+    path = VALIDATORS_CACHE / f"validators-{_recent_sha(ref) or ref}.py"
+    if not path.exists():
+        try:
+            source = OpenlibrarySource(ref)
+            data = source.fetch("validators.py")
+            if data is None:
+                raise CheckError(f"openlibrary@{source.sha} has no openlibrary/i18n/validators.py")
+            path = VALIDATORS_CACHE / f"validators-{source.sha}.py"
+            VALIDATORS_CACHE.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+            if source.sha != ref:
+                (VALIDATORS_CACHE / f"ref-{re.sub(r'[^A-Za-z0-9._-]', '_', ref)}").write_text(source.sha)
+            for old in _cached_validators()[:-VALIDATORS_CACHE_KEEP]:
+                old.unlink(missing_ok=True)
+        except (CheckError, OSError) as e:
+            cached = _cached_validators()
+            if not cached:
+                raise CheckError(f"cannot download openlibrary's validators.py: {e}") from e
+            path = cached[-1]
+            print(f"warning: cannot download openlibrary's validators.py ({e}); "
+                  f"using the copy from {path.name}", file=sys.stderr)
+    return validators_from_source(path.read_bytes(), str(path))
+
+
+def _recent_sha(ref: str) -> str | None:
+    """The commit `ref` was resolved to less than REF_CACHE_SECONDS ago, if any."""
+    if re.fullmatch(r"[0-9a-f]{40}", ref):
+        return ref
+    pointer = VALIDATORS_CACHE / f"ref-{re.sub(r'[^A-Za-z0-9._-]', '_', ref)}"
+    try:
+        if time.time() - pointer.stat().st_mtime < REF_CACHE_SECONDS:
+            return pointer.read_text().strip()
+    except OSError:
+        pass
+    return None
+
+
+def _cached_validators() -> list[Path]:
+    """Cached copies, oldest first."""
+    if not VALIDATORS_CACHE.is_dir():
+        return []
+    return sorted(VALIDATORS_CACHE.glob("validators-*.py"), key=lambda p: p.stat().st_mtime)
+
+
+def validators_for(openlibrary_source) -> types.ModuleType:
+    """The checks of the openlibrary side being compared: the same commit, or for a
+    local directory its own validators.py when it has one (an openlibrary/i18n
+    checkout does)."""
+    if isinstance(openlibrary_source, OpenlibrarySource):
+        return load_openlibrary_validators(openlibrary_source.sha)
+    data = openlibrary_source.fetch("validators.py")
+    if data:
+        return validators_from_source(data, "validators.py in the openlibrary directory")
+    return load_openlibrary_validators()
+
+
+# ---------------------------------------------------------------------------
 # The check
 # ---------------------------------------------------------------------------
 
@@ -571,36 +671,18 @@ def live_keys_from_pot(pot: Catalog) -> set[tuple[str | None, str]]:
     return {(m.context, _split_id(m)[0]) for m in pot if m.id}
 
 
-def _format_args(message: Message):
+def install_rejections(data: bytes, checks: types.ModuleType | None = None) -> list[str]:
     """
-    Stand-in arguments shaped like the ones the msgid expects at runtime. A msgid
-    with no placeholders gets {}: Jinja's newstyle gettext applies `% variables`
-    even when there are none. Mirrors openlibrary#13070 (26b45e8) _format_args.
-    """
-    if not message.python_format:
-        return {}
-    ids = message.id if isinstance(message.id, (list, tuple)) else [message.id]
-    names: set[str] = set()
-    positional = 0
-    for msgid in ids:
-        pieces = [m.group(0) for m in _CFMT_RE.finditer(str(msgid)) if m.group(0) != "%%"]
-        names.update(p[2:p.index(")")] for p in pieces if p.startswith("%("))
-        positional = max(positional, sum(1 for p in pieces if not p.startswith("%(")))
-    if names:
-        return dict.fromkeys(names, 1)
-    if positional:
-        return (1,) * positional
-    return {}
-
-
-def install_rejections(data: bytes) -> list[str]:
-    """
-    Why openlibrary#13070's install_translations() would refuse this .po and keep
+    Why openlibrary's install_translations() would refuse this .po and keep
     openlibrary's committed file instead: it does not parse, compile or load the
-    way load_translations() loads it, or a compiled (non-fuzzy) msgstr raises when
-    formatted, or renders a dict's repr through a positional placeholder. Mirrors
-    check_po_file at 26b45e8; line numbers are dropped so two runs compare equal.
+    way load_translations() loads it, or a compiled (non-fuzzy) msgstr fails
+    `checks.render_errors` (openlibrary's validators.py; master's by default).
+    Mirrors check_po_file, whose own body is only these few Babel calls.
     """
+    checks = checks or load_openlibrary_validators()
+    if not hasattr(checks, "render_errors"):
+        raise CheckError("this openlibrary commit predates validators.render_errors "
+                         "(openlibrary#14763); compare against a newer one")
     try:
         catalog = read_po(BytesIO(data), abort_invalid=True)
         mo = BytesIO()
@@ -611,27 +693,8 @@ def install_rejections(data: bytes) -> list[str]:
             translations.plural(n)
     except Exception as e:
         return [f"does not parse/compile/load: {type(e).__name__}: {e}"]
-    errors = []
-    for message in catalog:
-        if not message.id or message.fuzzy:
-            continue
-        args = _format_args(message)
-        strings = message.string if isinstance(message.string, (list, tuple)) else [message.string]
-        for msgstr in strings:
-            if not msgstr:
-                continue
-            try:
-                msgstr % args
-            except (TypeError, ValueError, KeyError) as e:
-                errors.append(f"{msgstr!r}: {type(e).__name__}: {e}")
-                continue
-            # "%s" % {...} does not raise; it renders the dict's repr.
-            if isinstance(args, dict) and any(
-                m.group(0) != "%%" and not m.group(0).startswith("%(")
-                for m in _CFMT_RE.finditer(msgstr)
-            ):
-                errors.append(f"{msgstr!r}: positional placeholder where the msgid has none")
-    return errors
+    return [err for message in catalog if message.id and not message.fuzzy
+            for err in checks.render_errors(message)]
 
 
 def count_translated(openlibrary: Catalog, live: set) -> int:
@@ -686,6 +749,7 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
     langs = baked_source.languages()
     if not langs:
         raise CheckError("no locale/<lang>/messages.po found on the baked side")
+    checks = validators_for(openlibrary_source)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
         ol_files = dict(zip(langs, pool.map(
@@ -694,7 +758,7 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
     languages: dict[str, dict] = {}
     for lang in langs:
         baked_bytes = baked_source.fetch(f"{lang}/messages.po")
-        rejections = install_rejections(baked_bytes)
+        rejections = install_rejections(baked_bytes, checks)
         ol_bytes = ol_files[lang]
         if ol_bytes is None:
             # install_translations() creates the directory: a new locale is baked
@@ -721,7 +785,7 @@ def run(openlibrary_source, baked_source, baseline: dict | None = None) -> dict:
             languages[lang] = _empty_result(count_translated(openlibrary, live), [Finding(
                 kind="rejected_locale", lang=lang, msgctxt=None, msgid="",
                 reason=(f"the bake would keep openlibrary's {lang}/messages.po: "
-                        f"{len(rejections)} msgstr(s) raise when formatted"),
+                        f"{len(rejections)} msgstr(s) fail its render check"),
                 detail=sorted(set(rejections)),
             )])
             continue

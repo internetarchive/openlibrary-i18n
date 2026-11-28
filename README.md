@@ -37,9 +37,9 @@ openlibrary-i18n/
   meaning-check-instructions.md     # instructions the meaning-check agent follows
   scripts/meaning_check.py          # collects entries for the meaning check, renders its PR comment
   requirements.txt
+  scripts/bake_regression.py        # "would this deploy cleanly?"; also loads openlibrary's own translation checks
   tests/
     test_po_files.py                # HTML structure parity validation
-    validators.py                   # format-string validation
     test_i18n.py                    # tests for the ./i18n toolbox
     test_meaning_check.py           # tests for scripts/meaning_check.py
   .github/workflows/
@@ -53,7 +53,7 @@ openlibrary-i18n/
 
 1. English strings are extracted into `openlibrary/i18n/messages.pot` in the [main repository](https://github.com/internetarchive/openlibrary) by its `generate-pot` pre-commit hook.
 2. When that file changes on `master`, the main repository's `trigger-i18n.yml` sends a `repository_dispatch` event here. `sync-pot.yml` then commits the new `messages.pot` straight to `main`.
-3. `translate.yml` runs on that event (or on a manual `workflow_dispatch`; it has no schedule). It downloads the new `messages.pot` and groups the languages that have untranslated strings into batches. Each batch then runs an AI translation step on a clean checkout of `main`, following `i18n-translation-instructions.md`. The fresh `messages.pot` is passed to that step outside the checkout, through the `I18N_POT` environment variable. The step syncs only its own languages from it, fills untranslated strings (fuzzy ones too, which it translates fresh from the English) and opens one PR per batch. The workflow then merges those PRs itself.
+3. `translate.yml` runs nightly at 03:00 UTC (or on a manual `workflow_dispatch`), not on each dispatch, so a day of upstream merges becomes one batch. It downloads the new `messages.pot` and groups the languages that have untranslated strings into batches. Each batch then runs an AI translation step on a clean checkout of `main`, following `i18n-translation-instructions.md`. The fresh `messages.pot` is passed to that step outside the checkout, through the `I18N_POT` environment variable. The step syncs only its own languages from it, fills untranslated strings (fuzzy ones too, which it translates fresh from the English) and opens one PR per batch. The workflow then merges those PRs itself.
 4. `validate-pr.yml` runs on PRs that touch `locale/`, `messages.pot` or the toolbox, and reports the result on the PR. It checks that the PR changes only the languages it means to (`./i18n check-scope`), then runs the HTML-structure tests (`tests/test_po_files.py`) and the format-string validators on just the languages the PR changed. The plural-form and toolbox tests run for every language. **`main` has no branch protection, so a failing check does not stop a person from merging.** The bots' own merge steps wait for it; for anything else, review is what catches a bad translation.
 5. `meaning-check.yml` runs on every PR that changes a `messages.po` from this repository (AI runs, Weblate, staff branches). An AI agent checks that each new or changed translation means what the English says, and posts what it flags as a PR comment. It checks up to 400 entries per PR, sampled evenly. It is **report-only**: it never blocks a merge, because a model judging dozens of languages makes mistakes. To check a language's existing translations, run `gh workflow run meaning-check.yml -f lang=<code> -f max=0`; the findings appear in the run summary. Fork PRs are skipped, since GitHub gives them no secrets.
 6. `weblate-review.yml` runs on every translation PR from a person: Weblate's sync PR, a contributor's fork, or a staff branch. An AI agent scans the diff for abuse (spam, offensive text, prompt injection, broken placeholders) and posts its verdict as a PR comment. It is not a quality review. Only Weblate's sync PR is then merged automatically; see below.
@@ -72,12 +72,14 @@ A PR labelled `no-automation` when it is opened skips `weblate-review.yml` entir
 
 ## Contributing translations
 
-To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. A bot posts an automated abuse-review comment, and then a maintainer reviews and merges your PR. If you translate on Weblate instead, your work reaches `main` through Weblate's own sync PR. Before you open a PR, run the checks locally (Python with `babel` and `pytest`):
+To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. A bot posts an automated abuse-review comment, and then a maintainer reviews and merges your PR. If you translate on Weblate instead, your work reaches `main` through Weblate's own sync PR. Before you open a PR, run the checks locally (Python 3.14, the version openlibrary runs, with `babel` and `pytest`):
 
 ```sh
-./i18n validate <lang>   # %-style placeholders such as %(name)s must match the English
+./i18n validate <lang>   # placeholders such as %(name)s and {name} must match the English
 ./i18n test <lang>       # HTML tags in each translation must match the English
 ```
+
+`./i18n validate` runs openlibrary's own checks (`openlibrary/i18n/validators.py`), downloaded from openlibrary's `master` and cached in `.cache/`, so a translation passes here exactly when it passes there. Offline, it uses the last copy it downloaded.
 
 `./i18n validate` only partly checks plural entries (`msgstr[0]`, `msgstr[1]`, ...): it catches a wrong placeholder name, but not a placeholder missing from one plural form. Check each form by eye.
 
