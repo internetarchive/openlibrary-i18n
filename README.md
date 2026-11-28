@@ -37,9 +37,9 @@ openlibrary-i18n/
   meaning-check-instructions.md     # instructions the meaning-check agent follows
   scripts/meaning_check.py          # collects entries for the meaning check, renders its PR comment
   requirements.txt
+  scripts/bake_regression.py        # "would this deploy cleanly?"; also loads openlibrary's own translation checks
   tests/
     test_po_files.py                # HTML structure parity validation
-    validators.py                   # format-string validation
     test_i18n.py                    # tests for the ./i18n toolbox
     test_meaning_check.py           # tests for scripts/meaning_check.py
   .github/workflows/
@@ -72,12 +72,14 @@ A PR labelled `no-automation` when it is opened skips `weblate-review.yml` entir
 
 ## Contributing translations
 
-To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. A bot posts an automated abuse-review comment, and then a maintainer reviews and merges your PR. If you translate on Weblate instead, your work reaches `main` through Weblate's own sync PR. Before you open a PR, run the checks locally (Python with `babel` and `pytest`):
+To improve a translation for your language, edit `locale/<lang>/messages.po` and open a pull request against `main`. A bot posts an automated abuse-review comment, and then a maintainer reviews and merges your PR. If you translate on Weblate instead, your work reaches `main` through Weblate's own sync PR. Before you open a PR, run the checks locally (Python 3.14, the version openlibrary runs, with `babel` and `pytest`):
 
 ```sh
-./i18n validate <lang>   # %-style placeholders such as %(name)s must match the English
+./i18n validate <lang>   # placeholders such as %(name)s and {name} must match the English
 ./i18n test <lang>       # HTML tags in each translation must match the English
 ```
+
+`./i18n validate` runs openlibrary's own checks (`openlibrary/i18n/validators.py`), downloaded from openlibrary's `master` and cached in `.cache/`, so a translation passes here exactly when it passes there. Offline, it uses the last copy it downloaded.
 
 `./i18n validate` only partly checks plural entries (`msgstr[0]`, `msgstr[1]`, ...): it catches a wrong placeholder name, but not a placeholder missing from one plural form. Check each form by eye.
 
