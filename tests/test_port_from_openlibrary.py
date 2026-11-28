@@ -252,7 +252,7 @@ class TestPortCatalog:
             assert "placeholder mismatch" not in r.excluded, zero
 
     def test_validator_failure_is_reported_as_the_ci_gate(self, monkeypatch):
-        # validate-pr.yml runs tests/validators.py directly, so a copy it rejects is reported
+        # validate-pr.yml runs openlibrary's validators.py, so a copy it rejects is reported
         # as failing CI, whichever rule rejects it.
         real = port.validators().validate
         monkeypatch.setattr(port.validators(), "validate",
